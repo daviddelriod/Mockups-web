@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  body{margin:0;background:#FBF7EF;display:flex;align-items:center;justify-content:center;height:100vh;}
+  .stage{position:relative;width:620px;height:500px;}
+  .tray{position:absolute;left:50%;top:50%;width:620px;transform:translate(-50%,-50%);
+    filter:drop-shadow(0 24px 28px rgba(43,33,25,.25));}
+  .pc{position:absolute;left:50%;top:50%;
+    filter:saturate(.82) contrast(1.04) brightness(.99) drop-shadow(0 5px 6px rgba(30,20,12,.35));}
+</style>
+</head>
+<body>
+<div class="stage">
+  <img class="tray" src="../assets/tray.png" />
+  <!-- back row -->
+  <img class="pc" src="../assets/sushi/p3c.png" style="width:106px; transform:translate(-50%,-50%) translate(-172px,-76px) rotate(-3deg);" />
+  <img class="pc" src="../assets/sushi/p5c.png" style="width:106px; transform:translate(-50%,-50%) translate(-58px,-80px) rotate(-4deg);" />
+  <img class="pc" src="../assets/sushi/p6c.png" style="width:106px; transform:translate(-50%,-50%) translate(58px,-80px) rotate(3deg);" />
+  <img class="pc" src="../assets/sushi/p4c.png" style="width:112px; transform:translate(-50%,-50%) translate(172px,-73px) rotate(6deg);" />
+  <!-- front row -->
+  <img class="pc" src="../assets/sushi/p1c.png" style="width:138px; transform:translate(-50%,-50%) translate(-200px,42px) rotate(-5deg);" />
+  <img class="pc" src="../assets/sushi/p8c.png" style="width:136px; transform:translate(-50%,-50%) translate(-67px,52px) rotate(-6deg);" />
+  <img class="pc" src="../assets/sushi/p7c.png" style="width:122px; transform:translate(-50%,-50%) translate(67px,52px) rotate(5deg);" />
+  <img class="pc" src="../assets/sushi/p2c.png" style="width:142px; transform:translate(-50%,-50%) translate(200px,42px) rotate(4deg);" />
+</div>
+</body>
+</html>

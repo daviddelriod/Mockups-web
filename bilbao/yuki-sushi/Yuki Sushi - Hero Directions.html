@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yuki Sushi — Direcciones de Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --washi:#F5F1E8;
+    --washi-2:#EFE9DD;
+    --ink:#16130F;
+    --ink-soft:#4A453C;
+    --red:#C0152F;
+    --rule:#D9D2C2;
+    --muted:#938C7C;
+    --serif:"Shippori Mincho B1", serif;
+    --sans:"Zen Kaku Gothic New", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#CFC9BC;font-family:var(--sans);}
+
+  /* ---- shared hero shell ---- */
+  .hero{position:relative;width:100%;height:100%;background:var(--washi);color:var(--ink);overflow:hidden;}
+  .nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+       padding:34px 56px;z-index:5;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:600;letter-spacing:.18em;
+         font-size:15px;text-transform:uppercase;}
+  .brand .dot{width:13px;height:13px;border-radius:50%;background:var(--red);}
+  .navlinks{display:flex;align-items:center;gap:30px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);}
+  .navlinks span{cursor:default;}
+  .pill{border:1px solid var(--ink);border-radius:40px;padding:9px 20px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);}
+  .kicker{font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--muted);font-weight:500;}
+  .scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.34em;
+             text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .scrollcue .line{width:1px;height:34px;background:var(--rule);}
+  .ph{background:linear-gradient(135deg,#E7E0D2,#D9D1C0);position:relative;overflow:hidden;}
+  .ph::after{content:"鮨";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+             font-family:var(--serif);font-size:80px;color:rgba(22,19,15,.07);}
+  .ph .tag{position:absolute;bottom:14px;left:16px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(22,19,15,.4);}
+
+  /* ============ HERO A — Hinomaru centrado ============ */
+  .a .stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:30px;}
+  .a .sun{position:absolute;top:120px;left:50%;transform:translateX(-50%);width:300px;height:300px;border-radius:50%;
+          background:radial-gradient(circle at 42% 38%, #D8324B, var(--red));opacity:.10;}
+  .a .yuki{font-family:var(--serif);font-size:30px;color:var(--red);margin-bottom:24px;letter-spacing:.1em;}
+  .a h1{font-family:var(--serif);font-weight:600;font-size:96px;line-height:.96;letter-spacing:.12em;margin:0;text-transform:uppercase;}
+  .a h1 .li{font-weight:400;}
+  .a .rule{width:54px;height:2px;background:var(--red);margin:34px 0 26px;}
+  .a .slogan{font-family:var(--serif);font-size:21px;color:var(--ink-soft);font-style:italic;max-width:520px;line-height:1.5;}
+
+  /* ============ HERO B — Editorial split ============ */
+  .b{display:grid;grid-template-columns:1.05fr .95fr;}
+  .b .left{position:relative;padding:0 64px;display:flex;flex-direction:column;justify-content:center;}
+  .b .left .kicker{margin-bottom:30px;}
+  .b h1{font-family:var(--serif);font-weight:600;font-size:84px;line-height:.98;letter-spacing:.01em;margin:0;}
+  .b h1 em{font-style:normal;color:var(--red);}
+  .b .slogan{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:380px;margin:30px 0 38px;}
+  .b .ctas{display:flex;gap:16px;align-items:center;}
+  .b .btn{font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:15px 28px;border-radius:40px;}
+  .b .btn.solid{background:var(--ink);color:var(--washi);}
+  .b .btn.ghost{border:1px solid var(--rule);color:var(--ink);}
+  .b .right{position:relative;}
+  .b .right .ph{position:absolute;inset:0;}
+  .b .badge{position:absolute;left:-54px;top:50%;transform:translateY(-50%);width:108px;height:108px;border-radius:50%;
+            background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;
+            font-family:var(--serif);z-index:3;box-shadow:0 18px 40px rgba(192,21,47,.3);}
+  .b .badge .jp{font-size:34px;line-height:1;}
+  .b .badge .yr{font-size:9px;letter-spacing:.2em;margin-top:5px;}
+
+  /* ============ HERO C — Tipografía + filigrana ============ */
+  .c .stage{position:absolute;inset:0;}
+  .c .water{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--serif);
+            font-size:560px;line-height:1;color:rgba(192,21,47,.06);user-select:none;}
+  .c .big{position:absolute;top:160px;left:64px;}
+  .c .big h1{font-family:var(--serif);font-weight:700;font-size:200px;line-height:.82;margin:0;letter-spacing:-.01em;}
+  .c .big .outline{-webkit-text-stroke:1.5px var(--ink);color:transparent;font-weight:600;}
+  .c .vert{position:absolute;top:150px;right:74px;writing-mode:vertical-rl;font-family:var(--serif);font-size:22px;
+           letter-spacing:.4em;color:var(--ink-soft);}
+  .c .dot{position:absolute;top:172px;left:560px;width:64px;height:64px;border-radius:50%;background:var(--red);}
+  .c .ph{position:absolute;right:74px;bottom:96px;width:300px;height:230px;border-radius:4px;}
+  .c .slogan{position:absolute;left:66px;bottom:104px;font-family:var(--serif);font-style:italic;font-size:22px;
+             color:var(--ink-soft);max-width:430px;line-height:1.5;}
+  .c .meta{position:absolute;left:66px;bottom:60px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+function Nav(){
+  return (
+    <div className="nav">
+      <div className="brand"><span className="dot"></span>Yuki Sushi</div>
+      <div className="navlinks">
+        <span>Nosotros</span><span>Carta</span><span>Dónde pedir</span><span>Horario</span>
+        <span className="pill">Reservar</span>
+      </div>
+    </div>
+  );
+}
+
+function HeroA(){
+  return (
+    <div className="hero a">
+      <Nav/>
+      <div className="sun"></div>
+      <div className="stage">
+        <div className="kicker" style={{marginBottom:'26px'}}>鮨 · Bilbao · Est. 2025</div>
+        <div className="yuki">雪</div>
+        <h1>Yuki <span className="li">Sushi</span></h1>
+        <div className="rule"></div>
+        <div className="slogan">Donde el mar se encuentra con la nieve.</div>
+      </div>
+      <div className="scrollcue"><span>Desliza</span><span className="line"></span></div>
+    </div>
+  );
+}
+
+function HeroB(){
+  return (
+    <div className="hero b">
+      <Nav/>
+      <div className="left">
+        <div className="kicker">Bilbao · Est. 2025</div>
+        <h1>El arte<br/>del <em>sushi</em></h1>
+        <p className="slogan">Pescado del día, arroz templado y la calma de la primera nevada. Cada pieza, una estación.</p>
+        <div className="ctas">
+          <span className="btn solid">Ver la carta</span>
+          <span className="btn ghost">Reservar mesa</span>
+        </div>
+      </div>
+      <div className="right">
+        <div className="ph"><span className="tag">Foto · barra de sushi</span></div>
+        <div className="badge"><span className="jp">雪</span><span className="yr">EST. 2025</span></div>
+      </div>
+    </div>
+  );
+}
+
+function HeroC(){
+  return (
+    <div className="hero c">
+      <Nav/>
+      <div className="stage">
+        <div className="water">雪</div>
+        <div className="vert">寿司 · びるばお</div>
+        <div className="big">
+          <h1>YUKI</h1>
+          <h1 className="outline">SUSHI</h1>
+        </div>
+        <div className="dot"></div>
+        <div className="ph"><span className="tag">Foto · nigiri</span></div>
+        <div className="slogan">Puro como la primera nieve.</div>
+        <div className="meta">Bilbao — Est. 2025</div>
+      </div>
+    </div>
+  );
+}
+
+function App(){
+  return (
+    <DesignCanvas>
+      <DCSection id="heroes" title="Yuki Sushi — Direcciones de Hero" subtitle="Tres caminos · minimalismo japonés · washi + tinta + rojo hinomaru">
+        <DCArtboard id="a" label="A · Hinomaru centrado" width={1360} height={840}><HeroA/></DCArtboard>
+        <DCArtboard id="b" label="B · Editorial a dos columnas" width={1360} height={840}><HeroB/></DCArtboard>
+        <DCArtboard id="c" label="C · Tipografía + filigrana 雪" width={1360} height={840}><HeroC/></DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body{background:var(--paper);margin:0;padding:50px;}
+  .row{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center;max-width:1100px;margin:0 auto 80px;}
+  .photo > img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit;}
+  .demo-aside{max-width:480px;margin:0 auto;}
+  h3{font-family:var(--serif);font-size:40px;margin:0;}
+</style>
+</head>
+<body>
+  <!-- Nosotros image group -->
+  <div class="row">
+    <div class="imgs" style="position:relative;padding-bottom:30px;">
+      <div class="photo main">
+        <img src="userimg-about-main.webp" />
+        <span class="wash"></span>
+        <span class="ptag"><span class="jp">鮨</span>Nuestra barra</span>
+      </div>
+      <div class="photo inset">
+        <img src="userimg-about-inset.webp" />
+        <span class="wash"></span>
+      </div>
+    </div>
+    <div><h3>Una barra<br>en el corazón<br>de Bilbao</h3></div>
+  </div>
+
+  <!-- Horario image -->
+  <div class="demo-aside">
+    <div class="photo">
+      <img src="userimg-hours-img.webp" />
+      <span class="wash"></span>
+      <span class="ptag"><span class="jp">店内</span>El local</span>
+    </div>
+  </div>
+</body>
+</html>

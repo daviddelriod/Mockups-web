@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es" data-anim="normal">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yuki Sushi — Bilbao</title>
+<meta name="description" content="Yuki Sushi · Bilbao, Est. 2025. Sushi de temporada, pieza a pieza. Donde el mar se encuentra con la nieve." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="loading" style="background-color: rgb(252, 248, 241)">
+
+<!-- ============ LOADER ============ -->
+<div id="loader">
+  <div class="yuki">雪</div>
+  <div class="word">Yuki Sushi</div>
+  <div class="bar"></div>
+  <div class="prep">Preparando la barra</div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a class="brand" href="#top"><span class="dot"></span>Yuki Sushi</a>
+  <nav class="navlinks">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#carta">Carta</a>
+    <a href="#pedir">Dónde pedir</a>
+    <a href="#horario">Horario</a>
+    <a class="pill" href="#horario">Reservar</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-screen-label="Hero">
+    <div class="sun"></div>
+    <div class="hero-center">
+      <div class="h-yuki reveal">雪</div>
+      <div class="kicker reveal" style="--d:80ms;margin-bottom:26px;">鮨 · Bilbao · Est. 2025</div>
+      <h1 class="reveal" style="--d:160ms;">Yuki <span class="li">Sushi</span></h1>
+      <div class="h-rule reveal" style="--d:300ms;"></div>
+      <p class="slogan reveal" style="--d:380ms;">Donde el mar se encuentra con la nieve.</p>
+    </div>
+    <div class="scrollcue"><span>Desliza</span><span class="line"></span></div>
+</section>
+
+<!-- ============ NOSOTROS ============ -->
+<section class="section-pad" id="nosotros">
+  <div class="wrap about">
+    <div class="tray-stage" id="tray-stage">
+      <div class="tray-anchor">
+        <img class="tray-img" id="hero-tray" src="assets/tray.png" alt="Bandeja de sushi" />
+        <div class="pieces" id="pieces">
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p1c.png" alt="Nigiri de salmón" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p2c.png" alt="Nigiri de langostino" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p3c.png" alt="Maki de sésamo" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p4c.png" alt="Gunkan de ikura" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p5c.png" alt="Maki de atún" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p6c.png" alt="Maki de pepino" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p7c.png" alt="Nigiri de atún" /></div></div>
+          <div class="piece"><div class="piece-inner"><img src="assets/sushi/p8c.png" alt="Nigiri de pez mantequilla" /></div></div>
+        </div>
+      </div>
+      <div class="tray-cap" id="hero-cap"><span class="jp">鮨</span>Cada pieza, en su lugar</div>
+    </div>
+    <div class="body">
+      <div class="eyebrow reveal"><span class="jpmark">私たち</span><span class="lbl">Nosotros</span><span class="ln"></span></div>
+      <h2 class="title reveal" style="--d:80ms;">Una barra<br>en el corazón<br>de Bilbao</h2>
+      <p class="lead reveal" style="--d:160ms;">Abrimos en 2025 con una idea sencilla: respetar el pescado y dejar que hable por sí solo.</p>
+      <p class="reveal" style="--d:220ms;">Cada mañana seleccionamos producto de lonja y de mercado, templamos el arroz con vinagre propio y trabajamos solo lo que cabe en la barra de ese día. Sin atajos, sin exceso.</p>
+      <p class="reveal" style="--d:280ms;">El resultado es una carta corta que cambia con la temporada: la calma del invierno en cada bocado, la frescura del Cantábrico en cada corte.</p>
+      <div class="stats reveal" style="--d:340ms;">
+        <div class="s"><div class="n">12</div><div class="k">Asientos en barra</div></div>
+        <div class="s"><div class="n">100%</div><div class="k">Corte a mano</div></div>
+        <div class="s"><div class="n">Diario</div><div class="k">Producto de lonja</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section class="carta section-pad" id="carta" style="background-color: rgba(91, 41, 41, 0.835)">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="jpmark">お品書き</span><span class="lbl">La Carta</span><span class="ln"></span></div>
+    <div class="intro">
+      <h2 class="title reveal" style="--d:80ms;">Piezas de<br>temporada</h2>
+      <p class="reveal" style="--d:160ms;">Una selección que rota cada semana. Estos son algunos de los clásicos de la casa.</p>
+    </div>
+
+    <div class="menu-grid">
+      <article class="dish reveal">
+        <image-slot id="dish-toro" placeholder="Foto · nigiri de toro"></image-slot>
+        <div class="info">
+          <div class="jpn" style="color: rgb(153, 120, 90)">大トロ</div>
+          <div class="name">Nigiri de Toro <span class="price">6,50€</span></div>
+          <p class="desc">Ventresca de atún rojo, apenas marcada, sobre arroz templado.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal" style="--d:90ms;">
+        <image-slot id="dish-salmon" placeholder="Foto · sashimi de salmón"></image-slot>
+        <div class="info">
+          <div class="jpn">サーモン</div>
+          <div class="name">Sashimi de Salmón <span class="price">9,00€</span></div>
+          <p class="desc">Cinco cortes limpios, ralladura de yuzu y sal en escamas.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal" style="--d:180ms;">
+        <image-slot id="dish-yuki" placeholder="Foto · maki Yuki"></image-slot>
+        <div class="info">
+          <div class="jpn">雪巻き</div>
+          <div class="name">Maki Yuki <span class="price">11,50€</span></div>
+          <p class="desc">Nuestro signature: vieira, cebollino y un velo de nieve de coco.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <image-slot id="dish-anguila" placeholder="Foto · temaki de anguila"></image-slot>
+        <div class="info">
+          <div class="jpn">穴子</div>
+          <div class="name">Temaki de Anguila <span class="price">7,00€</span></div>
+          <p class="desc">Anago a la brasa, salsa tare y alga nori crujiente.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal" style="--d:90ms;">
+        <image-slot id="dish-bilbao" placeholder="Foto · uramaki Bilbao"></image-slot>
+        <div class="info">
+          <div class="jpn">ビルバオ</div>
+          <div class="name">Uramaki Bilbao <span class="price">12,00€</span></div>
+          <p class="desc">Bonito del norte, pimiento asado y un toque de guindilla.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal" style="--d:180ms;">
+        <image-slot id="dish-edamame" placeholder="Foto · edamame"></image-slot>
+        <div class="info">
+          <div class="jpn">枝豆</div>
+          <div class="name">Edamame <span class="price">4,50€</span></div>
+          <p class="desc">Vainas al vapor con sal marina y un golpe de cítrico.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="more reveal"><a href="#pedir">Ver la carta completa &nbsp;→</a></div>
+  </div>
+</section>
+
+<!-- ============ DÓNDE PEDIR ============ -->
+<section class="order section-pad" id="pedir">
+  <div class="wrap">
+    <div class="eyebrow reveal"><span class="jpmark">ご注文</span><span class="lbl">Dónde pedir</span><span class="ln"></span></div>
+    <h2 class="title reveal" style="--d:80ms;">Tres formas<br>de disfrutarlo</h2>
+
+    <div class="grid">
+      <div class="ocard reveal">
+        <div class="num">01</div>
+        <h3>En la barra</h3>
+        <p>Reserva uno de los doce asientos y déjate llevar por el menú del itamae. La experiencia completa, pieza a pieza.</p>
+        <a class="act" href="#horario">Reservar <span class="arr">→</span></a>
+      </div>
+      <div class="ocard reveal" style="--d:90ms;">
+        <div class="num">02</div>
+        <h3>Para llevar</h3>
+        <p>Pide por teléfono y recoge en tienda. Lo preparamos al momento para que llegue a casa en su punto.</p>
+        <a class="act" href="tel:+34944000000">Llamar <span class="arr">→</span></a>
+      </div>
+      <div class="ocard reveal" style="--d:180ms;">
+        <div class="num">03</div>
+        <h3>A domicilio</h3>
+        <p>Disponible en todo el centro de Bilbao a través de nuestras plataformas de confianza.</p>
+        <a class="act" href="#pedir">Pedir online <span class="arr">→</span></a>
+      </div>
+    </div>
+
+    <div class="partners reveal">
+      <div class="partners-info">
+        <span class="jp">出前</span>
+        <div>
+          <span class="lead">Disponible en</span>
+          <p class="note">Entrega en 30–40&nbsp;min por el Casco Viejo y el centro de Bilbao. Pedido mínimo 18&nbsp;€.</p>
+        </div>
+      </div>
+      <div class="partner-logos">
+        <image-slot id="logo-glovo" shape="rounded" radius="6" placeholder="Logo · Glovo"></image-slot>
+        <image-slot id="logo-ubereats" shape="rounded" radius="6" placeholder="Logo · Uber Eats"></image-slot>
+        <image-slot id="logo-justeat" shape="rounded" radius="6" placeholder="Logo · Just Eat"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HORARIO ============ -->
+<section class="hours section-pad" id="horario">
+  <div class="wrap hours-wrap">
+    <div>
+      <div class="eyebrow reveal"><span class="jpmark">営業時間</span><span class="lbl">Horario</span><span class="ln"></span></div>
+      <h2 class="title reveal" style="--d:80ms;">Cuándo<br>visitarnos</h2>
+      <div class="hours-list reveal" style="--d:160ms;">
+        <div class="row"><span class="day">Martes — Jueves</span><span class="time">13:00 – 15:30&nbsp;&nbsp;·&nbsp;&nbsp;20:00 – 23:00</span></div>
+        <div class="row"><span class="day">Viernes — Sábado</span><span class="time">13:00 – 16:00&nbsp;&nbsp;·&nbsp;&nbsp;20:00 – 23:30</span></div>
+        <div class="row"><span class="day">Domingo</span><span class="time">13:00 – 16:00</span></div>
+        <div class="row closed"><span class="day">Lunes</span><span class="time">Cerrado</span></div>
+      </div>
+      <div class="contact reveal" style="--d:240ms;">
+        <span class="addr">Calle Somera 14 · Casco Viejo, Bilbao</span>
+        <span class="ph">+34 944 00 00 00 · hola@yukisushi.es</span>
+      </div>
+    </div>
+    <div class="hours-aside reveal" style="--d:120ms;">
+      <div class="photo">
+        <image-slot id="hours-img" shape="rounded" radius="6" placeholder="Foto · ambiente del local"></image-slot>
+        <span class="wash"></span>
+        <span class="ptag"><span class="jp">店内</span>El local</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="big">Yuki<span class="dot">.</span></div>
+        <p class="tag">Sushi de temporada en el Casco Viejo de Bilbao. Donde el mar se encuentra con la nieve.</p>
+      </div>
+      <div class="col">
+        <h4>Navegar</h4>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#carta">Carta</a>
+        <a href="#pedir">Dónde pedir</a>
+        <a href="#horario">Horario</a>
+      </div>
+      <div class="col">
+        <h4>Visítanos</h4>
+        <p>Calle Somera 14<br>Casco Viejo, 48005 Bilbao</p>
+        <a href="tel:+34944000000">+34 944 00 00 00</a>
+        <a href="https://instagram.com">Instagram</a>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2026 Yuki Sushi · Bilbao</span>
+      <span>雪 · Est. 2025</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING ORDER BUTTON ============ -->
+<a class="fab-order" href="#pedir">Haz tu pedido</a>
+
+<!-- ============ TWEAKS ============ -->
+<div id="tweaks-root"></div>
+
+<script src="image-slot.js"></script>
+<script src="app.js"></script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buba Burger — Burgers de otro planeta · Bilbao</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon: #b98aff;
+    --neon-2: #6ee7f9;
+    --magenta: #f472d0;
+    --bg: #07041a;
+    --bg-2: #0d0826;
+    --surface: #140e33;
+    --surface-2: #1b1442;
+    --line: rgba(185, 138, 255, 0.22);
+    --text: #efeaff;
+    --text-dim: #b3a8d9;
+    --glow: color-mix(in oklch, var(--neon) 70%, transparent);
+    --display: "Zen Dots", sans-serif;
+    --body: "Space Grotesk", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--neon); color: #0a0520; }
+
+  /* ---------- Starfield ---------- */
+  .stars {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 22%, rgba(255,255,255,0.8), transparent 60%),
+      radial-gradient(1px 1px at 38% 8%, rgba(255,255,255,0.6), transparent 60%),
+      radial-gradient(2px 2px at 65% 35%, rgba(185,138,255,0.7), transparent 60%),
+      radial-gradient(1px 1px at 82% 12%, rgba(255,255,255,0.55), transparent 60%),
+      radial-gradient(1.5px 1.5px at 92% 60%, rgba(110,231,249,0.6), transparent 60%),
+      radial-gradient(1px 1px at 25% 70%, rgba(255,255,255,0.5), transparent 60%),
+      radial-gradient(1.5px 1.5px at 55% 85%, rgba(255,255,255,0.45), transparent 60%),
+      radial-gradient(1px 1px at 73% 92%, rgba(185,138,255,0.55), transparent 60%),
+      radial-gradient(1px 1px at 8% 48%, rgba(255,255,255,0.5), transparent 60%),
+      radial-gradient(1.5px 1.5px at 45% 55%, rgba(255,255,255,0.35), transparent 60%);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-motion="on"] .stars { animation: twinkle 5s ease-in-out infinite alternate; }
+  }
+  @keyframes twinkle { from { opacity: 0.65; } to { opacity: 1; } }
+
+  main, header.nav, footer { position: relative; z-index: 1; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 28px;
+    padding: 14px 32px;
+    background: color-mix(in oklch, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
+  .brand svg { width: 34px; height: 34px; filter: drop-shadow(0 0 6px var(--glow)); }
+  .brand b { font-family: var(--display); font-size: 17px; letter-spacing: 0.06em; font-weight: 400; }
+  .nav-links { display: flex; gap: 24px; margin-left: auto; }
+  .nav-links a {
+    color: var(--text-dim); text-decoration: none; font-size: 15px; font-weight: 500;
+    transition: color 0.2s, text-shadow 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); text-shadow: 0 0 12px var(--glow); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--body); font-weight: 700; font-size: 15px;
+    padding: 11px 22px; border-radius: 999px; text-decoration: none; cursor: pointer;
+    border: 1px solid transparent; transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-neon {
+    background: var(--neon); color: #0c0524;
+    box-shadow: 0 0 18px var(--glow), 0 0 40px color-mix(in oklch, var(--neon) 30%, transparent);
+  }
+  .btn-neon:hover { box-shadow: 0 0 26px var(--glow), 0 0 70px color-mix(in oklch, var(--neon) 45%, transparent); }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--neon); box-shadow: 0 0 14px color-mix(in oklch, var(--neon) 25%, transparent); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    max-width: 1200px; margin: 0 auto; padding: 72px 32px 56px;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center;
+  }
+  .status-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600; color: var(--text-dim);
+    border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
+    margin-bottom: 22px; background: color-mix(in oklch, var(--surface) 60%, transparent);
+  }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+  .status-dot.closed { background: #fb7185; box-shadow: 0 0 8px #fb7185; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(40px, 5.2vw, 68px); line-height: 1.08; letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .hero h1 .neon-word {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--glow), 0 0 36px color-mix(in oklch, var(--neon) 50%, transparent), 0 0 80px color-mix(in oklch, var(--neon) 35%, transparent);
+  }
+  .hero h1 .glitch { position: relative; display: inline-block; }
+  .hero h1 .glitch::before, .hero h1 .glitch::after {
+    content: attr(data-text); position: absolute; inset: 0; opacity: 0.65; pointer-events: none;
+  }
+  .hero h1 .glitch::before { color: var(--neon-2); transform: translate(-2.5px, -1.5px); z-index: -1; }
+  .hero h1 .glitch::after { color: var(--magenta); transform: translate(2.5px, 1.5px); z-index: -1; }
+  .hero .sub { color: var(--text-dim); font-size: 19px; max-width: 46ch; margin: 18px 0 30px; text-wrap: pretty; }
+  .rating {
+    display: inline-flex; align-items: baseline; gap: 10px; margin-bottom: 26px;
+    font-weight: 600;
+  }
+  .rating .stars-txt { color: #fbbf24; letter-spacing: 2px; font-size: 17px; text-shadow: 0 0 10px rgba(251,191,36,0.5); }
+  .rating .score { font-family: var(--display); font-size: 22px; }
+  .rating .count { color: var(--text-dim); font-weight: 500; font-size: 14px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .delivery-row { display: flex; gap: 10px; align-items: center; margin-top: 20px; flex-wrap: wrap; }
+  .delivery-row span { font-size: 13px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .pill-link {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--text); transition: all 0.2s;
+  }
+  .pill-link:hover { border-color: var(--neon); box-shadow: 0 0 12px color-mix(in oklch, var(--neon) 30%, transparent); transform: translateY(-1px); }
+  .hero-visual { position: relative; }
+  .hero-visual .frame {
+    border-radius: 24px; overflow: hidden; aspect-ratio: 4/5; max-height: 560px; width: 100%;
+    border: 1px solid var(--line);
+    box-shadow: 0 0 0 1px rgba(185,138,255,0.1), 0 0 60px color-mix(in oklch, var(--neon) 18%, transparent), 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .hero-visual .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-alien {
+    position: absolute; top: -26px; right: -18px; width: 86px; height: 86px;
+    filter: drop-shadow(0 0 14px var(--glow));
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-motion="on"] .hero-alien { animation: float 4.5s ease-in-out infinite; }
+  }
+  @keyframes float { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-14px) rotate(4deg); } }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    overflow: hidden; padding: 14px 0; background: color-mix(in oklch, var(--surface) 45%, transparent);
+  }
+  .marquee-track { display: flex; gap: 48px; width: max-content; }
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-motion="on"] .marquee-track { animation: scrollx 28s linear infinite; }
+  }
+  @keyframes scrollx { to { transform: translateX(-50%); } }
+  .marquee-track em {
+    font-style: normal; font-family: var(--display); font-size: 14px; letter-spacing: 0.18em;
+    color: var(--text-dim); white-space: nowrap; display: flex; align-items: center; gap: 48px;
+  }
+  .marquee-track em::after { content: "✦"; color: var(--neon); text-shadow: 0 0 8px var(--glow); }
+
+  /* ---------- Sections ---------- */
+  section { padding: 80px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 12px; }
+  .sec-head h2 {
+    font-family: var(--display); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px);
+    letter-spacing: 0.04em;
+    color: var(--neon);
+    text-shadow: 0 0 12px var(--glow), 0 0 40px color-mix(in oklch, var(--neon) 35%, transparent);
+  }
+  .sec-head .claim { color: var(--text-dim); font-size: 16px; }
+  .sec-sub { color: var(--text-dim); max-width: 60ch; margin-bottom: 36px; text-wrap: pretty; }
+
+  /* ---------- Carta ---------- */
+  .cat-nav {
+    position: sticky; top: 63px; z-index: 40;
+    display: flex; gap: 10px; overflow-x: auto; padding: 14px 32px;
+    background: color-mix(in oklch, var(--bg) 86%, transparent);
+    backdrop-filter: blur(14px);
+    scrollbar-width: none; border-bottom: 1px solid var(--line);
+  }
+  .cat-nav::-webkit-scrollbar { display: none; }
+  .cat-chip {
+    flex-shrink: 0; font-family: var(--display); font-size: 13px; letter-spacing: 0.1em;
+    color: var(--text-dim); background: transparent; border: 1px solid var(--line);
+    padding: 9px 18px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
+  }
+  .cat-chip:hover { color: var(--text); border-color: var(--neon); }
+  .cat-chip.active {
+    color: #0c0524; background: var(--neon); border-color: var(--neon);
+    box-shadow: 0 0 16px var(--glow);
+  }
+  .cat-block { padding: 44px 0 8px; }
+  .cat-block .sec-head { padding: 0 32px; max-width: 1200px; margin: 0 auto 4px; }
+  .cat-block .cat-nota {
+    padding: 0 32px; max-width: 1200px; margin: 0 auto 22px;
+    color: var(--text-dim); font-size: 14.5px;
+  }
+  .row-wrap { position: relative; }
+  .dish-row {
+    display: flex; gap: 22px; overflow-x: auto; padding: 12px 32px 26px;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+  }
+  .dish-row::-webkit-scrollbar { display: none; }
+  .dish-card {
+    flex: 0 0 300px; scroll-snap-align: start;
+    background: linear-gradient(170deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  .dish-card:hover {
+    transform: translateY(-6px); border-color: color-mix(in oklch, var(--neon) 55%, transparent);
+    box-shadow: 0 0 30px color-mix(in oklch, var(--neon) 22%, transparent), 0 24px 50px rgba(0,0,0,0.5);
+  }
+  .dish-card image-slot { width: 100%; height: 190px; display: block; }
+  .dish-body { padding: 18px 20px 20px; }
+  .dish-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .dish-top h3 { font-family: var(--display); font-weight: 400; font-size: 16.5px; letter-spacing: 0.03em; }
+  .dish-top .price {
+    font-family: var(--display); font-size: 15px; color: var(--neon); white-space: nowrap;
+    text-shadow: 0 0 10px var(--glow);
+  }
+  .dish-body p { color: var(--text-dim); font-size: 14.5px; line-height: 1.5; }
+  .tag-row { display: flex; gap: 6px; margin-top: 12px; }
+  .tag {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px; border: 1px solid;
+  }
+  .tag.picante { color: #fb923c; border-color: rgba(251,146,60,0.4); }
+  .tag.vegan { color: #4ade80; border-color: rgba(74,222,128,0.4); }
+  .row-arrow {
+    position: absolute; top: 42%; z-index: 5; width: 44px; height: 44px; border-radius: 50%;
+    background: color-mix(in oklch, var(--bg) 75%, transparent); backdrop-filter: blur(8px);
+    border: 1px solid var(--neon); color: var(--neon); font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 14px color-mix(in oklch, var(--neon) 30%, transparent);
+    transition: all 0.2s;
+  }
+  .row-arrow:hover { background: var(--neon); color: #0c0524; }
+  .row-arrow.prev { left: 12px; }
+  .row-arrow.next { right: 12px; }
+
+  .extras-bar { max-width: 1200px; margin: 28px auto 0; padding: 0 32px; }
+  .extras-bar h3 { font-family: var(--display); font-weight: 400; font-size: 15px; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 14px; }
+  .extras-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .extras-list li {
+    list-style: none; font-size: 13.5px; color: var(--text-dim);
+    border: 1px dashed var(--line); border-radius: 999px; padding: 6px 14px;
+  }
+  .extras-list li b { color: var(--text); font-weight: 600; }
+
+  /* ---------- Menús ---------- */
+  .menus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+  .menu-ticket {
+    position: relative; border-radius: 20px; padding: 30px 28px;
+    background: linear-gradient(160deg, color-mix(in oklch, var(--neon) 16%, var(--surface)), var(--surface));
+    border: 1px solid var(--line); overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .menu-ticket:hover { transform: translateY(-5px); box-shadow: 0 0 34px color-mix(in oklch, var(--neon) 22%, transparent); }
+  .menu-ticket::before {
+    content: ""; position: absolute; top: 0; left: 28px; right: 28px; height: 3px;
+    background: linear-gradient(90deg, var(--neon), var(--magenta), var(--neon-2));
+    border-radius: 0 0 4px 4px; box-shadow: 0 0 14px var(--glow);
+  }
+  .menu-ticket h3 { font-family: var(--display); font-weight: 400; font-size: 19px; margin-bottom: 4px; }
+  .menu-ticket .m-price { font-family: var(--display); font-size: 26px; color: var(--neon); text-shadow: 0 0 12px var(--glow); margin-bottom: 14px; }
+  .menu-ticket p { color: var(--text-dim); font-size: 15px; }
+  .menu-ticket p + p { margin-top: 8px; }
+  .menus-media { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 46px; }
+  .menus-media figure { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); position: relative; aspect-ratio: 16/10; }
+  .menus-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .menus-media figcaption {
+    position: absolute; left: 16px; bottom: 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 999px;
+    background: rgba(7,4,26,0.72); backdrop-filter: blur(6px); border: 1px solid var(--line);
+  }
+
+  /* ---------- Sin gluten ---------- */
+  .gluten {
+    background:
+      radial-gradient(800px 400px at 80% 50%, color-mix(in oklch, #4ade80 9%, transparent), transparent 70%),
+      var(--bg-2);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .gluten .container { display: grid; grid-template-columns: 1fr 0.85fr; gap: 56px; align-items: center; }
+  .gluten h2 {
+    font-family: var(--display); font-weight: 400; font-size: clamp(26px, 3vw, 38px);
+    color: #4ade80; text-shadow: 0 0 14px rgba(74,222,128,0.55), 0 0 50px rgba(74,222,128,0.3);
+    margin-bottom: 16px;
+  }
+  .gluten p { color: var(--text-dim); font-size: 18px; max-width: 50ch; text-wrap: pretty; }
+  .gluten p b { color: var(--text); }
+  .gluten figure { border-radius: 20px; overflow: hidden; border: 1px solid rgba(74,222,128,0.25); aspect-ratio: 4/3; box-shadow: 0 0 40px rgba(74,222,128,0.12); }
+  .gluten img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- Reseñas ---------- */
+  .reviews .container { text-align: center; }
+  .big-score { font-family: var(--display); font-size: clamp(72px, 9vw, 120px); line-height: 1; color: var(--neon); text-shadow: 0 0 24px var(--glow), 0 0 90px color-mix(in oklch, var(--neon) 40%, transparent); }
+  .big-stars { color: #fbbf24; font-size: 28px; letter-spacing: 6px; margin: 14px 0 6px; text-shadow: 0 0 16px rgba(251,191,36,0.5); }
+  .reviews .count { color: var(--text-dim); margin-bottom: 26px; }
+  .perks { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 26px 0 32px; }
+  .perks li {
+    list-style: none; font-size: 14px; font-weight: 600; color: var(--text-dim);
+    border: 1px solid var(--line); border-radius: 999px; padding: 8px 18px;
+    background: color-mix(in oklch, var(--surface) 55%, transparent);
+  }
+
+  /* ---------- Horario + mapa ---------- */
+  .visit .container { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: start; }
+  .hours-table { margin-top: 26px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .hours-table > div {
+    display: flex; justify-content: space-between; padding: 13px 22px; font-size: 15.5px;
+    border-bottom: 1px solid color-mix(in oklch, var(--line) 50%, transparent);
+  }
+  .hours-table > div:last-child { border-bottom: none; }
+  .hours-table .closed-day span:last-child { color: #fb7185; }
+  .hours-table .today { background: color-mix(in oklch, var(--neon) 13%, transparent); }
+  .hours-table .today span:first-child::after {
+    content: "HOY"; font-size: 10.5px; font-family: var(--display); color: var(--neon);
+    margin-left: 10px; letter-spacing: 0.12em; text-shadow: 0 0 8px var(--glow);
+  }
+  .address-card { margin-top: 22px; display: grid; gap: 8px; color: var(--text-dim); font-size: 15.5px; }
+  .address-card b { color: var(--text); font-size: 17px; }
+  .map-frame {
+    border-radius: 20px; overflow: hidden; border: 1px solid var(--line); height: 480px;
+    box-shadow: 0 0 40px color-mix(in oklch, var(--neon) 12%, transparent);
+  }
+  .map-frame iframe { width: 100%; height: 100%; border: 0; filter: saturate(0.7) contrast(1.05); }
+
+  /* ---------- Instagram ---------- */
+  .insta .sec-head { justify-content: center; }
+  .insta .sec-sub { text-align: center; margin-left: auto; margin-right: auto; }
+  .insta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .insta-grid image-slot { width: 100%; aspect-ratio: 1; display: block; }
+  .insta .center { text-align: center; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--line); padding: 48px 32px 60px;
+    background: var(--bg-2);
+  }
+  .foot-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; }
+  .foot-grid h4 { font-family: var(--display); font-weight: 400; font-size: 14px; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 16px; }
+  .foot-grid a { color: var(--text); text-decoration: none; display: block; margin-bottom: 10px; font-size: 15px; }
+  .foot-grid a:hover { color: var(--neon); text-shadow: 0 0 10px var(--glow); }
+  .foot-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .foot-brand svg { width: 40px; height: 40px; filter: drop-shadow(0 0 8px var(--glow)); }
+  .foot-brand b { font-family: var(--display); font-size: 18px; font-weight: 400; }
+  .foot-note { color: var(--text-dim); font-size: 14px; max-width: 38ch; }
+  .copyright { max-width: 1200px; margin: 40px auto 0; color: var(--text-dim); font-size: 13px; border-top: 1px solid color-mix(in oklch, var(--line) 50%, transparent); padding-top: 24px; }
+
+  /* ---------- Reveal ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-motion="on"] .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    html[data-motion="on"] .reveal.in { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 40px; }
+    .gluten .container, .visit .container { grid-template-columns: 1fr; }
+    .menus-grid { grid-template-columns: 1fr; }
+    .menus-media { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body data-screen-label="Dirección A — Neón Nave">
+<div class="stars"></div>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Buba Burger">
+    <svg viewBox="0 0 48 48" fill="none" stroke="var(--neon)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path>
+      <path d="M13 19 C16 24 20 26 21 22"></path>
+      <path d="M35 19 C32 24 28 26 27 22"></path>
+    </svg>
+    <b>BUBA BURGER</b>
+  </a>
+  <nav class="nav-links">
+    <a href="#carta">Carta</a>
+    <a href="#menus">Menús</a>
+    <a href="#singluten">Sin gluten</a>
+    <a href="#visitanos">Visítanos</a>
+    <a href="#instagram">Instagram</a>
+  </nav>
+  <a class="btn btn-neon" href="#pedir">Pedir</a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" data-screen-label="Hero" style="padding-top: 56px;">
+    <div>
+      <div class="status-chip"><span class="status-dot" id="status-dot"></span><span id="status-text">Consultando horario…</span></div>
+      <h1>BURGERS<br><span class="neon-word glitch" data-text="DE OTRO">DE OTRO</span><br>PLANETA</h1>
+      <div class="rating">
+        <span class="score">4,7</span>
+        <span class="stars-txt">★★★★★</span>
+        <span class="count">304 reseñas en Google</span>
+      </div>
+      <p class="sub">Smash burgers, medallones a la brasa y bokatas con nombre de otra galaxia. En Masustegi, Bilbao — y también en tu casa.</p>
+      <div class="hero-ctas" id="pedir">
+        <a class="btn btn-neon" href="#carta">Ver la carta</a>
+        <a class="btn btn-ghost" href="tel:944339750">☎ 944 33 97 50</a>
+      </div>
+      <div class="delivery-row">
+        <span>Te lo llevamos</span>
+        <a class="pill-link" href="https://glovoapp.com" target="_blank" rel="noopener">Glovo</a>
+        <a class="pill-link" href="https://www.just-eat.es" target="_blank" rel="noopener">Just Eat</a>
+        <a class="pill-link" href="https://www.ubereats.com/es" target="_blank" rel="noopener">Uber Eats</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="hero-alien" viewBox="0 0 48 48" fill="none" stroke="var(--neon)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path>
+        <path d="M13 19 C16 24 20 26 21 22"></path>
+        <path d="M35 19 C32 24 28 26 27 22"></path>
+      </svg>
+      <div class="frame">
+        <img src="images/patatas-trufa-neon.png" alt="Patatas trufadas con parmesano bajo el neón de Buba Burger">
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track">
+      <em>SMASH 90 G</em><em>MEDALLÓN A LA BRASA 180 G</em><em>SIN GLUTEN</em><em>OPCIÓN VEGANA</em><em>MASUSTEGI · BILBAO</em><em>PAN BRIOCHE DE PATATA</em>
+    </div>
+  </div>
+
+  <!-- CARTA -->
+  <section id="carta" data-screen-label="Carta" style="padding: 56px 0 40px;">
+    <div class="container reveal" style="text-align:center;">
+      <div class="sec-head" style="justify-content:center;">
+        <h2>LA CARTA</h2>
+      </div>
+      <p class="sec-sub" style="margin: 0 auto 10px;">Navega por categorías. Cualquier burger o bokata, también <b style="color:#4ade80;">sin gluten</b>.</p>
+    </div>
+    <nav class="cat-nav" id="cat-nav"></nav>
+    <div id="carta-rows"></div>
+    <div class="extras-bar reveal">
+      <h3>EXTRAS</h3>
+      <ul class="extras-list" id="extras-list"></ul>
+    </div>
+  </section>
+
+  <!-- MENÚS -->
+  <section id="menus" data-screen-label="Menús y combos">
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>MENÚS Y COMBOS</h2>
+        <span class="claim">Sube de nivel tu pedido</span>
+      </div>
+      <div class="menus-grid reveal" id="menus-grid"></div>
+      <div class="menus-media reveal">
+        <figure>
+          <img src="images/pollo-crispy-neon.png" alt="Pollo crujiente glaseado bajo el neón">
+          <figcaption>Entrantes con flow</figcaption>
+        </figure>
+        <figure>
+          <img src="images/burger-negro.png" alt="Burger de Buba Burger sobre fondo negro">
+          <figcaption>Hechas al momento</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIN GLUTEN -->
+  <section id="singluten" class="gluten" data-screen-label="Sin gluten">
+    <div class="container">
+      <div class="reveal">
+        <h2>LIBRE DE GLUTEN,<br>LLENO DE ALEGRÍA</h2>
+        <p>Pídenos <b>cualquier burger o bokata en versión sin gluten</b>. Mismo sabor interestelar, cero gluten. Avísanos al pedir y nos encargamos del resto.</p>
+      </div>
+      <figure class="reveal">
+        <img src="images/croqueta-guantes.png" alt="Croqueta crujiente abierta con guantes negros">
+      </figure>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="reviews" data-screen-label="Reseñas">
+    <div class="container reveal">
+      <div class="big-score">4,7</div>
+      <div class="big-stars">★★★★★</div>
+      <p class="count">304 reseñas en Google · 10 – 20 € por persona</p>
+      <ul class="perks">
+        <li>Comer allí</li>
+        <li>Para llevar</li>
+        <li>Entrega sin contacto</li>
+        <li>Amigable con la comunidad LGBTQ+</li>
+      </ul>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/Buba+Burger+Bilbao" target="_blank" rel="noopener">Ver reseñas en Google</a>
+    </div>
+  </section>
+
+  <!-- VISÍTANOS -->
+  <section id="visitanos" class="visit" data-screen-label="Horario y mapa" style="background: var(--bg-2); border-top: 1px solid var(--line);">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-head"><h2>VISÍTANOS</h2></div>
+        <div class="address-card">
+          <b>Masustegi Kalea, 3 · 48006 Bilbao</b>
+          <span>☎ <a href="tel:944339750" style="color:var(--text);">944 33 97 50</a></span>
+          <span>✉ <a href="mailto:bubaburgers@gmail.com" style="color:var(--text);">bubaburgers@gmail.com</a></span>
+        </div>
+        <div class="hours-table" id="hours-table"></div>
+      </div>
+      <div class="map-frame reveal">
+        <iframe src="https://www.google.com/maps?q=Buba+Burger,+Masustegi+Kalea+3,+48006+Bilbao&output=embed" loading="lazy" title="Mapa de Buba Burger" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram" class="insta" data-screen-label="Instagram">
+    <div class="container reveal">
+      <div class="sec-head"><h2>@BUBABURGER_</h2></div>
+      <p class="sec-sub">Lo último desde la nave nodriza.</p>
+      <div class="insta-grid">
+        <image-slot id="insta-1" shape="rounded" radius="18" placeholder="Foto de Instagram 1"></image-slot>
+        <image-slot id="insta-2" shape="rounded" radius="18" placeholder="Foto de Instagram 2"></image-slot>
+        <image-slot id="insta-3" shape="rounded" radius="18" placeholder="Foto de Instagram 3"></image-slot>
+        <image-slot id="insta-4" shape="rounded" radius="18" placeholder="Foto de Instagram 4"></image-slot>
+      </div>
+      <div class="center">
+        <a class="btn btn-neon" href="https://www.instagram.com/bubaburger_" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer data-screen-label="Footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">
+        <svg viewBox="0 0 48 48" fill="none" stroke="var(--neon)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path>
+          <path d="M13 19 C16 24 20 26 21 22"></path>
+          <path d="M35 19 C32 24 28 26 27 22"></path>
+        </svg>
+        <b>BUBA BURGER</b>
+      </div>
+      <p class="foot-note">Burgers de otro planeta en Masustegi, Bilbao. Sin gluten si lo pides. Con flow siempre.</p>
+    </div>
+    <div>
+      <h4>CONTACTO</h4>
+      <a href="tel:944339750">944 33 97 50</a>
+      <a href="mailto:bubaburgers@gmail.com">bubaburgers@gmail.com</a>
+      <a href="https://www.instagram.com/bubaburger_" target="_blank" rel="noopener">@bubaburger_</a>
+    </div>
+    <div>
+      <h4>PEDIR A DOMICILIO</h4>
+      <a href="https://glovoapp.com" target="_blank" rel="noopener">Glovo</a>
+      <a href="https://www.just-eat.es" target="_blank" rel="noopener">Just Eat</a>
+      <a href="https://www.ubereats.com/es" target="_blank" rel="noopener">Uber Eats</a>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Buba Burger · Masustegi Kalea 3, 48006 Bilbao</div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="menu-data.js"></script>
+<script>
+(function () {
+  const M = window.BUBA_MENU;
+
+  /* ----- Carta: chips + filas con scroll horizontal ----- */
+  const nav = document.getElementById("cat-nav");
+  const rows = document.getElementById("carta-rows");
+  M.categorias.forEach(function (cat, i) {
+    const chip = document.createElement("button");
+    chip.className = "cat-chip" + (i === 0 ? " active" : "");
+    chip.textContent = cat.nombre.toUpperCase();
+    chip.addEventListener("click", function () {
+      const el = document.getElementById("cat-" + cat.id);
+      const y = el.getBoundingClientRect().top + window.scrollY - 130;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    });
+    nav.appendChild(chip);
+
+    const block = document.createElement("div");
+    block.className = "cat-block";
+    block.id = "cat-" + cat.id;
+    block.setAttribute("data-screen-label", "Carta — " + cat.nombre);
+    let inner = '<div class="sec-head"><h2 style="font-size:clamp(22px,2.4vw,30px);">' + cat.nombre.toUpperCase() + "</h2>" +
+      (cat.claim ? '<span class="claim">' + cat.claim + "</span>" : "") + "</div>";
+    if (cat.nota) inner += '<p class="cat-nota">' + cat.nota + "</p>";
+    inner += '<div class="row-wrap"><button class="row-arrow prev" aria-label="Anterior">‹</button><div class="dish-row">';
+    cat.items.forEach(function (it) {
+      inner += '<article class="dish-card">' +
+        '<image-slot id="dish-' + it.id + '" shape="rect" placeholder="Arrastra la foto de ' + it.nombre + '"></image-slot>' +
+        '<div class="dish-body"><div class="dish-top"><h3>' + it.nombre.toUpperCase() + '</h3><span class="price">' + it.precio + ' €</span></div>' +
+        "<p>" + it.desc + "</p>";
+      if (it.tags && it.tags.length) {
+        inner += '<div class="tag-row">' + it.tags.map(function (t) {
+          return '<span class="tag ' + t + '">' + (t === "picante" ? "Picante" : "Vegana") + "</span>";
+        }).join("") + "</div>";
+      }
+      inner += "</div></article>";
+    });
+    inner += '</div><button class="row-arrow next" aria-label="Siguiente">›</button></div>';
+    block.innerHTML = inner;
+    rows.appendChild(block);
+  });
+
+  rows.querySelectorAll(".row-wrap").forEach(function (wrap) {
+    const row = wrap.querySelector(".dish-row");
+    wrap.querySelector(".prev").addEventListener("click", function () { row.scrollBy({ left: -644, behavior: "smooth" }); });
+    wrap.querySelector(".next").addEventListener("click", function () { row.scrollBy({ left: 644, behavior: "smooth" }); });
+  });
+
+  /* Chip activo según scroll */
+  const chips = nav.querySelectorAll(".cat-chip");
+  const blocks = rows.querySelectorAll(".cat-block");
+  window.addEventListener("scroll", function () {
+    let active = 0;
+    blocks.forEach(function (b, i) { if (b.getBoundingClientRect().top < 220) active = i; });
+    chips.forEach(function (c, i) { c.classList.toggle("active", i === active); });
+  }, { passive: true });
+
+  /* ----- Extras ----- */
+  document.getElementById("extras-list").innerHTML = M.extras.map(function (e) {
+    return "<li>" + e[0] + " <b>" + e[1] + " €</b></li>";
+  }).join("");
+
+  /* ----- Menús ----- */
+  document.getElementById("menus-grid").innerHTML = M.menus.map(function (m) {
+    return '<article class="menu-ticket"><h3>' + m.nombre.toUpperCase() + '</h3><div class="m-price">' + m.precio + "</div><p>" + m.desc + "</p>" +
+      (m.desc2 ? "<p>" + m.desc2 + "</p>" : "") + "</article>";
+  }).join("");
+
+  /* ----- Horario ----- */
+  const todayIdx = (new Date().getDay() + 6) % 7; /* 0 = lunes */
+  document.getElementById("hours-table").innerHTML = M.horario.map(function (h, i) {
+    const closed = h[1] === "Cerrado";
+    return '<div class="' + (closed ? "closed-day " : "") + (i === todayIdx ? "today" : "") + '"><span>' + h[0] + "</span><span>" + h[1] + "</span></div>";
+  }).join("");
+
+  /* ----- Abierto / cerrado ahora ----- */
+  const dot = document.getElementById("status-dot");
+  const txt = document.getElementById("status-text");
+  const hoy = M.horario[todayIdx];
+  if (hoy[1] === "Cerrado") {
+    dot.classList.add("closed");
+    txt.textContent = "Hoy cerrado · " + nextOpening();
+  } else {
+    const now = new Date();
+    const mins = now.getHours() * 60 + now.getMinutes();
+    const parts = hoy[1].split("–").map(function (s) { return s.trim(); });
+    const open = toMins(parts[0]), close = toMins(parts[1]);
+    if (mins >= open && mins < close) {
+      txt.textContent = "Abierto ahora · hasta las " + parts[1];
+    } else if (mins < open) {
+      dot.classList.add("closed");
+      txt.textContent = "Cerrado · abre hoy a las " + parts[0];
+    } else {
+      dot.classList.add("closed");
+      txt.textContent = "Cerrado · " + nextOpening();
+    }
+  }
+  function toMins(s) { const p = s.split(":"); return parseInt(p[0], 10) * 60 + parseInt(p[1], 10); }
+  function nextOpening() {
+    for (let k = 1; k <= 7; k++) {
+      const d = (todayIdx + k) % 7;
+      if (M.horario[d][1] !== "Cerrado") {
+        return "abre el " + M.horario[d][0].toLowerCase() + " a las " + M.horario[d][1].split("–")[0].trim();
+      }
+    }
+    return "";
+  }
+
+  /* ----- Marquee: duplicar para loop ----- */
+  const track = document.getElementById("marquee-track");
+  track.innerHTML += track.innerHTML;
+
+  /* ----- Reveal on scroll ----- */
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+<!-- Tweaks -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "neonColor": "#b98aff",
+    "motion": true
+  }/*EDITMODE-END*/;
+
+  function BubaTweaks() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    React.useEffect(() => {
+      document.documentElement.style.setProperty("--neon", t.neonColor);
+      document.documentElement.dataset.motion = t.motion ? "on" : "off";
+      if (!t.motion) document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    }, [t]);
+    return (
+      <TweaksPanel>
+        <TweakSection label="Neón" />
+        <TweakColor label="Color" value={t.neonColor}
+          options={["#b98aff", "#6ee7f9", "#f472d0", "#7CFC9B"]}
+          onChange={(v) => setTweak("neonColor", v)} />
+        <TweakSection label="Movimiento" />
+        <TweakToggle label="Animaciones" value={t.motion} onChange={(v) => setTweak("motion", v)} />
+      </TweaksPanel>
+    );
+  }
+  document.documentElement.dataset.motion = "on";
+  ReactDOM.createRoot(document.getElementById("tweaks-root")).render(<BubaTweaks />);
+</script>
+</body>
+</html>

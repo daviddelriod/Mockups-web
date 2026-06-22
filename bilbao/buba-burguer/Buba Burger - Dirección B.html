@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buba Burger — Bilbao · Dirección B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-2: #101018;
+    --surface: #16161f;
+    --line: rgba(255, 255, 255, 0.1);
+    --text: #f4f2ee;
+    --text-dim: #9a97a3;
+    --accent: #d6f64b;
+    --accent-ink: #11130a;
+    --violet: #a78bfa;
+    --display: "Unbounded", sans-serif;
+    --body: "Space Grotesk", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 17px; line-height: 1.55;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 28px; padding: 16px 36px;
+    background: color-mix(in oklch, var(--bg) 85%, transparent);
+    backdrop-filter: blur(16px); border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--text); }
+  .brand svg { width: 30px; height: 30px; }
+  .brand b { font-family: var(--display); font-size: 14px; font-weight: 800; letter-spacing: 0.04em; }
+  .nav-links { display: flex; gap: 26px; margin-left: auto; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14.5px; font-weight: 600; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--body); font-weight: 700; font-size: 15px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none; cursor: pointer;
+    border: 1px solid transparent; transition: transform 0.15s, background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-solid { background: var(--accent); color: var(--accent-ink); }
+  .btn-solid:hover { background: color-mix(in oklch, var(--accent) 85%, white); }
+  .btn-line { background: transparent; color: var(--text); border-color: rgba(255,255,255,0.25); }
+  .btn-line:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; min-height: 86vh; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--bg) 4%, rgba(10,10,15,0.55) 40%, rgba(10,10,15,0.25) 100%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 0 36px 64px; width: 100%; }
+  .kicker {
+    font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: 0.22em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(44px, 7vw, 96px); line-height: 1.0; letter-spacing: -0.01em;
+    max-width: 12ch; margin-bottom: 22px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero .lead { font-size: 19px; color: #cdcad6; max-width: 52ch; margin-bottom: 30px; text-wrap: pretty; }
+  .hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .hero-meta .score { display: flex; align-items: baseline; gap: 8px; font-weight: 700; }
+  .hero-meta .score b { font-family: var(--display); font-size: 20px; }
+  .hero-meta .score span { color: #fbbf24; }
+  .hero-meta .dimtxt { color: var(--text-dim); font-size: 14.5px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+  /* ---------- Ticker ---------- */
+  .ticker { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 16px 0; }
+  .ticker-track { display: flex; gap: 56px; width: max-content; }
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-motion="on"] .ticker-track { animation: tick 30s linear infinite; }
+  }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  .ticker-track em {
+    font-style: normal; font-family: var(--display); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.14em; color: var(--text-dim); white-space: nowrap;
+    display: flex; align-items: center; gap: 56px; text-transform: uppercase;
+  }
+  .ticker-track em::after { content: "●"; color: var(--accent); font-size: 8px; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 96px 0; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 36px; }
+  .sec-label {
+    font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: 0.22em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+  }
+  h2.sec-title {
+    font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.06; letter-spacing: -0.01em; margin-bottom: 14px; max-width: 18ch;
+  }
+  .sec-sub { color: var(--text-dim); max-width: 58ch; text-wrap: pretty; }
+
+  /* ---------- Carta (filas horizontales) ---------- */
+  .carta { padding-bottom: 40px; }
+  .cat-nav {
+    position: sticky; top: 64px; z-index: 40;
+    display: flex; gap: 8px; overflow-x: auto; padding: 14px 36px;
+    background: color-mix(in oklch, var(--bg) 88%, transparent);
+    backdrop-filter: blur(16px); border-bottom: 1px solid var(--line);
+    scrollbar-width: none;
+  }
+  .cat-nav::-webkit-scrollbar { display: none; }
+  .cat-chip {
+    flex-shrink: 0; font-family: var(--body); font-weight: 700; font-size: 14px;
+    color: var(--text-dim); background: transparent; border: 1px solid var(--line);
+    padding: 9px 20px; border-radius: 999px; cursor: pointer; transition: all 0.2s;
+  }
+  .cat-chip:hover { color: var(--text); border-color: rgba(255,255,255,0.35); }
+  .cat-chip.active { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+  .cat-block { padding: 52px 0 6px; }
+  .cat-block .cat-head { max-width: 1280px; margin: 0 auto 6px; padding: 0 36px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .cat-head h3 { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.01em; }
+  .cat-head .claim { color: var(--text-dim); font-size: 15.5px; }
+  .cat-block .cat-nota { max-width: 1280px; margin: 0 auto 20px; padding: 0 36px; color: var(--text-dim); font-size: 14.5px; }
+  .row-wrap { position: relative; }
+  .dish-row {
+    display: flex; gap: 20px; overflow-x: auto; padding: 14px 36px 30px;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+  }
+  .dish-row::-webkit-scrollbar { display: none; }
+  .dish-card {
+    flex: 0 0 320px; scroll-snap-align: start; position: relative;
+    border-radius: 18px; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--line);
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .dish-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.25); }
+  .dish-card image-slot { width: 100%; height: 230px; display: block; }
+  .dish-body { padding: 20px 22px 22px; }
+  .dish-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+  .dish-top h4 { font-family: var(--display); font-weight: 600; font-size: 16px; letter-spacing: 0; }
+  .dish-top .price { font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--accent); white-space: nowrap; }
+  .dish-body p { color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
+  .tag-row { display: flex; gap: 6px; margin-top: 12px; }
+  .tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px;
+  }
+  .tag.picante { color: #ff9d66; background: rgba(255,157,102,0.12); }
+  .tag.vegan { color: #7ee29a; background: rgba(126,226,154,0.12); }
+  .row-arrow {
+    position: absolute; top: 40%; z-index: 5; width: 46px; height: 46px; border-radius: 50%;
+    background: rgba(10,10,15,0.7); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25); color: var(--text); font-size: 19px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .row-arrow:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .row-arrow.prev { left: 14px; }
+  .row-arrow.next { right: 14px; }
+
+  .extras-bar { max-width: 1280px; margin: 34px auto 0; padding: 0 36px; }
+  .extras-bar h3 { font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: 0.22em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 14px; }
+  .extras-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .extras-list li {
+    list-style: none; font-size: 13.5px; color: var(--text-dim);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px;
+  }
+  .extras-list li b { color: var(--text); font-weight: 600; }
+
+  /* ---------- Menús ---------- */
+  .menus { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .menus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; }
+  .menu-card {
+    border-radius: 18px; padding: 32px 30px; background: var(--surface);
+    border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+  .menu-card:hover { transform: translateY(-5px); border-color: color-mix(in oklch, var(--accent) 50%, transparent); }
+  .menu-card .m-num { font-family: var(--display); font-weight: 800; font-size: 13px; color: var(--accent); letter-spacing: 0.18em; }
+  .menu-card h3 { font-family: var(--display); font-weight: 800; font-size: 20px; }
+  .menu-card .m-price { font-family: var(--display); font-weight: 800; font-size: 30px; }
+  .menu-card p { color: var(--text-dim); font-size: 15px; }
+
+  /* ---------- Galería editorial ---------- */
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 90px; gap: 16px; margin-top: 44px;
+  }
+  .g-item { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); position: relative; }
+  .g-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .g-item image-slot { width: 100%; height: 100%; display: block; }
+  .g-1 { grid-column: 1 / 6; grid-row: span 4; }
+  .g-2 { grid-column: 6 / 10; grid-row: span 3; }
+  .g-3 { grid-column: 10 / 13; grid-row: span 2; }
+  .g-4 { grid-column: 6 / 9; grid-row: span 2; }
+  .g-5 { grid-column: 9 / 13; grid-row: span 3; }
+  .g-cap {
+    position: absolute; left: 14px; bottom: 12px; font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 13px; border-radius: 999px;
+    background: rgba(10,10,15,0.72); backdrop-filter: blur(6px); border: 1px solid var(--line);
+  }
+
+  /* ---------- Sin gluten ---------- */
+  .gluten .container {
+    border: 1px solid var(--line); border-radius: 24px; background: var(--bg-2);
+    padding: 64px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center;
+  }
+  .gluten h2 { font-family: var(--display); font-weight: 800; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.08; margin-bottom: 16px; }
+  .gluten h2 em { font-style: normal; color: var(--accent); }
+  .gluten p { color: var(--text-dim); font-size: 17.5px; max-width: 48ch; text-wrap: pretty; }
+  .gluten p b { color: var(--text); }
+  .gluten figure { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4/3; }
+  .gluten img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- Reseñas ---------- */
+  .reviews { text-align: center; }
+  .big-score { font-family: var(--display); font-weight: 800; font-size: clamp(80px, 10vw, 140px); line-height: 1; }
+  .big-score small { font-size: 0.35em; color: var(--text-dim); font-weight: 600; }
+  .big-stars { color: #fbbf24; font-size: 26px; letter-spacing: 6px; margin: 16px 0 6px; }
+  .reviews .count { color: var(--text-dim); margin-bottom: 30px; }
+  .perks { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+  .perks li {
+    list-style: none; font-size: 14px; font-weight: 600; color: var(--text-dim);
+    border: 1px solid var(--line); border-radius: 999px; padding: 9px 19px; background: var(--surface);
+  }
+
+  /* ---------- Visítanos ---------- */
+  .visit { background: var(--bg-2); border-top: 1px solid var(--line); }
+  .visit .container { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+  .status-chip {
+    display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 700;
+    border: 1px solid var(--line); border-radius: 999px; padding: 8px 18px; margin: 20px 0 8px;
+    background: var(--surface);
+  }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; }
+  .status-dot.closed { background: #fb7185; }
+  .hours-table { margin-top: 20px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
+  .hours-table > div {
+    display: flex; justify-content: space-between; padding: 13px 22px; font-size: 15.5px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hours-table > div:last-child { border-bottom: none; }
+  .hours-table .closed-day span:last-child { color: #fb7185; }
+  .hours-table .today { background: color-mix(in oklch, var(--accent) 10%, transparent); }
+  .hours-table .today span:first-child::after {
+    content: "HOY"; font-family: var(--display); font-size: 10px; font-weight: 800;
+    color: var(--accent); margin-left: 10px; letter-spacing: 0.16em;
+  }
+  .address-card { margin-top: 20px; display: grid; gap: 7px; color: var(--text-dim); font-size: 15.5px; }
+  .address-card b { color: var(--text); font-size: 17px; }
+  .address-card a { color: var(--text); }
+  .map-frame { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); height: 500px; }
+  .map-frame iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.5) contrast(1.05); }
+
+  /* ---------- CTA final / pedir ---------- */
+  .order-cta { text-align: center; }
+  .order-cta h2 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4.4vw, 56px); margin-bottom: 14px; }
+  .order-cta h2 em { font-style: normal; color: var(--accent); }
+  .order-cta p { color: var(--text-dim); margin-bottom: 32px; }
+  .order-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 52px 36px 64px; }
+  .foot-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
+  .foot-grid h4 { font-family: var(--display); font-size: 11.5px; font-weight: 600; letter-spacing: 0.22em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 16px; }
+  .foot-grid a { color: var(--text); text-decoration: none; display: block; margin-bottom: 10px; font-size: 15px; }
+  .foot-grid a:hover { color: var(--accent); }
+  .foot-brand { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+  .foot-brand svg { width: 34px; height: 34px; }
+  .foot-brand b { font-family: var(--display); font-size: 16px; font-weight: 800; }
+  .foot-note { color: var(--text-dim); font-size: 14px; max-width: 38ch; }
+  .copyright { max-width: 1280px; margin: 40px auto 0; color: var(--text-dim); font-size: 13px; border-top: 1px solid var(--line); padding-top: 24px; }
+
+  /* ---------- Reveal ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    html[data-motion="on"] .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    html[data-motion="on"] .reveal.in { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .gluten .container { grid-template-columns: 1fr; padding: 40px 28px; }
+    .visit .container { grid-template-columns: 1fr; }
+    .menus-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(6, 1fr); }
+    .g-1 { grid-column: 1 / 7; } .g-2 { grid-column: 1 / 4; } .g-3 { grid-column: 4 / 7; }
+    .g-4 { grid-column: 1 / 4; } .g-5 { grid-column: 4 / 7; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body data-screen-label="Dirección B — Editorial Galáctico">
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Buba Burger">
+    <svg viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path>
+      <path d="M13 19 C16 24 20 26 21 22"></path>
+      <path d="M35 19 C32 24 28 26 27 22"></path>
+    </svg>
+    <b>BUBA BURGER</b>
+  </a>
+  <nav class="nav-links">
+    <a href="#carta">Carta</a>
+    <a href="#menus">Menús</a>
+    <a href="#singluten">Sin gluten</a>
+    <a href="#visitanos">Visítanos</a>
+  </nav>
+  <a class="btn btn-solid" href="#pedir">Pedir</a>
+</header>
+
+<main id="top">
+
+  <!-- HERO full-bleed -->
+  <section class="hero" data-screen-label="Hero" style="padding: 0;">
+    <div class="hero-bg">
+      <img src="images/burger-negro.png" alt="Burger de Buba Burger sobre fondo negro">
+    </div>
+    <div class="hero-content">
+      <div class="kicker">Masustegi · Bilbao</div>
+      <h1>Burgers de <em>otro planeta</em></h1>
+      <p class="lead">Smash burgers, medallones a la brasa de 180 g y bokatas con nombre de constelación. Hechas al momento, también sin gluten.</p>
+      <div class="hero-meta">
+        <div class="score"><b>4,7</b><span>★★★★★</span></div>
+        <span class="dimtxt">304 reseñas en Google</span>
+        <span class="dimtxt">10 – 20 € por persona</span>
+        <span class="dimtxt" id="status-text">—</span>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="#carta">Ver la carta</a>
+        <a class="btn btn-line" href="tel:944339750">Llamar · 944 33 97 50</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker-track">
+      <em>Smash 90 g</em><em>Medallón a la brasa 180 g</em><em>Sin gluten</em><em>Opción vegana</em><em>Pan brioche de patata</em><em>Masustegi · Bilbao</em>
+    </div>
+  </div>
+
+  <!-- CARTA -->
+  <section id="carta" class="carta" data-screen-label="Carta">
+    <div class="container reveal">
+      <div class="sec-label">La carta</div>
+      <h2 class="sec-title">Elige tu órbita</h2>
+      <p class="sec-sub">Desliza por cada categoría. Cualquier burger o bokata también en versión <b style="color: var(--text);">sin gluten</b>.</p>
+    </div>
+    <nav class="cat-nav" id="cat-nav"></nav>
+    <div id="carta-rows"></div>
+    <div class="extras-bar reveal">
+      <h3>Extras</h3>
+      <ul class="extras-list" id="extras-list"></ul>
+    </div>
+  </section>
+
+  <!-- MENÚS -->
+  <section id="menus" class="menus" data-screen-label="Menús y combos">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-label">Menús y combos</div>
+        <h2 class="sec-title">Completa la misión</h2>
+      </div>
+      <div class="menus-grid reveal" id="menus-grid"></div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section data-screen-label="Galería">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-label">De la plancha</div>
+        <h2 class="sec-title">Recién aterrizado</h2>
+      </div>
+      <div class="gallery-grid reveal">
+        <figure class="g-item g-1">
+          <img src="images/patatas-trufa-neon.png" alt="Patatas trufadas con parmesano bajo el neón">
+          <figcaption class="g-cap">Patatas trufadas</figcaption>
+        </figure>
+        <figure class="g-item g-2">
+          <img src="images/pollo-crispy-neon.png" alt="Pollo crujiente glaseado">
+          <figcaption class="g-cap">Pollo crujiente</figcaption>
+        </figure>
+        <div class="g-item g-3">
+          <image-slot id="gal-1" shape="rect" placeholder="Arrastra una foto de plato"></image-slot>
+        </div>
+        <figure class="g-item g-4">
+          <img src="images/croqueta-guantes.png" alt="Croqueta abierta con guantes negros">
+          <figcaption class="g-cap">Croquetas</figcaption>
+        </figure>
+        <div class="g-item g-5">
+          <image-slot id="gal-2" shape="rect" placeholder="Arrastra una foto del local"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIN GLUTEN -->
+  <section id="singluten" data-screen-label="Sin gluten" style="padding-top: 0;">
+    <div class="gluten">
+      <div class="container">
+        <div class="reveal">
+          <div class="sec-label">Para celíacos</div>
+          <h2>Libre de gluten, <em>lleno de alegría</em></h2>
+          <p>Pídenos <b>cualquier burger o bokata en versión sin gluten</b>. Mismo sabor, cero gluten. Avísanos al hacer el pedido y nos encargamos del resto.</p>
+        </div>
+        <figure class="reveal">
+          <img src="images/croqueta-guantes.png" alt="Croqueta crujiente abierta con guantes negros">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section class="reviews" data-screen-label="Reseñas">
+    <div class="container reveal">
+      <div class="big-score">4,7<small>/5</small></div>
+      <div class="big-stars">★★★★★</div>
+      <p class="count">304 reseñas en Google</p>
+      <ul class="perks">
+        <li>Comer allí</li>
+        <li>Para llevar</li>
+        <li>Entrega sin contacto</li>
+        <li>Amigable con la comunidad LGBTQ+</li>
+      </ul>
+      <a class="btn btn-line" href="https://www.google.com/maps/search/Buba+Burger+Bilbao" target="_blank" rel="noopener">Ver reseñas en Google</a>
+    </div>
+  </section>
+
+  <!-- VISÍTANOS -->
+  <section id="visitanos" class="visit" data-screen-label="Horario y mapa">
+    <div class="container">
+      <div class="reveal">
+        <div class="sec-label">Visítanos</div>
+        <h2 class="sec-title">La nave nodriza</h2>
+        <div class="status-chip"><span class="status-dot" id="status-dot"></span><span id="status-text-2">—</span></div>
+        <div class="address-card">
+          <b>Masustegi Kalea, 3 · 48006 Bilbao</b>
+          <span>☎ <a href="tel:944339750">944 33 97 50</a></span>
+          <span>✉ <a href="mailto:bubaburgers@gmail.com">bubaburgers@gmail.com</a></span>
+        </div>
+        <div class="hours-table" id="hours-table"></div>
+      </div>
+      <div class="map-frame reveal">
+        <iframe src="https://www.google.com/maps?q=Buba+Burger,+Masustegi+Kalea+3,+48006+Bilbao&output=embed" loading="lazy" title="Mapa de Buba Burger" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEDIR -->
+  <section id="pedir" class="order-cta" data-screen-label="Pedir">
+    <div class="container reveal">
+      <h2>¿Pedimos <em>despegue</em>?</h2>
+      <p>Te lo llevamos a casa o lo recoges en la nave.</p>
+      <div class="order-row">
+        <a class="btn btn-solid" href="https://glovoapp.com" target="_blank" rel="noopener">Pedir en Glovo</a>
+        <a class="btn btn-solid" href="https://www.just-eat.es" target="_blank" rel="noopener">Pedir en Just Eat</a>
+        <a class="btn btn-solid" href="https://www.ubereats.com/es" target="_blank" rel="noopener">Pedir en Uber Eats</a>
+        <a class="btn btn-line" href="tel:944339750">Llamar · 944 33 97 50</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer data-screen-label="Footer">
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">
+        <svg viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path>
+          <path d="M13 19 C16 24 20 26 21 22"></path>
+          <path d="M35 19 C32 24 28 26 27 22"></path>
+        </svg>
+        <b>BUBA BURGER</b>
+      </div>
+      <p class="foot-note">Burgers de otro planeta en Masustegi, Bilbao. Sin gluten si lo pides.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="tel:944339750">944 33 97 50</a>
+      <a href="mailto:bubaburgers@gmail.com">bubaburgers@gmail.com</a>
+      <a href="https://www.instagram.com/bubaburger_" target="_blank" rel="noopener">@bubaburger_</a>
+    </div>
+    <div>
+      <h4>Pedir a domicilio</h4>
+      <a href="https://glovoapp.com" target="_blank" rel="noopener">Glovo</a>
+      <a href="https://www.just-eat.es" target="_blank" rel="noopener">Just Eat</a>
+      <a href="https://www.ubereats.com/es" target="_blank" rel="noopener">Uber Eats</a>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Buba Burger · Masustegi Kalea 3, 48006 Bilbao</div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="menu-data.js"></script>
+<script>
+(function () {
+  const M = window.BUBA_MENU;
+
+  /* ----- Carta ----- */
+  const nav = document.getElementById("cat-nav");
+  const rows = document.getElementById("carta-rows");
+  M.categorias.forEach(function (cat, i) {
+    const chip = document.createElement("button");
+    chip.className = "cat-chip" + (i === 0 ? " active" : "");
+    chip.textContent = cat.nombre;
+    chip.addEventListener("click", function () {
+      const el = document.getElementById("cat-" + cat.id);
+      const y = el.getBoundingClientRect().top + window.scrollY - 132;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    });
+    nav.appendChild(chip);
+
+    const block = document.createElement("div");
+    block.className = "cat-block";
+    block.id = "cat-" + cat.id;
+    block.setAttribute("data-screen-label", "Carta — " + cat.nombre);
+    let inner = '<div class="cat-head"><h3>' + cat.nombre + "</h3>" +
+      (cat.claim ? '<span class="claim">' + cat.claim + "</span>" : "") + "</div>";
+    if (cat.nota) inner += '<p class="cat-nota">' + cat.nota + "</p>";
+    inner += '<div class="row-wrap"><button class="row-arrow prev" aria-label="Anterior">‹</button><div class="dish-row">';
+    cat.items.forEach(function (it) {
+      inner += '<article class="dish-card">' +
+        '<image-slot id="dish-' + it.id + '" shape="rect" placeholder="Arrastra la foto de ' + it.nombre + '"></image-slot>' +
+        '<div class="dish-body"><div class="dish-top"><h4>' + it.nombre + '</h4><span class="price">' + it.precio + ' €</span></div>' +
+        "<p>" + it.desc + "</p>";
+      if (it.tags && it.tags.length) {
+        inner += '<div class="tag-row">' + it.tags.map(function (t) {
+          return '<span class="tag ' + t + '">' + (t === "picante" ? "Picante" : "Vegana") + "</span>";
+        }).join("") + "</div>";
+      }
+      inner += "</div></article>";
+    });
+    inner += '</div><button class="row-arrow next" aria-label="Siguiente">›</button></div>';
+    block.innerHTML = inner;
+    rows.appendChild(block);
+  });
+
+  rows.querySelectorAll(".row-wrap").forEach(function (wrap) {
+    const row = wrap.querySelector(".dish-row");
+    wrap.querySelector(".prev").addEventListener("click", function () { row.scrollBy({ left: -680, behavior: "smooth" }); });
+    wrap.querySelector(".next").addEventListener("click", function () { row.scrollBy({ left: 680, behavior: "smooth" }); });
+  });
+
+  const chips = nav.querySelectorAll(".cat-chip");
+  const blocks = rows.querySelectorAll(".cat-block");
+  window.addEventListener("scroll", function () {
+    let active = 0;
+    blocks.forEach(function (b, i) { if (b.getBoundingClientRect().top < 220) active = i; });
+    chips.forEach(function (c, i) { c.classList.toggle("active", i === active); });
+  }, { passive: true });
+
+  /* ----- Extras ----- */
+  document.getElementById("extras-list").innerHTML = M.extras.map(function (e) {
+    return "<li>" + e[0] + " <b>" + e[1] + " €</b></li>";
+  }).join("");
+
+  /* ----- Menús ----- */
+  document.getElementById("menus-grid").innerHTML = M.menus.map(function (m, i) {
+    return '<article class="menu-card"><span class="m-num">0' + (i + 1) + '</span><h3>' + m.nombre + '</h3><div class="m-price">' + m.precio + "</div><p>" + m.desc + "</p>" +
+      (m.desc2 ? "<p>" + m.desc2 + "</p>" : "") + "</article>";
+  }).join("");
+
+  /* ----- Horario ----- */
+  const todayIdx = (new Date().getDay() + 6) % 7;
+  document.getElementById("hours-table").innerHTML = M.horario.map(function (h, i) {
+    const closed = h[1] === "Cerrado";
+    return '<div class="' + (closed ? "closed-day " : "") + (i === todayIdx ? "today" : "") + '"><span>' + h[0] + "</span><span>" + h[1] + "</span></div>";
+  }).join("");
+
+  /* ----- Abierto / cerrado ----- */
+  const dot = document.getElementById("status-dot");
+  const hoy = M.horario[todayIdx];
+  let statusMsg;
+  if (hoy[1] === "Cerrado") {
+    dot.classList.add("closed");
+    statusMsg = "Hoy cerrado · " + nextOpening();
+  } else {
+    const now = new Date();
+    const mins = now.getHours() * 60 + now.getMinutes();
+    const parts = hoy[1].split("–").map(function (s) { return s.trim(); });
+    if (mins >= toMins(parts[0]) && mins < toMins(parts[1])) {
+      statusMsg = "Abierto ahora · hasta las " + parts[1];
+    } else if (mins < toMins(parts[0])) {
+      dot.classList.add("closed");
+      statusMsg = "Cerrado · abre hoy a las " + parts[0];
+    } else {
+      dot.classList.add("closed");
+      statusMsg = "Cerrado · " + nextOpening();
+    }
+  }
+  document.getElementById("status-text").textContent = statusMsg;
+  document.getElementById("status-text-2").textContent = statusMsg;
+  function toMins(s) { const p = s.split(":"); return parseInt(p[0], 10) * 60 + parseInt(p[1], 10); }
+  function nextOpening() {
+    for (let k = 1; k <= 7; k++) {
+      const d = (todayIdx + k) % 7;
+      if (M.horario[d][1] !== "Cerrado") {
+        return "abre el " + M.horario[d][0].toLowerCase() + " a las " + M.horario[d][1].split("–")[0].trim();
+      }
+    }
+    return "";
+  }
+
+  /* ----- Ticker ----- */
+  const track = document.getElementById("ticker-track");
+  track.innerHTML += track.innerHTML;
+
+  /* ----- Reveal ----- */
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+<!-- Tweaks -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS_B = /*EDITMODE-BEGIN*/{
+    "accentColor": "#d6f64b",
+    "motion": true
+  }/*EDITMODE-END*/;
+
+  function BubaTweaksB() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS_B);
+    React.useEffect(() => {
+      document.documentElement.style.setProperty("--accent", t.accentColor);
+      document.documentElement.dataset.motion = t.motion ? "on" : "off";
+      if (!t.motion) document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+    }, [t]);
+    return (
+      <TweaksPanel>
+        <TweakSection label="Acento" />
+        <TweakColor label="Color" value={t.accentColor}
+          options={["#d6f64b", "#a78bfa", "#6ee7f9", "#ff9d66"]}
+          onChange={(v) => setTweak("accentColor", v)} />
+        <TweakSection label="Movimiento" />
+        <TweakToggle label="Animaciones" value={t.motion} onChange={(v) => setTweak("motion", v)} />
+      </TweaksPanel>
+    );
+  }
+  document.documentElement.dataset.motion = "on";
+  ReactDOM.createRoot(document.getElementById("tweaks-root")).render(<BubaTweaksB />);
+</script>
+</body>
+</html>

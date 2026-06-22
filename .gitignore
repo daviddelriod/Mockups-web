@@ -1,0 +1,17 @@
+# ── Inbox de zips (nunca se sube al repo) ────────────────────────────────────
+_inbox/
+ 
+# ── Backups automáticos generados por el script ───────────────────────────────
+**/*_bak/
+ 
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+ 
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

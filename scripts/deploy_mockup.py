@@ -310,6 +310,14 @@ def run(dry_run: bool = False) -> None:
 
 
 def main() -> None:
+    # En consolas Windows (cp1252) imprimir emojis lanza UnicodeEncodeError y
+    # aborta el deploy a medias. Forzamos UTF-8 en la salida para evitarlo.
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8")
+        except (AttributeError, ValueError):
+            pass
+
     parser = argparse.ArgumentParser(description="Deploy mockups desde _inbox/ a GitHub Pages")
     parser.add_argument("--dry-run",  action="store_true", help="Simula sin ejecutar")
     parser.add_argument("--inspect",  metavar="ZIP",       help="Inspecciona la estructura de un zip")

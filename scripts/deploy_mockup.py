@@ -28,9 +28,10 @@ from datetime import datetime
 from pathlib import Path
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
-REPO_PATH = Path.home() / "OneDrive - ATHLETIC CLUB/Escritorio/Main/PP" / "Mockups-web"   # ← ajusta a tu ruta local
-INBOX     = REPO_PATH / "_inbox"
-CITIES    = ["bilbao", "laredo", "santander"]
+REPO_PATH  = Path.home() / "OneDrive - ATHLETIC CLUB/Escritorio/Main/PP" / "Mockups-web"   # ← ajusta a tu ruta local
+INBOX      = REPO_PATH / "_inbox"
+CITIES     = ["bilbao", "laredo", "santander"]
+LINKS_FILE = REPO_PATH / "LINKS.md"   # gitignoreado — índice local de URLs
 # ──────────────────────────────────────────────────────────────────────────────
 
 
@@ -304,6 +305,38 @@ def ensure_nojekyll() -> None:
         print("  📌  .nojekyll creado (Pages servirá los archivos tal cual)")
 
 
+def write_links_file() -> None:
+    """Regenera LINKS.md con todas las URLs de los mockups desplegados.
+    El archivo es gitignoreado: vive solo en local, nunca se sube al repo."""
+    _SKIP = {".git", "_inbox", "scripts"}
+    cities = sorted(
+        p for p in REPO_PATH.iterdir()
+        if p.is_dir() and p.name not in _SKIP and not p.name.startswith(".")
+    )
+
+    lines = ["# Mockups — URLs de GitHub Pages",
+             f"_Actualizado: {datetime.now().strftime('%Y-%m-%d %H:%M')}_",
+             ""]
+
+    for city_dir in cities:
+        clients = sorted(
+            p for p in city_dir.iterdir()
+            if p.is_dir() and (p / "index.html").exists()
+        )
+        lines.append(f"## {city_dir.name.title()}")
+        if clients:
+            for client in clients:
+                name = client.name.replace("-", " ").title()
+                url  = get_pages_url(city_dir.name, client.name)
+                lines.append(f"- [{name}]({url})")
+        else:
+            lines.append("_Sin despliegues_")
+        lines.append("")
+
+    LINKS_FILE.write_text("\n".join(lines), encoding="utf-8")
+    print(f"📋  LINKS.md actualizado → {LINKS_FILE}")
+
+
 def scan_inbox() -> list[Path]:
     pending = []
     for city in CITIES:
@@ -323,12 +356,14 @@ def run(dry_run: bool = False) -> None:
     pending = scan_inbox()
     if not pending:
         print("📭  _inbox/ vacía — nada que procesar.")
+        write_links_file()
         return
 
     print(f"📬  {len(pending)} zip(s) encontrado(s)")
     for zip_path in pending:
         deploy_zip(zip_path, dry_run=dry_run)
 
+    write_links_file()
     print(f"\n{'─'*55}")
     print(f"✨  Procesados: {len(pending)} mockup(s)\n")
 

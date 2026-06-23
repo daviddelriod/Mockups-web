@@ -268,6 +268,18 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
 
 # ─── SCAN & MAIN ──────────────────────────────────────────────────────────────
 
+def ensure_nojekyll() -> None:
+    """Crea .nojekyll en la raíz del repo si no existe.
+    Desactiva el procesado Jekyll de GitHub Pages, que de lo contrario puede
+    ignorar carpetas/archivos que empiezan por _ o . y romper el build entero
+    (p. ej. ante sintaxis {{ }} en los mockups). Con .nojekyll, Pages sirve los
+    archivos tal cual."""
+    nojekyll = REPO_PATH / ".nojekyll"
+    if not nojekyll.exists():
+        nojekyll.touch()
+        print("  📌  .nojekyll creado (Pages servirá los archivos tal cual)")
+
+
 def scan_inbox() -> list[Path]:
     pending = []
     for city in CITIES:
@@ -281,6 +293,8 @@ def run(dry_run: bool = False) -> None:
     if not (REPO_PATH / ".git").exists():
         print(f"❌ Repo no encontrado en: {REPO_PATH}")
         sys.exit(1)
+
+    ensure_nojekyll()
 
     pending = scan_inbox()
     if not pending:

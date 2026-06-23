@@ -141,17 +141,41 @@ def extract_zip(zip_path: Path, dest: Path) -> None:
 
 # ─── ÍNDICE AUTOMÁTICO ────────────────────────────────────────────────────────
 
+def _index_links_valid(dest: Path) -> bool:
+    """Devuelve True si todos los href *.html del index.html apuntan a archivos existentes."""
+    index = dest / "index.html"
+    if not index.exists():
+        return True
+    content = index.read_text(encoding="utf-8", errors="ignore")
+    links = re.findall(r'href=["\']([^"\']+\.html?)["\']', content, re.IGNORECASE)
+    for link in links:
+        if link.startswith(("http://", "https://", "//", "#", "data:")):
+            continue
+        if not (dest / link).exists():
+            return False
+    return True
+
+
 def maybe_generate_index(dest: Path, client_name: str) -> None:
     """
-    Si no hay index.html pero sí varios HTMLs, genera una página índice.
-    Si solo hay un HTML (sin ser index), lo renombra a index.html.
+    Gestiona el index.html del directorio de despliegue:
+    - Un solo HTML → lo renombra a index.html.
+    - Varios HTMLs sin index → genera un índice automático.
+    - Varios HTMLs con index propio del zip → lo valida; si algún enlace apunta
+      a un archivo inexistente, lo descarta y genera un índice correcto.
     """
     htmls = sorted(p for p in dest.glob("*.html") if p.name.lower() != "index.html")
     htmls += sorted(p for p in dest.glob("*.htm")  if p.name.lower() != "index.htm")
     has_index = (dest / "index.html").exists() or (dest / "index.htm").exists()
 
     if has_index:
-        return  # Nada que hacer
+        if not htmls:
+            return  # Sitio de una sola página, el index ES el contenido
+        if _index_links_valid(dest):
+            return  # El index del zip tiene los enlaces correctos → se respeta
+        # Los enlaces están rotos (p. ej. el zip usaba em-dash y los archivos guion)
+        print(f"  ⚠️  index.html con enlaces rotos — regenerando")
+        (dest / "index.html").unlink(missing_ok=True)
 
     if len(htmls) == 1:
         # Un único HTML → renombrar a index.html

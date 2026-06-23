@@ -5,6 +5,7 @@ deploy_mockup.py — Procesa todos los zips pendientes en _inbox/
 Uso:
   python deploy_mockup.py                            # procesa todo _inbox/
   python deploy_mockup.py --dry-run                  # muestra qué haría sin ejecutar
+  python deploy_mockup.py --reindex                  # regenera índices respetando _deploy.json
   python deploy_mockup.py --inspect _inbox/bilbao/x.zip  # inspecciona estructura del zip
 
 Estructura de _inbox/:
@@ -15,23 +16,31 @@ Estructura de _inbox/:
 
 El nombre del zip → nombre de la carpeta del cliente.
 Si el zip contiene varios HTMLs sin index.html, se genera un índice automático.
+
+Control de visibilidad:
+  Crear/editar  ciudad/cliente/_deploy.json  con la lista de HTMLs a ocultar:
+  { "hidden": ["Diseño Draft.html", "Prueba Descartada.html"] }
+  Luego ejecutar --reindex para aplicar los cambios.
 """
 
 import argparse
+import json
 import re
 import shutil
 import subprocess
 import sys
 import unicodedata
+import urllib.request
 import zipfile
 from datetime import datetime
 from pathlib import Path
 
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
-REPO_PATH  = Path.home() / "OneDrive - ATHLETIC CLUB/Escritorio/Main/PP" / "Mockups-web"   # ← ajusta a tu ruta local
-INBOX      = REPO_PATH / "_inbox"
-CITIES     = ["bilbao", "laredo", "santander"]
-LINKS_FILE = REPO_PATH / "LINKS.md"   # gitignoreado — índice local de URLs
+REPO_PATH        = Path.home() / "OneDrive - ATHLETIC CLUB/Escritorio/Main/PP" / "Mockups-web"
+INBOX            = REPO_PATH / "_inbox"
+CITIES           = ["bilbao", "laredo", "santander"]
+LINKS_FILE       = REPO_PATH / "LINKS.md"         # gitignoreado — índice local de URLs
+SHORT_LINKS_FILE = REPO_PATH / "short_links.json"  # tracked en git — mapa de URLs cortas
 # ──────────────────────────────────────────────────────────────────────────────
 
 
@@ -60,6 +69,19 @@ def get_pages_url(city_slug: str, client_slug: str) -> str:
     except Exception:
         pass
     return "(revisa Settings → Pages en GitHub)"
+
+
+def shorten_url(long_url: str) -> str:
+    """Crea una URL corta con TinyURL. Devuelve la URL original si falla."""
+    try:
+        api = f"https://tinyurl.com/api-create.php?url={urllib.request.quote(long_url, safe=':/')}"
+        with urllib.request.urlopen(api, timeout=5) as resp:
+            short = resp.read().decode("utf-8").strip()
+        if short.startswith("https://tinyurl.com/"):
+            return short
+    except Exception:
+        print(f"  ⚠️  TinyURL no disponible — usando URL larga")
+    return long_url
 
 
 # ─── INSPECCIÓN DE ZIP ────────────────────────────────────────────────────────
@@ -106,7 +128,6 @@ def _find_htmls(zip_path: Path) -> list[str]:
             rel = n[len(prefix):]
             if not rel or rel.endswith("/"):
                 continue
-            # Solo HTMLs en el nivel raíz (sin subcarpetas adicionales)
             if "/" not in rel and rel.lower().endswith((".html", ".htm")):
                 htmls.append(rel)
     return sorted(htmls)
@@ -140,6 +161,28 @@ def extract_zip(zip_path: Path, dest: Path) -> None:
                     out.write(src.read())
 
 
+# ─── CONFIGURACIÓN DE VISIBILIDAD (_deploy.json) ─────────────────────────────
+
+def _load_deploy_config(dest: Path) -> dict:
+    """Lee _deploy.json del directorio cliente. Devuelve {"hidden": []} si no existe."""
+    cfg_path = dest / "_deploy.json"
+    if not cfg_path.exists():
+        return {"hidden": []}
+    try:
+        data = json.loads(cfg_path.read_text(encoding="utf-8"))
+        if "hidden" not in data:
+            data["hidden"] = []
+        return data
+    except Exception:
+        return {"hidden": []}
+
+
+def _save_deploy_config(dest: Path, config: dict) -> None:
+    (dest / "_deploy.json").write_text(
+        json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+
 # ─── ÍNDICE AUTOMÁTICO ────────────────────────────────────────────────────────
 
 def _index_links_valid(dest: Path) -> bool:
@@ -160,34 +203,46 @@ def _index_links_valid(dest: Path) -> bool:
 def maybe_generate_index(dest: Path, client_name: str) -> None:
     """
     Gestiona el index.html del directorio de despliegue:
-    - Un solo HTML → lo renombra a index.html.
-    - Varios HTMLs sin index → genera un índice automático.
-    - Varios HTMLs con index propio del zip → lo valida; si algún enlace apunta
-      a un archivo inexistente, lo descarta y genera un índice correcto.
+    - Respeta la lista 'hidden' de _deploy.json para filtrar diseños.
+    - Un solo HTML visible → lo renombra a index.html.
+    - Varios HTMLs visibles sin index → genera índice automático.
+    - Index del zip con enlaces válidos → se respeta (salvo que haya ocultos pendientes).
+    - Index del zip con enlaces rotos → se descarta y regenera.
     """
-    htmls = sorted(p for p in dest.glob("*.html") if p.name.lower() != "index.html")
-    htmls += sorted(p for p in dest.glob("*.htm")  if p.name.lower() != "index.htm")
+    config  = _load_deploy_config(dest)
+    hidden  = {h.lower() for h in config.get("hidden", [])}
+
+    all_htmls     = sorted(p for p in dest.glob("*.html") if p.name.lower() != "index.html")
+    all_htmls    += sorted(p for p in dest.glob("*.htm")  if p.name.lower() != "index.htm")
+    visible_htmls = [p for p in all_htmls if p.name.lower() not in hidden]
+
     has_index = (dest / "index.html").exists() or (dest / "index.htm").exists()
 
     if has_index:
-        if not htmls:
-            return  # Sitio de una sola página, el index ES el contenido
-        if _index_links_valid(dest):
-            return  # El index del zip tiene los enlaces correctos → se respeta
-        # Los enlaces están rotos (p. ej. el zip usaba em-dash y los archivos guion)
-        print(f"  ⚠️  index.html con enlaces rotos — regenerando")
+        if not all_htmls:
+            return  # Sitio de una sola página
+        if not hidden and _index_links_valid(dest):
+            return  # Sin ocultos y enlaces correctos → se respeta el index del zip
+        # Hay ocultos configurados O el index tiene enlaces rotos → regenerar
+        if hidden:
+            print(f"  🙈  {len(hidden)} diseño(s) oculto(s) según _deploy.json")
+        else:
+            print(f"  ⚠️  index.html con enlaces rotos — regenerando")
         (dest / "index.html").unlink(missing_ok=True)
 
-    if len(htmls) == 1:
-        # Un único HTML → renombrar a index.html
-        htmls[0].rename(dest / "index.html")
-        print(f"  📄  {htmls[0].name} → index.html")
+    if not visible_htmls:
+        print(f"  ⚠️  Todos los HTMLs están ocultos — no se genera índice")
         return
 
-    if len(htmls) > 1:
-        # Varios HTMLs → generar índice
-        _write_index(dest, htmls, client_name)
-        print(f"  📋  Índice generado con {len(htmls)} diseños")
+    if len(visible_htmls) == 1 and not hidden:
+        # Un único HTML visible (y ninguno oculto) → renombrar a index.html
+        visible_htmls[0].rename(dest / "index.html")
+        print(f"  📄  {visible_htmls[0].name} → index.html")
+        return
+
+    _write_index(dest, visible_htmls, client_name)
+    print(f"  📋  Índice generado con {len(visible_htmls)} diseño(s) visible(s)"
+          + (f" ({len(hidden)} oculto(s))" if hidden else ""))
 
 
 def _write_index(dest: Path, htmls: list[Path], client_name: str) -> None:
@@ -262,8 +317,11 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
         print(f"  🔍  [dry-run] {len(htmls)} HTML(s) encontrado(s): {', '.join(htmls) or '—'}")
         return True
 
-    is_update = dest.exists()
+    # Preservar _deploy.json antes de destruir el directorio en actualizaciones
+    saved_config = None
+    is_update    = dest.exists()
     if is_update:
+        saved_config = _load_deploy_config(dest)
         backup = dest.with_name(f"{client_slug}_bak")
         shutil.copytree(dest, backup, dirs_exist_ok=True)
         shutil.rmtree(dest)
@@ -271,6 +329,12 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
 
     dest.mkdir(parents=True, exist_ok=True)
     extract_zip(zip_path, dest)
+
+    # Restaurar _deploy.json si existía antes de la actualización
+    if saved_config and saved_config.get("hidden"):
+        _save_deploy_config(dest, saved_config)
+        print(f"  ♻️  _deploy.json restaurado ({len(saved_config['hidden'])} oculto(s))")
+
     maybe_generate_index(dest, client_slug)
 
     run_git("add", ".", cwd=REPO_PATH)
@@ -291,6 +355,50 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
     return True
 
 
+# ─── REINDEX ──────────────────────────────────────────────────────────────────
+
+def reindex_all() -> None:
+    """Regenera los índices de todos los clientes respetando _deploy.json de cada uno.
+    Útil tras editar _deploy.json para ocultar/mostrar diseños."""
+    if not (REPO_PATH / ".git").exists():
+        print(f"❌ Repo no encontrado en: {REPO_PATH}")
+        sys.exit(1)
+
+    _SKIP   = {".git", "_inbox", "scripts"}
+    changed = []
+
+    for city_dir in sorted(p for p in REPO_PATH.iterdir()
+                           if p.is_dir() and p.name not in _SKIP and not p.name.startswith(".")):
+        for client_dir in sorted(p for p in city_dir.iterdir()
+                                 if p.is_dir() and (p / "index.html").exists()):
+            print(f"\n  📂  {city_dir.name}/{client_dir.name}")
+            # Forzar regeneración borrando el index actual si hay HTMLs adicionales
+            htmls = [p for p in client_dir.glob("*.html") if p.name.lower() != "index.html"]
+            if htmls:
+                (client_dir / "index.html").unlink(missing_ok=True)
+                maybe_generate_index(client_dir, client_dir.name)
+                changed.append(f"{city_dir.name}/{client_dir.name}")
+            else:
+                print(f"  ↩️  Sitio de una página, sin cambios")
+
+    if not changed:
+        print("\n📭  Ningún índice requirió cambios.")
+        write_links_file()
+        return
+
+    run_git("add", ".", cwd=REPO_PATH)
+    status = run_git("status", "--porcelain", cwd=REPO_PATH)
+    if status:
+        clients_str = ", ".join(changed)
+        run_git("commit", "-m", f"reindex: actualizar índices ({clients_str})", cwd=REPO_PATH)
+        run_git("push", cwd=REPO_PATH)
+        print(f"\n  ✅  Push OK — {len(changed)} índice(s) actualizado(s)")
+    else:
+        print(f"\n✅  Sin cambios en los índices.")
+
+    write_links_file()
+
+
 # ─── SCAN & MAIN ──────────────────────────────────────────────────────────────
 
 def ensure_nojekyll() -> None:
@@ -306,14 +414,22 @@ def ensure_nojekyll() -> None:
 
 
 def write_links_file() -> None:
-    """Regenera LINKS.md con todas las URLs de los mockups desplegados.
-    El archivo es gitignoreado: vive solo en local, nunca se sube al repo."""
+    """Regenera LINKS.md con todas las URLs. Genera short URLs para clientes nuevos."""
     _SKIP = {".git", "_inbox", "scripts"}
     cities = sorted(
         p for p in REPO_PATH.iterdir()
         if p.is_dir() and p.name not in _SKIP and not p.name.startswith(".")
     )
 
+    # Cargar/crear mapa de short URLs
+    short_map: dict[str, str] = {}
+    if SHORT_LINKS_FILE.exists():
+        try:
+            short_map = json.loads(SHORT_LINKS_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            short_map = {}
+
+    updated = False
     lines = ["# Mockups — URLs de GitHub Pages",
              f"_Actualizado: {datetime.now().strftime('%Y-%m-%d %H:%M')}_",
              ""]
@@ -326,12 +442,27 @@ def write_links_file() -> None:
         lines.append(f"## {city_dir.name.title()}")
         if clients:
             for client in clients:
+                key      = f"{city_dir.name}/{client.name}"
+                long_url = get_pages_url(city_dir.name, client.name)
+                if key not in short_map:
+                    print(f"  🔗  Generando URL corta para {key}…")
+                    short_map[key] = shorten_url(long_url)
+                    updated = True
+                short_url = short_map[key]
                 name = client.name.replace("-", " ").title()
-                url  = get_pages_url(city_dir.name, client.name)
-                lines.append(f"- [{name}]({url})")
+                if short_url != long_url:
+                    lines.append(f"- [{name}]({short_url}) — <{long_url}>")
+                else:
+                    lines.append(f"- [{name}]({long_url})")
         else:
             lines.append("_Sin despliegues_")
         lines.append("")
+
+    if updated:
+        SHORT_LINKS_FILE.write_text(
+            json.dumps(short_map, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        print(f"  💾  short_links.json actualizado")
 
     LINKS_FILE.write_text("\n".join(lines), encoding="utf-8")
     print(f"📋  LINKS.md actualizado → {LINKS_FILE}")
@@ -379,11 +510,14 @@ def main() -> None:
 
     parser = argparse.ArgumentParser(description="Deploy mockups desde _inbox/ a GitHub Pages")
     parser.add_argument("--dry-run",  action="store_true", help="Simula sin ejecutar")
+    parser.add_argument("--reindex",  action="store_true", help="Regenera índices respetando _deploy.json")
     parser.add_argument("--inspect",  metavar="ZIP",       help="Inspecciona la estructura de un zip")
     args = parser.parse_args()
 
     if args.inspect:
         inspect_zip(Path(args.inspect))
+    elif args.reindex:
+        reindex_all()
     else:
         run(dry_run=args.dry_run)
 

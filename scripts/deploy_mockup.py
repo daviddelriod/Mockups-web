@@ -176,6 +176,36 @@ def _load_hidden(city_slug: str, client_slug: str) -> set[str]:
         return set()
 
 
+def _sync_deploy_config(city_slug: str = "", client_slug: str = "") -> None:
+    """Asegura que _deploy.json tenga una entrada (vacía) para cada cliente desplegado.
+    Si se pasan city_slug/client_slug, añade solo esa entrada; si no, sincroniza todos."""
+    _SKIP = {".git", "_inbox", "scripts"}
+    try:
+        data = json.loads(DEPLOY_CONFIG.read_text(encoding="utf-8")) if DEPLOY_CONFIG.exists() else {}
+    except Exception:
+        data = {}
+
+    changed = False
+    if city_slug and client_slug:
+        key = f"{city_slug}/{client_slug}"
+        if key not in data:
+            data[key] = []
+            changed = True
+    else:
+        for city_dir in sorted(p for p in REPO_PATH.iterdir()
+                               if p.is_dir() and p.name not in _SKIP and not p.name.startswith(".")):
+            for client_dir in sorted(p for p in city_dir.iterdir()
+                                     if p.is_dir() and (p / "index.html").exists()):
+                key = f"{city_dir.name}/{client_dir.name}"
+                if key not in data:
+                    data[key] = []
+                    changed = True
+
+    if changed:
+        DEPLOY_CONFIG.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"  📝  _deploy.json actualizado")
+
+
 # ─── ÍNDICE AUTOMÁTICO ────────────────────────────────────────────────────────
 
 def _index_links_valid(dest: Path) -> bool:
@@ -322,6 +352,7 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
 
     hidden = _load_hidden(city_slug, client_slug)
     maybe_generate_index(dest, client_slug, hidden=hidden)
+    _sync_deploy_config(city_slug, client_slug)  # añade entrada vacía si es cliente nuevo
 
     run_git("add", ".", cwd=REPO_PATH)
     status = run_git("status", "--porcelain", cwd=REPO_PATH)
@@ -451,6 +482,7 @@ def write_links_file() -> None:
         )
         print(f"  💾  short_links.json actualizado")
 
+    _sync_deploy_config()
     LINKS_FILE.write_text("\n".join(lines), encoding="utf-8")
     print(f"📋  LINKS.md actualizado → {LINKS_FILE}")
 

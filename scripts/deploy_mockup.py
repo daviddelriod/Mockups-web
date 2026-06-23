@@ -41,6 +41,7 @@ INBOX            = REPO_PATH / "_inbox"
 CITIES           = ["bilbao", "laredo", "santander"]
 LINKS_FILE       = REPO_PATH / "LINKS.md"         # gitignoreado — índice local de URLs
 SHORT_LINKS_FILE = REPO_PATH / "short_links.json"  # tracked en git — mapa de URLs cortas
+DEPLOY_CONFIG    = REPO_PATH / "_deploy.json"      # tracked en git — visibilidad global de diseños
 # ──────────────────────────────────────────────────────────────────────────────
 
 
@@ -161,26 +162,18 @@ def extract_zip(zip_path: Path, dest: Path) -> None:
                     out.write(src.read())
 
 
-# ─── CONFIGURACIÓN DE VISIBILIDAD (_deploy.json) ─────────────────────────────
+# ─── CONFIGURACIÓN DE VISIBILIDAD (_deploy.json global) ──────────────────────
 
-def _load_deploy_config(dest: Path) -> dict:
-    """Lee _deploy.json del directorio cliente. Devuelve {"hidden": []} si no existe."""
-    cfg_path = dest / "_deploy.json"
-    if not cfg_path.exists():
-        return {"hidden": []}
+def _load_hidden(city_slug: str, client_slug: str) -> set[str]:
+    """Lee _deploy.json global y devuelve el set de nombres de archivo ocultos para este cliente."""
+    if not DEPLOY_CONFIG.exists():
+        return set()
     try:
-        data = json.loads(cfg_path.read_text(encoding="utf-8"))
-        if "hidden" not in data:
-            data["hidden"] = []
-        return data
+        data = json.loads(DEPLOY_CONFIG.read_text(encoding="utf-8"))
+        hidden = data.get(f"{city_slug}/{client_slug}", [])
+        return {h.lower() for h in hidden}
     except Exception:
-        return {"hidden": []}
-
-
-def _save_deploy_config(dest: Path, config: dict) -> None:
-    (dest / "_deploy.json").write_text(
-        json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
+        return set()
 
 
 # ─── ÍNDICE AUTOMÁTICO ────────────────────────────────────────────────────────
@@ -200,17 +193,17 @@ def _index_links_valid(dest: Path) -> bool:
     return True
 
 
-def maybe_generate_index(dest: Path, client_name: str) -> None:
+def maybe_generate_index(dest: Path, client_name: str, hidden: set[str] | None = None) -> None:
     """
     Gestiona el index.html del directorio de despliegue:
-    - Respeta la lista 'hidden' de _deploy.json para filtrar diseños.
+    - hidden: set de nombres (en minúsculas) a excluir del menú.
     - Un solo HTML visible → lo renombra a index.html.
     - Varios HTMLs visibles sin index → genera índice automático.
-    - Index del zip con enlaces válidos → se respeta (salvo que haya ocultos pendientes).
+    - Index del zip con enlaces válidos → se respeta (salvo que haya ocultos).
     - Index del zip con enlaces rotos → se descarta y regenera.
     """
-    config  = _load_deploy_config(dest)
-    hidden  = {h.lower() for h in config.get("hidden", [])}
+    if hidden is None:
+        hidden = set()
 
     all_htmls     = sorted(p for p in dest.glob("*.html") if p.name.lower() != "index.html")
     all_htmls    += sorted(p for p in dest.glob("*.htm")  if p.name.lower() != "index.htm")
@@ -317,11 +310,8 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
         print(f"  🔍  [dry-run] {len(htmls)} HTML(s) encontrado(s): {', '.join(htmls) or '—'}")
         return True
 
-    # Preservar _deploy.json antes de destruir el directorio en actualizaciones
-    saved_config = None
-    is_update    = dest.exists()
+    is_update = dest.exists()
     if is_update:
-        saved_config = _load_deploy_config(dest)
         backup = dest.with_name(f"{client_slug}_bak")
         shutil.copytree(dest, backup, dirs_exist_ok=True)
         shutil.rmtree(dest)
@@ -330,12 +320,8 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
     dest.mkdir(parents=True, exist_ok=True)
     extract_zip(zip_path, dest)
 
-    # Restaurar _deploy.json si existía antes de la actualización
-    if saved_config and saved_config.get("hidden"):
-        _save_deploy_config(dest, saved_config)
-        print(f"  ♻️  _deploy.json restaurado ({len(saved_config['hidden'])} oculto(s))")
-
-    maybe_generate_index(dest, client_slug)
+    hidden = _load_hidden(city_slug, client_slug)
+    maybe_generate_index(dest, client_slug, hidden=hidden)
 
     run_git("add", ".", cwd=REPO_PATH)
     status = run_git("status", "--porcelain", cwd=REPO_PATH)
@@ -376,7 +362,8 @@ def reindex_all() -> None:
             htmls = [p for p in client_dir.glob("*.html") if p.name.lower() != "index.html"]
             if htmls:
                 (client_dir / "index.html").unlink(missing_ok=True)
-                maybe_generate_index(client_dir, client_dir.name)
+                hidden = _load_hidden(city_dir.name, client_dir.name)
+                maybe_generate_index(client_dir, client_dir.name, hidden=hidden)
                 changed.append(f"{city_dir.name}/{client_dir.name}")
             else:
                 print(f"  ↩️  Sitio de una página, sin cambios")

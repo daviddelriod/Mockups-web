@@ -73,15 +73,19 @@ def get_pages_url(city_slug: str, client_slug: str) -> str:
 
 
 def shorten_url(long_url: str) -> str:
-    """Crea una URL corta con TinyURL. Devuelve la URL original si falla."""
+    """Crea una URL corta con is.gd (redirección 301 directa, sin página intermedia).
+    Devuelve la URL original si falla."""
     try:
-        api = f"https://tinyurl.com/api-create.php?url={urllib.request.quote(long_url, safe=':/')}"
-        with urllib.request.urlopen(api, timeout=5) as resp:
+        api = f"https://is.gd/create.php?format=simple&url={urllib.request.quote(long_url, safe='')}"
+        # is.gd responde 403 al User-Agent por defecto de urllib → enviamos uno propio.
+        req = urllib.request.Request(api, headers={"User-Agent": "Mozilla/5.0 (deploy_mockup)"})
+        with urllib.request.urlopen(req, timeout=5) as resp:
             short = resp.read().decode("utf-8").strip()
-        if short.startswith("https://tinyurl.com/"):
+        if short.startswith("https://is.gd/"):
             return short
+        print(f"  ⚠️  is.gd devolvió: {short[:80]} — usando URL larga")
     except Exception:
-        print(f"  ⚠️  TinyURL no disponible — usando URL larga")
+        print(f"  ⚠️  is.gd no disponible — usando URL larga")
     return long_url
 
 
@@ -464,9 +468,11 @@ def write_links_file() -> None:
                 long_url = get_pages_url(city_dir.name, client.name)
                 if key not in short_map:
                     print(f"  🔗  Generando URL corta para {key}…")
-                    short_map[key] = shorten_url(long_url)
-                    updated = True
-                short_url = short_map[key]
+                    short = shorten_url(long_url)
+                    if short != long_url:          # solo persistir si is.gd respondió bien
+                        short_map[key] = short
+                        updated = True
+                short_url = short_map.get(key, long_url)
                 name = client.name.replace("-", " ").title()
                 if short_url != long_url:
                     lines.append(f"- [{name}]({short_url}) — <{long_url}>")

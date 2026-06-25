@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0e0b08; }
+  @keyframes floatUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pulseDot { 0%,100% { opacity:1; } 50% { opacity:.35; } }
+  ::-webkit-scrollbar { width:0; }
+</style>
+</helmet>
+<div style="min-height:100vh; background:#0e0b08; display:flex; justify-content:center; font-family:'Hanken Grotesk',sans-serif;">
+<div style="width:100%; max-width:480px; background:#15110d; position:relative; overflow:hidden; color:#f3ece1;">
+
+  <!-- TOP BAR -->
+  <header style="position:sticky; top:0; z-index:40; display:flex; align-items:center; justify-content:space-between; padding:13px 18px; background:rgba(21,17,13,.82); backdrop-filter:blur(12px); border-bottom:1px solid rgba(243,236,225,.08);">
+    <div style="font-family:'Anton',sans-serif; font-size:19px; letter-spacing:.5px; line-height:.9;">BINUKA'S<span style="color:#e0612b;">.</span></div>
+    <div style="display:flex; align-items:center; gap:7px; padding:5px 11px 5px 9px; border-radius:999px; background:{{ statusBg }}; border:1px solid {{ statusBorder }};">
+      <span style="width:7px; height:7px; border-radius:50%; background:{{ statusColor }}; animation:pulseDot 1.8s ease-in-out infinite;"></span>
+      <span style="font-size:12px; font-weight:700; color:{{ statusColor }}; letter-spacing:.2px;">{{ statusText }}</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative; min-height:660px; display:flex; flex-direction:column; justify-content:flex-end; padding:0 22px 30px;">
+    <div style="position:absolute; inset:0; background-image:url('assets/bnks-cross.jpeg'); background-size:cover; background-position:center 35%;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,11,8,.55) 0%, rgba(14,11,8,.08) 32%, rgba(14,11,8,.72) 74%, #15110d 100%);"></div>
+    <div style="position:absolute; inset:0; background:radial-gradient(120% 80% at 50% 120%, rgba(224,97,43,.42) 0%, rgba(224,97,43,0) 55%);"></div>
+
+    <div style="position:relative; z-index:2; animation:floatUp .7s ease both;">
+      <div style="display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px; background:rgba(237,178,74,.14); border:1px solid rgba(237,178,74,.5); margin-bottom:18px;">
+        <span style="font-size:11px;">🏆</span>
+        <span style="font-size:11px; font-weight:800; letter-spacing:.6px; color:#edb24a; text-transform:uppercase;">La Mejor Hamburguesa de España '26</span>
+      </div>
+      <h1 style="font-family:'Anton',sans-serif; font-size:62px; line-height:.86; letter-spacing:.5px; text-transform:uppercase; text-shadow:0 6px 30px rgba(0,0,0,.5);">Sabor real,<br><span style="color:#e0612b;">sin trampas.</span></h1>
+      <p style="margin-top:16px; font-size:15px; font-weight:500; line-height:1.5; color:rgba(243,236,225,.82); max-width:330px;">Hamburguesería artesanal en Somo. Carne que sabe a carne, producto local — a 2 minutos de la playa.</p>
+
+      <div style="display:flex; gap:10px; margin-top:24px;">
+        <a href="{{ waLink }}" target="_blank" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:15px; border-radius:14px; background:#e0612b; color:#fff; font-weight:800; font-size:15px; text-decoration:none; box-shadow:0 10px 30px rgba(224,97,43,.4);">Hacer pedido</a>
+        <a href="#carta" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:15px; border-radius:14px; background:rgba(243,236,225,.1); border:1px solid rgba(243,236,225,.22); color:#f3ece1; font-weight:700; font-size:15px; text-decoration:none; backdrop-filter:blur(8px);">Ver carta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER STRIP -->
+  <div style="display:flex; align-items:center; gap:24px; padding:13px 22px; background:#e0612b; color:#15110d; overflow:hidden; white-space:nowrap;">
+    <span style="font-family:'Anton',sans-serif; font-size:14px; letter-spacing:1px; text-transform:uppercase;">Pet-friendly</span>
+    <span style="opacity:.5;">●</span>
+    <span style="font-family:'Anton',sans-serif; font-size:14px; letter-spacing:1px; text-transform:uppercase;">Terraza</span>
+    <span style="opacity:.5;">●</span>
+    <span style="font-family:'Anton',sans-serif; font-size:14px; letter-spacing:1px; text-transform:uppercase;">Para llevar</span>
+    <span style="opacity:.5;">●</span>
+    <span style="font-family:'Anton',sans-serif; font-size:14px; letter-spacing:1px; text-transform:uppercase;">Producto local</span>
+  </div>
+
+  <!-- CARTA -->
+  <section id="carta" style="padding:38px 18px 40px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:6px;">
+      <h2 style="font-family:'Anton',sans-serif; font-size:40px; line-height:.9; text-transform:uppercase;">La carta</h2>
+      <span style="font-size:12px; font-weight:600; color:rgba(243,236,225,.45); padding-bottom:6px;">180g · pan brioche</span>
+    </div>
+    <p style="font-size:13.5px; color:rgba(243,236,225,.55); margin-bottom:20px;">Todas las burgers con carne smash y queso cheddar.</p>
+
+    <!-- FEATURED BNK'S -->
+    <div style="position:relative; border-radius:20px; overflow:hidden; margin-bottom:24px; border:1px solid rgba(237,178,74,.3);">
+      <div style="aspect-ratio:4/3.05; background-image:url('assets/bnks-hero.jpeg'); background-size:cover; background-position:center 30%;"></div>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,11,8,0) 40%, rgba(14,11,8,.92) 100%);"></div>
+      <div style="position:absolute; top:14px; left:14px; padding:6px 11px; border-radius:999px; background:#edb24a; color:#15110d; font-size:11px; font-weight:800; letter-spacing:.6px; text-transform:uppercase;">★ La estrella de la casa</div>
+      <div style="position:absolute; left:0; right:0; bottom:0; padding:18px;">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px;">
+          <div>
+            <div style="font-family:'Anton',sans-serif; font-size:30px; line-height:.9; text-transform:uppercase;">BNK'S Burger</div>
+            <p style="font-size:13px; color:rgba(243,236,225,.8); margin-top:7px; line-height:1.45; max-width:280px;">Buey gallego, yema a baja temperatura ligada con cheddar inglés, panceta curada, pepinillo y ricotta. Honesta, potente y equilibrada.</p>
+          </div>
+          <div style="font-family:'Anton',sans-serif; font-size:26px; color:#e0612b; white-space:nowrap;">8,90€</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTER CHIPS -->
+    <div style="display:flex; gap:9px; overflow-x:auto; padding-bottom:6px; margin-bottom:18px; -webkit-overflow-scrolling:touch;">
+      <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="5">
+        <button onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</button>
+      </sc-for>
+    </div>
+
+    <!-- MENU LIST -->
+    <div style="display:flex; flex-direction:column; gap:13px;">
+      <sc-for list="{{ items }}" as="item" hint-placeholder-count="6">
+        <div style="display:flex; gap:14px; align-items:center; padding:11px; border-radius:16px; background:#1d1810; border:1px solid rgba(243,236,225,.06); transition:border-color .25s, transform .25s;" style-hover="border-color:rgba(224,97,43,.5); transform:translateY(-2px);">
+          <sc-if value="{{ item.hasImg }}" hint-placeholder-val="{{ true }}">
+            <div style="width:78px; height:78px; flex:none; border-radius:12px; background-image:url('{{ item.img }}'); background-size:cover; background-position:center;"></div>
+          </sc-if>
+          <sc-if value="{{ item.noImg }}" hint-placeholder-val="{{ false }}">
+            <div style="width:78px; height:78px; flex:none; border-radius:12px; background:repeating-linear-gradient(45deg,#241d14,#241d14 7px,#1d1810 7px,#1d1810 14px); display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:monospace; font-size:9px; color:rgba(243,236,225,.32); text-align:center;">foto</span>
+            </div>
+          </sc-if>
+          <div style="flex:1; min-width:0;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-weight:800; font-size:15.5px; letter-spacing:.2px;">{{ item.name }}</span>
+              <span style="font-size:9px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; padding:2px 6px; border-radius:5px; background:{{ item.badgeBg }}; color:{{ item.badgeColor }};">{{ item.badge }}</span>
+            </div>
+            <p style="font-size:12px; color:rgba(243,236,225,.52); margin-top:4px; line-height:1.4;">{{ item.desc }}</p>
+          </div>
+          <div style="font-family:'Anton',sans-serif; font-size:19px; color:#edb24a; white-space:nowrap; padding-left:2px;">{{ item.price }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:22px; padding:16px; border-radius:14px; background:rgba(237,178,74,.07); border:1px dashed rgba(237,178,74,.3); font-size:12.5px; color:rgba(243,236,225,.6); line-height:1.55;">
+      <strong style="color:#edb24a;">Extras —</strong> Carne de chuletón +3,50€ · Carne y queso +2,50€ · Veggie +2,50€ · Bacon +1,50€ · Cebolla caramelizada +1,50€
+    </div>
+  </section>
+
+  <!-- STICKY MOBILE WHATSAPP -->
+  <a href="{{ waLink }}" target="_blank" style="position:sticky; bottom:14px; z-index:50; display:flex; align-items:center; justify-content:center; gap:9px; margin:0 16px 16px; padding:16px; border-radius:16px; background:#1faa55; color:#fff; font-weight:800; font-size:15.5px; text-decoration:none; box-shadow:0 12px 34px rgba(31,170,85,.45);">
+    <span style="font-size:18px;">💬</span> Pedir por WhatsApp · 665 519 011
+  </a>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { filter: 'todo', isOpen: false };
+
+  componentDidMount() {
+    this.tick();
+    this._iv = setInterval(() => this.tick(), 30000);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+
+  tick() {
+    const now = new Date();
+    const day = now.getDay();
+    const mins = now.getHours() * 60 + now.getMinutes();
+    let open = false;
+    if (day === 5 || day === 6) open = mins >= 1140;        // Vie/Sáb 19:00–00:00
+    else if (day === 0) open = mins >= 1140 && mins <= 1410; // Dom 19:00–23:30
+    this.setState({ isOpen: open });
+  }
+
+  data() {
+    const A = 'assets/';
+    return [
+      { cat:'clasicas', name:'Single Lady', price:'7,90€', desc:'Queso cheddar, pura y directa.', img:null, badge:'Clásica' },
+      { cat:'clasicas', name:"Binuka's", price:'8,90€', desc:'Cebolla picada, pepinillo dulce, salsa Binuka\u0027s.', img:A+'burger-studio.png', badge:'Clásica' },
+      { cat:'especiales', name:'Eminem', price:'10,90€', desc:'Cebolla caramelizada, salsa Emmy.', img:null, badge:'Especial' },
+      { cat:'especiales', name:'Mike Tyson', price:'10,90€', desc:'Cebolla y lechuga picada, pepinillo, mayo japo mostaza.', img:A+'bnks-cross.jpeg', badge:'Especial' },
+      { cat:'especiales', name:'Arnold Schwarzenegger', price:'12,90€', desc:'Mermelada de bacon, salsa Binuka\u0027s.', img:null, badge:'Especial' },
+      { cat:'especiales', name:'Al-Capone', price:'12,90€', desc:'Mayo trufa, parmesano, bacon.', img:null, badge:'Especial' },
+      { cat:'patatas', name:'Pulled Cheddar', price:'8,90€', desc:'Salsa cheddar, pulled pork, cebolla frita.', img:A+'patatas.png', badge:'Patatas' },
+      { cat:'patatas', name:'Cono de patatas', price:'3,50€', desc:'Elige tu salsa +0,50€.', img:null, badge:'Patatas' },
+      { cat:'patatas', name:'Patatas trufadas', price:'8,90€', desc:'Mayo trufa, parmesano.', img:null, badge:'Patatas' },
+      { cat:'postres', name:'Leche con galletas', price:'6,50€', desc:'Cookie, ganache, helado de vainilla.', img:null, badge:'Postre' },
+      { cat:'postres', name:'Postre del mes', price:'9,90€', desc:'2 raciones para compartir.', img:null, badge:'Postre' },
+    ];
+  }
+
+  badgeStyle(cat) {
+    if (cat === 'clasicas') return { bg:'rgba(237,178,74,.16)', color:'#edb24a' };
+    if (cat === 'especiales') return { bg:'rgba(224,97,43,.18)', color:'#f08047' };
+    if (cat === 'patatas') return { bg:'rgba(243,236,225,.1)', color:'rgba(243,236,225,.65)' };
+    return { bg:'rgba(180,120,200,.16)', color:'#cf9fd8' };
+  }
+
+  renderVals() {
+    const filter = this.state.filter;
+    const chipsDef = [
+      { key:'todo', label:'Todo' },
+      { key:'clasicas', label:'Clásicas' },
+      { key:'especiales', label:'Especiales' },
+      { key:'patatas', label:'Patatas' },
+      { key:'postres', label:'Postres' },
+    ];
+    const chips = chipsDef.map(c => {
+      const active = filter === c.key;
+      return {
+        label: c.label,
+        onClick: () => this.setState({ filter: c.key }),
+        style: `flex:none; cursor:pointer; padding:9px 16px; border-radius:999px; font-family:'Hanken Grotesk',sans-serif; font-weight:700; font-size:13px; white-space:nowrap; transition:all .2s; border:1px solid ${active?'#e0612b':'rgba(243,236,225,.16)'}; background:${active?'#e0612b':'transparent'}; color:${active?'#fff':'rgba(243,236,225,.7)'};`
+      };
+    });
+
+    const items = this.data()
+      .filter(it => filter === 'todo' ? true : it.cat === filter)
+      .map(it => {
+        const b = this.badgeStyle(it.cat);
+        return { ...it, hasImg: !!it.img, noImg: !it.img, badgeBg:b.bg, badgeColor:b.color };
+      });
+
+    const open = this.state.isOpen;
+    return {
+      filter, chips, items,
+      isOpen: open,
+      statusText: open ? 'Abierto ahora' : 'Cerrado',
+      statusColor: open ? '#46d17f' : '#e0612b',
+      statusBg: open ? 'rgba(70,209,127,.12)' : 'rgba(224,97,43,.12)',
+      statusBorder: open ? 'rgba(70,209,127,.35)' : 'rgba(224,97,43,.35)',
+      waLink: 'https://wa.me/34665519011?text=' + encodeURIComponent('¡Hola Binuka\u0027s! Quería hacer un pedido 🍔'),
+    };
+  }
+}
+</script>
+</body>
+</html>

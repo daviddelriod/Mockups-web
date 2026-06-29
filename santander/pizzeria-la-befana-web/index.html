@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzeria La Befana Web — Propuestas de diseño</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f; color: #f0f0f0;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+    h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 600;
+          letter-spacing: -0.02em; margin-bottom: 0.5rem; text-align: center; }
+    p  { color: #888; font-size: 0.9rem; margin-bottom: 2.5rem; text-align: center; }
+    .cards { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 420px; }
+    .card {
+      display: flex; align-items: center; gap: 1rem;
+      background: #1a1a1a; border: 1px solid #2a2a2a;
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      text-decoration: none; color: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .card:hover { background: #222; border-color: #444; }
+    .num   { font-size: 1.5rem; font-weight: 700; color: #444; min-width: 2rem; }
+    .label { flex: 1; font-size: 1rem; font-weight: 500; }
+    .arrow { color: #555; font-size: 1.1rem; transition: color 0.15s; }
+    .card:hover .arrow { color: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>Pizzeria La Befana Web</h1>
+  <p>Selecciona una propuesta de diseño</p>
+  <div class="cards">
+        <a href="La Befana - Moderna.dc.html" class="card">
+          <div class="num">01</div>
+          <div class="label">La Befana   Moderna.Dc</div>
+          <div class="arrow">→</div>
+        </a>
+        <a href="La Befana - Tradicional.dc.html" class="card">
+          <div class="num">02</div>
+          <div class="label">La Befana   Tradicional.Dc</div>
+          <div class="arrow">→</div>
+        </a>
+        <a href="La Befana - Web.dc.html" class="card">
+          <div class="num">03</div>
+          <div class="label">La Befana   Web.Dc</div>
+          <div class="arrow">→</div>
+        </a>
+  </div>
+</body>
+</html>

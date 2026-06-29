@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14110D; --bg2:#1C1812; --bg3:#241E16; --line:rgba(242,235,224,.12);
+    --text:#F2EBE0; --muted:#A99C86; --accent:#F2A93B; --accent2:#E5552E;
+    --head:'Space Grotesk', system-ui, sans-serif; --body:'DM Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--body);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  ::selection{background:var(--accent);color:#14110D;}
+  input,select,button,textarea{font-family:inherit;}
+  @keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .mo-burger{display:none;}
+  @media (max-width:900px){
+    .mo-nav{display:none !important;}
+    .mo-burger{display:flex !important;}
+    .mo-grid2{grid-template-columns:1fr !important;}
+    .mo-grid3{grid-template-columns:1fr !important;}
+    .mo-hero h1{font-size:48px !important;}
+    .mo-cols{columns:1 !important;}
+    .mo-cart{width:100% !important;}
+  }
+</style>
+</helmet>
+
+<div style="background:var(--bg); position:relative; overflow-x:hidden;">
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:60; background:rgba(20,17,13,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);">
+    <div style="max-width:1200px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <a href="#top" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+        <span style="font-family:var(--head); font-weight:700; letter-spacing:.32em; font-size:18px; color:var(--text);">LA&nbsp;BEFANA</span>
+        <span style="font-family:var(--body); font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); border:1px solid var(--line); padding:3px 7px; border-radius:4px;">Pizzería</span>
+      </a>
+      <nav class="mo-nav" style="display:flex; align-items:center; gap:28px;">
+        <a href="#carta" style="text-decoration:none; color:var(--muted); font-size:14px;">Carta</a>
+        <a href="#proceso" style="text-decoration:none; color:var(--muted); font-size:14px;">Proceso</a>
+        <a href="#reservar" style="text-decoration:none; color:var(--muted); font-size:14px;">Reservar</a>
+        <a href="#contacto" style="text-decoration:none; color:var(--muted); font-size:14px;">Contacto</a>
+        <button onClick="{{ openCart }}" style="position:relative; cursor:pointer; background:var(--accent); color:#14110D; border:none; font-weight:600; font-size:14px; padding:10px 18px; border-radius:999px;">Pedir · {{ cartCount }}</button>
+      </nav>
+      <button onClick="{{ toggleNav }}" class="mo-burger" aria-label="Menú" style="background:none; border:1px solid var(--line); border-radius:8px; width:42px; height:38px; cursor:pointer; flex-direction:column; gap:4px; align-items:center; justify-content:center;">
+        <span style="width:18px; height:2px; background:var(--text);"></span>
+        <span style="width:18px; height:2px; background:var(--text);"></span>
+        <span style="width:18px; height:2px; background:var(--text);"></span>
+      </button>
+    </div>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid var(--line); padding:8px 20px 16px; display:flex; flex-direction:column;">
+        <a onClick="{{ closeNav }}" href="#carta" style="text-decoration:none; color:var(--text); padding:12px 0; border-bottom:1px solid var(--line); font-size:16px;">Carta</a>
+        <a onClick="{{ closeNav }}" href="#proceso" style="text-decoration:none; color:var(--text); padding:12px 0; border-bottom:1px solid var(--line); font-size:16px;">Proceso</a>
+        <a onClick="{{ closeNav }}" href="#reservar" style="text-decoration:none; color:var(--text); padding:12px 0; border-bottom:1px solid var(--line); font-size:16px;">Reservar</a>
+        <a onClick="{{ closeNav }}" href="#contacto" style="text-decoration:none; color:var(--text); padding:12px 0; font-size:16px;">Contacto</a>
+        <button onClick="{{ openCart }}" style="margin-top:12px; cursor:pointer; background:var(--accent); color:#14110D; border:none; font-weight:600; font-size:16px; padding:13px; border-radius:999px;">Pedir online · {{ cartCount }}</button>
+      </div>
+    </sc-if>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- HERO -->
+  <section class="mo-hero" data-screen-label="Hero" style="position:relative; min-height:90vh; display:flex; align-items:center; overflow:hidden;">
+    <img src="assets/ph-bbq.jpg" alt="Pizza artesanal" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,17,13,.95) 0%, rgba(20,17,13,.78) 42%, rgba(20,17,13,.30) 100%);"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 60%, rgba(20,17,13,.85) 100%);"></div>
+    <div style="position:relative; max-width:1200px; margin:0 auto; padding:0 22px; width:100%;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+        <span style="width:38px; height:1px; background:var(--accent);"></span>
+        <span style="font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--accent);">Solares · Cantabria</span>
+      </div>
+      <h1 style="font-family:var(--head); font-weight:700; font-size:clamp(46px,8vw,92px); line-height:.96; margin:0; letter-spacing:-.02em; max-width:14ch;">Pizza de autor, <span style="color:var(--accent);">masa viva.</span></h1>
+      <p style="font-size:clamp(16px,2.4vw,20px); color:var(--muted); margin:22px 0 0; max-width:46ch; line-height:1.55;">Fermentación natural, boleada a mano y estirada al momento. Cocina italiana de verdad — pizza y pasta fresca — en el centro de Solares.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:13px; margin-top:30px;">
+        <a href="#carta" style="text-decoration:none; background:var(--accent); color:#14110D; font-weight:600; padding:15px 28px; border-radius:999px; font-size:16px;">Pedir online</a>
+        <a href="#reservar" style="text-decoration:none; border:1px solid var(--line); color:var(--text); padding:15px 28px; border-radius:999px; font-size:16px;">Reservar mesa</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px; margin-top:34px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:9px;">
+          <span style="color:var(--accent); font-size:15px; letter-spacing:1px;">★★★★★</span>
+          <span style="font-size:14px; color:var(--text);"><strong>4,5</strong> <span style="color:var(--muted);">· 876 reseñas en Google</span></span>
+        </div>
+        <span style="width:1px; height:18px; background:var(--line);"></span>
+        <span style="font-size:14px; color:var(--muted);">10–20€ por persona</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div style="background:var(--accent); color:#14110D; overflow:hidden; white-space:nowrap; border-top:1px solid rgba(0,0,0,.1); border-bottom:1px solid rgba(0,0,0,.1);">
+    <div style="display:inline-flex; gap:30px; padding:13px 0; font-family:var(--head); font-weight:600; font-size:14px; letter-spacing:.14em; text-transform:uppercase; animation:mq 26s linear infinite;">
+      <span>Fermentación natural ✦ Boleada a mano ✦ Estirada al momento ✦ Pasta fresca cada día ✦ Producto de verdad ✦&nbsp;</span>
+      <span>Fermentación natural ✦ Boleada a mano ✦ Estirada al momento ✦ Pasta fresca cada día ✦ Producto de verdad ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- PROCESO -->
+  <section id="proceso" data-screen-label="Proceso" style="scroll-margin-top:72px; padding:clamp(56px,9vw,108px) 22px; background:var(--bg);">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:center;" class="mo-grid2">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span style="width:38px; height:1px; background:var(--accent);"></span>
+            <span style="font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--accent);">El método</span>
+          </div>
+          <h2 style="font-family:var(--head); font-weight:700; font-size:clamp(30px,4.6vw,50px); line-height:1.05; margin:0;">Sin atajos. Como debe ser.</h2>
+          <p style="color:var(--muted); font-size:17px; line-height:1.65; margin:18px 0 0;">La buena pizza no se improvisa. La nuestra nace de una masa de fermentación natural que reposa hasta estar lista, se bolea a mano una a una y se estira justo antes de ir al horno.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:28px;">
+            <div style="border:1px solid var(--line); border-radius:14px; padding:18px;"><div style="font-family:var(--head); font-size:30px; color:var(--accent);">48h</div><div style="font-size:13px; color:var(--muted); margin-top:2px;">de fermentación</div></div>
+            <div style="border:1px solid var(--line); border-radius:14px; padding:18px;"><div style="font-family:var(--head); font-size:30px; color:var(--accent);">100%</div><div style="font-size:13px; color:var(--muted); margin-top:2px;">amasado a mano</div></div>
+            <div style="border:1px solid var(--line); border-radius:14px; padding:18px;"><div style="font-family:var(--head); font-size:30px; color:var(--accent);">26</div><div style="font-size:13px; color:var(--muted); margin-top:2px;">pizzas en carta</div></div>
+            <div style="border:1px solid var(--line); border-radius:14px; padding:18px;"><div style="font-family:var(--head); font-size:30px; color:var(--accent);">Fresca</div><div style="font-size:13px; color:var(--muted); margin-top:2px;">pasta hecha a mano</div></div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <img src="assets/ph-dough.jpg" alt="Bolas de masa" style="grid-column:1 / -1; width:100%; height:230px; object-fit:cover; border-radius:16px;">
+          <img src="assets/ph-make.jpg" alt="Elaboración" style="width:100%; height:240px; object-fit:cover; border-radius:16px;">
+          <img src="assets/ph-team.jpg" alt="Equipo en el horno" style="width:100%; height:240px; object-fit:cover; border-radius:16px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta" data-screen-label="Carta" style="scroll-margin-top:72px; padding:clamp(56px,9vw,104px) 22px; background:var(--bg2);">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:18px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <span style="width:38px; height:1px; background:var(--accent);"></span>
+            <span style="font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--accent);">Carta</span>
+          </div>
+          <h2 style="font-family:var(--head); font-weight:700; font-size:clamp(30px,5vw,52px); margin:0;">Elige y añade al pedido</h2>
+        </div>
+        <span style="font-size:13px; color:var(--muted); max-width:34ch;">Descripciones de ejemplo, fáciles de ajustar. Precios reales.</span>
+      </div>
+
+      <!-- tabs -->
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin:28px 0 0;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ t.onClick }}" style="cursor:pointer; border:none; background:var(--accent); color:#14110D; font-family:var(--head); font-weight:600; font-size:15px; padding:10px 20px; border-radius:999px;">{{ t.label }}</button>
+          </sc-if>
+          <sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ t.onClick }}" style="cursor:pointer; border:1px solid var(--line); background:transparent; color:var(--muted); font-family:var(--head); font-weight:500; font-size:15px; padding:10px 20px; border-radius:999px;">{{ t.label }}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+      <sc-if value="{{ showSub }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+          <sc-for list="{{ subChips }}" as="s" hint-placeholder-count="4">
+            <sc-if value="{{ s.active }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ s.onClick }}" style="cursor:pointer; border:1px solid var(--accent); background:rgba(242,169,59,.12); color:var(--accent); font-size:13px; padding:6px 14px; border-radius:999px;">{{ s.label }}</button>
+            </sc-if>
+            <sc-if value="{{ s.inactive }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ s.onClick }}" style="cursor:pointer; border:1px solid var(--line); background:transparent; color:var(--muted); font-size:13px; padding:6px 14px; border-radius:999px;">{{ s.label }}</button>
+            </sc-if>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- list -->
+      <div style="margin-top:26px; columns:2; column-gap:30px;" class="mo-cols">
+        <sc-for list="{{ items }}" as="item" hint-placeholder-count="12">
+          <div style="break-inside:avoid; display:flex; gap:14px; align-items:flex-start; justify-content:space-between; padding:16px; margin-bottom:12px; background:var(--bg3); border:1px solid var(--line); border-radius:14px;">
+            <div style="flex:1; min-width:0;">
+              <div style="font-family:var(--head); font-weight:600; font-size:17px; color:var(--text);">{{ item.name }}</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:4px; line-height:1.45;">{{ item.desc }}</div>
+              <div style="font-family:var(--head); font-weight:600; font-size:15px; color:var(--accent); margin-top:8px;">{{ item.price }}</div>
+            </div>
+            <button onClick="{{ item.add }}" aria-label="Añadir" style="flex-shrink:0; cursor:pointer; width:38px; height:38px; border-radius:10px; border:1px solid var(--accent); background:rgba(242,169,59,.12); color:var(--accent); font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center;">+</button>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size:13px; color:var(--muted); margin-top:8px; font-style:italic;">{{ note }}</p>
+      <p style="font-size:12px; color:var(--muted); margin-top:14px;">Carta de alérgenos disponible · pregunta a nuestro equipo. <span style="opacity:.7;">(aviso de ejemplo — obligatorio UE)</span></p>
+    </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section id="reservar" data-screen-label="Reservar" style="scroll-margin-top:72px; padding:clamp(56px,9vw,104px) 22px; background:var(--bg);">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,56px); align-items:center;" class="mo-grid2">
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <span style="width:38px; height:1px; background:var(--accent);"></span>
+          <span style="font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--accent);">Reservas</span>
+        </div>
+        <h2 style="font-family:var(--head); font-weight:700; font-size:clamp(28px,4.6vw,48px); line-height:1.05; margin:0;">Reserva tu mesa</h2>
+        <p style="color:var(--muted); font-size:17px; line-height:1.65; margin:16px 0 0;">Dinos cuándo y para cuántos. Te confirmamos por teléfono. <span style="color:var(--accent);">Demo</span> — el formulario aún no envía datos reales.</p>
+        <img src="assets/ph-pesto-steel.jpg" alt="Pizza" style="margin-top:24px; width:100%; height:240px; object-fit:cover; border-radius:16px;">
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--line); border-radius:18px; padding:clamp(20px,3vw,32px);">
+        <sc-if value="{{ resvDone }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:24px 8px;">
+            <div style="width:56px; height:56px; border-radius:50%; background:rgba(242,169,59,.16); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 16px;">✓</div>
+            <h3 style="font-family:var(--head); font-size:22px; margin:0;">¡Solicitud recibida!</h3>
+            <p style="color:var(--muted); font-size:15px; line-height:1.6; margin:10px 0 0;">{{ resvSummary }}</p>
+            <p style="color:var(--muted); font-size:12px; margin:12px 0 0; font-style:italic;">Demo — no se ha enviado ninguna reserva real.</p>
+            <button onClick="{{ resvReset }}" style="margin-top:18px; cursor:pointer; background:transparent; border:1px solid var(--line); color:var(--text); padding:11px 20px; border-radius:999px; font-size:14px;">Nueva reserva</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ resvOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+              <label style="display:flex; flex-direction:column; gap:6px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">Fecha
+                <input type="date" value="{{ rFecha }}" onChange="{{ setFecha }}" style="background:var(--bg3); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px; font-size:15px; color-scheme:dark;">
+              </label>
+              <label style="display:flex; flex-direction:column; gap:6px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">Hora
+                <input type="time" value="{{ rHora }}" onChange="{{ setHora }}" style="background:var(--bg3); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px; font-size:15px; color-scheme:dark;">
+              </label>
+            </div>
+            <label style="display:flex; flex-direction:column; gap:6px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">Comensales
+              <select value="{{ rPers }}" onChange="{{ setPers }}" style="background:var(--bg3); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px; font-size:15px;">
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8 o más</option>
+              </select>
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">Nombre
+              <input type="text" value="{{ rNombre }}" onInput="{{ setNombre }}" placeholder="Tu nombre" style="background:var(--bg3); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px; font-size:15px;">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);">Teléfono
+              <input type="tel" value="{{ rTel }}" onInput="{{ setTel }}" placeholder="600 000 000" style="background:var(--bg3); border:1px solid var(--line); color:var(--text); border-radius:10px; padding:12px; font-size:15px;">
+            </label>
+            <button onClick="{{ submitResv }}" style="margin-top:4px; cursor:pointer; background:var(--accent); color:#14110D; font-weight:600; border:none; padding:15px; border-radius:12px; font-size:16px;">Solicitar reserva</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEÑAS -->
+  <section data-screen-label="Reseñas" style="padding:clamp(52px,8vw,90px) 22px; background:var(--bg2);">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+        <div style="font-family:var(--head); font-weight:700; font-size:clamp(40px,8vw,72px); color:var(--accent); line-height:1;">4,5</div>
+        <div>
+          <div style="color:var(--accent); font-size:18px; letter-spacing:2px;">★★★★★</div>
+          <div style="color:var(--muted); font-size:14px; margin-top:4px;">876 opiniones en Google</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:30px;" class="mo-grid3">
+        <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+          <div style="background:var(--bg3); border:1px solid var(--line); border-radius:16px; padding:24px;">
+            <div style="color:var(--accent); font-size:14px; letter-spacing:1px;">★★★★★</div>
+            <p style="font-size:16px; line-height:1.55; margin:12px 0 16px;">“{{ r.text }}”</p>
+            <div style="font-size:13px; color:var(--muted);">{{ r.author }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size:12px; color:var(--muted); margin-top:14px; font-style:italic;">Reseñas de ejemplo — sustituir por reseñas reales de Google.</p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" data-screen-label="Contacto" style="scroll-margin-top:72px; padding:clamp(56px,9vw,104px) 22px; background:var(--bg);">
+    <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,56px); align-items:start;" class="mo-grid2">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:9px; background:{{ openBadgeBg }}; color:{{ openBadgeFg }}; padding:8px 16px; border-radius:999px; font-size:14px; font-weight:600; border:1px solid var(--line);">
+          <span style="width:9px; height:9px; border-radius:50%; background:{{ openDotColor }};"></span>{{ openStatus }}
+        </div>
+        <h2 style="font-family:var(--head); font-weight:700; font-size:clamp(28px,4.6vw,48px); margin:18px 0 0; line-height:1.05;">Pásate por Solares</h2>
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:18px;">
+          <div><div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:4px;">Dirección</div><div style="font-size:17px;">C. los Tilos, 1 · 39710 Solares, Cantabria</div></div>
+          <div><div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:4px;">Teléfono</div><a href="tel:+34617984863" style="font-size:17px; color:var(--text); text-decoration:none;">617 98 48 63</a></div>
+          <div><div style="font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); margin-bottom:6px;">Horario <span style="opacity:.7; text-transform:none; letter-spacing:0;">(ejemplo)</span></div>
+            <div style="font-size:15px; color:var(--muted); display:flex; flex-direction:column; gap:5px;">
+              <div style="display:flex; justify-content:space-between; max-width:280px;"><span>Lun – Mié</span><span>Cerrado</span></div>
+              <div style="display:flex; justify-content:space-between; max-width:280px;"><span>Jue – Dom</span><span style="color:var(--text);">20:00 – 23:30</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:26px;">
+          <a href="tel:+34617984863" style="text-decoration:none; background:var(--accent); color:#14110D; font-weight:600; padding:14px 24px; border-radius:999px; font-size:15px;">Llamar para pedir</a>
+          <a href="https://maps.google.com/?q=Pizzer%C3%ADa+La+Befana+Solares+Cantabria" target="_blank" rel="noopener" style="text-decoration:none; border:1px solid var(--line); color:var(--text); padding:14px 24px; border-radius:999px; font-size:15px;">Cómo llegar</a>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=Pizzer%C3%ADa+La+Befana+Solares+Cantabria" target="_blank" rel="noopener" style="display:block; position:relative; aspect-ratio:4/3; border-radius:18px; overflow:hidden; border:1px solid var(--line); text-decoration:none;">
+        <div style="position:absolute; inset:0; background:#1a1610; background-image:linear-gradient(rgba(242,169,59,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(242,169,59,.10) 1px,transparent 1px); background-size:36px 36px;"></div>
+        <div style="position:absolute; left:50%; top:45%; transform:translate(-50%,-100%);"><div style="width:28px; height:28px; background:var(--accent); border-radius:50% 50% 50% 0; transform:rotate(-45deg); box-shadow:0 6px 16px rgba(0,0,0,.5);"></div></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; background:rgba(20,17,13,.9); padding:14px 16px; display:flex; justify-content:space-between; align-items:center; gap:10px;"><span style="font-size:13px;"><strong>La Befana</strong> · C. los Tilos, 1</span><span style="font-size:12px; color:var(--accent);">Abrir mapa →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0F0D0A; border-top:1px solid var(--line); padding:46px 22px 30px;">
+    <div style="max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between;">
+      <div style="max-width:320px;">
+        <div style="font-family:var(--head); font-weight:700; letter-spacing:.3em; font-size:18px;">LA&nbsp;BEFANA</div>
+        <p style="color:var(--muted); font-size:14px; line-height:1.6; margin:14px 0 0;">Pizzería artesanal en Solares, Cantabria. Masa de fermentación natural y pasta fresca hecha a mano.</p>
+      </div>
+      <div style="display:flex; gap:44px; flex-wrap:wrap;">
+        <div><div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px;">Visítanos</div><div style="font-size:14px; line-height:1.8; color:var(--muted);">C. los Tilos, 1<br>39710 Solares, Cantabria<br>Jue–Dom · 20:00–23:30</div></div>
+        <div><div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px;">Contacto</div><div style="display:flex; flex-direction:column; gap:8px; font-size:14px;"><a href="tel:+34617984863" style="color:var(--muted); text-decoration:none;">617 98 48 63</a><a href="https://facebook.com/pizzerialabefanasolares" target="_blank" rel="noopener" style="color:var(--muted); text-decoration:none;">Facebook</a></div></div>
+      </div>
+    </div>
+    <div style="max-width:1100px; margin:30px auto 0; padding-top:18px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; font-size:12px; color:var(--muted);">
+      <span>© 2026 Pizzería La Befana</span>
+      <span>Propuesta web · contenido y horario de ejemplo</span>
+    </div>
+  </footer>
+
+  <!-- FLOATING CART BUTTON -->
+  <button onClick="{{ openCart }}" style="position:fixed; right:20px; bottom:20px; z-index:70; cursor:pointer; background:var(--accent); color:#14110D; border:none; border-radius:999px; padding:15px 22px; font-weight:700; font-size:15px; box-shadow:0 12px 30px rgba(0,0,0,.45); display:flex; align-items:center; gap:10px;">
+    <span style="font-size:18px;">🛒</span><span>{{ cartCount }}</span><span style="opacity:.6;">·</span><span>{{ cartTotal }}</span>
+  </button>
+
+  <!-- CART OVERLAY -->
+  <div ref="{{ overlayRef }}" onClick="{{ closeCart }}" style="position:fixed; inset:0; z-index:80; background:rgba(0,0,0,.5); opacity:0; pointer-events:none; transition:opacity .25s ease;"></div>
+  <aside ref="{{ cartRef }}" class="mo-cart" style="position:fixed; top:0; right:0; bottom:0; z-index:90; width:400px; max-width:100%; background:var(--bg2); border-left:1px solid var(--line); transform:translateX(100%); transition:transform .28s cubic-bezier(.4,0,.2,1); display:flex; flex-direction:column;">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:20px; border-bottom:1px solid var(--line);">
+      <span style="font-family:var(--head); font-weight:600; font-size:18px;">Tu pedido</span>
+      <button onClick="{{ closeCart }}" aria-label="Cerrar" style="cursor:pointer; background:none; border:1px solid var(--line); color:var(--text); width:34px; height:34px; border-radius:8px; font-size:18px;">✕</button>
+    </div>
+    <div style="flex:1; overflow-y:auto; padding:16px 20px;">
+      <sc-if value="{{ ordered }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:40px 8px;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(242,169,59,.16); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto 18px;">✓</div>
+          <h3 style="font-family:var(--head); font-size:22px; margin:0;">¡Pedido recibido!</h3>
+          <p style="color:var(--muted); font-size:15px; line-height:1.6; margin:12px 0 0;">Te llamaremos para confirmar la hora de recogida.</p>
+          <p style="color:var(--muted); font-size:12px; margin:12px 0 0; font-style:italic;">Demo — no se ha tramitado ningún pedido real.</p>
+          <button onClick="{{ newOrder }}" style="margin-top:20px; cursor:pointer; background:transparent; border:1px solid var(--line); color:var(--text); padding:12px 22px; border-radius:999px; font-size:14px;">Nuevo pedido</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:50px 12px; color:var(--muted);">
+          <div style="font-size:40px; margin-bottom:12px;">🍕</div>
+          <p style="font-size:15px; line-height:1.6;">Tu carrito está vacío.<br>Añade pizzas desde la carta.</p>
+          <a href="#carta" onClick="{{ closeCart }}" style="display:inline-block; margin-top:14px; text-decoration:none; background:var(--accent); color:#14110D; font-weight:600; padding:12px 22px; border-radius:999px; font-size:14px;">Ver la carta</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="3">
+            <div style="display:flex; gap:12px; align-items:center; background:var(--bg3); border:1px solid var(--line); border-radius:12px; padding:12px;">
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:15px; font-weight:500;">{{ ci.name }}</div>
+                <div style="font-size:13px; color:var(--accent); margin-top:2px;">{{ ci.lineTotal }}</div>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button onClick="{{ ci.dec }}" aria-label="Quitar" style="cursor:pointer; width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:transparent; color:var(--text); font-size:18px;">−</button>
+                <span style="min-width:18px; text-align:center; font-size:15px;">{{ ci.qty }}</span>
+                <button onClick="{{ ci.inc }}" aria-label="Añadir" style="cursor:pointer; width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:transparent; color:var(--text); font-size:18px;">+</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid var(--line); padding:18px 20px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
+          <span style="color:var(--muted); font-size:14px;">Total</span>
+          <span style="font-family:var(--head); font-weight:700; font-size:24px; color:var(--accent);">{{ cartTotal }}</span>
+        </div>
+        <button onClick="{{ checkout }}" style="width:100%; cursor:pointer; background:var(--accent); color:#14110D; font-weight:700; border:none; padding:16px; border-radius:12px; font-size:16px;">Tramitar pedido</button>
+        <p style="text-align:center; font-size:11px; color:var(--muted); margin:10px 0 0;">Pago en el local · pedido de ejemplo (demo)</p>
+      </div>
+    </sc-if>
+  </aside>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    cat: 'pizzas', sub: 'todas', navOpen: false,
+    cart: {}, cartOpen: false, ordered: false,
+    rFecha: '', rHora: '20:30', rPers: '2', rNombre: '', rTel: '', resvDone: false
+  };
+
+  eur(n){ return n.toFixed(2).replace('.', ',') + '€'; }
+
+  componentDidMount(){ this.applyCart(); }
+  componentDidUpdate(){ this.applyCart(); }
+  applyCart(){
+    const open = this.state.cartOpen;
+    const a = this._cartRef && this._cartRef.current;
+    const o = this._overlayRef && this._overlayRef.current;
+    if (a) a.style.transform = open ? 'translateX(0)' : 'translateX(100%)';
+    if (o){ o.style.opacity = open ? '1' : '0'; o.style.pointerEvents = open ? 'auto' : 'none'; }
+    if (typeof document !== 'undefined') document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  get data() {
+    return {
+      pizzas: [
+        { g:'clasicas', name:'Margherita', p:10.50, desc:'Tomate San Marzano, mozzarella fior di latte y albahaca.' },
+        { g:'clasicas', name:'Prosciutto Cotto', p:11.50, desc:'Tomate, mozzarella y jamón cocido.' },
+        { g:'clasicas', name:'Napolitana', p:13.00, desc:'Tomate, mozzarella, anchoas, alcaparras y orégano.' },
+        { g:'clasicas', name:'Diavola', p:11.50, desc:'Tomate, mozzarella y salami picante.' },
+        { g:'clasicas', name:'Hawaiana', p:13.00, desc:'Tomate, mozzarella, jamón cocido y piña.' },
+        { g:'clasicas', name:'Frankfurt', p:11.50, desc:'Tomate, mozzarella y salchicha.' },
+        { g:'clasicas', name:'Salami', p:13.00, desc:'Tomate, mozzarella y salami.' },
+        { g:'clasicas', name:'Vegetal', p:14.00, desc:'Tomate, mozzarella y verduras a la plancha.' },
+        { g:'clasicas', name:'Caprese', p:13.00, desc:'Tomate, mozzarella, tomate fresco y albahaca.' },
+        { g:'clasicas', name:'Bacon Cipolla', p:13.00, desc:'Tomate, mozzarella, bacon y cebolla.' },
+        { g:'clasicas', name:'Boloñesa', p:14.00, desc:'Tomate, mozzarella y ragú boloñés.' },
+        { g:'especiales', name:'Cuattro Formaggi', p:15.00, desc:'Mozzarella, gorgonzola, parmigiano y emmental.' },
+        { g:'especiales', name:'Bianca', p:15.00, desc:'Base de nata, mozzarella y parmigiano.' },
+        { g:'especiales', name:'Montanara', p:15.00, desc:'Tomate, mozzarella, champiñón, salchicha italiana y gorgonzola.' },
+        { g:'especiales', name:'Boletus', p:13.00, desc:'Tomate, mozzarella y boletus salteado.' },
+        { g:'especiales', name:'Cotto o Funghi Freschi', p:13.00, desc:'Tomate, mozzarella, jamón cocido y champiñón fresco.' },
+        { g:'especiales', name:'Saporita', p:15.50, desc:'Tomate, mozzarella, jamón serrano y queso grana.' },
+        { g:'especiales', name:'Tonno e Cipolla', p:13.00, desc:'Tomate, mozzarella, atún y cebolla.' },
+        { g:'especiales', name:'Carbonara', p:15.50, desc:'Nata, mozzarella, bacon, huevo y parmigiano.' },
+        { g:'especiales', name:'Parmigiana', p:13.00, desc:'Tomate, mozzarella, berenjena y parmigiano.' },
+        { g:'especiales', name:'Barbacoa', p:15.00, desc:'Tomate, mozzarella, carne, bacon y salsa barbacoa.' },
+        { g:'especiales', name:'Sficiosa', p:14.50, desc:'Tomate, provolone y jamón serrano.' },
+        { g:'premium', name:'Zucca', p:16.00, desc:'Crema de calabaza, mozzarella, gorgonzola y nueces.' },
+        { g:'premium', name:'Cantabra', p:16.00, desc:'Tomate, mozzarella y producto cántabro de temporada.' },
+        { g:'premium', name:'Del Mar', p:15.00, desc:'Tomate, mozzarella y marisco.' },
+        { g:'premium', name:'Mortacho', p:16.00, desc:'Mozzarella fior di latte, mortadela DOP y pistacho.' }
+      ],
+      pasta: [
+        { name:'Lasagna de Boloñesa', p:12.50, desc:'Pasta fresca al horno con ragú boloñés y bechamel.' },
+        { name:'Tagliatelle (140 g)', p:13.50, desc:'Con la salsa que elijas.' },
+        { name:'½ Tagliatelle al tomate', p:7.50, desc:'Media ración con salsa de tomate.' },
+        { name:'½ Tagliatelle (salsa a elegir)', p:10.00, desc:'Media ración con la salsa que prefieras.' },
+        { name:'Ravioli de Ricotta e Parmigiano', p:15.20, desc:'Rellenos a mano de ricotta y parmigiano.' },
+        { name:'Ravioli Funghi e Ricotta', p:15.20, desc:'Rellenos de setas y ricotta.' },
+        { name:'Ravioli de Espinacas', p:15.20, desc:'Rellenos de espinacas y ricotta.' }
+      ],
+      antipasti: [
+        { name:'Carpaccio de bresaola', p:16.00, desc:'Cecina curada con rúcula y parmigiano.' },
+        { name:'Carpaccio de calabacín con búfala', p:14.00, desc:'Calabacín fino, mozzarella de búfala y aceite.' },
+        { name:'Provolone al horno', p:10.50, desc:'Queso provolone fundido al horno.' },
+        { name:'Mix croquetas caseras (12 u)', p:15.00, desc:'Surtido de croquetas hechas en casa.' },
+        { name:'Croquetas caseras (8 u)', p:11.00, desc:'Jamón, cuattro formaggi o carbonara.' },
+        { name:'Alitas de pollo', p:9.50, desc:'Ración grande.' },
+        { name:'Delicias de pollo', p:9.50, desc:'Ración grande.' },
+        { name:'Patatas (alioli o bravas)', p:6.40, desc:'Ración grande.' }
+      ],
+      ensaladas: [
+        { name:'Caprese', p:11.00, desc:'Tomate, mozzarella y albahaca.' },
+        { name:'Burrata', p:14.00, desc:'Burrata fresca con tomate y aceite.' },
+        { name:'César', p:16.00, desc:'Pollo, picatostes, parmigiano y salsa césar.' },
+        { name:'Befana', p:16.00, desc:'Nuestra ensalada de la casa.' },
+        { name:'Toscana', p:16.00, desc:'Mix de hojas e ingredientes italianos.' },
+        { name:'Clásica', p:16.00, desc:'Lechuga, tomate, cebolla y aceitunas.' }
+      ]
+    };
+  }
+
+  reviews = [
+    { text:'La mejor pizza de la zona. Masa fina, ligera y con un borde espectacular.', author:'Reseña de Google' },
+    { text:'Pasta fresca de verdad y trato cercano. Los raviolis, de diez.', author:'Reseña de Google' },
+    { text:'Auténtica italiana en Solares. Repetiremos seguro.', author:'Reseña de Google' }
+  ];
+
+  addToCart(it){ this.setState(s => { const c = {...s.cart}; const e = c[it.name]; c[it.name] = { name: it.name, p: it.p, qty: (e ? e.qty + 1 : 1) }; return { cart: c, ordered: false }; }); }
+  inc(name){ this.setState(s => { const c = {...s.cart}; c[name] = { ...c[name], qty: c[name].qty + 1 }; return { cart: c }; }); }
+  dec(name){ this.setState(s => { const c = {...s.cart}; const q = c[name].qty - 1; if (q <= 0) delete c[name]; else c[name] = { ...c[name], qty: q }; return { cart: c }; }); }
+
+  renderVals() {
+    const cat = this.state.cat, sub = this.state.sub;
+    let raw = cat === 'pizzas' ? (sub === 'todas' ? this.data.pizzas : this.data.pizzas.filter(p => p.g === sub)) : this.data[cat];
+    const items = raw.map(it => ({ name: it.name, desc: it.desc, price: this.eur(it.p), add: () => this.addToCart(it) }));
+
+    const notes = {
+      pizzas: 'Ingrediente extra 1,70€ · Premium 2,20€ · Burrata +1,50€.',
+      pasta: "Salsas: boloñesa · carbonara con guanciale · cuattro formaggi · pesto · nata con setas · nata y gambas · all'arrabbiata.",
+      antipasti: 'Raciones para compartir. Algunas disponibles también en media ración en el local.',
+      ensaladas: 'Disponibles en media ración en el local · salsa extra 1,50€.'
+    };
+
+    const tabs = [['pizzas','Pizzas'],['pasta','Pasta'],['antipasti','Antipasti'],['ensaladas','Ensaladas']].map(([k,l]) => ({ label:l, active:cat===k, inactive:cat!==k, onClick:() => this.setState({cat:k, sub:'todas'}) }));
+    const subChips = [['todas','Todas'],['clasicas','Clásicas'],['especiales','Especiales'],['premium','Premium']].map(([k,l]) => ({ label:l, active:sub===k, inactive:sub!==k, onClick:() => this.setState({sub:k}) }));
+
+    const cartArr = Object.values(this.state.cart);
+    const cartCount = cartArr.reduce((a,c) => a + c.qty, 0);
+    const total = cartArr.reduce((a,c) => a + c.p * c.qty, 0);
+    const cartItems = cartArr.map(c => ({ name: c.name, qty: c.qty, lineTotal: this.eur(c.p * c.qty), inc: () => this.inc(c.name), dec: () => this.dec(c.name) }));
+
+    const now = new Date(); const day = now.getDay(); const t = now.getHours() + now.getMinutes()/60;
+    const isOpen = [0,4,5,6].includes(day) && t >= 20 && t < 23.5;
+
+    const resvDone = this.state.resvDone;
+
+    return {
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState(s => ({navOpen: !s.navOpen})),
+      closeNav: () => this.setState({navOpen: false}),
+      tabs, subChips, items, note: notes[cat], showSub: cat === 'pizzas',
+      reviews: this.reviews,
+
+      cartCount, cartTotal: this.eur(total),
+      cartRef: (this._cartRef = this._cartRef || React.createRef()),
+      overlayRef: (this._overlayRef = this._overlayRef || React.createRef()),
+      openCart: () => this.setState({cartOpen: true}),
+      closeCart: () => this.setState({cartOpen: false}),
+      cartItems, cartEmpty: cartCount === 0 && !this.state.ordered,
+      cartHasItems: cartCount > 0 && !this.state.ordered,
+      ordered: this.state.ordered,
+      checkout: () => this.setState({ordered: true}),
+      newOrder: () => this.setState({cart: {}, ordered: false}),
+
+      rFecha: this.state.rFecha, rHora: this.state.rHora, rPers: this.state.rPers, rNombre: this.state.rNombre, rTel: this.state.rTel,
+      setFecha: e => this.setState({rFecha: e.target.value}),
+      setHora: e => this.setState({rHora: e.target.value}),
+      setPers: e => this.setState({rPers: e.target.value}),
+      setNombre: e => this.setState({rNombre: e.target.value}),
+      setTel: e => this.setState({rTel: e.target.value}),
+      submitResv: () => this.setState({resvDone: true}),
+      resvReset: () => this.setState({resvDone: false, rNombre: '', rTel: ''}),
+      resvDone, resvOpen: !resvDone,
+      resvSummary: `Mesa para ${this.state.rPers} · ${this.state.rFecha || 'fecha por confirmar'} a las ${this.state.rHora}. ${this.state.rNombre ? 'A nombre de ' + this.state.rNombre + '.' : ''}`,
+
+      openStatus: isOpen ? 'Abierto ahora' : 'Cerrado ahora',
+      openBadgeBg: isOpen ? 'rgba(242,169,59,.14)' : 'rgba(242,235,224,.06)',
+      openBadgeFg: isOpen ? 'var(--accent)' : 'var(--muted)',
+      openDotColor: isOpen ? '#7BD389' : '#E5552E'
+    };
+  }
+}
+</script>
+</body>
+</html>

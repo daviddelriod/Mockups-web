@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Allura&amp;family=Marcellus&amp;family=Oswald:wght@400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --kraft:#ECE0C4; --kraft2:#E4D4B0; --cream:#FBF6EA;
+    --ink:#2B2117; --inksoft:#6E5E46;
+    --garnet:#8E2A2C; --garnetd:#6E2023;
+    --green:#2A4A33; --greend:#1E3526;
+    --tomato:#C0432A; --gold:#B98E37;
+    --font-head:'DM Serif Display', Georgia, serif;
+    --font-script:'Allura', cursive;
+    --font-body:'Lora', Georgia, serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--kraft);-webkit-font-smoothing:antialiased;}
+  img{display:block;max-width:100%;}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(-2deg);}}
+  @keyframes drift{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  ::selection{background:var(--garnet);color:var(--cream);}
+  .lb-burger{display:none;}
+  @media (max-width:880px){
+    .lb-desktop-nav{display:none !important;}
+    .lb-burger{display:flex !important;}
+    .lb-hero-grid{grid-template-columns:1fr !important; text-align:left;}
+    .lb-split{grid-template-columns:1fr !important;}
+    .lb-2col{grid-template-columns:1fr !important;}
+    .lb-3col{grid-template-columns:1fr !important;}
+    .lb-menu-cols{columns:1 !important;}
+    .lb-pedidos{grid-template-columns:1fr !important;}
+  }
+  @media (min-width:881px) and (max-width:1040px){
+    .lb-3col{grid-template-columns:1fr 1fr !important;}
+  }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative; background:var(--kraft); background-image:radial-gradient(circle at 18% 12%, rgba(255,255,255,.40), transparent 42%), radial-gradient(circle at 85% 88%, rgba(110,80,35,.07), transparent 46%); overflow-x:hidden;">
+
+  <!-- demo strip -->
+  <div style="background:var(--greend); color:var(--cream); font-size:11px; letter-spacing:.14em; text-transform:uppercase; text-align:center; padding:6px 14px; font-family:var(--font-body);">Propuesta de diseño · contenido de ejemplo editable</div>
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(251,246,234,.86); backdrop-filter:blur(8px); border-bottom:1px solid rgba(43,33,23,.12);">
+    <div style="max-width:1180px; margin:0 auto; padding:10px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+      <a href="#top" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+        <img src="assets/logo-transparent.png" alt="La Befana" style="width:42px; height:42px; object-fit:contain;">
+        <span style="font-family:var(--font-script); font-size:30px; line-height:.8; color:var(--garnet);">La Befana</span>
+      </a>
+      <nav style="display:flex; align-items:center; gap:26px;" class="lb-desktop-nav">
+        <a href="#historia" style="text-decoration:none; color:var(--ink); font-size:14px; letter-spacing:.02em;">Historia</a>
+        <a href="#artesana" style="text-decoration:none; color:var(--ink); font-size:14px; letter-spacing:.02em;">Cómo lo hacemos</a>
+        <a href="#carta" style="text-decoration:none; color:var(--ink); font-size:14px; letter-spacing:.02em;">Carta</a>
+        <a href="#pedidos" style="text-decoration:none; color:var(--ink); font-size:14px; letter-spacing:.02em;">Pedidos</a>
+        <a href="#contacto" style="text-decoration:none; color:var(--ink); font-size:14px; letter-spacing:.02em;">Contacto</a>
+        <a href="tel:+34617984863" style="text-decoration:none; background:var(--garnet); color:var(--cream); font-size:14px; padding:9px 16px; border-radius:999px; display:inline-flex; align-items:center; gap:7px;">Llamar · 617 98 48 63</a>
+      </nav>
+      <button onClick="{{ toggleNav }}" aria-label="Menú" class="lb-burger" style="display:none; background:none; border:1px solid rgba(43,33,23,.25); border-radius:8px; width:42px; height:38px; cursor:pointer; flex-direction:column; gap:4px; align-items:center; justify-content:center;">
+        <span style="width:18px; height:2px; background:var(--ink); display:block;"></span>
+        <span style="width:18px; height:2px; background:var(--ink); display:block;"></span>
+        <span style="width:18px; height:2px; background:var(--ink); display:block;"></span>
+      </button>
+    </div>
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid rgba(43,33,23,.12); background:var(--cream); padding:8px 18px 16px; display:flex; flex-direction:column; gap:2px;">
+        <a onClick="{{ closeNav }}" href="#historia" style="text-decoration:none; color:var(--ink); padding:11px 4px; border-bottom:1px solid rgba(43,33,23,.08); font-size:16px;">Historia</a>
+        <a onClick="{{ closeNav }}" href="#artesana" style="text-decoration:none; color:var(--ink); padding:11px 4px; border-bottom:1px solid rgba(43,33,23,.08); font-size:16px;">Cómo lo hacemos</a>
+        <a onClick="{{ closeNav }}" href="#carta" style="text-decoration:none; color:var(--ink); padding:11px 4px; border-bottom:1px solid rgba(43,33,23,.08); font-size:16px;">Carta</a>
+        <a onClick="{{ closeNav }}" href="#pedidos" style="text-decoration:none; color:var(--ink); padding:11px 4px; border-bottom:1px solid rgba(43,33,23,.08); font-size:16px;">Pedidos</a>
+        <a onClick="{{ closeNav }}" href="#contacto" style="text-decoration:none; color:var(--ink); padding:11px 4px; font-size:16px;">Contacto</a>
+        <a onClick="{{ closeNav }}" href="tel:+34617984863" style="margin-top:10px; text-align:center; text-decoration:none; background:var(--garnet); color:var(--cream); padding:13px; border-radius:999px; font-size:16px;">Llamar para pedir · 617 98 48 63</a>
+      </div>
+    </sc-if>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- ============ HERO V1 · foto a sangre ============ -->
+  <sc-if value="{{ v1 }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Hero" style="position:relative; min-height:88vh; display:flex; align-items:flex-end; overflow:hidden;">
+    <img src="./saveclip-app_587761081_18140066689459550-mqz553vm.jpg" alt="Pizza artesanal La Befana" style="position: absolute; inset: 0; height: 100%; object-fit: cover; width: 100%">
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,12,8,.55) 0%, rgba(20,12,8,.15) 38%, rgba(20,12,8,.78) 100%);"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto; padding:0 22px 64px; width:100%;">
+      <div style="font-family:var(--font-body); color:var(--cream); letter-spacing:.28em; text-transform:uppercase; font-size:12px; opacity:.9; margin-bottom:10px;">Solares · Cantabria · desde el horno</div>
+      <h1 style="margin:0; line-height:.9;">
+        <span style="display:block; font-family:var(--font-script); font-size:clamp(64px,16vw,150px); color:#fff; text-shadow:0 4px 30px rgba(0,0,0,.4);">La Befana</span>
+        <span style="display:block; font-family:var(--font-head); font-size:clamp(18px,4vw,30px); color:var(--gold); letter-spacing:.12em; text-transform:uppercase; margin-top:2px;">Pizzería · Trattoria</span>
+      </h1>
+      <p style="font-family:var(--font-head); color:#fff; font-size:clamp(18px,3.4vw,26px); margin:18px 0 0; max-width:620px; line-height:1.3;">Fermentación natural · Boleada a mano · Estirada al momento</p>
+      <p style="color:rgba(255,255,255,.88); font-size:clamp(15px,2.2vw,18px); margin:10px 0 0; max-width:540px; line-height:1.5;">Cocina italiana de verdad: pizza artesanal y pasta fresca hecha a mano cada día.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;">
+        <a href="#carta" style="text-decoration:none; background:var(--garnet); color:var(--cream); padding:14px 26px; border-radius:999px; font-size:16px; box-shadow:0 8px 24px rgba(0,0,0,.25);">Ver la carta</a>
+        <a href="tel:+34617984863" style="text-decoration:none; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.55); color:#fff; padding:14px 26px; border-radius:999px; font-size:16px; backdrop-filter:blur(4px);">Llamar para pedir</a>
+      </div>
+      <div style="display:inline-flex; align-items:center; gap:9px; margin-top:24px; background:rgba(251,246,234,.92); padding:8px 14px; border-radius:999px;">
+        <span style="color:var(--gold); font-size:15px; letter-spacing:1px;">★★★★★</span>
+        <span style="font-size:13px; color:var(--ink);"><strong>4,5</strong> · 876 opiniones en Google</span>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ HERO V2 · cartel kraft ============ -->
+  <sc-if value="{{ v2 }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Hero" style="position:relative; padding:48px 22px 56px; overflow:hidden;">
+    <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center;" class="lb-hero-grid">
+      <div>
+        <div style="font-family:var(--font-body); color:var(--garnet); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:8px;">Solares · Cantabria</div>
+        <h1 style="margin:0; line-height:.86;">
+          <span style="display:block; font-family:var(--font-script); font-size:clamp(72px,15vw,160px); color:var(--garnet);">La Befana</span>
+          <span style="display:block; font-family:var(--font-head); font-size:clamp(18px,3.5vw,30px); color:var(--green); letter-spacing:.1em; text-transform:uppercase; margin-top:4px;">Pizzería · Trattoria</span>
+        </h1>
+        <p style="font-family:var(--font-head); color:var(--ink); font-size:clamp(19px,3vw,27px); margin:22px 0 0; line-height:1.32; max-width:520px;">Fermentación natural · Boleada a mano · Estirada al momento</p>
+        <p style="color:var(--inksoft); font-size:17px; margin:12px 0 0; line-height:1.55; max-width:480px;">Cocina italiana de verdad: pizza artesanal y pasta fresca hecha a mano cada día, en el corazón de Solares.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;">
+          <a href="#carta" style="text-decoration:none; background:var(--garnet); color:var(--cream); padding:14px 26px; border-radius:999px; font-size:16px;">Ver la carta</a>
+          <a href="tel:+34617984863" style="text-decoration:none; background:transparent; border:1.5px solid var(--green); color:var(--green); padding:14px 26px; border-radius:999px; font-size:16px;">Llamar para pedir</a>
+        </div>
+        <div style="display:inline-flex; align-items:center; gap:9px; margin-top:24px; background:var(--cream); border:1px solid rgba(43,33,23,.12); padding:8px 14px; border-radius:999px;">
+          <span style="color:var(--gold); font-size:15px; letter-spacing:1px;">★★★★★</span>
+          <span style="font-size:13px; color:var(--ink);"><strong>4,5</strong> · 876 opiniones en Google</span>
+        </div>
+      </div>
+      <div style="position:relative; display:flex; align-items:center; justify-content:center; min-height:360px;">
+        <div style="position:absolute; width:118%; max-width:560px; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 50% 35%, rgba(190,142,55,.22), transparent 62%);"></div>
+        <div style="position:relative; width:min(86%,440px); aspect-ratio:1; border-radius:50%; overflow:hidden; box-shadow:0 26px 60px rgba(43,33,23,.32); border:8px solid var(--cream);">
+          <img src="./saveclip-app_587761081_18140066689459550-mqz553vm.jpg" alt="Pizza con burrata" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <img src="assets/logo-transparent.png" alt="" style="position:absolute; right:2%; bottom:2%; width:108px; height:108px; object-fit:contain; animation:floaty 6s ease-in-out infinite; filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));">
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ============ HERO V3 · partido ============ -->
+  <sc-if value="{{ v3 }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Hero" style="position:relative;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; min-height:84vh;" class="lb-split">
+      <div style="background:var(--greend); color:var(--cream); display:flex; flex-direction:column; justify-content:center; padding:clamp(32px,5vw,64px);">
+        <div style="font-family:var(--font-body); color:var(--gold); letter-spacing:.28em; text-transform:uppercase; font-size:12px; margin-bottom:10px;">Solares · Cantabria</div>
+        <h1 style="margin:0; line-height:.88;">
+          <span style="display:block; font-family:var(--font-script); font-size:clamp(64px,12vw,128px); color:#fff;">La Befana</span>
+          <span style="display:block; font-family:var(--font-head); font-size:clamp(17px,3vw,26px); color:var(--gold); letter-spacing:.12em; text-transform:uppercase; margin-top:4px;">Pizzería · Trattoria</span>
+        </h1>
+        <p style="font-family:var(--font-head); font-size:clamp(18px,2.6vw,24px); margin:22px 0 0; line-height:1.35; color:#fff;">Fermentación natural · Boleada a mano · Estirada al momento</p>
+        <p style="color:rgba(251,246,234,.82); font-size:16px; margin:12px 0 0; line-height:1.55; max-width:440px;">Pizza artesanal y pasta fresca hecha a mano, todos los días.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;">
+          <a href="#carta" style="text-decoration:none; background:var(--garnet); color:var(--cream); padding:14px 26px; border-radius:999px; font-size:16px;">Ver la carta</a>
+          <a href="tel:+34617984863" style="text-decoration:none; background:transparent; border:1.5px solid rgba(255,255,255,.55); color:#fff; padding:14px 26px; border-radius:999px; font-size:16px;">Llamar para pedir</a>
+        </div>
+        <div style="display:inline-flex; align-items:center; gap:9px; margin-top:26px;">
+          <span style="color:var(--gold); font-size:15px; letter-spacing:1px;">★★★★★</span>
+          <span style="font-size:13px; color:rgba(251,246,234,.9);"><strong>4,5</strong> · 876 opiniones en Google</span>
+        </div>
+      </div>
+      <div style="position:relative; min-height:300px;">
+        <img src="./saveclip-app_610753398_18143175118459550-mqz4pmxr.jpg" alt="Pizza artesanal" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- hero variant switcher -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:14px; padding:16px; background:var(--kraft2);">
+    <span style="font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--inksoft);">Variante de portada</span>
+    <div style="display:flex; gap:8px;">
+      <sc-for list="{{ heroPips }}" as="p" hint-placeholder-count="3">
+        <button onClick="{{ p.onClick }}" title="{{ p.label }}" style="cursor:pointer; border:1px solid rgba(43,33,23,.3); border-radius:999px; padding:6px 14px; font-family:var(--font-body); font-size:12px; background:{{ p.bg }}; color:{{ p.fg }};">{{ p.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ HISTORIA ============ -->
+  <section id="historia" data-screen-label="Historia" style="scroll-margin-top:72px; padding:clamp(56px,9vw,104px) 22px; background:var(--cream);">
+    <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(28px,5vw,64px); align-items:center;" class="lb-2col">
+      <div style="position:relative; display:flex; justify-content:center;">
+        <div style="width:min(78%,300px); aspect-ratio:3/4; border-radius:200px 200px 14px 14px; overflow:hidden; box-shadow:0 22px 48px rgba(43,33,23,.22); border:6px solid var(--kraft);">
+          <img src="./saveclip-app_581529663_18138759607459550-mqz4zp0a.jpg" alt="Interior de La Befana" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <img src="assets/logo-transparent.png" alt="" style="position:absolute; left:0; top:-8px; width:96px; height:96px; object-fit:contain; animation:drift 7s ease-in-out infinite;">
+      </div>
+      <div>
+        <div style="font-family:var(--font-body); color:var(--garnet); letter-spacing:.24em; text-transform:uppercase; font-size:12px; margin-bottom:10px;">El nombre no es casual</div>
+        <h2 style="font-family:var(--font-head); font-size:clamp(30px,5vw,52px); color:var(--ink); margin:0; line-height:1.05;">La brujita buena del <span style="color:var(--garnet);">folclore italiano</span></h2>
+        <p style="font-size:17px; line-height:1.7; color:var(--inksoft); margin:20px 0 0;">En Italia, <em>La Befana</em> es la entrañable brujita que la noche de Reyes vuela en su escoba repartiendo dulces a los niños. Una figura con magia, con carácter y con alma. Igual que ella, aquí hacemos las cosas con tiempo, con mimo y con un punto de hechizo.</p>
+        <p style="font-size:17px; line-height:1.7; color:var(--inksoft); margin:14px 0 0;">No somos una franquicia ni una pizzería más. Somos cocina italiana de verdad, honesta y artesanal, hecha como se hace en casa: sin prisa y con producto.</p>
+        <div style="display:flex; gap:28px; flex-wrap:wrap; margin-top:26px; padding-top:22px; border-top:1px solid rgba(43,33,23,.14);">
+          <div><div style="font-family:var(--font-head); font-size:30px; color:var(--garnet);">100%</div><div style="font-size:13px; color:var(--inksoft);">artesanal</div></div>
+          <div><div style="font-family:var(--font-head); font-size:30px; color:var(--garnet);">48h</div><div style="font-size:13px; color:var(--inksoft);">de fermentación</div></div>
+          <div><div style="font-family:var(--font-head); font-size:30px; color:var(--garnet);">4,5★</div><div style="font-size:13px; color:var(--inksoft);">876 reseñas</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARTESANA / DIFERENCIADOR ============ -->
+  <section id="artesana" data-screen-label="Cómo lo hacemos" style="scroll-margin-top:72px; padding:clamp(56px,9vw,104px) 22px; background:var(--green); color:var(--cream);">
+    <div style="max-width:1080px; margin:0 auto;">
+      <div style="text-align:center; max-width:680px; margin:0 auto;">
+        <div style="font-family:var(--font-body); color:var(--gold); letter-spacing:.24em; text-transform:uppercase; font-size:12px; margin-bottom:10px;">Lo que nos hace distintos</div>
+        <h2 style="font-family:var(--font-head); font-size:clamp(30px,5vw,52px); margin:0; line-height:1.06; color:#fff;">Masa viva, manos de verdad</h2>
+        <p style="font-size:17px; line-height:1.7; color:rgba(251,246,234,.82); margin:18px 0 0;">No hay atajos en una buena pizza. La nuestra nace de una masa de fermentación natural que reposa hasta estar lista, se bolea a mano una a una y se estira al momento, justo antes de ir al horno.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:42px;" class="lb-3col">
+        <div style="background:rgba(251,246,234,.07); border:1px solid rgba(251,246,234,.16); border-radius:14px; padding:26px;">
+          <div style="font-family:var(--font-head); font-size:38px; color:var(--gold);">01</div>
+          <h3 style="font-family:var(--font-head); font-size:22px; margin:8px 0 8px; color:#fff;">Fermentación natural</h3>
+          <p style="font-size:15px; line-height:1.6; color:rgba(251,246,234,.78); margin:0;">Masa que reposa largas horas para una miga ligera, digestible y de sabor profundo.</p>
+        </div>
+        <div style="background:rgba(251,246,234,.07); border:1px solid rgba(251,246,234,.16); border-radius:14px; padding:26px;">
+          <div style="font-family:var(--font-head); font-size:38px; color:var(--gold);">02</div>
+          <h3 style="font-family:var(--font-head); font-size:22px; margin:8px 0 8px; color:#fff;">Boleada a mano</h3>
+          <p style="font-size:15px; line-height:1.6; color:rgba(251,246,234,.78); margin:0;">Cada bola se forma a mano, sin máquinas. El borde alto y aireado lo demuestra.</p>
+        </div>
+        <div style="background:rgba(251,246,234,.07); border:1px solid rgba(251,246,234,.16); border-radius:14px; padding:26px;">
+          <div style="font-family:var(--font-head); font-size:38px; color:var(--gold);">03</div>
+          <h3 style="font-family:var(--font-head); font-size:22px; margin:8px 0 8px; color:#fff;">Estirada al momento</h3>
+          <p style="font-size:15px; line-height:1.6; color:rgba(251,246,234,.78); margin:0;">Nada de discos prehechos: estiramos al pedido para que llegue a la mesa recién hecha.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:46px; background:var(--cream); color:var(--ink); border-radius:16px; padding:clamp(24px,4vw,40px); display:grid; grid-template-columns:1.2fr 1fr; gap:30px; align-items:center;" class="lb-2col">
+        <div>
+          <div style="font-family:var(--font-body); color:var(--garnet); letter-spacing:.2em; text-transform:uppercase; font-size:12px; margin-bottom:8px;">Y además…</div>
+          <h3 style="font-family:var(--font-head); font-size:clamp(26px,4vw,40px); margin:0; line-height:1.08;">Pasta fresca hecha a mano</h3>
+          <p style="font-size:16px; line-height:1.65; color:var(--inksoft); margin:14px 0 0;">Pocas pizzerías la tienen: lasaña, tagliatelle y raviolis amasados a mano cada día, con salsas caseras como la carbonara con guanciale o el ragú boloñés.</p>
+          <a href="#carta" style="display:inline-block; margin-top:18px; text-decoration:none; background:var(--green); color:var(--cream); padding:12px 22px; border-radius:999px; font-size:15px;">Ver pasta y carta</a>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div style="aspect-ratio:1; border-radius:12px; overflow:hidden;"><img src="./saveclip-app_661666602_18152337427459550-mqz4w2u8.jpg" alt="Pizza con burrata" style="width:100%; height:100%; object-fit:cover;"></div><div style="aspect-ratio:1; border-radius:12px; overflow:hidden;"><img src="./saveclip-app_575713156_18138409975459550-mqz4meds.jpg" alt="Pizza con burrata" style="width:100%; height:100%; object-fit:cover;"></div><div style="aspect-ratio:1; border-radius:12px; overflow:hidden;"><img src="./saveclip-app_641754681_18148212130459550-mqz4thr8.jpg" alt="Pizza con burrata" style="width:100%; height:100%; object-fit:cover;"></div>
+          
+          
+          <div style="aspect-ratio:1; border-radius:12px; overflow:hidden;"><img src="./saveclip-app_548312285_1482542593302255_-mqz51a6j.jpg" alt="Interior" style="width:100%; height:100%; object-fit:cover;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARTA ============ -->
+  <section id="carta" data-screen-label="Carta" style="scroll-margin-top:72px; padding:clamp(56px,9vw,100px) 22px; background:var(--cream);">
+    <div style="max-width:980px; margin:0 auto;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--font-body); color:var(--garnet); letter-spacing:.24em; text-transform:uppercase; font-size:12px; margin-bottom:8px;">Buon appetito</div>
+        <h2 style="font-family:var(--font-head); font-size:clamp(34px,6vw,58px); margin:0; color:var(--ink);">Nuestra carta</h2>
+        <p style="color:var(--inksoft); font-size:14px; margin:10px 0 0;">Precios reales · descripciones de ejemplo, fáciles de ajustar.</p>
+      </div>
+
+      <!-- tabs -->
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:28px 0 4px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ t.onClick }}" style="cursor:pointer; border:1.5px solid var(--garnet); background:var(--garnet); color:var(--cream); font-family:var(--font-head); font-size:16px; padding:9px 20px; border-radius:999px;">{{ t.label }}</button>
+          </sc-if>
+          <sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ t.onClick }}" style="cursor:pointer; border:1.5px solid rgba(43,33,23,.25); background:transparent; color:var(--ink); font-family:var(--font-head); font-size:16px; padding:9px 20px; border-radius:999px;">{{ t.label }}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+
+      <!-- pizza subchips -->
+      <sc-if value="{{ showSub }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px;">
+          <sc-for list="{{ subChips }}" as="s" hint-placeholder-count="4">
+            <sc-if value="{{ s.active }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ s.onClick }}" style="cursor:pointer; border:none; background:var(--green); color:var(--cream); font-size:13px; padding:6px 14px; border-radius:999px; letter-spacing:.02em;">{{ s.label }}</button>
+            </sc-if>
+            <sc-if value="{{ s.inactive }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ s.onClick }}" style="cursor:pointer; border:1px solid rgba(43,33,23,.22); background:transparent; color:var(--inksoft); font-size:13px; padding:6px 14px; border-radius:999px; letter-spacing:.02em;">{{ s.label }}</button>
+            </sc-if>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- list -->
+      <div style="background:var(--kraft); border:1px solid rgba(43,33,23,.12); border-radius:16px; padding:clamp(18px,4vw,38px); margin-top:26px; box-shadow:0 12px 40px rgba(43,33,23,.08);">
+        <div style="columns:2; column-gap:46px;" class="lb-menu-cols">
+          <sc-for list="{{ items }}" as="item" hint-placeholder-count="12">
+            <div style="break-inside:avoid; display:flex; justify-content:space-between; gap:14px; align-items:baseline; padding:13px 0; border-bottom:1px dashed rgba(43,33,23,.2);">
+              <div style="flex:1; min-width:0;">
+                <div style="font-family:var(--font-head); font-size:18px; color:var(--garnet); line-height:1.15;">{{ item.name }}</div>
+                <div style="font-size:13.5px; color:var(--inksoft); margin-top:3px; line-height:1.45;">{{ item.desc }}</div>
+              </div>
+              <div style="font-family:var(--font-head); font-size:17px; color:var(--ink); white-space:nowrap;">{{ item.price }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size:13px; color:var(--inksoft); margin:18px 0 0; font-style:italic;">{{ note }}</p>
+      </div>
+      <p style="text-align:center; font-size:13px; color:var(--inksoft); margin-top:18px;">Carta de alérgenos disponible · pregunta a nuestro equipo. <span style="opacity:.7;">(aviso de ejemplo — obligatorio UE)</span></p>
+    </div>
+  </section>
+
+  <!-- ============ RESEÑAS ============ -->
+  <section data-screen-label="Reseñas" style="padding:clamp(52px,8vw,90px) 22px; background:var(--kraft2);">
+    <div style="max-width:1000px; margin:0 auto; text-align:center;">
+      <div style="display:inline-flex; align-items:center; gap:12px; background:var(--cream); border:1px solid rgba(43,33,23,.12); padding:12px 22px; border-radius:999px; box-shadow:0 8px 24px rgba(43,33,23,.08);">
+        <span style="color:var(--gold); font-size:22px; letter-spacing:2px;">★★★★★</span>
+        <span style="font-family:var(--font-head); font-size:22px; color:var(--ink);">4,5</span>
+        <span style="font-size:14px; color:var(--inksoft);">· 876 opiniones en Google</span>
+      </div>
+      <h2 style="font-family:var(--font-head); font-size:clamp(26px,4.5vw,42px); margin:24px 0 0; color:var(--ink);">Lo que dice la gente</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:30px; text-align:left;" class="lb-3col">
+        <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+          <div style="background:var(--cream); border:1px solid rgba(43,33,23,.1); border-radius:14px; padding:22px;">
+            <div style="color:var(--gold); font-size:14px; letter-spacing:1px;">★★★★★</div>
+            <p style="font-family:var(--font-head); font-size:17px; line-height:1.5; color:var(--ink); margin:10px 0 14px;">“{{ r.text }}”</p>
+            <div style="font-size:13px; color:var(--inksoft);">{{ r.author }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size:12px; color:var(--inksoft); margin-top:16px; font-style:italic;">Reseñas de ejemplo — sustituir por reseñas reales de Google.</p>
+    </div>
+  </section>
+
+  <!-- ============ PEDIDOS ============ -->
+  <section id="pedidos" data-screen-label="Pedidos" style="scroll-margin-top:72px; padding:clamp(56px,9vw,100px) 22px; background:var(--cream);">
+    <div style="max-width:1000px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:34px;">
+        <div style="font-family:var(--font-body); color:var(--garnet); letter-spacing:.24em; text-transform:uppercase; font-size:12px; margin-bottom:8px;">¿Cómo lo quieres?</div>
+        <h2 style="font-family:var(--font-head); font-size:clamp(30px,5vw,50px); margin:0; color:var(--ink);">Pide tu pizza</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:{{ pedidosCols }}; gap:18px;" class="lb-pedidos">
+        <div style="background:var(--green); color:var(--cream); border-radius:16px; padding:30px;">
+          <h3 style="font-family:var(--font-head); font-size:24px; margin:0 0 8px;">Comer en el local</h3>
+          <p style="font-size:15px; line-height:1.6; color:rgba(251,246,234,.82); margin:0 0 16px;">Ven a disfrutarla recién salida del horno en nuestra trattoria de Solares.</p>
+          <a href="#contacto" style="text-decoration:none; background:var(--cream); color:var(--green); padding:11px 20px; border-radius:999px; font-size:15px; display:inline-block;">Ver horario y mapa</a>
+        </div>
+        <div style="background:var(--garnet); color:var(--cream); border-radius:16px; padding:30px;">
+          <h3 style="font-family:var(--font-head); font-size:24px; margin:0 0 8px;">Para llevar</h3>
+          <p style="font-size:15px; line-height:1.6; color:rgba(251,246,234,.85); margin:0 0 16px;">Llámanos, pídela y pásate a recogerla. Lista en minutos.</p>
+          <a href="tel:+34617984863" style="text-decoration:none; background:var(--cream); color:var(--garnet); padding:11px 20px; border-radius:999px; font-size:15px; display:inline-block;">Llamar · 617 98 48 63</a>
+        </div>
+        <sc-if value="{{ delivery }}" hint-placeholder-val="{{ true }}">
+          <div style="background:var(--kraft); border:1.5px dashed var(--garnet); color:var(--ink); border-radius:16px; padding:30px; position:relative;">
+            <span style="position:absolute; top:14px; right:14px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; background:var(--garnet); color:var(--cream); padding:3px 8px; border-radius:6px;">Placeholder</span>
+            <h3 style="font-family:var(--font-head); font-size:24px; margin:0 0 8px; color:var(--garnet);">¿Hacemos reparto?</h3>
+            <p style="font-size:15px; line-height:1.6; color:var(--inksoft); margin:0 0 16px;">Sección lista para activar si ofrecéis domicilio. Si no, se elimina en un clic.</p>
+            <a href="tel:+34617984863" style="text-decoration:none; background:var(--garnet); color:var(--cream); padding:11px 20px; border-radius:999px; font-size:15px; display:inline-block;">Pregunta por el reparto</a>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO / HORARIO / MAPA ============ -->
+  <section id="contacto" data-screen-label="Contacto" style="scroll-margin-top:72px; padding:clamp(56px,9vw,100px) 22px; background:var(--green); color:var(--cream);">
+    <div style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(28px,5vw,56px); align-items:start;" class="lb-2col">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:9px; background:{{ openBadgeBg }}; color:{{ openBadgeFg }}; padding:8px 16px; border-radius:999px; font-size:14px; font-weight:600;">
+          <span style="width:9px; height:9px; border-radius:50%; background:{{ openDotColor }}; display:inline-block;"></span>{{ openStatus }}
+        </div>
+        <h2 style="font-family:var(--font-head); font-size:clamp(28px,4.5vw,46px); margin:18px 0 0; color:#fff;">Te esperamos en Solares</h2>
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:16px;">
+          <div>
+            <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Dirección</div>
+            <div style="font-size:17px; line-height:1.5;">C. los Tilos, 1 · 39710 Solares, Cantabria</div>
+          </div>
+          <div>
+            <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;">Teléfono</div>
+            <a href="tel:+34617984863" style="font-size:17px; color:#fff; text-decoration:none;">617 98 48 63</a>
+          </div>
+          <div>
+            <div style="font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;">Horario <span style="opacity:.7; text-transform:none; letter-spacing:0;">(ejemplo — sustituir)</span></div>
+            <div style="display:flex; flex-direction:column; gap:5px; font-size:15px;">
+              <div style="display:flex; justify-content:space-between; gap:20px; max-width:300px;"><span>Lunes – Miércoles</span><span style="opacity:.7;">Cerrado</span></div>
+              <div style="display:flex; justify-content:space-between; gap:20px; max-width:300px;"><span>Jueves – Domingo</span><span>20:00 – 23:30</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:26px;">
+          <a href="tel:+34617984863" style="text-decoration:none; background:var(--garnet); color:var(--cream); padding:13px 24px; border-radius:999px; font-size:15px;">Llamar para pedir</a>
+          <a href="https://maps.google.com/?q=Pizzer%C3%ADa+La+Befana+Solares+Cantabria" target="_blank" rel="noopener" style="text-decoration:none; border:1.5px solid rgba(255,255,255,.5); color:#fff; padding:13px 24px; border-radius:999px; font-size:15px;">Cómo llegar</a>
+        </div>
+      </div>
+      <div>
+        <a href="https://maps.google.com/?q=Pizzer%C3%ADa+La+Befana+Solares+Cantabria" target="_blank" rel="noopener" style="display:block; position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; border:6px solid var(--cream); box-shadow:0 18px 44px rgba(0,0,0,.28); text-decoration:none;">
+          <div style="position:absolute; inset:0; background:#dfe6d8; background-image:linear-gradient(rgba(42,74,51,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(42,74,51,.06) 1px,transparent 1px); background-size:34px 34px;"></div>
+          <div style="position:absolute; inset:0; background-image:linear-gradient(115deg,transparent 44%,rgba(190,142,55,.25) 45%,rgba(190,142,55,.25) 47%,transparent 48%),linear-gradient(60deg,transparent 64%,rgba(142,42,44,.18) 65%,rgba(142,42,44,.18) 67%,transparent 68%);"></div>
+          <div style="position:absolute; left:50%; top:46%; transform:translate(-50%,-100%); text-align:center;">
+            <div style="width:30px; height:30px; background:var(--garnet); border:3px solid var(--cream); border-radius:50% 50% 50% 0; transform:rotate(-45deg); margin:0 auto; box-shadow:0 6px 14px rgba(0,0,0,.3);"></div>
+          </div>
+          <div style="position:absolute; left:0; right:0; bottom:0; background:rgba(251,246,234,.94); color:var(--ink); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <span style="font-size:13px;"><strong>La Befana</strong> · C. los Tilos, 1, Solares</span>
+            <span style="font-size:12px; color:var(--garnet); font-weight:600;">Abrir mapa →</span>
+          </div>
+        </a>
+        <p style="font-size:12px; color:rgba(251,246,234,.6); margin:10px 2px 0; font-style:italic;">Mapa ilustrativo — sustituir por mapa interactivo de Google.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:var(--greend); color:var(--cream); padding:46px 22px 30px;">
+    <div style="max-width:1080px; margin:0 auto; display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:flex-start;">
+      <div style="max-width:300px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/logo-transparent.png" alt="La Befana" style="width:48px; height:48px; object-fit:contain;">
+          <span style="font-family:var(--font-script); font-size:34px; color:#fff; line-height:.8;">La Befana</span>
+        </div>
+        <p style="font-size:14px; line-height:1.6; color:rgba(251,246,234,.75); margin:14px 0 0;">Pizzería · Trattoria italiana artesanal en Solares, Cantabria. Masa de fermentación natural y pasta fresca hecha a mano.</p>
+      </div>
+      <div style="display:flex; gap:48px; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Visítanos</div>
+          <div style="font-size:14px; line-height:1.8; color:rgba(251,246,234,.85);">C. los Tilos, 1<br>39710 Solares, Cantabria<br>Jue–Dom · 20:00–23:30</div>
+        </div>
+        <div>
+          <div style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Contacto</div>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:14px;">
+            <a href="tel:+34617984863" style="color:rgba(251,246,234,.85); text-decoration:none;">617 98 48 63</a>
+            <a href="https://facebook.com/pizzerialabefanasolares" target="_blank" rel="noopener" style="color:rgba(251,246,234,.85); text-decoration:none;">Facebook</a>
+            <a href="#carta" style="color:rgba(251,246,234,.85); text-decoration:none;">Carta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1080px; margin:32px auto 0; padding-top:18px; border-top:1px solid rgba(251,246,234,.16); display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; font-size:12px; color:rgba(251,246,234,.55);">
+      <span>© 2026 Pizzería La Befana</span>
+      <span>Propuesta web · contenido y horario de ejemplo, editables</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;],&quot;default&quot;:&quot;3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Diseño&quot;,&quot;label&quot;:&quot;Portada (Hero)&quot;},&quot;fontPairing&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;clasica&quot;,&quot;editorial&quot;,&quot;cartel&quot;],&quot;default&quot;:&quot;editorial&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Diseño&quot;,&quot;label&quot;:&quot;Tipografía&quot;},&quot;showDelivery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;,&quot;label&quot;:&quot;Mostrar sección de reparto&quot;}}">
+class Component extends DCLogic {
+  state = { cat: 'pizzas', sub: 'todas', navOpen: false, heroVariant: null };
+
+  componentDidMount() {
+    this.rootRef = this.rootRef || React.createRef();
+    this.applyFonts();
+    if (this.state.heroVariant == null) {
+      this.setState({ heroVariant: Number(this.props.heroVariant || 1) });
+    }
+  }
+  componentDidUpdate(prev) {
+    this.applyFonts();
+    if (prev.heroVariant !== this.props.heroVariant) {
+      this.setState({ heroVariant: Number(this.props.heroVariant || 1) });
+    }
+  }
+  applyFonts() {
+    const map = {
+      clasica:   { head: "'DM Serif Display', Georgia, serif", script: "'Allura', cursive" },
+      editorial: { head: "'Marcellus', Georgia, serif",        script: "'Marcellus', Georgia, serif" },
+      cartel:    { head: "'Oswald', system-ui, sans-serif",    script: "'Oswald', system-ui, sans-serif" }
+    };
+    const p = map[this.props.fontPairing || 'clasica'] || map.clasica;
+    const r = document.documentElement;
+    r.style.setProperty('--font-head', p.head);
+    r.style.setProperty('--font-script', p.script);
+  }
+
+  get data() {
+    return {
+      pizzas: [
+        { g:'clasicas', name:'Margherita', price:'10,50€', desc:'Tomate San Marzano, mozzarella fior di latte y albahaca fresca.' },
+        { g:'clasicas', name:'Prosciutto Cotto', price:'11,50€', desc:'Tomate, mozzarella y jamón cocido.' },
+        { g:'clasicas', name:'Napolitana', price:'13,00€', desc:'Tomate, mozzarella, anchoas, alcaparras y orégano.' },
+        { g:'clasicas', name:'Diavola', price:'11,50€', desc:'Tomate, mozzarella y salami picante.' },
+        { g:'clasicas', name:'Hawaiana', price:'13,00€', desc:'Tomate, mozzarella, jamón cocido y piña.' },
+        { g:'clasicas', name:'Frankfurt', price:'11,50€', desc:'Tomate, mozzarella y salchicha. La favorita de los peques.' },
+        { g:'clasicas', name:'Salami', price:'13,00€', desc:'Tomate, mozzarella y salami.' },
+        { g:'clasicas', name:'Vegetal', price:'14,00€', desc:'Tomate, mozzarella y verduras de temporada a la plancha.' },
+        { g:'clasicas', name:'Caprese', price:'13,00€', desc:'Tomate, mozzarella, tomate fresco y albahaca.' },
+        { g:'clasicas', name:'Bacon Cipolla', price:'13,00€', desc:'Tomate, mozzarella, bacon y cebolla.' },
+        { g:'clasicas', name:'Boloñesa', price:'14,00€', desc:'Tomate, mozzarella y ragú boloñés.' },
+        { g:'especiales', name:'Cuattro Formaggi', price:'15,00€', desc:'Mozzarella, gorgonzola, parmigiano y emmental.' },
+        { g:'especiales', name:'Bianca', price:'15,00€', desc:'Base de nata, mozzarella, parmigiano y un hilo de aceite.' },
+        { g:'especiales', name:'Montanara', price:'15,00€', desc:'Tomate, mozzarella, champiñón, salchicha italiana y gorgonzola.' },
+        { g:'especiales', name:'Boletus', price:'13,00€', desc:'Tomate, mozzarella y boletus salteado.' },
+        { g:'especiales', name:'Cotto o Funghi Freschi', price:'13,00€', desc:'Tomate, mozzarella, jamón cocido y champiñón fresco.' },
+        { g:'especiales', name:'Saporita', price:'15,50€', desc:'Tomate, mozzarella, jamón serrano y queso grana.' },
+        { g:'especiales', name:'Tonno e Cipolla', price:'13,00€', desc:'Tomate, mozzarella, atún y cebolla.' },
+        { g:'especiales', name:'Carbonara', price:'15,50€', desc:'Nata, mozzarella, bacon, huevo y parmigiano.' },
+        { g:'especiales', name:'Parmigiana', price:'13,00€', desc:'Tomate, mozzarella, berenjena y parmigiano.' },
+        { g:'especiales', name:'Barbacoa', price:'15,00€', desc:'Tomate, mozzarella, carne, bacon y salsa barbacoa.' },
+        { g:'especiales', name:'Sficiosa', price:'14,50€', desc:'Tomate, provolone y jamón serrano.' },
+        { g:'premium', name:'Zucca', price:'16,00€', desc:'Crema de calabaza, mozzarella, gorgonzola y nueces.' },
+        { g:'premium', name:'Cantabra', price:'16,00€', desc:'Tomate, mozzarella y producto cántabro de temporada.' },
+        { g:'premium', name:'Del Mar', price:'15,00€', desc:'Tomate, mozzarella y marisco.' },
+        { g:'premium', name:'Mortacho', price:'16,00€', desc:'Mozzarella fior di latte, mortadela DOP y pistacho.' }
+      ],
+      pasta: [
+        { name:'Lasagna de Boloñesa', price:'12,50€', desc:'Pasta fresca al horno con ragú boloñés y bechamel.' },
+        { name:'Tagliatelle (140 g)', price:'13,50€', desc:'Con la salsa que elijas.' },
+        { name:'½ Tagliatelle al tomate', price:'7,50€', desc:'Media ración con salsa de tomate.' },
+        { name:'½ Tagliatelle (salsa a elegir)', price:'10,00€', desc:'Media ración con la salsa que prefieras.' },
+        { name:'Ravioli de Ricotta e Parmigiano', price:'15,20€', desc:'Rellenos a mano de ricotta y parmigiano.' },
+        { name:'Ravioli Funghi e Ricotta', price:'15,20€', desc:'Rellenos de setas y ricotta.' },
+        { name:'Ravioli de Espinacas', price:'15,20€', desc:'Rellenos de espinacas y ricotta.' }
+      ],
+      antipasti: [
+        { name:'Carpaccio de bresaola', price:'16,00€', desc:'Cecina de ternera curada con rúcula y parmigiano.' },
+        { name:'Carpaccio de calabacín con búfala', price:'14,00€', desc:'Calabacín fino, mozzarella de búfala y aceite.' },
+        { name:'Provolone al horno', price:'10,50€', desc:'Queso provolone fundido al horno.' },
+        { name:'Mix croquetas caseras (12 u)', price:'15,00€', desc:'Surtido de nuestras croquetas hechas en casa.' },
+        { name:'Croquetas caseras', price:'6,60€ / 11,00€', desc:'Jamón, cuattro formaggi o carbonara · 4 u / 8 u.' },
+        { name:'Alitas de pollo', price:'5,50€ / 9,50€', desc:'Ración / ración grande.' },
+        { name:'Delicias de pollo', price:'5,50€ / 9,50€', desc:'Ración / ración grande.' },
+        { name:'Patatas (alioli o bravas)', price:'4,50€ / 6,40€', desc:'Ración / ración grande.' }
+      ],
+      ensaladas: [
+        { name:'Caprese', price:'11,00€', desc:'Tomate, mozzarella y albahaca.' },
+        { name:'Burrata', price:'14,00€', desc:'Burrata fresca con tomate y aceite.' },
+        { name:'César', price:'11,50€ / 16,00€', desc:'Pollo, picatostes, parmigiano y salsa césar.' },
+        { name:'Befana', price:'11,50€ / 16,00€', desc:'Nuestra ensalada de la casa.' },
+        { name:'Toscana', price:'16,00€', desc:'Mix de hojas, ingredientes italianos y aliño.' },
+        { name:'Clásica', price:'11,50€ / 16,00€', desc:'Lechuga, tomate, cebolla y aceitunas.' }
+      ]
+    };
+  }
+
+  reviews = [
+    { text:'La mejor pizza de la zona. La masa se nota artesanal, fina y con un borde espectacular.', author:'Reseña de Google' },
+    { text:'Pasta fresca de verdad y trato cercano. Los raviolis están de diez.', author:'Reseña de Google' },
+    { text:'Auténtica italiana en Solares. Repetiremos seguro.', author:'Reseña de Google' }
+  ];
+
+  renderVals() {
+    const hv = this.state.heroVariant || Number(this.props.heroVariant || 1);
+    const cat = this.state.cat;
+    const sub = this.state.sub;
+
+    let items;
+    if (cat === 'pizzas') {
+      items = sub === 'todas' ? this.data.pizzas : this.data.pizzas.filter(p => p.g === sub);
+    } else {
+      items = this.data[cat];
+    }
+    const notes = {
+      pizzas: 'Ingrediente extra 1,70€ · Premium 2,20€ · Burrata +1,50€.',
+      pasta: "Salsas a elegir: boloñesa · carbonara con guanciale · cuattro formaggi · al pesto · nata con setas y champiñones · nata y gambas · all'arrabbiata.",
+      antipasti: 'Raciones pensadas para compartir.',
+      ensaladas: 'Salsa extra 1,50€ · Cesta de pan 1,50€.'
+    };
+
+    const tabDefs = [['pizzas','Pizzas'],['pasta','Pasta'],['antipasti','Antipasti'],['ensaladas','Ensaladas']];
+    const tabs = tabDefs.map(([key,label]) => ({
+      label, active: cat === key, inactive: cat !== key,
+      onClick: () => this.setState({ cat: key, sub: 'todas' })
+    }));
+
+    const subDefs = [['todas','Todas'],['clasicas','Clásicas'],['especiales','Especiales'],['premium','Premium']];
+    const subChips = subDefs.map(([key,label]) => ({
+      label, active: sub === key, inactive: sub !== key,
+      onClick: () => this.setState({ sub: key })
+    }));
+
+    const pipDefs = [[1,'Foto'],[2,'Cartel'],[3,'Partido']];
+    const heroPips = pipDefs.map(([n,label]) => ({
+      label, onClick: () => this.setState({ heroVariant: n }),
+      bg: hv === n ? 'var(--garnet)' : 'transparent',
+      fg: hv === n ? 'var(--cream)' : 'var(--ink)'
+    }));
+
+    // open/closed (example schedule: Thu–Sun, 20:00–23:30)
+    const now = new Date();
+    const day = now.getDay(); // 0 Sun ... 6 Sat
+    const t = now.getHours() + now.getMinutes() / 60;
+    const openDays = [0, 4, 5, 6];
+    const isOpen = openDays.includes(day) && t >= 20 && t < 23.5;
+
+    const delivery = this.props.showDelivery !== false;
+
+    return {
+      rootRef: this.rootRef || (this.rootRef = React.createRef()),
+      navOpen: this.state.navOpen,
+      toggleNav: () => this.setState(s => ({ navOpen: !s.navOpen })),
+      closeNav: () => this.setState({ navOpen: false }),
+      v1: hv === 1, v2: hv === 2, v3: hv === 3,
+      heroPips,
+      tabs, subChips, items, note: notes[cat],
+      showSub: cat === 'pizzas',
+      reviews: this.reviews,
+      delivery,
+      pedidosCols: delivery ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)',
+      openStatus: isOpen ? 'Abierto ahora' : 'Cerrado ahora',
+      openBadgeBg: isOpen ? 'rgba(190,142,55,.22)' : 'rgba(251,246,234,.12)',
+      openBadgeFg: isOpen ? '#fff' : 'rgba(251,246,234,.85)',
+      openDotColor: isOpen ? '#7BD389' : '#C0432A'
+    };
+  }
+}
+</script>
+</body>
+</html>

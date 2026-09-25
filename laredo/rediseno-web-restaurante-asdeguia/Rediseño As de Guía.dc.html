@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);font-family:var(--font-body);color:var(--ink)}
+a{color:var(--tomato);text-decoration:none}
+a:hover{color:var(--tomato-dk)}
+@keyframes adg-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+
+<div style="position:fixed;z-index:90;bottom:22px;right:22px;display:flex;align-items:center;gap:6px;padding:6px;background:rgba(22,15,9,.9);backdrop-filter:blur(10px);border-radius:999px;box-shadow:0 18px 40px -18px rgba(53,36,18,.8)">
+  <span style="font:700 10px/1 var(--font-body);letter-spacing:.18em;text-transform:uppercase;color:#9d8e78;padding:0 10px 0 12px">Versión</span>
+  <button onClick="{{ verClasico }}" style="{{ swClasico }}">Clásico</button>
+  <button onClick="{{ verV2 }}" style="{{ swV2 }}">Marinero v2</button>
+</div>
+
+<sc-if value="{{ esClasico }}" hint-placeholder-val="{{ true }}">
+<div style="background:var(--cream)">
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(33,25,18,.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.1)">
+    <div style="max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;flex-direction:column;align-items:center;gap:12px">
+      <a href="#c-hero" style="display:block"><img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Logo.png" alt="As de Guía" style="height:46px;display:block;object-fit:contain"></a>
+      <nav style="display:flex;gap:30px;align-items:center;font:600 12px/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase">
+        <a href="#c-chef" style="color:#ECE1CF" style-hover="color:var(--gold)">El cocinero</a>
+        <a href="#c-mercado" style="color:#ECE1CF" style-hover="color:var(--gold)">Cocina de mercado</a>
+        <a href="#c-platos" style="color:#ECE1CF" style-hover="color:var(--gold)">La carta</a>
+        <a href="#c-contacto" style="color:#ECE1CF" style-hover="color:var(--gold)">Contacto</a>
+        <a href="https://wa.me/34686185874" style="color:var(--char);background:var(--gold);padding:9px 20px;border-radius:999px;letter-spacing:.1em" style-hover="background:#fff">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="c-hero" style="position:relative;height:640px;overflow:hidden;background:var(--char-deep)">
+    <video src="https://restauranteasdeguia.es/wp-content/uploads/2025/01/AsDeGuia-Presentacion-V.mp4" poster="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Carta.jpg" autoPlay muted loop playsInline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--char-deep) url('https://restauranteasdeguia.es/wp-content/uploads/2021/12/Carta.jpg') center/cover no-repeat"></video>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(22,15,9,.55) 0%,rgba(22,15,9,.35) 38%,rgba(22,15,9,.92) 100%)"></div>
+    <div style="position:relative;height:100%;max-width:1180px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+      <div style="font:600 12px/1 var(--font-body);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)">Restaurante · Santoña · desde 2009</div>
+      <div style="width:56px;height:1px;background:rgba(242,163,11,.5);margin:22px 0"></div>
+      <h1 style="font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,7vw,5.4rem);line-height:1;letter-spacing:-.02em;color:#fff;margin:0">As de Guía</h1>
+      <p style="font-family:var(--font-script);font-size:2rem;color:var(--gold);margin:14px 0 0">los mejores arroces y revueltos del Cantábrico</p>
+      <div style="display:flex;gap:14px;margin-top:34px">
+        <a href="#c-contacto" style="font:700 15px/1 var(--font-display);color:var(--char);background:var(--gold);padding:16px 30px;border-radius:999px;transition:transform .18s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-2px);background:#fff">Contacto y reservas</a>
+        <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Carta2025.08.pdf" style="font:700 15px/1 var(--font-display);color:#fff;border:2px solid rgba(255,255,255,.5);padding:14px 28px;border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px)" style-hover="background:rgba(255,255,255,.22)">Ver la carta</a>
+      </div>
+      <div style="position:absolute;bottom:26px;display:flex;align-items:center;gap:14px;color:#ECE1CF;font:400 14px/1 var(--font-body)">
+        <span style="color:var(--gold);font-size:17px;letter-spacing:2px">★★★★☆</span>
+        <span style="font-family:var(--font-display);font-weight:800;font-size:1.05rem">4,3</span>
+        <span style="color:#CDBFA9">· 527 reseñas en Google</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-chef" style="padding:88px 32px;background:var(--cream)">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:64px;align-items:start">
+      <div>
+        <div style="border:6px solid #fff;border-radius:4px;box-shadow:0 18px 44px -20px rgba(53,36,18,.5);aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#F4E8D0 0 12px,#EFE0C2 12px 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9A8B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"></rect><circle cx="12" cy="12" r="4"></circle><path d="M8 5l1.5-2h5L16 5"></path></svg>
+          <div style="font:700 12px/1.4 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)">Placeholder</div>
+          <div style="font:400 14px/1.5 var(--font-body);color:var(--ink-soft);max-width:26ch">Retrato de Iván en la cocina, vertical, 1200×1500 px</div>
+        </div>
+        <p style="font-family:var(--font-script);font-size:1.5rem;color:var(--ink-soft);text-align:center;margin:16px 0 0">Iván y Ángela, desde julio de 2009</p>
+      </div>
+      <div>
+        <div style="font:600 12px/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--tomato)">El cocinero</div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:1.05;font-size:clamp(2.2rem,4vw,3.2rem);margin:16px 0 0;color:var(--ink)">Iván R. Arrizabalaga</h2>
+        <div style="width:100%;height:1px;background:var(--line);margin:26px 0"></div>
+        <p style="font-size:1.06rem;line-height:1.65;color:var(--ink-soft);margin:0 0 18px;max-width:62ch">Iván R. Arrizabalaga es un cocinero afincado en Santoña. Su estilo se ha visto influenciado tanto por sus raíces cántabras y vascas, como por su paso por grandes cocinas, como la de Kabia en Zumárraga, Jolastoki en Getxo, Risco en Laredo…</p>
+        <p style="font-size:1.06rem;line-height:1.65;color:var(--ink-soft);margin:0 0 18px;max-width:62ch">Su cocina destaca por el guiso tradicional, largas cocciones para conseguir mucho sabor y fondos para luego elaborar sabrosos arroces, trabajando siempre con producto de temporada, mimándolo para ofrecer al comensal lo mejor del día.</p>
+        <p style="font-size:1.06rem;line-height:1.65;color:var(--ink-soft);margin:0;max-width:62ch">Iván abrió junto a su mujer, Ángela Gómez Prada, el Restaurante As de Guía en julio de 2009. Juntos en poco tiempo han conseguido galardones como:</p>
+        <div style="margin-top:32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px 0">
+          <sc-for list="{{ premios }}" as="p" hint-placeholder-count="7">
+            <div style="display:flex;align-items:baseline;gap:16px;padding:11px 2px;border-top:1px dashed var(--line)">
+              <span style="color:var(--gold);font-size:13px">◆</span>
+              <span style="font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--ink)">{{ p.titulo }}</span>
+              <span style="flex:1;border-bottom:1px dotted var(--line);transform:translateY(-3px)"></span>
+              <span style="font:600 .92rem var(--font-body);color:var(--ink-faint);white-space:nowrap">{{ p.anios }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-mercado" style="padding:88px 32px;background:var(--char);color:#ECE1CF">
+    <div style="max-width:1180px;margin:0 auto;text-align:center">
+      <div style="font:600 12px/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)">La cocina de mercado</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:22px 0 0">
+        <span style="width:70px;height:1px;background:rgba(255,255,255,.2)"></span>
+        <span style="color:var(--gold);font-size:12px">◆</span>
+        <span style="width:70px;height:1px;background:rgba(255,255,255,.2)"></span>
+      </div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:1.1;font-size:clamp(1.9rem,3.4vw,2.7rem);margin:22px auto 0;max-width:20ch;color:#fff">Nuestro restaurante se ha dejado envolver durante más de una década por nuestro entorno marítimo</h2>
+      <p style="font-size:1.1rem;line-height:1.6;color:#CDBFA9;margin:22px auto 0;max-width:60ch">Con un estilo muy marcado por la cocina de mercado, nos hemos especializado en la elaboración de platos con productos frescos de temporada.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:56px">
+        <div style="text-align:center">
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Carabinero.png" alt="Carabinero" style="width:100%;height:230px;object-fit:contain">
+          <div style="font:700 12px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:18px">Carabinero</div>
+          <p style="color:#CDBFA9;font-size:.98rem;margin:10px 0 0">Marisco del Cantábrico, a la plancha y sin más adornos.</p>
+        </div>
+        <div style="text-align:center">
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Setas01.png" alt="Setas" style="width:100%;height:230px;object-fit:contain">
+          <div style="font:700 12px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:18px">Setas de temporada</div>
+          <p style="color:#CDBFA9;font-size:.98rem;margin:10px 0 0">Lo que da el monte cada mes, en revuelto o al ajillo.</p>
+        </div>
+        <div style="text-align:center">
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Anchoa.png" alt="Anchoa de Santoña" style="width:100%;height:230px;object-fit:contain">
+          <div style="font:700 12px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:18px">Anchoa de Santoña</div>
+          <p style="color:#CDBFA9;font-size:.98rem;margin:10px 0 0">De la lonja de al lado. Varias veces mejor pincho con anchoa.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--font-script);font-size:1.7rem;color:var(--gold);margin:52px 0 0">Orgullosos de los sabores de nuestra tierra</p>
+      <p style="font-size:1.05rem;color:#CDBFA9;margin:10px auto 0;max-width:62ch">Apostamos por una gastronomía sostenible y de la mayor calidad, para conseguir platos con los que nuestros clientes disfruten.</p>
+    </div>
+  </section>
+
+  <section id="c-platos" style="padding:88px 32px;background:var(--cream-2)">
+    <div style="max-width:980px;margin:0 auto">
+      <div style="text-align:center">
+        <div style="font:600 12px/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--tomato)">Para compartir</div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;font-size:clamp(2rem,4vw,3rem);margin:16px 0 0;color:var(--ink)">Lo que más nos piden</h2>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 14px 40px -24px rgba(53,36,18,.55);padding:40px 46px;margin-top:40px">
+        <sc-for list="{{ platos }}" as="d" hint-placeholder-count="5">
+          <div style="display:flex;align-items:baseline;gap:14px;padding:18px 0;border-top:1px dashed var(--line)">
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:baseline;gap:12px">
+                <span style="font-family:var(--font-display);font-weight:700;font-size:1.14rem;color:var(--ink)">{{ d.nombre }}</span>
+                <span style="flex:1;border-bottom:1px dotted var(--line);transform:translateY(-3px)"></span>
+                <span style="font-family:var(--font-display);font-weight:800;color:var(--tomato);white-space:nowrap">{{ d.precio }}</span>
+              </div>
+              <p style="color:var(--ink-soft);font-size:.98rem;line-height:1.5;margin:6px 0 0;max-width:70ch">{{ d.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+        <p style="margin:26px 0 0;text-align:center;font-size:.92rem;color:var(--ink-faint)">S/M = según mercado. Precios y carta completa en el PDF.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:48px">
+        <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Carta2025.08.pdf" style="display:block;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;box-shadow:0 10px 26px -18px rgba(53,36,18,.5);transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-6px)">
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Carta.jpg" alt="Nuestra carta" style="width:100%;height:190px;object-fit:cover;display:block">
+          <div style="padding:20px;text-align:center;font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--ink)">Nuestra Carta</div>
+        </a>
+        <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Men%C3%BAs.pdf" style="display:block;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;box-shadow:0 10px 26px -18px rgba(53,36,18,.5);transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-6px)">
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Menus.jpg" alt="Nuestros menús" style="width:100%;height:190px;object-fit:cover;display:block">
+          <div style="padding:20px;text-align:center;font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--ink)">Nuestros Menús</div>
+        </a>
+        <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Vinos2025.08.pdf" style="display:block;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;box-shadow:0 10px 26px -18px rgba(53,36,18,.5);transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-6px)">
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Vinos.jpg" alt="Nuestra bodega" style="width:100%;height:190px;object-fit:cover;display:block">
+          <div style="padding:20px;text-align:center;font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--ink)">Nuestra Bodega</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:80px 32px;background:var(--cream)">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+        <div>
+          <div style="font:600 12px/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--tomato)">Lo que dicen</div>
+          <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;font-size:clamp(1.9rem,3.6vw,2.6rem);margin:14px 0 0;color:var(--ink)">4,3 sobre 5 en Google</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="color:var(--gold);font-size:20px;letter-spacing:3px">★★★★☆</span>
+          <span style="color:var(--ink-soft)">527 reseñas</span>
+          <span style="font:700 10px/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:999px;padding:6px 10px">Textos demo</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:36px">
+        <sc-for list="{{ resenas }}" as="r" hint-placeholder-count="3">
+          <div style="background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:28px;box-shadow:0 10px 26px -20px rgba(53,36,18,.5)">
+            <span style="color:var(--gold);font-size:16px;letter-spacing:2px">★★★★★</span>
+            <p style="color:var(--ink-soft);font-size:1.02rem;line-height:1.55;margin:14px 0 18px">{{ r.texto }}</p>
+            <div style="font-family:var(--font-display);font-weight:700;color:var(--ink)">{{ r.autor }}</div>
+            <div style="font-size:.86rem;color:var(--ink-faint)">{{ r.cuando }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="c-contacto" style="padding:88px 32px;background:var(--char-deep);color:#ECE1CF">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start">
+      <div>
+        <div style="font:600 12px/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)">Dónde estamos</div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;font-size:clamp(1.9rem,3.6vw,2.6rem);margin:16px 0 0;color:#fff">C/ Duque de Santoña, 23</h2>
+        <p style="color:#CDBFA9;margin:10px 0 24px">39740 Santoña (Cantabria)</p>
+        <div style="{{ estadoPillClasico }}"><span style="{{ estadoDot }}"></span>{{ estadoTexto }}</div>
+        <div style="margin-top:28px;border-top:1px solid rgba(255,255,255,.12)">
+          <sc-for list="{{ horario }}" as="h" hint-placeholder-count="7">
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08)">
+              <span style="font:700 12px/1.4 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:{{ h.color }}">{{ h.dia }}</span>
+              <span style="font-size:.98rem;color:{{ h.color }}">{{ h.horas }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px">
+          <a href="tel:+34942680808" style="font:700 15px/1 var(--font-display);color:var(--char);background:var(--gold);padding:15px 26px;border-radius:999px" style-hover="background:#fff">942 680 808</a>
+          <a href="https://wa.me/34686185874" style="display:inline-flex;align-items:center;gap:9px;font:700 15px/1 var(--font-display);color:#fff;background:var(--whatsapp);padding:15px 26px;border-radius:999px" style-hover="background:#1fb857"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.32.39-.46.53-.15.15-.31.32-.13.62.18.31.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.31.41-.25.69-.15.28.1 1.77.84 2.07.99.3.15.5.23.58.35.07.13.07.74-.18 1.43z"></path></svg>WhatsApp</a>
+          <a href="https://www.google.com/maps/@43.4442953,-3.4600833,3a,33.8y,139.33h,85.71t/data=!3m6!1e1!3m4!1sPtfBZBuChLiv5OMmOq36QA!2e0!7i13312!8i6656" style="font:700 15px/1 var(--font-display);color:#fff;border:2px solid rgba(255,255,255,.45);padding:13px 24px;border-radius:999px" style-hover="border-color:#fff">Cómo llegar</a>
+        </div>
+      </div>
+      <div>
+        <iframe src="https://www.google.com/maps?q=C.%20Duque%20de%20Santo%C3%B1a%2023%2C%2039740%20Santo%C3%B1a%2C%20Cantabria&output=embed" title="Mapa As de Guía" style="width:100%;height:330px;border:0;border-radius:4px;filter:saturate(.85)"></iframe>
+        <div style="background:var(--char-2);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:26px;margin-top:22px">
+          <div style="font:700 12px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">Importante</div>
+          <p style="color:#CDBFA9;font-size:.99rem;line-height:1.55;margin:12px 0 18px">Solamente deberá proceder al pago de la reserva una vez le haya sido confirmada desde el teléfono 942 680 808.</p>
+          <a href="https://restauranteasdeguia.es/producto/reserva" style="display:inline-block;font:700 14px/1 var(--font-display);color:#fff;background:var(--tomato);padding:15px 26px;border-radius:999px" style-hover="background:var(--tomato-dk)">Proceder al pago de la reserva</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0F0A06;color:#9d8e78;padding:40px 32px">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:.9rem">
+      <div style="font-family:var(--font-display);font-weight:800;letter-spacing:.1em;color:#ECE1CF;text-transform:uppercase">Restaurante As de Guía</div>
+      <div style="display:flex;gap:22px">
+        <a href="https://www.facebook.com/restasdeguia/" style="color:#9d8e78" style-hover="color:var(--gold)">Facebook</a>
+        <a href="https://www.instagram.com/asdeguiasantona" style="color:#9d8e78" style-hover="color:var(--gold)">Instagram</a>
+        <a href="https://restauranteasdeguia.es/politica-de-privacidad" style="color:#9d8e78" style-hover="color:var(--gold)">Privacidad</a>
+        <a href="https://restauranteasdeguia.es/aviso-legal" style="color:#9d8e78" style-hover="color:var(--gold)">Aviso legal</a>
+      </div>
+    </div>
+    <p style="max-width:1180px;margin:18px auto 0;font-size:.8rem;color:#6d6153">Maqueta de rediseño. Fotos y vídeo tomados de la web actual; las reseñas mostradas son texto de muestra.</p>
+  </footer>
+</div>
+</sc-if>
+
+<sc-if value="{{ esV2 }}" hint-placeholder-val="{{ false }}">
+<div style="background:#F7F2E7">
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(247,242,231,.92);backdrop-filter:blur(12px);border-bottom:1px solid #DED3BB">
+    <div style="max-width:1180px;margin:0 auto;padding:16px 32px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px">
+      <nav style="display:flex;gap:26px;font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase">
+        <a href="#v2-chef" style="color:var(--ink-soft)" style-hover="color:#1E5A5B">El cocinero</a>
+        <a href="#v2-mar" style="color:var(--ink-soft)" style-hover="color:#1E5A5B">El producto</a>
+      </nav>
+      <a href="#v2-hero" style="text-align:center;font-family:var(--font-display);font-weight:800;letter-spacing:.02em;font-size:1.1rem;color:#13333B;line-height:1">As de Guía<span style="display:block;font:400 .6rem var(--font-body);letter-spacing:.34em;color:#B98A2E;margin-top:4px">SANTOÑA · 2009</span></a>
+      <nav style="display:flex;gap:22px;justify-content:flex-end;align-items:center;font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase">
+        <a href="#v2-carta" style="color:var(--ink-soft)" style-hover="color:#1E5A5B">La carta</a>
+        <a href="tel:+34942680808" style="color:#F7F2E7;background:#13333B;padding:12px 22px;border-radius:999px;letter-spacing:.14em" style-hover="background:#1E5A5B">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="v2-hero" style="padding:62px 32px 0;text-align:center">
+    <div style="max-width:1000px;margin:0 auto">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px">
+        <span style="width:54px;height:1px;background:#B98A2E"></span>
+        <span style="font:600 .74rem var(--font-body);letter-spacing:.34em;text-transform:uppercase;color:#B98A2E">Cocina de mercado del Cantábrico</span>
+        <span style="width:54px;height:1px;background:#B98A2E"></span>
+      </div>
+      <h1 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:.98;font-size:clamp(2.5rem,5.2vw,4.5rem);color:#13333B;margin:28px auto 0;max-width:17ch">Los mejores arroces y revueltos del Cantábrico</h1>
+      <p style="font-family:var(--font-script);font-size:1.9rem;color:#1E5A5B;margin:16px 0 0">de la lonja a la mesa, desde 2009</p>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:30px">
+        <a href="tel:+34942680808" style="font:700 .98rem/1 var(--font-display);color:#F7F2E7;background:#13333B;padding:17px 30px;border-radius:999px;transition:transform .18s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-2px);background:#1E5A5B">Reservar mesa</a>
+        <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Carta2025.08.pdf" style="font:700 .98rem/1 var(--font-display);color:#13333B;border:1px solid #13333B;padding:16px 28px;border-radius:999px" style-hover="background:#13333B;color:#F7F2E7">Ver la carta</a>
+      </div>
+    </div>
+    <div style="max-width:1060px;margin:56px auto 0;position:relative">
+      <video src="https://restauranteasdeguia.es/wp-content/uploads/2025/01/AsDeGuia-Presentacion-V.mp4" poster="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Carta.jpg" autoPlay muted loop playsInline style="width:100%;height:440px;object-fit:cover;display:block;border-radius:260px 260px 14px 14px;border:8px solid #fff;box-shadow:0 34px 72px -34px rgba(19,51,59,.6);background:#1B4750 url('https://restauranteasdeguia.es/wp-content/uploads/2021/12/Carta.jpg') center/cover no-repeat"></video>
+      <div style="position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #DED3BB;border-radius:999px;padding:12px 24px;box-shadow:0 20px 44px -26px rgba(19,51,59,.55)">
+        <span style="color:var(--gold);font-size:16px;letter-spacing:2px">★★★★☆</span>
+        <span style="font-family:var(--font-display);font-weight:800;color:#13333B">4,3</span>
+        <span style="color:var(--ink-soft);font-size:.92rem">527 reseñas</span>
+        <span style="width:1px;height:18px;background:#DED3BB"></span>
+        <div style="{{ estadoPillModerno }}"><span style="{{ estadoDot }}"></span>{{ estadoTexto }}</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="v2-chef" style="padding:112px 32px 0">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:start">
+      <div>
+        <div style="aspect-ratio:4/5;border-radius:240px 240px 12px 12px;box-shadow:0 26px 56px -30px rgba(19,51,59,.5);background:repeating-linear-gradient(135deg,#EDE5D3 0 12px,#E5DAC4 12px 24px);border:1px solid #DED3BB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:22px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9A8B7B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"></rect><circle cx="12" cy="12" r="4"></circle><path d="M8 5l1.5-2h5L16 5"></path></svg>
+          <div style="font:700 .7rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)">Placeholder</div>
+          <div style="font-size:.9rem;line-height:1.45;color:var(--ink-soft);max-width:28ch">Retrato de Iván en la cocina, vertical, 1200×1500 px</div>
+        </div>
+        <p style="font-family:var(--font-script);font-size:1.5rem;color:#1E5A5B;text-align:center;margin:18px 0 0">Iván y Ángela, desde julio de 2009</p>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">01</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">El cocinero</span></div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2.1rem,4vw,3.1rem);color:#13333B;margin:20px 0 0">Iván R. Arrizabalaga</h2>
+        <p style="font-size:1.18rem;line-height:1.65;color:#13333B;margin:26px 0 0;max-width:56ch">Iván R. Arrizabalaga es un cocinero afincado en Santoña. Su estilo se ha visto influenciado tanto por sus raíces cántabras y vascas, como por su paso por grandes cocinas, como la de Kabia en Zumárraga, Jolastoki en Getxo, Risco en Laredo…</p>
+        <p style="font-size:1.06rem;line-height:1.7;color:var(--ink-soft);margin:16px 0 0;max-width:60ch">Su cocina destaca por el guiso tradicional, largas cocciones para conseguir mucho sabor y fondos para luego elaborar sabrosos arroces, trabajando siempre con producto de temporada, mimándolo para ofrecer al comensal lo mejor del día.</p>
+        <p style="font-size:1.06rem;line-height:1.7;color:var(--ink-soft);margin:16px 0 0;max-width:60ch">Iván abrió junto a su mujer, Ángela Gómez Prada, el Restaurante As de Guía en julio de 2009.</p>
+        <div style="margin-top:34px;border-top:1px solid #DED3BB">
+          <sc-for list="{{ premios }}" as="p" hint-placeholder-count="7">
+            <div style="display:flex;align-items:baseline;gap:16px;padding:13px 10px;margin:0 -10px;border-bottom:1px solid #DED3BB;transition:background .18s cubic-bezier(.4,0,.2,1)" style-hover="background:#F2EADB">
+              <span style="font-family:var(--font-display);font-weight:700;font-size:.99rem;letter-spacing:-.005em;color:#13333B">{{ p.titulo }}</span>
+              <span style="flex:1;border-bottom:1px dotted #DED3BB;transform:translateY(-3px)"></span>
+              <span style="font:600 .9rem var(--font-body);color:#B98A2E;white-space:nowrap">{{ p.anios }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="v2-mar" style="margin:112px 0 0;padding:104px 32px;background:#13333B;color:#E7EFEC">
+    <div style="max-width:1180px;margin:0 auto;text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;justify-content:center"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">02</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">El producto</span></div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.08;font-size:clamp(1.9rem,3.6vw,2.8rem);color:#fff;margin:24px auto 0;max-width:22ch">Nuestro restaurante se ha dejado envolver durante más de una década por nuestro entorno marítimo</h2>
+      <p style="font-size:1.08rem;line-height:1.65;color:#B9CBC7;margin:20px auto 0;max-width:62ch">Con un estilo muy marcado por la cocina de mercado, nos hemos especializado en la elaboración de platos con productos frescos de temporada.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:62px">
+        <div>
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Carabinero.png" alt="Carabinero" style="width:100%;height:220px;object-fit:contain">
+          <div style="width:32px;height:1px;background:#B98A2E;margin:20px auto 0"></div>
+          <div style="font:700 .76rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E;margin-top:18px">Carabinero</div>
+          <p style="color:#B9CBC7;font-size:.97rem;line-height:1.55;margin:10px 0 0">Marisco del Cantábrico a la plancha. Sal, brasa y nada más.</p>
+        </div>
+        <div>
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Setas01.png" alt="Setas" style="width:100%;height:220px;object-fit:contain">
+          <div style="width:32px;height:1px;background:#B98A2E;margin:20px auto 0"></div>
+          <div style="font:700 .76rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E;margin-top:18px">Setas de temporada</div>
+          <p style="color:#B9CBC7;font-size:.97rem;line-height:1.55;margin:10px 0 0">Lo que da el monte cada mes, en revuelto o al ajillo.</p>
+        </div>
+        <div>
+          <img src="https://restauranteasdeguia.es/wp-content/uploads/2020/02/Anchoa.png" alt="Anchoa de Santoña" style="width:100%;height:220px;object-fit:contain">
+          <div style="width:32px;height:1px;background:#B98A2E;margin:20px auto 0"></div>
+          <div style="font:700 .76rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E;margin-top:18px">Anchoa de Santoña</div>
+          <p style="color:#B9CBC7;font-size:.97rem;line-height:1.55;margin:10px 0 0">De la lonja de al lado. Premiada seis veces en el pincho con anchoa.</p>
+        </div>
+      </div>
+      <p style="font-family:var(--font-script);font-size:1.85rem;color:#fff;margin:64px auto 0;max-width:24ch;line-height:1.25">Orgullosos de los sabores de nuestra tierra</p>
+      <p style="font-size:1.02rem;color:#B9CBC7;margin:12px auto 0;max-width:58ch">Apostamos por una gastronomía sostenible y de la mayor calidad, para conseguir platos con los que nuestros clientes disfruten.</p>
+    </div>
+  </section>
+
+  <section id="v2-carta" style="padding:104px 32px">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:64px;align-items:start">
+      <div style="position:sticky;top:110px">
+        <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">03</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">La carta</span></div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2rem,3.8vw,2.9rem);color:#13333B;margin:20px 0 0">Lo que más nos piden</h2>
+        <p style="font-size:1.04rem;line-height:1.65;color:var(--ink-soft);margin:18px 0 0">Arroces de fondo largo, revueltos de temporada y lo que esa mañana ha entrado en la lonja. La carta cambia con el mercado.</p>
+        <div style="margin-top:28px;aspect-ratio:16/11;border-radius:14px;background:repeating-linear-gradient(135deg,#EDE5D3 0 12px,#E5DAC4 12px 24px);border:1px solid #DED3BB;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:22px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9A8B7B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2"></rect><circle cx="12" cy="12" r="4"></circle><path d="M8 5l1.5-2h5L16 5"></path></svg>
+          <div style="font:700 .7rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)">Placeholder</div>
+          <div style="font-size:.9rem;line-height:1.45;color:var(--ink-soft);max-width:28ch">Plato emplatado en mesa vestida, horizontal, 1600×1100 px</div>
+        </div>
+      </div>
+      <div>
+        <sc-for list="{{ platos }}" as="d" hint-placeholder-count="5">
+          <div style="display:flex;gap:22px;align-items:center;padding:22px 0;border-bottom:1px solid #DED3BB">
+            <div style="{{ d.thumbStyle }}"><span style="font:700 .6rem/1.3 var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:#9A8B7B;text-align:center;padding:0 6px">{{ d.phLabel }}</span></div>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:baseline;gap:14px">
+                <span style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#13333B">{{ d.nombre }}</span>
+                <span style="flex:1;border-bottom:1px dotted #DED3BB;transform:translateY(-4px)"></span>
+                <span style="font-family:var(--font-display);font-weight:800;color:#B98A2E;white-space:nowrap">{{ d.precio }}</span>
+              </div>
+              <p style="color:var(--ink-soft);font-size:.99rem;line-height:1.55;margin:6px 0 0">{{ d.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+        <p style="font-size:.9rem;color:var(--ink-faint);margin:18px 0 0">S/M = según mercado. Precios y carta completa en los PDF. Las miniaturas marcadas “foto” son placeholders: sube una imagen cuadrada de 800×800 px de cada plato.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px">
+          <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Carta2025.08.pdf" style="display:block;background:#fff;border:1px solid #DED3BB;overflow:hidden;transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-5px)">
+            <img src="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Carta.jpg" alt="Carta" style="width:100%;height:150px;object-fit:cover;display:block">
+            <div style="padding:16px;text-align:center"><div style="font-family:var(--font-display);font-weight:800;color:#13333B">Nuestra Carta</div><div style="font:600 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#B98A2E;margin-top:5px">PDF</div></div>
+          </a>
+          <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Men%C3%BAs.pdf" style="display:block;background:#fff;border:1px solid #DED3BB;overflow:hidden;transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-5px)">
+            <img src="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Menus.jpg" alt="Menús" style="width:100%;height:150px;object-fit:cover;display:block">
+            <div style="padding:16px;text-align:center"><div style="font-family:var(--font-display);font-weight:800;color:#13333B">Nuestros Menús</div><div style="font:600 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#B98A2E;margin-top:5px">PDF</div></div>
+          </a>
+          <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Vinos2025.08.pdf" style="display:block;background:#fff;border:1px solid #DED3BB;overflow:hidden;transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-5px)">
+            <img src="https://restauranteasdeguia.es/wp-content/uploads/2021/12/Vinos.jpg" alt="Bodega" style="width:100%;height:150px;object-fit:cover;display:block">
+            <div style="padding:16px;text-align:center"><div style="font-family:var(--font-display);font-weight:800;color:#13333B">Nuestra Bodega</div><div style="font:600 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#B98A2E;margin-top:5px">PDF</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:88px 32px;background:#EDE5D3">
+    <div style="max-width:1180px;margin:0 auto;text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;justify-content:center"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">04</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Lo que dicen</span></div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;font-size:clamp(1.9rem,3.4vw,2.6rem);color:#13333B;margin:22px 0 0">4,3 sobre 5 en Google</h2>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px">
+        <span style="color:var(--gold);font-size:18px;letter-spacing:3px">★★★★☆</span>
+        <span style="color:var(--ink-soft)">527 reseñas</span>
+        <span style="font:700 .66rem var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);border:1px solid #DED3BB;border-radius:999px;padding:6px 10px">Textos demo</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:44px;text-align:left">
+        <sc-for list="{{ resenas }}" as="r" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid #DED3BB;padding:34px 32px">
+            <div style="font-family:var(--font-display);font-weight:800;font-size:2.4rem;line-height:.6;color:#B98A2E;opacity:.55">&ldquo;</div>
+            <span style="display:inline-block;margin-top:18px;color:var(--gold);font-size:15px;letter-spacing:2px">★★★★★</span>
+            <p style="color:var(--ink-soft);font-size:1.01rem;line-height:1.6;margin:14px 0 20px">{{ r.texto }}</p>
+            <div style="width:26px;height:1px;background:#B98A2E"></div>
+            <div style="font-family:var(--font-display);font-weight:700;color:#13333B;margin-top:14px">{{ r.autor }}</div>
+            <div style="font-size:.85rem;color:var(--ink-faint)">{{ r.cuando }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="v2-contacto" style="padding:104px 32px">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">05</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Dónde estamos</span></div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.05;font-size:clamp(1.9rem,3.6vw,2.7rem);color:#13333B;margin:20px 0 0">C/ Duque de Santoña, 23</h2>
+        <p style="color:var(--ink-soft);margin:10px 0 0">39740 Santoña (Cantabria) · 30–40 € por persona</p>
+        <div style="margin-top:30px;border-top:1px solid #DED3BB">
+          <sc-for list="{{ horario }}" as="h" hint-placeholder-count="7">
+            <div style="display:flex;justify-content:space-between;gap:20px;padding:13px 10px;margin:0 -10px;border-bottom:1px solid #DED3BB;transition:background .18s cubic-bezier(.4,0,.2,1)" style-hover="background:#F2EADB">
+              <span style="font:700 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:{{ h.colorMar }}">{{ h.dia }}</span>
+              <span style="font-size:.97rem;color:{{ h.colorMar }}">{{ h.horas }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:30px">
+          <a href="tel:+34942680808" style="font:700 .97rem/1 var(--font-display);color:#F7F2E7;background:#13333B;padding:16px 26px;border-radius:999px" style-hover="background:#1E5A5B">942 680 808</a>
+          <a href="https://wa.me/34686185874" style="display:inline-flex;align-items:center;gap:9px;font:700 .97rem/1 var(--font-display);color:#13333B;border:1px solid #13333B;padding:15px 24px;border-radius:999px" style-hover="background:#13333B;color:#F7F2E7"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.32.39-.46.53-.15.15-.31.32-.13.62.18.31.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.31.41-.25.69-.15.28.1 1.77.84 2.07.99.3.15.5.23.58.35.07.13.07.74-.18 1.43z"></path></svg>686 185 874</a>
+          <a href="https://www.google.com/maps/@43.4442953,-3.4600833,3a,33.8y,139.33h,85.71t/data=!3m6!1e1!3m4!1sPtfBZBuChLiv5OMmOq36QA!2e0!7i13312!8i6656" style="font:700 .97rem/1 var(--font-display);color:#1E5A5B;padding:6px 2px;border-bottom:1px solid #1E5A5B" style-hover="color:#13333B">Cómo llegar</a>
+        </div>
+      </div>
+      <div>
+        <iframe src="https://www.google.com/maps?q=C.%20Duque%20de%20Santo%C3%B1a%2023%2C%2039740%20Santo%C3%B1a%2C%20Cantabria&output=embed" title="Mapa As de Guía" style="width:100%;height:320px;border:1px solid #DED3BB;border-radius:12px;filter:saturate(.8)"></iframe>
+        <div style="border:1px solid #DED3BB;background:#fff;padding:28px;margin-top:20px">
+          <div style="font:700 .72rem var(--font-body);letter-spacing:.22em;text-transform:uppercase;color:#B98A2E">Importante</div>
+          <p style="font-size:1rem;line-height:1.6;color:var(--ink-soft);margin:12px 0 18px">Solamente deberá proceder al pago de la reserva una vez le haya sido confirmada desde el teléfono 942 680 808.</p>
+          <a href="https://restauranteasdeguia.es/producto/reserva" style="display:inline-block;font:700 .95rem/1 var(--font-display);color:#F7F2E7;background:#1E5A5B;padding:15px 26px;border-radius:999px" style-hover="background:#13333B">Proceder al pago de la reserva</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#13333B;color:#93A9A6;padding:56px 32px;border-top:1px solid rgba(185,138,46,.4)">
+    <div style="max-width:1180px;margin:0 auto;text-align:center">
+      <div style="font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:#fff;letter-spacing:.02em">As de Guía</div>
+      <div style="font:400 .64rem var(--font-body);letter-spacing:.34em;color:#B98A2E;margin-top:6px">SANTOÑA · CANTABRIA</div>
+      <div style="display:flex;gap:26px;justify-content:center;margin-top:24px;font-size:.9rem">
+        <a href="https://www.facebook.com/restasdeguia/" style="color:#93A9A6" style-hover="color:#fff">Facebook</a>
+        <a href="https://www.instagram.com/asdeguiasantona" style="color:#93A9A6" style-hover="color:#fff">Instagram</a>
+        <a href="https://restauranteasdeguia.es/politica-de-privacidad" style="color:#93A9A6" style-hover="color:#fff">Privacidad</a>
+        <a href="https://restauranteasdeguia.es/aviso-legal" style="color:#93A9A6" style-hover="color:#fff">Aviso legal</a>
+      </div>
+      <p style="font-size:.8rem;color:#6E8481;margin:24px 0 0">Maqueta de rediseño. Fotos y vídeo tomados de la web actual; las reseñas mostradas son texto de muestra.</p>
+    </div>
+  </footer>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;version&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;clasico&quot;,&quot;v2&quot;],&quot;default&quot;:&quot;clasico&quot;,&quot;tsType&quot;:&quot;'clasico' | 'v2'&quot;}}">
+class Component extends DCLogic {
+  state = { version: null, tab: 'Todos' };
+
+  get version() { return this.state.version || this.props.version || 'clasico'; }
+
+  estado() {
+    // LUN 11-16 · MAR 11-16 · MIE cerrado · JUE 11-16 · VIE 11-16 y 21-23:30 · SAB 10-16 y 21-23:30 · DOM 11-16
+    const franjas = {
+      1: [[11, 16]], 2: [[11, 16]], 3: [], 4: [[11, 16]],
+      5: [[11, 16], [21, 23.5]], 6: [[10, 16], [21, 23.5]], 0: [[11, 16]],
+    };
+    const now = new Date();
+    const h = now.getHours() + now.getMinutes() / 60;
+    return (franjas[now.getDay()] || []).some(([a, b]) => h >= a && h < b);
+  }
+
+  renderVals() {
+    const v = this.version;
+    const abierto = this.estado();
+    const sw = (on) => ({
+      font: '700 13px/1 var(--font-display)',
+      padding: '10px 20px', borderRadius: 999, border: 'none', cursor: 'pointer',
+      background: on ? '#FBF4E6' : 'transparent',
+      color: on ? '#211912' : '#CDBFA9',
+      transition: 'background .18s cubic-bezier(.4,0,.2,1)',
+    });
+
+    const premios = [
+      { titulo: 'Finalista a Mejor Tortilla Nacional', anios: '2011' },
+      { titulo: 'Especial del Jurado Pincho con Anchoa', anios: '2011 / 2013' },
+      { titulo: 'Mejor Pincho con Anchoa', anios: '2010 / 2012 / 2015' },
+      { titulo: 'Mejor Pincho de Navidad', anios: '2012' },
+      { titulo: 'Mejor Tortilla de Patatas de Cantabria', anios: '2014' },
+      { titulo: 'Mejor Torrija Nacional', anios: '2016' },
+      { titulo: 'Mejor Pincho Juan de la Cosa', anios: '2015 / 2017 / 2019' },
+    ];
+
+    const IMG = 'https://restauranteasdeguia.es/wp-content/uploads/2020/02/';
+    const thumb = (src) => ({
+      width: 96, height: 96, flex: 'none', borderRadius: '999px 999px 10px 10px',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden',
+      background: src
+        ? '#EDE5D3 url(' + src + ') center/contain no-repeat'
+        : 'repeating-linear-gradient(135deg,#EDE5D3 0 9px,#E5DAC4 9px 18px)',
+      border: src ? 'none' : '1px solid #DED3BB',
+    });
+    const platos = [
+      { nombre: 'Arroces', precio: 'S/M', thumbStyle: thumb(null), phLabel: 'Foto arroz',
+        desc: 'Fondos de largas cocciones para arroces con mucho sabor. Mínimo dos personas.' },
+      { nombre: 'Revueltos', precio: 'S/M', thumbStyle: thumb(IMG + 'Revuelto-plato.png'), phLabel: '',
+        desc: 'Con setas de temporada, con gambas o con lo que traiga el día.' },
+      { nombre: 'Pescado del día', precio: 'S/M', thumbStyle: thumb(null), phLabel: 'Foto pescado',
+        desc: 'Lo mejor de la lonja, al horno o a la plancha. Pregúntanos qué ha entrado hoy.' },
+      { nombre: 'Carabinero y marisco', precio: 'S/M', thumbStyle: thumb(IMG + 'Carabinero.png'), phLabel: '',
+        desc: 'Marisco del Cantábrico tratado con respeto: plancha, sal y nada más.' },
+      { nombre: 'Torrija', precio: '', thumbStyle: thumb(null), phLabel: 'Foto torrija',
+        desc: 'Mejor Torrija Nacional 2016. El postre por el que vuelve media Santoña.' },
+    ];
+    const cats = ['Todos', 'Arroces', 'Revueltos', 'Del mar', 'Postres'];
+    const tabStyle = (on) => ({
+      font: '600 .92rem var(--font-body)', padding: '10px 18px', borderRadius: 999,
+      cursor: 'pointer',
+      border: on ? '1px solid var(--ink)' : '1px solid var(--line)',
+      background: on ? 'var(--ink)' : 'var(--paper)',
+      color: on ? '#fff' : 'var(--ink-soft)',
+      transition: 'all .18s cubic-bezier(.4,0,.2,1)',
+    });
+
+    const resenas = [
+      { autor: 'Marta Solana', inicial: 'M', cuando: 'hace 2 semanas', texto: 'El arroz con bogavante es de los mejores que he comido en la costa. Trato cercano y la torrija, obligatoria.' },
+      { autor: 'Julen Etxeberria', inicial: 'J', cuando: 'hace 1 mes', texto: 'Producto de primera y cocina de verdad, de la que lleva horas de fuego. Reservad, porque se llena.' },
+      { autor: 'Carmen Ruiz', inicial: 'C', cuando: 'hace 3 meses', texto: 'Fuimos por las anchoas y nos quedamos con el revuelto de setas. Calidad-precio muy buena para Santoña.' },
+    ];
+
+    const hoy = new Date().getDay();
+    const dias = [
+      { dia: 'Lunes', horas: '11:00 – 16:00', d: 1 },
+      { dia: 'Martes', horas: '11:00 – 16:00', d: 2 },
+      { dia: 'Miércoles', horas: 'Cerrado', d: 3 },
+      { dia: 'Jueves', horas: '11:00 – 16:00', d: 4 },
+      { dia: 'Viernes', horas: '11:00 – 16:00 · 21:00 – 23:30', d: 5 },
+      { dia: 'Sábado', horas: '10:00 – 16:00 · 21:00 – 23:30', d: 6 },
+      { dia: 'Domingo', horas: '11:00 – 16:00', d: 0 },
+    ];
+    const horario = dias.map((x) => ({
+      dia: x.dia, horas: x.horas,
+      color: x.d === hoy ? '#F2A30B' : '#CDBFA9',
+      colorLight: x.d === hoy ? 'var(--tomato)' : 'var(--ink-soft)',
+      colorMar: x.d === hoy ? '#1E5A5B' : 'var(--ink-soft)',
+    }));
+
+    const pillBase = {
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '.86rem',
+      padding: '8px 16px', borderRadius: 999,
+      color: abierto ? 'var(--green)' : 'var(--tomato)',
+    };
+
+    return {
+      esClasico: v === 'clasico',
+      esV2: v === 'v2',
+      verClasico: () => this.setState({ version: 'clasico' }),
+      verV2: () => this.setState({ version: 'v2' }),
+      swClasico: sw(v === 'clasico'),
+      swV2: sw(v === 'v2'),
+      premios, platos, resenas, horario,
+
+      estadoTexto: abierto ? 'Abierto ahora' : 'Cerrado ahora',
+      estadoPillClasico: { ...pillBase, background: abierto ? 'rgba(78,140,74,.16)' : 'rgba(218,59,35,.14)' },
+      estadoPillModerno: { ...pillBase, background: abierto ? 'rgba(78,140,74,.12)' : 'rgba(218,59,35,.1)' },
+      estadoDot: {
+        width: 9, height: 9, borderRadius: '50%',
+        background: abierto ? 'var(--green)' : 'var(--tomato)',
+        boxShadow: abierto ? '0 0 0 4px rgba(78,140,74,.18)' : '0 0 0 4px rgba(218,59,35,.16)',
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

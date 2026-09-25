@@ -114,6 +114,12 @@ def inspect_zip(zip_path: Path) -> None:
     elif not has_index and len(htmls) == 1:
         print(f"\n  ⚠️  Sin index.html — se renombrará {htmls[0]} → index.html al desplegar.")
 
+    index_dirs = _find_index_dirs(zip_path)
+    if len(index_dirs) > 1:
+        labels = ", ".join(d or "(raíz)" for d in index_dirs)
+        print(f"\n  🔀  {len(index_dirs)} diseños completos detectados (cada uno con su index.html): {labels}")
+        print(f"      Al desplegar se preguntará por terminal cuáles subir.")
+
 
 def _file_icon(name: str) -> str:
     ext = Path(name).suffix.lower()
@@ -138,6 +144,47 @@ def _find_htmls(zip_path: Path) -> list[str]:
     return sorted(htmls)
 
 
+def _find_index_dirs(zip_path: Path) -> list[str]:
+    """Devuelve las carpetas (tras strip de carpeta raíz) que contienen un index.html/.htm.
+    "" representa la raíz del zip. Se usa para detectar múltiples diseños completos
+    (una carpeta por diseño, cada una con su propio index.html)."""
+    with zipfile.ZipFile(zip_path, "r") as z:
+        names  = z.namelist()
+        prefix = _detect_prefix(names)
+        dirs   = set()
+        for n in names:
+            rel = n[len(prefix):]
+            if not rel or rel.endswith("/"):
+                continue
+            if rel.lower().endswith(("/index.html", "/index.htm")):
+                dirs.add(rel.rsplit("/", 1)[0])
+            elif rel.lower() in ("index.html", "index.htm"):
+                dirs.add("")
+    return sorted(dirs)
+
+
+def prompt_select_designs(dirs: list[str]) -> list[str]:
+    """Pregunta por terminal qué diseños (carpetas con index.html) desplegar."""
+    print(f"\n  🔀  Se han detectado {len(dirs)} diseños (index.html) en este zip:")
+    for i, d in enumerate(dirs, 1):
+        label = d if d else "(raíz)"
+        print(f"    {i}. {label}")
+    print("  Introduce los números de los diseños a subir separados por comas (ej: 1,3),")
+    print("  o pulsa Enter / escribe 'todos' para subirlos todos:")
+    while True:
+        choice = input("  > ").strip().lower()
+        if choice in ("", "todos", "all"):
+            return dirs
+        try:
+            idxs = [int(x.strip()) for x in choice.split(",") if x.strip()]
+        except ValueError:
+            idxs = []
+        selected = sorted({dirs[i - 1] for i in idxs if 1 <= i <= len(dirs)})
+        if selected:
+            return selected
+        print("  ⚠️  Entrada no válida, inténtalo de nuevo.")
+
+
 # ─── EXTRACCIÓN ───────────────────────────────────────────────────────────────
 
 def _detect_prefix(names: list[str]) -> str:
@@ -148,7 +195,22 @@ def _detect_prefix(names: list[str]) -> str:
     return ""
 
 
-def extract_zip(zip_path: Path, dest: Path) -> None:
+def _entry_in_selected_dirs(rel: str, selected_dirs: list[str]) -> bool:
+    """True si rel (ruta relativa tras strip de prefijo) pertenece a una de las carpetas
+    de diseño seleccionadas (ver _find_index_dirs / prompt_select_designs)."""
+    entry_dir = rel.rsplit("/", 1)[0] if "/" in rel else ""
+    for d in selected_dirs:
+        if d == "":
+            if "/" not in rel:
+                return True
+        elif entry_dir == d or entry_dir.startswith(d + "/"):
+            return True
+    return False
+
+
+def extract_zip(zip_path: Path, dest: Path, selected_dirs: list[str] | None = None) -> None:
+    """Extrae el zip en dest. Si selected_dirs se indica, solo se extraen los archivos
+    pertenecientes a esas carpetas de diseño (más los archivos sueltos de la raíz)."""
     with zipfile.ZipFile(zip_path, "r") as z:
         names  = z.namelist()
         prefix = _detect_prefix(names)
@@ -156,6 +218,8 @@ def extract_zip(zip_path: Path, dest: Path) -> None:
         for item in z.infolist():
             rel = item.filename[len(prefix):]
             if not rel:
+                continue
+            if selected_dirs is not None and not item.is_dir() and not _entry_in_selected_dirs(rel, selected_dirs):
                 continue
             target = dest / rel
             if item.is_dir():
@@ -327,6 +391,63 @@ def _write_index(dest: Path, htmls: list[Path], client_name: str) -> None:
     (dest / "index.html").write_text(index, encoding="utf-8")
 
 
+def _write_folder_index(dest: Path, design_dirs: list[str], client_name: str) -> None:
+    """Genera un index.html en dest que enlaza a subcarpetas de diseño (cada una con su propio
+    index.html), para el caso de múltiples diseños completos dentro de un mismo zip."""
+    title      = client_name.replace("-", " ").title()
+    cards_html = ""
+    for i, d in enumerate(design_dirs, 1):
+        label = Path(d).name.replace("-", " ").replace("_", " ").title()
+        cards_html += f"""
+        <a href="{d}/" class="card">
+          <div class="num">0{i}</div>
+          <div class="label">{label}</div>
+          <div class="arrow">→</div>
+        </a>"""
+
+    index = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} — Propuestas de diseño</title>
+  <style>
+    *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    body {{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f; color: #f0f0f0;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 2rem;
+    }}
+    h1 {{ font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 600;
+          letter-spacing: -0.02em; margin-bottom: 0.5rem; text-align: center; }}
+    p  {{ color: #888; font-size: 0.9rem; margin-bottom: 2.5rem; text-align: center; }}
+    .cards {{ display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 420px; }}
+    .card {{
+      display: flex; align-items: center; gap: 1rem;
+      background: #1a1a1a; border: 1px solid #2a2a2a;
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      text-decoration: none; color: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }}
+    .card:hover {{ background: #222; border-color: #444; }}
+    .num   {{ font-size: 1.5rem; font-weight: 700; color: #444; min-width: 2rem; }}
+    .label {{ flex: 1; font-size: 1rem; font-weight: 500; }}
+    .arrow {{ color: #555; font-size: 1.1rem; transition: color 0.15s; }}
+    .card:hover .arrow {{ color: #f0f0f0; }}
+  </style>
+</head>
+<body>
+  <h1>{title}</h1>
+  <p>Selecciona una propuesta de diseño</p>
+  <div class="cards">{cards_html}
+  </div>
+</body>
+</html>"""
+
+    (dest / "index.html").write_text(index, encoding="utf-8")
+
+
 # ─── DEPLOY ───────────────────────────────────────────────────────────────────
 
 def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
@@ -339,10 +460,20 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
     print(f"  📦  {zip_path.name}")
     print(f"  📂  → {city_slug}/{client_slug}")
 
+    index_dirs = _find_index_dirs(zip_path)
+    multi_design = len(index_dirs) > 1
+
     if dry_run:
         htmls = _find_htmls(zip_path)
         print(f"  🔍  [dry-run] {len(htmls)} HTML(s) encontrado(s): {', '.join(htmls) or '—'}")
+        if multi_design:
+            labels = ", ".join(d or "(raíz)" for d in index_dirs)
+            print(f"  🔍  [dry-run] {len(index_dirs)} diseños completos detectados: {labels}")
         return True
+
+    selected_dirs = None
+    if multi_design:
+        selected_dirs = prompt_select_designs(index_dirs)
 
     is_update = dest.exists()
     if is_update:
@@ -352,10 +483,23 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
         print(f"  🔄  Update — backup en {backup.name}")
 
     dest.mkdir(parents=True, exist_ok=True)
-    extract_zip(zip_path, dest)
+    extract_zip(zip_path, dest, selected_dirs=selected_dirs)
+
+    if selected_dirs is not None:
+        if len(selected_dirs) == 1 and selected_dirs[0] != "":
+            # Un único diseño elegido → aplanar su contenido a la raíz del cliente
+            only_dir = dest / selected_dirs[0]
+            for item in only_dir.iterdir():
+                shutil.move(str(item), dest / item.name)
+            shutil.rmtree(only_dir)
+            print(f"  📄  {selected_dirs[0]}/ → raíz")
+        elif len(selected_dirs) > 1:
+            _write_folder_index(dest, selected_dirs, client_slug)
+            print(f"  📋  Índice generado con {len(selected_dirs)} diseño(s) seleccionado(s)")
 
     hidden = _load_hidden(city_slug, client_slug)
-    maybe_generate_index(dest, client_slug, hidden=hidden)
+    if selected_dirs is None or len(selected_dirs) == 1:
+        maybe_generate_index(dest, client_slug, hidden=hidden)
     _sync_deploy_config(city_slug, client_slug)  # añade entrada vacía si es cliente nuevo
 
     run_git("add", ".", cwd=REPO_PATH)

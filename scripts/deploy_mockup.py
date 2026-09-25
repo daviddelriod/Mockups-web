@@ -263,7 +263,8 @@ def _sync_deploy_config(city_slug: str = "", client_slug: str = "") -> None:
         for city_dir in sorted(p for p in REPO_PATH.iterdir()
                                if p.is_dir() and p.name not in _SKIP and not p.name.startswith(".")):
             for client_dir in sorted(p for p in city_dir.iterdir()
-                                     if p.is_dir() and (p / "index.html").exists()):
+                                     if p.is_dir() and not p.name.endswith("_bak")
+                                     and (p / "index.html").exists()):
                 key = f"{city_dir.name}/{client_dir.name}"
                 if key not in data:
                     data[key] = []
@@ -535,7 +536,8 @@ def reindex_all() -> None:
     for city_dir in sorted(p for p in REPO_PATH.iterdir()
                            if p.is_dir() and p.name not in _SKIP and not p.name.startswith(".")):
         for client_dir in sorted(p for p in city_dir.iterdir()
-                                 if p.is_dir() and (p / "index.html").exists()):
+                                 if p.is_dir() and not p.name.endswith("_bak")
+                                 and (p / "index.html").exists()):
             print(f"\n  📂  {city_dir.name}/{client_dir.name}")
             # Forzar regeneración borrando el index actual si hay HTMLs adicionales
             htmls = [p for p in client_dir.glob("*.html") if p.name.lower() != "index.html"]
@@ -603,7 +605,7 @@ def write_links_file() -> None:
     for city_dir in cities:
         clients = sorted(
             p for p in city_dir.iterdir()
-            if p.is_dir() and (p / "index.html").exists()
+            if p.is_dir() and not p.name.endswith("_bak") and (p / "index.html").exists()
         )
         lines.append(f"## {city_dir.name.title()}")
         if clients:

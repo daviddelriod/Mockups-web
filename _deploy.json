@@ -6,5 +6,11 @@
   "laredo/poke-la-flaka": [],
   "santander/binukas-burger-web": [],
   "santander/pizzeria-la-befana-web": [],
-  "laredo/rediseno-web-restaurante-asdeguia": []
+  "laredo/rediseno-web-restaurante-asdeguia": [
+    "rediseño as de guía v2.dc.html",
+    "rediseño as de guía v3.dc.html",
+    "rediseño as de guía v4.dc.html",
+    "rediseño as de guía v5 responsive.dc.html",
+    "vista movil.html"
+  ]
 }

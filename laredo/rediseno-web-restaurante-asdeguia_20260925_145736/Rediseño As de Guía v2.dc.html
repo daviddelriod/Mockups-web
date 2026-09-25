@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(rgba(247,242,231,.955),rgba(247,242,231,.975)),url('uploads/FondoMadera.jpeg') center/1100px auto repeat fixed;font-family:var(--font-body);color:#2A2018}
+a{color:#1E5A5B;text-decoration:none}
+a:hover{color:#13333B}
+input,select,textarea{font-family:var(--font-body)}
+@keyframes adg-rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes adg-arch{from{opacity:0;transform:translateY(46px) scale(.965)}to{opacity:1;transform:none}}
+@keyframes adg-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes adg-float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(-1.2deg)}}
+@keyframes adg-shimmer{0%{background-position:-220% 0}100%{background-position:220% 0}}
+@keyframes adg-pulse{0%,100%{box-shadow:0 0 0 0 rgba(78,140,74,.45)}70%{box-shadow:0 0 0 10px rgba(78,140,74,0)}}
+@keyframes adg-swim{0%{transform:translateX(-6vw)}100%{transform:translateX(106vw)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+</style>
+</helmet>
+
+<div style="overflow-x:hidden;position:relative">
+
+<div style="position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .0001; mix-blend-mode: multiply; background-image: url(&quot;data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'&gt;&lt;filter id='n'&gt;&lt;feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/&gt;&lt;/filter&gt;&lt;rect width='160' height='160' filter='url(%23n)' opacity='.34'/&gt;&lt;/svg&gt;&quot;)"></div>
+
+<div style="position:fixed;top:0;left:0;height:2px;z-index:70;background:linear-gradient(90deg,#8C651C,#E3C378);width:{{ progreso }}"></div>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(247,242,231,.88);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid #DED3BB">
+  <div style="max-width:1180px;margin:0 auto;padding:12px 32px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px">
+    <nav style="display:flex;gap:26px;align-items:center;font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase">
+      <a href="#cocinero" style="color:#5C5346;position:relative;padding-bottom:4px;background-image:linear-gradient(#B98A2E,#B98A2E);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .34s cubic-bezier(.22,1,.36,1),color .2s" style-hover="color:#13333B;background-size:100% 1px">El cocinero</a>
+      <a href="#producto" style="color:#5C5346;position:relative;padding-bottom:4px;background-image:linear-gradient(#B98A2E,#B98A2E);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .34s cubic-bezier(.22,1,.36,1),color .2s" style-hover="color:#13333B;background-size:100% 1px">El producto</a>
+      <a href="#carta" style="color:#5C5346;position:relative;padding-bottom:4px;background-image:linear-gradient(#B98A2E,#B98A2E);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .34s cubic-bezier(.22,1,.36,1),color .2s" style-hover="color:#13333B;background-size:100% 1px">La carta</a>
+    </nav>
+    <a href="#hero" style="display:block;text-align:center;transition:transform .4s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.06)">
+      <img src="uploads/fotos-1789840275799-rn0g.jpg" alt="As de Guía" style="height:52px;display:block;margin:0 auto;mix-blend-mode:multiply">
+    </a>
+    <nav style="display:flex;gap:22px;justify-content:flex-end;align-items:center;font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase">
+      <a href="#donde" style="color:#5C5346;padding-bottom:4px;background-image:linear-gradient(#B98A2E,#B98A2E);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .34s cubic-bezier(.22,1,.36,1),color .2s" style-hover="color:#13333B;background-size:100% 1px">Dónde estamos</a>
+      <a href="#reservar" style="color:#F7F2E7;background:#13333B;padding:12px 22px;border-radius:999px;letter-spacing:.14em;overflow:hidden;position:relative;transition:box-shadow .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(19,51,59,.85);color:#F7F2E7">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero" style="position:relative;padding:18px 18px 0">
+  <div style="position:relative;height:min(84vh,780px);min-height:560px;overflow:hidden;border-radius:28px;background:#0C2228;animation:adg-arch 1.2s cubic-bezier(.22,1,.36,1) both">
+    <video src="https://restauranteasdeguia.es/wp-content/uploads/2025/01/AsDeGuia-Presentacion-V.mp4" poster="uploads/Paella.png" autoplay="" muted="" loop="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale({{ zoomVideo }});transition:transform .25s linear"></video>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,34,40,.72) 0%,rgba(12,34,40,.18) 34%,rgba(12,34,40,.62) 72%,rgba(12,34,40,.94) 100%)"></div>
+
+    <div style="position:absolute;top:26px;left:30px;right:30px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:10px;font:600 .72rem var(--font-body);letter-spacing:.3em;text-transform:uppercase;color:#F3E2B8;background:rgba(12,34,40,.4);backdrop-filter:blur(8px);border:1px solid rgba(243,226,184,.35);border-radius:999px;padding:10px 18px;animation:adg-rise .9s cubic-bezier(.22,1,.36,1) .2s both"><span style="width:6px;height:6px;border-radius:50%;background:#E3C378"></span>Cocina de mercado · Santoña</span>
+      <span style="font-family:var(--font-script);font-size:1.6rem;color:#F3E2B8;animation:adg-rise .9s cubic-bezier(.22,1,.36,1) .3s both">desde 2009</span>
+    </div>
+
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 30px 34px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:34px;align-items:end">
+      <div>
+        <h1 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:.92;font-size:clamp(2.6rem,6.4vw,5.4rem);color:#fff;margin:0;max-width:15ch;text-wrap:balance">
+          <span style="display:block;animation:adg-rise 1s cubic-bezier(.22,1,.36,1) .12s both">Los mejores arroces</span>
+          <span style="display:block;animation:adg-rise 1s cubic-bezier(.22,1,.36,1) .24s both">y revueltos del</span>
+          <span style="display:block;animation:adg-rise 1s cubic-bezier(.22,1,.36,1) .36s both;background:linear-gradient(100deg,#fff 0%,#fff 36%,#E3C378 50%,#fff 64%,#fff 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation-name:adg-rise,adg-shimmer;animation-duration:1s,5.5s;animation-iteration-count:1,infinite;animation-timing-function:cubic-bezier(.22,1,.36,1),linear">Cantábrico</span>
+        </h1>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;animation:adg-rise 1s cubic-bezier(.22,1,.36,1) .5s both">
+          <a href="#reservar" style="font:700 .98rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#13333B;background:#F3E2B8;padding:18px 32px;border-radius:999px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-3px);box-shadow:0 18px 34px -14px rgba(243,226,184,.6);color:#13333B">Reservar mesa</a>
+          <a href="#carta" style="font:700 .98rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#fff;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);padding:17px 30px;border-radius:999px;transition:background .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)" style-hover="background:rgba(255,255,255,.2);color:#fff;transform:translateY(-3px)">Ver la carta</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end;animation:adg-rise 1s cubic-bezier(.22,1,.36,1) .62s both">
+        <div style="display:inline-flex;align-items:center;gap:12px;background:rgba(12,34,40,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:12px 20px;white-space:nowrap;transition:transform .35s cubic-bezier(.22,1,.36,1)" style-hover="transform:translateY(-3px)">
+          <span style="color:#F2A30B;font-size:15px;letter-spacing:2px">★★★★☆</span>
+          <span style="font-family:var(--font-display);font-weight:800;color:#fff" data-count="4,3">4,3</span>
+          <span style="color:#C8D6D3;font-size:.9rem"><span data-count="527">527</span> reseñas</span>
+        </div>
+        <div style="{{ estadoPill }}"><span style="{{ estadoDot }}"></span>{{ estadoTexto }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-sentinel="" style="height:1px"></div>
+<div style="margin-top:74px;background:#13333B;border-top:1px solid #1E5A5B;border-bottom:1px solid #1E5A5B;overflow:hidden;position:relative">
+  <div style="position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#13333B 0%,rgba(19,51,59,0) 12%,rgba(19,51,59,0) 88%,#13333B 100%)"></div>
+  <div style="display:flex;width:max-content;animation:adg-marquee 46s linear infinite;padding:16px 0">
+    <sc-for list="{{ marquesina }}" as="m" hint-placeholder-count="16">
+      <span style="display:inline-flex;align-items:center;gap:22px;padding:0 22px;font:600 .8rem var(--font-body);letter-spacing:.22em;text-transform:uppercase;color:#E3C378;white-space:nowrap">{{ m.texto }}<span style="width:5px;height:5px;border-radius:50%;background:#B98A2E;opacity:.7"></span></span>
+    </sc-for>
+  </div>
+</div>
+
+<section id="cocinero" style="padding:104px 32px 0">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:start">
+    <div data-reveal="" style="transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)">
+      <div style="aspect-ratio:4/5;border-radius:240px 240px 12px 12px;overflow:hidden;box-shadow:0 30px 60px -32px rgba(19,51,59,.55);border:8px solid #fff;background:#13333B;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s" style-hover="transform:translateY(-8px);box-shadow:0 44px 76px -34px rgba(19,51,59,.6)">
+        <img src="uploads/ElChef.jpg" alt="Iván R. Arrizabalaga en la puerta del restaurante" style="width:100%;height:100%;object-fit:cover;object-position:62% 50%;display:block;transition:transform .9s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05)">
+      </div>
+      <p style="font-family:var(--font-script);font-size:1.5rem;color:#1E5A5B;text-align:center;margin:18px 0 0">Iván y Ángela, desde julio de 2009</p>
+    </div>
+    <div data-reveal="" style="transition:opacity .85s cubic-bezier(.22,1,.36,1) .12s,transform .85s cubic-bezier(.22,1,.36,1) .12s">
+      <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">01</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">El cocinero</span></div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2.1rem,4vw,3.1rem);color:#13333B;margin:20px 0 0">Iván R. Arrizabalaga</h2>
+      <p style="font-size:1.2rem;line-height:1.62;color:#1E5A5B;margin:26px 0 0;max-width:56ch">Iván R. Arrizabalaga es un cocinero afincado en Santoña. Su estilo se ha visto influenciado tanto por sus raíces cántabras y vascas, como por su paso por grandes cocinas, como la de Kabia en Zumárraga, Jolastoki en Getxo, Risco en Laredo…</p>
+      <p style="font-size:1.05rem;line-height:1.7;color:#5C5346;margin:16px 0 0;max-width:60ch">Su cocina destaca por el guiso tradicional, largas cocciones para conseguir mucho sabor y fondos para luego elaborar sabrosos arroces, trabajando siempre con producto de temporada, mimándolo para ofrecer al comensal lo mejor del día.</p>
+      <p style="font-size:1.05rem;line-height:1.7;color:#5C5346;margin:16px 0 0;max-width:60ch">Iván abrió junto a su mujer, Ángela Gómez Prada, el Restaurante As de Guía en julio de 2009.</p>
+      <div style="display:flex;gap:34px;flex-wrap:wrap;margin-top:32px;padding-top:26px;border-top:1px solid #DED3BB">
+        <div><div style="font-family:var(--font-display);font-weight:800;font-size:2rem;color:#13333B;line-height:1">16</div><div style="font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-top:6px">Años abiertos</div></div>
+        <div><div style="font-family:var(--font-display);font-weight:800;font-size:2rem;color:#13333B;line-height:1">11</div><div style="font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-top:6px">Premios</div></div>
+        <div><div style="font-family:var(--font-display);font-weight:800;font-size:2rem;color:#13333B;line-height:1">30–40 €</div><div style="font:600 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-top:6px">Por persona</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:70px auto 0">
+    <div style="display:flex;align-items:center;gap:14px"><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Premios y galardones</span></div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;margin-top:22px;border-top:1px solid #DED3BB">
+      <sc-for list="{{ premios }}" as="p" hint-placeholder-count="8">
+        <div style="display:flex;align-items:baseline;gap:16px;padding:14px 16px;margin:0 -16px;border-bottom:1px solid #DED3BB;transition:background .3s cubic-bezier(.22,1,.36,1),padding-left .3s cubic-bezier(.22,1,.36,1)" style-hover="background:#F2EADB;padding-left:26px">
+          <span style="font-family:var(--font-display);font-weight:700;font-size:.99rem;color:#13333B">{{ p.titulo }}</span>
+          <span style="flex:1;border-bottom:1px dotted #DED3BB;transform:translateY(-3px)"></span>
+          <span style="font:600 .9rem var(--font-body);color:#B98A2E;white-space:nowrap">{{ p.anios }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="producto" style="margin:104px 0 0;padding:104px 32px 108px;position:relative;overflow:hidden;color:#E7EFEC;background:linear-gradient(180deg,rgba(13,38,44,.965),rgba(19,51,59,.93) 45%,rgba(13,38,44,.975)),url('uploads/FondoMadera.jpeg') center/cover fixed no-repeat">
+  <div style="max-width:1180px;margin:0 auto;position:relative">
+    <div data-reveal="" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">02</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">El producto</span></div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2rem,3.9vw,3rem);color:#fff;margin:22px 0 0;max-width:17ch">Manda la lonja, no la carta</h2>
+      </div>
+      <p style="font-size:1.06rem;line-height:1.68;color:#B9CBC7;margin:0;max-width:50ch">Cocina de mercado: compramos lo que hay ese día y el menú se ajusta a ello. Tres productos vuelven cada temporada porque aquí llegan antes que a ningún sitio.</p>
+    </div>
+
+    <div style="margin-top:72px;display:flex;flex-direction:column;gap:14px">
+      <div data-reveal="" style="display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:46px;align-items:center;padding:34px 0;border-top:1px solid rgba(227,195,120,.22);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),background .5s ease" style-hover="background:rgba(227,195,120,.05)">
+        <div style="position:relative;padding:0 26px 26px 0">
+          <div style="height:300px;overflow:hidden;border:8px solid rgba(255,255,255,.94);box-shadow:0 34px 64px -36px rgba(0,0,0,.75)">
+            <img src="uploads/Paella-2.png" alt="Arroz con carabineros" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.06)">
+          </div>
+          <div style="position:absolute;right:0;bottom:0;width:158px;height:158px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#20535C,#0C2228);border:1px solid rgba(227,195,120,.45);box-shadow:0 22px 44px -20px rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img src="uploads/Carabinero.png" alt="Carabinero del Cantábrico" style="width:132px;height:132px;object-fit:contain;animation:adg-float 7.5s ease-in-out infinite;filter:drop-shadow(0 12px 16px rgba(0,0,0,.55))">
+          </div>
+        </div>
+        <div>
+          <div style="font:700 .74rem var(--font-body);letter-spacing:.26em;text-transform:uppercase;color:#B98A2E">Carabinero</div>
+          <h3 style="font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,2.4vw,2rem);color:#fff;margin:12px 0 0;letter-spacing:-.02em">Sal, brasa y nada más</h3>
+          <p style="color:#B9CBC7;font-size:1.02rem;line-height:1.62;margin:12px 0 0;max-width:42ch">A la plancha o abierto sobre el arroz, para que el jugo de la cabeza se meta en el grano.</p>
+          <div style="display:flex;gap:26px;margin-top:20px;font:600 .8rem var(--font-body);color:#8FA8A5"><span>Pieza entera</span><span style="color:#B98A2E">Según mercado</span></div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:46px;align-items:center;padding:34px 0;border-top:1px solid rgba(227,195,120,.22);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),background .5s ease" style-hover="background:rgba(227,195,120,.05)">
+        <div style="grid-column:1/2">
+          <div style="font:700 .74rem var(--font-body);letter-spacing:.26em;text-transform:uppercase;color:#B98A2E">Setas de temporada</div>
+          <h3 style="font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,2.4vw,2rem);color:#fff;margin:12px 0 0;letter-spacing:-.02em">Lo que da el monte</h3>
+          <p style="color:#B9CBC7;font-size:1.02rem;line-height:1.62;margin:12px 0 0;max-width:42ch">Cambian cada mes: en revuelto, al ajillo o con el arroz. Del monte cántabro a la sartén el mismo día.</p>
+          <div style="display:flex;gap:26px;margin-top:20px;font:600 .8rem var(--font-body);color:#8FA8A5"><span>Otoño e invierno</span><span style="color:#B98A2E">Revuelto premiado</span></div>
+        </div>
+        <div style="grid-column:2/3;position:relative;padding:0 0 26px 26px">
+          <div style="height:300px;overflow:hidden;border:8px solid rgba(255,255,255,.94);box-shadow:0 34px 64px -36px rgba(0,0,0,.75)">
+            <img src="uploads/Revuelto-plato.png" alt="Revuelto de setas" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.06)">
+          </div>
+          <div style="position:absolute;left:0;bottom:0;width:158px;height:158px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#20535C,#0C2228);border:1px solid rgba(227,195,120,.45);box-shadow:0 22px 44px -20px rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img src="uploads/Setas01.png" alt="Setas de temporada" style="width:126px;height:126px;object-fit:contain;animation:adg-float 8.6s ease-in-out .9s infinite;filter:drop-shadow(0 12px 16px rgba(0,0,0,.55))">
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:46px;align-items:center;padding:34px 0;border-top:1px solid rgba(227,195,120,.22);border-bottom:1px solid rgba(227,195,120,.22);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),background .5s ease" style-hover="background:rgba(227,195,120,.05)">
+        <div style="position:relative;padding:0 26px 26px 0">
+          <div style="height:300px;overflow:hidden;border:8px solid rgba(255,255,255,.94);box-shadow:0 34px 64px -36px rgba(0,0,0,.75)">
+            <img src="uploads/Ensalada-plato.png" alt="Plato con anchoa y verdes" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.06)">
+          </div>
+          <div style="position:absolute;right:0;bottom:0;width:158px;height:158px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#20535C,#0C2228);border:1px solid rgba(227,195,120,.45);box-shadow:0 22px 44px -20px rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img src="uploads/Anchoa.png" alt="Anchoa de Santoña" style="width:140px;height:90px;object-fit:contain;animation:adg-float 8s ease-in-out .45s infinite;filter:drop-shadow(0 12px 16px rgba(0,0,0,.55))">
+          </div>
+        </div>
+        <div>
+          <div style="font:700 .74rem var(--font-body);letter-spacing:.26em;text-transform:uppercase;color:#B98A2E">Anchoa de Santoña</div>
+          <h3 style="font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,2.4vw,2rem);color:#fff;margin:12px 0 0;letter-spacing:-.02em">De la lonja de al lado</h3>
+          <p style="color:#B9CBC7;font-size:1.02rem;line-height:1.62;margin:12px 0 0;max-width:42ch">Filete limpio, pan cristal y aceite de oliva. El producto con el que hemos ganado seis premios al pincho.</p>
+          <div style="display:flex;gap:26px;margin-top:20px;font:600 .8rem var(--font-body);color:#8FA8A5"><span>Salazón local</span><span style="color:#B98A2E">6 premios</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-top:56px">
+      <p style="font-family:var(--font-script);font-size:1.9rem;color:#fff;margin:0;max-width:20ch;line-height:1.2">Orgullosos de los sabores de nuestra tierra</p>
+      <p style="font-size:1.02rem;line-height:1.62;color:#B9CBC7;margin:0;max-width:44ch">Apostamos por una gastronomía sostenible y de la mayor calidad, para conseguir platos con los que nuestros clientes disfruten.</p>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative;height:460px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center">
+  <img data-parallax="120" src="uploads/Paella.png" alt="Arroz en la mesa" style="position:absolute;inset:-16% 0;width:100%;height:132%;object-fit:cover">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,51,59,.82),rgba(19,51,59,.58) 50%,rgba(19,51,59,.86))"></div>
+  <div style="position:relative;padding:0 32px;max-width:900px">
+    <div style="font:700 .74rem var(--font-body);letter-spacing:.3em;text-transform:uppercase;color:#E3C378">Fondo de cocción larga</div>
+    <p style="font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:1.08;font-size:clamp(1.8rem,3.4vw,2.7rem);color:#fff;margin:18px auto 0;max-width:22ch;text-wrap:balance">El arroz se empieza el día antes</p>
+    <p style="font-family:var(--font-script);font-size:1.7rem;color:#E3C378;margin:14px 0 0">y se termina delante de ti</p>
+  </div>
+</section>
+
+<section id="carta" style="padding:100px 32px 0;position:relative">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">03</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">La carta</span></div>
+        <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2rem,3.8vw,2.9rem);color:#13333B;margin:20px 0 0;max-width:17ch">La carta, sin descargar nada</h2>
+      </div>
+      <p style="font-size:1.02rem;line-height:1.65;color:#5C5346;margin:0;max-width:44ch">Arroces de fondo largo, revueltos de temporada y lo que esa mañana ha entrado en la lonja. Cambia con el mercado.</p>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:34px;padding-bottom:26px;border-bottom:1px solid #DED3BB">
+      <sc-for list="{{ categorias }}" as="c" hint-placeholder-count="7">
+        <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:56px;align-items:start;margin-top:36px">
+      <div>
+        <sc-for list="{{ platosVisibles }}" as="d" hint-placeholder-count="3">
+          <div onMouseEnter="{{ d.onEnter }}" style="padding:20px 18px;margin:0 -18px;border-bottom:1px solid #DED3BB;position:relative;cursor:default;transition:background .3s cubic-bezier(.22,1,.36,1),padding-left .3s cubic-bezier(.22,1,.36,1)" style-hover="background:#F2EADB;padding-left:30px">
+            <div style="display:flex;align-items:baseline;gap:14px">
+              <span style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:#13333B">{{ d.nombre }}</span>
+              <span style="{{ d.badge }}">{{ d.badgeTexto }}</span>
+              <span style="flex:1;border-bottom:1px dotted #DED3BB;transform:translateY(-4px)"></span>
+              <span style="font-family:var(--font-display);font-weight:800;color:#B98A2E;white-space:nowrap">{{ d.precio }}</span>
+            </div>
+            <p style="color:#5C5346;font-size:.99rem;line-height:1.55;margin:6px 0 0;max-width:62ch">{{ d.desc }}</p>
+          </div>
+        </sc-for>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:22px">
+          <p style="font-size:.88rem;color:#8A7F70;margin:0;max-width:52ch">S/M = según mercado. Carta de muestra para la maqueta: se sustituirá por la carta real. Alérgenos disponibles en sala.</p>
+          <a href="https://restauranteasdeguia.es/wp-content/uploads/Carta/Carta2025.08.pdf" style="font:600 .82rem var(--font-body);letter-spacing:.06em;color:#1E5A5B;padding-bottom:3px;background-image:linear-gradient(#13333B,#13333B);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .34s cubic-bezier(.22,1,.36,1),color .2s" style-hover="color:#13333B;background-size:100% 1px">Descargar en PDF</a>
+        </div>
+      </div>
+
+      <div style="position:sticky;top:110px;display:flex;flex-direction:column;gap:22px">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;border:6px solid #fff;background:#EDE5D3;box-shadow:0 22px 44px -30px rgba(19,51,59,.5)">
+          <div role="img" aria-label="{{ platoActivo }}" style="{{ estiloFoto }}"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:38px 18px 16px;background:linear-gradient(180deg,rgba(19,51,59,0),rgba(19,51,59,.88));color:#fff">
+            <div style="font:700 .62rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#E3C378">Plato señalado</div>
+            <div style="font-family:var(--font-display);font-weight:800;font-size:1.05rem;margin-top:4px;line-height:1.25">{{ platoActivo }}</div>
+          </div>
+        </div>
+        <div style="border:1px solid #DED3BB;background:#fff;padding:24px;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s" style-hover="transform:translateY(-5px);box-shadow:0 26px 48px -30px rgba(19,51,59,.55)">
+          <div style="font:700 .72rem var(--font-body);letter-spacing:.22em;text-transform:uppercase;color:#B98A2E">Menús para grupos</div>
+          <p style="font-size:.97rem;line-height:1.6;color:#5C5346;margin:12px 0 16px">Comidas de empresa, celebraciones y grupos a partir de 10 personas. Los cerramos contigo por teléfono.</p>
+          <a href="#reservar" style="font:700 .88rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#13333B;border:1px solid #13333B;padding:13px 20px;border-radius:999px;display:inline-block;transition:background .3s,color .3s" style-hover="background:#13333B;color:#F7F2E7">Pedir propuesta</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:96px 32px 0">
+  <div style="max-width:1180px;margin:0 auto;text-align:center">
+    <div style="display:flex;align-items:center;gap:14px;justify-content:center"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">04</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Lo que dicen</span></div>
+    <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;font-size:clamp(1.9rem,3.4vw,2.6rem);color:#13333B;margin:22px 0 0">4,3 sobre 5 en Google</h2>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;flex-wrap:wrap">
+      <span style="color:#F2A30B;font-size:18px;letter-spacing:3px">★★★★☆</span>
+      <span style="color:#5C5346"><span data-count="527">527</span> reseñas</span>
+      <span style="font:700 .66rem var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:#8A7F70;border:1px solid #DED3BB;border-radius:999px;padding:6px 10px">Textos demo</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:56px;text-align:left">
+      <sc-for list="{{ resenas }}" as="r" hint-placeholder-count="3">
+        <div data-reveal="" style="transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .5s cubic-bezier(.22,1,.36,1);padding:26px 30px 30px;background:#FBF8F0;border:1px solid #EDE5D3" style-hover="transform:translateY(-8px);box-shadow:0 30px 56px -34px rgba(19,51,59,.5)">
+          <div style="font-family:var(--font-display);font-weight:800;font-size:3.6rem;line-height:.55;background:linear-gradient(135deg,#F3E2B8 0%,#B98A2E 45%,#8C651C 100%);-webkit-background-clip:text;background-clip:text;color:transparent">“</div>
+          <p style="color:#3A342C;font-size:1.06rem;line-height:1.72;margin:32px 0 0">{{ r.texto }}</p>
+          <div style="width:26px;height:1px;background:#B98A2E;margin-top:30px"></div>
+          <div style="font-family:var(--font-display);font-weight:700;color:#13333B;margin-top:16px">{{ r.autor }}</div>
+          <div style="font-size:.85rem;color:#8A7F70;margin-top:2px">{{ r.cuando }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=As+de+Gu%C3%ADa+Santo%C3%B1a" style="display:inline-block;margin-top:44px;font:600 .88rem var(--font-body);letter-spacing:.06em;color:#1E5A5B;padding-bottom:3px;background-image:linear-gradient(#13333B,#13333B);background-size:0% 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .34s cubic-bezier(.22,1,.36,1),color .2s" style-hover="color:#13333B;background-size:100% 1px">Leer las 527 reseñas en Google</a>
+  </div>
+</section>
+
+<section style="padding:96px 0 0;overflow:hidden">
+  <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px"><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">La casa, plato a plato</span></div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;font-size:clamp(1.9rem,3.4vw,2.6rem);color:#13333B;margin:18px 0 0;max-width:17ch">Fotos reales, nada de catálogo</h2>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button onClick="{{ anterior }}" aria-label="Anterior" style="width:52px;height:52px;border-radius:999px;border:1px solid #13333B;background:transparent;color:#13333B;cursor:pointer;font-size:1.1rem;transition:background .3s,color .3s,transform .3s" style-hover="background:#13333B;color:#F7F2E7;transform:translateY(-2px)">←</button>
+      <button onClick="{{ siguiente }}" aria-label="Siguiente" style="width:52px;height:52px;border-radius:999px;border:1px solid #13333B;background:#13333B;color:#F7F2E7;cursor:pointer;font-size:1.1rem;transition:background .3s,transform .3s" style-hover="background:#1E5A5B;transform:translateY(-2px)">→</button>
+    </div>
+  </div>
+  <div style="margin-top:38px;padding:34px 0 30px">
+    <div style="display:flex;gap:26px;padding-left:max(32px,calc(50vw - 590px));will-change:transform;transform:{{ pistaCarrusel }};transition:transform .75s cubic-bezier(.22,1,.36,1)">
+      <sc-for list="{{ diapositivas }}" as="s" hint-placeholder-count="5">
+        <figure onMouseEnter="{{ s.onEnter }}" onClick="{{ s.onClick }}" style="{{ s.marco }}">
+          <div role="img" aria-label="{{ s.titulo }}" style="{{ s.capa }}" style-hover="transform:scale(1.07)"></div>
+          <figcaption style="{{ s.pie }}">
+            <div style="font:700 .64rem var(--font-body);letter-spacing:.22em;text-transform:uppercase;color:#E3C378">{{ s.epigrafe }}</div>
+            <div style="font-family:var(--font-display);font-weight:800;font-size:1.25rem;color:#fff;margin-top:6px;line-height:1.2">{{ s.titulo }}</div>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+  <div style="max-width:1180px;margin:0 auto;padding:0 32px;display:flex;gap:8px;align-items:center">
+    <sc-for list="{{ puntos }}" as="p" hint-placeholder-count="5">
+      <button onClick="{{ p.onClick }}" aria-label="Ir a la foto" style="{{ p.style }}"></button>
+    </sc-for>
+  </div>
+</section>
+
+<section id="reservar" style="margin:100px 0 0;padding:96px 32px;position:relative;background:linear-gradient(rgba(237,229,211,.93),rgba(237,229,211,.95)),url('uploads/FondoMadera.jpeg') center/1100px auto repeat fixed">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center">
+      <div style="display:flex;align-items:center;gap:14px;justify-content:center"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">05</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Reservar</span></div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;font-size:clamp(2rem,3.8vw,2.9rem);color:#13333B;margin:22px auto 0;max-width:17ch;text-wrap:balance">Mesa en dos minutos</h2>
+      <p style="font-size:1.04rem;line-height:1.65;color:#5C5346;margin:14px auto 0;max-width:52ch">Elige cómo prefieres hacerlo. Te confirmamos siempre antes de cobrar nada.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:start;margin-top:52px">
+      <div data-reveal="" style="transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1);background:#fff;border:1px solid #DED3BB;padding:36px;box-shadow:0 30px 60px -44px rgba(19,51,59,.6)">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div style="font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:#13333B">Pide tu mesa por WhatsApp</div>
+          <span style="font:700 .62rem var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:#8A7F70;border:1px solid #DED3BB;border-radius:999px;padding:5px 10px">Demo</span>
+        </div>
+        <p style="font-size:.98rem;line-height:1.6;color:#5C5346;margin:10px 0 26px">Rellena y te abrimos WhatsApp con el mensaje escrito. Contestamos en horario de cocina.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px">
+          <label style="display:block">
+            <span style="display:block;font:700 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-bottom:8px">Nombre</span>
+            <input value="{{ fNombre }}" onChange="{{ setNombre }}" placeholder="Tu nombre" style="width:100%;box-sizing:border-box;border:1px solid #DED3BB;border-radius:12px;padding:13px 15px;font-size:1rem;color:#13333B;background:#FBF8F0;transition:border-color .25s,box-shadow .25s" style-focus="outline:none;border-color:#1E5A5B;box-shadow:0 0 0 4px rgba(30,90,91,.12)">
+          </label>
+          <label style="display:block">
+            <span style="display:block;font:700 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-bottom:8px">Personas</span>
+            <select value="{{ fPersonas }}" onChange="{{ setPersonas }}" style="width:100%;box-sizing:border-box;border:1px solid #DED3BB;border-radius:12px;padding:13px 15px;font-size:1rem;color:#13333B;background:#FBF8F0;transition:border-color .25s" style-focus="outline:none;border-color:#1E5A5B">
+              <sc-for list="{{ opcionesPersonas }}" as="o" hint-placeholder-count="8">
+                <option value="{{ o }}">{{ o }}</option>
+              </sc-for>
+            </select>
+          </label>
+          <label style="display:block">
+            <span style="display:block;font:700 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-bottom:8px">Día</span>
+            <input type="date" value="{{ fFecha }}" onChange="{{ setFecha }}" style="width:100%;box-sizing:border-box;border:1px solid #DED3BB;border-radius:12px;padding:13px 15px;font-size:1rem;color:#13333B;background:#FBF8F0;transition:border-color .25s" style-focus="outline:none;border-color:#1E5A5B">
+          </label>
+          <label style="display:block">
+            <span style="display:block;font:700 .68rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8A7F70;margin-bottom:8px">Hora</span>
+            <select value="{{ fHora }}" onChange="{{ setHora }}" style="width:100%;box-sizing:border-box;border:1px solid #DED3BB;border-radius:12px;padding:13px 15px;font-size:1rem;color:#13333B;background:#FBF8F0;transition:border-color .25s" style-focus="outline:none;border-color:#1E5A5B">
+              <sc-for list="{{ opcionesHora }}" as="o" hint-placeholder-count="8">
+                <option value="{{ o }}">{{ o }}</option>
+              </sc-for>
+            </select>
+          </label>
+        </div>
+
+        <div style="margin-top:22px;border:1px dashed #DED3BB;border-radius:12px;background:#FBF8F0;padding:16px 18px;font-size:.95rem;line-height:1.55;color:#5C5346">
+          <span style="font:700 .64rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#B98A2E;display:block;margin-bottom:8px">Así le llegará el mensaje</span>
+          {{ vistaPrevia }}
+        </div>
+
+        <sc-if value="{{ esGrupo }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px;border:1px solid #B98A2E;background:linear-gradient(180deg,#FBF3E2,#F7EDD8);padding:22px 24px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8C651C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>
+              <span style="font:700 .72rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#8C651C">Grupos de más de 8</span>
+            </div>
+            <p style="font-size:1rem;line-height:1.6;color:#3A342C;margin:12px 0 0;max-width:52ch">A partir de nueve comensales pedimos una tarjeta como garantía. No se cobra nada al reservar. Si alguien no viene, se cargan 10 € por cada plaza vacía.</p>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px dashed #D9C79A"></div>
+            <a href="https://restauranteasdeguia.es/producto/reserva" style="display:inline-flex;align-items:center;gap:9px;font:700 .92rem/1 var(--font-display);white-space:nowrap;color:#F7F2E7;background:#8C651C;padding:14px 22px;border-radius:999px;transition:background .3s,transform .3s" style-hover="background:#B98A2E;color:#F7F2E7;transform:translateY(-2px)">Guardar tarjeta como garantía</a>
+            <p style="font-size:.86rem;color:#8A7F70;margin:12px 0 0;max-width:50ch">Retención máxima si no acudís: {{ importeGarantia }}. Puedes anular sin coste hasta 24 h antes.</p>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:24px">
+          <a href="{{ waLink }}" style="display:inline-flex;align-items:center;gap:10px;font:700 .97rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#fff;background:#25D366;padding:16px 26px;border-radius:999px;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 16px 30px -14px rgba(37,211,102,.9);color:#fff"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.32.39-.46.53-.15.15-.31.32-.13.62.18.31.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.31.41-.25.69-.15.28.1 1.77.84 2.07.99.3.15.5.23.58.35.07.13.07.74-.18 1.43z"></path></svg>Enviar por WhatsApp</a>
+          <a href="tel:+34942680808" style="font:700 .97rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#13333B;border:1px solid #13333B;padding:15px 24px;border-radius:999px;transition:background .3s,color .3s,transform .3s" style-hover="background:#13333B;color:#F7F2E7;transform:translateY(-3px)">Llamar 942 680 808</a>
+        </div>
+        <p style="font-size:.86rem;color:#8A7F70;margin:18px 0 0">Para menús cerrados, mejor llámanos.</p>
+      </div>
+
+      <div>
+        <div style="font:700 .72rem var(--font-body);letter-spacing:.22em;text-transform:uppercase;color:#B98A2E">Cómo funciona el pago</div>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:2px">
+          <sc-for list="{{ pasos }}" as="s" hint-placeholder-count="3">
+            <div style="display:flex;gap:18px;align-items:flex-start;padding:20px 18px;margin:0 -18px;border-bottom:1px solid #DED3BB;transition:background .3s cubic-bezier(.22,1,.36,1),padding-left .3s cubic-bezier(.22,1,.36,1)" style-hover="background:#E5DAC4;padding-left:30px">
+              <span style="font-family:var(--font-display);font-weight:800;font-size:1.05rem;color:#B98A2E;line-height:1.3;min-width:22px">{{ s.n }}</span>
+              <div>
+                <div style="font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:#13333B">{{ s.titulo }}</div>
+                <p style="font-size:.97rem;line-height:1.6;color:#5C5346;margin:5px 0 0;max-width:42ch">{{ s.texto }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <a href="https://restauranteasdeguia.es/producto/reserva" style="display:inline-block;margin-top:26px;font:700 .95rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#F7F2E7;background:#1E5A5B;padding:15px 26px;border-radius:999px;transition:background .3s,transform .3s" style-hover="background:#13333B;color:#F7F2E7;transform:translateY(-3px)">Pagar una reserva confirmada</a>
+        <p style="font-size:.86rem;color:#8A7F70;margin:14px 0 0;max-width:42ch">Solo para reservas ya confirmadas por teléfono. Si aún no has hablado con nosotros, empieza por WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="donde" style="padding:96px 32px">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:start">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px"><span style="font:700 .74rem var(--font-body);letter-spacing:.22em;color:#B98A2E">06</span><span style="width:46px;height:1px;background:#B98A2E;opacity:.5"></span><span style="font:700 .78rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Dónde estamos</span></div>
+      <h2 style="font-family:var(--font-display);font-weight:800;letter-spacing:-.025em;line-height:1.05;font-size:clamp(1.9rem,3.6vw,2.7rem);color:#13333B;margin:20px 0 0">C/ Duque de Santoña, 23</h2>
+      <p style="color:#5C5346;margin:10px 0 0">39740 Santoña (Cantabria) · 30–40 € por persona</p>
+      <div style="margin-top:28px;border-top:1px solid #DED3BB">
+        <sc-for list="{{ horario }}" as="h" hint-placeholder-count="7">
+          <div style="display:flex;justify-content:space-between;gap:20px;padding:13px 16px;margin:0 -16px;border-bottom:1px solid #DED3BB;transition:background .3s cubic-bezier(.22,1,.36,1),padding-left .3s cubic-bezier(.22,1,.36,1)" style-hover="background:#F2EADB;padding-left:26px">
+            <span style="font:700 .74rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:{{ h.color }}">{{ h.dia }}</span>
+            <span style="font-size:.97rem;color:{{ h.color }}">{{ h.horas }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:28px">
+        <a href="tel:+34942680808" style="font:700 .97rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#F7F2E7;background:#13333B;padding:16px 26px;border-radius:999px;transition:background .3s,transform .3s" style-hover="background:#1E5A5B;color:#F7F2E7;transform:translateY(-3px)">942 680 808</a>
+        <a href="https://wa.me/34686185874" style="display:inline-flex;align-items:center;gap:9px;font:700 .97rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#13333B;border:1px solid #13333B;padding:15px 24px;border-radius:999px;transition:background .3s,color .3s,transform .3s" style-hover="background:#13333B;color:#F7F2E7;transform:translateY(-3px)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.32.39-.46.53-.15.15-.31.32-.13.62.18.31.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.31.41-.25.69-.15.28.1 1.77.84 2.07.99.3.15.5.23.58.35.07.13.07.74-.18 1.43z"></path></svg>686 185 874</a>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=C.+Duque+de+Santo%C3%B1a+23%2C+39740+Santo%C3%B1a" style="font:700 .97rem/1 var(--font-display);white-space:nowrap;flex-shrink:0;color:#1E5A5B;padding:6px 2px;background-image:linear-gradient(#13333B,#13333B);background-size:100% 1px;background-repeat:no-repeat;background-position:0 100%;transition:color .2s" style-hover="color:#13333B">Cómo llegar</a>
+      </div>
+    </div>
+    <div>
+      <iframe src="https://www.google.com/maps?q=C.%20Duque%20de%20Santo%C3%B1a%2023%2C%2039740%20Santo%C3%B1a%2C%20Cantabria&amp;output=embed" title="Mapa As de Guía" style="width:100%;height:320px;border:1px solid #DED3BB;border-radius:12px;filter:saturate(.75) contrast(1.02)"></iframe>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px">
+        <div style="border:1px solid #DED3BB;background:#fff;padding:22px;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s" style-hover="transform:translateY(-6px);box-shadow:0 24px 44px -32px rgba(19,51,59,.55)">
+          <div style="font:700 .7rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#B98A2E">Aparcar</div>
+          <p style="font-size:.95rem;line-height:1.55;color:#5C5346;margin:10px 0 0">Zona azul en la calle y parking del puerto a cinco minutos andando.</p>
+        </div>
+        <div style="border:1px solid #DED3BB;background:#fff;padding:22px;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s" style-hover="transform:translateY(-6px);box-shadow:0 24px 44px -32px rgba(19,51,59,.55)">
+          <div style="font:700 .7rem var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#B98A2E">Cerca del mar</div>
+          <p style="font-size:.95rem;line-height:1.55;color:#5C5346;margin:10px 0 0">A un paseo de la dársena, las conserveras y la playa de Berria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 32px 96px">
+  <div style="max-width:1180px;margin:0 auto;background:linear-gradient(90deg,rgba(19,51,59,.96) 0%,rgba(19,51,59,.9) 52%,rgba(19,51,59,.62) 100%),url('uploads/FondoMadera.jpeg') center/cover no-repeat;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;overflow:hidden;position:relative">
+    <img src="uploads/Canallas.png" alt="" style="position:absolute;right:-30px;bottom:-60px;width:260px;opacity:.5;pointer-events:none;filter:drop-shadow(0 18px 26px rgba(0,0,0,.5))">
+    <div style="position:relative">
+      <div style="font:700 .72rem var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#B98A2E">Nuestro otro local</div>
+      <div style="font-family:var(--font-display);font-weight:800;font-size:1.95rem;color:#fff;margin-top:12px">CanaLLa Gastro&amp;Music</div>
+      <p style="color:#B9CBC7;font-size:1rem;line-height:1.6;margin:10px 0 0;max-width:52ch">La misma cocina en versión informal, con música y buen ambiente hasta tarde. También en Santoña.</p>
+    </div>
+    <a href="https://www.instagram.com/asdeguiasantona" style="position:relative;font:700 .95rem/1 var(--font-display);color:#13333B;background:linear-gradient(120deg,#E3C378,#B98A2E);padding:16px 28px;border-radius:999px;white-space:nowrap;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s" style-hover="transform:translateY(-3px);box-shadow:0 18px 34px -16px rgba(227,195,120,.6);color:#13333B">Conocer CanaLLa</a>
+  </div>
+</section>
+
+<footer style="background:#13333B;color:#93A9A6;padding:0 32px 56px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="height:1px;background:linear-gradient(90deg,rgba(185,138,46,0) 0%,#B98A2E 22%,#E3C378 50%,#B98A2E 78%,rgba(185,138,46,0) 100%)"></div>
+    <div style="text-align:center;padding-top:52px">
+      <div style="font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:#fff;letter-spacing:.02em">As de Guía</div>
+      <div style="font:400 .64rem var(--font-body);letter-spacing:.34em;color:#B98A2E;margin-top:6px">SANTOÑA · CANTABRIA</div>
+      <div style="display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:24px;font-size:.9rem">
+        <a href="tel:+34942680808" style="color:#93A9A6;transition:color .2s" style-hover="color:#fff">942 680 808</a>
+        <a href="https://www.facebook.com/restasdeguia/" style="color:#93A9A6;transition:color .2s" style-hover="color:#fff">Facebook</a>
+        <a href="https://www.instagram.com/asdeguiasantona" style="color:#93A9A6;transition:color .2s" style-hover="color:#fff">Instagram</a>
+        <a href="https://restauranteasdeguia.es/politica-de-privacidad" style="color:#93A9A6;transition:color .2s" style-hover="color:#fff">Privacidad</a>
+        <a href="https://restauranteasdeguia.es/aviso-legal" style="color:#93A9A6;transition:color .2s" style-hover="color:#fff">Aviso legal</a>
+      </div>
+      <p style="font-size:.8rem;color:#6E8481;margin:26px auto 0;max-width:62ch">Maqueta de rediseño. El vídeo y las fotos de producto proceden de la web actual; la carta, las reseñas y el formulario son contenido de muestra.</p>
+    </div>
+  </div>
+</footer>
+
+<div style="{{ barraFlotante }}">
+  <span style="font:600 .84rem var(--font-body);color:#B9CBC7;white-space:nowrap">¿Comemos?</span>
+  <a href="https://wa.me/34686185874" style="display:inline-flex;align-items:center;gap:8px;font:700 .86rem/1 var(--font-display);color:#13333B;background:#25D366;padding:12px 18px;border-radius:999px;white-space:nowrap;transition:transform .3s" style-hover="transform:translateY(-2px);color:#13333B"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.13c-.25.69-1.44 1.32-1.99 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38h.58c.19 0 .44-.07.69.53.25.61.86 2.1.94 2.25.08.15.13.33.02.53-.1.2-.15.33-.3.5-.15.18-.32.39-.46.53-.15.15-.31.32-.13.62.18.31.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.3.15.48.13.66-.08.18-.2.76-.89.97-1.19.2-.31.41-.25.69-.15.28.1 1.77.84 2.07.99.3.15.5.23.58.35.07.13.07.74-.18 1.43z"></path></svg>WhatsApp</a>
+  <a href="tel:+34942680808" style="font:700 .86rem/1 var(--font-display);color:#F7F2E7;border:1px solid #4A6E70;padding:12px 18px;border-radius:999px;white-space:nowrap;transition:background .3s" style-hover="background:#1E5A5B;color:#F7F2E7">Llamar</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;categoriaInicial&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Arroces&quot;,&quot;Revueltos&quot;,&quot;Del mar&quot;,&quot;De la tierra&quot;,&quot;Postres&quot;,&quot;Menús&quot;,&quot;Bodega&quot;],&quot;default&quot;:&quot;Arroces&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Carta&quot;},&quot;barraFlotante&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversión&quot;},&quot;acento&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#B98A2E&quot;,&quot;#1E5A5B&quot;,&quot;#DA3B23&quot;],&quot;default&quot;:&quot;#DA3B23&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;}}">
+class Component extends DCLogic {
+  state = { cat: null, nombre: '', personas: '2 personas', fecha: '', hora: '14:00', scroll: 0, pasado: false, hover: '', slide: 0 };
+
+  get cat() { return this.state.cat || this.props.categoriaInicial || 'Arroces'; }
+
+  componentDidMount() {
+    this._timers = [];
+    const read = () => {
+      const se = document.scrollingElement || document.documentElement;
+      const y = window.scrollY || se.scrollTop || 0;
+      const max = Math.max(se.scrollHeight - (window.innerHeight || se.clientHeight), 1);
+      this.setState({ scroll: Math.min(y / max, 1) });
+    };
+    this._onScroll = read;
+    window.addEventListener('scroll', read, { passive: true, capture: true });
+    read();
+
+    const show = (el) => { el.style.opacity = '1'; el.style.transform = 'none'; };
+    if ('IntersectionObserver' in window) {
+      this._io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          if (e.target.hasAttribute('data-sentinel')) this.setState({ pasado: true });
+          else show(e.target);
+          obs.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }
+
+    const scan = () => {
+      document.querySelectorAll('[data-reveal]:not([data-seen]), [data-sentinel]:not([data-seen])').forEach((el) => {
+        el.setAttribute('data-seen', '');
+        if (!el.hasAttribute('data-sentinel')) {
+          if (!this._io) return;
+          if (el.getBoundingClientRect().top < (window.innerHeight || 800) * 0.92) return;
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(26px)';
+        }
+        if (this._io) this._io.observe(el);
+      });
+    };
+    [0, 250, 800, 1600].forEach((ms) => this._timers.push(setTimeout(scan, ms)));
+    this._timers.push(setTimeout(() => { document.querySelectorAll('[data-reveal]').forEach(show); }, 5000));
+
+    const parallax = () => {
+      const vh = window.innerHeight || 800;
+      document.querySelectorAll('[data-parallax]').forEach((el) => {
+        const cont = el.parentElement;
+        if (!cont) return;
+        const r = cont.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const p = (r.top + r.height / 2 - vh / 2) / vh;
+        const v = -p * parseFloat(el.getAttribute('data-parallax') || '80');
+        el.style.transform = 'translate3d(0,' + v.toFixed(1) + 'px,0)';
+      });
+    };
+    let cola = false;
+    this._parallax = () => {
+      if (cola) return;
+      cola = true;
+      requestAnimationFrame(() => { cola = false; parallax(); });
+    };
+    window.addEventListener('scroll', this._parallax, { passive: true, capture: true });
+    window.addEventListener('resize', this._parallax);
+    this._timers.push(setTimeout(parallax, 300));
+
+    const lento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      const objetivo = el.getAttribute('data-count');
+      if (lento || typeof requestAnimationFrame !== 'function') return;
+      const dec = objetivo.indexOf(',') > -1;
+      const fin = parseFloat(objetivo.replace(',', '.'));
+      let arranco = false, t0 = null;
+      const step = (t) => {
+        arranco = true;
+        if (t0 === null) t0 = t;
+        const p = Math.min((t - t0) / 1400, 1);
+        const v = fin * (1 - Math.pow(1 - p, 3));
+        el.textContent = dec ? v.toFixed(1).replace('.', ',') : Math.round(v).toString();
+        if (p < 1) requestAnimationFrame(step);
+      };
+      this._timers.push(setTimeout(() => {
+        requestAnimationFrame(step);
+        this._timers.push(setTimeout(() => { if (!arranco) el.textContent = objetivo; }, 900));
+      }, 500));
+      this._timers.push(setTimeout(() => { el.textContent = objetivo; }, 2600));
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll, { capture: true });
+    window.removeEventListener('scroll', this._parallax, { capture: true });
+    window.removeEventListener('resize', this._parallax);
+    if (this._io) this._io.disconnect();
+    (this._timers || []).forEach(clearTimeout);
+  }
+
+  abiertoAhora() {
+    const franjas = { 1: [[11, 16]], 2: [[11, 16]], 3: [], 4: [[11, 16]], 5: [[11, 16], [21, 23.5]], 6: [[10, 16], [21, 23.5]], 0: [[11, 16]] };
+    const now = new Date();
+    const h = now.getHours() + now.getMinutes() / 60;
+    return (franjas[now.getDay()] || []).some(([a, b]) => h >= a && h < b);
+  }
+
+  renderVals() {
+    const laton = this.props.acento || '#B98A2E';
+    const cat = this.cat;
+    const abierto = this.abiertoAhora();
+
+    const premios = [
+      { titulo: 'Finalista a Mejor Tortilla Nacional', anios: '2011' },
+      { titulo: 'Especial del Jurado Pincho con Anchoa', anios: '2011 / 2013' },
+      { titulo: 'Mejor Pincho con Anchoa', anios: '2010 / 2012 / 2015' },
+      { titulo: 'Mejor Pincho de Navidad', anios: '2012' },
+      { titulo: 'Mejor Tortilla de Patatas de Cantabria', anios: '2014' },
+      { titulo: 'Mejor Torrija Nacional', anios: '2016' },
+      { titulo: 'Mejor Pincho Juan de la Cosa', anios: '2015 / 2017 / 2019' },
+      { titulo: 'Finalista Campeonato de Pinchos de Cantabria', anios: '2018' },
+    ];
+
+    const lemas = ['Mejor Pincho con Anchoa', 'Mejor Torrija Nacional 2016', 'Mejor Tortilla de Cantabria 2014', 'Pescado de lonja cada mañana', 'Mejor Pincho Juan de la Cosa', '4,3 ★ en Google', 'Arroces de fondo largo', 'Anchoa de Santoña'];
+    const marquesina = lemas.concat(lemas).map((t, i) => ({ texto: t, key: i }));
+
+    const carta = [
+      { cat: 'Arroces', nombre: 'Arroz con bogavante', precio: 'S/M', dest: 'Lo más pedido', foto: 'uploads/Paella.png', desc: 'Fondo de marisco de cocción larga, bogavante del Cantábrico. Mínimo dos personas.' },
+      { cat: 'Arroces', nombre: 'Arroz de pescado de lonja', precio: 'S/M', foto: 'uploads/Paella-2.png', desc: 'Con lo que ha entrado esa mañana. Meloso o seco, como lo prefieras.' },
+      { cat: 'Arroces', nombre: 'Arroz de setas y carabinero', precio: 'S/M', foto: 'uploads/Paella-2.png', desc: 'Setas de temporada y carabinero abierto sobre el arroz.' },
+      { cat: 'Revueltos', nombre: 'Revuelto de setas de temporada', precio: '18,50€', dest: 'Temporada', foto: 'uploads/Revuelto-plato.png', desc: 'Setas del monte cántabro, huevo de corral y poco más.' },
+      { cat: 'Revueltos', nombre: 'Revuelto de gambas y ajetes', precio: '17€', foto: 'uploads/Revuelto-plato.png', desc: 'Clásico de la casa, cremoso, con ajetes tiernos.' },
+      { cat: 'Revueltos', nombre: 'Revuelto de bacalao y pimientos', precio: '16,50€', foto: 'uploads/Raciones.png', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Bacalao desalado en casa con pimientos asados.' },
+      { cat: 'Del mar', nombre: 'Anchoa de Santoña', precio: '16€', dest: 'Premiada', foto: 'uploads/Ensalada-plato.png', desc: 'Filetes de la lonja de al lado, con pan cristal y aceite de oliva.' },
+      { cat: 'Del mar', nombre: 'Carabinero a la plancha', precio: 'S/M', foto: 'uploads/Paella-2.png', desc: 'Marisco del Cantábrico. Sal, brasa y nada más.' },
+      { cat: 'Del mar', nombre: 'Pescado del día al horno', precio: 'S/M', foto: 'uploads/Ensalada-plato.png', desc: 'Lo mejor de la subasta. Pregúntanos qué ha entrado hoy.' },
+      { cat: 'De la tierra', nombre: 'Magret de pato con risotto de setas', precio: '24€', foto: 'uploads/Pato-plato.png', desc: 'Pato en su punto sobre risotto cremoso de setas de temporada.' },
+      { cat: 'De la tierra', nombre: 'Tortilla de patata', precio: '14€', dest: 'Mejor de Cantabria 2014', foto: 'uploads/Raciones.png', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Jugosa por dentro, cuajada al momento.' },
+      { cat: 'De la tierra', nombre: 'Guiso del día', precio: '15€', foto: 'uploads/Revuelto-plato.png', desc: 'Cocción larga, receta de siempre. Cambia cada semana.' },
+      { cat: 'Postres', nombre: 'Torrija', precio: '7,50€', dest: 'Mejor Torrija Nacional 2016', foto: 'uploads/Postres.png', fondo: '#EDE5D3', ajuste: 'contain', desc: 'El postre por el que vuelve media Santoña.' },
+      { cat: 'Postres', nombre: 'Quesada cántabra', precio: '6€', foto: 'uploads/Postres.png', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Casera, con helado de leche merengada.' },
+      { cat: 'Postres', nombre: 'Arroz con leche requemado', precio: '6€', foto: 'uploads/Postres.png', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Costra de azúcar tostada al momento.' },
+      { cat: 'Menús', nombre: 'Menú del día', precio: '19,50€', foto: 'uploads/Revuelto-plato.png', desc: 'Primero, segundo, postre, pan y bebida. De lunes a viernes al mediodía.' },
+      { cat: 'Menús', nombre: 'Menú degustación As de Guía', precio: '48€', foto: 'uploads/Ensalada-plato.png', desc: 'Siete pases con lo mejor de la temporada. Mesa completa.' },
+      { cat: 'Menús', nombre: 'Menú de grupos', precio: 'Desde 35€', foto: 'uploads/Paella.png', desc: 'Para 10 o más personas. Lo cerramos contigo por teléfono.' },
+      { cat: 'Bodega', nombre: 'Blancos', precio: 'Desde 16€', foto: 'uploads/Vinos.jpg', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Albariño, godello, txakoli y verdejo. Selección corta y viva.' },
+      { cat: 'Bodega', nombre: 'Tintos', precio: 'Desde 17€', foto: 'uploads/Vinos.jpg', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Rioja, Ribera y pequeños productores de la cornisa.' },
+      { cat: 'Bodega', nombre: 'Espumosos y sidra', precio: 'Desde 18€', foto: 'uploads/Vinos.jpg', fondo: '#EDE5D3', ajuste: 'contain', desc: 'Cava, champán y sidra natural para acompañar el pescado.' },
+    ];
+
+    const cats = ['Arroces', 'Revueltos', 'Del mar', 'De la tierra', 'Postres', 'Menús', 'Bodega'];
+    const categorias = cats.map((c) => ({
+      label: c,
+      onClick: () => this.setState({ cat: c, hover: '' }),
+      style: {
+        font: '600 .9rem var(--font-body)', padding: '11px 20px', borderRadius: 999, cursor: 'pointer',
+        border: c === cat ? '1px solid #13333B' : '1px solid #DED3BB',
+        background: c === cat ? '#13333B' : 'transparent',
+        color: c === cat ? '#F7F2E7' : '#5C5346',
+        transform: c === cat ? 'translateY(-1px)' : 'none',
+        boxShadow: c === cat ? '0 10px 22px -12px rgba(19,51,59,.8)' : 'none',
+        transition: 'all .28s cubic-bezier(.22,1,.36,1)',
+      },
+    }));
+
+    const visibles = carta.filter((d) => d.cat === cat);
+    const platosVisibles = visibles.map((d) => ({
+      nombre: d.nombre, precio: d.precio, desc: d.desc,
+      onEnter: () => this.setState({ hover: d.nombre }),
+      badgeTexto: d.dest || '',
+      badge: d.dest ? {
+        font: '700 .6rem var(--font-body)', letterSpacing: '.14em', textTransform: 'uppercase',
+        color: laton, border: '1px solid ' + laton, borderRadius: 999, padding: '4px 9px', whiteSpace: 'nowrap',
+      } : { display: 'none' },
+    }));
+    const activo = visibles.find((d) => d.nombre === this.state.hover) || visibles[0] || {};
+    const platoActivo = activo.nombre || '';
+    const fotoActiva = activo.foto || 'uploads/Paella.png';
+    const estiloFoto = {
+      position: 'absolute', inset: 0, width: '100%', height: '100%',
+      backgroundColor: activo.fondo || '#EDE5D3',
+      backgroundImage: 'url("' + fotoActiva + '")',
+      backgroundSize: activo.ajuste === 'contain' ? 'contain' : 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundOrigin: 'content-box',
+      padding: activo.ajuste === 'contain' ? 18 : 0,
+      boxSizing: 'border-box',
+      transition: 'background-image .4s ease',
+    };
+
+    const resenas = [
+      { autor: 'Marta Solana', cuando: 'hace 2 semanas', texto: 'El arroz con bogavante es de los mejores que he comido en la costa. Trato cercano y la torrija, obligatoria.' },
+      { autor: 'Julen Etxeberria', cuando: 'hace 1 mes', texto: 'Producto de primera y cocina de verdad, de la que lleva horas de fuego. Reservad, porque se llena.' },
+      { autor: 'Carmen Ruiz', cuando: 'hace 3 meses', texto: 'Fuimos por las anchoas y nos quedamos con el revuelto de setas. Calidad-precio muy buena para Santoña.' },
+    ];
+
+    const hoy = new Date().getDay();
+    const horario = [
+      { dia: 'Lunes', horas: '11:00 – 16:00', d: 1 },
+      { dia: 'Martes', horas: '11:00 – 16:00', d: 2 },
+      { dia: 'Miércoles', horas: 'Cerrado', d: 3 },
+      { dia: 'Jueves', horas: '11:00 – 16:00', d: 4 },
+      { dia: 'Viernes', horas: '11:00 – 16:00 · 21:00 – 23:30', d: 5 },
+      { dia: 'Sábado', horas: '10:00 – 16:00 · 21:00 – 23:30', d: 6 },
+      { dia: 'Domingo', horas: '11:00 – 16:00', d: 0 },
+    ].map((x) => ({ dia: x.dia, horas: x.horas, color: x.d === hoy ? '#1E5A5B' : '#5C5346' }));
+
+    const pasos = [
+      { n: '1', titulo: 'Nos escribes o llamas', texto: 'Por WhatsApp con el formulario de al lado o al 942 680 808.' },
+      { n: '2', titulo: 'Te confirmamos la mesa', texto: 'Miramos el turno y te respondemos con día, hora y sala.' },
+      { n: '3', titulo: 'Solo entonces se paga', texto: 'El pago online existe para grupos y fechas señaladas. Nunca antes de confirmarte.' },
+      { n: '4', titulo: 'Mesas de más de 8', texto: 'Pedimos una tarjeta como garantía. No se cobra al reservar: solo 10 € por cada plaza que quede vacía.' },
+    ];
+
+    const numPersonas = parseInt(this.state.personas, 10) || 1;
+    const esGrupo = numPersonas > 8;
+    const importeGarantia = (numPersonas * 10) + ' €';
+    const nombre = this.state.nombre;
+    const fecha = this.state.fecha;
+    const fechaLegible = fecha ? new Date(fecha + 'T12:00:00').toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }) : '(día)';
+    const msg = '¡Hola! Me gustaría reservar mesa en As de Guía.\n👤 ' + (nombre || '(nombre)') +
+      '\n👥 ' + this.state.personas + '\n📅 ' + fechaLegible + ' a las ' + this.state.hora +
+      (esGrupo ? '\n💳 Somos más de 8: dejo tarjeta como garantía.' : '') + '\nGracias.';
+    const vistaPrevia = 'Hola, soy ' + (nombre || '…') + '. Quiero mesa para ' + this.state.personas.toLowerCase() +
+      ' el ' + fechaLegible + ' a las ' + this.state.hora + '.';
+
+    const galeria = [
+      { foto: 'uploads/Paella-2.png', epigrafe: 'Arroces', titulo: 'Arroz de carabineros' },
+      { foto: 'uploads/Pato-plato.png', epigrafe: 'De la tierra', titulo: 'Magret con risotto de setas' },
+      { foto: 'uploads/Revuelto-plato.png', epigrafe: 'Revueltos', titulo: 'Revuelto con trufa' },
+      { foto: 'uploads/Ensalada-plato.png', epigrafe: 'Del mar', titulo: 'Ensalada de bonito' },
+      { foto: 'uploads/Paella.png', epigrafe: 'Para compartir', titulo: 'La paella en la mesa' },
+      { foto: 'uploads/ElChef.jpg', epigrafe: 'La casa', titulo: 'C/ Duque de Santoña, 23' },
+    ];
+    const iSlide = Math.min(this.state.slide, galeria.length - 1);
+    const anchoSlide = 520, hueco = 26;
+    const diapositivas = galeria.map((g, i) => {
+      const activa = i === iSlide;
+      return {
+        foto: g.foto, titulo: g.titulo, epigrafe: g.epigrafe,
+        onEnter: () => this.setState({ slide: i }),
+        onClick: () => this.setState({ slide: i }),
+        marco: {
+          flex: '0 0 ' + anchoSlide + 'px', width: anchoSlide, height: activa ? 420 : 350,
+          margin: 0, position: 'relative', overflow: 'hidden', cursor: 'pointer',
+          border: '8px solid #fff', borderRadius: 4,
+          alignSelf: 'center',
+          filter: activa ? 'none' : 'saturate(.85)',
+          opacity: activa ? 1 : 0.62,
+          boxShadow: activa ? '0 40px 70px -34px rgba(19,51,59,.68)' : '0 18px 40px -30px rgba(19,51,59,.5)',
+          transition: 'height .75s cubic-bezier(.22,1,.36,1),opacity .55s ease,box-shadow .55s ease,filter .55s ease',
+        },
+        capa: {
+          position: 'absolute', inset: 0,
+          backgroundImage: 'url("' + g.foto + '")',
+          backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
+          transition: 'transform 1s cubic-bezier(.22,1,.36,1)',
+        },
+        pie: {
+          position: 'absolute', left: 0, right: 0, bottom: 0, margin: 0, zIndex: 2,
+          padding: '54px 22px 20px',
+          background: 'linear-gradient(180deg,rgba(19,51,59,0),rgba(19,51,59,.9))',
+          opacity: activa ? 1 : 0,
+          transform: activa ? 'translateY(0)' : 'translateY(14px)',
+          transition: 'opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1)',
+        },
+      };
+    });
+    const puntos = galeria.map((g, i) => ({
+      onClick: () => this.setState({ slide: i }),
+      style: {
+        width: i === iSlide ? 34 : 10, height: 10, borderRadius: 999, cursor: 'pointer', border: 0, padding: 0,
+        background: i === iSlide ? '#B98A2E' : '#DED3BB',
+        transition: 'width .5s cubic-bezier(.22,1,.36,1),background .3s',
+      },
+    }));
+    const pistaCarrusel = 'translateX(' + (-iSlide * (anchoSlide + hueco)) + 'px)';
+    const anterior = () => this.setState({ slide: Math.max(iSlide - 1, 0) });
+    const siguiente = () => this.setState({ slide: Math.min(iSlide + 1, galeria.length - 1) });
+
+    const s = this.state.scroll;
+    const visibleCta = this.state.pasado || s > 0.08;
+    return {
+      premios, marquesina, categorias, platosVisibles, platoActivo, fotoActiva, estiloFoto, resenas, horario, pasos,
+      diapositivas, puntos, pistaCarrusel, anterior, siguiente,
+      opcionesHora: ['13:00', '13:30', '14:00', '14:30', '15:00', '21:00', '21:30', '22:00'],
+      opcionesPersonas: ['1 persona', '2 personas', '3 personas', '4 personas', '5 personas', '6 personas', '7 personas', '8 personas', '9 personas', '10 personas', '12 personas', '15 o más'],
+      esGrupo, importeGarantia,
+      fNombre: nombre, fPersonas: this.state.personas, fFecha: fecha, fHora: this.state.hora, vistaPrevia,
+      setNombre: (e) => this.setState({ nombre: e.target.value }),
+      setPersonas: (e) => this.setState({ personas: e.target.value }),
+      setFecha: (e) => this.setState({ fecha: e.target.value }),
+      setHora: (e) => this.setState({ hora: e.target.value }),
+      waLink: 'https://wa.me/34686185874?text=' + encodeURIComponent(msg),
+      progreso: (s * 100).toFixed(2) + '%',
+      zoomVideo: (1 + Math.min(s, .18) * .5).toFixed(3),
+      barraFlotante: {
+        position: 'fixed', right: 24, bottom: 24, zIndex: 65,
+        display: this.props.barraFlotante === false ? 'none' : 'flex',
+        alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 999,
+        background: 'rgba(19,51,59,.94)', backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(185,138,46,.45)', boxShadow: '0 22px 44px -22px rgba(0,0,0,.6)',
+        opacity: visibleCta ? 1 : 0,
+        transform: visibleCta ? 'translateY(0)' : 'translateY(22px)',
+        pointerEvents: visibleCta ? 'auto' : 'none',
+        transition: 'opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)',
+      },
+      estadoTexto: abierto ? 'Abierto ahora' : 'Cerrado ahora',
+      estadoPill: {
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '.84rem',
+        padding: '6px 14px', borderRadius: 999,
+        color: abierto ? '#BFE3B8' : '#F3B9A9',
+        background: 'rgba(12,34,40,.5)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255,255,255,.22)',
+        whiteSpace: 'nowrap',
+      },
+      estadoDot: {
+        width: 9, height: 9, borderRadius: '50%',
+        background: abierto ? '#4E8C4A' : '#DA3B23',
+        animation: abierto ? 'adg-pulse 2.4s ease-out infinite' : 'none',
+        boxShadow: abierto ? 'none' : '0 0 0 4px rgba(218,59,35,.16)',
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

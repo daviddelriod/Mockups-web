@@ -244,6 +244,41 @@ def _load_hidden(city_slug: str, client_slug: str) -> set[str]:
         return set()
 
 
+def _save_hidden(city_slug: str, client_slug: str, hidden_names: list[str]) -> None:
+    """Guarda en _deploy.json la lista de archivos ocultos para este cliente."""
+    try:
+        data = json.loads(DEPLOY_CONFIG.read_text(encoding="utf-8")) if DEPLOY_CONFIG.exists() else {}
+    except Exception:
+        data = {}
+    data[f"{city_slug}/{client_slug}"] = hidden_names
+    DEPLOY_CONFIG.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def prompt_select_visible_htmls(htmls: list[Path], current_hidden: set[str]) -> set[str]:
+    """Pregunta por terminal qué diseños (de varios .html sueltos) deben mostrarse
+    públicamente en el índice. Devuelve el set de nombres (en minúsculas) a ocultar."""
+    print(f"\n  🔀  Este cliente tiene {len(htmls)} diseños disponibles:")
+    for i, h in enumerate(htmls, 1):
+        status = "oculto" if h.name.lower() in current_hidden else "visible"
+        print(f"    {i}. {h.name}  [{status}]")
+    print("  Introduce los números de los diseños que quieres hacer PÚBLICOS/VISIBLES (ej: 1,3),")
+    print("  escribe 'todos' para mostrarlos todos, o pulsa Enter para mantener la configuración actual:")
+    choice = input("  > ").strip().lower()
+    if choice == "":
+        return current_hidden
+    if choice in ("todos", "all"):
+        return set()
+    try:
+        idxs = {int(x.strip()) for x in choice.split(",") if x.strip()}
+    except ValueError:
+        idxs = set()
+    valid_idxs = {i for i in idxs if 1 <= i <= len(htmls)}
+    if not valid_idxs:
+        print("  ⚠️  Entrada no válida — se mantiene la configuración actual.")
+        return current_hidden
+    return {h.name.lower() for j, h in enumerate(htmls, 1) if j not in valid_idxs}
+
+
 def _sync_deploy_config(city_slug: str = "", client_slug: str = "") -> None:
     """Asegura que _deploy.json tenga una entrada (vacía) para cada cliente desplegado.
     Si se pasan city_slug/client_slug, añade solo esa entrada; si no, sincroniza todos."""
@@ -499,7 +534,14 @@ def deploy_zip(zip_path: Path, dry_run: bool = False) -> bool:
             print(f"  📋  Índice generado con {len(selected_dirs)} diseño(s) seleccionado(s)")
 
     hidden = _load_hidden(city_slug, client_slug)
-    if selected_dirs is None or len(selected_dirs) == 1:
+    if selected_dirs is None:
+        all_htmls  = sorted(p for p in dest.glob("*.html") if p.name.lower() != "index.html")
+        all_htmls += sorted(p for p in dest.glob("*.htm")  if p.name.lower() != "index.htm")
+        if len(all_htmls) > 1:
+            hidden = prompt_select_visible_htmls(all_htmls, hidden)
+            _save_hidden(city_slug, client_slug, sorted(hidden))
+        maybe_generate_index(dest, client_slug, hidden=hidden)
+    elif len(selected_dirs) == 1:
         maybe_generate_index(dest, client_slug, hidden=hidden)
     _sync_deploy_config(city_slug, client_slug)  # añade entrada vacía si es cliente nuevo
 

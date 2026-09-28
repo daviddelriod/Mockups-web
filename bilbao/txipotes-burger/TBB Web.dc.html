@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Txipote's Best Burger · Portugalete</title>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Anton&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.min.js"></script>
+<style>
+html{scroll-behavior:auto!important;background:#0D0C0B}
+body{margin:0;background:#0D0C0B;color:#F5F1EA;overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}
+::selection{background:#F0C530;color:#0D0C0B}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="--fd: var(--tbb-display, 'Bricolage Grotesque'), sans-serif; --fst: var(--tbb-stretch, 75%); --fwd: var(--tbb-dweight, 800); --acc: var(--tbb-accent, #F0C530); --on-acc: var(--tbb-on-accent, #0D0C0B); --accent: var(--acc); --ink: #F5F1EA; --ink-soft: rgba(245,241,234,.68); --line: rgba(255,255,255,.14); --price: #F5F1EA; --paper: #161412; --status-open: var(--acc); --status-closed: rgba(245,241,234,.78); position: relative; background: #0D0C0B; color: #F5F1EA; font-family: var(--font-body); overflow-x: clip; min-height: 100vh;">
+
+  <sc-if value="{{ showPreloader }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ preRef }}" style="position: fixed; inset: 0; z-index: 100; background: #0D0C0B; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;">
+      <img data-pre-logo="1" src="assets/logo-neon.png" alt="Txipote's Best Burger" style="width: 116px; height: 116px; border-radius: 50%;">
+      <div style="width: 132px; height: 2px; background: rgba(255,255,255,.12); overflow: hidden; border-radius: 2px;">
+        <div data-pre-bar="1" style="width: 100%; height: 100%; background: var(--acc); transform: scaleX(0); transform-origin: left center;"></div>
+      </div>
+      <span style="font: 700 11px/1 var(--font-body); letter-spacing: .28em; text-transform: uppercase; color: rgba(245,241,234,.6);">Portugalete · Bizkaia</span>
+    </div>
+  </sc-if>
+
+  <header ref="{{ barRef }}" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 60px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid transparent;">
+    <a href="#top" onClick="{{ goTop }}" style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/logo-neon.png" alt="" style="width: 36px; height: 36px; border-radius: 50%;">
+      <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 22px; letter-spacing: .02em; line-height: 1;">TBB</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" style="background: rgba(13,12,11,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.14); font-size: 12.5px; padding: 7px 12px;" hint-size="150px,34px">{{ statusShort }}</x-import>
+      <a href="https://www.instagram.com/txipotes.and_burger/" target="_blank" rel="noopener" aria-label="Instagram" style="width: 38px; height: 38px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: rgba(13,12,11,.55); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+    </div>
+  </header>
+
+  <section id="top" data-screen-label="01 Hero" ref="{{ heroRef }}" style="position: relative; height: 100svh; min-height: 620px; max-height: 1100px; overflow: hidden; background: #0D0C0B;">
+    <div ref="{{ heroBgRef }}" style="position: absolute; left: 0; right: 0; top: 0; height: 100%; will-change: transform;">
+      <img ref="{{ heroImgRef }}" src="assets/hero-queso.jpg" alt="Burger de Txipote's" style="width: 100%; height: 100%; object-fit: cover; object-position: 58% 12%; transform-origin: 50% 40%;">
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,.7) 0%, rgba(13,12,11,0) 18%, rgba(13,12,11,0) 34%, rgba(13,12,11,.72) 56%, #0D0C0B 86%);"></div>
+    <div style="position: absolute; inset: 0; pointer-events: none; opacity: .08; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nLjg1JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAuNiAwJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI24pJy8+PC9zdmc+); background-size: 160px 160px;"></div>
+
+    <div ref="{{ heroContentRef }}" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0 22px calc(30px + env(safe-area-inset-bottom));">
+      <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px;">
+        <img ref="{{ heroLogoRef }}" src="assets/logo-neon.png" alt="Logo Txipote's Best Burger" style="width: 76px; height: 76px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 18px 40px -12px rgba(204,20,20,.55);">
+        <h1 ref="{{ heroTitleRef }}" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(20vw, 150px); line-height: .84; letter-spacing: -.012em; color: #F5F1EA;">
+          <span data-line="1" style="display: block;">Txipote's</span>
+          <span data-line="1" style="display: block;">Best Burger</span>
+        </h1>
+        <p ref="{{ taglineRef }}" style="margin: 0; max-width: 30ch; font-size: clamp(18px, 4.9vw, 24px); line-height: 1.32; font-weight: 500; text-wrap: pretty; color: #F5F1EA;"><span style="color: rgba(245,241,234,.7);">No son solo hamburguesas...</span> Son experiencias que saben a innovación.</p>
+        <div ref="{{ ctaRef }}" style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="tel:+34688862244" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; box-shadow: none; flex: 1 1 150px; justify-content: center;" hint-size="160px,54px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Pedir ahora</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="lg" href="#carta" onClick="{{ goCarta }}" style="font-family: var(--font-body); font-weight: 800; flex: 1 1 150px; justify-content: center; border-color: rgba(255,255,255,.4);" hint-size="160px,54px">Ver la carta<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg></x-import>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+            <a href="https://www.instagram.com/txipotes.and_burger/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: rgba(245,241,234,.72);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>@txipotes.and_burger
+            </a>
+            <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}">
+              <span style="font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Tel. 688 862 244 · verificar</span>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="overflow: hidden; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); padding: 14px 0; background: #0D0C0B;">
+    <div ref="{{ marqueeRef }}" style="display: flex; width: max-content; white-space: nowrap; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 26px; line-height: 1; text-transform: uppercase; letter-spacing: .01em; color: rgba(245,241,234,.9);">
+      <span style="padding-right: 18px;">Vaca rubia gallega <span style="color: var(--acc);">✱</span> Txuleta <span style="color: var(--acc);">✱</span> Idiazabal <span style="color: var(--acc);">✱</span> Secreto ibérico <span style="color: var(--acc);">✱</span> Pulled pork <span style="color: var(--acc);">✱</span> Torreznos <span style="color: var(--acc);">✱</span> Pan rojo <span style="color: var(--acc);">✱</span> Pan negro <span style="color: var(--acc);">✱</span> Pan azul <span style="color: var(--acc);">✱</span></span>
+      <span aria-hidden="true" style="padding-right: 18px;">Vaca rubia gallega <span style="color: var(--acc);">✱</span> Txuleta <span style="color: var(--acc);">✱</span> Idiazabal <span style="color: var(--acc);">✱</span> Secreto ibérico <span style="color: var(--acc);">✱</span> Pulled pork <span style="color: var(--acc);">✱</span> Torreznos <span style="color: var(--acc);">✱</span> Pan rojo <span style="color: var(--acc);">✱</span> Pan negro <span style="color: var(--acc);">✱</span> Pan azul <span style="color: var(--acc);">✱</span></span>
+    </div>
+  </div>
+
+  <section id="sorpresa" data-screen-label="02 Burger Sorpresa" style="padding: 18px 12px 12px; background: #0D0C0B;">
+    <div ref="{{ sorPanelRef }}" style="position: relative; max-width: 1180px; margin: 0 auto; min-height: min(780px, 100svh); border-radius: 22px; overflow: hidden; background: #050404;">
+      <canvas ref="{{ sorCanvasRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .62; image-rendering: pixelated;"></canvas>
+      <div style="position: absolute; inset: 0; background: radial-gradient(130% 75% at 50% 42%, rgba(5,4,4,.1) 0%, rgba(5,4,4,.7) 55%, #050404 92%);"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; opacity: .11; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nLjg1JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAuNiAwJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI24pJy8+PC9zdmc+); background-size: 160px 160px;"></div>
+
+      <div style="position: relative; min-height: min(780px, 100svh); padding: 30px 22px 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="180px,16px">Ingredientes: clasificados</x-import>
+          <span style="font: 700 11px/1 var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: rgba(245,241,234,.6);">Nº 01</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 22px;">
+          <h2 ref="{{ sorNameRef }}" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(24vw, 190px); line-height: .82; letter-spacing: -.015em;">
+            <span style="display: block; overflow: hidden; padding-top: .04em;"><span data-sor-line="1" style="display: block;">Burger</span></span>
+            <span style="display: block; overflow: hidden; padding-top: .04em;"><span data-sor-line="1" style="display: block;">Sorpresa</span></span>
+          </h2>
+          <div aria-label="Ingredientes ocultos" style="display: flex; flex-wrap: wrap; gap: 8px; max-width: 420px;">
+            <span data-redact="1" style="height: 14px; width: 38%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 24%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 30%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 20%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 44%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+            <div ref="{{ sorDareRef }}" style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(13vw, 110px); line-height: .9; letter-spacing: -.01em; color: #F5F1EA;">¿Te atreves?</div>
+            <div style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: min(12vw, 96px); line-height: .9; color: var(--acc);">17,50€</div>
+          </div>
+          <span ref="{{ sorCtaRef }}" style="display: flex; transform-origin: 50% 50%;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="tel:+34688862244" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; width: 100%; justify-content: center; box-shadow: 0 0 0 0 transparent;" hint-size="100%,56px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Me atrevo · Pedir la Sorpresa</x-import>
+          </span>
+          <span style="font-size: 12.5px; color: rgba(245,241,234,.55);">*Consultar alérgenos al personal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="carta" data-screen-label="03 La carta" style="padding: 84px 0 40px; background: #0D0C0B;">
+    <div data-reveal="1" style="max-width: 1180px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 14px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="220px,16px">Hamburguesas · entrantes · postres</x-import>
+      <h2 data-split-chars="1" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(29vw, 230px); line-height: .8; letter-spacing: -.02em;">La carta</h2>
+      <p style="margin: 6px 0 0; font-size: 15px; color: rgba(245,241,234,.62);">*Consultar alérgenos al personal</p>
+    </div>
+
+    <div ref="{{ filterRef }}" style="position: sticky; top: 60px; z-index: 20; margin-top: 26px; background: rgba(13,12,11,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08);">
+      <div data-lenis-prevent="1" style="max-width: 1180px; margin: 0 auto; padding: 12px 22px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+          <button onClick="{{ t.select }}" style="flex: none; display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 16px; border-radius: 999px; font: 700 14px/1 var(--font-body); cursor: pointer; background: {{ t.bg }}; color: {{ t.fg }}; border: 1px solid {{ t.bd }}; transition: background .2s, color .2s;">{{ t.label }}<span style="font-size: 11px; opacity: .6;">{{ t.count }}</span></button>
+        </sc-for>
+        <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}">
+          <span style="flex: none; align-self: center; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Categorías propuestas</span>
+        </sc-if>
+      </div>
+    </div>
+
+    <div ref="{{ gridRef }}" style="max-width: 1180px; margin: 0 auto; padding: 26px 22px 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 34px 22px;">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+        <article data-card="1" onClick="{{ it.open }}" style="display: {{ it.display }}; cursor: pointer; flex-direction: column; gap: 14px;">
+          <div style="position: relative; aspect-ratio: 5 / 4; border-radius: 18px; overflow: hidden; background: #161412; border: 1px solid rgba(255,255,255,.06);">
+            <sc-if value="{{ it.hasImg }}" hint-placeholder-val="{{ false }}">
+              <img data-img="1" src="{{ it.img }}" alt="{{ it.name }}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: {{ it.pos }}; filter: {{ it.filter }};">
+              <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 78% at 50% 48%, rgba(13,12,11,0) 42%, rgba(13,12,11,.88) 100%), linear-gradient(180deg, rgba(13,12,11,0) 60%, rgba(13,12,11,.6) 100%);"></div>
+            </sc-if>
+            <sc-if value="{{ it.isPlaceholder }}" hint-placeholder-val="{{ false }}">
+              <div data-img="1" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: repeating-linear-gradient(135deg, #141210 0 14px, #181614 14px 28px);">
+                <span style="font: 700 11px/1 var(--font-body); letter-spacing: .22em; text-transform: uppercase; color: rgba(245,241,234,.5);">Foto pendiente</span>
+                <span style="font-family: var(--font-script); font-size: 22px; color: rgba(245,241,234,.4);">{{ it.name }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ it.mystery }}" hint-placeholder-val="{{ false }}">
+              <div data-img="1" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, #1d1a16 0%, #050404 70%);">
+                <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 180px; line-height: 1; color: var(--acc);">?</span>
+              </div>
+            </sc-if>
+            <span style="position: absolute; top: 12px; left: 12px; font: 800 12px/1 var(--font-body); letter-spacing: .1em; color: #F5F1EA; background: rgba(13,12,11,.6); padding: 6px 8px; border-radius: 7px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">{{ it.num }}</span>
+            <div style="position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+              <sc-for list="{{ it.badges }}" as="b" hint-placeholder-count="0">
+                <span style="font: 800 11px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; white-space: nowrap; background: {{ b.bg }}; color: {{ b.fg }}; border: 1px solid var(--acc);">{{ b.label }}</span>
+              </sc-for>
+            </div>
+            <sc-if value="{{ it.markPhoto }}" hint-placeholder-val="{{ false }}">
+              <span style="position: absolute; bottom: 12px; left: 12px; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap; background: rgba(13,12,11,.7);">Foto provisional</span>
+            </sc-if>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; padding: 0 2px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;">
+              <h3 data-name="1" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 34px; line-height: .92; letter-spacing: -.005em; text-wrap: balance;">{{ it.name }}</h3>
+              <span style="flex: none; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 26px; line-height: 1; padding-top: 3px; color: {{ it.priceColor }};">{{ it.price }}</span>
+            </div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.45; color: rgba(245,241,234,.68); text-wrap: pretty;">{{ it.desc }}</p>
+            <sc-if value="{{ it.extra }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 13px; font-weight: 700; color: #F5F1EA;">{{ it.extra }}</p>
+            </sc-if>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <div data-reveal="1" style="max-width: 1180px; margin: 64px auto 0; padding: 0 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 44px 40px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <h3 style="margin: 0 0 10px; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 44px; line-height: .9;">Entrantes</h3>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Hot Dog Elissague" price="6,50€" photo="assets/e-hotdog.jpg" desc="Bradwurst, tártara, pepinillos, cebolla crujiente, salsa brava, Mr. Corn, Idiazabal rallado" hint-size="100%,90px"></x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Patatas Txipote's" price="8,50€" desc="Caseras, pulled pork, mayo trufada, parmesano" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Patatas Ari" price="9€" desc="Caseras, pulled pork, mayo trufada, parmesano + salsa Emmy" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Natxos Capa" price="8,50€" desc="Nachos caseros, pulled pork, guacamole, cheddar, parmesano, crema agria" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Fingers de Pollo" price="6,50€" hint-size="100%,50px"></x-import>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <h3 style="margin: 0 0 10px; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 44px; line-height: .9;">Postres y batidos</h3>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Tartas" price="4€" desc="Queso · chocolate blanco · pistacho · lotus" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="Batidos" price="8,50€" desc="Vainilla · caramelo salado · pistacho · lotus" hint-size="100%,72px"></x-import>
+        <div style="margin-top: 22px; padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; display: flex; flex-direction: column; gap: 6px;">
+          <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--acc);">Alérgenos</span>
+          <p style="margin: 0; font-size: 14px; line-height: 1.45; color: rgba(245,241,234,.72);">Disponemos de información sobre los 14 alérgenos de declaración obligatoria (Reglamento UE 1169/2011). Pregunta a nuestro personal antes de pedir.</p>
+          <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}">
+            <span style="align-self: flex-start; margin-top: 4px; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Texto legal genérico · validar</span>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+    <div style="height: 110px;"></div>
+  </section>
+
+  <div ref="{{ stickyRef }}" style="position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 40; opacity: 0; transform: translateY(20px); pointer-events: none;">
+    <a href="tel:+34688862244" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 12px; background: var(--acc); color: var(--on-acc); font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 22px; letter-spacing: .02em; text-transform: uppercase; box-shadow: 0 16px 40px -12px rgba(0,0,0,.6);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      Pedir ahora · 688 862 244
+    </a>
+  </div>
+
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ backdropRef }}" onClick="{{ closeSheet }}" style="position: fixed; inset: 0; z-index: 60; background: rgba(8,7,6,.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+    <div ref="{{ sheetRef }}" data-lenis-prevent="1" role="dialog" aria-modal="true" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-width: 560px; margin: 0 auto; max-height: 90svh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; background: #161412; border-radius: 22px 22px 0 0; border: 1px solid rgba(255,255,255,.1); border-bottom: 0; padding: 10px 18px calc(22px + env(safe-area-inset-bottom));">
+      <div style="display: flex; justify-content: center; padding: 4px 0 12px;"><span style="width: 42px; height: 5px; border-radius: 5px; background: rgba(255,255,255,.22);"></span></div>
+      <div style="position: relative; aspect-ratio: 16 / 11; border-radius: 16px; overflow: hidden; background: #0D0C0B;">
+        <sc-for list="{{ sheet.photos }}" as="ph" hint-placeholder-count="0">
+          <img src="{{ ph.img }}" alt="{{ ph.name }}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: {{ ph.pos }}; filter: {{ ph.filter }};">
+        </sc-for>
+        <sc-if value="{{ sheet.isPlaceholder }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, #141210 0 14px, #181614 14px 28px); font: 700 11px/1 var(--font-body); letter-spacing: .22em; text-transform: uppercase; color: rgba(245,241,234,.5);">Foto pendiente</div>
+        </sc-if>
+        <sc-if value="{{ sheet.mystery }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, #1d1a16 0%, #050404 70%); font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 160px; line-height: 1; color: var(--acc);">?</div>
+        </sc-if>
+        <button onClick="{{ closeSheet }}" aria-label="Cerrar" style="position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(13,12,11,.6); color: #F5F1EA; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; padding-top: 18px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <sc-for list="{{ sheet.badges }}" as="b" hint-placeholder-count="0">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; white-space: nowrap; background: {{ b.bg }}; color: {{ b.fg }}; border: 1px solid var(--acc);">{{ b.label }}</span>
+          </sc-for>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;">
+          <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 42px; line-height: .9; text-wrap: balance;">{{ sheet.name }}</h3>
+          <span style="flex: none; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 32px; line-height: 1; color: var(--acc);">{{ sheet.price }}</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <sc-for list="{{ sheet.ings }}" as="ing" hint-placeholder-count="0">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="onDark" style="font-size: 13.5px; background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16);" hint-size="90px,30px">{{ ing }}</x-import>
+          </sc-for>
+        </div>
+        <sc-if value="{{ sheet.extra }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; font-size: 14px; font-weight: 700;">{{ sheet.extra }}</p>
+        </sc-if>
+        <p style="margin: 0; font-size: 13px; color: rgba(245,241,234,.6);">*Consultar alérgenos al personal · Pedidos para recoger por teléfono</p>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="tel:+34688862244" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; justify-content: center; box-shadow: none;" hint-size="100%,56px">Llamar y pedir · 688 862 244</x-import>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F0C530&quot;,&quot;options&quot;:[&quot;#F0C530&quot;,&quot;#CC1414&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;displayFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bricolage condensada&quot;,&quot;Anton&quot;],&quot;default&quot;:&quot;Bricolage condensada&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;heroPhoto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Queso fundido&quot;,&quot;Corte en mano&quot;,&quot;Txuleta al corte&quot;],&quot;default&quot;:&quot;Txuleta al corte&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showMarks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Revisión&quot;}}">
+const PHONE_NOTE = '688 862 244 (verificar: Google muestra 618 09 22 88)';
+
+// Horario de ejemplo — sustituir por el real. 0 = domingo … 6 = sábado
+const SCHEDULE = {
+  0: [['12:30', '15:30'], ['19:30', '22:45']],
+  1: [],
+  2: [['12:30', '15:30'], ['19:30', '22:45']],
+  3: [['12:30', '15:30'], ['19:30', '22:45']],
+  4: [['12:30', '15:30'], ['19:30', '22:45']],
+  5: [['12:30', '15:30'], ['19:30', '22:45']],
+  6: [['12:30', '15:30'], ['19:30', '22:45']],
+};
+const DAYS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+// Carta — fotos provisionales (asignación orientativa): sustituir por la foto real de cada burger.
+const ITEMS = [
+  { id: 'sorpresa', name: 'Burger Sorpresa', price: '17,50€', cat: 'premium', mystery: true, desc: 'Ingredientes: clasificados. ¿Te atreves?' },
+  { id: 'unique', name: 'Unique in the World', price: '12,50€', cat: 'clasica', img: 'assets/b-unique.jpg', pos: '50% 55%', desc: 'Secreto ibérico, queso Gouda, panceta crujiente, salsa Emmy, rúcula, pan rojo' },
+  { id: 'tbb', name: 'TBB', price: '12,50€', cat: 'clasica', img: 'assets/b-tbb.jpg', pos: '50% 60%', light: true, desc: 'Vaca rubia gallega, cheddar, rúcula, panceta crujiente, cacahuetes con miel, mayo de mango y curry, pan potato' },
+  { id: 'katxo', name: 'La Katxo Burger Vasca', price: '13,50€', cat: 'clasica', img: 'assets/b-katxo.jpg', pos: '45% 50%', badges: ['Identidad Vasca'], desc: 'Txuleta blend, cebolla caramelizada, Idiazabal, cecina, champiñones salteados, salsa de boletus, pan rojo' },
+  { id: 'trufast', name: 'Trufast and Furious', price: '14,50€', cat: 'premium', img: 'assets/b-trufast.jpg', pos: '50% 45%', desc: 'Vaca rubia gallega, cebolla caramelizada, shiitake salteados, chips de patata, mayo trufada' },
+  { id: 'sinriesgo', name: 'Sin Riesgo No Hay Alma', price: '15,50€', cat: 'premium', img: 'assets/b-sinriesgo.jpg', pos: '50% 55%', light: true, desc: 'Vaca rubia gallega, pepinillos, queso ahumado, pulled pork, salsa mango-curry, torreznos crujientes, salsa Gaucha' },
+  { id: 'gozarla', name: 'Quiero Gozarla Entera', price: '15,50€', cat: 'premium', img: 'assets/b-gozarla.jpg', pos: '50% 55%', light: true, desc: 'Vaca rubia gallega, queso ahumado, pulled pork, salsa Emmy, doritos bits, pan negro' },
+  { id: 'bajini', name: 'A Lo Bajini', price: '16,50€', cat: 'premium', img: 'assets/b-bajini.jpg', pos: '50% 60%', light: true, desc: 'Vaca rubia, cheddar, cebolla crujiente, pepinillos crujientes, panceta crujiente, mayo Mr. Corn, fritos, pan azul' },
+  { id: 'veganfox', name: 'Vegan Fox', price: '14,50€', cat: 'vegana', badges: ['Vegan'], desc: '180gr burger vegana, cheddar vegano, mahonesa vegana, shiitake salteados, cebolla crujiente, chips de patata' },
+  { id: 'kids', name: 'Burger Kids', price: '8,50€', cat: 'infantil', badges: ['Menú infantil'], desc: '120gr txuleta, bacon, queso', extra: 'Incluye refresco, zumo o agua' },
+  { id: 'kidsfingers', name: 'Fingers de pollo con patatas', price: '8,50€', cat: 'infantil', badges: ['Menú infantil'], desc: 'Fingers de pollo con patatas', extra: 'Incluye refresco, zumo o agua' },
+];
+const TABS = [['todas', 'Todas'], ['clasica', 'Clásicas'], ['premium', 'Premium'], ['vegana', 'Vegana'], ['infantil', 'Infantil']];
+const HEROES = {
+  'Queso fundido': { src: 'assets/hero-queso.jpg', pos: '58% 12%' },
+  'Corte en mano': { src: 'assets/hero-corte.jpg', pos: '50% 18%' },
+  'Txuleta al corte': { src: 'assets/hero-txuleta.jpg', pos: '42% 30%' },
+};
+
+function toMin(s) { const [h, m] = s.split(':').map(Number); return h * 60 + m; }
+function madridNow() {
+  const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+  const get = t => p.find(x => x.type === t).value;
+  const wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+  return { day: wd, min: (Number(get('hour')) % 24) * 60 + Number(get('minute')) };
+}
+function computeStatus() {
+  const { day, min } = madridNow();
+  for (const [a, b] of SCHEDULE[day]) if (min >= toMin(a) && min < toMin(b)) return { open: true, short: 'Abierto · hasta ' + b };
+  for (const [a] of SCHEDULE[day]) if (min < toMin(a)) return { open: false, short: 'Abre hoy ' + a };
+  for (let i = 1; i <= 7; i++) {
+    const d = (day + i) % 7;
+    if (SCHEDULE[d].length) return { open: false, short: 'Abre ' + (i === 1 ? 'mañana' : DAYS[d].slice(0, 3) + '.') + ' ' + SCHEDULE[d][0][0] };
+  }
+  return { open: false, short: 'Cerrado' };
+}
+
+class Component extends DCLogic {
+  state = { filter: 'todas', sheetId: null, preDone: false, status: computeStatus() };
+  rootRef = React.createRef(); preRef = React.createRef(); barRef = React.createRef();
+  heroRef = React.createRef(); heroBgRef = React.createRef(); heroImgRef = React.createRef(); heroContentRef = React.createRef();
+  heroLogoRef = React.createRef(); heroTitleRef = React.createRef(); taglineRef = React.createRef(); ctaRef = React.createRef();
+  marqueeRef = React.createRef(); sorPanelRef = React.createRef(); sorCanvasRef = React.createRef(); sorNameRef = React.createRef();
+  sorDareRef = React.createRef(); sorCtaRef = React.createRef(); filterRef = React.createRef(); gridRef = React.createRef();
+  stickyRef = React.createRef(); sheetRef = React.createRef(); backdropRef = React.createRef();
+
+  componentDidMount() {
+    this.applyTheme();
+    this.applyHero();
+    this.statusTimer = setInterval(() => this.setState({ status: computeStatus() }), 60000);
+    const t0 = Date.now();
+    const wait = () => {
+      const ok = window.gsap && window.ScrollTrigger && window.Lenis && window.Splitting;
+      if (ok) return this.init(t0);
+      if (Date.now() - t0 > 4500) return this.fallback();
+      this.poll = setTimeout(wait, 40);
+    };
+    wait();
+  }
+  componentWillUnmount() {
+    clearInterval(this.statusTimer); clearTimeout(this.poll);
+    if (this.lenis) this.lenis.destroy();
+    if (this.ctx) this.ctx.revert();
+  }
+  componentDidUpdate(pp, ps) {
+    if (pp.accent !== this.props.accent || pp.displayFont !== this.props.displayFont) {
+      this.applyTheme();
+      if (window.ScrollTrigger) setTimeout(() => ScrollTrigger.refresh(), 300);
+    }
+    if (pp.heroPhoto !== this.props.heroPhoto) this.applyHero();
+    if (ps.filter !== this.state.filter) this.animateFilter();
+    if (!ps.sheetId && this.state.sheetId) this.openSheetAnim();
+  }
+
+  applyHero() {
+    const el = this.heroImgRef.current; if (!el) return;
+    const h = HEROES[this.props.heroPhoto] || HEROES['Queso fundido'];
+    if (el.getAttribute('src') !== h.src) el.setAttribute('src', h.src);
+    el.style.objectPosition = h.pos;
+  }
+  applyTheme() {
+    const s = document.documentElement.style;
+    const acc = this.props.accent || '#F0C530';
+    s.setProperty('--tbb-accent', acc);
+    s.setProperty('--tbb-on-accent', acc.toUpperCase() === '#CC1414' ? '#FFFFFF' : '#0D0C0B');
+    const anton = this.props.displayFont === 'Anton';
+    s.setProperty('--tbb-display', anton ? "'Anton'" : "'Bricolage Grotesque'");
+    s.setProperty('--tbb-stretch', anton ? '100%' : '75%');
+    s.setProperty('--tbb-dweight', anton ? '400' : '800');
+  }
+
+  fallback() {
+    this.setState({ preDone: true });
+  }
+
+  isMobile() { return window.innerWidth < 760; }
+
+  init(t0) {
+    const gsap = window.gsap, ST = window.ScrollTrigger;
+    gsap.registerPlugin(ST);
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!this.reduced) {
+      this.lenis = new window.Lenis({ lerp: 0.08, smoothWheel: true });
+      this.lenis.on('scroll', ST.update);
+      this.raf = (t) => this.lenis && this.lenis.raf(t * 1000);
+      gsap.ticker.add(this.raf);
+      gsap.ticker.lagSmoothing(0);
+    }
+    const S = window.Splitting;
+    const words = S({ target: this.taglineRef.current, by: 'words' })[0].words;
+    const h2s = Array.from(document.querySelectorAll('[data-split-chars]'));
+    const charSets = h2s.map(el => S({ target: el, by: 'chars' })[0]);
+
+    this.ctx = gsap.context(() => {
+      const hero = this.heroRef.current;
+      const intro = this.props.intro !== false && this.preRef.current;
+      // hero initial states
+      gsap.set(words, { display: 'inline-block', y: 40, opacity: 0 });
+      gsap.set(this.heroLogoRef.current, { opacity: 0, scale: 0.85 });
+      gsap.set(this.heroTitleRef.current.querySelectorAll('[data-line]'), { opacity: 0, y: 30 });
+      gsap.set(this.ctaRef.current, { opacity: 0, y: 12 });
+      gsap.set(this.heroImgRef.current, { scale: 1.08 });
+
+      const heroTl = gsap.timeline({ paused: true });
+      heroTl.to(this.heroImgRef.current, { scale: 1, duration: 1.8, ease: 'power3.out' }, 0)
+        .to(this.heroLogoRef.current, { opacity: 1, scale: 1, duration: 1, ease: 'power3.out' }, 0.15)
+        .to(this.heroTitleRef.current.querySelectorAll('[data-line]'), { opacity: 1, y: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out' }, 0.3)
+        .to(words, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out' }, 0.55)
+        .to(this.ctaRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '>+0.6');
+
+      if (intro) {
+        const pre = this.preRef.current;
+        const minWait = Math.max(0, 1100 - (Date.now() - t0)) / 1000;
+        gsap.fromTo(pre.querySelector('[data-pre-logo]'), { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' });
+        gsap.to(pre.querySelector('[data-pre-bar]'), { scaleX: 1, duration: minWait + 0.5, ease: 'power2.inOut' });
+        const lift = () => gsap.to(pre, {
+          yPercent: -100, duration: 0.9, ease: 'power3.inOut', delay: minWait + 0.45,
+          onStart: () => heroTl.play(0.0).delay(0.35),
+          onComplete: () => this.setState({ preDone: true }),
+        });
+        (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(lift);
+      } else {
+        heroTl.play(0);
+        if (this.preRef.current) this.setState({ preDone: true });
+      }
+
+      // hero parallax
+      gsap.to(this.heroBgRef.current, { y: () => hero.offsetHeight * 0.5, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
+      gsap.to(this.heroContentRef.current, { y: () => -hero.offsetHeight * 0.3, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
+
+      // top bar
+      const bar = this.barRef.current;
+      ST.create({
+        start: 40, end: 'max',
+        onToggle: (s) => gsap.to(bar, { backgroundColor: s.isActive ? 'rgba(13,12,11,.82)' : 'rgba(13,12,11,0)', borderBottomColor: s.isActive ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,0)', backdropFilter: s.isActive ? 'blur(10px)' : 'blur(0px)', duration: 0.3 }),
+      });
+
+      // marquee, speed reacts to scroll velocity
+      const mq = gsap.to(this.marqueeRef.current, { xPercent: -50, duration: 26, ease: 'none', repeat: -1 });
+      ST.create({ onUpdate: (s) => { const v = Math.min(4, 1 + Math.abs(s.getVelocity()) / 600); gsap.to(mq, { timeScale: v * (s.direction || 1), duration: 0.2, overwrite: true }); } });
+
+      // section reveals
+      gsap.utils.toArray('[data-reveal]').forEach(el => {
+        gsap.from(el, { y: 50, opacity: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 80%', once: true } });
+      });
+
+      // h2 char reveal
+      charSets.forEach((res) => {
+        gsap.set(res.words, { overflow: 'hidden', verticalAlign: 'top', paddingTop: '.06em' });
+        gsap.set(res.chars, { display: 'inline-block' });
+        gsap.from(res.chars, { yPercent: 110, duration: 0.9, stagger: 0.03, ease: 'power3.out', scrollTrigger: { trigger: res.el, start: 'top 85%', once: true } });
+      });
+
+      // Burger Sorpresa
+      const panel = this.sorPanelRef.current;
+      gsap.fromTo(panel, { clipPath: 'inset(18% 16% 18% 16% round 40px)' }, { clipPath: 'inset(0% 0% 0% 0% round 22px)', ease: 'none', scrollTrigger: { trigger: panel, start: 'top 95%', end: 'top 15%', scrub: 0.6 } });
+      const sorLines = panel.querySelectorAll('[data-sor-line]');
+      const sorTl = gsap.timeline({ scrollTrigger: { trigger: panel, start: 'top 45%', once: true } });
+      sorTl.from(sorLines, { yPercent: 105, duration: 1, stagger: 0.12, ease: 'power3.out' })
+        .from(panel.querySelectorAll('[data-redact]'), { scaleX: 0, transformOrigin: 'left center', duration: 0.7, stagger: 0.06, ease: 'power3.out' }, '-=0.6')
+        .from(this.sorDareRef.current, { opacity: 0, y: 36, letterSpacing: '0.12em', filter: 'blur(8px)', duration: 1.2, ease: 'expo.out' }, '+=0.4')
+        .from(this.sorCtaRef.current, { opacity: 0, y: 16, duration: 0.7, ease: 'power2.out' }, '-=0.5');
+      gsap.to(this.sorCtaRef.current, { scale: 1.04, duration: 1, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: 2.4 });
+      this.setupPixels(panel);
+
+      // carta cards
+      const cards = gsap.utils.toArray('[data-card]');
+      const below = cards.filter(c => c.getBoundingClientRect().top > window.innerHeight * 0.9);
+      gsap.set(below, { opacity: 0, y: 30 });
+      ST.batch(below, {
+        start: 'top 90%', once: true,
+        onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'power2.out', overwrite: true, onStart: () => gsap.set(batch, { willChange: 'transform' }), onComplete: () => gsap.set(batch, { clearProps: 'willChange' }) }),
+      });
+      cards.forEach(card => this.bindHover(card));
+
+      // sticky mobile CTA
+      const sticky = this.stickyRef.current;
+      const show = (on) => {
+        const vis = on && this.isMobile() && !this.state.sheetId;
+        gsap.to(sticky, { opacity: vis ? 1 : 0, y: vis ? 0 : 20, duration: 0.45, ease: 'power2.out', pointerEvents: vis ? 'auto' : 'none' });
+      };
+      this.showSticky = show;
+      ST.create({ trigger: hero, start: 'bottom 75%', end: 'max', onToggle: (s) => show(s.isActive) });
+      const foot = document.querySelector('[data-footer]');
+      if (foot) ST.create({ trigger: foot, start: 'top bottom', onToggle: (s) => show(!s.isActive) });
+    }, this.rootRef.current);
+
+    setTimeout(() => ST.refresh(), 600);
+  }
+
+  setupPixels(panel) {
+    const cv = this.sorCanvasRef.current; if (!cv) return;
+    const img = new Image(); img.src = 'assets/b-katxo.jpg';
+    const off = document.createElement('canvas');
+    let last = -1;
+    const draw = (p) => {
+      if (!img.complete || !img.naturalWidth) return;
+      const w = panel.clientWidth, h = panel.clientHeight;
+      const block = Math.round(64 - 44 * Math.min(1, p * 1.6));
+      if (block === last && cv.width === w) return; last = block;
+      cv.width = w; cv.height = h;
+      const sw = Math.max(2, Math.ceil(w / block)), sh = Math.max(2, Math.ceil(h / block));
+      off.width = sw; off.height = sh;
+      const o = off.getContext('2d');
+      const r = Math.max(sw / img.naturalWidth, sh / img.naturalHeight);
+      const dw = img.naturalWidth * r, dh = img.naturalHeight * r;
+      o.drawImage(img, (sw - dw) / 2, (sh - dh) / 2, dw, dh);
+      const c = cv.getContext('2d'); c.imageSmoothingEnabled = false;
+      c.drawImage(off, 0, 0, sw, sh, 0, 0, sw * block, sh * block);
+    };
+    img.onload = () => draw(0);
+    window.ScrollTrigger.create({ trigger: panel, start: 'top bottom', end: 'bottom top', onUpdate: (s) => draw(s.progress), onRefresh: () => { last = -1; draw(0); } });
+  }
+
+  bindHover(card) {
+    const gsap = window.gsap;
+    const img = () => card.querySelector('[data-img]');
+    const name = card.querySelector('[data-name]');
+    const on = () => { const i = img(); gsap.set([i, name], { willChange: 'transform' }); gsap.to(i, { scale: 1.05, duration: 0.4, ease: 'power2.out' }); gsap.to(name, { y: -4, duration: 0.4, ease: 'power2.out' }); };
+    const off = () => { const i = img(); gsap.to(i, { scale: 1, duration: 0.4, ease: 'power2.out', onComplete: () => gsap.set(i, { clearProps: 'willChange' }) }); gsap.to(name, { y: 0, duration: 0.4, ease: 'power2.out' }); };
+    card.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') on(); });
+    card.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') off(); });
+    card.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') { on(); setTimeout(off, 200); } });
+  }
+
+  animateFilter() {
+    const gsap = window.gsap; if (!gsap) return;
+    const vis = Array.from(this.gridRef.current.querySelectorAll('[data-card]')).filter(c => c.style.display !== 'none');
+    gsap.fromTo(vis, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.06, ease: 'power2.out', overwrite: true });
+    const top = this.gridRef.current.getBoundingClientRect().top + window.scrollY - 130;
+    if (window.scrollY > top) { this.lenis ? this.lenis.scrollTo(top, { duration: 0.8 }) : window.scrollTo({ top, behavior: 'smooth' }); }
+    setTimeout(() => window.ScrollTrigger && ScrollTrigger.refresh(), 60);
+  }
+
+  openSheetAnim() {
+    const gsap = window.gsap;
+    if (this.lenis) this.lenis.stop();
+    if (this.showSticky) this.showSticky(false);
+    if (!gsap) return;
+    gsap.fromTo(this.backdropRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+    gsap.fromTo(this.sheetRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.55, ease: 'power3.out' });
+  }
+
+  closeSheet = () => {
+    const gsap = window.gsap;
+    const done = () => { this.setState({ sheetId: null }); if (this.lenis) this.lenis.start(); if (this.showSticky) this.showSticky(window.scrollY > this.heroRef.current.offsetHeight * 0.3); };
+    if (!gsap || !this.sheetRef.current) return done();
+    gsap.to(this.backdropRef.current, { opacity: 0, duration: 0.25 });
+    gsap.to(this.sheetRef.current, { yPercent: 100, duration: 0.35, ease: 'power2.in', onComplete: done });
+  };
+
+  scrollToSel(sel) {
+    const el = document.querySelector(sel); if (!el) return;
+    if (this.lenis) this.lenis.scrollTo(el, { offset: sel === '#top' ? 0 : -8, duration: 1.4 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  }
+
+  badge(label) {
+    const solid = label === 'Identidad Vasca';
+    return { label, bg: solid ? 'var(--acc)' : 'rgba(13,12,11,.7)', fg: solid ? 'var(--on-acc)' : 'var(--acc)' };
+  }
+
+  decorate(it, i) {
+    const marks = this.props.showMarks !== false;
+    return {
+      ...it,
+      num: String(i + 1).padStart(2, '0'),
+      hasImg: !!it.img, isPlaceholder: !it.img && !it.mystery, mystery: !!it.mystery,
+      filter: it.light ? 'brightness(.86) contrast(1.08) saturate(1.05)' : 'none',
+      badges: (it.badges || []).map(b => this.badge(b)),
+      ings: it.mystery ? ['████████', '█████', '███████████'] : it.desc.split(', '),
+      markPhoto: marks && !!it.img,
+      priceColor: it.mystery ? 'var(--acc)' : '#F5F1EA',
+    };
+  }
+
+  renderVals() {
+    const { filter, sheetId, preDone, status } = this.state;
+    const counts = { todas: ITEMS.length };
+    ITEMS.forEach(it => { counts[it.cat] = (counts[it.cat] || 0) + 1; });
+    const items = ITEMS.map((it, i) => ({
+      ...this.decorate(it, i),
+      display: filter === 'todas' || it.cat === filter ? 'flex' : 'none',
+      open: () => this.setState({ sheetId: it.id }),
+    }));
+    const tabs = TABS.map(([id, label]) => {
+      const a = id === filter;
+      return { label, count: counts[id] || 0, bg: a ? 'var(--acc)' : 'transparent', fg: a ? 'var(--on-acc)' : '#F5F1EA', bd: a ? 'var(--acc)' : 'rgba(255,255,255,.22)', select: () => this.setState({ filter: id }) };
+    });
+    const idx = ITEMS.findIndex(x => x.id === sheetId);
+    const sheet = idx >= 0 ? this.decorate(ITEMS[idx], idx) : {};
+    if (sheet.mystery) sheet.ings = ['Ingredientes: clasificados'];
+    sheet.photos = sheet.hasImg ? [sheet] : [];
+    return {
+      rootRef: this.rootRef, preRef: this.preRef, barRef: this.barRef, heroRef: this.heroRef, heroBgRef: this.heroBgRef,
+      heroImgRef: this.heroImgRef, heroContentRef: this.heroContentRef, heroLogoRef: this.heroLogoRef, heroTitleRef: this.heroTitleRef,
+      taglineRef: this.taglineRef, ctaRef: this.ctaRef, marqueeRef: this.marqueeRef, sorPanelRef: this.sorPanelRef,
+      sorCanvasRef: this.sorCanvasRef, sorNameRef: this.sorNameRef, sorDareRef: this.sorDareRef, sorCtaRef: this.sorCtaRef,
+      filterRef: this.filterRef, gridRef: this.gridRef, stickyRef: this.stickyRef, sheetRef: this.sheetRef, backdropRef: this.backdropRef,
+      showPreloader: this.props.intro !== false && !preDone,
+      isOpen: status.open, statusShort: status.short,
+      showMarks: this.props.showMarks !== false,
+      tabs, items, sheet, sheetOpen: !!sheetId,
+      closeSheet: this.closeSheet,
+      goCarta: (e) => { e.preventDefault(); this.scrollToSel('#carta'); },
+      goTop: (e) => { e.preventDefault(); this.scrollToSel('#top'); },
+    };
+  }
+}
+</script>
+</body>
+</html>

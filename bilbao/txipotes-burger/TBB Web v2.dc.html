@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Txipote's Best Burger · Portugalete</title>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;family=Anton&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/splitting@1.0.6/dist/splitting.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.4/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.1.4/swiper-bundle.min.js"></script>
+<style>
+html{scroll-behavior:auto!important;background:#0D0C0B}
+body{margin:0;background:#0D0C0B;color:#F5F1EA;overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}
+::selection{background:#F0C530;color:#0D0C0B}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+.sc-host-x:has(>[data-rev]){display:flex!important;flex-direction:column}
+[data-rev]{flex:1;display:flex;flex-direction:column;background:#161412!important;border-color:rgba(255,255,255,.1)!important}
+[data-rev]>p{flex:1}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="--fd: var(--tbb-display, 'Bricolage Grotesque'), sans-serif; --fst: var(--tbb-stretch, 75%); --fwd: var(--tbb-dweight, 800); --acc: var(--tbb-accent, #F0C530); --on-acc: var(--tbb-on-accent, #0D0C0B); --accent: var(--acc); --ink: #F5F1EA; --ink-soft: rgba(245,241,234,.68); --line: rgba(255,255,255,.14); --price: #F5F1EA; --paper: #161412; --status-open: var(--acc); --status-closed: rgba(245,241,234,.78); position: relative; background: #0D0C0B; color: #F5F1EA; font-family: var(--font-body); overflow-x: clip; min-height: 100vh;">
+
+  <sc-if value="{{ showPreloader }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ preRef }}" style="position: fixed; inset: 0; z-index: 100; background: #0D0C0B; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;">
+      <img data-pre-logo="1" src="assets/logo-neon.png" alt="Txipote's Best Burger" style="width: 116px; height: 116px; border-radius: 50%;">
+      <div style="width: 132px; height: 2px; background: rgba(255,255,255,.12); overflow: hidden; border-radius: 2px;">
+        <div data-pre-bar="1" style="width: 100%; height: 100%; background: var(--acc); transform: scaleX(0); transform-origin: left center;"></div>
+      </div>
+      <span style="font: 700 11px/1 var(--font-body); letter-spacing: .28em; text-transform: uppercase; color: rgba(245,241,234,.6);">Portugalete · Bizkaia</span>
+    </div>
+  </sc-if>
+
+  <header ref="{{ barRef }}" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 60px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid transparent;">
+    <a href="#top" onClick="{{ goTop }}" style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/logo-neon.png" alt="" style="width: 36px; height: 36px; border-radius: 50%;">
+      <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 22px; letter-spacing: .02em; line-height: 1;">TBB</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" style="background: rgba(13,12,11,.55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.14); font-size: 12.5px; padding: 7px 12px;" hint-size="150px,34px">{{ statusShort }}</x-import>
+      <button ref="{{ cartBtnRef }}" onClick="{{ openCart }}" aria-label="Tu pedido" style="position: relative; width: 40px; height: 40px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: rgba(13,12,11,.55); color: #F5F1EA; border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); cursor: pointer; padding: 0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+          <span data-cart-badge="1" style="position: absolute; top: -4px; right: -4px; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 999px; background: var(--acc); color: var(--on-acc); font: 800 11px/19px var(--font-body); text-align: center;">{{ cartCount }}</span>
+        </sc-if>
+      </button>
+      <button onClick="{{ openMenu }}" aria-label="Menú" style="width: 40px; height: 40px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: rgba(13,12,11,.55); color: #F5F1EA; border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); cursor: pointer; padding: 0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <section id="top" data-screen-label="01 Hero" ref="{{ heroRef }}" style="position: relative; height: 100svh; min-height: 620px; max-height: 1100px; overflow: hidden; background: #0D0C0B;">
+    <div ref="{{ heroBgRef }}" style="position: absolute; left: 0; right: 0; top: 0; height: 100%; will-change: transform;">
+      <img ref="{{ heroImgRef }}" src="assets/hero-queso.jpg" alt="Burger de Txipote's" style="width: 100%; height: 100%; object-fit: cover; object-position: 58% 12%; transform-origin: 50% 40%;">
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,.7) 0%, rgba(13,12,11,0) 18%, rgba(13,12,11,0) 34%, rgba(13,12,11,.72) 56%, #0D0C0B 86%);"></div>
+    <div style="position: absolute; inset: 0; pointer-events: none; opacity: .08; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nLjg1JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAuNiAwJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI24pJy8+PC9zdmc+); background-size: 160px 160px;"></div>
+
+    <div ref="{{ heroContentRef }}" style="position: absolute; left: 0; right: 0; bottom: 0; padding: 0 22px calc(30px + env(safe-area-inset-bottom));">
+      <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px;">
+        <img ref="{{ heroLogoRef }}" src="assets/logo-neon.png" alt="Logo Txipote's Best Burger" style="width: 76px; height: 76px; border-radius: 50%; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 18px 40px -12px rgba(204,20,20,.55);">
+        <h1 ref="{{ heroTitleRef }}" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(20vw, 150px); line-height: .84; letter-spacing: -.012em; color: #F5F1EA;">
+          <span data-line="1" style="display: block;">Txipote's</span>
+          <span data-line="1" style="display: block;">Best Burger</span>
+        </h1>
+        <p ref="{{ taglineRef }}" style="margin: 0; max-width: 30ch; font-size: clamp(18px, 4.9vw, 24px); line-height: 1.32; font-weight: 500; text-wrap: pretty; color: #F5F1EA;"><span style="color: rgba(245,241,234,.7);">No son solo hamburguesas...</span> Son experiencias que saben a innovación.</p>
+        <div ref="{{ ctaRef }}" style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="tel:+34688862244" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; box-shadow: none; flex: 1 1 150px; justify-content: center;" hint-size="160px,54px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Pedir ahora</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="lg" href="#carta" onClick="{{ goCarta }}" style="font-family: var(--font-body); font-weight: 800; flex: 1 1 150px; justify-content: center; border-color: rgba(255,255,255,.4);" hint-size="160px,54px">Ver la carta<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg></x-import>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+            <a href="https://www.instagram.com/txipotes.and_burger/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: rgba(245,241,234,.72);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>@txipotes.and_burger
+            </a>
+            <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}">
+              <span style="font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Tel. 688 862 244 · verificar</span>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="overflow: hidden; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); padding: 14px 0; background: #0D0C0B;">
+    <div ref="{{ marqueeRef }}" style="display: flex; width: max-content; white-space: nowrap; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 26px; line-height: 1; text-transform: uppercase; letter-spacing: .01em; color: rgba(245,241,234,.9);">
+      <span style="padding-right: 18px;">Vaca rubia gallega <span style="color: var(--acc);">✱</span> Txuleta <span style="color: var(--acc);">✱</span> Idiazabal <span style="color: var(--acc);">✱</span> Secreto ibérico <span style="color: var(--acc);">✱</span> Pulled pork <span style="color: var(--acc);">✱</span> Torreznos <span style="color: var(--acc);">✱</span> Pan rojo <span style="color: var(--acc);">✱</span> Pan negro <span style="color: var(--acc);">✱</span> Pan azul <span style="color: var(--acc);">✱</span></span>
+      <span aria-hidden="true" style="padding-right: 18px;">Vaca rubia gallega <span style="color: var(--acc);">✱</span> Txuleta <span style="color: var(--acc);">✱</span> Idiazabal <span style="color: var(--acc);">✱</span> Secreto ibérico <span style="color: var(--acc);">✱</span> Pulled pork <span style="color: var(--acc);">✱</span> Torreznos <span style="color: var(--acc);">✱</span> Pan rojo <span style="color: var(--acc);">✱</span> Pan negro <span style="color: var(--acc);">✱</span> Pan azul <span style="color: var(--acc);">✱</span></span>
+    </div>
+  </div>
+
+  <section id="sorpresa" data-screen-label="02 Burger Sorpresa" style="padding: 18px 12px 12px; background: #0D0C0B;">
+    <div ref="{{ sorPanelRef }}" style="position: relative; max-width: 1180px; margin: 0 auto; min-height: min(780px, 100svh); border-radius: 22px; overflow: hidden; background: #050404;">
+      <canvas ref="{{ sorCanvasRef }}" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: .62; image-rendering: pixelated;"></canvas>
+      <div style="position: absolute; inset: 0; background: radial-gradient(130% 75% at 50% 42%, rgba(5,4,4,.1) 0%, rgba(5,4,4,.7) 55%, #050404 92%);"></div>
+      <div style="position: absolute; inset: 0; pointer-events: none; opacity: .11; background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nLjg1JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAuNiAwJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsdGVyPSd1cmwoI24pJy8+PC9zdmc+); background-size: 160px 160px;"></div>
+
+      <div style="position: relative; min-height: min(780px, 100svh); padding: 30px 22px 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="180px,16px">Ingredientes: clasificados</x-import>
+          <span style="font: 700 11px/1 var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: rgba(245,241,234,.6);">Nº 01</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 22px;">
+          <h2 ref="{{ sorNameRef }}" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(24vw, 190px); line-height: .82; letter-spacing: -.015em;">
+            <span style="display: block; overflow: hidden; padding-top: .04em;"><span data-sor-line="1" style="display: block;">Burger</span></span>
+            <span style="display: block; overflow: hidden; padding-top: .04em;"><span data-sor-line="1" style="display: block;">Sorpresa</span></span>
+          </h2>
+          <div aria-label="Ingredientes ocultos" style="display: flex; flex-wrap: wrap; gap: 8px; max-width: 420px;">
+            <span data-redact="1" style="height: 14px; width: 38%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 24%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 30%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 20%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+            <span data-redact="1" style="height: 14px; width: 44%; background: rgba(245,241,234,.16); border-radius: 3px;"></span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+            <div ref="{{ sorDareRef }}" style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(13vw, 110px); line-height: .9; letter-spacing: -.01em; color: #F5F1EA;">¿Te atreves?</div>
+            <div style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: min(12vw, 96px); line-height: .9; color: var(--acc);">17,50€</div>
+          </div>
+          <span ref="{{ sorCtaRef }}" style="display: flex; transform-origin: 50% 50%;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" onClick="{{ addSorpresa }}" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; width: 100%; justify-content: center; box-shadow: 0 0 0 0 transparent;" hint-size="100%,56px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>Me atrevo · Añadir al pedido</x-import>
+          </span>
+          <div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: rgba(245,241,234,.55);">
+            <span>*Consultar alérgenos al personal</span>
+            <a href="tel:+34688862244" style="color: rgba(245,241,234,.8); text-decoration: underline; text-underline-offset: 3px;">o llama al 688 862 244</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div data-tex="1" style="position: relative; isolation: isolate; background: #0D0C0B;">
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;">
+    <sc-if value="{{ bgPhoto }}" hint-placeholder-val="{{ false }}">
+      <img src="assets/hero-queso.jpg" alt="" loading="lazy" style="position: absolute; left: -10%; width: 120%; top: -300px; height: 1800px; object-fit: cover; object-position: 50% 30%; filter: blur(28px) saturate(1.2) brightness(.55); opacity: .5; -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);">
+      <img src="assets/g-selfie.jpg" alt="" loading="lazy" style="position: absolute; left: -10%; width: 120%; top: 30%; height: 1800px; object-fit: cover; object-position: 50% 40%; filter: blur(28px) saturate(1.2) brightness(.55); opacity: .5; -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);">
+      <img src="assets/x-basajaun.jpg" alt="" loading="lazy" style="position: absolute; left: -10%; width: 120%; top: 62%; height: 1800px; object-fit: cover; object-position: 50% 50%; filter: blur(28px) saturate(1.2) brightness(.55); opacity: .5; -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);">
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,12,11,.35), rgba(13,12,11,.75) 50%, rgba(13,12,11,.35));"></div>
+    </sc-if>
+    <sc-if value="{{ bgGlow }}" hint-placeholder-val="{{ true }}">
+      <div style="position: absolute; inset: 0; background: radial-gradient(75vmax 60vmax at -12% 3%, color-mix(in oklab, var(--acc) 34%, transparent), transparent 70%), radial-gradient(75vmax 60vmax at 112% 20%, color-mix(in oklab, var(--acc) 26%, transparent), transparent 70%), radial-gradient(75vmax 60vmax at -12% 42%, color-mix(in oklab, var(--acc) 30%, transparent), transparent 70%), radial-gradient(75vmax 60vmax at 112% 63%, color-mix(in oklab, var(--acc) 26%, transparent), transparent 70%), radial-gradient(75vmax 60vmax at -12% 82%, color-mix(in oklab, var(--acc) 28%, transparent), transparent 70%), radial-gradient(75vmax 60vmax at 50% 104%, color-mix(in oklab, var(--acc) 34%, transparent), transparent 70%);"></div>
+    </sc-if>
+    <sc-if value="{{ bgGrill }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(-32deg, transparent 0px, transparent 54px, color-mix(in oklab, var(--acc) 9%, transparent) 54px, color-mix(in oklab, var(--acc) 9%, transparent) 58px, transparent 64px); -webkit-mask-image: repeating-linear-gradient(180deg, transparent 0px, #000 600px, #000 900px, transparent 1500px); mask-image: repeating-linear-gradient(180deg, transparent 0px, #000 600px, #000 900px, transparent 1500px);"></div>
+    </sc-if>
+    <sc-if value="{{ bgGrain }}" hint-placeholder-val="{{ true }}">
+      <div style="position: absolute; inset: 0; opacity: .12; background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E'); background-size: 200px 200px;"></div>
+    </sc-if>
+  </div>
+  <section id="carta" data-screen-label="03 La carta" style="padding: 84px 0 40px; background: transparent;">
+    <div data-reveal="1" style="max-width: 1180px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 14px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="220px,16px">Hamburguesas · entrantes · postres</x-import>
+      <h2 data-split-chars="1" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(29vw, 230px); line-height: .8; letter-spacing: -.02em;">La carta</h2>
+      <p style="margin: 6px 0 0; font-size: 15px; color: rgba(245,241,234,.62);">*Consultar alérgenos al personal</p>
+    </div>
+
+    <div ref="{{ filterRef }}" style="position: sticky; top: 60px; z-index: 20; margin-top: 26px; background: rgba(13,12,11,.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08);">
+      <div style="max-width: 1180px; margin: 0 auto; padding: 12px 22px 10px; display: flex; flex-direction: column; gap: 10px;">
+        <div ref="{{ segRef }}" style="position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 4px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);">
+          <span ref="{{ segThumbRef }}" style="position: absolute; top: 4px; bottom: 4px; left: 0; width: 0; border-radius: 999px; background: var(--acc);"></span>
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+            <button data-seg-active="{{ g.active }}" onClick="{{ g.select }}" style="position: relative; z-index: 1; height: 42px; border: 0; background: transparent; cursor: pointer; border-radius: 999px; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 17px; letter-spacing: .01em; white-space: nowrap; color: {{ g.fg }}; transition: color .3s;">{{ g.label }}<span style="font: 700 10px/1 var(--font-body); margin-left: 5px; opacity: .6;">{{ g.count }}</span></button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ showSub }}" hint-placeholder-val="{{ true }}">
+          <div data-lenis-prevent="1" style="display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;">
+            <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+              <button onClick="{{ t.select }}" style="flex: none; display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px; border-radius: 999px; font: 700 13px/1 var(--font-body); cursor: pointer; background: {{ t.bg }}; color: {{ t.fg }}; border: 1px solid {{ t.bd }}; transition: background .2s, color .2s;">{{ t.label }}<span style="font-size: 11px; opacity: .6;">{{ t.count }}</span></button>
+            </sc-for>
+            <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}">
+              
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div ref="{{ gridRef }}" style="max-width: 1180px; margin: 0 auto; padding: 26px 22px 10px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 34px 22px;">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+        <article data-card="1" data-id="{{ it.id }}" onClick="{{ it.open }}" style="display: {{ it.display }}; cursor: pointer; flex-direction: column; gap: 14px;">
+          <div data-photo="1" style="position: relative; aspect-ratio: 5 / 4; border-radius: 18px; overflow: hidden; background: #161412; border: 1px solid rgba(255,255,255,.06);">
+            <sc-if value="{{ it.hasImg }}" hint-placeholder-val="{{ false }}">
+              <img data-img="1" src="{{ it.img }}" alt="{{ it.name }}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: {{ it.pos }}; filter: {{ it.filter }};">
+              <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 78% at 50% 48%, rgba(13,12,11,0) 42%, rgba(13,12,11,.88) 100%), linear-gradient(180deg, rgba(13,12,11,0) 60%, rgba(13,12,11,.6) 100%);"></div>
+            </sc-if>
+            <sc-if value="{{ it.isPlaceholder }}" hint-placeholder-val="{{ false }}">
+              <div data-img="1" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: repeating-linear-gradient(135deg, #141210 0 14px, #181614 14px 28px);">
+                <span style="font: 700 11px/1 var(--font-body); letter-spacing: .22em; text-transform: uppercase; color: rgba(245,241,234,.5);">Foto pendiente</span>
+                <span style="font-family: var(--font-script); font-size: 24px; color: rgba(245,241,234,.45);">{{ it.name }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ it.mystery }}" hint-placeholder-val="{{ false }}">
+              <div data-img="1" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, #1d1a16 0%, #050404 70%);">
+                <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 180px; line-height: 1; color: var(--acc);">?</span>
+              </div>
+            </sc-if>
+            <span style="position: absolute; top: 12px; left: 12px; font: 800 12px/1 var(--font-body); letter-spacing: .1em; color: #F5F1EA; background: rgba(13,12,11,.6); padding: 6px 8px; border-radius: 7px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">{{ it.num }}</span>
+            <div style="position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+              <sc-for list="{{ it.badges }}" as="b" hint-placeholder-count="0">
+                <span style="font: 800 11px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; white-space: nowrap; background: {{ b.bg }}; color: {{ b.fg }}; border: 1px solid var(--acc);">{{ b.label }}</span>
+              </sc-for>
+            </div>
+            <sc-if value="{{ it.markPhoto }}" hint-placeholder-val="{{ false }}">
+              <span style="position: absolute; bottom: 14px; left: 12px; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap; background: rgba(13,12,11,.7);">Foto provisional</span>
+            </sc-if>
+            <div style="position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <sc-if value="{{ it.inCart }}" hint-placeholder-val="{{ false }}">
+                <span style="font: 800 12px/1 var(--font-body); color: #F5F1EA; background: rgba(13,12,11,.75); border: 1px solid rgba(255,255,255,.2); padding: 8px 10px; border-radius: 999px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">×{{ it.qty }} en tu pedido</span>
+              </sc-if>
+              <button data-add="1" onClick="{{ it.quickAdd }}" aria-label="Añadir al pedido" style="width: 46px; height: 46px; border-radius: 999px; border: 0; background: var(--acc); color: var(--on-acc); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 24px -8px rgba(0,0,0,.7);">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+              </button>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; padding: 0 2px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;">
+              <h3 data-name="1" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 34px; line-height: .92; letter-spacing: -.005em; text-wrap: balance;">{{ it.name }}</h3>
+              <span style="flex: none; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); font-size: 26px; line-height: 1; padding-top: 3px; color: {{ it.priceColor }};">{{ it.price }}</span>
+            </div>
+            <sc-if value="{{ it.desc }}" hint-placeholder-val="{{ true }}">
+              <p style="margin: 0; font-size: 15px; line-height: 1.45; color: rgba(245,241,234,.68); text-wrap: pretty;">{{ it.desc }}</p>
+            </sc-if>
+            <sc-if value="{{ it.hasVariants }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <sc-for list="{{ it.variants }}" as="v" hint-placeholder-count="0">
+                  <span style="font: 600 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); color: #F5F1EA;">{{ v }}</span>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ it.extra }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 13px; font-weight: 700; color: #F5F1EA;">{{ it.extra }}</p>
+            </sc-if>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <div data-reveal="1" style="max-width: 1180px; margin: 48px auto 0; padding: 0 22px;">
+      <div style="padding: 16px 18px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; display: flex; flex-direction: column; gap: 6px; max-width: 640px;">
+        <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: var(--acc);">Alérgenos</span>
+        <p style="margin: 0; font-size: 14px; line-height: 1.45; color: rgba(245,241,234,.72);">Disponemos de información sobre los 14 alérgenos de declaración obligatoria (Reglamento UE 1169/2011). Pregunta a nuestro personal antes de pedir.</p>
+        <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}">
+          <span style="align-self: flex-start; margin-top: 4px; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Texto legal genérico · validar</span>
+        </sc-if>
+      </div>
+    </div>
+    <div style="height: 40px;"></div>
+  </section>
+
+  <section id="galeria" data-screen-label="04 Galería" style="padding: 40px 0 20px; background: transparent;">
+    <div data-reveal="1" style="max-width: 1180px; margin: 0 auto; padding: 0 12px;">
+      <div ref="{{ galleryRef }}" class="swiper" style="position: relative; height: min(82svh, 680px); border-radius: 22px; overflow: hidden; --swiper-pagination-color: #F5F1EA; --swiper-pagination-bullet-inactive-color: #F5F1EA; --swiper-pagination-bullet-inactive-opacity: .4; --swiper-pagination-bullet-size: 7px; --swiper-pagination-bottom: 18px;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="position: relative; background: #0D0C0B;">
+            <img src="assets/g-selfie.jpg" alt="Txipote’s en Portugalete" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 100%);"></div>
+            <div style="position: absolute; left: 22px; right: 22px; bottom: 44px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">en el paseo</span>
+              <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Txipote’s en Portugalete</span>
+            </div>
+          </div>
+          <div class="swiper-slide" style="position: relative; background: #0D0C0B;">
+            <img src="assets/g-arcoiris.jpg" alt="Hecho aquí" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 100%);"></div>
+            <div style="position: absolute; left: 22px; right: 22px; bottom: 44px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">pan de colores</span>
+              <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Hecho aquí</span>
+            </div>
+          </div>
+          <div class="swiper-slide" style="position: relative; background: #0D0C0B;">
+            <img src="assets/x-basajaun.jpg" alt="Basajaun" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 100%);"></div>
+            <div style="position: absolute; left: 22px; right: 22px; bottom: 44px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">fuera de carta</span>
+              <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Basajaun</span>
+            </div>
+          </div>
+          <div class="swiper-slide" style="position: relative; background: #0D0C0B;">
+            <img src="assets/e-hotdog.jpg" alt="Hot Dog Elissague" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 100%);"></div>
+            <div style="position: absolute; left: 22px; right: 22px; bottom: 44px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">para abrir boca</span>
+              <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Hot Dog Elissague</span>
+            </div>
+          </div>
+          <div class="swiper-slide" style="position: relative; background: #0D0C0B;">
+            <img src="assets/x-gernika.jpg" alt="Gernika" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 100%);"></div>
+            <div style="position: absolute; left: 22px; right: 22px; bottom: 44px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">fuera de carta</span>
+              <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Gernika</span>
+            </div>
+          </div>
+          <div class="swiper-slide" style="position: relative; background: #0D0C0B;">
+            <img src="assets/x-bosque.jpg" alt="Bosque Vasco" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,12,11,0) 50%, rgba(13,12,11,.85) 100%);"></div>
+            <div style="position: absolute; left: 22px; right: 22px; bottom: 44px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">fuera de carta</span>
+              <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Bosque Vasco</span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div style="padding: 10px 10px 0;"><sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}"></sc-if></div>
+    </div>
+  </section>
+
+  <section id="resenas" data-screen-label="05 Reseñas" ref="{{ revRef }}" style="padding: 84px 0 40px; background: transparent;">
+    <div data-reveal="1" style="max-width: 1180px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 22px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="200px,16px">Lo que dicen en Google</x-import>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 22px;">
+        <span ref="{{ scoreRef }}" style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(44vw, 260px); line-height: .78; letter-spacing: -.03em; color: var(--acc);">4,4</span>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 8px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4.4 }}" size="{{ 26 }}" color="var(--acc)" hint-size="150px,28px"></x-import>
+          <span style="font-size: 17px; font-weight: 700;"><span ref="{{ countRef }}">215</span> opiniones en Google</span>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Txipotes+Best+Burger+Portugalete" target="_blank" rel="noopener" style="font-size: 14px; color: rgba(245,241,234,.7); text-decoration: underline; text-underline-offset: 3px;">Ver todas en Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div data-lenis-prevent="1" style="margin-top: 30px; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 22px; padding: 0 22px 10px; scrollbar-width: none; max-width: 1224px; margin-left: auto; margin-right: auto;">
+      <div style="flex: none; width: min(82vw, 340px); scroll-snap-align: start; display: flex;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" stars="{{ 5 }}" quote="La Katxo Burger Vasca es otro nivel. El pan rojo con el Idiazabal, brutal." author="Ane G." when="hace 2 semanas" tone="dark" data-rev="1" style="width: 100%; display: flex; flex-direction: column; background: #161412; border-color: rgba(255,255,255,.1);" hint-size="100%,220px"></x-import></div>
+      <div style="flex: none; width: min(82vw, 340px); scroll-snap-align: start; display: flex;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" stars="{{ 5 }}" quote="Pedimos la Sorpresa sin saber qué llevaba y acertamos de lleno. Volveremos." author="Iker M." when="hace 1 mes" tone="dark" data-rev="1" style="width: 100%; display: flex; flex-direction: column; background: #161412; border-color: rgba(255,255,255,.1);" hint-size="100%,220px"></x-import></div>
+      <div style="flex: none; width: min(82vw, 340px); scroll-snap-align: start; display: flex;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" stars="{{ 5 }}" quote="Mucho ambiente y buen trato. Las Patatas Txipote’s son obligatorias." author="Laura P." when="hace 1 mes" tone="dark" data-rev="1" style="width: 100%; display: flex; flex-direction: column; background: #161412; border-color: rgba(255,255,255,.1);" hint-size="100%,220px"></x-import></div>
+      <div style="flex: none; width: min(82vw, 340px); scroll-snap-align: start; display: flex;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" stars="{{ 4 }}" quote="Por fin una vegana de verdad: la Vegan Fox está buenísima." author="Mikel R." when="hace 3 meses" tone="dark" data-rev="1" style="width: 100%; display: flex; flex-direction: column; background: #161412; border-color: rgba(255,255,255,.1);" hint-size="100%,220px"></x-import></div>
+    </div>
+    <div style="max-width: 1180px; margin: 12px auto 0; padding: 0 22px;"><sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}"></sc-if></div>
+  </section>
+
+  <section id="pedidos" data-screen-label="06 Pedidos y reservas" style="padding: 84px 0 40px; background: transparent;">
+    <div data-reveal="1" style="max-width: 1180px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 14px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="200px,16px">Como tú quieras</x-import>
+      <h2 data-split-chars="1" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(20vw, 170px); line-height: .82; letter-spacing: -.02em;">Pedidos</h2>
+    </div>
+    <div data-reveal="1" style="max-width: 1180px; margin: 28px auto 0; padding: 0 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+      <div data-way="1" style="position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px 22px; border-radius: 18px; background: #161412; border: 1px solid rgba(255,255,255,.08); overflow: hidden;">
+        <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 90px; line-height: .8; color: rgba(245,241,234,.07); position: absolute; right: 14px; top: 10px;">01</span>
+        <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 36px; line-height: .9;">En el local</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: rgba(245,241,234,.7); max-width: 32ch;">Ven a C/ Gipuzkoa 30, en Portugalete. Menú infantil y postres para toda la familia.</p>
+        <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="md" onClick="{{ openResv }}" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; color: var(--on-acc);" hint-size="170px,46px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Reservar mesa</x-import><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="md" href="#ubicacion" onClick="{{ goUbicacion }}" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.04);" hint-size="150px,46px">Cómo llegar</x-import></div>
+      </div>
+      <div data-way="1" style="position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px 22px; border-radius: 18px; background: #161412; border: 1px solid rgba(255,255,255,.08); overflow: hidden;">
+        <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 90px; line-height: .8; color: rgba(245,241,234,.07); position: absolute; right: 14px; top: 10px;">02</span>
+        <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 36px; line-height: .9;">Para llevar</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: rgba(245,241,234,.7); max-width: 32ch;">Monta tu pedido aquí y envíanoslo por WhatsApp, o llámanos. Lo tienes listo a la hora que elijas.</p>
+        <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="md" onClick="{{ openCartOrCarta }}" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; color: var(--on-acc);" hint-size="150px,46px">Hacer pedido</x-import><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="md" href="tel:+34688862244" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.04);" hint-size="150px,46px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Llamar</x-import></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ubicacion" data-screen-label="07 Horario y ubicación" style="padding: 84px 0 64px; background: transparent;">
+    <div data-reveal="1" style="max-width: 1180px; margin: 0 auto; padding: 0 22px; display: flex; flex-direction: column; gap: 14px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="200px,16px">Dónde y cuándo</x-import>
+      <h2 data-split-chars="1" style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(20vw, 150px); line-height: .82; letter-spacing: -.02em;">Portugalete</h2>
+    </div>
+    <div data-reveal="1" style="max-width: 1180px; margin: 24px auto 0; padding: 0 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px; align-items: stretch;">
+      <div id="horario" style="scroll-margin-top: 80px; padding: 20px 18px 18px; border-radius: 22px; background: #161412; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" style="font-size: 15px; padding: 9px 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);" hint-size="180px,38px">{{ statusBig }}</x-import>
+          <span style="font-size: 14px; color: rgba(245,241,234,.7);">{{ statusDetail }}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <sc-for list="{{ hourGroups }}" as="r" hint-placeholder-count="2">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 12px; border-radius: 12px; background: {{ r.bg }};">
+              <span style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px;">{{ r.day }}<sc-if value="{{ r.today }}" hint-placeholder-val="{{ false }}"><span style="font: 800 10px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; background: var(--acc); color: var(--on-acc); padding: 5px 7px; border-radius: 999px;">Hoy</span></sc-if></span>
+              <span style="font-size: 15px; font-variant-numeric: tabular-nums; text-align: right; color: {{ r.fg }};">{{ r.hours }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <span style="font-size: 13px; line-height: 1.45; color: rgba(245,241,234,.6);">Horario de cocina. Según Google, algunos días abrimos antes para barra (desde las 10:30).</span>
+        <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}"></sc-if>
+      </div>
+      <div style="border-radius: 22px; background: #161412; border: 1px solid rgba(255,255,255,.08); overflow: hidden; display: flex; flex-direction: column;">
+        <div style="height: 190px; flex: none; background: #0D0C0B;">
+          <iframe title="Mapa" data-src="https://www.google.com/maps?q=C%2F+Gipuzkoa+30,+48920+Portugalete&amp;output=embed" data-lazy-map="1" style="width: 100%; height: 100%; border: 0; filter: grayscale(1) invert(.9) contrast(.9) brightness(.95);"></iframe>
+        </div>
+        <div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <span style="color: var(--acc); padding-top: 3px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 18px; font-weight: 700;">C/ Gipuzkoa 30</span><span style="font-size: 15px; color: rgba(245,241,234,.7);">48920 Portugalete, Bizkaia</span></div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="md" href="https://www.google.com/maps/dir/?api=1&amp;destination=C%2F+Gipuzkoa+30,+48920+Portugalete" target="_blank" rel="noopener" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; color: var(--on-acc);" hint-size="150px,46px">Cómo llegar</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="md" href="tel:+34688862244" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.04);" hint-size="150px,46px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>688 862 244</x-import>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+  <footer data-footer="1" data-screen-label="10 Footer" style="padding: 60px 22px calc(40px + env(safe-area-inset-bottom)); background: #080706; border-top: 1px solid rgba(255,255,255,.08);">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px;">
+      <div style="padding: 24px 20px; border-radius: 22px; background: #161412; border: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; gap: 14px;">
+        <span style="font-family: var(--font-script); font-size: 26px; color: var(--acc);">psst…</span>
+        <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 38px; line-height: .9; max-width: 16ch;">¿Cuál es la Burger Sorpresa esta semana?</h3>
+        <sc-if value="{{ newsNotDone }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <input value="{{ newsEmail }}" onChange="{{ onNews }}" type="email" placeholder="Tu email" autocomplete="email" style="height: 52px; width: 100%; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.16); color: #F5F1EA; font: 500 16px var(--font-body); outline: none; flex: 1 1 200px; width: auto;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="md" onClick="{{ sendNews }}" style="font-family: var(--font-body); font-weight: 800; box-shadow: none; color: var(--on-acc);" hint-size="150px,46px">Avísame</x-import>
+          </div>
+          <sc-if value="{{ newsErr }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ newsErr }}</span></sc-if>
+        </sc-if>
+        <sc-if value="{{ newsDone }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 15px; font-weight: 700;">Apuntado. Te avisamos cuando haya Sorpresa nueva.</p></sc-if>
+        <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Newsletter demo · sin conectar</span></sc-if>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 28px;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img src="assets/logo-neon.png" alt="Txipote's Best Burger" style="width: 72px; height: 72px; border-radius: 50%;">
+          <span style="font-size: 14px; color: rgba(245,241,234,.7); max-width: 30ch;">No son solo hamburguesas... Son experiencias que saben a innovación.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px;">
+          <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.55); margin-bottom: 4px;">Contacto</span>
+          <a href="tel:+34688862244">688 862 244</a>
+          <a href="https://www.instagram.com/txipotes.and_burger/" target="_blank" rel="noopener">@txipotes.and_burger</a>
+          <span style="color: rgba(245,241,234,.7);">C/ Gipuzkoa 30, 48920 Portugalete</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px;">
+          <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.55); margin-bottom: 4px;">Horario</span>
+          <span>Mar–Dom · 12:30–15:30</span>
+          <span>19:30–22:45</span>
+          <span style="color: rgba(245,241,234,.7);">Lunes cerrado</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); font-size: 12.5px; color: rgba(245,241,234,.5);">
+        <span>© Txipote's Best Burger</span>
+        <span>Propuesta de web (demo). Fotos del Instagram del local; reseñas, horario y reservas son ilustrativos.</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <div ref="{{ stickyRef }}" style="position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 40; opacity: 0; transform: translateY(20px); pointer-events: none;">
+    <a href="tel:+34688862244" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 12px; background: var(--acc); color: var(--on-acc); font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 22px; letter-spacing: .02em; box-shadow: 0 16px 40px -12px rgba(0,0,0,.6);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Pedir ahora · 688 862 244</a>
+  </div>
+
+  <div ref="{{ cartBarRef }}" style="position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 41; max-width: 460px; margin-left: auto; opacity: 0; transform: translateY(30px); pointer-events: none;">
+    <button onClick="{{ openCart }}" style="width: 100%; display: flex; align-items: center; gap: 12px; height: 62px; padding: 0 8px 0 10px; border: 0; border-radius: 16px; cursor: pointer; background: var(--acc); color: var(--on-acc); box-shadow: 0 20px 44px -14px rgba(0,0,0,.75);">
+      <span style="display: flex;">
+        <sc-for list="{{ barThumbs }}" as="bt" hint-placeholder-count="0">
+          <span style="width: 40px; height: 40px; margin-right: -14px; border-radius: 999px; border: 2px solid var(--acc); background-color: #0D0C0B; background-size: cover; background-position: center; background-image: {{ bt.bg }}; display: flex; align-items: center; justify-content: center; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 22px; color: var(--acc);">{{ bt.q }}</span>
+        </sc-for>
+      </span>
+      <span style="flex: 1; text-align: left; padding-left: 16px; display: flex; flex-direction: column; gap: 3px;">
+        <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 21px; line-height: 1;">Ver pedido</span>
+        <span data-bar-count="1" style="font: 700 12px/1 var(--font-body); opacity: .75;">{{ cartCountLabel }}</span>
+      </span>
+      <span data-bar-total="1" style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 24px; line-height: 1; padding: 0 12px; height: 46px; display: flex; align-items: center; border-radius: 12px; background: rgba(13,12,11,.14);">{{ cartTotal }}</span>
+    </button>
+  </div>
+
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ backdropRef }}" onClick="{{ closeSheet }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(8,7,6,.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+    <div ref="{{ sheetRef }}" data-lenis-prevent="1" role="dialog" aria-modal="true" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 71; max-width: 560px; margin: 0 auto; max-height: 92svh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; background: #161412; border-radius: 22px 22px 0 0; border: 1px solid rgba(255,255,255,.1); border-bottom: 0; padding: 10px 18px calc(18px + env(safe-area-inset-bottom));">
+      <div style="display: flex; justify-content: center; padding: 4px 0 12px;"><span style="width: 42px; height: 5px; border-radius: 5px; background: rgba(255,255,255,.22);"></span></div>
+      <div ref="{{ sheetPhotoRef }}" style="position: relative; aspect-ratio: 16 / 11; border-radius: 16px; overflow: hidden; background: #0D0C0B;">
+        <sc-for list="{{ sheet.photos }}" as="ph" hint-placeholder-count="0">
+          <img src="{{ ph.img }}" alt="{{ ph.name }}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: {{ ph.pos }}; filter: {{ ph.filter }};">
+        </sc-for>
+        <sc-if value="{{ sheet.isPlaceholder }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, #141210 0 14px, #181614 14px 28px); font: 700 11px/1 var(--font-body); letter-spacing: .22em; text-transform: uppercase; color: rgba(245,241,234,.5);">Foto pendiente</div>
+        </sc-if>
+        <sc-if value="{{ sheet.mystery }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 45%, #1d1a16 0%, #050404 70%); font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 160px; line-height: 1; color: var(--acc);">?</div>
+        </sc-if>
+        <button onClick="{{ closeSheet }}" aria-label="Cerrar" style="position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(13,12,11,.6); color: #F5F1EA; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; padding-top: 18px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <sc-for list="{{ sheet.badges }}" as="b" hint-placeholder-count="0">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; white-space: nowrap; background: {{ b.bg }}; color: {{ b.fg }}; border: 1px solid var(--acc);">{{ b.label }}</span>
+          </sc-for>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 14px;">
+          <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 42px; line-height: .9; text-wrap: balance;">{{ sheet.name }}</h3>
+          <span style="flex: none; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 32px; line-height: 1; color: var(--acc);">{{ sheet.price }}</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <sc-for list="{{ sheet.ings }}" as="ing" hint-placeholder-count="0">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="onDark" style="font-size: 13.5px; background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.16);" hint-size="90px,30px">{{ ing }}</x-import>
+          </sc-for>
+        </div>
+        <sc-if value="{{ sheet.extra }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 14px; font-weight: 700;">{{ sheet.extra }}</p></sc-if>
+        <sc-if value="{{ sheet.hasVariants }}" hint-placeholder-val="{{ false }}">
+          <div data-variants="1" style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.6);">Elige sabor</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ sheetVariants }}" as="v" hint-placeholder-count="0">
+                <button onClick="{{ v.select }}" style="height: 40px; padding: 0 16px; border-radius: 999px; cursor: pointer; font: 700 14px/1 var(--font-body); background: {{ v.bg }}; color: {{ v.fg }}; border: 1px solid {{ v.bd }}; transition: background .2s;">{{ v.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ sheetErr }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ sheetErr }}</span></sc-if>
+          </div>
+        </sc-if>
+        <p style="margin: 0; font-size: 13px; color: rgba(245,241,234,.6);">*Consultar alérgenos al personal</p>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="flex: none; display: flex; align-items: center; gap: 4px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 5px;">
+            <button onClick="{{ sheetLess }}" aria-label="Menos" style="width: 36px; height: 36px; border-radius: 999px; border: 0; background: rgba(255,255,255,.08); color: #F5F1EA; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px;">−</button>
+            <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 24px; min-width: 30px; text-align: center;">{{ sheetQty }}</span>
+            <button onClick="{{ sheetMore }}" aria-label="Más" style="width: 36px; height: 36px; border-radius: 999px; border: 0; background: rgba(255,255,255,.08); color: #F5F1EA; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px;">+</button>
+          </div>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" onClick="{{ sheetAdd }}" style="flex: 1; color: var(--on-acc); font-family: var(--font-body); font-weight: 800; justify-content: space-between; box-shadow: none; padding-left: 20px; padding-right: 20px;" hint-size="100%,56px">Añadir<span>{{ sheetTotal }}</span></x-import>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ resvOpen }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ resvBackRef }}" onClick="{{ closeResv }}" style="position: fixed; inset: 0; z-index: 72; background: rgba(8,7,6,.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+    <div ref="{{ resvRef }}" data-lenis-prevent="1" role="dialog" aria-modal="true" aria-label="Reservar mesa" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 73; max-width: 560px; margin: 0 auto; max-height: 92svh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; background: #161412; border-radius: 22px 22px 0 0; border: 1px solid rgba(255,255,255,.1); border-bottom: 0; padding: 10px 18px calc(20px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; justify-content: center; padding-top: 4px;"><span style="width: 42px; height: 5px; border-radius: 5px; background: rgba(255,255,255,.22);"></span></div>
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="160px,16px">Guárdate un sitio</x-import>
+          <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Reserva mesa</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.5; color: rgba(245,241,234,.7);">Elige día, hora y cuántos venís. Te confirmamos por WhatsApp.</p>
+          <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px; white-space: nowrap;">Demo · confirmar si aceptan reservas</span></sc-if>
+        </div>
+        <button onClick="{{ closeResv }}" aria-label="Cerrar" style="flex: none; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: #F5F1EA; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+      <sc-if value="{{ resvNotDone }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.6);">Día</span>
+            <div data-lenis-prevent="1" style="display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;">
+              <sc-for list="{{ resvDays }}" as="d" hint-placeholder-count="6">
+                <button onClick="{{ d.select }}" style="flex: none; width: 64px; height: 72px; border-radius: 14px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: {{ d.bg }}; color: {{ d.fg }}; border: 1px solid {{ d.bd }}; transition: background .2s;"><span style="font: 700 11px/1 var(--font-body); text-transform: uppercase; letter-spacing: .08em; opacity: .75;">{{ d.wd }}</span><span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 28px; line-height: 1;">{{ d.num }}</span></button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.6);">Hora</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ resvTimes }}" as="t" hint-placeholder-count="8">
+                <button onClick="{{ t.select }}" style="height: 38px; padding: 0 14px; border-radius: 999px; cursor: pointer; font: 700 14px/1 var(--font-body); background: {{ t.bg }}; color: {{ t.fg }}; border: 1px solid {{ t.bd }};">{{ t.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ resvErr.time }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ resvErr.time }}</span></sc-if>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.6);">Personas</span>
+            <div style="display: flex; align-items: center; gap: 4px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 4px;">
+              <button onClick="{{ resvLess }}" aria-label="Menos" style="width: 40px; height: 40px; border-radius: 999px; border: 0; background: rgba(255,255,255,.06); color: #F5F1EA; cursor: pointer; font-size: 20px;">−</button>
+              <span ref="{{ peopleRef }}" style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 26px; min-width: 40px; text-align: center;">{{ resv.people }}</span>
+              <button onClick="{{ resvMore }}" aria-label="Más" style="width: 40px; height: 40px; border-radius: 999px; border: 0; background: rgba(255,255,255,.06); color: #F5F1EA; cursor: pointer; font-size: 20px;">+</button>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <input value="{{ resv.name }}" onChange="{{ onResvName }}" placeholder="Nombre" autocomplete="name" style="height: 52px; width: 100%; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.16); color: #F5F1EA; font: 500 16px var(--font-body); outline: none;">
+              <sc-if value="{{ resvErr.name }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ resvErr.name }}</span></sc-if>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <input value="{{ resv.phone }}" onChange="{{ onResvPhone }}" placeholder="Teléfono" type="tel" inputmode="tel" autocomplete="tel" style="height: 52px; width: 100%; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.16); color: #F5F1EA; font: 500 16px var(--font-body); outline: none;">
+              <sc-if value="{{ resvErr.phone }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ resvErr.phone }}</span></sc-if>
+            </div>
+          </div>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" size="lg" onClick="{{ sendResv }}" style="font-family: var(--font-body); font-weight: 800; justify-content: center; box-shadow: none;" hint-size="100%,56px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>Reservar por WhatsApp</x-import>
+        </sc-if>
+        <sc-if value="{{ resvDone }}" hint-placeholder-val="{{ false }}">
+          <div data-resv-done="1" style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 10px 0;">
+            <span style="width: 56px; height: 56px; border-radius: 999px; background: var(--acc); color: var(--on-acc); display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 40px; line-height: .9;">Solicitud enviada</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; color: rgba(245,241,234,.72);">{{ resvSummary }}. Te confirmamos por WhatsApp.</p>
+            <button onClick="{{ resvReset }}" style="background: none; border: 0; padding: 0; color: #F5F1EA; font: 700 14px var(--font-body); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;">Hacer otra reserva</button>
+          </div>
+        </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ cartBackRef }}" onClick="{{ closeCart }}" style="position: fixed; inset: 0; z-index: 70; background: rgba(8,7,6,.62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+    <div ref="{{ cartRef }}" data-lenis-prevent="1" role="dialog" aria-modal="true" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 71; max-width: 560px; margin: 0 auto; max-height: 92svh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; background: #161412; border-radius: 22px 22px 0 0; border: 1px solid rgba(255,255,255,.1); border-bottom: 0; padding: 10px 18px calc(18px + env(safe-area-inset-bottom)); display: flex; flex-direction: column;">
+      <div style="display: flex; justify-content: center; padding: 4px 0 12px;"><span style="width: 42px; height: 5px; border-radius: 5px; background: rgba(255,255,255,.22);"></span></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 38px; line-height: .9;">{{ cartTitle }}</h3>
+          <sc-if value="{{ showSteps }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; align-items: center; gap: 8px; font: 700 12px/1 var(--font-body);">
+              <span style="color: {{ step1c }};">1 · Pedido</span><span style="width: 18px; height: 1px; background: rgba(255,255,255,.25);"></span><span style="color: {{ step2c }};">2 · Recogida</span>
+            </div>
+          </sc-if>
+        </div>
+        <button onClick="{{ closeCart }}" aria-label="Cerrar" style="flex: none; width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.04); color: #F5F1EA; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+
+      <sc-if value="{{ stepCart }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 30px 10px 20px;">
+            <span style="width: 72px; height: 72px; border-radius: 999px; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; color: var(--acc);"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg></span>
+            <p style="margin: 0; font-size: 16px; color: rgba(245,241,234,.75);">Tu pedido está vacío. La carta te espera.</p>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="md" onClick="{{ emptyToCarta }}" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; box-shadow: none;" hint-size="150px,46px">Ver la carta</x-import>
+          </div>
+        </sc-if>
+        <div data-lines="1" style="display: flex; flex-direction: column;">
+          <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="0">
+            <div data-line-key="{{ l.key }}" style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px dashed rgba(255,255,255,.12);">
+              <div style="position: relative; flex: none; width: 58px; height: 58px; border-radius: 12px; overflow: hidden; background: repeating-linear-gradient(135deg, #141210 0 8px, #181614 8px 16px);">
+              <sc-for list="{{ l.photos }}" as="ph" hint-placeholder-count="0"><img src="{{ ph.img }}" alt="" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: {{ ph.pos }};"></sc-for>
+              <sc-if value="{{ l.mystery }}" hint-placeholder-val="{{ false }}"><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #050404; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 41px; color: var(--acc);">?</div></sc-if>
+            </div>
+              <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+                <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 20px; line-height: .95;">{{ l.name }}</span>
+                <sc-if value="{{ l.variant }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; color: rgba(245,241,234,.7);">{{ l.variant }}</span></sc-if>
+                <span style="font-size: 13px; color: rgba(245,241,234,.55);">{{ l.unit }} / ud.</span>
+              </div>
+              <div style="flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+                <div style="display: flex; align-items: center; gap: 2px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 3px;">
+                  <button onClick="{{ l.dec }}" aria-label="Quitar uno" style="width: 36px; height: 36px; border-radius: 999px; border: 0; background: rgba(255,255,255,.08); color: #F5F1EA; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center;">{{ l.decLabel }}</button>
+                  <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 19px; min-width: 24px; text-align: center;">{{ l.qty }}</span>
+                  <button onClick="{{ l.inc }}" aria-label="Añadir uno" style="width: 36px; height: 36px; border-radius: 999px; border: 0; background: rgba(255,255,255,.08); color: #F5F1EA; cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center;">+</button>
+                </div>
+                <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 18px;">{{ l.total }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ hasUps }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 0 6px; border-top: 1px dashed rgba(255,255,255,.12);">
+            <span style="font-family: var(--font-script); font-size: 24px; color: var(--acc);">¿Lo completamos?</span>
+            <div data-lenis-prevent="1" style="display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; margin: 0 -18px; padding: 0 18px 4px;">
+              <sc-for list="{{ ups }}" as="u" hint-placeholder-count="0">
+                <div data-up="{{ u.id }}" style="flex: none; width: 148px; display: flex; flex-direction: column; gap: 8px; padding: 8px; border-radius: 16px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.08);">
+                  <div style="position: relative;">
+                    <div style="position: relative; flex: none; width: 130px; height: 96px; border-radius: 12px; overflow: hidden; background: repeating-linear-gradient(135deg, #141210 0 8px, #181614 8px 16px);">
+              <sc-for list="{{ u.photos }}" as="ph" hint-placeholder-count="0"><img src="{{ ph.img }}" alt="" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: {{ ph.pos }};"></sc-for>
+              <sc-if value="{{ u.mystery }}" hint-placeholder-val="{{ false }}"><div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #050404; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 91px; color: var(--acc);">?</div></sc-if>
+            </div>
+                    <button onClick="{{ u.add }}" aria-label="Añadir" style="position: absolute; right: 6px; bottom: 6px; width: 34px; height: 34px; border-radius: 999px; border: 0; background: var(--acc); color: var(--on-acc); cursor: pointer; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg></button>
+                  </div>
+                  <span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 16px; line-height: .95; min-height: 30px;">{{ u.name }}</span>
+                  <span style="font: 800 14px/1 var(--font-body);">{{ u.price }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+          <div style="position: sticky; bottom: calc(-18px - env(safe-area-inset-bottom)); margin: 10px -18px 0; padding: 14px 18px calc(4px + env(safe-area-inset-bottom)); background: linear-gradient(180deg, rgba(22,20,18,0), #161412 22%); display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 15px; color: rgba(245,241,234,.7);">Total · {{ cartCountLabel }}</span><span data-cart-total="1" style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 34px; line-height: 1;">{{ cartTotal }}</span></div>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" onClick="{{ toPickup }}" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; justify-content: center; box-shadow: none;" hint-size="100%,56px">Continuar · elegir hora</x-import>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ stepPickup }}" hint-placeholder-val="{{ false }}">
+        <div data-step="1" style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.05); font-size: 14px;">
+            <span style="color: var(--acc);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <span>Para recoger en <b>C/ Gipuzkoa 30</b>, Portugalete</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.6);">¿A qué hora pasas?</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ slots }}" as="sl" hint-placeholder-count="6">
+                <button onClick="{{ sl.select }}" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 72px; height: 54px; padding: 0 10px; border-radius: 12px; cursor: pointer; background: {{ sl.bg }}; color: {{ sl.fg }}; border: 1px solid {{ sl.bd }};"><span style="font: 700 10px/1 var(--font-body); text-transform: uppercase; letter-spacing: .1em; opacity: .75;">{{ sl.day }}</span><span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 20px; line-height: 1;">{{ sl.time }}</span></button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ pickErr.slot }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ pickErr.slot }}</span></sc-if>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span style="font: 800 11px/1 var(--font-body); letter-spacing: .18em; text-transform: uppercase; color: rgba(245,241,234,.6);">Tus datos</span>
+            <input value="{{ pickup.name }}" onChange="{{ onPickName }}" placeholder="Nombre" autocomplete="name" style="height: 52px; width: 100%; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.16); color: #F5F1EA; font: 500 16px var(--font-body); outline: none;">
+            <sc-if value="{{ pickErr.name }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ pickErr.name }}</span></sc-if>
+            <input value="{{ pickup.phone }}" onChange="{{ onPickPhone }}" placeholder="Teléfono" type="tel" inputmode="tel" autocomplete="tel" style="height: 52px; width: 100%; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.16); color: #F5F1EA; font: 500 16px var(--font-body); outline: none;">
+            <sc-if value="{{ pickErr.phone }}" hint-placeholder-val="{{ false }}"><span style="font-size: 13px; font-weight: 700; color: var(--acc);">{{ pickErr.phone }}</span></sc-if>
+            <textarea value="{{ pickup.notes }}" onChange="{{ onPickNotes }}" placeholder="Notas: sin pepinillos, al punto…" rows="2" style="height: 52px; width: 100%; box-sizing: border-box; padding: 0 16px; border-radius: 12px; background: #0D0C0B; border: 1px solid rgba(255,255,255,.16); color: #F5F1EA; font: 500 16px var(--font-body); outline: none; height: auto; padding: 14px 16px; resize: none;"></textarea>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 14px; border-radius: 14px; border: 1px solid rgba(255,255,255,.1);">
+            <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="0">
+              <div style="display: flex; justify-content: space-between; gap: 10px; font-size: 14px;"><span>{{ l.qty }}× {{ l.name }} <span style="color: rgba(245,241,234,.6);">{{ l.variant }}</span></span><span style="font-weight: 700;">{{ l.total }}</span></div>
+            </sc-for>
+            <div style="display: flex; justify-content: space-between; padding-top: 8px; margin-top: 4px; border-top: 1px dashed rgba(255,255,255,.14);"><span style="font-weight: 700;">Total</span><span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 26px; line-height: 1;">{{ cartTotal }}</span></div>
+          </div>
+          <sc-if value="{{ showMarks }}" hint-placeholder-val="{{ false }}"><span style="align-self: flex-start; font: 700 10px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--acc); border: 1px dashed var(--acc); padding: 4px 7px; border-radius: 6px;">Demo · el pedido llega al local por WhatsApp (verificar nº)</span></sc-if>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" size="lg" onClick="{{ sendOrder }}" style="font-family: var(--font-body); font-weight: 800; justify-content: center; box-shadow: none;" hint-size="100%,56px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>Enviar pedido por WhatsApp</x-import>
+            <div style="display: flex; justify-content: space-between; gap: 10px;">
+              <button onClick="{{ toCart }}" style="background: none; border: 0; padding: 8px 0; color: rgba(245,241,234,.8); font: 700 14px var(--font-body); cursor: pointer;">← Volver al pedido</button>
+              <a href="tel:+34688862244" style="padding: 8px 0; font: 700 14px var(--font-body); text-decoration: underline; text-underline-offset: 3px;">o llámanos</a>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ stepDone }}" hint-placeholder-val="{{ false }}">
+        <div data-done="1" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 16px 6px 10px;">
+          <span data-done-circle="1" style="width: 92px; height: 92px; border-radius: 999px; background: var(--acc); color: var(--on-acc); display: flex; align-items: center; justify-content: center;"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path data-check="1" d="M20 6 9 17l-5-5" style="stroke-dasharray: 24; stroke-dashoffset: 0;"></path></svg></span>
+          <span style="font: 800 12px/1 var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: rgba(245,241,234,.6);">Pedido {{ orderId }}</span>
+          <h3 style="margin: 0; font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: 46px; line-height: .88;">Marchando</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.5; color: rgba(245,241,234,.75); max-width: 30ch;">{{ doneText }}</p>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" onClick="{{ finishOrder }}" style="color: var(--on-acc); font-family: var(--font-body); font-weight: 800; justify-content: center; box-shadow: none; width: 100%;" hint-size="100%,56px">Hecho</x-import>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ menuRef }}" data-lenis-prevent="1" style="position: fixed; inset: 0; z-index: 90; background: #0D0C0B; display: flex; flex-direction: column; padding: 0 22px calc(24px + env(safe-area-inset-bottom)); overflow-y: auto;">
+      <div style="height: 60px; flex: none; display: flex; align-items: center; justify-content: space-between;">
+        <img src="assets/logo-neon.png" alt="" style="width: 36px; height: 36px; border-radius: 50%;">
+        <button onClick="{{ closeMenu }}" aria-label="Cerrar menú" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.04); color: #F5F1EA; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+      <nav style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 20px 0;">
+        <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="7">
+          <a data-nav="1" href="{{ n.href }}" onClick="{{ n.go }}" style="display: flex; align-items: baseline; gap: 12px; padding: 4px 0; overflow: hidden;"><span style="font: 700 12px/1 var(--font-body); color: var(--acc); width: 22px;">{{ n.num }}</span><span style="font-family: var(--fd); font-stretch: var(--fst); font-weight: var(--fwd); text-transform: uppercase; font-size: min(13vw, 72px); line-height: .95;">{{ n.label }}</span></a>
+        </sc-for>
+      </nav>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 14px; color: rgba(245,241,234,.7);">
+        <a href="tel:+34688862244">688 862 244</a>
+        <a href="https://www.instagram.com/txipotes.and_burger/" target="_blank" rel="noopener">@txipotes.and_burger</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ toastRef }}" style="position: fixed; top: calc(70px + env(safe-area-inset-top)); left: 0; right: 0; margin: 0 auto; z-index: 95; width: max-content; max-width: calc(100% - 24px); display: flex; align-items: center; gap: 12px; padding: 8px 10px 8px 8px; border-radius: 999px; background: rgba(28,25,22,.92); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 16px 40px -12px rgba(0,0,0,.6);">
+      <span style="width: 36px; height: 36px; flex: none; border-radius: 999px; background-color: var(--acc); background-size: cover; background-position: center; background-image: {{ toast.bg }}; display: flex; align-items: center; justify-content: center; color: var(--on-acc);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+      <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0;"><span style="font: 800 14px/1.1 var(--font-body);">{{ toast.title }}</span><span style="font: 500 12.5px/1.2 var(--font-body); color: rgba(245,241,234,.7);">{{ toast.sub }}</span></span>
+      <sc-if value="{{ toast.canUndo }}" hint-placeholder-val="{{ false }}"><button onClick="{{ undoToast }}" style="flex: none; height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); background: transparent; color: #F5F1EA; font: 700 12.5px var(--font-body); cursor: pointer;">Deshacer</button></sc-if>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F0C530&quot;,&quot;options&quot;:[&quot;#F0C530&quot;,&quot;#CC1414&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;displayFont&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bricolage condensada&quot;,&quot;Anton&quot;],&quot;default&quot;:&quot;Bricolage condensada&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;heroPhoto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Queso fundido&quot;,&quot;Corte en mano&quot;,&quot;Txuleta al corte&quot;],&quot;default&quot;:&quot;Txuleta al corte&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showMarks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Revisión&quot;},&quot;bgStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Resplandor&quot;,&quot;Parrilla&quot;,&quot;Foto ahumada&quot;,&quot;Liso&quot;],&quot;default&quot;:&quot;Resplandor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Fondo&quot;}}">
+// ─── Datos editables ────────────────────────────────────────────
+// Horario de ejemplo — sustituir por el real. 0 = domingo … 6 = sábado
+const SCHEDULE = {
+  0: [['12:30', '15:30'], ['19:30', '22:45']],
+  1: [],
+  2: [['12:30', '15:30'], ['19:30', '22:45']],
+  3: [['12:30', '15:30'], ['19:30', '22:45']],
+  4: [['12:30', '15:30'], ['19:30', '22:45']],
+  5: [['12:30', '15:30'], ['19:30', '22:45']],
+  6: [['12:30', '15:30'], ['19:30', '22:45']],
+};
+const PHONE_WA = '34688862244'; // verificar: Google muestra 618 09 22 88
+const DAYS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const DSHORT = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+
+// Carta — fotos provisionales (asignación orientativa)
+const ITEMS = [
+  { id: 'sorpresa', group: 'burgers', name: 'Burger Sorpresa', price: '17,50€', cat: 'premium', mystery: true, desc: 'Ingredientes: clasificados. ¿Te atreves?' },
+  { id: 'unique', group: 'burgers', name: 'Unique in the World', price: '12,50€', cat: 'clasica', img: 'assets/b-unique.jpg', pos: '50% 55%', desc: 'Secreto ibérico, queso Gouda, panceta crujiente, salsa Emmy, rúcula, pan rojo' },
+  { id: 'tbb', group: 'burgers', name: 'TBB', price: '12,50€', cat: 'clasica', img: 'assets/b-tbb.jpg', pos: '50% 60%', light: true, desc: 'Vaca rubia gallega, cheddar, rúcula, panceta crujiente, cacahuetes con miel, mayo de mango y curry, pan potato' },
+  { id: 'katxo', group: 'burgers', name: 'La Katxo Burger Vasca', price: '13,50€', cat: 'clasica', img: 'assets/b-katxo.jpg', pos: '45% 50%', badges: ['Identidad Vasca'], desc: 'Txuleta blend, cebolla caramelizada, Idiazabal, cecina, champiñones salteados, salsa de boletus, pan rojo' },
+  { id: 'trufast', group: 'burgers', name: 'Trufast and Furious', price: '14,50€', cat: 'premium', img: 'assets/b-trufast.jpg', pos: '50% 45%', desc: 'Vaca rubia gallega, cebolla caramelizada, shiitake salteados, chips de patata, mayo trufada' },
+  { id: 'sinriesgo', group: 'burgers', name: 'Sin Riesgo No Hay Alma', price: '15,50€', cat: 'premium', img: 'assets/b-sinriesgo.jpg', pos: '50% 55%', light: true, desc: 'Vaca rubia gallega, pepinillos, queso ahumado, pulled pork, salsa mango-curry, torreznos crujientes, salsa Gaucha' },
+  { id: 'gozarla', group: 'burgers', name: 'Quiero Gozarla Entera', price: '15,50€', cat: 'premium', img: 'assets/b-gozarla.jpg', pos: '50% 55%', light: true, desc: 'Vaca rubia gallega, queso ahumado, pulled pork, salsa Emmy, doritos bits, pan negro' },
+  { id: 'bajini', group: 'burgers', name: 'A Lo Bajini', price: '16,50€', cat: 'premium', img: 'assets/b-bajini.jpg', pos: '50% 60%', light: true, desc: 'Vaca rubia, cheddar, cebolla crujiente, pepinillos crujientes, panceta crujiente, mayo Mr. Corn, fritos, pan azul' },
+  { id: 'veganfox', group: 'burgers', name: 'Vegan Fox', price: '14,50€', cat: 'vegana', badges: ['Vegan'], desc: '180gr burger vegana, cheddar vegano, mahonesa vegana, shiitake salteados, cebolla crujiente, chips de patata' },
+  { id: 'kids', group: 'burgers', name: 'Burger Kids', price: '8,50€', cat: 'infantil', badges: ['Menú infantil'], desc: '120gr txuleta, bacon, queso', extra: 'Incluye refresco, zumo o agua' },
+  { id: 'kidsfingers', group: 'burgers', name: 'Fingers de pollo con patatas', price: '8,50€', cat: 'infantil', badges: ['Menú infantil'], desc: '', extra: 'Incluye refresco, zumo o agua' },
+  { id: 'patatas', group: 'entrantes', name: 'Patatas Txipote’s', price: '8,50€', img: 'assets/e-patatas.jpg', pos: '50% 50%', light: true, badges: ['De la casa'], desc: 'Caseras, pulled pork, mayo trufada, parmesano' },
+  { id: 'ari', group: 'entrantes', name: 'Patatas Ari', price: '9€', desc: 'Caseras, pulled pork, mayo trufada, parmesano, salsa Emmy' },
+  { id: 'natxos', group: 'entrantes', name: 'Natxos Capa', price: '8,50€', desc: 'Nachos caseros, pulled pork, guacamole, cheddar, parmesano, crema agria' },
+  { id: 'hotdog', group: 'entrantes', name: 'Hot Dog Elissague', price: '6,50€', img: 'assets/e-hotdog.jpg', pos: '50% 60%', desc: 'Bradwurst, tártara, pepinillos, cebolla crujiente, salsa brava, Mr. Corn, Idiazabal rallado' },
+  { id: 'fingers', group: 'entrantes', name: 'Fingers de Pollo', price: '6,50€', desc: '' },
+  { id: 'tartas', group: 'postres', name: 'Tartas', price: '4€', variants: ['Queso', 'Chocolate blanco', 'Pistacho', 'Lotus'], desc: 'Caseras. Elige sabor:' },
+  { id: 'batidos', group: 'postres', name: 'Batidos', price: '8,50€', variants: ['Vainilla', 'Caramelo salado', 'Pistacho', 'Lotus'], desc: 'Elige sabor:' },
+];
+const BY_ID = {}; ITEMS.forEach(function (it) { BY_ID[it.id] = it; });
+const GROUPS = [['burgers', 'Burgers'], ['entrantes', 'Entrantes'], ['postres', 'Postres']];
+const TABS = [['todas', 'Todas'], ['clasica', 'Clásicas'], ['premium', 'Premium'], ['vegana', 'Vegana'], ['infantil', 'Infantil']];
+const UPS = ['patatas', 'ari', 'natxos', 'hotdog', 'fingers'];
+const NAV = [['#carta', 'La carta'], ['#sorpresa', 'La Sorpresa'], ['#resenas', 'Reseñas'], ['#pedidos', 'Pedidos y reservas'], ['#ubicacion', 'Horario y ubicación']];
+const HEROES = {
+  'Queso fundido': { src: 'assets/hero-queso.jpg', pos: '58% 12%' },
+  'Corte en mano': { src: 'assets/hero-corte.jpg', pos: '50% 18%' },
+  'Txuleta al corte': { src: 'assets/hero-txuleta.jpg', pos: '42% 30%' },
+};
+const REFS = ['rootRef', 'preRef', 'barRef', 'heroRef', 'heroBgRef', 'heroImgRef', 'heroContentRef', 'heroLogoRef', 'heroTitleRef', 'taglineRef', 'ctaRef', 'marqueeRef', 'sorPanelRef', 'sorCanvasRef', 'sorNameRef', 'sorDareRef', 'sorCtaRef', 'filterRef', 'gridRef', 'stickyRef', 'sheetRef', 'backdropRef', 'sheetPhotoRef', 'cartBtnRef', 'cartBarRef', 'cartRef', 'cartBackRef', 'menuRef', 'toastRef', 'segRef', 'segThumbRef', 'galleryRef', 'revRef', 'scoreRef', 'countRef', 'peopleRef', 'resvRef', 'resvBackRef'];
+
+// ─── Utilidades ────────────────────────────────────────────────
+function P(s) { return parseFloat(s.replace('€', '').replace(',', '.')); }
+function eur(n) { const r = Math.round(n * 100) / 100; return (r % 1 ? r.toFixed(2).replace('.', ',') : String(r)) + '€'; }
+function toMin(s) { const p = s.split(':').map(Number); return p[0] * 60 + p[1]; }
+function hhmm(m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+function dur(m) { return m >= 60 ? Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + (m % 60) + ' min' : '') : m + ' min'; }
+function madridNow(offsetDays) {
+  const d = new Date(Date.now() + (offsetDays || 0) * 864e5);
+  const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', weekday: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(d);
+  const get = function (t) { return p.find(function (x) { return x.type === t; }).value; };
+  return { day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday')), date: Number(get('day')), min: (Number(get('hour')) % 24) * 60 + Number(get('minute')) };
+}
+function computeStatus() {
+  const n = madridNow(); const day = n.day, min = n.min;
+  for (const iv of SCHEDULE[day]) if (min >= toMin(iv[0]) && min < toMin(iv[1])) return { open: true, short: 'Abierto · hasta ' + iv[1], big: 'Abierto ahora', detail: 'Cocina hasta las ' + iv[1] + ' · cierra en ' + dur(toMin(iv[1]) - min) };
+  for (const iv of SCHEDULE[day]) if (min < toMin(iv[0])) return { open: false, short: 'Abre hoy ' + iv[0], big: 'Cerrado ahora', detail: 'Abrimos hoy a las ' + iv[0] + ' (en ' + dur(toMin(iv[0]) - min) + ')' };
+  for (let i = 1; i <= 7; i++) {
+    const d = (day + i) % 7;
+    if (SCHEDULE[d].length) return { open: false, short: 'Abre ' + (i === 1 ? 'mañana' : DSHORT[d].toLowerCase() + '.') + ' ' + SCHEDULE[d][0][0], big: 'Cerrado ahora', detail: 'Abrimos ' + (i === 1 ? 'mañana' : 'el ' + DAYS[d]) + ' a las ' + SCHEDULE[d][0][0] };
+  }
+  return { open: false, short: 'Cerrado', big: 'Cerrado', detail: '' };
+}
+function pickupSlots() {
+  const n = madridNow(); const out = [];
+  for (let i = 0; i < 7 && out.length < 10; i++) {
+    const d = (n.day + i) % 7; const lab = i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : DSHORT[d];
+    for (const iv of SCHEDULE[d]) {
+      let s = toMin(iv[0]); if (i === 0) s = Math.max(s, Math.ceil((n.min + 25) / 15) * 15);
+      for (let t = s; t <= toMin(iv[1]) - 15 && out.length < 10; t += 15) out.push({ id: i + '-' + t, day: lab, time: hhmm(t) });
+    }
+  }
+  return out;
+}
+function resvDayList() {
+  const out = [];
+  for (let i = 0; i < 14 && out.length < 7; i++) {
+    const n = madridNow(i);
+    if (!SCHEDULE[n.day].length) continue;
+    if (i === 0 && !resvTimesFor(0, n.day).length) continue;
+    out.push({ off: i, wd: i === 0 ? 'Hoy' : i === 1 ? 'Mañ.' : DSHORT[n.day], num: n.date, dayIdx: n.day, long: i === 0 ? 'hoy' : i === 1 ? 'mañana' : DAYS[n.day] + ' ' + n.date });
+  }
+  return out;
+}
+function resvTimesFor(off, dayIdx) {
+  const now = madridNow().min; const out = [];
+  for (const iv of SCHEDULE[dayIdx]) for (let t = toMin(iv[0]); t <= toMin(iv[1]) - 60; t += 30) if (off > 0 || t > now + 45) out.push(hhmm(t));
+  return out;
+}
+function loadCart() { try { const c = JSON.parse(localStorage.getItem('tbb-cart-v1') || '[]'); return Array.isArray(c) ? c.filter(function (x) { return BY_ID[x.id]; }) : []; } catch (e) { return []; } }
+const chip = function (a) { return { bg: a ? 'var(--acc)' : 'transparent', fg: a ? 'var(--on-acc)' : '#F5F1EA', bd: a ? 'var(--acc)' : 'rgba(255,255,255,.22)' }; };
+
+class Component extends DCLogic {
+  state = {
+    group: 'burgers', sub: 'todas', sheetId: null, sheetQty: 1, sheetVariant: '', sheetErr: '',
+    cart: loadCart(), cartOpen: false, cartStep: 'cart', pickup: { slot: '', name: '', phone: '', notes: '' }, pickErr: {}, orderId: '', doneText: '',
+    menuOpen: false, toast: null, toastKey: 0,
+    resv: { day: 0, time: '', people: 2, name: '', phone: '' }, resvErr: {}, resvDone: false, resvSummary: '', resvOpen: false,
+    newsEmail: '', newsErr: '', newsDone: false,
+    preDone: false, status: computeStatus(),
+  };
+  r = (function () { const o = {}; REFS.forEach(function (n) { o[n] = React.createRef(); }); return o; })();
+
+  lazyMap() {
+    if (this.mapIO) this.mapIO.disconnect();
+    const sec = document.getElementById('ubicacion');
+    const load = () => { const m = document.querySelector('[data-lazy-map]'); if (m && !m.getAttribute('src')) m.setAttribute('src', m.dataset.src); };
+    if (!sec || !('IntersectionObserver' in window)) return load();
+    this.mapIO = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)) { load(); this.mapIO.disconnect(); } }, { rootMargin: '800px 0px' });
+    this.mapIO.observe(sec);
+  }
+  watchGlobals() {
+    clearInterval(this.globWatch);
+    let n = 0;
+    this.globWatch = setInterval(() => {
+      if (++n > 40) return clearInterval(this.globWatch);
+      if (window.gsap && window.ScrollTrigger && (window.gsap !== this.G || window.ScrollTrigger !== this.ST)) { clearInterval(this.globWatch); this.reinit(); }
+    }, 250);
+  }
+  reinit() {
+    try { if (this.ctx) this.ctx.revert(); } catch (e) {}
+    try { if (this.raf && this.G) this.G.ticker.remove(this.raf); } catch (e) {}
+    try { if (this.lenis) this.lenis.destroy(); } catch (e) {}
+    this.ctx = null; this.lenis = null; this.ready = false;
+    const unsplit = (el) => { if (!el || !el.dataset.orig) return; el.innerHTML = el.dataset.orig; el.classList.remove('splitting', 'words', 'chars'); ['--word-total', '--char-total'].forEach(p => el.style.removeProperty(p)); delete el['🍌']; };
+    document.querySelectorAll('[data-split-chars]').forEach(unsplit);
+    unsplit(this.r.taglineRef.current);
+    this.fCart = this.fCall = undefined; this.pastHero = false; this.atFooter = false;
+    if (this.r.scoreRef.current) this.r.scoreRef.current.textContent = '4,4';
+    if (this.r.countRef.current) this.r.countRef.current.textContent = '215';
+    this.init(Date.now() - 5000);
+  }
+  componentDidMount() {
+    this._pp = this.props; this._ps = this.state;
+    window.__tbbLive = this;
+    this.lazyMap();
+    this.applyTheme(); this.applyHero();
+    this.statusTimer = setInterval(() => this.setState({ status: computeStatus() }), 60000);
+    const t0 = Date.now();
+    const wait = () => {
+      if (window.gsap && window.ScrollTrigger && window.Lenis && window.Splitting) {
+        if (this._g0 === window.gsap && this._st0 === window.ScrollTrigger && Date.now() - this._gt >= 700) return this.init(t0);
+        if (this._g0 !== window.gsap || this._st0 !== window.ScrollTrigger) { this._g0 = window.gsap; this._st0 = window.ScrollTrigger; this._gt = Date.now(); }
+      }
+      if (Date.now() - t0 > 6000) return window.gsap ? this.init(t0) : this.setState({ preDone: true });
+      this.poll = setTimeout(wait, 40);
+    };
+    wait();
+    this.onResize = () => this.positionThumb(true);
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() {
+    window.__tbbUnmount = (window.__tbbUnmount || 0) + 1;
+    clearInterval(this.statusTimer); clearInterval(this.globWatch); if (this.mapIO) this.mapIO.disconnect(); clearTimeout(this.poll); clearTimeout(this.failsafe); clearTimeout(this.toastTimer);
+    window.removeEventListener('resize', this.onResize);
+    if (this.lenis) this.lenis.destroy();
+    if (this.swiper) { try { this.swiper.destroy(); } catch (e) {} }
+    if (this.ctx) this.ctx.revert();
+    this.ctx = null; this.ready = false;
+    if (this.raf && this.G) this.G.ticker.remove(this.raf);
+    // Si el runtime desmonta sin volver a montar y el DOM sigue vivo, reiniciar animaciones
+    const root = this.r.rootRef.current;
+    setTimeout(() => { if (window.__tbbLive === this && root && root.isConnected && !this.ctx) { this.lenis = null; this.swiper = null; this.init(Date.now() - 5000); } }, 400);
+  }
+  componentDidUpdate() {
+    const pp = this._pp || this.props, ps = this._ps || this.state;
+    this._pp = this.props; this._ps = this.state;
+    const s = this.state, g = this.G || window.gsap;
+    if (pp.accent !== this.props.accent || pp.displayFont !== this.props.displayFont) { this.applyTheme(); if (this.ST) setTimeout(() => { this.ST.refresh(); this.positionThumb(true); }, 300); }
+    if (pp.heroPhoto !== this.props.heroPhoto) this.applyHero();
+    if (ps.group !== s.group || ps.sub !== s.sub) this.animateFilter();
+    if (ps.group !== s.group) this.positionThumb();
+    if (!ps.sheetId && s.sheetId && g) { g.fromTo(this.r.backdropRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }); g.fromTo(this.r.sheetRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.55, ease: 'power3.out' }); }
+    if (!ps.cartOpen && s.cartOpen && g) { g.fromTo(this.r.cartBackRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }); g.fromTo(this.r.cartRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.6, ease: 'power4.out' }); g.from(this.r.cartRef.current.querySelectorAll('[data-line-key]'), { x: 30, opacity: 0, stagger: 0.05, duration: 0.5, delay: 0.15, ease: 'power3.out' }); }
+    if (s.cartOpen && ps.cartStep !== s.cartStep && g) {
+      if (this.r.cartRef.current) this.r.cartRef.current.scrollTop = 0;
+      if (s.cartStep === 'pickup') g.from(this.r.cartRef.current.querySelector('[data-step]'), { x: 40, opacity: 0, duration: 0.5, ease: 'power3.out' });
+      if (s.cartStep === 'done') this.celebrate();
+    }
+    if (!ps.menuOpen && s.menuOpen && g) {
+      const m = this.r.menuRef.current;
+      g.fromTo(m, { clipPath: 'circle(0px at calc(100% - 42px) 30px)' }, { clipPath: 'circle(150% at calc(100% - 42px) 30px)', duration: 0.75, ease: 'power3.inOut' });
+      g.from(m.querySelectorAll('[data-nav] span'), { yPercent: 110, opacity: 0, stagger: 0.05, duration: 0.7, delay: 0.25, ease: 'power3.out' });
+    }
+    if (ps.toastKey !== s.toastKey && s.toast && g && this.r.toastRef.current) g.fromTo(this.r.toastRef.current, { y: -30, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: 'back.out(1.8)' });
+    if (ps.resvDone !== s.resvDone && s.resvDone && g) g.from('[data-resv-done] > *', { y: 20, opacity: 0, stagger: 0.08, duration: 0.6, ease: 'power3.out' });
+    if (!ps.resvOpen && s.resvOpen && g) { g.fromTo(this.r.resvBackRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }); g.fromTo(this.r.resvRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.55, ease: 'power3.out' }); }
+    const ov = !!(s.sheetId || s.cartOpen || s.menuOpen || s.resvOpen);
+    if (ov !== this.prevOv) { this.prevOv = ov; if (this.lenis) { ov ? this.lenis.stop() : this.lenis.start(); } }
+    this.updateFloating();
+  }
+
+  applyHero() {
+    const el = this.r.heroImgRef.current; if (!el) return;
+    const h = HEROES[this.props.heroPhoto] || HEROES['Txuleta al corte'];
+    if (el.getAttribute('src') !== h.src) el.setAttribute('src', h.src);
+    el.style.objectPosition = h.pos;
+  }
+  applyTheme() {
+    const st = document.documentElement.style;
+    const acc = this.props.accent || '#F0C530';
+    st.setProperty('--tbb-accent', acc);
+    st.setProperty('--tbb-on-accent', acc.toUpperCase() === '#CC1414' ? '#FFFFFF' : '#0D0C0B');
+    const anton = this.props.displayFont === 'Anton';
+    st.setProperty('--tbb-display', anton ? "'Anton'" : "'Bricolage Grotesque'");
+    st.setProperty('--tbb-stretch', anton ? '100%' : '75%');
+    st.setProperty('--tbb-dweight', anton ? '400' : '800');
+  }
+  isMobile() { return window.innerWidth < 760; }
+
+  init(t0) {
+    window.__tbbInit = (window.__tbbInit || 0) + 1;
+    this.failsafe = setTimeout(() => this.bail('timeout'), 5000);
+    try { this.initInner(t0); } catch (e) { window.__tbbErr = String(e && e.stack || e); console.error('TBB init error', e); this.bail(e); }
+  }
+  bail(why) {
+    if (this.ready && why === 'timeout') return;
+    const g = this.G || window.gsap;
+    if (g) { try {
+      if (this.heroTl) this.heroTl.progress(1);
+      g.set('[data-reveal],[data-card],[data-way],[data-line],.word,.char', { clearProps: 'opacity,transform' });
+      if (this.r.preRef.current) g.set(this.r.preRef.current, { yPercent: -100 });
+    } catch (e) {} }
+    const sc = this.r.scoreRef.current, ct = this.r.countRef.current;
+    if (sc && sc.textContent === '0,0') sc.textContent = '4,4';
+    if (ct && ct.textContent === '0') ct.textContent = '215';
+    this.setState({ preDone: true });
+  }
+  initInner(t0) {
+    const gsap = this.G = window.gsap, ST = this.ST = window.ScrollTrigger, R = this.r;
+    gsap.registerPlugin(ST);
+    document.querySelectorAll('[data-split-chars]').forEach(el => { if (!el.dataset.orig) el.dataset.orig = el.innerHTML; });
+    if (R.taglineRef.current && !R.taglineRef.current.dataset.orig) R.taglineRef.current.dataset.orig = R.taglineRef.current.innerHTML;
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!this.reduced) {
+      this.lenis = new window.Lenis({ lerp: 0.08, smoothWheel: true });
+      this.lenis.on('scroll', ST.update);
+      this.raf = (t) => this.lenis && this.lenis.raf(t * 1000);
+      gsap.ticker.add(this.raf); gsap.ticker.lagSmoothing(0);
+    }
+    const S = window.Splitting;
+    const words = S({ target: R.taglineRef.current, by: 'words' })[0].words;
+    const charSets = Array.from(document.querySelectorAll('[data-split-chars]')).map(el => S({ target: el, by: 'chars' })[0]);
+
+    this.ctx = gsap.context(() => {
+      const hero = R.heroRef.current;
+      const intro = this.props.intro !== false && R.preRef.current;
+      gsap.set(words, { display: 'inline-block', y: 40, opacity: 0 });
+      gsap.set(R.heroLogoRef.current, { opacity: 0, scale: 0.85 });
+      gsap.set(R.heroTitleRef.current.querySelectorAll('[data-line]'), { opacity: 0, y: 30 });
+      gsap.set(R.ctaRef.current, { opacity: 0, y: 12 });
+      gsap.set(R.heroImgRef.current, { scale: 1.08 });
+      const heroTl = this.heroTl = gsap.timeline({ paused: true });
+      heroTl.to(R.heroImgRef.current, { scale: 1, duration: 1.8, ease: 'power3.out' }, 0)
+        .to(R.heroLogoRef.current, { opacity: 1, scale: 1, duration: 1, ease: 'power3.out' }, 0.15)
+        .to(R.heroTitleRef.current.querySelectorAll('[data-line]'), { opacity: 1, y: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out' }, 0.3)
+        .to(words, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out' }, 0.55)
+        .to(R.ctaRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '>+0.6');
+      if (intro) {
+        const pre = R.preRef.current;
+        const minWait = Math.max(0, 1100 - (Date.now() - t0)) / 1000;
+        gsap.fromTo(pre.querySelector('[data-pre-logo]'), { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' });
+        gsap.to(pre.querySelector('[data-pre-bar]'), { scaleX: 1, duration: minWait + 0.5, ease: 'power2.inOut' });
+        const lift = () => gsap.to(pre, { yPercent: -100, duration: 0.9, ease: 'power3.inOut', delay: minWait + 0.45, onStart: () => heroTl.play(0).delay(0.35), onComplete: () => { clearTimeout(this.failsafe); this.setState({ preDone: true }); } });
+        Promise.race([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1200))]).then(lift);
+      } else { heroTl.play(0); clearTimeout(this.failsafe); this.setState({ preDone: true }); }
+
+      gsap.to(R.heroBgRef.current, { y: () => hero.offsetHeight * 0.5, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
+      gsap.to(R.heroContentRef.current, { y: () => -hero.offsetHeight * 0.3, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true } });
+
+      const bar = R.barRef.current;
+      ST.create({ start: 40, end: 'max', onToggle: (st) => gsap.to(bar, { backgroundColor: st.isActive ? 'rgba(13,12,11,.82)' : 'rgba(13,12,11,0)', borderBottomColor: st.isActive ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,0)', backdropFilter: st.isActive ? 'blur(10px)' : 'blur(0px)', duration: 0.3 }) });
+
+      const mq = gsap.to(R.marqueeRef.current, { xPercent: -50, duration: 26, ease: 'none', repeat: -1 });
+      ST.create({ onUpdate: (st) => { const v = Math.min(4, 1 + Math.abs(st.getVelocity()) / 600); gsap.to(mq, { timeScale: v * (st.direction || 1), duration: 0.2, overwrite: true }); } });
+
+      gsap.utils.toArray('[data-reveal]').forEach(el => gsap.from(el, { y: 50, opacity: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 80%', once: true } }));
+      charSets.forEach((res) => {
+        gsap.set(res.words, { overflow: 'hidden', verticalAlign: 'top', paddingTop: '.06em' });
+        gsap.set(res.chars, { display: 'inline-block' });
+        gsap.from(res.chars, { yPercent: 110, duration: 0.9, stagger: 0.03, ease: 'power3.out', scrollTrigger: { trigger: res.el, start: 'top 85%', once: true } });
+      });
+
+      const panel = R.sorPanelRef.current;
+      gsap.fromTo(panel, { clipPath: 'inset(18% 16% 18% 16% round 40px)' }, { clipPath: 'inset(0% 0% 0% 0% round 22px)', ease: 'none', scrollTrigger: { trigger: panel, start: 'top 95%', end: 'top 15%', scrub: 0.6 } });
+      gsap.timeline({ scrollTrigger: { trigger: panel, start: 'top 45%', once: true } })
+        .from(panel.querySelectorAll('[data-sor-line]'), { yPercent: 105, duration: 1, stagger: 0.12, ease: 'power3.out' })
+        .from(panel.querySelectorAll('[data-redact]'), { scaleX: 0, transformOrigin: 'left center', duration: 0.7, stagger: 0.06, ease: 'power3.out' }, '-=0.6')
+        .from(R.sorDareRef.current, { opacity: 0, y: 36, letterSpacing: '0.12em', filter: 'blur(8px)', duration: 1.2, ease: 'expo.out' }, '+=0.4')
+        .from(R.sorCtaRef.current, { opacity: 0, y: 16, duration: 0.7, ease: 'power2.out' }, '-=0.5');
+      gsap.to(R.sorCtaRef.current, { scale: 1.04, duration: 1, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: 2.4 });
+      this.setupPixels(panel);
+
+      const cards = gsap.utils.toArray('[data-card]');
+      const below = cards.filter(c => c.style.display !== 'none' && c.getBoundingClientRect().top > window.innerHeight * 0.9);
+      gsap.set(below, { opacity: 0, y: 30 });
+      ST.batch(below, { start: 'top 90%', once: true, onEnter: (b) => gsap.to(b, { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: 'power2.out', overwrite: true, onStart: () => gsap.set(b, { willChange: 'transform' }), onComplete: () => gsap.set(b, { clearProps: 'willChange' }) }) });
+      cards.forEach(card => this.bindHover(card));
+
+      gsap.from('[data-way]', { y: 40, opacity: 0, stagger: 0.12, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: '#pedidos', start: 'top 60%', once: true } });
+
+      if (!this.reduced && R.scoreRef.current) {
+        const sc = R.scoreRef.current, ct = R.countRef.current, o = { v: 0, c: 0 };
+        sc.textContent = '0,0'; ct.textContent = '0';
+        ST.create({ trigger: R.revRef.current, start: 'top 70%', once: true, onEnter: () => gsap.to(o, { v: 4.4, c: 215, duration: 1.5, ease: 'power1.inOut', onUpdate: () => { sc.textContent = o.v.toFixed(1).replace('.', ','); ct.textContent = String(Math.round(o.c)); } }) });
+      }
+
+      ST.create({ trigger: hero, start: 'bottom 75%', end: 'max', onToggle: (st) => { this.pastHero = st.isActive; this.updateFloating(); } });
+      const foot = document.querySelector('[data-footer]');
+      if (foot) ST.create({ trigger: foot, start: 'top 85%', end: 'max', onToggle: (st) => { this.atFooter = st.isActive; this.updateFloating(); } });
+    }, R.rootRef.current);
+
+    this.ready = true;
+    this.watchGlobals();
+    this.lazyMap();
+    setTimeout(() => this.initSwiper(0), 800);
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => this.positionThumb(true));
+    this.updateFloating();
+    setTimeout(() => ST.refresh(), 600);
+  }
+
+  initSwiper(n) {
+    const el = this.r.galleryRef.current; if (!el) return;
+    if (!window.Swiper) { if (n < 60) setTimeout(() => this.initSwiper(n + 1), 100); return; }
+    this.swiper = new window.Swiper(el, {
+      effect: 'fade', fadeEffect: { crossFade: true }, rewind: true, speed: 900, grabCursor: true, observer: false,
+      autoplay: { delay: 3500, pauseOnMouseEnter: true, disableOnInteraction: false },
+      pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+    });
+  }
+
+  positionThumb(instant) {
+    const seg = this.r.segRef.current, th = this.r.segThumbRef.current, g = this.G || window.gsap;
+    if (!seg || !th) return;
+    const b = seg.querySelector('[data-seg-active="true"]'); if (!b) return;
+    const v = { x: b.offsetLeft, width: b.offsetWidth };
+    if (g && !instant) g.to(th, Object.assign({ duration: 0.5, ease: 'power3.out' }, v));
+    else { th.style.width = v.width + 'px'; th.style.transform = 'translateX(' + v.x + 'px)'; if (g) g.set(th, v); }
+  }
+
+  setupPixels(panel) {
+    const cv = this.r.sorCanvasRef.current; if (!cv) return;
+    const img = new Image(); img.src = 'assets/b-katxo.jpg';
+    const off = document.createElement('canvas'); let last = -1;
+    const draw = (p) => {
+      if (!img.complete || !img.naturalWidth) return;
+      const w = panel.clientWidth, h = panel.clientHeight;
+      const block = Math.round(64 - 44 * Math.min(1, p * 1.6));
+      if (block === last && cv.width === w) return; last = block;
+      cv.width = w; cv.height = h;
+      const sw = Math.max(2, Math.ceil(w / block)), sh = Math.max(2, Math.ceil(h / block));
+      off.width = sw; off.height = sh;
+      const o = off.getContext('2d'); const r = Math.max(sw / img.naturalWidth, sh / img.naturalHeight);
+      o.drawImage(img, (sw - img.naturalWidth * r) / 2, (sh - img.naturalHeight * r) / 2, img.naturalWidth * r, img.naturalHeight * r);
+      const c = cv.getContext('2d'); c.imageSmoothingEnabled = false;
+      c.drawImage(off, 0, 0, sw, sh, 0, 0, sw * block, sh * block);
+    };
+    img.onload = () => draw(0);
+    this.ST.create({ trigger: panel, start: 'top bottom', end: 'bottom top', onUpdate: (st) => draw(st.progress), onRefresh: () => { last = -1; draw(0); } });
+  }
+
+  bindHover(card) {
+    const gsap = this.G || window.gsap;
+    const img = () => card.querySelector('[data-img]'); const name = card.querySelector('[data-name]');
+    const on = () => { const i = img(); gsap.set([i, name], { willChange: 'transform' }); gsap.to(i, { scale: 1.05, duration: 0.4, ease: 'power2.out' }); gsap.to(name, { y: -4, duration: 0.4, ease: 'power2.out' }); };
+    const off = () => { const i = img(); gsap.to(i, { scale: 1, duration: 0.4, ease: 'power2.out', onComplete: () => gsap.set(i, { clearProps: 'willChange' }) }); gsap.to(name, { y: 0, duration: 0.4, ease: 'power2.out' }); };
+    card.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') on(); });
+    card.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') off(); });
+    card.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') { on(); setTimeout(off, 200); } });
+  }
+
+  animateFilter() {
+    const gsap = this.G || window.gsap; if (!gsap) return;
+    const vis = Array.from(this.r.gridRef.current.querySelectorAll('[data-card]')).filter(c => c.style.display !== 'none');
+    gsap.fromTo(vis, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.06, ease: 'power2.out', overwrite: true });
+    const top = this.r.gridRef.current.getBoundingClientRect().top + window.scrollY - 170;
+    if (window.scrollY > top) { this.lenis ? this.lenis.scrollTo(top, { duration: 0.8 }) : window.scrollTo({ top: top, behavior: 'smooth' }); }
+    setTimeout(() => this.ST && this.ST.refresh(), 60);
+  }
+
+  updateFloating() {
+    const g = this.G || window.gsap; if (!g || !this.ready) return;
+    const s = this.state; const count = s.cart.reduce((a, x) => a + x.qty, 0);
+    const ov = !!(s.sheetId || s.cartOpen || s.menuOpen || s.resvOpen); const mob = this.isMobile();
+    const call = !!this.pastHero && mob && count === 0 && !ov && !this.atFooter;
+    const cart = count > 0 && !ov && !this.atFooter && (!!this.pastHero || !mob);
+    if (call !== this.fCall) { this.fCall = call; g.to(this.r.stickyRef.current, { opacity: call ? 1 : 0, y: call ? 0 : 20, duration: 0.45, ease: 'power2.out', pointerEvents: call ? 'auto' : 'none' }); }
+    if (cart !== this.fCart) { this.fCart = cart; g.to(this.r.cartBarRef.current, { opacity: cart ? 1 : 0, y: cart ? 0 : 30, duration: 0.55, ease: cart ? 'back.out(1.6)' : 'power2.in', pointerEvents: cart ? 'auto' : 'none' }); }
+  }
+
+  // ─── Carrito ────────────────────────────────────────────────
+  setCart(fn) { this.setState(s => { const cart = fn(s.cart); try { localStorage.setItem('tbb-cart-v1', JSON.stringify(cart)); } catch (e) {} return { cart: cart }; }); }
+  add(id, variant, qty, fromEl) {
+    const it = BY_ID[id]; const key = id + '|' + (variant || '');
+    this.setCart(c => { const ex = c.find(x => x.key === key); return ex ? c.map(x => x.key === key ? Object.assign({}, x, { qty: x.qty + qty }) : x) : c.concat([{ key: key, id: id, variant: variant || '', qty: qty }]); });
+    this.fly(fromEl, it);
+    this.showToast({ title: it.mystery ? 'Valiente.' : 'Añadido al pedido', sub: it.mystery ? 'La Sorpresa va en tu pedido' : (qty > 1 ? qty + '× ' : '') + it.name + (variant ? ' · ' + variant : ''), bg: it.img ? 'url(' + it.img + ')' : 'none', canUndo: true, undo: { key: key, qty: qty } });
+  }
+  changeQty(key, d) {
+    this.setCart(c => c.map(x => x.key === key ? Object.assign({}, x, { qty: x.qty + d }) : x).filter(x => x.qty > 0));
+  }
+  fly(fromEl, it) {
+    const g = this.G || window.gsap, to = this.r.cartBtnRef.current;
+    if (!g || !fromEl || !to || this.reduced) return this.bumpCart();
+    const r = fromEl.getBoundingClientRect(), t = to.getBoundingClientRect();
+    const size = Math.max(56, Math.min(r.width, r.height, 150));
+    const d = document.createElement('div');
+    Object.assign(d.style, { position: 'fixed', zIndex: 120, left: (r.left + r.width / 2 - size / 2) + 'px', top: (r.top + r.height / 2 - size / 2) + 'px', width: size + 'px', height: size + 'px', borderRadius: '50%', pointerEvents: 'none', border: '3px solid var(--tbb-accent, #F0C530)', boxShadow: '0 24px 50px -12px rgba(0,0,0,.7)', background: it.img ? 'center / cover no-repeat url(' + it.img + ')' : '#050404', color: 'var(--tbb-accent, #F0C530)', display: 'flex', alignItems: 'center', justifyContent: 'center', font: '800 ' + Math.round(size * 0.6) + 'px/1 "Bricolage Grotesque", sans-serif' });
+    if (!it.img) d.textContent = it.mystery ? '?' : '+';
+    document.body.appendChild(d);
+    const dx = t.left + t.width / 2 - (r.left + r.width / 2), dy = t.top + t.height / 2 - (r.top + r.height / 2);
+    g.timeline({ onComplete: () => { d.remove(); this.bumpCart(); } })
+      .fromTo(d, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: 'back.out(2.2)' })
+      .to(d, { x: dx, duration: 0.75, ease: 'power1.inOut' })
+      .to(d, { y: dy, duration: 0.75, ease: 'back.in(1.3)' }, '<')
+      .to(d, { scale: 40 / size, rotation: 200, duration: 0.75, ease: 'power2.in' }, '<');
+  }
+  bumpCart() {
+    const g = this.G || window.gsap; if (!g) return;
+    g.fromTo(this.r.cartBtnRef.current, { scale: 1 }, { scale: 1.25, duration: 0.16, yoyo: true, repeat: 1, ease: 'power2.out' });
+    const bt = this.r.cartBarRef.current && this.r.cartBarRef.current.querySelector('[data-bar-total]');
+    if (bt) g.fromTo(bt, { scale: 1 }, { scale: 1.14, duration: 0.18, yoyo: true, repeat: 1, ease: 'power2.out' });
+  }
+  showToast(t) {
+    clearTimeout(this.toastTimer);
+    this.setState(s => ({ toast: t, toastKey: s.toastKey + 1 }));
+    this.toastTimer = setTimeout(() => this.hideToast(), 2800);
+  }
+  hideToast() {
+    const g = this.G || window.gsap, el = this.r.toastRef.current;
+    if (!g || !el) return this.setState({ toast: null });
+    g.to(el, { y: -20, opacity: 0, duration: 0.3, ease: 'power2.in', onComplete: () => this.setState({ toast: null }) });
+  }
+  shake(el) { const g = this.G || window.gsap; if (g && el) g.fromTo(el, { x: 0 }, { keyframes: { x: [0, -8, 8, -5, 5, 0] }, duration: 0.45, ease: 'power2.out' }); }
+
+  openCart = () => { this.setState({ cartOpen: true, cartStep: this.state.cartStep === 'done' ? 'cart' : this.state.cartStep, pickErr: {} }); };
+  closeCart = (after) => {
+    const g = this.G || window.gsap;
+    const done = () => { this.setState({ cartOpen: false }); if (this.state.cartStep === 'done') this.resetOrder(); if (typeof after === 'function') after(); };
+    if (!g || !this.r.cartRef.current) return done();
+    g.to(this.r.cartBackRef.current, { opacity: 0, duration: 0.25 });
+    g.to(this.r.cartRef.current, { yPercent: 100, duration: 0.38, ease: 'power2.in', onComplete: done });
+  };
+  closeResv = () => {
+    const g = this.G || window.gsap;
+    const done = () => this.setState(st => st.resvDone ? { resvOpen: false, resvDone: false, resv: Object.assign({}, st.resv, { time: '' }) } : { resvOpen: false });
+    if (!g || !this.r.resvRef.current) return done();
+    g.to(this.r.resvBackRef.current, { opacity: 0, duration: 0.25 });
+    g.to(this.r.resvRef.current, { yPercent: 100, duration: 0.38, ease: 'power2.in', onComplete: done });
+  };
+  resetOrder() { this.setCart(() => []); this.setState({ cartStep: 'cart', pickup: Object.assign({}, this.state.pickup, { slot: '', notes: '' }) }); }
+  celebrate() {
+    const g = this.G || window.gsap, root = this.r.cartRef.current; if (!g || !root) return;
+    const circle = root.querySelector('[data-done-circle]'), check = root.querySelector('[data-check]');
+    g.fromTo(circle, { scale: 0 }, { scale: 1, duration: 0.6, ease: 'back.out(2)' });
+    g.fromTo(check, { strokeDashoffset: 24 }, { strokeDashoffset: 0, duration: 0.5, delay: 0.35, ease: 'power2.out' });
+    g.from(root.querySelectorAll('[data-done] > *:not([data-done-circle])'), { y: 20, opacity: 0, stagger: 0.07, duration: 0.5, delay: 0.3, ease: 'power3.out' });
+    const r = circle.getBoundingClientRect(); const cols = ['var(--tbb-accent, #F0C530)', '#F5F1EA', 'var(--tbb-accent, #F0C530)'];
+    for (let i = 0; i < 42; i++) {
+      const p = document.createElement('i');
+      Object.assign(p.style, { position: 'fixed', zIndex: 130, left: (r.left + r.width / 2) + 'px', top: (r.top + r.height / 2) + 'px', width: (6 + Math.random() * 6) + 'px', height: (10 + Math.random() * 8) + 'px', background: cols[i % 3], borderRadius: i % 4 === 0 ? '50%' : '2px', pointerEvents: 'none' });
+      document.body.appendChild(p);
+      g.timeline({ delay: 0.25, onComplete: () => p.remove() })
+        .to(p, { x: (Math.random() - 0.5) * 360, y: -80 - Math.random() * 220, rotation: Math.random() * 720, duration: 0.7, ease: 'power3.out' })
+        .to(p, { y: '+=' + (260 + Math.random() * 200), opacity: 0, rotation: '+=' + (Math.random() * 360), duration: 1.2, ease: 'power1.in' });
+    }
+  }
+  sendOrder = () => {
+    const s = this.state, p = s.pickup, err = {};
+    const slot = pickupSlots().find(x => x.id === p.slot);
+    if (!slot) err.slot = 'Elige una hora de recogida';
+    if (!p.name.trim()) err.name = 'Dinos tu nombre';
+    if (p.phone.replace(/\D/g, '').length < 9) err.phone = 'Revisa el teléfono (9 dígitos)';
+    if (Object.keys(err).length) { this.setState({ pickErr: err }); this.shake(this.r.cartRef.current && this.r.cartRef.current.querySelector('[data-step]')); return; }
+    const lines = s.cart.map(l => { const it = BY_ID[l.id]; return '• ' + l.qty + '× ' + it.name + (l.variant ? ' (' + l.variant + ')' : '') + ' — ' + eur(P(it.price) * l.qty); });
+    const total = eur(s.cart.reduce((a, l) => a + P(BY_ID[l.id].price) * l.qty, 0));
+    const msg = 'Hola Txipote’s! 🍔 Quiero hacer un pedido para recoger:\n\n' + lines.join('\n') + '\n\nTotal: ' + total + '\n🕒 Recogida: ' + slot.day + ' ' + slot.time + '\n👤 ' + p.name.trim() + '\n📞 ' + p.phone.trim() + (p.notes.trim() ? '\n📝 ' + p.notes.trim() : '');
+    try { window.open('https://wa.me/' + PHONE_WA + '?text=' + encodeURIComponent(msg), '_blank'); } catch (e) {}
+    const when = slot.day === 'Hoy' ? 'hoy' : slot.day === 'Mañana' ? 'mañana' : 'el ' + slot.day.toLowerCase() + '.';
+    this.setState({ cartStep: 'done', pickErr: {}, orderId: '#TBB-' + String(Math.floor(1000 + Math.random() * 9000)), doneText: 'Lo tendremos listo ' + when + ' a las ' + slot.time + '. Si WhatsApp no se ha abierto, llámanos al 688 862 244.' });
+  };
+
+  // ─── Ficha ──────────────────────────────────────────────────
+  openSheet(id) { this.setState({ sheetId: id, sheetQty: 1, sheetVariant: '', sheetErr: '' }); }
+  closeSheet = () => {
+    const g = this.G || window.gsap; const done = () => this.setState({ sheetId: null });
+    if (!g || !this.r.sheetRef.current) return done();
+    g.to(this.r.backdropRef.current, { opacity: 0, duration: 0.25 });
+    g.to(this.r.sheetRef.current, { yPercent: 100, duration: 0.35, ease: 'power2.in', onComplete: done });
+  };
+  sheetAdd = () => {
+    const s = this.state, it = BY_ID[s.sheetId]; if (!it) return;
+    if (it.variants && !s.sheetVariant) { this.setState({ sheetErr: 'Elige un sabor' }); this.shake(this.r.sheetRef.current.querySelector('[data-variants]')); return; }
+    this.add(it.id, s.sheetVariant, s.sheetQty, this.r.sheetPhotoRef.current);
+    this.closeSheet();
+  };
+
+  // ─── Navegación ─────────────────────────────────────────────
+  scrollToSel(sel) {
+    const el = document.querySelector(sel); if (!el) return;
+    if (this.lenis) this.lenis.scrollTo(el, { offset: sel === '#top' ? 0 : -8, duration: 1.4 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  }
+  closeMenu = (after) => {
+    const g = this.G || window.gsap, m = this.r.menuRef.current;
+    const done = () => { this.setState({ menuOpen: false }, () => { if (typeof after === 'function') setTimeout(after, 30); }); };
+    if (!g || !m) return done();
+    g.to(m, { clipPath: 'circle(0px at calc(100% - 42px) 30px)', duration: 0.55, ease: 'power3.inOut', onComplete: done });
+  };
+
+  badge(label) { const solid = label === 'Identidad Vasca'; return { label: label, bg: solid ? 'var(--acc)' : 'rgba(13,12,11,.7)', fg: solid ? 'var(--on-acc)' : 'var(--acc)' }; }
+  decorate(it, num, qtyMap) {
+    const marks = this.props.showMarks !== false;
+    const o = Object.assign({}, it, {
+      num: String(num).padStart(2, '0'),
+      hasImg: !!it.img, isPlaceholder: !it.img && !it.mystery, mystery: !!it.mystery,
+      filter: it.light ? 'brightness(.86) contrast(1.08) saturate(1.05)' : 'none',
+      badges: (it.badges || []).map(b => this.badge(b)),
+      ings: it.mystery ? ['Ingredientes: clasificados'] : it.variants ? [] : (it.desc ? it.desc.split(', ') : []),
+      hasVariants: !!it.variants, variants: it.variants || [],
+      markPhoto: marks && !!it.img,
+      priceColor: it.mystery ? 'var(--acc)' : '#F5F1EA',
+      qty: (qtyMap && qtyMap[it.id]) || 0,
+    });
+    o.inCart = o.qty > 0;
+    o.photos = it.img ? [{ img: it.img, pos: it.pos, filter: o.filter, name: it.name }] : [];
+    return o;
+  }
+
+  renderVals() {
+    const s = this.state, R = this.r;
+    const qtyMap = {}; s.cart.forEach(l => { qtyMap[l.id] = (qtyMap[l.id] || 0) + l.qty; });
+    const cartCount = s.cart.reduce((a, l) => a + l.qty, 0);
+    const cartSum = s.cart.reduce((a, l) => a + P(BY_ID[l.id].price) * l.qty, 0);
+    const gc = {}; const counts = { todas: 0 };
+    const items = ITEMS.map(it => {
+      gc[it.group] = (gc[it.group] || 0) + 1;
+      if (it.group === 'burgers') { counts.todas++; counts[it.cat] = (counts[it.cat] || 0) + 1; }
+      const show = it.group === s.group && (s.group !== 'burgers' || s.sub === 'todas' || it.cat === s.sub);
+      return Object.assign(this.decorate(it, gc[it.group], qtyMap), {
+        display: show ? 'flex' : 'none',
+        open: () => this.openSheet(it.id),
+        quickAdd: (e) => { e.stopPropagation(); if (it.variants) return this.openSheet(it.id); this.add(it.id, '', 1, e.currentTarget.closest('[data-photo]')); },
+      });
+    });
+    const groups = GROUPS.map(gg => ({ label: gg[1], count: gc[gg[0]], active: gg[0] === s.group ? 'true' : 'false', fg: gg[0] === s.group ? 'var(--on-acc)' : '#F5F1EA', select: () => this.setState({ group: gg[0], sub: 'todas' }) }));
+    const tabs = TABS.map(t => Object.assign({ label: t[1], count: counts[t[0]] || 0, select: () => this.setState({ sub: t[0] }) }, chip(t[0] === s.sub)));
+
+    const sheetIt = BY_ID[s.sheetId];
+    const sheet = sheetIt ? this.decorate(sheetIt, 1, qtyMap) : { photos: [], badges: [], ings: [] };
+    const sheetVariants = (sheetIt && sheetIt.variants || []).map(v => Object.assign({ label: v, select: () => this.setState({ sheetVariant: v, sheetErr: '' }) }, chip(v === s.sheetVariant)));
+
+    const cartLines = s.cart.map(l => { const it = BY_ID[l.id]; return { key: l.key, name: it.name, variant: l.variant, qty: l.qty, unit: it.price, total: eur(P(it.price) * l.qty), photos: it.img ? [{ img: it.img, pos: it.pos }] : [], mystery: !!it.mystery, decLabel: l.qty === 1 ? '×' : '−', inc: () => this.changeQty(l.key, 1), dec: () => this.changeQty(l.key, -1) }; });
+    const ups = UPS.filter(id => !qtyMap[id]).map(id => { const it = BY_ID[id]; return { id: id, name: it.name, price: it.price, photos: it.img ? [{ img: it.img, pos: it.pos }] : [], mystery: false, add: (e) => this.add(id, '', 1, e.currentTarget.parentNode) }; });
+    const seen = {}; const barThumbs = [];
+    s.cart.forEach(l => { const it = BY_ID[l.id]; if (seen[l.id] || barThumbs.length >= 3) return; seen[l.id] = 1; barThumbs.push({ bg: it.img ? 'url(' + it.img + ')' : 'none', q: it.mystery ? '?' : it.img ? '' : it.name.charAt(0) }); });
+
+    const slots = pickupSlots().map(sl => Object.assign({ day: sl.day, time: sl.time, select: () => this.setState({ pickup: Object.assign({}, s.pickup, { slot: sl.id }), pickErr: Object.assign({}, s.pickErr, { slot: '' }) }) }, chip(sl.id === s.pickup.slot)));
+    const setPick = (k) => (e) => { const v = e.target.value; this.setState(st => ({ pickup: Object.assign({}, st.pickup, { [k]: v }), pickErr: Object.assign({}, st.pickErr, { [k]: '' }) })); };
+
+    const dayList = resvDayList(); const di = Math.min(s.resv.day, Math.max(0, dayList.length - 1)); const dsel = dayList[di];
+    const resvDays = dayList.map((d, i) => Object.assign({ wd: d.wd, num: d.num, select: () => this.setState({ resv: Object.assign({}, s.resv, { day: i, time: '' }) }) }, chip(i === di)));
+    const resvTimes = dsel ? resvTimesFor(dsel.off, dsel.dayIdx).map(t => Object.assign({ label: t, select: () => this.setState({ resv: Object.assign({}, s.resv, { time: t }), resvErr: Object.assign({}, s.resvErr, { time: '' }) }) }, chip(t === s.resv.time))) : [];
+    const setResv = (k) => (e) => { const v = e.target.value; this.setState(st => ({ resv: Object.assign({}, st.resv, { [k]: v }), resvErr: Object.assign({}, st.resvErr, { [k]: '' }) })); };
+    const bumpPeople = (d) => { const n = Math.max(1, Math.min(14, s.resv.people + d)); this.setState({ resv: Object.assign({}, s.resv, { people: n }) }); if ((this.G || window.gsap) && R.peopleRef.current) (this.G || window.gsap).fromTo(R.peopleRef.current, { y: d > 0 ? 10 : -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' }); };
+
+    const n = madridNow();
+    const bgMode = this.props.bgStyle || 'Resplandor';
+    const hourGroups = [];
+    [1, 2, 3, 4, 5, 6, 0].forEach(d => { const h = SCHEDULE[d].length ? SCHEDULE[d].map(iv => iv[0] + '–' + iv[1]).join(' · ') : 'Cerrado'; const last = hourGroups[hourGroups.length - 1]; if (last && last.hours === h) { last.to = d; last.today = last.today || d === n.day; } else hourGroups.push({ from: d, to: d, hours: h, today: d === n.day, closed: !SCHEDULE[d].length }); });
+    hourGroups.forEach(gr => { gr.day = gr.from === gr.to ? DSHORT[gr.from] : DSHORT[gr.from] + '–' + DSHORT[gr.to]; gr.bg = gr.today ? 'rgba(255,255,255,.06)' : 'transparent'; gr.fg = gr.closed ? 'rgba(245,241,234,.5)' : '#F5F1EA'; });
+    const hours = [1, 2, 3, 4, 5, 6, 0].map(d => ({ day: DAYS[d], today: d === n.day, bg: d === n.day ? 'rgba(255,255,255,.06)' : 'transparent', fg: SCHEDULE[d].length ? '#F5F1EA' : 'rgba(245,241,234,.5)', hours: SCHEDULE[d].length ? SCHEDULE[d].map(iv => iv[0] + '–' + iv[1]).join(' · ') : 'Cerrado' }));
+
+    const vals = {
+      showPreloader: this.props.intro !== false && !s.preDone,
+      isOpen: s.status.open, statusShort: s.status.short, statusBig: s.status.big, statusDetail: s.status.detail,
+      showMarks: this.props.showMarks !== false,
+      groups: groups, tabs: tabs, showSub: s.group === 'burgers', items: items,
+      sheet: sheet, sheetOpen: !!s.sheetId, sheetVariants: sheetVariants, sheetErr: s.sheetErr, sheetQty: s.sheetQty,
+      sheetTotal: sheetIt ? eur(P(sheetIt.price) * s.sheetQty) : '',
+      sheetLess: () => this.setState({ sheetQty: Math.max(1, s.sheetQty - 1) }), sheetMore: () => this.setState({ sheetQty: Math.min(20, s.sheetQty + 1) }),
+      sheetAdd: this.sheetAdd, closeSheet: this.closeSheet,
+      hasCart: cartCount > 0, cartEmpty: cartCount === 0, cartCount: cartCount, cartCountLabel: cartCount === 1 ? '1 producto' : cartCount + ' productos', cartTotal: eur(cartSum),
+      cartLines: cartLines, ups: ups, hasUps: cartCount > 0 && ups.length > 0, barThumbs: barThumbs,
+      cartOpen: s.cartOpen, stepCart: s.cartStep === 'cart', stepPickup: s.cartStep === 'pickup', stepDone: s.cartStep === 'done', showSteps: s.cartStep !== 'done',
+      cartTitle: s.cartStep === 'pickup' ? 'Recogida' : s.cartStep === 'done' ? '' : 'Tu pedido',
+      step1c: s.cartStep === 'cart' ? 'var(--acc)' : 'rgba(245,241,234,.55)', step2c: s.cartStep === 'pickup' ? 'var(--acc)' : 'rgba(245,241,234,.55)',
+      openCart: this.openCart, closeCart: this.closeCart,
+      toPickup: () => this.setState({ cartStep: 'pickup' }), toCart: () => this.setState({ cartStep: 'cart' }),
+      emptyToCarta: () => this.closeCart(() => this.scrollToSel('#carta')),
+      slots: slots, pickup: s.pickup, pickErr: s.pickErr, onPickName: setPick('name'), onPickPhone: setPick('phone'), onPickNotes: setPick('notes'),
+      sendOrder: this.sendOrder, orderId: s.orderId, doneText: s.doneText, finishOrder: () => this.closeCart(),
+      addSorpresa: () => this.add('sorpresa', '', 1, R.sorCtaRef.current),
+      toastOn: !!s.toast, toast: s.toast || {}, undoToast: () => { const u = s.toast && s.toast.undo; if (u) this.changeQty(u.key, -u.qty); this.hideToast(); },
+      menuOpen: s.menuOpen, openMenu: () => this.setState({ menuOpen: true }), closeMenu: this.closeMenu,
+      navLinks: NAV.map((l, i) => ({ href: l[0], label: l[1], num: String(i + 1).padStart(2, '0'), go: (e) => { e.preventDefault(); this.closeMenu(() => this.scrollToSel(l[0])); } })),
+      resv: s.resv, resvErr: s.resvErr, resvDays: resvDays, resvTimes: resvTimes, resvDone: s.resvDone, resvNotDone: !s.resvDone, resvSummary: s.resvSummary,
+      resvLess: () => bumpPeople(-1), resvMore: () => bumpPeople(1), onResvName: setResv('name'), onResvPhone: setResv('phone'),
+      sendResv: () => {
+        const r = s.resv, err = {};
+        if (!r.time) err.time = 'Elige una hora';
+        if (!r.name.trim()) err.name = 'Dinos tu nombre';
+        if (r.phone.replace(/\D/g, '').length < 9) err.phone = 'Revisa el teléfono';
+        if (Object.keys(err).length) return this.setState({ resvErr: err });
+        const msg = 'Hola Txipote’s! Quiero reservar mesa 🍔\n📅 ' + dsel.long + ' a las ' + r.time + '\n👥 ' + r.people + (r.people === 1 ? ' persona' : ' personas') + '\n👤 ' + r.name.trim() + '\n📞 ' + r.phone.trim();
+        try { window.open('https://wa.me/' + PHONE_WA + '?text=' + encodeURIComponent(msg), '_blank'); } catch (e) {}
+        this.setState({ resvDone: true, resvErr: {}, resvSummary: r.people + (r.people === 1 ? ' persona' : ' personas') + ' · ' + dsel.long + ' · ' + r.time });
+      },
+      resvReset: () => this.setState({ resvDone: false, resv: Object.assign({}, s.resv, { time: '' }) }),
+      hours: hours, hourGroups: hourGroups,
+      bgGlow: ['Resplandor', 'Parrilla'].includes(bgMode), bgGrill: bgMode === 'Parrilla', bgPhoto: bgMode === 'Foto ahumada', bgGrain: bgMode !== 'Liso',
+      resvOpen: s.resvOpen, openResv: () => this.setState({ resvOpen: true }), closeResv: this.closeResv,
+      newsEmail: s.newsEmail, newsErr: s.newsErr, newsDone: s.newsDone, newsNotDone: !s.newsDone,
+      onNews: (e) => this.setState({ newsEmail: e.target.value, newsErr: '' }),
+      sendNews: () => { if (!/^\S+@\S+\.\S+$/.test(s.newsEmail)) return this.setState({ newsErr: 'Ese email no parece válido' }); this.setState({ newsDone: true }); },
+      goCarta: (e) => { e.preventDefault(); this.scrollToSel('#carta'); },
+      goTop: (e) => { e.preventDefault(); this.scrollToSel('#top'); },
+      goUbicacion: (e) => { e.preventDefault(); this.scrollToSel('#ubicacion'); },
+      openCartOrCarta: () => cartCount ? this.openCart() : this.scrollToSel('#carta'),
+    };
+    return Object.assign({}, R, vals);
+  }
+}
+</script>
+</body>
+</html>

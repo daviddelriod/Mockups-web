@@ -23,5 +23,8 @@
   "bilbao/txipotes-burger": [
     "tbb vista móvil.dc.html",
     "tbb web.dc.html"
+  ],
+  "bilbao/copyser": [
+    "copyser vista movil.dc.html"
   ]
 }

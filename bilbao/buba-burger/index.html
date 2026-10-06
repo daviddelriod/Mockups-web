@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Buba Burger — Burgers de otro planeta · Bilbao</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Dots&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<style>
+:root{--neon:#b98aff;--neon-2:#6ee7f9;--magenta:#f472d0;--glow:color-mix(in oklch,var(--neon) 70%,transparent);--glow-soft:color-mix(in oklch,var(--neon) 30%,transparent)}
+html,body{margin:0;padding:0;background:#07041a;color:#efeaff}
+*{box-sizing:border-box}
+::selection{background:var(--neon);color:#0a0520}
+a{color:#efeaff;text-decoration:none}
+a:hover{color:var(--neon)}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+@keyframes ldOut{0%,84%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.04)}}
+@keyframes ldFill{0%,6%{width:0%}80%,100%{width:100%}}
+@keyframes ldStripes{to{background-position:28px 0}}
+@keyframes ldChomp{0%,100%{transform:translate(-50%,-50%) rotate(-8deg)}50%{transform:translate(-50%,-50%) rotate(8deg) scale(1.12)}}
+@keyframes ldEat{0%{transform:translate(-50%,-50%) scale(1);opacity:1}40%{transform:translate(-50%,-80%) scale(1.3);opacity:1}100%{transform:translate(-50%,-90%) scale(0);opacity:0}}
+@keyframes ldMsg{0%{opacity:0;transform:translateY(6px)}12%,88%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-6px)}}
+@keyframes ldText{0%{opacity:0}10%{opacity:1}14%{opacity:.3}18%,100%{opacity:1}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative; background:#07041a; color:#efeaff; font-family:'Space Grotesk',sans-serif; font-size:17px; line-height:1.55; overflow-x:clip;">
+<sc-if value="{{ showLoader }}" hint-placeholder-val="{{ true }}">
+  <div aria-hidden="true" style="position:fixed; inset:0; z-index:200; background:radial-gradient(ellipse at 50% 45%, #170b3a, #07041a 70%); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:30px; padding:0 24px; animation:ldOut 1.1s ease forwards;">
+    <b style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(24px,6vw,40px); letter-spacing:.08em; color:#efeaff; text-shadow:0 0 12px var(--glow), 0 0 32px var(--glow-soft); animation:ldText 1.1s linear both;">BUBA BURGER</b>
+    <div style="position:relative; width:min(320px,80vw); height:24px; border-radius:999px; border:2px solid var(--neon); box-shadow:0 0 14px var(--glow-soft), inset 0 0 10px var(--glow-soft); background:rgba(185,138,255,.06);">
+      <div style="position:absolute; left:3px; top:3px; bottom:3px; right:3px;">
+        <div style="position:absolute; left:0; top:0; bottom:0; border-radius:999px; background:repeating-linear-gradient(-45deg, var(--neon) 0 7px, color-mix(in oklch, var(--neon) 72%, #07041a) 7px 14px); box-shadow:0 0 12px var(--glow); animation:ldFill 1.1s linear both, ldStripes .4s linear infinite;">
+          <div style="position:absolute; right:-17px; top:50%; width:34px; height:34px; border-radius:50%; background:#07041a; border:2px solid var(--neon); box-shadow:0 0 12px var(--glow); display:flex; align-items:center; justify-content:center; z-index:2; animation:ldChomp .18s ease-in-out infinite;">
+            <svg viewBox="0 0 48 48" width="22" height="22" fill="none" stroke="var(--neon)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path><path d="M13 19 C16 24 20 26 21 22"></path><path d="M35 19 C32 24 28 26 27 22"></path></svg>
+          </div>
+        </div>
+      <img src="images/burger-loader.png" alt="" style="position:absolute; left:18%; top:50%; width:34px; height:auto; z-index:1; animation:ldEat .16s ease-in 0.21s both;">
+      <img src="images/burger-loader.png" alt="" style="position:absolute; left:38%; top:50%; width:34px; height:auto; z-index:1; animation:ldEat .16s ease-in 0.37s both;">
+      <img src="images/burger-loader.png" alt="" style="position:absolute; left:58%; top:50%; width:34px; height:auto; z-index:1; animation:ldEat .16s ease-in 0.54s both;">
+      <img src="images/burger-loader.png" alt="" style="position:absolute; left:78%; top:50%; width:34px; height:auto; z-index:1; animation:ldEat .16s ease-in 0.70s both;">
+      </div>
+    </div>
+    <div style="position:relative; width:260px; height:22px; font-size:14px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#b3a8d9;">
+      <span style="position:absolute; inset:0; text-align:center; opacity:0; animation:ldMsg .32s ease 0.06s both;">Calentando la plancha</span>
+      <span style="position:absolute; inset:0; text-align:center; opacity:0; animation:ldMsg .32s ease 0.37s both;">Fundiendo el queso</span>
+      <span style="position:absolute; inset:0; text-align:center; opacity:0; animation:ldMsg .32s ease 0.67s both;">Montando tu burger</span>
+    </div>
+  </div>
+</sc-if>
+
+<div data-a="stars1" aria-hidden="true" style="position:fixed; left:0; right:0; top:0; height:130vh; z-index:0; pointer-events:none; background-image:radial-gradient(1.5px 1.5px at 12% 22%, rgba(255,255,255,.8), transparent 60%), radial-gradient(1px 1px at 38% 8%, rgba(255,255,255,.6), transparent 60%), radial-gradient(1px 1px at 82% 12%, rgba(255,255,255,.55), transparent 60%), radial-gradient(1px 1px at 25% 70%, rgba(255,255,255,.5), transparent 60%), radial-gradient(1.5px 1.5px at 55% 85%, rgba(255,255,255,.45), transparent 60%), radial-gradient(1px 1px at 8% 48%, rgba(255,255,255,.5), transparent 60%), radial-gradient(1px 1px at 68% 52%, rgba(255,255,255,.4), transparent 60%);"></div>
+<div data-a="stars2" aria-hidden="true" style="position:fixed; left:0; right:0; top:0; height:140vh; z-index:0; pointer-events:none; background-image:radial-gradient(2px 2px at 65% 35%, rgba(185,138,255,.75), transparent 60%), radial-gradient(1.5px 1.5px at 92% 60%, rgba(110,231,249,.65), transparent 60%), radial-gradient(1px 1px at 73% 92%, rgba(185,138,255,.55), transparent 60%), radial-gradient(1.5px 1.5px at 45% 55%, rgba(255,255,255,.35), transparent 60%), radial-gradient(2px 2px at 18% 88%, rgba(244,114,208,.5), transparent 60%), radial-gradient(1.5px 1.5px at 30% 30%, rgba(110,231,249,.45), transparent 60%);"></div>
+
+<sc-if value="{{ showHalo }}" hint-placeholder-val="{{ false }}">
+  <div data-a="halo" aria-hidden="true" style="position:fixed; left:0; top:0; width:440px; height:440px; margin:-220px 0 0 -220px; border-radius:50%; pointer-events:none; z-index:2; opacity:0; mix-blend-mode:screen; background:radial-gradient(circle, color-mix(in oklch, var(--neon) 22%, transparent), transparent 62%);"></div>
+</sc-if>
+
+<header style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; gap:24px; padding:12px clamp(18px,3vw,32px); background:{{ navBg }}; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid {{ navBorder }}; transition:background .3s, border-color .3s;">
+  <a href="#top" onClick="{{ goTop }}" aria-label="Buba Burger" style="display:flex; align-items:center; gap:12px; color:#efeaff;">
+    <svg viewBox="0 0 48 48" width="34" height="34" fill="none" stroke="var(--neon)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px var(--glow));"><path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path><path d="M13 19 C16 24 20 26 21 22"></path><path d="M35 19 C32 24 28 26 27 22"></path></svg>
+    <b style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:16px; letter-spacing:.06em;">BUBA BURGER</b>
+  </a>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex; gap:26px; margin-left:auto;">
+      <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+        <a href="{{ l.href }}" onClick="{{ l.go }}" style="color:#b3a8d9; font-size:15px; font-weight:500; transition:color .2s, text-shadow .2s;" style-hover="color:#efeaff; text-shadow:0 0 12px var(--glow);">{{ l.label }}</a>
+      </sc-for>
+    </nav>
+  </sc-if>
+  <div style="display:flex; align-items:center; gap:10px; margin-left:{{ navRightMargin }};">
+    <button data-mag="1" onClick="{{ openSheet }}" style="display:inline-flex; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; padding:10px 20px; border-radius:999px; border:none; cursor:pointer; background:var(--neon); color:#0c0524; box-shadow:0 0 18px var(--glow), 0 0 40px var(--glow-soft); transition:box-shadow .2s;" style-hover="box-shadow:0 0 26px var(--glow), 0 0 70px var(--glow-soft);">Pedir</button>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(185,138,255,.22); background:transparent; color:#efeaff; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      </button>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; inset:0; z-index:70; background:rgba(7,4,26,.96); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); display:flex; flex-direction:column; padding:20px 24px 40px;">
+    <div style="display:flex; justify-content:flex-end;">
+      <button onClick="{{ toggleMenu }}" aria-label="Cerrar" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(185,138,255,.22); background:transparent; color:#efeaff; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <nav style="display:flex; flex-direction:column; gap:6px; margin-top:auto; margin-bottom:auto;">
+      <sc-for list="{{ navLinks }}" as="l" hint-placeholder-count="5">
+        <a data-a="mlink" href="{{ l.href }}" onClick="{{ l.go }}" style="font-family:'Zen Dots',sans-serif; font-size:30px; letter-spacing:.04em; color:#efeaff; padding:10px 0; border-bottom:1px solid rgba(185,138,255,.14);">{{ l.labelUp }}</a>
+      </sc-for>
+    </nav>
+    <a href="tel:944339750" style="display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; padding:15px; border-radius:999px; border:1px solid rgba(185,138,255,.3); color:#efeaff;">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      944 33 97 50
+    </a>
+  </div>
+</sc-if>
+
+<main style="position:relative; z-index:1;">
+
+<section id="top" data-a="hero" data-screen-label="Hero" style="position:relative; min-height:100svh; opacity:{{ heroOpacity }}; background:radial-gradient(700px 600px at 72% 55%, color-mix(in oklch, var(--neon) 14%, transparent), transparent 70%);">
+  <div style="max-width:1240px; margin:0 auto; min-height:100svh; padding:{{ heroPad }}; display:grid; grid-template-columns:{{ heroCols }}; grid-template-rows:{{ heroRows }}; grid-template-areas:{{ heroAreas }}; column-gap:48px;">
+
+    <div style="grid-area:head; align-self:end;">
+      <div data-a="hero-in" style="display:inline-flex; align-items:center; gap:10px; max-width:100%; white-space:nowrap; font-size:{{ pillFs }}; font-weight:600; color:#b3a8d9; border:1px solid rgba(185,138,255,.22); border-radius:999px; padding:7px 16px; margin-bottom:22px; background:rgba(20,14,51,.6);">
+        <span style="position:relative; width:8px; height:8px; display:inline-block;">
+          <span data-a="ring" style="position:absolute; inset:0; border-radius:50%; background:{{ statusColor }};"></span>
+          <span style="position:absolute; inset:0; border-radius:50%; background:{{ statusColor }}; box-shadow:0 0 8px {{ statusColor }};"></span>
+        </span>
+        <span>{{ statusText }}</span>
+      </div>
+      <h1 data-a="h1" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(44px,5vw,76px); line-height:1.08; letter-spacing:.02em; margin:0 0 8px;">
+        <span aria-label="BURGERS" style="display:block; white-space:nowrap;"><sc-for list="{{ h1a }}" as="ch" hint-placeholder-count="0"><span data-a="ch" aria-hidden="true" style="display:inline-block;">{{ ch }}</span></sc-for></span>
+        <span style="display:block; position:relative; white-space:nowrap;">
+          <span data-a="gl1" aria-hidden="true" style="position:absolute; left:-2.5px; top:-1.5px; color:var(--neon-2); opacity:.6; pointer-events:none;">DE OTRO</span>
+          <span data-a="gl2" aria-hidden="true" style="position:absolute; left:2.5px; top:1.5px; color:var(--magenta); opacity:.6; pointer-events:none;">DE OTRO</span>
+          <span aria-label="DE OTRO" style="position:relative; display:inline-block; color:var(--neon); text-shadow:0 0 10px var(--glow), 0 0 36px color-mix(in oklch, var(--neon) 50%, transparent), 0 0 80px color-mix(in oklch, var(--neon) 35%, transparent);"><sc-for list="{{ h1b }}" as="ch" hint-placeholder-count="0"><span data-a="ch" aria-hidden="true" style="display:inline-block;">{{ ch }}</span></sc-for></span>
+        </span>
+        <span aria-label="PLANETA" style="display:block; white-space:nowrap;"><sc-for list="{{ h1c }}" as="ch" hint-placeholder-count="0"><span data-a="ch" aria-hidden="true" style="display:inline-block;">{{ ch }}</span></sc-for></span>
+      </h1>
+    </div>
+
+    <div style="grid-area:{{ sceneArea }}; align-self:center; min-width:0;">
+    <div data-a="scene" style="position:relative; height:{{ sceneH }};">
+      <div data-a="beam" aria-hidden="true" style="position:absolute; left:0; right:0; margin:0 auto; top:calc(4% + 74px); bottom:7%; width:min(86%,460px); clip-path:polygon(44% 0, 56% 0, 100% 100%, 0 100%); transform-origin:50% 0; opacity:.55; background:linear-gradient(180deg, color-mix(in oklch, var(--neon) 80%, transparent), color-mix(in oklch, var(--neon) 24%, transparent) 55%, color-mix(in oklch, var(--neon-2) 14%, transparent));">
+        <div data-a="scan" style="position:absolute; inset:0; background-image:repeating-linear-gradient(180deg, rgba(255,255,255,.07) 0 2px, transparent 2px 10px); background-size:100% 40px;"></div>
+        <div data-a="core" style="position:absolute; inset:0; clip-path:polygon(47% 0, 53% 0, 72% 100%, 28% 100%); background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0) 85%); opacity:.35; mix-blend-mode:screen;"></div>
+      </div>
+      <div data-a="parts" aria-hidden="true" style="position:absolute; left:0; right:0; margin:0 auto; top:calc(4% + 90px); bottom:8%; width:min(70%,380px); pointer-events:none;">
+        <sc-for list="{{ particles }}" as="p" hint-placeholder-count="0">
+          <span data-a="part" style="position:absolute; bottom:0; left:{{ p.left }}; width:{{ p.size }}; height:{{ p.size }}; border-radius:50%; background:{{ p.color }}; box-shadow:0 0 8px {{ p.color }}; opacity:0;"></span>
+        </sc-for>
+      </div>
+      <div data-a="ground" aria-hidden="true" style="position:absolute; left:0; right:0; margin:0 auto; bottom:4%; width:76%; height:60px; border-radius:50%; background:radial-gradient(ellipse at center, color-mix(in oklch, var(--neon) 55%, transparent), transparent 68%);"></div>
+      <sc-if value="{{ mobOverlap }}" hint-placeholder-val="{{ false }}">
+        <div data-a="hint" aria-hidden="true" style="position:absolute; left:0; right:0; bottom:-4px; z-index:6; display:flex; flex-direction:column; align-items:center; gap:4px; font-size:11px; font-weight:700; letter-spacing:.18em; color:#b3a8d9;">
+          DESLIZA
+          <svg data-a="hint-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+      </sc-if>
+      <div data-a="burger" style="position:absolute; left:0; right:0; bottom:5%; display:flex; justify-content:center; z-index:3;">
+        <img data-a="burger-img" src="images/burger-negro.png" alt="Burger de Buba Burger flotando en el haz de luz" style="width:{{ burgerW }}; height:auto; flex-shrink:0; align-self:flex-end; display:block; mix-blend-mode:lighten; -webkit-mask-image:radial-gradient(ellipse 48% 48% at 50% 48%, #000 62%, transparent 74%); mask-image:radial-gradient(ellipse 48% 48% at 50% 48%, #000 62%, transparent 74%);">
+      </div>
+      <div data-a="ship" style="position:absolute; left:0; right:0; top:4%; display:flex; flex-direction:column; align-items:center; z-index:4;">
+        <svg data-a="ship-svg" viewBox="0 0 48 48" width="92" height="92" fill="none" stroke="var(--neon)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 14px var(--glow)) drop-shadow(0 0 30px var(--glow-soft));"><path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path><path d="M13 19 C16 24 20 26 21 22"></path><path d="M35 19 C32 24 28 26 27 22"></path></svg>
+      </div>
+    </div>
+    </div>
+
+    <div data-a="body" style="grid-area:{{ bodyArea }}; align-self:{{ bodyAlign }}; position:relative; z-index:5; min-width:0;">
+      <div data-a="hero-in" style="display:flex; align-items:baseline; gap:10px; margin:14px 0 20px; font-weight:600;">
+        <span data-a="count" data-to="4.7" data-dec="1" data-hero="1" style="font-family:'Zen Dots',sans-serif; font-size:22px;">4,7</span>
+        <span style="color:#fbbf24; letter-spacing:2px; text-shadow:0 0 10px rgba(251,191,36,.5);">★★★★★</span>
+        <span style="color:#b3a8d9; font-weight:500; font-size:14px;">304 reseñas en Google</span>
+      </div>
+      <p data-a="hero-in" style="color:#b3a8d9; font-size:19px; max-width:46ch; margin:0 0 28px; text-wrap:pretty;">Smash burgers, medallones a la brasa y bokatas con nombre de otra galaxia. En Masustegi, Bilbao — y también en tu casa.</p>
+      <div data-a="hero-in" id="pedir" style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a data-mag="1" href="#carta" onClick="{{ goCarta }}" style="flex:{{ ctaFlex }}; display:inline-flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap; font-weight:700; font-size:15px; padding:13px 24px; border-radius:999px; background:var(--neon); color:#0c0524; box-shadow:0 0 18px var(--glow), 0 0 40px var(--glow-soft); transition:box-shadow .2s;" style-hover="color:#0c0524; box-shadow:0 0 26px var(--glow), 0 0 70px var(--glow-soft);">Ver la carta</a>
+        <a data-mag="1" href="tel:944339750" style="flex:{{ ctaFlex }}; display:inline-flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap; font-weight:700; font-size:15px; padding:13px 18px; border-radius:999px; border:1px solid rgba(185,138,255,.22); color:#efeaff; transition:border-color .2s, box-shadow .2s;" style-hover="color:#efeaff; border-color:var(--neon); box-shadow:0 0 14px var(--glow-soft);">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          944 33 97 50
+        </a>
+      </div>
+      <div data-a="hero-in" style="display:flex; gap:8px; align-items:center; margin-top:{{ dMt }}; padding-top:{{ dPt }}; border-top:1px solid {{ dBorder }}; flex-wrap:wrap;">
+        <span style="flex-basis:{{ dLabelBasis }}; margin-right:4px; font-size:12.5px; color:#b3a8d9; font-weight:600; letter-spacing:.1em; text-transform:uppercase;">Te lo llevamos a casa</span>
+        <sc-for list="{{ delivery }}" as="d" hint-placeholder-count="3">
+          <a href="{{ d.href }}" target="_blank" rel="noopener" style="flex:{{ ctaFlex }}; text-align:center; white-space:nowrap; font-size:14px; font-weight:700; padding:8px 16px; border-radius:999px; border:1px solid rgba(185,138,255,.22); color:#efeaff; transition:border-color .2s, box-shadow .2s;" style-hover="color:#efeaff; border-color:var(--neon); box-shadow:0 0 12px var(--glow-soft);">{{ d.name }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="border-top:1px solid rgba(185,138,255,.22); border-bottom:1px solid rgba(185,138,255,.22); background:rgba(20,14,51,.45); padding:18px 0; overflow:hidden; display:flex; flex-direction:column; gap:14px;">
+  <div data-a="mq1" style="display:flex; width:max-content;">
+    <sc-for list="{{ marquee1 }}" as="m" hint-placeholder-count="12">
+      <span style="display:flex; align-items:center; gap:40px; padding-right:40px; font-family:'Zen Dots',sans-serif; font-size:clamp(16px,2.2vw,26px); letter-spacing:.12em; color:#efeaff; white-space:nowrap;">{{ m }}<span style="color:var(--neon); text-shadow:0 0 8px var(--glow);">✦</span></span>
+    </sc-for>
+  </div>
+  <div data-a="mq2" style="display:flex; width:max-content;">
+    <sc-for list="{{ marquee2 }}" as="m" hint-placeholder-count="14">
+      <span style="display:flex; align-items:center; gap:40px; padding-right:40px; font-family:'Zen Dots',sans-serif; font-size:clamp(16px,2.2vw,26px); letter-spacing:.12em; color:transparent; -webkit-text-stroke:1px color-mix(in oklch, var(--neon) 80%, white); white-space:nowrap;">{{ m }}<span style="color:var(--magenta); -webkit-text-stroke:0; text-shadow:0 0 8px var(--magenta);">✦</span></span>
+    </sc-for>
+  </div>
+</div>
+
+<section id="carta" data-screen-label="Carta" style="padding:clamp(48px,9vw,72px) 0 clamp(8px,3vw,40px);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px); text-align:center;">
+    <h2 data-a="h2" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(32px,4.4vw,56px); letter-spacing:.04em; line-height:1.1; margin:0 0 12px; color:var(--neon); text-shadow:0 0 12px var(--glow), 0 0 40px var(--glow-soft);">LA CARTA</h2>
+    <p data-a="rev" style="color:#b3a8d9; margin:0 auto 26px; max-width:52ch;">Cualquier burger o bokata, también <b style="color:#4ade80;">sin gluten</b>.</p>
+  </div>
+
+  <div style="position:sticky; top:68px; z-index:40; background:rgba(7,4,26,.86); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-top:1px solid rgba(185,138,255,.14); border-bottom:1px solid rgba(185,138,255,.22);">
+    <div data-a="chips" style="overflow-x:auto; scrollbar-width:none; max-width:1200px; margin:0 auto;">
+      <div style="position:relative; display:flex; gap:8px; width:max-content; padding:12px clamp(20px,4vw,32px);">
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <span aria-hidden="true" style="position:absolute; top:12px; bottom:12px; left:{{ indL }}; width:{{ indW }}; border-radius:999px; background:var(--neon); box-shadow:0 0 16px var(--glow); transition:left .4s cubic-bezier(.4,0,.2,1), width .4s cubic-bezier(.4,0,.2,1);"></span>
+        </sc-if>
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+          <button data-chip="{{ $index }}" onClick="{{ c.go }}" aria-pressed="{{ c.isActive }}" style="position:relative; flex-shrink:0; font-family:'Zen Dots',sans-serif; font-size:12.5px; letter-spacing:.1em; color:{{ c.chipColor }}; background:{{ c.chipBg }}; border:1px solid {{ c.chipBorder }}; box-shadow:{{ c.chipShadow }}; padding:10px 18px; border-radius:999px; cursor:pointer; outline:none; -webkit-tap-highlight-color:transparent; transition:color .3s, background-color .3s, border-color .3s, box-shadow .3s;">{{ c.nombreUp }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="2">
+    <div id="{{ cat.anchor }}" data-cat="{{ $index }}" style="max-width:1200px; margin:0 auto; padding:64px clamp(20px,4vw,32px) 8px;">
+      <div data-a="rev" style="display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap; margin-bottom:8px;">
+        <span style="font-family:'Zen Dots',sans-serif; font-size:clamp(46px,6vw,76px); line-height:.9; color:transparent; -webkit-text-stroke:1.5px var(--neon); filter:drop-shadow(0 0 8px var(--glow-soft));">{{ cat.num }}</span>
+        <div style="display:flex; flex-direction:column; gap:2px; padding-bottom:4px;">
+          <span style="font-size:12.5px; font-weight:700; letter-spacing:.16em; color:var(--neon-2);">{{ cat.claimUp }}</span>
+          <h3 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(24px,3vw,36px); letter-spacing:.04em; line-height:1.05; margin:0;">{{ cat.nombreUp }}</h3>
+        </div>
+      </div>
+      <sc-if value="{{ cat.hasNota }}" hint-placeholder-val="{{ false }}">
+        <p data-a="rev" style="color:#b3a8d9; font-size:14.5px; margin:6px 0 0;">{{ cat.nota }}</p>
+      </sc-if>
+
+      <sc-if value="{{ cat.notStar }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%,270px), 1fr)); gap:16px; margin-top:24px;">
+          <sc-for list="{{ cat.items }}" as="it" hint-placeholder-count="4">
+            <article data-a="card" style="position:relative; overflow:hidden; border-radius:20px; padding:22px 22px 20px; background:linear-gradient(170deg, #1b1442, #140e33); border:1px solid rgba(185,138,255,.22); transition:transform .25s, box-shadow .25s, border-color .25s; display:flex; flex-direction:column; gap:10px;" style-hover="transform:translateY(-5px); border-color:color-mix(in oklch, var(--neon) 60%, transparent); box-shadow:0 0 30px color-mix(in oklch, var(--neon) 22%, transparent), 0 24px 50px rgba(0,0,0,.5);">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+                <span style="font-family:'Zen Dots',sans-serif; font-size:12px; letter-spacing:.14em; color:color-mix(in oklch, var(--neon) 75%, #b3a8d9);">{{ cat.num }}.{{ it.num }}</span>
+                <div style="display:flex; gap:6px;">
+                  <sc-if value="{{ it.isPicante }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:999px; border:1px solid rgba(251,146,60,.45); color:#fb923c;">Picante</span></sc-if>
+                  <sc-if value="{{ it.isVegan }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:999px; border:1px solid rgba(74,222,128,.45); color:#4ade80;">Vegana</span></sc-if>
+                </div>
+              </div>
+              <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+                <h4 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:17px; letter-spacing:.03em; margin:0; line-height:1.25;">{{ it.nombreUp }}</h4>
+                <span style="font-family:'Zen Dots',sans-serif; font-size:15px; color:var(--neon); white-space:nowrap; text-shadow:0 0 10px var(--glow);">{{ it.precio }}€</span>
+              </div>
+              <p style="color:#b3a8d9; font-size:14.5px; line-height:1.5; margin:0;">{{ it.desc }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ cat.isStar }}" hint-placeholder-val="{{ false }}">
+        <div data-a="starwrap" style="position:relative; margin-top:24px;">
+          <div data-a="starrow" onPointerDown="{{ dragStart }}" onPointerMove="{{ dragMove }}" onPointerUp="{{ dragEnd }}" onPointerCancel="{{ dragEnd }}" onScroll="{{ starScroll }}" style="display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:10px 2px 24px; cursor:grab; touch-action:pan-x pan-y;">
+            <sc-for list="{{ cat.items }}" as="it" hint-placeholder-count="3">
+              <article data-a="card" style="flex:0 0 min(82vw,360px); scroll-snap-align:start; position:relative; overflow:hidden; border-radius:22px; padding:30px 26px 26px; background:radial-gradient(400px 220px at 100% 0%, color-mix(in oklch, var(--neon) 20%, transparent), transparent 70%), linear-gradient(170deg, #1b1442, #140e33); border:1px solid color-mix(in oklch, var(--neon) 40%, transparent); display:flex; flex-direction:column; gap:12px; user-select:none; transition:transform .25s, box-shadow .25s;" style-hover="transform:translateY(-5px); box-shadow:0 0 34px color-mix(in oklch, var(--neon) 26%, transparent);">
+                <span aria-hidden="true" style="position:absolute; top:0; left:26px; right:26px; height:3px; border-radius:0 0 4px 4px; background:linear-gradient(90deg, var(--neon), var(--magenta), var(--neon-2)); box-shadow:0 0 14px var(--glow);"></span>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <span style="font-family:'Zen Dots',sans-serif; font-size:12px; letter-spacing:.16em; color:#fbbf24; text-shadow:0 0 10px rgba(251,191,36,.5);">★ ESTRELLA {{ it.num }}</span>
+                  <sc-if value="{{ it.isPicante }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:999px; border:1px solid rgba(251,146,60,.45); color:#fb923c;">Picante</span></sc-if>
+                </div>
+                <h4 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:24px; letter-spacing:.03em; line-height:1.15; margin:0;">{{ it.nombreUp }}</h4>
+                <p style="color:#b3a8d9; font-size:15px; line-height:1.5; margin:0; flex:1;">{{ it.desc }}</p>
+                <span style="font-family:'Zen Dots',sans-serif; font-size:28px; color:var(--neon); text-shadow:0 0 12px var(--glow);">{{ it.precio }}€</span>
+              </article>
+            </sc-for>
+          </div>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <div style="flex:1; height:3px; border-radius:3px; background:rgba(185,138,255,.16); overflow:hidden;">
+              <div data-a="bar" style="height:100%; width:100%; background:linear-gradient(90deg, var(--neon), var(--neon-2)); box-shadow:0 0 10px var(--glow); transform-origin:0 50%; transform:scaleX(.3);"></div>
+            </div>
+            <button onClick="{{ starPrev }}" aria-label="Anterior" style="width:44px; height:44px; border-radius:50%; border:1px solid var(--neon); background:transparent; color:var(--neon); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s, color .2s;" style-hover="background:var(--neon); color:#0c0524;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></button>
+            <button onClick="{{ starNext }}" aria-label="Siguiente" style="width:44px; height:44px; border-radius:50%; border:1px solid var(--neon); background:transparent; color:var(--neon); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s, color .2s;" style-hover="background:var(--neon); color:#0c0524;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </sc-for>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div id="carta-panel" onTouchStart="{{ swipeStart }}" onTouchEnd="{{ swipeEnd }}" style="padding:26px 20px 0;">
+      <div data-a="mhead" style="display:flex; align-items:flex-end; gap:14px; margin-bottom:6px;">
+        <span style="font-family:'Zen Dots',sans-serif; font-size:52px; line-height:.9; color:transparent; -webkit-text-stroke:1.5px var(--neon); filter:drop-shadow(0 0 8px var(--glow-soft));">{{ mc.num }}</span>
+        <div style="display:flex; flex-direction:column; gap:2px; padding-bottom:3px; min-width:0;">
+          <span style="font-size:11.5px; font-weight:700; letter-spacing:.16em; color:var(--neon-2);">{{ mc.claimUp }}</span>
+          <h3 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:24px; letter-spacing:.04em; line-height:1.05; margin:0;">{{ mc.nombreUp }}</h3>
+        </div>
+        <span style="margin-left:auto; padding-bottom:5px; font-size:11.5px; font-weight:700; letter-spacing:.1em; color:#b3a8d9; white-space:nowrap;">{{ mc.count }}</span>
+      </div>
+      <sc-if value="{{ mc.hasNota }}" hint-placeholder-val="{{ false }}">
+        <p data-a="mhead" style="color:#b3a8d9; font-size:14px; margin:8px 0 0;">{{ mc.nota }}</p>
+      </sc-if>
+
+      <sc-if value="{{ mc.notStar }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:18px; border-top:1px solid rgba(185,138,255,.22);">
+          <sc-for list="{{ mc.items }}" as="it" hint-placeholder-count="5">
+            <div data-a="mrow" style="border-bottom:1px dashed rgba(185,138,255,.25);">
+              <button onClick="{{ it.toggle }}" aria-expanded="{{ it.open }}" style="-webkit-tap-highlight-color:transparent; outline:none; width:100%; display:flex; align-items:center; gap:12px; min-height:62px; padding:12px 0; background:transparent; border:none; color:#efeaff; text-align:left; cursor:pointer; font-family:'Space Grotesk',sans-serif;">
+                <span style="font-family:'Zen Dots',sans-serif; font-size:11px; letter-spacing:.1em; color:color-mix(in oklch, var(--neon) 75%, #b3a8d9); width:22px; flex-shrink:0;">{{ it.num }}</span>
+                <span style="flex:1; min-width:0; display:flex; flex-direction:column; gap:5px;">
+                  <span style="font-family:'Zen Dots',sans-serif; font-size:15px; letter-spacing:.03em; line-height:1.25;">{{ it.nombreUp }}</span>
+                  <sc-if value="{{ it.hasTags }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:flex; gap:6px;">
+                      <sc-if value="{{ it.isPicante }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:999px; border:1px solid rgba(251,146,60,.45); color:#fb923c;">Picante</span></sc-if>
+                      <sc-if value="{{ it.isVegan }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:999px; border:1px solid rgba(74,222,128,.45); color:#4ade80;">Vegana</span></sc-if>
+                    </span>
+                  </sc-if>
+                </span>
+                <span style="font-family:'Zen Dots',sans-serif; font-size:14px; color:var(--neon); white-space:nowrap; text-shadow:0 0 10px var(--glow);">{{ it.precio }}€</span>
+                <span aria-hidden="true" style="width:30px; height:30px; flex-shrink:0; border-radius:50%; border:1px solid rgba(185,138,255,.35); display:flex; align-items:center; justify-content:center; color:var(--neon); transform:{{ it.rot }}; transition:transform .35s cubic-bezier(.4,0,.2,1);"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+              </button>
+              <sc-if value="{{ it.open }}" hint-placeholder-val="{{ false }}">
+                <div data-a="mdesc" style="overflow:hidden;">
+                  <p style="margin:0; padding:0 42px 16px 34px; color:#b3a8d9; font-size:14.5px; line-height:1.5;">{{ it.desc }}</p>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ mc.isStar }}" hint-placeholder-val="{{ false }}">
+        <div data-a="starwrap" style="position:relative; margin-top:20px;">
+          <div data-a="starrow" onScroll="{{ starScroll }}" style="display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:8px 2px 20px;">
+            <sc-for list="{{ mc.items }}" as="it" hint-placeholder-count="2">
+              <article data-a="mrow" style="flex:0 0 82%; scroll-snap-align:start; position:relative; overflow:hidden; border-radius:22px; padding:28px 22px 22px; background:radial-gradient(400px 220px at 100% 0%, color-mix(in oklch, var(--neon) 20%, transparent), transparent 70%), linear-gradient(170deg, #1b1442, #140e33); border:1px solid color-mix(in oklch, var(--neon) 40%, transparent); display:flex; flex-direction:column; gap:10px;">
+                <span aria-hidden="true" style="position:absolute; top:0; left:22px; right:22px; height:3px; border-radius:0 0 4px 4px; background:linear-gradient(90deg, var(--neon), var(--magenta), var(--neon-2)); box-shadow:0 0 14px var(--glow);"></span>
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <span style="font-family:'Zen Dots',sans-serif; font-size:11.5px; letter-spacing:.16em; color:#fbbf24; text-shadow:0 0 10px rgba(251,191,36,.5);">★ ESTRELLA {{ it.num }}</span>
+                  <sc-if value="{{ it.isPicante }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:2px 9px; border-radius:999px; border:1px solid rgba(251,146,60,.45); color:#fb923c;">Picante</span></sc-if>
+                </div>
+                <h4 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:21px; letter-spacing:.03em; line-height:1.15; margin:0;">{{ it.nombreUp }}</h4>
+                <p style="color:#b3a8d9; font-size:14.5px; line-height:1.5; margin:0; flex:1;">{{ it.desc }}</p>
+                <span style="font-family:'Zen Dots',sans-serif; font-size:24px; color:var(--neon); text-shadow:0 0 12px var(--glow);">{{ it.precio }}€</span>
+              </article>
+            </sc-for>
+          </div>
+          <div style="height:3px; border-radius:3px; background:rgba(185,138,255,.16); overflow:hidden;">
+            <div data-a="bar" style="height:100%; width:100%; background:linear-gradient(90deg, var(--neon), var(--neon-2)); box-shadow:0 0 10px var(--glow); transform-origin:0 50%; transform:scaleX(.3);"></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <button onClick="{{ mc.goNext }}" style="-webkit-tap-highlight-color:transparent; width:100%; margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:56px; padding:0 20px; border-radius:999px; border:1px solid color-mix(in oklch, var(--neon) 45%, transparent); background:rgba(20,14,51,.6); color:#efeaff; font-family:'Zen Dots',sans-serif; font-size:12.5px; letter-spacing:.1em; cursor:pointer; box-shadow:0 0 18px var(--glow-soft);">
+        <span>{{ mc.nextLabel }}</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </button>
+      <p style="text-align:center; color:#b3a8d9; font-size:12.5px; margin:12px 0 0;">Desliza a los lados para cambiar de categoría</p>
+    </div>
+  </sc-if>
+
+  <div style="max-width:1200px; margin:clamp(30px,5vw,48px) auto 0; padding:0 clamp(20px,4vw,32px);">
+    <h3 data-a="rev" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:15px; letter-spacing:.12em; color:#b3a8d9; margin:0 0 14px;">EXTRAS</h3>
+    <div data-a="rev" style="display:flex; flex-wrap:wrap; gap:8px;">
+      <sc-for list="{{ extras }}" as="e" hint-placeholder-count="10">
+        <span style="font-size:13.5px; color:#b3a8d9; border:1px dashed rgba(185,138,255,.3); border-radius:999px; padding:6px 14px;">{{ e.n }} <b style="color:#efeaff; font-weight:600;">{{ e.p }}€</b></span>
+      </sc-for>
+    </div>
+    <p data-a="rev" style="color:#b3a8d9; font-size:14px; margin:22px 0 0;">¿Alergias o intolerancias? Pregúntanos antes de pedir: te informamos de los alérgenos de cada plato.</p>
+  </div>
+</section>
+
+<section id="menus" data-screen-label="Menús y combos" style="padding:clamp(40px,8vw,80px) 0 clamp(40px,8vw,80px);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px);">
+    <div style="display:flex; align-items:baseline; gap:6px 18px; flex-wrap:wrap; margin-bottom:clamp(14px,3vw,32px);">
+      <h2 data-a="h2" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(28px,3.6vw,46px); letter-spacing:.04em; line-height:1.1; margin:0; color:var(--neon); text-shadow:0 0 12px var(--glow), 0 0 40px var(--glow-soft);">MENÚS Y COMBOS</h2>
+      <span data-a="rev" style="color:#b3a8d9; font-size:16px;">Sube de nivel tu pedido</span>
+    </div>
+    <div>
+    <div data-a="menurow" onScroll="{{ starScroll }}" style="display:flex; gap:clamp(14px,2vw,22px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 calc(-1 * clamp(20px,4vw,32px)); padding:12px clamp(20px,4vw,32px) 18px; scroll-padding:0 clamp(20px,4vw,32px);">
+      <sc-for list="{{ menus }}" as="m" hint-placeholder-count="3">
+        <article data-a="ticket" style="flex:1 0 min(80vw,300px); scroll-snap-align:start; position:relative; border-radius:22px; padding:32px 28px 28px; background:linear-gradient(160deg, color-mix(in oklch, var(--neon) 16%, #140e33), #140e33); border:1px solid rgba(185,138,255,.22); transform-style:preserve-3d;">
+          <span aria-hidden="true" style="position:absolute; top:0; left:28px; right:28px; height:3px; background:linear-gradient(90deg, var(--neon), var(--magenta), var(--neon-2)); border-radius:0 0 4px 4px; box-shadow:0 0 14px var(--glow);"></span>
+          <h3 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:19px; margin:0 0 6px;">{{ m.nombreUp }}</h3>
+          <div data-a="mprice" style="font-family:'Zen Dots',sans-serif; font-size:30px; color:var(--neon); text-shadow:0 0 12px var(--glow), 0 0 40px var(--glow-soft);">{{ m.precio }}</div>
+          <div aria-hidden="true" style="position:relative; margin:20px -28px 18px; border-top:2px dashed rgba(185,138,255,.25);">
+            <span style="position:absolute; left:-12px; top:-12px; width:22px; height:22px; border-radius:50%; background:#07041a; border-right:1px solid rgba(185,138,255,.22);"></span>
+            <span style="position:absolute; right:-12px; top:-12px; width:22px; height:22px; border-radius:50%; background:#07041a; border-left:1px solid rgba(185,138,255,.22);"></span>
+          </div>
+          <p style="color:#b3a8d9; font-size:15px; margin:0;">{{ m.desc }}</p>
+          <sc-if value="{{ m.hasDesc2 }}" hint-placeholder-val="{{ false }}"><p style="color:#b3a8d9; font-size:15px; margin:8px 0 0;">{{ m.desc2 }}</p></sc-if>
+        </article>
+      </sc-for>
+    </div>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="height:3px; border-radius:3px; background:rgba(185,138,255,.16); overflow:hidden;">
+        <div data-a="bar" style="height:100%; width:100%; background:linear-gradient(90deg, var(--neon), var(--neon-2)); box-shadow:0 0 10px var(--glow); transform-origin:0 50%; transform:scaleX(.3);"></div>
+      </div>
+    </sc-if>
+    </div>
+  </div>
+</section>
+
+<section id="singluten" data-screen-label="Sin gluten" style="padding:clamp(48px,9vw,88px) 0 clamp(40px,9vw,88px); background:radial-gradient(800px 400px at 80% 50%, rgba(74,222,128,.09), transparent 70%), #0d0826; border-top:1px solid rgba(185,138,255,.22); border-bottom:1px solid rgba(185,138,255,.22);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px); display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,380px), 1fr)); gap:clamp(44px,6vw,56px); align-items:center;">
+    <div>
+      <h2 data-a="gf-title" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(28px,3.4vw,44px); line-height:1.12; margin:0 0 18px; color:#4ade80; text-shadow:0 0 14px rgba(74,222,128,.55), 0 0 50px rgba(74,222,128,.3);">LIBRE DE GLUTEN,<br>LLENO DE ALEGRÍA</h2>
+      <p data-a="rev" style="color:#b3a8d9; font-size:18px; max-width:50ch; margin:0; text-wrap:pretty;">Pídenos <b style="color:#efeaff;">cualquier burger o bokata en versión sin gluten</b>. Mismo sabor interestelar, cero gluten. Avísanos al pedir y nos encargamos del resto.</p>
+    </div>
+    <div style="position:relative;">
+      <figure data-a="clip" style="margin:0; border-radius:22px; overflow:hidden; border:1px solid rgba(74,222,128,.25); aspect-ratio:4/3; box-shadow:0 0 40px rgba(74,222,128,.12);">
+        <img data-a="clip-img" src="images/croqueta-guantes.png" alt="Croqueta crujiente abierta con guantes negros" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </figure>
+      <div data-a="badge" aria-hidden="true" style="position:absolute; top:-34px; right:-14px; width:118px; height:118px; border-radius:50%; background:rgba(13,8,38,.88); backdrop-filter:blur(6px); border:1px solid rgba(74,222,128,.4); box-shadow:0 0 24px rgba(74,222,128,.25);">
+        <svg viewBox="0 0 120 120" width="118" height="118"><defs><path id="gf-circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"></path></defs><text style="font-family:'Zen Dots',sans-serif; font-size:10.5px; letter-spacing:1.6px; fill:#4ade80;"><textPath href="#gf-circ">SIN GLUTEN ✦ SIN GLUTEN ✦ </textPath></text><circle cx="60" cy="60" r="20" fill="none" stroke="#4ade80" stroke-width="1.5" opacity=".7"></circle><path d="M52 60l6 6 11-12" fill="none" stroke="#4ade80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="resenas" data-screen-label="Reseñas" style="padding:clamp(40px,9vw,88px) 0 clamp(40px,8vw,80px); text-align:center;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px);">
+    <div data-a="count" data-to="4.7" data-dec="1" style="font-family:'Zen Dots',sans-serif; font-size:clamp(80px,11vw,140px); line-height:1; color:var(--neon); text-shadow:0 0 24px var(--glow), 0 0 90px color-mix(in oklch, var(--neon) 40%, transparent);">4,7</div>
+    <div style="display:flex; justify-content:center; gap:8px; margin:16px 0 8px;">
+      <sc-for list="{{ fiveStars }}" as="s" hint-placeholder-count="5">
+        <span data-a="bigstar" style="display:inline-block; color:#fbbf24; font-size:30px; text-shadow:0 0 16px rgba(251,191,36,.5);">★</span>
+      </sc-for>
+    </div>
+    <p style="color:#b3a8d9; margin:0;"><span data-a="count" data-to="304" data-dec="0">304</span> reseñas en Google · 10 – 20 € por persona</p>
+  </div>
+  <div style="margin-top:clamp(26px,5vw,44px); overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);">
+    <div data-a="revrow" style="display:flex; width:max-content;">
+      <sc-for list="{{ reviewsLoop }}" as="r" hint-placeholder-count="4">
+        <figure style="flex:0 0 auto; width:min(78vw,340px); margin:0 18px 0 0; text-align:left; border-radius:20px; padding:24px; background:#140e33; border:1px solid rgba(185,138,255,.18); display:flex; flex-direction:column; gap:14px;">
+          <span style="color:#fbbf24; letter-spacing:2px; font-size:14px;">★★★★★</span>
+          <blockquote style="margin:0; font-size:16px; line-height:1.5; color:#efeaff; text-wrap:pretty;">“{{ r.t }}”</blockquote>
+          <figcaption style="font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#b3a8d9;">Reseña de ejemplo</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px);">
+    <div data-a="rev" style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:clamp(22px,4vw,34px) 0 clamp(18px,4vw,30px);">
+      <sc-for list="{{ perks }}" as="p" hint-placeholder-count="4">
+        <span style="font-size:14px; font-weight:600; color:#b3a8d9; border:1px solid rgba(185,138,255,.22); border-radius:999px; padding:8px 18px; background:rgba(20,14,51,.55);">{{ p }}</span>
+      </sc-for>
+    </div>
+    <a data-mag="1" href="https://www.google.com/maps/search/Buba+Burger+Bilbao" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:15px; padding:13px 24px; border-radius:999px; border:1px solid rgba(185,138,255,.22); color:#efeaff; transition:border-color .2s, box-shadow .2s;" style-hover="color:#efeaff; border-color:var(--neon); box-shadow:0 0 14px var(--glow-soft);">Ver reseñas en Google</a>
+  </div>
+</section>
+
+<section id="visitanos" data-screen-label="Horario y mapa" style="padding:clamp(40px,9vw,88px) 0; background:#0d0826; border-top:1px solid rgba(185,138,255,.22);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px); display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,400px), 1fr)); gap:clamp(28px,5vw,48px); align-items:start;">
+    <div>
+      <h2 data-a="h2" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(28px,3.6vw,46px); letter-spacing:.04em; line-height:1.1; margin:0 0 22px; color:var(--neon); text-shadow:0 0 12px var(--glow), 0 0 40px var(--glow-soft);">VISÍTANOS</h2>
+      <div data-a="rev" style="display:grid; gap:10px; color:#b3a8d9; font-size:15.5px;">
+        <span style="display:flex; align-items:center; gap:10px; color:#efeaff; font-size:17px; font-weight:600;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Masustegi Kalea, 3 · 48006 Bilbao</span>
+        <a href="tel:944339750" style="display:flex; align-items:center; gap:10px; color:#efeaff;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>944 33 97 50</a>
+        <a href="mailto:bubaburgers@gmail.com" style="display:flex; align-items:center; gap:10px; color:#efeaff;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>bubaburgers@gmail.com</a>
+      </div>
+      <div style="margin-top:26px; border:1px solid rgba(185,138,255,.22); border-radius:18px; overflow:hidden;">
+        <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
+          <div data-a="hour" style="display:flex; justify-content:space-between; align-items:center; padding:13px 22px; font-size:15.5px; border-bottom:1px solid rgba(185,138,255,.11); background:{{ h.bg }};">
+            <span style="display:flex; align-items:center; gap:10px;">{{ h.d }}<sc-if value="{{ h.isToday }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Zen Dots',sans-serif; font-size:10.5px; letter-spacing:.12em; color:var(--neon); text-shadow:0 0 8px var(--glow);">HOY</span></sc-if></span>
+            <span style="color:{{ h.color }};">{{ h.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div data-a="rev" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;">
+        <a data-mag="1" href="https://www.google.com/maps/dir/?api=1&amp;destination=Masustegi+Kalea+3+48006+Bilbao" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:15px; padding:13px 24px; border-radius:999px; background:var(--neon); color:#0c0524; box-shadow:0 0 18px var(--glow), 0 0 40px var(--glow-soft);" style-hover="color:#0c0524;">Cómo llegar</a>
+        <a data-mag="1" href="tel:944339750" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:15px; padding:13px 22px; border-radius:999px; border:1px solid rgba(185,138,255,.22); color:#efeaff;" style-hover="color:#efeaff; border-color:var(--neon);">Llamar</a>
+      </div>
+    </div>
+    <div data-a="clip" style="border-radius:22px; overflow:hidden; border:1px solid rgba(185,138,255,.22); height:{{ mapH }}; box-shadow:0 0 40px color-mix(in oklch, var(--neon) 14%, transparent);">
+      <iframe data-a="clip-img" title="Mapa de Buba Burger" src="https://www.google.com/maps?q=Masustegi+Kalea+3,+48006+Bilbao&amp;output=embed" loading="lazy" style="width:100%; height:100%; border:0; display:block; filter:invert(.9) hue-rotate(190deg) saturate(.8) contrast(1.05);"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="instagram" data-a="insta" data-screen-label="Instagram" style="padding:clamp(40px,9vw,88px) 0 clamp(40px,10vw,110px); overflow:hidden;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 clamp(20px,4vw,32px); text-align:center;">
+    <h2 data-a="h2" style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:clamp(26px,3.6vw,46px); letter-spacing:.04em; line-height:1.1; margin:0 0 10px; color:var(--neon); text-shadow:0 0 12px var(--glow), 0 0 40px var(--glow-soft);">@BUBABURGER_</h2>
+    <p data-a="rev" style="color:#b3a8d9; margin:0 0 clamp(22px,5vw,40px);">Lo último desde la nave nodriza.</p>
+    <div style="display:grid; grid-template-columns:{{ instaCols }}; gap:clamp(10px,2vw,16px); text-align:left; margin-bottom:clamp(30px,6vw,48px);">
+      <sc-for list="{{ photos }}" as="ph" hint-placeholder-count="4">
+        <div data-speed="{{ ph.speed }}" style="margin-top:{{ ph.offset }};">
+          <a href="https://www.instagram.com/bubaburger_" target="_blank" rel="noopener" style="display:block; position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/5; border:1px solid rgba(185,138,255,.22);">
+            <img src="{{ ph.src }}" alt="{{ ph.alt }}" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.4,0,.2,1);" style-hover="transform:scale(1.06);">
+            <span style="position:absolute; left:12px; bottom:12px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:6px 12px; border-radius:999px; background:rgba(7,4,26,.72); backdrop-filter:blur(6px); border:1px solid rgba(185,138,255,.22); color:#efeaff;">{{ ph.cap }}</span>
+          </a>
+        </div>
+      </sc-for>
+    </div>
+    <a data-mag="1" href="https://www.instagram.com/bubaburger_" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:15px; padding:13px 24px; border-radius:999px; background:var(--neon); color:#0c0524; box-shadow:0 0 18px var(--glow), 0 0 40px var(--glow-soft);" style-hover="color:#0c0524;">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><path d="M17.5 6.5h.01"></path></svg>
+      Seguir en Instagram
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer data-screen-label="Footer" style="position:relative; z-index:1; border-top:1px solid rgba(185,138,255,.22); padding:{{ footPadT }} clamp(20px,4vw,32px) {{ footPadB }}; background:#0d0826;">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:{{ footCols }}; gap:{{ footGap }};">
+    <div style="grid-column:{{ footBrandCol }};">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:{{ footBrandMb }};">
+        <svg viewBox="0 0 48 48" width="{{ footLogo }}" height="{{ footLogo }}" fill="none" stroke="var(--neon)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 8px var(--glow));"><path d="M24 4 C36 4 42 12 42 19 C42 30 30 40 24 44 C18 40 6 30 6 19 C6 12 12 4 24 4 Z"></path><path d="M13 19 C16 24 20 26 21 22"></path><path d="M35 19 C32 24 28 26 27 22"></path></svg>
+        <b style="font-family:'Zen Dots',sans-serif; font-size:{{ footBrandFs }}; font-weight:400;">BUBA BURGER</b>
+      </div>
+      <p style="color:#b3a8d9; font-size:{{ footSmallFs }}; max-width:38ch; margin:0;">Burgers de otro planeta en Masustegi, Bilbao. Sin gluten si lo pides. Con flow siempre.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:{{ footLinkGap }}; min-width:0;">
+      <h4 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:{{ footHFs }}; letter-spacing:.12em; color:#b3a8d9; margin:0 0 4px;">CONTACTO</h4>
+      <a href="tel:944339750" style="font-size:{{ footLinkFs }};">944 33 97 50</a>
+      <a href="mailto:bubaburgers@gmail.com" style="font-size:{{ footLinkFs }}; overflow-wrap:anywhere;">bubaburgers@gmail.com</a>
+      <a href="https://www.instagram.com/bubaburger_" target="_blank" rel="noopener" style="font-size:{{ footLinkFs }};">@bubaburger_</a>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:{{ footLinkGap }}; min-width:0;">
+      <h4 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:{{ footHFs }}; letter-spacing:.12em; color:#b3a8d9; margin:0 0 4px;">A DOMICILIO</h4>
+      <sc-for list="{{ delivery }}" as="d" hint-placeholder-count="3">
+        <a href="{{ d.href }}" target="_blank" rel="noopener" style="font-size:{{ footLinkFs }};">{{ d.name }}</a>
+      </sc-for>
+    </div>
+  </div>
+  <div style="max-width:1200px; margin:{{ footLegalMt }} auto 0; color:#b3a8d9; font-size:{{ footLegalFs }}; line-height:1.45; border-top:1px solid rgba(185,138,255,.11); padding-top:{{ footLegalPt }}; display:flex; flex-direction:column; gap:4px;">
+    <span>Información sobre alérgenos disponible en el local. Pregúntanos antes de pedir.</span>
+    <span>Propuesta de diseño (demo): las reseñas destacadas son de ejemplo.</span>
+    <span>© 2026 Buba Burger · Masustegi Kalea 3, 48006 Bilbao</span>
+  </div>
+</footer>
+
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:12px; right:12px; bottom:12px; z-index:55; display:flex; gap:10px; padding:8px; border-radius:999px; background:rgba(13,8,38,.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(185,138,255,.28); box-shadow:0 10px 40px rgba(0,0,0,.6); transform:{{ barTransform }}; transition:transform .45s cubic-bezier(.4,0,.2,1);">
+    <a href="tel:944339750" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; min-height:48px; border-radius:999px; border:1px solid rgba(185,138,255,.25); color:#efeaff; font-weight:700; font-size:15px;">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      Llamar
+    </a>
+    <button onClick="{{ openSheet }}" style="flex:1.4; display:flex; align-items:center; justify-content:center; gap:8px; min-height:48px; border-radius:999px; border:none; cursor:pointer; background:var(--neon); color:#0c0524; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; box-shadow:0 0 18px var(--glow);">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      Pedir a domicilio
+    </button>
+  </div>
+</sc-if>
+
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeSheet }}" style="position:fixed; inset:0; z-index:80; background:rgba(7,4,26,.7); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); display:flex; justify-content:center; align-items:{{ sheetAlign }}; padding:{{ sheetPad }};">
+    <div data-a="sheet" onClick="{{ stop }}" style="width:100%; max-width:420px; border-radius:{{ sheetRadius }}; padding:28px 24px 30px; background:linear-gradient(170deg, #1b1442, #140e33); border:1px solid color-mix(in oklch, var(--neon) 40%, transparent); box-shadow:0 0 50px var(--glow-soft), 0 30px 80px rgba(0,0,0,.6);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <h3 style="font-family:'Zen Dots',sans-serif; font-weight:400; font-size:20px; margin:0; color:var(--neon); text-shadow:0 0 10px var(--glow);">PEDIR A DOMICILIO</h3>
+        <button onClick="{{ closeSheet }}" aria-label="Cerrar" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(185,138,255,.22); background:transparent; color:#efeaff; display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </div>
+      <p style="color:#b3a8d9; font-size:15px; margin:0 0 18px;">Elige tu plataforma y te lo llevamos a casa.</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <sc-for list="{{ delivery }}" as="d" hint-placeholder-count="3">
+          <a href="{{ d.href }}" target="_blank" rel="noopener" style="display:flex; justify-content:space-between; align-items:center; min-height:54px; padding:0 20px; border-radius:16px; border:1px solid rgba(185,138,255,.22); background:rgba(7,4,26,.4); color:#efeaff; font-weight:700; transition:border-color .2s, box-shadow .2s;" style-hover="color:#efeaff; border-color:var(--neon); box-shadow:0 0 16px var(--glow-soft);">{{ d.name }}<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--neon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></a>
+        </sc-for>
+      </div>
+      <p style="color:#b3a8d9; font-size:14px; margin:18px 0 0; text-align:center;">¿Prefieres recoger? Llámanos al <a href="tel:944339750" style="color:var(--neon);">944 33 97 50</a></p>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;neonColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#b98aff&quot;,&quot;options&quot;:[&quot;#b98aff&quot;,&quot;#6ee7f9&quot;,&quot;#f472d0&quot;,&quot;#7CFC9B&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Neón&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;},&quot;cursorHalo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;}}">
+class Component extends DCLogic {
+  static DATA = {
+    categorias: [
+      { id: "hamburguesas", nombre: "Hamburguesas", claim: "De otro planeta", nota: "Carne: medallón a la brasa 180 g · doble smash 90 g — Pan: brioche de patata · pan rústico", items: [
+        { nombre: "Easy", precio: "9,90", desc: "Bacon crujiente, pepinillo picado, queso cheddar y salsa clásica." },
+        { nombre: "Classic", precio: "11,90", desc: "Queso Monterrey, lechuga, tomate, bacon, huevo, cebolla pochada y salsa clásica." },
+        { nombre: "Apollo XIII", precio: "11,90", desc: "Pollo crujiente, queso Monterrey, lechuga y mayonesa de guanciale casera." },
+        { nombre: "Emmy Yummy", precio: "12,90", desc: "Queso Monterrey, cheddar, bacon, pepinillo picado, cebolla frita y salsa Emmy casera.", tags: ["picante"] },
+        { nombre: "Espacial", precio: "11,90", desc: "Pollo crujiente, Monterrey, tomate, lechuga, mayo de hinojo y salsa de mango." },
+        { nombre: "Trufada", precio: "12,90", desc: "Gouda ahumado, huevo y salsa casera de boletus–trufa." },
+        { nombre: "Cabrona", precio: "11,90", desc: "Queso de cabra, cebolla caramelizada, rúcula y salsa de piquillo casera." },
+        { nombre: "Luz Verde", precio: "12,90", desc: "Cebolla caramelizada, mozzarella vegana, lechuga y salsa de mango.", tags: ["vegan"] }
+      ]},
+      { id: "estrellas", nombre: "Estrellas", claim: "Las que más brillan", items: [
+        { nombre: "Big Bang Buba", precio: "13,90", desc: "Pan brioche, triple smash 90 g, cheddar, bacon crujiente, pulled pork, patata paja y salsa Bubakoa." },
+        { nombre: "La Conquistadora", precio: "13,90", desc: "Pan brioche, medallón a la brasa 180 g, cebolla caramelizada, queso Idiazabal y papada ibérica de Carranza." },
+        { nombre: "La Gilda", precio: "13,90", desc: "Pan brioche, doble smash 90 g, crema de queso Idiazabal ahumado, crujiente de jamón, emulsión de gilda y una gilda.", tags: ["picante"] },
+        { nombre: "Magic Burger", precio: "13,90", desc: "Pan rústico, medallón a la brasa 180 g, mermelada de cecina, mayonesa de ajo negro, queso de cabra y cebolla frita." },
+        { nombre: "O.V.N.I", precio: "8,90", desc: "Pan brioche, 90 g de carne madurada, cheddar, salsa O.V.N.I y mozzarella." },
+        { nombre: "U.F.F.F.O", precio: "8,90", desc: "Pan brioche, 90 g de carne madurada, cheddar, pulled pork y salsa UFFFO.", tags: ["picante"] }
+      ]},
+      { id: "bokatas", nombre: "Bokatas", claim: "Pan del bueno", items: [
+        { nombre: "Bacon Queso", precio: "5,90", desc: "Bacon y queso danés." },
+        { nombre: "Lomo, Bacon y Queso", precio: "7,90", desc: "Lomo fresco, bacon y queso danés." },
+        { nombre: "Pollo, Bacon y Queso", precio: "7,90", desc: "Pechuga de pollo, bacon y queso danés." },
+        { nombre: "Pepito el Alien", precio: "8,90", desc: "Tierna ternera, jamón ibérico y queso danés." }
+      ]},
+      { id: "sandwitches", nombre: "Sandwitches", claim: "Sí, con T", items: [
+        { nombre: "Mixto", precio: "4,90", desc: "Jamón york y queso danés." },
+        { nombre: "Vegetal", precio: "6,90", desc: "Jamón york, huevo cocido, bonito, lechuga, tomate y mayonesa." },
+        { nombre: "Club Buba", precio: "8,90", desc: "Pechuga, jamón ibérico, bacon, queso danés, lechuga, tomate y mayonesa." }
+      ]},
+      { id: "perritos", nombre: "Perritos", claim: "Old school", items: [
+        { nombre: "Old School", precio: "8,90", desc: "Pan brioche de patata, salchicha, bacon crujiente, cebolla frita, pepinillo picado y salsas a tu gusto." }
+      ]},
+      { id: "dulce-final", nombre: "Dulce Final", claim: "Aterrizaje suave", items: [
+        { nombre: "Tarta de Queso", precio: "5,00", desc: "Normal o de pistacho." },
+        { nombre: "Coulant de Chocolate", precio: "4,50", desc: "Con el corazón fundido, como debe ser." }
+      ]}
+    ],
+    menus: [
+      { nombre: "Menú Espacial", precio: "+3 €", desc: "Tu burger o bokata con patatas y bebida." },
+      { nombre: "Menú Galáctico", precio: "+5 €", desc: "Patatas, bebida y entrante (2 ud)." },
+      { nombre: "Combo Burger Cohete", precio: "16 € /ud", desc: "×2 menús: 2 patatas + entrante (4 ud) + 2 bebidas.", desc2: "×4 menús a 15,50 €/ud: 4 patatas + 2 entrantes (4 ud) + 4 bebidas." }
+    ],
+    extras: [["Lechuga","0,50"],["Tomate","0,50"],["Pepinillo","0,50"],["Cebolla caramelizada","0,50"],["Salsa a elegir","1,00"],["Bacon","1,50"],["Huevo","1,50"],["Queso a elegir","1,50"],["Pulled pork","2,50"],["Carne","3,50"]],
+    horario: [["Lunes","19:30 – 22:30"],["Martes","Cerrado"],["Miércoles","Cerrado"],["Jueves","19:30 – 22:30"],["Viernes","19:30 – 23:30"],["Sábado","19:30 – 23:30"],["Domingo","19:30 – 22:30"]],
+    reviews: [
+      "La Big Bang Buba es un viaje: triple smash y pulled pork. Salí rodando.",
+      "Pedí la versión sin gluten y no se nota la diferencia. Por fin una burger sin miedo.",
+      "Trato de diez y las patatas trufadas, adictivas. Repetiremos.",
+      "La Gilda con su gilda encima: Bilbao metido en una burger."
+    ]
+  };
+
+  rootRef = React.createRef();
+  state = { w: window.innerWidth, menuOpen: false, sheetOpen: false, activeCat: 0, mobCat: 0, openItem: null, indL: 0, indW: 0, heroShown: this.noMotion(), loaderDone: this.noMotion(), navSolid: false, showBar: false };
+  particles = Array.from({ length: 16 }, (_, i) => ({
+    left: (8 + ((i * 37) % 84)) + "%",
+    size: (2 + (i % 3)) + "px",
+    color: ["#ffffff", "#6ee7f9", "#b98aff", "#f472d0"][i % 4]
+  }));
+
+  isMob() {
+    return window.matchMedia ? window.matchMedia("(max-width: 899px)").matches : window.innerWidth < 900;
+  }
+
+  noMotion() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return reduce || this.props.motion === false;
+  }
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ w: window.innerWidth }, () => this.measureInd(false));
+    this._onScroll = () => this.handleScroll();
+    window.addEventListener("resize", this._onResize);
+    this._mq = window.matchMedia("(max-width: 899px)");
+    this._onMq = () => this.setState({ w: window.innerWidth }, () => { this.measureInd(false); if (window.ScrollTrigger) setTimeout(() => window.ScrollTrigger.refresh(), 50); });
+    this._mq.addEventListener("change", this._onMq);
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this.applyNeon();
+    this.handleScroll();
+    this.measureInd(false);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measureInd(false));
+    this._fallback = setTimeout(() => { if (!this.state.heroShown) this.setState({ heroShown: true }); }, 3500);
+    this._loaderEnd = this.state.loaderDone ? 0 : performance.now() + 900;
+    if (!this.state.loaderDone) this._ldT = setTimeout(() => this.setState({ loaderDone: true }), 1150);
+    this.waitLibs();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._onResize);
+    if (this._mq) this._mq.removeEventListener("change", this._onMq);
+    window.removeEventListener("scroll", this._onScroll);
+    clearTimeout(this._fallback);
+    clearTimeout(this._ldT);
+    clearInterval(this._poll);
+    this.teardown();
+  }
+
+  componentDidUpdate(pp, ps) {
+    if (pp.neonColor !== this.props.neonColor) this.applyNeon();
+    if (pp.motion !== this.props.motion || pp.cursorHalo !== this.props.cursorHalo) {
+      this.teardown();
+      if (this.noMotion()) { if (!this.state.heroShown) this.setState({ heroShown: true }); }
+      else this.initAnim();
+    }
+    if (ps.activeCat !== this.state.activeCat) this.measureInd(true);
+    const g = window.gsap, root = this.rootRef.current;
+    if (g && root && !this.noMotion()) {
+      if (ps.openItem !== this.state.openItem && this.state.openItem) {
+        const d = root.querySelector('[data-a="mdesc"]');
+        if (d) g.from(d, { height: 0, opacity: 0, duration: 0.35, ease: "power2.out" });
+      }
+    }
+    if (!ps.menuOpen && this.state.menuOpen && window.gsap && !this.noMotion()) {
+      window.gsap.from(this.rootRef.current.querySelectorAll('[data-a="mlink"]'), { y: 30, opacity: 0, stagger: 0.06, duration: 0.5, ease: "power3.out" });
+    }
+    if (!ps.sheetOpen && this.state.sheetOpen && window.gsap && !this.noMotion()) {
+      window.gsap.from(this.rootRef.current.querySelector('[data-a="sheet"]'), { y: 40, opacity: 0, scale: 0.97, duration: 0.45, ease: "power3.out" });
+    }
+    const lock = this.state.menuOpen || this.state.sheetOpen;
+    if (this.lenis) { lock ? this.lenis.stop() : this.lenis.start(); }
+  }
+
+  applyNeon() {
+    document.documentElement.style.setProperty("--neon", this.props.neonColor || "#b98aff");
+  }
+
+  handleScroll() {
+    const root = this.rootRef.current; if (!root) return;
+    const y = window.scrollY;
+    const navSolid = y > 30;
+    const carta = document.getElementById("carta");
+    const showBar = carta ? carta.getBoundingClientRect().top < window.innerHeight * 0.85 : y > window.innerHeight;
+    let active = 0;
+    root.querySelectorAll("[data-cat]").forEach((b, i) => { if (b.getBoundingClientRect().top < 240) active = i; });
+    const s = this.state;
+    if (navSolid !== s.navSolid || showBar !== s.showBar || active !== s.activeCat) this.setState({ navSolid, showBar, activeCat: active });
+  }
+
+  measureInd(scroll) {
+    const root = this.rootRef.current; if (!root || this.isMob()) return;
+    const idx = this.state.activeCat;
+    const chip = root.querySelector('[data-chip="' + idx + '"]'); if (!chip) return;
+    const l = chip.offsetLeft, w = chip.offsetWidth;
+    if (l !== this.state.indL || w !== this.state.indW) this.setState({ indL: l, indW: w });
+    if (scroll) { const sc = chip.closest('[data-a="chips"]'); if (sc) sc.scrollTo({ left: Math.max(0, l - 24), behavior: "smooth" }); }
+  }
+
+  selectMobCat(i, scroll) {
+    const prev = this.state.mobCat;
+    this.setState({ mobCat: i, openItem: null }, () => {
+      const root = this.rootRef.current; if (!root) return;
+      const chip = root.querySelector('[data-chip="' + i + '"]'), sc = chip && chip.closest('[data-a="chips"]');
+      if (sc) sc.scrollTo({ left: Math.max(0, chip.offsetLeft - (sc.clientWidth - chip.offsetWidth) / 2), behavior: "smooth" });
+      const g = window.gsap;
+      if (g && i !== prev && !this.noMotion()) {
+        const dir = i > prev ? 1 : -1;
+        g.fromTo(root.querySelectorAll('#carta-panel [data-a="mhead"], #carta-panel [data-a="mrow"]'), { opacity: 0, x: 36 * dir }, { opacity: 1, x: 0, y: 0, scale: 1, stagger: 0.04, duration: 0.45, ease: "power3.out", overwrite: true });
+      }
+    });
+    const p = document.getElementById("carta-panel");
+    if (p && (scroll || p.getBoundingClientRect().top < 120)) this.goTo("carta-panel", 128);
+  }
+
+  goTo(id, off) {
+    const el = document.getElementById(id); if (!el) return;
+    const o = off == null ? 72 : off;
+    if (this.lenis) this.lenis.scrollTo(el, { offset: -o, duration: 1.2 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - o, behavior: "smooth" });
+  }
+
+  waitLibs() {
+    if (this.noMotion()) return;
+    let tries = 0;
+    this._poll = setInterval(() => {
+      tries++;
+      if (window.gsap && window.ScrollTrigger) {
+        clearInterval(this._poll);
+        const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+        Promise.race([fonts, new Promise(r => setTimeout(r, 1500))]).then(() => this.initAnim());
+      } else if (tries > 100) { clearInterval(this._poll); this.setState({ heroShown: true, libsFailed: true }); }
+    }, 50);
+  }
+
+  teardown() {
+    if (this.mm) { this.mm.revert(); this.mm = null; }
+    if (this.lenis) { window.gsap.ticker.remove(this._raf); this.lenis.destroy(); this.lenis = null; }
+  }
+
+  initAnim() {
+    const g = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText;
+    const root = this.rootRef.current;
+    if (!g || !root || this.noMotion()) return;
+    g.registerPlugin(ST);
+    if (window.Lenis && !this.lenis) {
+      this.lenis = new window.Lenis({ lerp: 0.1 });
+      this.lenis.on("scroll", ST.update);
+      this._raf = t => this.lenis && this.lenis.raf(t * 1000);
+      g.ticker.add(this._raf);
+      g.ticker.lagSmoothing(0);
+    }
+    const q = s => Array.from(root.querySelectorAll(s));
+    const q1 = s => root.querySelector(s);
+    const fmt = (v, d) => v.toFixed(d).replace(".", ",");
+    const halo = this.props.cursorHalo !== false;
+
+    this.mm = g.matchMedia();
+    this.mm.add({ desk: "(min-width: 900px)", mob: "(max-width: 899px)", fine: "(pointer: fine)" }, (ctx) => {
+      const { desk, fine } = ctx.conditions;
+      const cleanups = [];
+      const hero = q1('[data-a="hero"]'), scene = q1('[data-a="scene"]');
+      const ship = q1('[data-a="ship"]'), shipSvg = q1('[data-a="ship-svg"]');
+      const beam = q1('[data-a="beam"]'), core = q1('[data-a="core"]'), scan = q1('[data-a="scan"]');
+      const burger = q1('[data-a="burger"]'), burgerImg = q1('[data-a="burger-img"]'), ground = q1('[data-a="ground"]');
+      const parts = q1('[data-a="parts"]');
+
+      // Hero intro
+      const split = { chars: q('[data-a="ch"]') };
+      const allIn = q('[data-a="hero-in"]');
+      const bodyIn = q('[data-a="body"] [data-a="hero-in"]');
+      const heroIn = desk ? allIn : allIn.filter(x => !bodyIn.includes(x));
+      g.set(split.chars, { opacity: 0 });
+      g.set(q('[data-a="gl1"],[data-a="gl2"]'), { opacity: 0 });
+      const intro = g.timeline({ delay: Math.max(0.15, ((this._loaderEnd || 0) - performance.now()) / 1000) });
+      intro.from(ship, { y: -180, opacity: 0, duration: 1, ease: "back.out(1.5)" })
+        .fromTo(beam, { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 0.55, duration: 0.5, ease: "power2.out" }, "-=0.25")
+        .to(beam, { opacity: 0.2, duration: 0.05, repeat: 5, yoyo: true }, "<0.15")
+        .from(ground, { scaleX: 0, opacity: 0, duration: 0.6, ease: "power2.out" }, "<")
+        .from(burger, { yPercent: 30, opacity: 0, duration: 1.1, ease: "power3.out" }, "-=0.35")
+        .to(split.chars, { opacity: 1, duration: 0.04, stagger: { each: 0.035, from: "random" } }, 0.35)
+        .from(split.chars, { x: () => g.utils.random(-16, 16), y: () => g.utils.random(-10, 10), color: "#6ee7f9", duration: 0.45, stagger: { each: 0.035, from: "random" } }, 0.35)
+        .to(q('[data-a="gl1"],[data-a="gl2"]'), { opacity: 0.6, duration: 0.2 }, ">-0.2")
+        .from(heroIn, { y: 26, opacity: 0, stagger: 0.09, duration: 0.7, ease: "power3.out" }, 0.9);
+      const heroCount = q1('[data-hero="1"]');
+      if (heroCount && desk) { const o = { v: 0 }; heroCount.textContent = fmt(0, 1); intro.to(o, { v: 4.7, duration: 1.2, ease: "power2.out", onUpdate: () => { heroCount.textContent = fmt(o.v, 1); } }, 1.1); }
+      this.setState({ heroShown: true });
+      const introStart = performance.now();
+      const introGuard = setTimeout(() => { if (intro.progress() === 0 && performance.now() - introStart > 2500) intro.progress(1); }, 3000);
+      cleanups.push(() => clearTimeout(introGuard));
+
+      g.to(shipSvg, { y: -10, rotation: 4, duration: 2.3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      g.to(burgerImg, { y: -12, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      g.to(scan, { backgroundPositionY: "40px", repeat: -1, duration: 1.4, ease: "none" });
+      q('[data-a="part"]').forEach((p, i) => {
+        const d = g.utils.random(2.2, 4.2), dl = g.utils.random(0, 3);
+        g.fromTo(p, { y: 0 }, { y: () => -parts.offsetHeight * g.utils.random(0.55, 1), duration: d, delay: dl, repeat: -1, ease: "none" });
+        g.fromTo(p, { opacity: 0 }, { opacity: 0.9, duration: d / 2, delay: dl, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      });
+      const glitch = g.timeline({ repeat: -1, repeatDelay: 3, delay: 3 });
+      const [gl1, gl2] = [q1('[data-a="gl1"]'), q1('[data-a="gl2"]')];
+      glitch.to(gl1, { x: -7, duration: 0.05 }).to(gl2, { x: 7, duration: 0.05 }, "<")
+        .to(gl1, { x: 4, y: -3, duration: 0.04 }).to(gl2, { x: -4, y: 3, duration: 0.04 }, "<")
+        .to([gl1, gl2], { x: 0, y: 0, duration: 0.06 });
+
+      // La abducción
+      const abduct = (tl) => {
+        tl.to(beam, { opacity: 1, scaleX: 1.12, duration: 0.35 }, 0)
+          .to(core, { opacity: 0.85, duration: 0.35 }, 0)
+          .to(burger, { y: () => -scene.offsetHeight * 0.3, duration: 1, ease: "power1.inOut" }, 0)
+          .to(burgerImg, { rotation: 7, scale: 0.88, duration: 1, ease: "power1.inOut" }, 0)
+          .to(ground, { opacity: 0.2, scaleX: 0.55, duration: 0.8 }, 0)
+          .to(ship, { scale: 1.14, duration: 1 }, 0);
+        return tl;
+      };
+      if (desk) {
+        if (q1('[data-a="hint"]')) g.set(bodyIn, { opacity: 1, y: 0 });
+        abduct(g.timeline({ scrollTrigger: { trigger: hero, start: "top top", end: "+=75%", scrub: 0.6, pin: true, anticipatePin: 1, invalidateOnRefresh: true } }));
+      } else {
+        // Móvil: hero fijo corto; tras la abducción el texto y los botones ocupan el hueco del haz
+        const hint = q1('[data-a="hint"]'), arrow = q1('[data-a="hint-arrow"]');
+        if (arrow) g.to(arrow, { y: 5, duration: 0.7, yoyo: true, repeat: -1, ease: "sine.inOut" });
+        g.set(bodyIn, { opacity: 0, y: 34 });
+        const dist = () => { const H = scene.offsetHeight, bh = burger.offsetHeight; return -(H * 0.95 - bh / 2 - (H * 0.04 + 46)); };
+        const tl = g.timeline({ scrollTrigger: { trigger: hero, start: "top top", end: "+=100%", scrub: 0.6, pin: true, anticipatePin: 1, invalidateOnRefresh: true } });
+        tl.to(hint, { opacity: 0, y: 10, duration: 0.08 }, 0)
+          .to(beam, { opacity: 1, scaleX: 1.15, duration: 0.15 }, 0)
+          .to(core, { opacity: 0.9, duration: 0.15 }, 0)
+          .to(ground, { opacity: 0, scaleX: 0.4, duration: 0.3 }, 0)
+          .to(burger, { y: dist, duration: 0.42, ease: "power1.in" }, 0.02)
+          .to(burgerImg, { scale: 0.1, rotation: 220, duration: 0.42, ease: "power2.in" }, 0.02)
+          .to(burgerImg, { opacity: 0, duration: 0.04 }, 0.42)
+          .to(shipSvg, { scale: 1.35, duration: 0.05, yoyo: true, repeat: 1 }, 0.44)
+          .to(beam, { scaleY: 0, opacity: 0, duration: 0.14 }, 0.52)
+          .to(parts, { opacity: 0, duration: 0.1 }, 0.52)
+          .to(ship, { y: -140, scale: 0.4, opacity: 0, duration: 0.16, ease: "power2.in" }, 0.54)
+          .to(bodyIn, { opacity: 1, y: 0, stagger: 0.06, duration: 0.22, ease: "power2.out" }, 0.6);
+        if (heroCount) { const o = { v: 0 }; heroCount.textContent = fmt(0, 1); tl.to(o, { v: 4.7, duration: 0.25, onUpdate: () => { heroCount.textContent = fmt(o.v, 1); } }, 0.62); }
+      }
+
+      g.to(q1('[data-a="ring"]'), { scale: 2.8, opacity: 0, repeat: -1, duration: 1.6, ease: "power1.out" });
+      g.to(q1('[data-a="stars1"]'), { yPercent: -10, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: true } });
+      g.to(q1('[data-a="stars2"]'), { yPercent: -22, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: true } });
+      g.to(q1('[data-a="stars2"]'), { opacity: 0.45, duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+
+      // Marquee con velocidad de scroll
+      const t1 = g.to(q1('[data-a="mq1"]'), { xPercent: -50, repeat: -1, duration: 34, ease: "none" });
+      const t2 = g.fromTo(q1('[data-a="mq2"]'), { xPercent: -50 }, { xPercent: 0, repeat: -1, duration: 38, ease: "none" });
+      const speed = { v: 1 };
+      ST.create({ start: 0, end: "max", onUpdate: (s) => { const t = 1 + Math.min(Math.abs(s.getVelocity()) / 220, 9); if (t > speed.v) speed.v = t; } });
+      const tick = () => { speed.v += (1 - speed.v) * 0.06; t1.timeScale(speed.v); t2.timeScale(speed.v); };
+      g.ticker.add(tick); cleanups.push(() => g.ticker.remove(tick));
+
+      // Titulares: neón que se enciende
+      q('[data-a="h2"]').forEach(el => {
+        g.timeline({ scrollTrigger: { trigger: el, start: "top 86%" } })
+          .from(el, { opacity: 0, letterSpacing: "0.14em", filter: "blur(6px)", duration: 0.5, ease: "power3.out" })
+          .to(el, { opacity: 0.3, duration: 0.05, repeat: 5, yoyo: true }, 0.25);
+      });
+      const gf = q1('[data-a="gf-title"]');
+      g.timeline({ scrollTrigger: { trigger: gf, start: "top 82%" } })
+        .from(gf, { color: "#b98aff", textShadow: "0 0 14px rgba(185,138,255,.55), 0 0 50px rgba(185,138,255,.3)", duration: 0.01 })
+        .to(gf, { opacity: 0.2, duration: 0.06, repeat: 5, yoyo: true }, 0.5)
+        .to(gf, { color: "#4ade80", textShadow: "0 0 14px rgba(74,222,128,.55), 0 0 50px rgba(74,222,128,.3)", duration: 0.6 }, 0.55);
+
+      // Revelados
+      const reveal = (sel, from) => {
+        const els = q(sel); if (!els.length) return;
+        g.set(els, from);
+        ST.batch(els, { start: "top 90%", once: true, onEnter: b => g.to(b, { opacity: 1, y: 0, x: 0, scale: 1, stagger: 0.08, duration: 0.8, ease: "power3.out", overwrite: true }) });
+      };
+      reveal('[data-a="rev"]', { opacity: 0, y: 30 });
+      reveal('[data-a="card"]', { opacity: 0, y: 40, scale: 0.97 });
+      reveal('[data-a="ticket"]', { opacity: 0, y: 50 });
+      reveal('[data-a="hour"]', { opacity: 0, x: -20 });
+      reveal('[data-a="mrow"]', { opacity: 0, y: 24 });
+
+      q('[data-a="mprice"]').forEach(el => {
+        g.timeline({ scrollTrigger: { trigger: el, start: "top 88%" }, delay: 0.3 })
+          .from(el, { opacity: 0, duration: 0.05 }).to(el, { opacity: 0.25, duration: 0.06, repeat: 4, yoyo: true });
+      });
+      q('[data-a="clip"]').forEach(el => {
+        const img = el.querySelector('[data-a="clip-img"]');
+        const tl = g.timeline({ scrollTrigger: { trigger: el, start: "top 85%" } });
+        tl.fromTo(el, { clipPath: "inset(100% 0% 0% 0% round 22px)" }, { clipPath: "inset(0% 0% 0% 0% round 22px)", duration: 1.2, ease: "power3.out" });
+        if (img) tl.from(img, { scale: 1.25, duration: 1.4, ease: "power3.out" }, 0);
+      });
+      const badge = q1('[data-a="badge"]');
+      g.to(badge, { rotation: 360, repeat: -1, duration: 18, ease: "none" });
+      g.from(badge, { scale: 0, duration: 0.8, ease: "back.out(2)", scrollTrigger: { trigger: badge, start: "top 85%" } });
+
+      // Reseñas
+      q('[data-a="count"]:not([data-hero])').forEach(el => {
+        const to = parseFloat(el.dataset.to), d = parseInt(el.dataset.dec, 10) || 0, o = { v: 0 };
+        el.textContent = fmt(0, d);
+        g.to(o, { v: to, duration: 1.6, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%" }, onUpdate: () => { el.textContent = fmt(o.v, d); } });
+      });
+      const stars = q('[data-a="bigstar"]');
+      g.from(stars, { opacity: 0.12, scale: 0.4, duration: 0.5, stagger: 0.12, ease: "back.out(3)", scrollTrigger: { trigger: stars[0], start: "top 85%" } });
+      const revrow = q1('[data-a="revrow"]');
+      const rt = g.to(revrow, { xPercent: -50, repeat: -1, duration: 42, ease: "none" });
+      const pause = () => g.to(rt, { timeScale: 0, duration: 0.4 }), play = () => g.to(rt, { timeScale: 1, duration: 0.4 });
+      revrow.addEventListener("pointerenter", pause); revrow.addEventListener("pointerleave", play);
+      cleanups.push(() => { revrow.removeEventListener("pointerenter", pause); revrow.removeEventListener("pointerleave", play); });
+
+      // Instagram parallax
+      const insta = q1('[data-a="insta"]');
+      q("[data-speed]").forEach(el => {
+        const sp = parseFloat(el.dataset.speed) || 0.2;
+        const amp = desk ? 120 : 40;
+        g.fromTo(el, { y: sp * amp }, { y: -sp * amp, ease: "none", scrollTrigger: { trigger: insta, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+
+      if (fine) {
+        if (halo) {
+          const h = q1('[data-a="halo"]');
+          if (h) {
+            const xTo = g.quickTo(h, "x", { duration: 0.6, ease: "power3" }), yTo = g.quickTo(h, "y", { duration: 0.6, ease: "power3" });
+            let shown = false;
+            const mv = e => { xTo(e.clientX); yTo(e.clientY); if (!shown) { shown = true; g.to(h, { opacity: 1, duration: 0.5 }); } };
+            window.addEventListener("pointermove", mv); cleanups.push(() => window.removeEventListener("pointermove", mv));
+          }
+        }
+        q("[data-mag]").forEach(el => {
+          const mv = e => { const r = el.getBoundingClientRect(); g.to(el, { x: (e.clientX - r.left - r.width / 2) * 0.3, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: "power3.out" }); };
+          const lv = () => g.to(el, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.4)" });
+          el.addEventListener("pointermove", mv); el.addEventListener("pointerleave", lv);
+          cleanups.push(() => { el.removeEventListener("pointermove", mv); el.removeEventListener("pointerleave", lv); });
+        });
+        q('[data-a="ticket"]').forEach(el => {
+          const mv = e => { const r = el.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+            g.to(el, { rotationY: px * 14, rotationX: -py * 12, transformPerspective: 900, boxShadow: "0 0 34px color-mix(in oklch, var(--neon) 26%, transparent)", duration: 0.4, ease: "power2.out" }); };
+          const lv = () => g.to(el, { rotationY: 0, rotationX: 0, boxShadow: "0 0 0px transparent", duration: 0.7, ease: "power3.out" });
+          el.addEventListener("pointermove", mv); el.addEventListener("pointerleave", lv);
+          cleanups.push(() => { el.removeEventListener("pointermove", mv); el.removeEventListener("pointerleave", lv); });
+        });
+      }
+
+      const onLoad = () => ST.refresh();
+      window.addEventListener("load", onLoad);
+      const rt2 = setTimeout(onLoad, 1200);
+      cleanups.push(() => { window.removeEventListener("load", onLoad); clearTimeout(rt2); });
+      return () => cleanups.forEach(f => f());
+    });
+  }
+
+  renderVals() {
+    const D = Component.DATA;
+    const s = this.state;
+    const isMobile = this.isMob();
+    const mobOverlap = isMobile && !this.noMotion() && !s.libsFailed;
+    const up = t => t.toUpperCase();
+    const pad = n => String(n).padStart(2, "0");
+    const go = (id, off) => (e) => { if (e) e.preventDefault(); this.setState({ menuOpen: false }); setTimeout(() => this.goTo(id, off), 10); };
+
+    const cats = D.categorias.map((c, i) => ({
+      anchor: "cat-" + c.id, num: pad(i + 1), nombreUp: up(c.nombre), claimUp: up(c.claim || ""), nota: c.nota || "", hasNota: !!c.nota,
+      isStar: c.id === "estrellas", notStar: c.id !== "estrellas",
+      isActive: i === (isMobile ? s.mobCat : s.activeCat),
+      chipColor: i === (isMobile ? s.mobCat : s.activeCat) ? "#0c0524" : "#b3a8d9",
+      chipBg: isMobile && i === s.mobCat ? "var(--neon)" : "transparent",
+      chipBorder: isMobile && i === s.mobCat ? "var(--neon)" : "rgba(185,138,255,.22)",
+      chipShadow: isMobile && i === s.mobCat ? "0 0 16px var(--glow)" : "none",
+      go: isMobile ? () => this.selectMobCat(i, false) : go("cat-" + c.id, 132),
+      items: c.items.map((it, j) => ({ ...it, num: pad(j + 1), nombreUp: up(it.nombre), isPicante: (it.tags || []).includes("picante"), isVegan: (it.tags || []).includes("vegan"), hasTags: !!(it.tags && it.tags.length) }))
+    }));
+    const mi = Math.min(s.mobCat, cats.length - 1), nextI = (mi + 1) % cats.length, mcR = cats[mi];
+    const mc = { ...mcR,
+      count: mcR.items.length + (mcR.items.length === 1 ? " PLATO" : " PLATOS"),
+      nextLabel: (nextI === 0 ? "VOLVER A " : "SIGUIENTE: ") + cats[nextI].nombreUp,
+      goNext: () => this.selectMobCat(nextI, true),
+      items: mcR.items.map((it, j) => { const key = mi + "-" + j, open = s.openItem === key;
+        return { ...it, open, rot: open ? "rotate(45deg)" : "rotate(0deg)", toggle: () => this.setState({ openItem: open ? null : key }) }; })
+    };
+
+    const todayIdx = (new Date().getDay() + 6) % 7;
+    const toM = t => { const p = t.split(":"); return +p[0] * 60 + +p[1]; };
+    const nextOpen = () => { for (let k = 1; k <= 7; k++) { const d = (todayIdx + k) % 7; if (D.horario[d][1] !== "Cerrado") return "abre el " + D.horario[d][0].toLowerCase() + " a las " + D.horario[d][1].split("–")[0].trim(); } return ""; };
+    let open = false, statusText;
+    const hoy = D.horario[todayIdx][1];
+    if (hoy === "Cerrado") statusText = "Hoy cerrado · " + nextOpen();
+    else {
+      const now = new Date(), m = now.getHours() * 60 + now.getMinutes();
+      const [a, b] = hoy.split("–").map(x => x.trim());
+      if (m >= toM(a) && m < toM(b)) { open = true; statusText = "Abierto ahora · hasta las " + b; }
+      else if (m < toM(a)) statusText = "Cerrado · abre hoy a las " + a;
+      else statusText = "Cerrado · " + nextOpen();
+    }
+
+    const navLinks = [["Carta", "carta"], ["Menús", "menus"], ["Sin gluten", "singluten"], ["Reseñas", "resenas"], ["Visítanos", "visitanos"]]
+      .map(([label, id]) => ({ label, labelUp: up(label), href: "#" + id, go: go(id) }));
+
+    const m1 = ["SMASH 90 G", "MEDALLÓN A LA BRASA 180 G", "SIN GLUTEN", "OPCIÓN VEGANA", "MASUSTEGI · BILBAO", "PAN BRIOCHE DE PATATA"];
+    const m2 = ["BIG BANG BUBA", "LA GILDA", "O.V.N.I", "APOLLO XIII", "MAGIC BURGER", "LUZ VERDE", "U.F.F.F.O"];
+
+    return {
+      rootRef: this.rootRef,
+      isMobile, isDesktop: !isMobile,
+      showHalo: !isMobile && this.props.cursorHalo !== false && !this.noMotion(),
+      navBg: s.navSolid || isMobile ? "rgba(7,4,26,.82)" : "rgba(7,4,26,0)",
+      navBorder: s.navSolid ? "rgba(185,138,255,.22)" : "rgba(185,138,255,0)",
+      navRightMargin: isMobile ? "auto" : "0",
+      navLinks,
+      menuOpen: s.menuOpen, toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+      sheetOpen: s.sheetOpen,
+      openSheet: () => this.setState({ sheetOpen: true, menuOpen: false }),
+      closeSheet: () => this.setState({ sheetOpen: false }),
+      stop: e => e.stopPropagation(),
+      sheetAlign: isMobile ? "flex-end" : "center", sheetPad: isMobile ? "0" : "20px", sheetRadius: isMobile ? "24px 24px 0 0" : "24px",
+      goTop: go("top", 0), goCarta: go("carta", 60),
+      heroOpacity: s.heroShown ? 1 : 0,
+      heroPad: isMobile ? "92px 20px 48px" : "96px 40px 40px",
+      heroCols: isMobile ? "minmax(0,1fr)" : "minmax(0,1.05fr) minmax(0,.95fr)",
+      heroRows: mobOverlap ? "auto auto" : isMobile ? "auto auto auto" : "1fr auto auto 1fr",
+      heroAreas: mobOverlap ? "'head' 'stage'" : isMobile ? "'head' 'scene' 'body'" : "'. scene' 'head scene' 'body scene' '. scene'",
+      sceneArea: mobOverlap ? "stage" : "scene", bodyArea: mobOverlap ? "stage" : "body",
+      bodyAlign: mobOverlap ? "end" : "start", mobOverlap,
+      sceneH: isMobile ? "clamp(360px, calc(100svh - 320px), 460px)" : "max(560px, calc(100svh - 136px))",
+      burgerW: isMobile ? "min(72%, 270px)" : "min(84%, 430px)",
+      pillFs: s.w < 400 ? "13px" : "14px",
+      ctaFlex: isMobile ? "1 1 0" : "0 0 auto",
+      dMt: isMobile ? "18px" : "20px", dPt: isMobile ? "16px" : "0px",
+      dBorder: isMobile ? "rgba(185,138,255,.16)" : "transparent", dLabelBasis: isMobile ? "100%" : "auto",
+      h1a: "BURGERS".split(""), h1b: "DE\u00a0OTRO".split(""), h1c: "PLANETA".split(""),
+      statusText, statusColor: open ? "#4ade80" : "#fb7185",
+      particles: this.particles,
+      delivery: [{ name: "Glovo", href: "https://glovoapp.com" }, { name: "Just Eat", href: "https://www.just-eat.es" }, { name: "Uber Eats", href: "https://www.ubereats.com/es" }],
+      marquee1: m1.concat(m1), marquee2: m2.concat(m2),
+      cats, mc, indL: s.indL + "px",
+      swipeStart: e => { if (e.target.closest('[data-a="starrow"]')) { this._sw = null; return; } const t = e.touches[0]; this._sw = { x: t.clientX, y: t.clientY }; },
+      swipeEnd: e => { const s0 = this._sw; this._sw = null; if (!s0) return; const t = e.changedTouches[0]; const dx = t.clientX - s0.x, dy = t.clientY - s0.y;
+        if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) this.selectMobCat((mi + (dx < 0 ? 1 : cats.length - 1)) % cats.length, false); }, indW: s.indW + "px",
+      extras: D.extras.map(([n, p]) => ({ n, p })),
+      menus: D.menus.map(m => ({ ...m, nombreUp: up(m.nombre), hasDesc2: !!m.desc2 })),
+      fiveStars: [1, 2, 3, 4, 5],
+      reviewsLoop: D.reviews.concat(D.reviews).map(t => ({ t })),
+      perks: ["Comer allí", "Para llevar", "Entrega sin contacto", "Amigable con la comunidad LGBTQ+"],
+      hours: D.horario.map(([d, t], i) => ({ d, t, isToday: i === todayIdx, bg: i === todayIdx ? "color-mix(in oklch, var(--neon) 13%, transparent)" : "transparent", color: t === "Cerrado" ? "#fb7185" : "#efeaff" })),
+      mapH: isMobile ? "320px" : "560px",
+      instaCols: isMobile ? "repeat(2, minmax(0,1fr))" : "repeat(4, minmax(0,1fr))",
+      photos: [
+        { src: "images/patatas-trufa-neon.png", alt: "Patatas trufadas con parmesano bajo el neón", cap: "Patatas trufadas", speed: 0.12, offset: "0px" },
+        { src: "images/pollo-crispy-neon.png", alt: "Pollo crujiente glaseado bajo el neón", cap: "Entrantes con flow", speed: 0.32, offset: isMobile ? "20px" : "48px" },
+        { src: "images/burger-negro.png", alt: "Burger de Buba Burger sobre fondo negro", cap: "Hechas al momento", speed: 0.12, offset: "0px" },
+        { src: "images/croqueta-guantes.png", alt: "Croqueta crujiente abierta con guantes negros", cap: "Croqueta crujiente", speed: 0.32, offset: isMobile ? "20px" : "48px" }
+      ],
+      footPadB: isMobile ? "92px" : "60px", footPadT: isMobile ? "28px" : "52px",
+      showLoader: !this.state.loaderDone,
+      footCols: isMobile ? "minmax(0,1fr) minmax(0,1fr)" : "repeat(auto-fit, minmax(min(100%,240px), 1fr))",
+      footGap: isMobile ? "18px 16px" : "40px", footBrandCol: isMobile ? "1 / -1" : "auto",
+      footBrandMb: isMobile ? "8px" : "14px", footLogo: isMobile ? 28 : 40, footBrandFs: isMobile ? "15px" : "18px",
+      footSmallFs: isMobile ? "13px" : "14px", footHFs: isMobile ? "11.5px" : "14px", footLinkFs: isMobile ? "14px" : "15px", footLinkGap: isMobile ? "6px" : "10px",
+      footLegalMt: isMobile ? "20px" : "40px", footLegalPt: isMobile ? "14px" : "24px", footLegalFs: isMobile ? "11.5px" : "13px",
+      barTransform: s.showBar && !s.sheetOpen ? "translateY(0)" : "translateY(140%)",
+      dragStart: e => { if (e.pointerType !== "mouse") return; const row = e.currentTarget; this._drag = { x: e.clientX, s: row.scrollLeft, row, moved: false }; row.style.scrollSnapType = "none"; row.style.cursor = "grabbing"; },
+      dragMove: e => { const d = this._drag; if (!d) return; const dx = e.clientX - d.x; if (Math.abs(dx) > 3) d.moved = true; d.row.scrollLeft = d.s - dx; },
+      dragEnd: () => { const d = this._drag; if (!d) return; d.row.style.scrollSnapType = "x mandatory"; d.row.style.cursor = "grab"; this._drag = null; },
+      starScroll: e => { const row = e.currentTarget; const max = row.scrollWidth - row.clientWidth; const p = max > 0 ? row.scrollLeft / max : 1; const bar = row.parentElement.querySelector('[data-a="bar"]'); if (bar) bar.style.transform = "scaleX(" + (0.3 + p * 0.7) + ")"; },
+      starPrev: e => { const row = e.currentTarget.closest('[data-a="starwrap"]').querySelector('[data-a="starrow"]'); row.scrollBy({ left: -row.clientWidth * 0.8, behavior: "smooth" }); },
+      starNext: e => { const row = e.currentTarget.closest('[data-a="starwrap"]').querySelector('[data-a="starrow"]'); row.scrollBy({ left: row.clientWidth * 0.8, behavior: "smooth" }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

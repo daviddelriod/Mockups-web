@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css" integrity="sha384-gvLq/iOMNnPchdosgVym5huSVkKipHCQaqSw2Eg0V52Mzmlf169ZOsXcNc2cNu8x" crossorigin="anonymous">
+<style>
+html,body{margin:0;background:#1D2125;color:#EEE8DE;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#EEE8DE;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:#F0A830}
+:focus-visible{outline:3px solid #F0A830;outline-offset:3px}
+::selection{background:#F0A830;color:#1D2125}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="--char:#1D2125;--char-2:#262B30;--char-deep:#16191C;--gold:#F0A830;--star:#F0A830;--accent:#B3162E;--text-on-dark:#EEE8DE;--font-display:'Archivo',sans-serif;position:relative;background:#1D2125;color:#EEE8DE;font-family:'Hanken Grotesk',system-ui,sans-serif;overflow-x:clip">
+
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;width:0;height:0">
+<defs>
+<linearGradient id="chromeG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:#F6F7F9"></stop><stop offset=".46" style="stop-color:#BFC5CC"></stop><stop offset=".54" style="stop-color:#79818A"></stop><stop offset="1" style="stop-color:#DDE1E5"></stop></linearGradient>
+<linearGradient id="pinG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" style="stop-color:#8E959D"></stop><stop offset=".5" style="stop-color:#BFC5CC"></stop><stop offset="1" style="stop-color:#8E959D"></stop></linearGradient>
+<radialGradient id="rivetG" cx=".35" cy=".3" r=".75"><stop offset="0" style="stop-color:#FFFFFF"></stop><stop offset=".4" style="stop-color:#BFC5CC"></stop><stop offset="1" style="stop-color:#5E656D"></stop></radialGradient>
+<radialGradient id="dialG" cx=".5" cy=".42" r=".6"><stop offset="0" style="stop-color:#2A3036"></stop><stop offset="1" style="stop-color:#111417"></stop></radialGradient>
+</defs>
+</svg>
+
+<header style="position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 14px">
+<svg viewBox="0 0 140 96" width="62" height="42" role="img" aria-label="Harley Ever 86"><ellipse cx="70" cy="48" rx="66" ry="44" style="fill:#1D2125;fill-opacity:.85;stroke:url(#chromeG);stroke-width:4"></ellipse><text x="70" y="51" style="fill:url(#chromeG);font-family:Archivo;font-size:66px;font-weight:900;font-stretch:62%;text-anchor:middle;dominant-baseline:central">86</text></svg>
+<div role="group" aria-label="Idioma" style="display:flex;border:1px solid rgba(191,197,204,.45);background:rgba(29,33,37,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;overflow:hidden">
+<sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ l.pressed }}" onClick="{{ l.onClick }}" style="min-width:44px;min-height:44px;border:0;background:{{ l.bg }};color:{{ l.color }};font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;cursor:pointer;border-radius:999px">{{ l.code }}</button>
+</sc-for>
+</div>
+</header>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position:fixed;top:68px;right:14px;z-index:60;max-width:280px;background:#EEE8DE;color:#1D2125;padding:12px 16px;font-size:15px;line-height:1.35;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.4)">{{ toast }}</div>
+</sc-if>
+
+<section id="inicio" ref="{{ heroRef }}" data-screen-label="Hero" style="position:relative;height:100svh;min-height:640px;overflow:hidden;background:#111417">
+<div ref="{{ heroPhotoRef }}" style="position:absolute;inset:0;overflow:hidden">
+<img ref="{{ heroImgRef }}" src="img/hero-calavera.jpg" alt="Tejado de la taberna: una calavera de toro con cuernos y un esqueleto con casco sobre una carrocería oxidada" fetchpriority="high" style="position:absolute;left:-24px;top:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;object-position:38% 40%;filter:contrast(1.18) saturate(.82) brightness(.82);display:block;transform-origin:50% 60%">
+</div>
+<div aria-hidden="true" style="position:absolute;inset:0;opacity:.22;mix-blend-mode:overlay;pointer-events:none;background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27180%27%20height%3D%27180%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E)"></div>
+<div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,20,23,.55) 0%,rgba(17,20,23,.05) 22%,rgba(17,20,23,.1) 42%,rgba(17,20,23,.88) 70%,#1D2125 96%);pointer-events:none"></div>
+
+<div ref="{{ heroGlowRef }}" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:0;mix-blend-mode:soft-light;background:radial-gradient(circle 340px at var(--mx,70%) var(--my,35%),rgba(240,168,48,.95),rgba(240,168,48,0) 70%)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:0 20px 30px">
+<div ref="{{ heroContentRef }}" style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+<p ref="{{ heroKickerRef }}" style="margin:0;font-family:'Caveat',cursive;font-size:30px;line-height:1;color:#F0A830;transform:rotate(-3deg);transform-origin:0 50%">desde Laredo, con gasolina</p>
+<h1 ref="{{ h1Ref }}" style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(70px,19vw,230px);line-height:.86;font-weight:900;font-stretch:62%;text-transform:uppercase;letter-spacing:-.01em;color:#EEE8DE">Harley<br>Ever 86</h1>
+<div ref="{{ heroMetaRef }}" style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px">
+<a href="#abierto" style="display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 16px;border:1px solid rgba(191,197,204,.5);background:rgba(29,33,37,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#EEE8DE;text-decoration:none;font-size:15px;font-weight:700;border-radius:999px;white-space:nowrap">
+<span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{ ledBg }};box-shadow:{{ ledShadow }}"></span>{{ pillText }}</a>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="4" score="4,3" count="1.961" size="16" style="color:#EEE8DE;--ink-soft:#BFC5CC" hint-size="220px,22px"></x-import>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:460px">
+<a href="tel:+34942603014" style="display:flex;align-items:center;justify-content:center;gap:9px;min-height:56px;background:#B3162E;color:#EEE8DE;text-decoration:none;font-family:'Archivo',sans-serif;font-size:19px;font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.02em;border-radius:999px;box-shadow:0 10px 26px rgba(179,22,46,.35);transition:transform .2s cubic-bezier(.4,0,.2,1),background .2s" style-hover="background:#961126;color:#EEE8DE;transform:translateY(-2px)" style-active="transform:translateY(1px)">
+<svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Llamar</a>
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:9px;min-height:56px;border:2px solid #BFC5CC;color:#EEE8DE;text-decoration:none;font-family:'Archivo',sans-serif;font-size:19px;font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.02em;border-radius:999px;background:rgba(29,33,37,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .2s cubic-bezier(.4,0,.2,1),background .2s" style-hover="background:#EEE8DE;color:#1D2125;transform:translateY(-2px)" style-active="transform:translateY(1px)">
+<svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Cómo llegar</a>
+</div>
+</div>
+</div>
+</div>
+<div aria-hidden="true" ref="{{ scrollHintRef }}" style="position:absolute;right:18px;bottom:34px;display:none;flex-direction:column;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;color:#BFC5CC;writing-mode:vertical-rl">BAJA<span style="width:1px;height:48px;background:#BFC5CC"></span></div>
+</section>
+
+<div style="overflow:hidden;border-top:1px solid rgba(191,197,204,.22);border-bottom:1px solid rgba(191,197,204,.22);padding:14px 0 10px;background:#1D2125">
+<div ref="{{ trackRef }}" style="display:flex;width:max-content;will-change:transform">
+<div style="display:flex;align-items:center;gap:26px;padding-right:26px;font-family:'Archivo',sans-serif;font-size:clamp(64px,13vw,150px);line-height:.95;font-weight:880;font-stretch:62%;text-transform:uppercase;white-space:nowrap;color:#EEE8DE">
+<span>Taberna</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span style="color:transparent;-webkit-text-stroke:1.5px #BFC5CC">Música en directo</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span>Cócteles</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span style="color:transparent;-webkit-text-stroke:1.5px #BFC5CC">Terraza</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span>Laredo</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+</div>
+<div aria-hidden="true" style="display:flex;align-items:center;gap:26px;padding-right:26px;font-family:'Archivo',sans-serif;font-size:clamp(64px,13vw,150px);line-height:.95;font-weight:880;font-stretch:62%;text-transform:uppercase;white-space:nowrap;color:#EEE8DE">
+<span>Taberna</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span style="color:transparent;-webkit-text-stroke:1.5px #BFC5CC">Música en directo</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span>Cócteles</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span style="color:transparent;-webkit-text-stroke:1.5px #BFC5CC">Terraza</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+<span>Laredo</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle></svg>
+</div>
+</div>
+</div>
+
+<section data-screen-label="Manifiesto" style="padding:96px 20px 88px;background:#1D2125">
+<div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:26px">
+<span data-reveal="" style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">El alma del sitio</span>
+<p ref="{{ manifestoRef }}" style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(36px,6.6vw,96px);line-height:1;font-weight:820;font-stretch:72%;text-transform:uppercase;color:#EEE8DE">Motos en la puerta, rock en los altavoces y la barra abierta desde las once. En el 86 se viene a pasar la tarde, a cenar y a tomar la última en la terraza.</p>
+<p data-reveal="" style="margin:6px 0 0;font-family:'Caveat',cursive;font-size:32px;line-height:1.1;color:#BFC5CC;transform:rotate(-2deg);transform-origin:0 50%">— motor parado, barra abierta</p>
+</div>
+</section>
+
+<section ref="{{ galleryRef }}" data-screen-label="Dentro" style="position:relative;background:#16191C;overflow:hidden;border-top:1px solid rgba(191,197,204,.12)">
+<div style="max-width:1180px;margin:0 auto;padding:60px 20px 0;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 30px">
+<h2 style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(54px,11vw,120px);line-height:.88;font-weight:900;font-stretch:62%;text-transform:uppercase;display:flex;flex-wrap:wrap;column-gap:.22em;flex:0 1 auto"><span>Dentro</span><span style="color:transparent;-webkit-text-stroke:1.5px #EEE8DE">del 86</span></h2>
+<p style="margin:0;flex:1 1 320px;max-width:40ch;font-size:17px;line-height:1.5;color:#BFC5CC">Una taberna montada pieza a pieza: chapa, cuero, madera y alguna rueda colgada en la pared.</p>
+</div>
+<div ref="{{ galleryScrollRef }}" style="overflow-x:auto;scrollbar-width:none">
+<div ref="{{ galleryTrackRef }}" style="display:flex;align-items:center;gap:clamp(22px,4vw,48px);padding:44px 20px 70px;width:max-content">
+<sc-for list="{{ galeria }}" as="g" hint-placeholder-count="6">
+<figure style="flex:none;margin:0;width:{{ g.w }};padding:8px 8px 0;background:#EEE8DE;border-radius:4px;box-shadow:0 24px 50px rgba(0,0,0,.55),0 2px 0 rgba(255,255,255,.4) inset;transform:rotate({{ g.rot }}deg);position:relative">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:50%;width:92px;height:26px;margin-left:-46px;background:rgba(238,232,222,.6);backdrop-filter:blur(2px);transform:rotate(-4deg);box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+<img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:{{ g.ar }};object-fit:cover;filter:contrast(1.08) saturate(.95);background:#1D2125">
+<figcaption style="padding:10px 6px 12px;font-family:'Caveat',cursive;font-size:27px;line-height:1;color:#1D2125">{{ g.cap }}</figcaption>
+</figure>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section id="abierto" data-screen-label="Horario" style="padding:88px 20px 92px;background:#1D2125">
+<div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:40px 72px">
+<div data-reveal="" style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">Horario</span>
+<h2 style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(56px,11vw,124px);line-height:.88;font-weight:900;font-stretch:62%;text-transform:uppercase">¿Estamos<br>abiertos?</h2>
+<p style="margin:0;font-size:19px;line-height:1.5;color:#BFC5CC;max-width:30ch;text-wrap:pretty">Todos los días, de 11:00 a 23:30. La aguja marca la hora de Laredo; si está en rojo, date prisa.</p>
+</div>
+<div style="flex:1 1 335px;max-width:520px;width:100%">
+<button type="button" ref="{{ gaugeRef }}" aria-expanded="{{ expanded }}" aria-controls="horario-semana" onClick="{{ toggleWeek }}" style="display:block;width:100%;padding:0;margin:0;border:0;background:transparent;color:inherit;font-family:inherit;text-align:left;cursor:pointer">
+<svg viewBox="0 0 400 400" aria-hidden="true" style="display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))">
+<circle cx="200" cy="200" r="196" style="fill:#0E1012;stroke:url(#chromeG);stroke-width:6"></circle>
+<circle cx="200" cy="200" r="186" style="fill:url(#dialG)"></circle>
+<path d="M47.6 288.0A176 176 0 1 1 352.4 288.0" style="fill:none;stroke:#BFC5CC;stroke-opacity:.35;stroke-width:1.5"></path>
+<path d="M353.7 257.2A164 164 0 0 1 342.0 282.0" style="fill:none;stroke:#B3162E;stroke-width:14"></path>
+<path d="M51.0 286.0L73.6 273.0M31.0 232.2L56.6 227.4M29.8 174.9L55.6 178.7M47.6 120.3L70.6 132.4M82.3 74.6L100.1 93.6M130.0 42.9L140.6 66.6M185.6 28.6L187.8 54.5M242.8 33.4L236.3 58.6M295.2 56.7L280.8 78.4M337.0 96.0L316.3 111.7M363.6 146.8L338.9 154.9M372.0 203.6L346.0 203.1" style="fill:none;stroke:#EEE8DE;stroke-width:4"></path>
+<path d="M38.8 260.0L51.9 255.1M28.0 203.6L42.0 203.3M36.4 146.8L49.7 151.2M63.0 96.0L74.1 104.5M104.8 56.7L112.6 68.4M157.2 33.4L160.7 47.0M214.4 28.6L213.2 42.6M270.0 42.9L264.3 55.7M317.7 74.6L308.2 84.8M352.4 120.3L340.0 126.8M370.2 174.9L356.3 176.9M369.0 232.2L355.2 229.6" style="fill:none;stroke:#BFC5CC;stroke-width:2"></path>
+<path d="M361.2 260.0L336.8 250.9M349.0 286.0L326.4 273.0" style="fill:none;stroke:#E8243F;stroke-width:4"></path>
+<g style="fill:#EEE8DE;font-family:Archivo;font-size:25px;font-weight:800;font-stretch:62%;text-anchor:middle;dominant-baseline:central">
+<text x="94.3" y="261.0">11</text><text x="80.2" y="222.9">12</text><text x="79.3" y="182.2">13</text><text x="91.9" y="143.5">14</text><text x="116.5" y="111.1">15</text><text x="150.4" y="88.5">16</text><text x="189.8" y="78.4">17</text><text x="230.3" y="81.8">18</text><text x="267.5" y="98.4">19</text><text x="297.2" y="126.2">20</text><text x="316.0" y="162.3">21</text><text x="322.0" y="202.6">22</text><text x="314.3" y="242.5" style="fill:#E8243F">23</text>
+</g>
+<text x="200" y="146" style="fill:#BFC5CC;font-family:Archivo;font-size:22px;font-weight:600;font-style:italic;text-anchor:middle;dominant-baseline:central">h</text>
+<text x="200" y="300" style="fill:{{ clockColor }};font-family:Archivo;font-size:34px;font-weight:700;font-stretch:75%;font-variant-numeric:tabular-nums;text-anchor:middle;dominant-baseline:central;letter-spacing:.04em">{{ clock }}</text>
+<text x="200" y="332" style="fill:#BFC5CC;font-family:Archivo;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:central;letter-spacing:.08em">LAREDO</text>
+<g ref="{{ needleRef }}" transform="rotate(-122 200 200)">
+<polygon points="194.5,222 199,36 201,36 205.5,222" style="fill:#F0A830"></polygon>
+</g>
+<circle cx="200" cy="200" r="17" style="fill:#2A2F35;stroke:url(#chromeG);stroke-width:3"></circle>
+<circle cx="200" cy="200" r="4" style="fill:#BFC5CC"></circle>
+</svg>
+<span style="display:flex;align-items:center;gap:14px;margin-top:22px">
+<span aria-hidden="true" style="flex:none;width:18px;height:18px;border-radius:50%;background:{{ ledBg }};box-shadow:{{ ledShadow }};border:2px solid #0E1012"></span>
+<span style="display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px">
+<span style="font-family:'Archivo',sans-serif;font-size:44px;line-height:1;font-weight:900;font-stretch:62%;text-transform:uppercase">{{ statusWord }}</span>
+<span style="font-size:20px;font-weight:500;color:#EEE8DE">{{ statusDetail }}</span>
+</span>
+</span>
+<span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;min-height:48px;border-top:1px solid rgba(191,197,204,.25);padding-top:4px;font-size:16px;font-weight:600;color:#BFC5CC">
+<span>{{ weekLabel }}</span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="transform:{{ chevron }};transition:transform .3s;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="m6 9 6 6 6-6"></path></svg>
+</span>
+</button>
+<sc-if value="{{ expanded }}" hint-placeholder-val="{{ false }}">
+<ul id="horario-semana" style="list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column">
+<sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+<li style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;padding:0 12px;border-bottom:1px solid rgba(191,197,204,.14);background:{{ d.bg }};font-size:17px;font-variant-numeric:tabular-nums">
+<span style="display:flex;align-items:center;gap:10px;font-weight:{{ d.weight }}">{{ d.name }}<sc-if value="{{ d.today }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#1D2125;background:#F0A830;padding:2px 9px;border-radius:999px">Hoy</span></sc-if></span>
+<span style="font-weight:{{ d.weight }}">{{ d.hours }}</span>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section id="carta" data-screen-label="Carta" style="position:relative;padding:84px 20px 96px;background:#EEE8DE;color:#1D2125">
+<div style="max-width:1180px;margin:0 auto">
+<svg ref="{{ pinRef }}" viewBox="0 0 360 60" aria-hidden="true" style="display:block;width:100%;max-width:320px;height:auto;margin:0 auto 18px;overflow:visible">
+<g style="fill:none;stroke:url(#pinG);stroke-width:2.4;stroke-linecap:round">
+<path d="M180 16 L190 30 L180 44 L170 30 Z"></path>
+<path d="M194 30 C 214 4, 246 6, 254 24 C 260 38, 242 46, 234 36 C 228 28, 238 20, 246 27"></path>
+<path d="M196 36 C 236 54, 300 50, 352 30"></path>
+<path d="M196 24 C 226 12, 280 14, 318 22"></path>
+<g transform="matrix(-1 0 0 1 360 0)">
+<path d="M194 30 C 214 4, 246 6, 254 24 C 260 38, 242 46, 234 36 C 228 28, 238 20, 246 27"></path>
+<path d="M196 36 C 236 54, 300 50, 352 30"></path>
+<path d="M196 24 C 226 12, 280 14, 318 22"></path>
+</g>
+</g>
+</svg>
+<h2 ref="{{ cartaTitleRef }}" style="margin:0;text-align:center;font-family:'Archivo',sans-serif;font-size:clamp(68px,14vw,150px);line-height:.88;font-weight:900;font-stretch:62%;text-transform:uppercase">La carta</h2>
+<p style="margin:10px 0 0;text-align:center;font-family:'Caveat',cursive;font-size:30px;line-height:1;color:#B3162E">para comer con las manos</p>
+<p style="margin:18px auto 0;width:fit-content;max-width:100%;padding:6px 14px;border:1.5px dashed #1D2125;border-radius:999px;font-size:14px;font-weight:600;text-align:center">Carta de ejemplo — se sustituye por la real</p>
+
+<div ref="{{ tablistRef }}" role="tablist" aria-label="Secciones de la carta" style="position:relative;display:flex;overflow-x:auto;scrollbar-width:none;margin:38px -20px 0;padding:0 12px;gap:6px">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+<button type="button" role="tab" id="{{ t.tabId }}" aria-selected="{{ t.selected }}" aria-controls="panel-carta" tabIndex="{{ t.tabIndex }}" ref="{{ t.ref }}" onClick="{{ t.onClick }}" onKeyDown="{{ onTabKey }}" style="position:relative;z-index:1;flex:none;display:flex;align-items:center;gap:7px;min-height:48px;padding:0 18px;border:1.5px solid rgba(29,33,37,.25);border-radius:999px;background:transparent;color:{{ t.color }};font-family:'Archivo',sans-serif;font-size:17px;font-weight:780;font-stretch:72%;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;cursor:pointer;transition:color .25s">{{ t.label }}<sc-if value="{{ t.star }}" hint-placeholder-val="{{ false }}"><span aria-label="destacado" style="color:{{ t.starColor }};font-size:14px">★</span></sc-if></button>
+</sc-for>
+<span ref="{{ barRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;width:100px;height:48px;background:#1D2125;border-radius:999px;transform-origin:0 50%;transform:scaleX(0)"></span>
+</div>
+
+<div ref="{{ panelRef }}" id="panel-carta" role="tabpanel" aria-labelledby="{{ cat.tabId }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px 64px;align-items:start;padding-top:44px">
+<div style="padding:10px 6px 0">
+<sc-if value="{{ cat.hasPhoto }}" hint-placeholder-val="{{ true }}">
+<figure ref="{{ frameRef }}" style="position:relative;margin:0;padding:10px 10px 0;background:#FFFFFF;border-radius:4px;box-shadow:0 30px 60px rgba(29,33,37,.28),0 6px 14px rgba(29,33,37,.14);transform:rotate(-2deg)">
+<span aria-hidden="true" style="position:absolute;top:-13px;left:22px;width:100px;height:28px;background:rgba(240,168,48,.55);transform:rotate(-8deg);box-shadow:0 1px 3px rgba(0,0,0,.15)"></span>
+<span aria-hidden="true" style="position:absolute;top:-10px;right:26px;width:84px;height:26px;background:rgba(240,168,48,.55);transform:rotate(6deg);box-shadow:0 1px 3px rgba(0,0,0,.15)"></span>
+<div style="overflow:hidden;border-radius:2px">
+<img src="{{ cat.foto }}" alt="{{ cat.alt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:{{ cat.ar }};object-fit:cover;filter:contrast(1.08) saturate(1.05);background:#1D2125;transition:transform .8s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1.06)">
+</div>
+<figcaption style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 6px 14px"><span style="font-family:'Caveat',cursive;font-size:28px;line-height:1">{{ cat.caption }}</span><span style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#545A60">FOTO REAL</span></figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ cat.hasPlaceholder }}" hint-placeholder-val="{{ false }}">
+<div ref="{{ frameRef }}" style="position:relative;padding:10px;background:#FFFFFF;border-radius:4px;box-shadow:0 30px 60px rgba(29,33,37,.28);transform:rotate(-2deg)">
+<div style="aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:22px;background:repeating-linear-gradient(135deg,#1D2125 0 14px,#23282D 14px 28px);color:#EEE8DE">
+<span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#F0A830">HUECO PARA FOTO</span>
+<span style="font-size:17px;line-height:1.45;max-width:32ch">{{ cat.placeholder }}</span>
+</div>
+</div>
+</sc-if>
+</div>
+<div>
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B3162E">{{ cat.kicker }}</span>
+<h3 style="margin:8px 0 0;font-family:'Archivo',sans-serif;font-size:clamp(44px,7vw,72px);line-height:.9;font-weight:900;font-stretch:62%;text-transform:uppercase">{{ cat.title }}</h3>
+<sc-if value="{{ cat.hasNote }}" hint-placeholder-val="{{ false }}">
+<p style="margin:12px 0 0;font-size:17px;line-height:1.5;color:#545A60">{{ cat.note }}</p>
+</sc-if>
+<ul style="list-style:none;margin:20px 0 0;padding:0">
+<sc-for list="{{ cat.items }}" as="it" hint-placeholder-count="4">
+<li style="display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1.5px dashed rgba(29,33,37,.28)">
+<span style="display:flex;flex-direction:column;gap:3px;flex:1">
+<span style="font-size:20px;line-height:1.25;font-weight:700">{{ it.name }}</span>
+<sc-if value="{{ it.hasDesc }}" hint-placeholder-val="{{ false }}"><span style="font-size:15px;line-height:1.4;color:#545A60">{{ it.desc }}</span></sc-if>
+</span>
+<span style="font-family:'Archivo',sans-serif;font-size:24px;font-weight:800;font-stretch:75%;font-variant-numeric:tabular-nums;white-space:nowrap;color:#B3162E">{{ it.price }}</span>
+</li>
+</sc-for>
+</ul>
+<p style="margin:26px 0 0;padding-top:16px;border-top:3px solid #1D2125;font-size:15px;line-height:1.5"><strong>Alérgenos.</strong> Informamos de los 14 alérgenos. Pregunta al personal antes de pedir.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section ref="{{ terrazaRef }}" data-screen-label="Terraza" style="position:relative;height:110svh;min-height:620px;background:#EEE8DE;overflow:hidden">
+<div ref="{{ terrazaClipRef }}" style="position:absolute;inset:0;overflow:hidden;background:#1D2125">
+<img ref="{{ terrazaImgRef }}" src="img/terraza.jpg" alt="Terraza de la taberna" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 60%;filter:contrast(1.1) saturate(.95) brightness(.8);display:block">
+<div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,20,23,.9) 0%,rgba(17,20,23,0) 55%)"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;padding:0 20px 56px">
+<div data-reveal="" style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">Fuera también se está</span>
+<h2 style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(70px,17vw,200px);line-height:.85;font-weight:900;font-stretch:62%;text-transform:uppercase;color:#EEE8DE">Terraza</h2>
+<p style="margin:0;max-width:34ch;font-size:19px;line-height:1.5;color:#EEE8DE">Mesas al aire libre para las tardes largas de Laredo. Aparca la moto delante y pide la primera fuera.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section data-screen-label="Música" style="position:relative;padding:92px 20px;background:#B3162E;color:#EEE8DE;overflow:hidden">
+<div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px 72px;align-items:center">
+<div ref="{{ stageRef }}" style="position:relative;width:100%;max-width:460px;justify-self:center;aspect-ratio:10/12">
+<div ref="{{ vidBackRef }}" style="position:absolute;left:0;bottom:3%;width:46%;z-index:2;padding:7px 7px 30px;background:#EEE8DE;border-radius:4px;box-shadow:0 26px 50px rgba(0,0,0,.45);transform:rotate(5deg)">
+<video ref="{{ video2Ref }}" src="video/directo-2.mp4" muted="" loop="" playsInline="" preload="metadata" aria-label="Vídeo de un concierto en la taberna" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#1D2125;border-radius:2px"></video>
+<span style="position:absolute;left:10px;bottom:5px;font-family:'Caveat',cursive;font-size:22px;line-height:1;color:#1D2125">y otra más</span>
+</div>
+<div ref="{{ vidMainRef }}" style="position:absolute;right:3%;top:0;width:60%;z-index:3;padding:9px 9px 38px;background:#EEE8DE;border-radius:4px;box-shadow:0 34px 70px rgba(0,0,0,.55);transform:rotate(-3deg)">
+<span aria-hidden="true" style="position:absolute;top:-12px;left:50%;width:96px;height:26px;margin-left:-48px;z-index:2;background:rgba(240,168,48,.6);transform:rotate(-5deg);box-shadow:0 1px 3px rgba(0,0,0,.2)"></span>
+<div style="position:relative;overflow:hidden;border-radius:2px">
+<video ref="{{ video1Ref }}" src="video/directo-1.mp4" muted="" loop="" playsInline="" preload="metadata" aria-label="Vídeo de música en directo en la Taberna Harley Ever 86" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#1D2125"></video>
+<span style="position:absolute;top:10px;left:10px;display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;background:rgba(17,20,23,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-size:11px;font-weight:800;letter-spacing:.16em;color:#EEE8DE"><span ref="{{ recRef }}" style="width:8px;height:8px;border-radius:50%;background:#E8243F"></span>EN DIRECTO</span>
+<button type="button" onClick="{{ toggleSound }}" aria-pressed="{{ soundOn }}" style="position:absolute;right:8px;bottom:8px;display:flex;align-items:center;gap:7px;min-height:44px;padding:0 14px;border:0;border-radius:999px;background:rgba(17,20,23,.75);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#EEE8DE;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer" style-hover="background:#B3162E">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="{{ soundIcon }}"></path></svg>{{ soundLabel }}</button>
+</div>
+<span style="position:absolute;left:12px;bottom:7px;font-family:'Caveat',cursive;font-size:26px;line-height:1;color:#1D2125">noche de directo</span>
+</div>
+<div ref="{{ vinylRef }}" aria-hidden="true" style="position:absolute;right:-16%;bottom:-4%;z-index:1;width:62%;aspect-ratio:1/1;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#121416 0 2px,#1B1E21 2px 4px);box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 6px #0E1012">
+<div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,rgba(255,255,255,0) 0deg,rgba(255,255,255,.14) 30deg,rgba(255,255,255,0) 70deg,rgba(255,255,255,0) 180deg,rgba(255,255,255,.1) 215deg,rgba(255,255,255,0) 250deg)"></div>
+<div style="position:absolute;inset:33%;border-radius:50%;background:#EEE8DE;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;color:#1D2125">
+<span style="font-family:'Archivo',sans-serif;font-size:clamp(20px,4vw,30px);line-height:.9;font-weight:900;font-stretch:62%">86</span>
+<span style="font-size:7px;font-weight:800;letter-spacing:.2em">LADO A</span>
+</div>
+<div style="position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#1D2125"></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:18px">
+<span data-reveal="" style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#1D2125">Sube el volumen</span>
+<h2 data-reveal="" style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(60px,12vw,130px);line-height:.86;font-weight:900;font-stretch:62%;text-transform:uppercase">Música<br>en directo</h2>
+<p data-reveal="" style="margin:0;font-size:19px;line-height:1.5;max-width:36ch">Conciertos y sesiones en la taberna. Rock, blues y lo que se tercie.</p>
+<div data-reveal="" style="display:flex;align-items:center;gap:10px;margin-top:6px"><span style="font-size:12px;font-weight:800;letter-spacing:.14em;padding:4px 10px;border-radius:999px;background:#1D2125;color:#F0A830">DEMO</span><span style="font-size:15px">Agenda de ejemplo</span></div>
+<ul style="list-style:none;margin:0;padding:0;border-top:2px solid #EEE8DE">
+<sc-for list="{{ agenda }}" as="a" hint-placeholder-count="3">
+<li data-reveal="" style="display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(238,232,222,.4)">
+<span style="display:flex;flex-direction:column;line-height:.9;font-family:'Archivo',sans-serif;font-stretch:62%;text-transform:uppercase"><span style="font-size:15px;font-weight:700">{{ a.dia }}</span><span style="font-size:38px;font-weight:900">{{ a.num }}</span></span>
+<span style="font-size:19px;font-weight:700;line-height:1.25">{{ a.titulo }}</span>
+<span style="font-size:17px;font-weight:700;font-variant-numeric:tabular-nums">{{ a.hora }}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+</div>
+</section>
+
+<section data-screen-label="Reseñas" style="--ink-soft:#BFC5CC;padding:92px 20px;background:#1D2125">
+<div style="max-width:1180px;margin:0 auto">
+<div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px">
+<div style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">Lo que dicen</span>
+<h2 style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(56px,11vw,120px);line-height:.88;font-weight:900;font-stretch:62%;text-transform:uppercase">Boca<br>a boca</h2>
+</div>
+<div style="display:flex;align-items:center;gap:18px">
+<span style="font-family:'Archivo',sans-serif;font-size:clamp(90px,18vw,170px);line-height:.8;font-weight:900;font-stretch:62%;color:#F0A830">4,3</span>
+<span style="display:flex;flex-direction:column;gap:6px">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="4" size="22" hint-size="140px,24px"></x-import>
+<span style="font-size:16px;color:#BFC5CC">1.961 reseñas en Google</span>
+</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:44px">
+<sc-for list="{{ resenas }}" as="r" hint-placeholder-count="3">
+<div data-reveal="" style="height:100%">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" stars="{{ r.stars }}" quote="{{ r.quote }}" author="{{ r.author }}" when="{{ r.when }}" tone="dark" style="height:100%;border-radius:18px" hint-size="100%,200px"></x-import>
+</div>
+</sc-for>
+</div>
+<p style="margin:22px 0 0;font-size:14px;color:#9AA1A8">Reseñas de ejemplo. La nota y el número de reseñas son los reales de Google.</p>
+</div>
+</section>
+
+<section id="llegar" data-screen-label="Cómo llegar" style="padding:92px 20px;background:#EEE8DE;color:#1D2125">
+<div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:44px 64px;align-items:center">
+<div data-reveal="" style="display:flex;flex-direction:column;gap:18px">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#B3162E">Dónde estamos</span>
+<h2 style="margin:0;font-family:'Archivo',sans-serif;font-size:clamp(56px,11vw,120px);line-height:.88;font-weight:900;font-stretch:62%;text-transform:uppercase">Cómo<br>llegar</h2>
+<p style="margin:0;font-size:21px;line-height:1.45;font-weight:600">C. República de Filipinas, 46<br>39770 Laredo, Cantabria</p>
+<p style="margin:0;font-family:'Caveat',cursive;font-size:28px;line-height:1;color:#545A60">busca la calavera del tejado</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:9px;min-height:54px;padding:0 24px;background:#1D2125;color:#EEE8DE;text-decoration:none;font-family:'Archivo',sans-serif;font-size:18px;font-weight:800;font-stretch:80%;text-transform:uppercase;border-radius:999px;transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-2px);color:#F0A830" style-active="transform:translateY(1px)">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Abrir en Maps</a>
+<a href="tel:+34942603014" style="display:inline-flex;align-items:center;gap:9px;min-height:54px;padding:0 24px;border:2px solid #1D2125;color:#1D2125;text-decoration:none;font-family:'Archivo',sans-serif;font-size:18px;font-weight:800;font-stretch:80%;font-variant-numeric:tabular-nums;border-radius:999px;transition:transform .2s cubic-bezier(.4,0,.2,1)" style-hover="transform:translateY(-2px);color:#B3162E;border-color:#B3162E" style-active="transform:translateY(1px)">942 60 30 14</a>
+</div>
+</div>
+<div data-reveal="" style="padding:10px;background:#FFFFFF;border-radius:4px;box-shadow:0 30px 60px rgba(29,33,37,.25);transform:rotate(1.5deg)">
+<iframe title="Mapa: Taberna Harley Ever 86 en Laredo" src="{{ mapEmbed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="display:block;width:100%;aspect-ratio:4/3;border:0;filter:grayscale(.55) contrast(1.05);background:#D9D3C8"></iframe>
+</div>
+</div>
+</section>
+
+<footer ref="{{ footerRef }}" data-screen-label="Footer" style="padding:72px 20px 120px;background:#16191C;border-top:1px solid rgba(191,197,204,.14)">
+<div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:40px 32px;align-items:start;padding-bottom:48px;border-bottom:1px solid rgba(191,197,204,.18)">
+<div style="display:flex;flex-direction:column;gap:14px">
+<svg viewBox="0 0 140 96" width="72" height="49" aria-hidden="true"><ellipse cx="70" cy="48" rx="66" ry="44" style="fill:#1D2125;stroke:url(#chromeG);stroke-width:4"></ellipse><text x="70" y="51" style="fill:url(#chromeG);font-family:Archivo;font-size:66px;font-weight:900;font-stretch:62%;text-anchor:middle;dominant-baseline:central">86</text></svg>
+<p style="margin:0;font-family:'Archivo',sans-serif;font-size:30px;line-height:.95;font-weight:900;font-stretch:62%;text-transform:uppercase">Taberna<br>Harley Ever 86</p>
+<p style="margin:0;font-family:'Caveat',cursive;font-size:26px;line-height:1;color:#F0A830">motor parado, barra abierta</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">Dónde</span>
+<span>C. República de Filipinas, 46<br>39770 Laredo, Cantabria</span>
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" style="min-height:44px;display:flex;align-items:center;font-weight:700">Abrir en Maps</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">Horario</span>
+<span>Todos los días<br><span style="font-variant-numeric:tabular-nums">11:00–23:30</span></span>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+<span style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#F0A830">Contacto</span>
+<a href="tel:+34942603014" style="font-family:'Archivo',sans-serif;font-size:26px;line-height:1;font-weight:800;font-stretch:75%;font-variant-numeric:tabular-nums;min-height:44px;display:flex;align-items:center;text-decoration:none">942 60 30 14</a>
+<span style="color:#BFC5CC">Informamos de los 14 alérgenos. Pregunta al personal antes de pedir.</span>
+</div>
+</div>
+<div style="max-width:1180px;margin:0 auto;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;font-size:13px;line-height:1.5;color:#9AA1A8">
+<p style="margin:0;flex:1 1 320px">Propuesta de diseño. Fotos del propio local; carta, agenda, reseñas y textos legales de ejemplo.</p>
+<div style="display:flex;gap:24px">
+<a href="#aviso-legal" style="min-height:44px;display:flex;align-items:center;color:#BFC5CC">Aviso legal</a>
+<a href="#privacidad" style="min-height:44px;display:flex;align-items:center;color:#BFC5CC">Privacidad</a>
+</div>
+</div>
+</footer>
+
+<div aria-hidden="{{ ctaHidden }}" style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:{{ ctaDisplay }};grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(22,25,28,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(191,197,204,.22);transform:{{ ctaTransform }};transition:transform .35s cubic-bezier(.2,.8,.2,1)">
+<a href="tel:+34942603014" tabIndex="{{ ctaTab }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;background:#B3162E;color:#EEE8DE;text-decoration:none;font-family:'Archivo',sans-serif;font-size:17px;font-weight:800;font-stretch:80%;text-transform:uppercase;border-radius:999px">Llamar</a>
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" tabIndex="{{ ctaTab }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:2px solid #BFC5CC;color:#EEE8DE;text-decoration:none;font-family:'Archivo',sans-serif;font-size:17px;font-weight:800;font-stretch:80%;text-transform:uppercase;border-radius:999px">Cómo llegar</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// ====== DATOS PROVISIONALES: sustituir aquí ======
+const HORARIO = { 0:['11:00-23:30'], 1:['11:00-23:30'], 2:['11:00-23:30'],
+  3:['11:00-23:30'], 4:['11:00-23:30'], 5:['11:00-23:30'], 6:['11:00-23:30'] }; // 0 = domingo
+
+// Carta de ejemplo — se sustituye por la real
+const CARTA = [
+  { id:'picar', tab:'Para picar', kicker:'Para compartir', titulo:'Para picar',
+    foto:'img/alitas.jpg', alt:'Fuente de alitas y caprichos de pollo con salsa barbacoa', pie:'alitas de la casa',
+    platos:[['Rabas',9.5,'Con limón y alioli'],['Patatas bravas',6],['Alitas de pollo',8.5,'Barbacoa o picantes'],['Nachos con queso y guacamole',9]] },
+  { id:'patatas', tab:'Patatas', kicker:'El clásico', titulo:'Patatas',
+    foto:'img/patatas-queso.jpg', alt:'Patatas fritas cubiertas de queso fundido', pie:'con queso, siempre',
+    platos:[['Patatas con queso y bacon',7.5],['Patatas tres salsas',6.5],['Patatas gajo',5.5]] },
+  { id:'hamburguesas', tab:'Hamburguesas', kicker:'Lo más pedido', titulo:'Hamburguesas', nota:'Todas con patatas.',
+    foto:'img/hamburguesa.jpg', alt:'Hamburguesa con jamón, carne y lechuga en pan de cruz', pie:'la de la casa',
+    platos:[['Clásica',11,'Ternera, lechuga, tomate y cebolla'],['Bacon y cheddar',12.5],['Doble',14,'Doble carne, doble queso']] },
+  { id:'ensaladas', tab:'Ensaladas', kicker:'Para equilibrar', titulo:'Ensaladas',
+    foto:'img/ensalada.jpg', alt:'Ensalada completa servida en la taberna', pie:'algo verde',
+    platos:[['Ensalada mixta',8],['Ensalada de pollo crujiente',10]] },
+  { id:'bocadillos', tab:'Bocadillos', kicker:'A mano', titulo:'Bocadillos',
+    foto:'img/bocata.jpg', alt:'Bocadillo de pan crujiente con bacon sobre papel de periódico, con salsas detrás', pie:'bocata del bueno', ar:'4/3',
+    platos:[['Lomo con pimientos',7.5],['Pepito de ternera',8.5],['Sándwich mixto',5]] },
+  { id:'cocteles', tab:'Cócteles', kicker:'Destacados en Google', titulo:'Cócteles', destacado:true,
+    hueco:'Foto ideal: un old fashioned en la barra, con las botellas desenfocadas detrás.',
+    platos:[['Mojito',8],['Margarita',8],['Old Fashioned',9],['Gin tonic',8.5]] },
+  { id:'postres', tab:'Postres', kicker:'El final', titulo:'Postres',
+    foto:'img/copa-helado.jpg', alt:'Copa de helado con nata', pie:'la copa del 86',
+    platos:[['Copa de helado',5.5],['Tarta de queso',5.5],['Brownie con helado',6]] }
+];
+
+const V = 'min(66vw,48svh,420px)', H = 'min(84vw,64svh,560px)', WIDE = 'min(88vw,96svh,680px)';
+const GALERIA = [
+  { src:'img/barra-moto.jpg', cap:'la moto de la barra', alt:'Moto clásica sobre la barra, rodeada de botellas y placas de Harley-Davidson en una pared naranja', rot:-2.5, w:H, ar:'4/3' },
+  { src:'img/moto-86.jpg', cap:'la 86, en la terraza', alt:'Moto con el dorsal 86 expuesta sobre un pedestal de piedra en la terraza de madera', rot:-1.5, w:WIDE, ar:'2/1' },
+  { src:'img/pared.jpg', cap:'la pared de la rueda', alt:'Pared decorada con una rueda de moto y piezas antiguas', rot:2.5, w:V, ar:'4/5' },
+  { src:'img/motos.jpg', cap:'aparcamiento vip', alt:'Motos aparcadas frente a la taberna', rot:3, w:V, ar:'4/5' }
+];
+
+const AGENDA = [ // agenda de ejemplo
+  { dia:'Vie', num:'17', titulo:'Rock en directo', hora:'22:00' },
+  { dia:'Sáb', num:'18', titulo:'Sesión de blues', hora:'21:30' },
+  { dia:'Vie', num:'24', titulo:'Tributo clásico', hora:'22:00' }
+];
+
+const RESENAS = [ // reseñas de ejemplo
+  { stars:5, quote:'Ambiente motero de verdad, buena música y las alitas de diez. Volveremos con las motos.', author:'Iker', when:'Hace 2 semanas' },
+  { stars:4, quote:'La decoración es una pasada, cada rincón tiene algo. Cócteles muy bien preparados.', author:'Marta', when:'Hace 1 mes' },
+  { stars:5, quote:'Paramos de ruta por la costa y acertamos. Hamburguesa enorme y trato muy cercano.', author:'Javier', when:'Hace 3 meses' }
+];
+
+const LOCAL = { mapsQuery:'Taberna Harley Ever 86, C. República de Filipinas, 46, 39770 Laredo' };
+
+const LIBS = [
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js','sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly','gsap'],
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js','sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF','ScrollTrigger'],
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js','sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr','SplitText'],
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/DrawSVGPlugin.min.js','sha384-pfZbCpJUiv0Y8664JafRbiKcx2uJmjNjVCoPXGwaxvTSbO11M0htzeEeTC6KSaqa','DrawSVGPlugin'],
+  ['https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js','sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw','Lenis']
+];
+
+const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const toMin = s => { const [h,m] = s.split(':').map(Number); return h*60+m; };
+const fmtH = s => s.replace('-', '–');
+const precio = n => n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €';
+
+function madridNow(){
+  const p = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+  const g = t => (p.find(x => x.type === t) || {}).value;
+  const d = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday'));
+  const hh = +g('hour'), mm = +g('minute');
+  return { d, min: hh*60+mm, clock: String(hh).padStart(2,'0') + ':' + String(mm).padStart(2,'0') };
+}
+
+function estado(now){
+  const ranges = d => (HORARIO[d] || []).map(r => r.split('-')).map(([s,e]) => [toMin(s), toMin(e), s, e]);
+  for (const [s,e,,E] of ranges(now.d)) {
+    if (e > s && now.min >= s && now.min < e) return { open:true, cierra:E, hour: now.min/60 };
+    if (e <= s && now.min >= s) return { open:true, cierra:E, hour: now.min/60 };
+  }
+  for (const [s,e,,E] of ranges((now.d+6)%7)) if (e <= s && now.min < e) return { open:true, cierra:E, hour: now.min/60 + 24 };
+  for (let k = 0; k < 8; k++) {
+    const d = (now.d + k) % 7;
+    const next = ranges(d).filter(([s]) => k > 0 || s > now.min).sort((a,b) => a[0]-b[0])[0];
+    if (next) return { open:false, abre: next[2], cuando: k === 0 ? '' : k === 1 ? 'mañana ' : 'el ' + DIAS[d].toLowerCase() + ' ' };
+  }
+  return { open:false, abre:'', cuando:'' };
+}
+const angleFor = st => st.open ? -120 + (Math.min(23.5, Math.max(11, st.hour)) - 11) / 12.5 * 240 : -122;
+
+function loadScript(src, integrity){
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.integrity = integrity; s.crossOrigin = 'anonymous';
+    s.onload = res; s.onerror = () => rej(new Error('No carga ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+class Component extends DCLogic {
+  state = { tab:0, expanded:false, now: madridNow(), lang:'es', toast:'', heroIn:true, footIn:false, mobile:true };
+  tabEls = []; swept = false;
+  constructor(p){ super(p);
+    ['rootRef','heroRef','heroPhotoRef','heroImgRef','heroContentRef','heroGlowRef','heroKickerRef','h1Ref','heroMetaRef','scrollHintRef','trackRef',
+     'manifestoRef','galleryRef','galleryScrollRef','galleryTrackRef','gaugeRef','needleRef','pinRef','cartaTitleRef','tablistRef',
+     'barRef','panelRef','frameRef','terrazaRef','terrazaClipRef','terrazaImgRef','vinylRef','footerRef','stageRef','vidMainRef','vidBackRef','video1Ref','video2Ref','recRef'].forEach(k => this[k] = React.createRef());
+  }
+
+  componentDidMount(){
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.mq = window.matchMedia('(max-width: 899px)');
+    this.onMq = () => this.setState({ mobile: this.mq.matches });
+    this.onMq(); this.mq.addEventListener('change', this.onMq);
+    this.clockT = setInterval(() => this.setState({ now: madridNow() }, () => this.updateNeedle()), 30000);
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.target === this.heroRef.current) this.setState({ heroIn: e.isIntersecting });
+      if (e.target === this.footerRef.current) this.setState({ footIn: e.isIntersecting });
+    }));
+    this.vio = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting && (!this.reduced || this.state.soundOn)) { v.muted = v === this.video1Ref.current ? !this.state.soundOn : true; const p = v.play(); p && p.catch(() => {}); }
+      else v.pause();
+    }), { threshold:0.25 });
+    [this.video1Ref, this.video2Ref].forEach(r => { if (r.current) { r.current.muted = true; this.vio.observe(r.current); } });
+    this.heroRef.current && this.io.observe(this.heroRef.current);
+    this.footerRef.current && this.io.observe(this.footerRef.current);
+    this.onResize = () => this.moveBar(this.state.tab, false);
+    window.addEventListener('resize', this.onResize);
+    if (!this.reduced) this.preHide();
+    this.boot();
+  }
+  componentWillUnmount(){
+    clearInterval(this.clockT); clearTimeout(this.fallbackT); clearTimeout(this.toastT);
+    this.io && this.io.disconnect(); this.vio && this.vio.disconnect();
+    this.mq && this.mq.removeEventListener('change', this.onMq);
+    window.removeEventListener('resize', this.onResize);
+    this.mm && this.mm.revert();
+  }
+
+  heroBits(){ return [this.h1Ref, this.heroKickerRef, this.heroMetaRef].map(r => r.current).filter(Boolean); }
+  preHide(){
+    const p = this.heroPhotoRef.current; if (p) p.style.clipPath = 'inset(100% 0 0 0)';
+    this.heroBits().forEach(el => el.style.opacity = '0');
+    this.fallbackT = setTimeout(() => this.reveal(), 4000);
+  }
+  reveal(){
+    const p = this.heroPhotoRef.current; if (p) p.style.clipPath = '';
+    this.heroBits().forEach(el => el.style.opacity = '');
+  }
+
+  async boot(){
+    try { for (const [src, sri, g] of LIBS) if (!window[g]) await loadScript(src, sri); }
+    catch (e) { console.warn(e.message); }
+    try { await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]); } catch (e) {}
+    this.moveBar(this.state.tab, false);
+    const ok = window.gsap && window.ScrollTrigger && window.SplitText && window.DrawSVGPlugin;
+    if (!ok) { clearTimeout(this.fallbackT); this.reveal(); this.swept = true; this.updateNeedle(); return; }
+    gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
+    this.initMotion();
+    window.addEventListener('load', () => ScrollTrigger.refresh(), { once:true });
+  }
+
+  initMotion(){
+    const mm = gsap.matchMedia(); this.mm = mm;
+    const needle = this.needleRef.current, root = this.rootRef.current;
+    mm.add('(prefers-reduced-motion: reduce)', () => {
+      clearTimeout(this.fallbackT); this.reveal(); this.swept = true;
+      gsap.set(needle, { rotation: angleFor(estado(this.state.now)), svgOrigin:'200 200' });
+    });
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      let lenis, raf;
+      if (window.Lenis) {
+        lenis = new Lenis({ lerp:0.1, anchors:true });
+        lenis.on('scroll', ScrollTrigger.update);
+        raf = t => lenis.raf(t * 1000);
+        gsap.ticker.add(raf); gsap.ticker.lagSmoothing(0);
+      }
+      clearTimeout(this.fallbackT);
+      const hero = this.heroRef.current, h1 = this.h1Ref.current, kicker = this.heroKickerRef.current, meta = this.heroMetaRef.current;
+      const split = SplitText.create(h1, { type:'words,chars,lines', mask:'lines' });
+      gsap.set([h1, kicker, meta], { opacity:1 });
+      gsap.timeline()
+        .fromTo(this.heroPhotoRef.current, { clipPath:'inset(100% 0% 0% 0%)' }, { clipPath:'inset(0% 0% 0% 0%)', duration:1.3, ease:'expo.out' }, 0)
+        .from(this.heroImgRef.current, { scale:1.35, duration:2.2, ease:'expo.out' }, 0)
+        .from(split.chars, { yPercent:115, rotate:8, duration:1, ease:'power4.out', stagger:0.035 }, 0.35)
+        .from(kicker, { opacity:0, x:-20, duration:0.6, ease:'power3.out' }, 0.9)
+        .from(meta.children, { opacity:0, y:14, duration:0.5, ease:'power3.out', stagger:0.08 }, 1.05);
+
+      gsap.to(this.heroImgRef.current, { yPercent:14, ease:'none', scrollTrigger:{ trigger:hero, start:'top top', end:'bottom top', scrub:true } });
+      const glow = this.heroGlowRef.current, img = this.heroImgRef.current;
+      gsap.to(glow, { opacity:1, duration:1.6, delay:1.2, ease:'power2.out' });
+      gsap.to(img, { scale:1.06, duration:14, ease:'sine.inOut', yoyo:true, repeat:-1, delay:2.4 });
+      const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+      const gx = gsap.quickSetter(glow, '--mx'), gy = gsap.quickSetter(glow, '--my');
+      const ix = gsap.quickTo(img, 'x', { duration:1.2, ease:'power3.out' }), iy = gsap.quickTo(img, 'y', { duration:1.2, ease:'power3.out' });
+      const hx = gsap.quickTo(h1, 'x', { duration:1.4, ease:'power3.out' }), hy = gsap.quickTo(h1, 'y', { duration:1.4, ease:'power3.out' });
+      const g = { x:70, y:35 }, setG = () => { glow.style.setProperty('--mx', g.x + '%'); glow.style.setProperty('--my', g.y + '%'); };
+      const gxT = gsap.quickTo(g, 'x', { duration:0.9, ease:'power3.out', onUpdate:setG }), gyT = gsap.quickTo(g, 'y', { duration:0.9, ease:'power3.out', onUpdate:setG });
+      const onMove = e => { const r = hero.getBoundingClientRect(); if (e.clientY > r.bottom || e.clientY < r.top) return;
+        const nx = (e.clientX - r.left) / r.width, ny = (e.clientY - r.top) / r.height;
+        gxT(nx * 100); gyT(ny * 100); ix((0.5 - nx) * 40); iy((0.5 - ny) * 40); hx((nx - 0.5) * 14); hy((ny - 0.5) * 8); };
+      if (fine) window.addEventListener('pointermove', onMove);
+      else gsap.to(g, { x:35, y:55, duration:6, ease:'sine.inOut', yoyo:true, repeat:-1, onUpdate:setG });
+      const hovers = split.chars.map(c => { const fn = () => gsap.fromTo(c, { y:0 }, { keyframes:[{ y:-18, duration:.15, ease:'power2.out' },{ y:0, duration:.7, ease:'elastic.out(1,.4)' }], overwrite:true }); c.style.display = 'inline-block'; c.addEventListener('pointerenter', fn); return [c, fn]; });
+      gsap.to(this.heroContentRef.current, { yPercent:-30, opacity:0, ease:'none', scrollTrigger:{ trigger:hero, start:'45% top', end:'bottom top', scrub:true } });
+
+      const tween = gsap.to(this.trackRef.current, { xPercent:-50, duration:30, ease:'none', repeat:-1 });
+      ScrollTrigger.create({ start:0, end:'max', onUpdate: self => {
+        const v = self.getVelocity(), ts = (v < 0 ? -1 : 1) * Math.min(5, 1 + Math.abs(v) / 300);
+        gsap.to(tween, { timeScale: ts, duration:0.15, overwrite:true, onComplete: () => gsap.to(tween, { timeScale:1, duration:0.8, ease:'power2.out' }) });
+      }});
+
+      const ms = SplitText.create(this.manifestoRef.current, { type:'words' });
+      gsap.fromTo(ms.words, { opacity:0.14 }, { opacity:1, stagger:0.1, ease:'none',
+        scrollTrigger:{ trigger:this.manifestoRef.current, start:'top 80%', end:'bottom 45%', scrub:true } });
+
+      const gal = this.galleryRef.current, track = this.galleryTrackRef.current, sc = this.galleryScrollRef.current;
+      sc.style.overflowX = 'hidden';
+      const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
+      gsap.to(track, { x: () => -dist(), ease:'none',
+        scrollTrigger:{ trigger:gal, start:'top top', end: () => '+=' + dist(), pin:true, scrub:1, invalidateOnRefresh:true, anticipatePin:1 } });
+      gsap.from(track.children, { y:60, opacity:0, rotate:0, duration:0.9, ease:'power3.out', stagger:0.08,
+        scrollTrigger:{ trigger:gal, start:'top 70%', once:true } });
+
+      gsap.set(needle, { rotation:-122, svgOrigin:'200 200' });
+      ScrollTrigger.create({ trigger:this.gaugeRef.current, start:'top 78%', once:true, onEnter: () => {
+        gsap.timeline({ onComplete: () => { this.swept = true; } })
+          .to(needle, { rotation:120, svgOrigin:'200 200', duration:0.5, ease:'power2.in' })
+          .to(needle, { rotation: angleFor(estado(this.state.now)), svgOrigin:'200 200', duration:0.9, ease:'power3.out' });
+      }});
+
+      gsap.fromTo(this.pinRef.current.querySelectorAll('path'), { drawSVG:'0%' }, { drawSVG:'100%', duration:1.4, ease:'power2.inOut',
+        scrollTrigger:{ trigger:this.pinRef.current, start:'top 88%', once:true } });
+      const st = SplitText.create(this.cartaTitleRef.current, { type:'chars', mask:'chars' });
+      gsap.from(st.chars, { yPercent:110, duration:0.8, ease:'power4.out', stagger:0.03,
+        scrollTrigger:{ trigger:this.cartaTitleRef.current, start:'top 88%', once:true } });
+      if (this.frameRef.current) gsap.from(this.frameRef.current, { y:80, rotation:-10, opacity:0, duration:1, ease:'power3.out',
+        scrollTrigger:{ trigger:this.panelRef.current, start:'top 85%', once:true } });
+
+      const tz = this.terrazaRef.current;
+      gsap.fromTo(this.terrazaClipRef.current, { clipPath:'inset(10% 8% 10% 8% round 24px)' }, { clipPath:'inset(0% 0% 0% 0% round 0px)', ease:'none',
+        scrollTrigger:{ trigger:tz, start:'top 90%', end:'top 10%', scrub:true } });
+      gsap.fromTo(this.terrazaImgRef.current, { scale:1.3 }, { scale:1, ease:'none',
+        scrollTrigger:{ trigger:tz, start:'top bottom', end:'bottom top', scrub:true } });
+
+      gsap.to(this.vinylRef.current, { rotation:360, duration:5, repeat:-1, ease:'none' });
+      gsap.to(this.recRef.current, { opacity:0.2, duration:0.6, repeat:-1, yoyo:true, ease:'power1.inOut' });
+      const stage = this.stageRef.current;
+      gsap.timeline({ scrollTrigger:{ trigger:stage, start:'top bottom', end:'bottom top', scrub:1 } })
+        .fromTo(this.vidMainRef.current, { y:90, rotation:-9 }, { y:-50, rotation:-1, ease:'none' }, 0)
+        .fromTo(this.vidBackRef.current, { y:140, rotation:12 }, { y:-20, rotation:3, ease:'none' }, 0)
+        .fromTo(this.vinylRef.current, { xPercent:30 }, { xPercent:0, ease:'none' }, 0);
+      gsap.from([this.vidMainRef.current, this.vidBackRef.current], { scale:0.8, opacity:0, duration:1, ease:'back.out(1.4)', stagger:0.15,
+        scrollTrigger:{ trigger:stage, start:'top 75%', once:true } });
+
+      const rev = root.querySelectorAll('[data-reveal]');
+      gsap.set(rev, { opacity:0, y:40 });
+      ScrollTrigger.batch(rev, { start:'top 90%', once:true,
+        onEnter: b => gsap.to(b, { opacity:1, y:0, duration:0.8, ease:'power3.out', stagger:0.08, overwrite:true }) });
+
+      ScrollTrigger.refresh();
+      return () => { window.removeEventListener('pointermove', onMove); hovers.forEach(([c,fn]) => c.removeEventListener('pointerenter', fn)); if (lenis) { gsap.ticker.remove(raf); lenis.destroy(); } split.revert(); st.revert(); ms.revert(); sc.style.overflowX = 'auto'; };
+    });
+  }
+
+  updateNeedle(){
+    if (!this.swept) return;
+    const n = this.needleRef.current; if (!n) return;
+    const deg = angleFor(estado(this.state.now));
+    if (window.gsap && !this.reduced) gsap.to(n, { rotation:deg, svgOrigin:'200 200', duration:0.6, ease:'power3.out' });
+    else if (window.gsap) gsap.set(n, { rotation:deg, svgOrigin:'200 200' });
+    else n.setAttribute('transform', `rotate(${deg} 200 200)`);
+  }
+
+  moveBar(i, animate){
+    const el = this.tabEls[i], bar = this.barRef.current; if (!el || !bar) return;
+    const x = el.offsetLeft, s = el.offsetWidth / 100;
+    if (window.gsap && animate && !this.reduced) gsap.to(bar, { x, scaleX:s, duration:0.4, ease:'power3.out' });
+    else if (window.gsap) gsap.set(bar, { x, scaleX:s });
+    else bar.style.transform = `translateX(${x}px) scaleX(${s})`;
+    const list = this.tablistRef.current;
+    if (list && animate) list.scrollTo({ left: Math.max(0, x - 40), behavior: this.reduced ? 'auto' : 'smooth' });
+  }
+
+  selectTab(i){
+    if (i === this.state.tab) return;
+    this.moveBar(i, true);
+    const panel = this.panelRef.current;
+    const after = () => { if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+    if (window.gsap && !this.reduced && panel) {
+      gsap.to(panel, { y:12, opacity:0, duration:0.16, ease:'power2.in', overwrite:true, onComplete: () => {
+        this.setState({ tab:i }, () => {
+          gsap.fromTo(panel, { y:12, opacity:0 }, { y:0, opacity:1, duration:0.4, ease:'power3.out' });
+          if (this.frameRef.current) gsap.fromTo(this.frameRef.current, { rotation:-9, scale:.9, y:30 }, { rotation:-2, scale:1, y:0, duration:0.7, ease:'back.out(1.6)' });
+          after();
+        });
+      }});
+    } else this.setState({ tab:i }, after);
+  }
+
+  onTabKey = e => {
+    const n = CARTA.length, cur = this.state.tab;
+    let next = null;
+    if (e.key === 'ArrowRight') next = (cur + 1) % n;
+    if (e.key === 'ArrowLeft') next = (cur - 1 + n) % n;
+    if (e.key === 'Home') next = 0;
+    if (e.key === 'End') next = n - 1;
+    if (next === null) return;
+    e.preventDefault(); this.selectTab(next);
+    this.tabEls[next] && this.tabEls[next].focus();
+  };
+
+  toggleSound = () => {
+    const v = this.video1Ref.current; if (!v) return;
+    const on = !this.state.soundOn;
+    v.muted = !on;
+    if (on) { const p = v.play(); p && p.catch(() => {}); }
+    this.setState({ soundOn:on });
+  };
+
+  setLang(code){
+    clearTimeout(this.toastT);
+    this.setState({ lang:code, toast: code === 'es' ? '' : `Demo: la versión ${code.toUpperCase()} llega con la web final, pensada para el turismo de verano.` });
+    if (code !== 'es') this.toastT = setTimeout(() => this.setState({ toast:'', lang:'es' }), 3200);
+  }
+
+  renderVals(){
+    const { now, tab, expanded, lang, toast, heroIn, footIn, mobile } = this.state;
+    const st = estado(now), on = st.open, c = CARTA[tab];
+    const showCta = mobile && !heroIn && !footIn;
+    const refs = {};
+    ['rootRef','heroRef','heroPhotoRef','heroImgRef','heroContentRef','heroGlowRef','heroKickerRef','h1Ref','heroMetaRef','scrollHintRef','trackRef',
+     'manifestoRef','galleryRef','galleryScrollRef','galleryTrackRef','gaugeRef','needleRef','pinRef','cartaTitleRef','tablistRef',
+     'barRef','panelRef','frameRef','terrazaRef','terrazaClipRef','terrazaImgRef','vinylRef','footerRef','stageRef','vidMainRef','vidBackRef','video1Ref','video2Ref','recRef'].forEach(k => refs[k] = this[k]);
+    return {
+      ...refs,
+      langs: ['es','en','fr'].map(l => ({ code:l.toUpperCase(), pressed: lang === l, bg: lang === l ? '#EEE8DE' : 'transparent', color: lang === l ? '#1D2125' : '#EEE8DE', onClick: () => this.setLang(l) })),
+      hasToast: !!toast, toast,
+      mapsUrl: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(LOCAL.mapsQuery),
+      mapEmbed: 'https://www.google.com/maps?q=' + encodeURIComponent(LOCAL.mapsQuery) + '&output=embed',
+      pillText: on ? 'Abierto ahora' : 'Cerrado ahora',
+      ledBg: on ? '#F0A830' : '#3A4047',
+      ledShadow: on ? '0 0 0 3px rgba(240,168,48,.25), 0 0 14px rgba(240,168,48,.9)' : 'none',
+      statusWord: on ? 'Abierto' : 'Cerrado',
+      statusDetail: on ? `— cierra a las ${st.cierra}` : (st.abre ? `— abrimos ${st.cuando}a las ${st.abre}` : ''),
+      clock: now.clock, clockColor: on ? '#F0A830' : '#6E757C',
+      expanded, toggleWeek: () => this.setState(s => ({ expanded: !s.expanded }), () => window.ScrollTrigger && ScrollTrigger.refresh()),
+      weekLabel: expanded ? 'Ocultar horario de la semana' : 'Ver horario de la semana',
+      chevron: expanded ? 'rotate(180deg)' : 'none',
+      days: [1,2,3,4,5,6,0].map(d => ({ name: DIAS[d], today: d === now.d,
+        hours: (HORARIO[d] || []).length ? HORARIO[d].map(fmtH).join(' y ') : 'Cerrado',
+        bg: d === now.d ? 'rgba(240,168,48,.12)' : 'transparent', weight: d === now.d ? 700 : 400 })),
+      galeria: GALERIA, agenda: AGENDA, resenas: RESENAS,
+      soundOn: !!this.state.soundOn, toggleSound: this.toggleSound,
+      soundLabel: this.state.soundOn ? 'Silenciar' : 'Con sonido',
+      soundIcon: this.state.soundOn ? 'M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14' : 'M22 9l-6 6M16 9l6 6',
+      tabs: CARTA.map((k, i) => ({ label:k.tab, tabId:'tab-' + k.id, selected: i === tab, tabIndex: i === tab ? 0 : -1,
+        color: i === tab ? '#EEE8DE' : '#1D2125', star: !!k.destacado, starColor: i === tab ? '#F0A830' : '#B26F00',
+        ref: el => { this.tabEls[i] = el; }, onClick: () => this.selectTab(i) })),
+      onTabKey: this.onTabKey,
+      cat: { tabId:'tab-' + c.id, title:c.titulo, kicker:c.kicker, hasNote: !!c.nota, note:c.nota || '',
+        hasPhoto: !!c.foto, foto:c.foto || '', ar: c.ar || '1/1', alt:c.alt || '', caption:c.pie || '',
+        hasPlaceholder: !c.foto && !!c.hueco, placeholder:c.hueco || '',
+        items: c.platos.map(([name, p, desc]) => ({ name, price: precio(p), hasDesc: !!desc, desc: desc || '' })) },
+      ctaDisplay: mobile ? 'grid' : 'none',
+      ctaTransform: showCta ? 'translateY(0)' : 'translateY(110%)',
+      ctaHidden: !showCta, ctaTab: showCta ? 0 : -1
+    };
+  }
+}
+</script>
+</body>
+</html>

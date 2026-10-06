@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css" integrity="sha384-gvLq/iOMNnPchdosgVym5huSVkKipHCQaqSw2Eg0V52Mzmlf169ZOsXcNc2cNu8x" crossorigin="anonymous">
+<style>
+html,body{margin:0;background:#1D2125;color:#EEE8DE;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#EEE8DE;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:#F0A830}
+:focus-visible{outline:3px solid #F0A830;outline-offset:3px}
+::selection{background:#F0A830;color:#1D2125}
+</style>
+</helmet>
+<div style="position:relative;background:#1D2125;color:#EEE8DE;font-family:'Archivo',system-ui,sans-serif;font-stretch:100%;overflow-x:clip">
+
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;width:0;height:0">
+<defs>
+<linearGradient id="chromeG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:#F6F7F9"></stop><stop offset=".46" style="stop-color:#BFC5CC"></stop><stop offset=".54" style="stop-color:#79818A"></stop><stop offset="1" style="stop-color:#DDE1E5"></stop></linearGradient>
+<linearGradient id="pinG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" style="stop-color:#8E959D"></stop><stop offset=".5" style="stop-color:#BFC5CC"></stop><stop offset="1" style="stop-color:#8E959D"></stop></linearGradient>
+<radialGradient id="rivetG" cx=".35" cy=".3" r=".75"><stop offset="0" style="stop-color:#FFFFFF"></stop><stop offset=".4" style="stop-color:#BFC5CC"></stop><stop offset="1" style="stop-color:#5E656D"></stop></radialGradient>
+<radialGradient id="dialG" cx=".5" cy=".42" r=".6"><stop offset="0" style="stop-color:#2A3036"></stop><stop offset="1" style="stop-color:#111417"></stop></radialGradient>
+</defs>
+</svg>
+
+<header style="position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:flex-end;padding:12px 14px">
+<div role="group" aria-label="Idioma" style="display:flex;border:1px solid rgba(191,197,204,.45);background:rgba(29,33,37,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:2px">
+<sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{ l.pressed }}" onClick="{{ l.onClick }}" style="min-width:44px;min-height:44px;border:0;background:{{ l.bg }};color:{{ l.color }};font-family:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;cursor:pointer">{{ l.code }}</button>
+</sc-for>
+</div>
+</header>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position:fixed;top:66px;right:14px;z-index:60;max-width:280px;background:#EEE8DE;color:#1D2125;padding:12px 14px;font-size:15px;line-height:1.35;border-radius:2px">{{ toast }}</div>
+</sc-if>
+
+<section id="inicio" ref="{{ heroRef }}" data-screen-label="Hero" style="position:relative;min-height:100svh;min-height:640px;height:100svh;overflow:hidden;background:#1D2125">
+<div ref="{{ heroPhotoRef }}" style="position:absolute;inset:0">
+<img src="img/hero-fachada.webp" alt="Fachada de la Taberna Harley Ever 86 en Laredo, con su rótulo bajo las palmeras y una camioneta clásica naranja aparcada delante" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:30% 50%;filter:contrast(1.1) saturate(1.04);display:block">
+<div aria-hidden="true" style="position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27180%27%20height%3D%27180%27%3E%3Cfilter%20id%3D%27n%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.85%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url%28%23n%29%27%2F%3E%3C%2Fsvg%3E)"></div>
+</div>
+<div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(29,33,37,.6) 0%,rgba(29,33,37,0) 18%,rgba(29,33,37,.08) 38%,rgba(29,33,37,.86) 64%,#1D2125 92%)"></div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;padding:0 20px 28px">
+<div ref="{{ heroContentRef }}" style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px">
+<svg ref="{{ plateRef }}" viewBox="0 0 140 96" width="104" height="71" role="img" aria-label="Placa de dorsal con el número 86" style="display:block;overflow:visible">
+<ellipse data-plate-fill="" cx="70" cy="48" rx="66" ry="44" style="fill:#1D2125;fill-opacity:.9"></ellipse>
+<ellipse data-plate-line="" cx="70" cy="48" rx="66" ry="44" style="fill:none;stroke:url(#chromeG);stroke-width:3.5"></ellipse>
+<ellipse data-plate-fill="" cx="70" cy="48" rx="57" ry="36" style="fill:none;stroke:#BFC5CC;stroke-opacity:.45;stroke-width:1"></ellipse>
+<text data-plate-fill="" x="70" y="51" style="fill:url(#chromeG);font-family:Archivo;font-size:66px;font-weight:900;font-stretch:62%;text-anchor:middle;dominant-baseline:central">86</text>
+</svg>
+<h1 ref="{{ h1Ref }}" style="margin:0;font-size:clamp(66px,18vw,200px);line-height:.9;font-weight:880;font-stretch:62%;text-transform:uppercase;letter-spacing:-.005em;color:#EEE8DE">Harley Ever 86</h1>
+<div ref="{{ heroMetaRef }}" style="display:flex;flex-direction:column;gap:16px">
+<p style="margin:0;font-size:20px;line-height:1.3;font-weight:500">Taberna motera en Laredo</p>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px">
+<a href="#abierto" style="display:inline-flex;align-items:center;gap:9px;min-height:40px;padding:0 14px;border:1px solid rgba(191,197,204,.5);background:rgba(29,33,37,.6);color:#EEE8DE;text-decoration:none;font-size:15px;font-weight:600;border-radius:2px">
+<span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{ ledBg }};box-shadow:{{ ledShadow }}"></span>{{ pillText }}</a>
+<span style="font-size:15px;color:#EEE8DE;font-variant-numeric:tabular-nums">4,3 <span aria-hidden="true" style="color:#F0A830">★</span> en Google (1.961 reseñas)</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:440px">
+<a href="tel:+34942603014" style="display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;background:#B3162E;color:#EEE8DE;text-decoration:none;font-size:18px;font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.02em;border-radius:2px" style-hover="background:#961126;color:#EEE8DE" style-active="transform:translateY(1px)">
+<svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Llamar</a>
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;border:2px solid #BFC5CC;color:#EEE8DE;text-decoration:none;font-size:18px;font-weight:800;font-stretch:80%;text-transform:uppercase;letter-spacing:.02em;border-radius:2px;background:rgba(29,33,37,.35)" style-hover="background:#BFC5CC;color:#1D2125" style-active="transform:translateY(1px)">
+<svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Cómo llegar</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div ref="{{ cintaRef }}" style="overflow:hidden;border-top:1px solid rgba(191,197,204,.22);border-bottom:1px solid rgba(191,197,204,.22);padding:14px 0 10px;background:#1D2125">
+<div ref="{{ trackRef }}" style="display:flex;width:max-content;will-change:transform">
+<div style="display:flex;align-items:center;gap:26px;padding-right:26px;font-size:clamp(64px,13vw,150px);line-height:.95;font-weight:880;font-stretch:62%;text-transform:uppercase;white-space:nowrap;color:#EEE8DE">
+<span>Taberna</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Música en directo</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Cócteles</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Terraza</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Laredo</span><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+</div>
+<div aria-hidden="true" style="display:flex;align-items:center;gap:26px;padding-right:26px;font-size:clamp(64px,13vw,150px);line-height:.95;font-weight:880;font-stretch:62%;text-transform:uppercase;white-space:nowrap;color:#EEE8DE">
+<span>Taberna</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Música en directo</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Cócteles</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Terraza</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+<span>Laredo</span><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" style="fill:url(#rivetG)"></circle><circle cx="11" cy="11" r="10" style="fill:none;stroke:#1D2125;stroke-opacity:.5"></circle></svg>
+</div>
+</div>
+</div>
+
+<section id="abierto" data-screen-label="Horario" style="padding:68px 20px 76px;background:#1D2125">
+<div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:36px 64px">
+<div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
+<h2 style="margin:0;font-size:clamp(56px,11vw,120px);line-height:.9;font-weight:880;font-stretch:62%;text-transform:uppercase">¿Abierto?</h2>
+<p style="margin:0;font-size:19px;line-height:1.5;color:#BFC5CC;max-width:30ch;text-wrap:pretty">Todos los días, de 11:00 a 23:30. Aparca, quítate el casco y pide algo frío.</p>
+</div>
+<div style="flex:1 1 335px;max-width:520px;width:100%">
+<button type="button" ref="{{ gaugeRef }}" aria-expanded="{{ expanded }}" aria-controls="horario-semana" onClick="{{ toggleWeek }}" style="display:block;width:100%;padding:0;margin:0;border:0;background:transparent;color:inherit;font-family:inherit;text-align:left;cursor:pointer">
+<svg viewBox="0 0 400 400" aria-hidden="true" style="display:block;width:100%;height:auto;overflow:visible">
+<circle cx="200" cy="200" r="196" style="fill:#0E1012;stroke:url(#chromeG);stroke-width:6"></circle>
+<circle cx="200" cy="200" r="186" style="fill:url(#dialG)"></circle>
+<path d="M47.6 288.0A176 176 0 1 1 352.4 288.0" style="fill:none;stroke:#BFC5CC;stroke-opacity:.35;stroke-width:1.5"></path>
+<path d="M353.7 257.2A164 164 0 0 1 342.0 282.0" style="fill:none;stroke:#B3162E;stroke-width:14"></path>
+<path d="M51.0 286.0L73.6 273.0M31.0 232.2L56.6 227.4M29.8 174.9L55.6 178.7M47.6 120.3L70.6 132.4M82.3 74.6L100.1 93.6M130.0 42.9L140.6 66.6M185.6 28.6L187.8 54.5M242.8 33.4L236.3 58.6M295.2 56.7L280.8 78.4M337.0 96.0L316.3 111.7M363.6 146.8L338.9 154.9M372.0 203.6L346.0 203.1" style="fill:none;stroke:#EEE8DE;stroke-width:4"></path>
+<path d="M38.8 260.0L51.9 255.1M28.0 203.6L42.0 203.3M36.4 146.8L49.7 151.2M63.0 96.0L74.1 104.5M104.8 56.7L112.6 68.4M157.2 33.4L160.7 47.0M214.4 28.6L213.2 42.6M270.0 42.9L264.3 55.7M317.7 74.6L308.2 84.8M352.4 120.3L340.0 126.8M370.2 174.9L356.3 176.9M369.0 232.2L355.2 229.6" style="fill:none;stroke:#BFC5CC;stroke-width:2"></path>
+<path d="M361.2 260.0L336.8 250.9M349.0 286.0L326.4 273.0" style="fill:none;stroke:#E8243F;stroke-width:4"></path>
+<g style="fill:#EEE8DE;font-family:Archivo;font-size:25px;font-weight:800;font-stretch:62%;text-anchor:middle;dominant-baseline:central">
+<text x="94.3" y="261.0">11</text><text x="80.2" y="222.9">12</text><text x="79.3" y="182.2">13</text><text x="91.9" y="143.5">14</text><text x="116.5" y="111.1">15</text><text x="150.4" y="88.5">16</text><text x="189.8" y="78.4">17</text><text x="230.3" y="81.8">18</text><text x="267.5" y="98.4">19</text><text x="297.2" y="126.2">20</text><text x="316.0" y="162.3">21</text><text x="322.0" y="202.6">22</text><text x="314.3" y="242.5" style="fill:#E8243F">23</text>
+</g>
+<text x="200" y="146" style="fill:#BFC5CC;font-family:Archivo;font-size:22px;font-weight:600;font-style:italic;text-anchor:middle;dominant-baseline:central">h</text>
+<text x="200" y="300" style="fill:{{ clockColor }};font-family:Archivo;font-size:34px;font-weight:700;font-stretch:75%;font-variant-numeric:tabular-nums;text-anchor:middle;dominant-baseline:central;letter-spacing:.04em">{{ clock }}</text>
+<text x="200" y="332" style="fill:#BFC5CC;font-family:Archivo;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:central;letter-spacing:.08em">LAREDO</text>
+<g ref="{{ needleRef }}" transform="rotate(-122 200 200)">
+<polygon points="194.5,222 199,36 201,36 205.5,222" style="fill:#F0A830"></polygon>
+</g>
+<circle cx="200" cy="200" r="17" style="fill:#2A2F35;stroke:url(#chromeG);stroke-width:3"></circle>
+<circle cx="200" cy="200" r="4" style="fill:#BFC5CC"></circle>
+</svg>
+<span style="display:flex;align-items:center;gap:14px;margin-top:22px">
+<span aria-hidden="true" style="flex:none;width:18px;height:18px;border-radius:50%;background:{{ ledBg }};box-shadow:{{ ledShadow }};border:2px solid #0E1012"></span>
+<span style="display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px">
+<span style="font-size:44px;line-height:1;font-weight:880;font-stretch:62%;text-transform:uppercase">{{ statusWord }}</span>
+<span style="font-size:20px;font-weight:500;color:#EEE8DE">{{ statusDetail }}</span>
+</span>
+</span>
+<span style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;min-height:48px;border-top:1px solid rgba(191,197,204,.25);padding-top:4px;font-size:16px;font-weight:600;color:#BFC5CC">
+<span>{{ weekLabel }}</span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="transform:{{ chevron }};transition:transform .3s;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="m6 9 6 6 6-6"></path></svg>
+</span>
+</button>
+<sc-if value="{{ expanded }}" hint-placeholder-val="{{ false }}">
+<ul id="horario-semana" style="list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column">
+<sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+<li style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:46px;padding:0 12px;border-bottom:1px solid rgba(191,197,204,.14);background:{{ d.bg }};font-size:17px;font-variant-numeric:tabular-nums">
+<span style="display:flex;align-items:center;gap:10px;font-weight:{{ d.weight }}">{{ d.name }}<sc-if value="{{ d.today }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:700;color:#1D2125;background:#F0A830;padding:2px 7px;border-radius:2px">Hoy</span></sc-if></span>
+<span style="font-weight:{{ d.weight }}">{{ d.hours }}</span>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section id="carta" data-screen-label="Carta" style="padding:64px 20px 72px;background:#EEE8DE;color:#1D2125">
+<div style="max-width:760px;margin:0 auto">
+<svg ref="{{ pinRef }}" viewBox="0 0 360 60" aria-hidden="true" style="display:block;width:100%;max-width:340px;height:auto;margin:0 auto 18px;overflow:visible">
+<g style="fill:none;stroke:url(#pinG);stroke-width:2.4;stroke-linecap:round">
+<path d="M180 16 L190 30 L180 44 L170 30 Z"></path>
+<path d="M194 30 C 214 4, 246 6, 254 24 C 260 38, 242 46, 234 36 C 228 28, 238 20, 246 27"></path>
+<path d="M196 36 C 236 54, 300 50, 352 30"></path>
+<path d="M196 24 C 226 12, 280 14, 318 22"></path>
+<g transform="matrix(-1 0 0 1 360 0)">
+<path d="M194 30 C 214 4, 246 6, 254 24 C 260 38, 242 46, 234 36 C 228 28, 238 20, 246 27"></path>
+<path d="M196 36 C 236 54, 300 50, 352 30"></path>
+<path d="M196 24 C 226 12, 280 14, 318 22"></path>
+</g>
+</g>
+</svg>
+<h2 ref="{{ cartaTitleRef }}" style="margin:0;text-align:center;font-size:clamp(64px,13vw,128px);line-height:.9;font-weight:880;font-stretch:62%;text-transform:uppercase">La carta</h2>
+<p style="margin:16px auto 0;width:fit-content;max-width:100%;padding:7px 12px;border:1.5px dashed #1D2125;font-size:14px;font-weight:600;text-align:center">Carta de ejemplo — se sustituye por la real</p>
+
+<div ref="{{ tablistRef }}" role="tablist" aria-label="Secciones de la carta" style="position:relative;display:flex;overflow-x:auto;scrollbar-width:none;margin:34px -20px 0;padding:0 8px;border-bottom:1px solid rgba(29,33,37,.22)">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+<button type="button" role="tab" id="{{ t.tabId }}" aria-selected="{{ t.selected }}" aria-controls="panel-carta" tabIndex="{{ t.tabIndex }}" ref="{{ t.ref }}" onClick="{{ t.onClick }}" onKeyDown="{{ onTabKey }}" style="flex:none;display:flex;align-items:center;gap:7px;min-height:52px;padding:0 13px;border:0;background:transparent;color:{{ t.color }};font-family:inherit;font-size:18px;font-weight:780;font-stretch:72%;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;cursor:pointer">{{ t.label }}<sc-if value="{{ t.star }}" hint-placeholder-val="{{ false }}"><span aria-label="destacado" style="color:#B26F00;font-size:14px">★</span></sc-if></button>
+</sc-for>
+<span ref="{{ barRef }}" aria-hidden="true" style="position:absolute;left:0;bottom:-1px;width:100px;height:4px;background:#1D2125;transform-origin:0 50%;transform:scaleX(0)"></span>
+</div>
+
+<div ref="{{ panelRef }}" id="panel-carta" role="tabpanel" aria-labelledby="{{ cat.tabId }}" style="padding-top:28px">
+<sc-if value="{{ cat.hasPhoto }}" hint-placeholder-val="{{ true }}">
+<figure style="margin:0 0 22px">
+<img src="{{ cat.foto }}" alt="{{ cat.alt }}" loading="lazy" style="display:block;width:100%;aspect-ratio:16/10;object-fit:cover;filter:contrast(1.08);background:#1D2125">
+<figcaption style="margin-top:8px;font-size:14px;color:#545A60">{{ cat.caption }}</figcaption>
+</figure>
+</sc-if>
+<sc-if value="{{ cat.hasPlaceholder }}" hint-placeholder-val="{{ false }}">
+<div style="margin:0 0 22px;aspect-ratio:16/10;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:18px;background:repeating-linear-gradient(135deg,#1D2125 0 14px,#23282D 14px 28px);color:#EEE8DE">
+<span style="font-size:13px;font-weight:700;letter-spacing:.06em;color:#BFC5CC">HUECO PARA FOTO</span>
+<span style="font-size:16px;line-height:1.4;max-width:34ch">{{ cat.placeholder }}</span>
+</div>
+</sc-if>
+<h3 style="margin:0;font-size:34px;line-height:.95;font-weight:860;font-stretch:62%;text-transform:uppercase">{{ cat.title }}</h3>
+<sc-if value="{{ cat.hasNote }}" hint-placeholder-val="{{ false }}">
+<p style="margin:8px 0 0;font-size:16px;color:#545A60">{{ cat.note }}</p>
+</sc-if>
+<ul style="list-style:none;margin:14px 0 0;padding:0">
+<sc-for list="{{ cat.items }}" as="it" hint-placeholder-count="4">
+<li style="display:flex;align-items:baseline;gap:14px;padding:15px 0;border-bottom:1.5px dashed rgba(29,33,37,.3)">
+<span style="flex:1;font-size:19px;line-height:1.3;font-weight:600">{{ it.name }}</span>
+<span style="font-size:20px;font-weight:800;font-stretch:75%;font-variant-numeric:tabular-nums;white-space:nowrap">{{ it.price }}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+
+<p style="margin:28px 0 0;padding-top:16px;border-top:3px solid #1D2125;font-size:15px;line-height:1.5;color:#1D2125"><strong>Alérgenos.</strong> Informamos de los 14 alérgenos. Pregunta al personal antes de pedir.</p>
+</div>
+</section>
+
+<footer ref="{{ footerRef }}" data-screen-label="Footer" style="padding:64px 20px 120px;background:#16191C;border-top:1px solid rgba(191,197,204,.18)">
+<div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:40px 32px;align-items:start;padding-bottom:44px;border-bottom:1px solid rgba(191,197,204,.18)">
+<div style="display:flex;flex-direction:column;gap:14px">
+<svg viewBox="0 0 140 96" width="72" height="49" aria-hidden="true"><ellipse cx="70" cy="48" rx="66" ry="44" style="fill:#1D2125;stroke:url(#chromeG);stroke-width:4"></ellipse><text x="70" y="51" style="fill:url(#chromeG);font-family:Archivo;font-size:66px;font-weight:900;font-stretch:62%;text-anchor:middle;dominant-baseline:central">86</text></svg>
+<p style="margin:0;font-size:28px;line-height:.95;font-weight:860;font-stretch:62%;text-transform:uppercase">Taberna<br>Harley Ever 86</p>
+<p style="margin:0;font-size:17px;color:#BFC5CC">Motor parado, barra abierta.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+<span style="font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#BFC5CC">Dónde</span>
+<span>C. República de Filipinas, 46<br>39770 Laredo, Cantabria</span>
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" style="min-height:44px;display:flex;align-items:center;font-weight:700">Abrir en Maps</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+<span style="font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#BFC5CC">Horario</span>
+<span>Todos los días<br><span style="font-variant-numeric:tabular-nums">11:00–23:30</span></span>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+<span style="font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#BFC5CC">Contacto</span>
+<a href="tel:+34942603014" style="font-size:26px;line-height:1;font-weight:800;font-stretch:75%;font-variant-numeric:tabular-nums;min-height:44px;display:flex;align-items:center;text-decoration:none">942 60 30 14</a>
+<span style="color:#BFC5CC">Informamos de los 14 alérgenos. Pregunta al personal antes de pedir.</span>
+</div>
+</div>
+<div style="max-width:1180px;margin:0 auto;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;font-size:13px;line-height:1.5;color:#9AA1A8">
+<p style="margin:0;flex:1 1 320px">Propuesta de diseño. Fotos del propio local; carta, tagline y textos legales provisionales.</p>
+<div style="display:flex;gap:24px">
+<a href="#aviso-legal" style="min-height:44px;display:flex;align-items:center;color:#BFC5CC">Aviso legal</a>
+<a href="#privacidad" style="min-height:44px;display:flex;align-items:center;color:#BFC5CC">Privacidad</a>
+</div>
+</div>
+</footer>
+
+<div aria-hidden="{{ ctaHidden }}" style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:{{ ctaDisplay }};grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(22,25,28,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(191,197,204,.22);transform:{{ ctaTransform }};transition:transform .35s cubic-bezier(.2,.8,.2,1)">
+<a href="tel:+34942603014" tabIndex="{{ ctaTab }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;background:#B3162E;color:#EEE8DE;text-decoration:none;font-size:17px;font-weight:800;font-stretch:80%;text-transform:uppercase;border-radius:2px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.910a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Llamar</a>
+<a href="{{ mapsUrl }}" target="_blank" rel="noopener noreferrer" tabIndex="{{ ctaTab }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:2px solid #BFC5CC;color:#EEE8DE;text-decoration:none;font-size:17px;font-weight:800;font-stretch:80%;text-transform:uppercase;border-radius:2px">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Cómo llegar</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// ====== DATOS PROVISIONALES: sustituir aquí ======
+const HORARIO = { 0:['11:00-23:30'], 1:['11:00-23:30'], 2:['11:00-23:30'],
+  3:['11:00-23:30'], 4:['11:00-23:30'], 5:['11:00-23:30'], 6:['11:00-23:30'] }; // 0 = domingo … 6 = sábado
+
+// Carta de ejemplo — se sustituye por la real
+const CARTA = [
+  { id:'picar', tab:'Para picar', titulo:'Para picar',
+    foto:'img/alitas.jpg', alt:'Fuente de alitas y caprichos de pollo con salsa barbacoa sobre papel de periódico', pie:'Foto real del local.',
+    platos:[['Rabas',9.5],['Patatas bravas',6],['Alitas de pollo',8.5],['Nachos con queso y guacamole',9]] },
+  { id:'hamburguesas', tab:'Hamburguesas', titulo:'Hamburguesas', nota:'Todas con patatas.',
+    foto:'img/hamburguesa.jpg', alt:'Hamburguesa con jamón, carne y lechuga en pan de cruz, pinchada con un palillo', pie:'Foto real del local.',
+    platos:[['Clásica',11],['Bacon y cheddar',12.5],['Doble',14]] },
+  { id:'bocadillos', tab:'Bocadillos', titulo:'Bocadillos y sándwiches',
+    hueco:'Foto ideal: un pepito de ternera recién hecho, abierto, sobre el papel de periódico de la casa.',
+    platos:[['Lomo con pimientos',7.5],['Pepito de ternera',8.5],['Sándwich mixto',5]] },
+  { id:'cocteles', tab:'Cócteles', titulo:'Cócteles', destacado:true, nota:'En Google nos destacan por los cócteles.',
+    hueco:'Foto ideal: un old fashioned en la barra, con las botellas desenfocadas detrás.',
+    platos:[['Mojito',8],['Margarita',8],['Old Fashioned',9],['Gin tonic',8.5]] },
+  { id:'bebidas', tab:'Bebidas', titulo:'Cervezas y refrescos',
+    platos:[['Caña',2.5],['Tercio',3.5],['Refresco',2.8]] }
+];
+
+const LOCAL = { mapsQuery:'Taberna Harley Ever 86, C. República de Filipinas, 46, 39770 Laredo' };
+
+const LIBS = [
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js','sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly','gsap'],
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js','sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF','ScrollTrigger'],
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js','sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr','SplitText'],
+  ['https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/DrawSVGPlugin.min.js','sha384-pfZbCpJUiv0Y8664JafRbiKcx2uJmjNjVCoPXGwaxvTSbO11M0htzeEeTC6KSaqa','DrawSVGPlugin'],
+  ['https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js','sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw','Lenis']
+];
+
+const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const toMin = s => { const [h,m] = s.split(':').map(Number); return h*60+m; };
+const fmtH = s => s.replace('-', '–');
+const precio = n => n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €';
+
+function madridNow(){
+  const p = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+  const g = t => (p.find(x => x.type === t) || {}).value;
+  const d = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday'));
+  const hh = +g('hour'), mm = +g('minute');
+  return { d, min: hh*60+mm, clock: String(hh).padStart(2,'0') + ':' + String(mm).padStart(2,'0') };
+}
+
+function estado(now){
+  const ranges = d => (HORARIO[d] || []).map(r => r.split('-')).map(([s,e]) => [toMin(s), toMin(e), s, e]);
+  for (const [s,e,,E] of ranges(now.d)) {
+    if (e > s && now.min >= s && now.min < e) return { open:true, cierra:E, hour: now.min/60 };
+    if (e <= s && now.min >= s) return { open:true, cierra:E, hour: now.min/60 };
+  }
+  for (const [s,e,,E] of ranges((now.d+6)%7)) {
+    if (e <= s && now.min < e) return { open:true, cierra:E, hour: now.min/60 + 24 };
+  }
+  for (let k = 0; k < 8; k++) {
+    const d = (now.d + k) % 7;
+    const next = ranges(d).filter(([s]) => k > 0 || s > now.min).sort((a,b) => a[0]-b[0])[0];
+    if (next) return { open:false, abre: next[2], cuando: k === 0 ? '' : k === 1 ? 'mañana ' : 'el ' + DIAS[d].toLowerCase() + ' ' };
+  }
+  return { open:false, abre:'', cuando:'' };
+}
+
+const angleFor = st => st.open ? -120 + (Math.min(23.5, Math.max(11, st.hour)) - 11) / 12.5 * 240 : -122;
+
+function loadScript(src, integrity){
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.integrity = integrity; s.crossOrigin = 'anonymous';
+    s.onload = res; s.onerror = () => rej(new Error('No carga ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+class Component extends DCLogic {
+  state = { tab:0, expanded:false, now: madridNow(), lang:'es', toast:'', heroIn:true, footIn:false, mobile:true };
+  heroRef = React.createRef(); heroPhotoRef = React.createRef(); heroContentRef = React.createRef();
+  h1Ref = React.createRef(); plateRef = React.createRef(); heroMetaRef = React.createRef();
+  cintaRef = React.createRef(); trackRef = React.createRef(); gaugeRef = React.createRef(); needleRef = React.createRef();
+  pinRef = React.createRef(); cartaTitleRef = React.createRef(); tablistRef = React.createRef();
+  barRef = React.createRef(); panelRef = React.createRef(); footerRef = React.createRef();
+  tabEls = []; swept = false;
+
+  componentDidMount(){
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.mq = window.matchMedia('(max-width: 899px)');
+    this.onMq = () => this.setState({ mobile: this.mq.matches });
+    this.onMq(); this.mq.addEventListener('change', this.onMq);
+    this.clockT = setInterval(() => this.setState({ now: madridNow() }, () => this.updateNeedle()), 30000);
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.target === this.heroRef.current) this.setState({ heroIn: e.isIntersecting });
+      if (e.target === this.footerRef.current) this.setState({ footIn: e.isIntersecting });
+    }));
+    this.heroRef.current && this.io.observe(this.heroRef.current);
+    this.footerRef.current && this.io.observe(this.footerRef.current);
+    this.onResize = () => this.moveBar(this.state.tab, false);
+    window.addEventListener('resize', this.onResize);
+    if (!this.reduced) this.preHide();
+    this.boot();
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.clockT); clearTimeout(this.fallbackT); clearTimeout(this.toastT);
+    this.io && this.io.disconnect();
+    this.mq && this.mq.removeEventListener('change', this.onMq);
+    window.removeEventListener('resize', this.onResize);
+    this.mm && this.mm.revert();
+  }
+
+  preHide(){
+    const p = this.heroPhotoRef.current; if (p) p.style.clipPath = 'inset(100% 0 0 0)';
+    [this.h1Ref, this.plateRef, this.heroMetaRef].forEach(r => r.current && (r.current.style.opacity = '0'));
+    this.fallbackT = setTimeout(() => this.reveal(), 4000);
+  }
+  reveal(){
+    const p = this.heroPhotoRef.current; if (p) p.style.clipPath = '';
+    [this.h1Ref, this.plateRef, this.heroMetaRef].forEach(r => r.current && (r.current.style.opacity = ''));
+  }
+
+  async boot(){
+    try { for (const [src, sri, g] of LIBS) if (!window[g]) await loadScript(src, sri); }
+    catch (e) { console.warn(e.message); }
+    try { await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1500))]); } catch (e) {}
+    this.moveBar(this.state.tab, false);
+    const ok = window.gsap && window.ScrollTrigger && window.SplitText && window.DrawSVGPlugin;
+    if (!ok) { clearTimeout(this.fallbackT); this.reveal(); this.swept = true; this.updateNeedle(); return; }
+    gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
+    this.initMotion();
+  }
+
+  initMotion(){
+    const mm = gsap.matchMedia(); this.mm = mm;
+    const needle = this.needleRef.current;
+    mm.add('(prefers-reduced-motion: reduce)', () => {
+      clearTimeout(this.fallbackT); this.reveal(); this.swept = true;
+      gsap.set(needle, { rotation: angleFor(estado(this.state.now)), svgOrigin:'200 200' });
+    });
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      let lenis, raf;
+      if (window.Lenis) {
+        lenis = new Lenis({ lerp:0.1, anchors:true });
+        lenis.on('scroll', ScrollTrigger.update);
+        raf = t => lenis.raf(t * 1000);
+        gsap.ticker.add(raf); gsap.ticker.lagSmoothing(0);
+      }
+      clearTimeout(this.fallbackT);
+      const h1 = this.h1Ref.current, plate = this.plateRef.current, meta = this.heroMetaRef.current;
+      const split = SplitText.create(h1, { type:'words,lines', mask:'lines' });
+      const tl = gsap.timeline();
+      tl.fromTo(this.heroPhotoRef.current, { clipPath:'inset(100% 0% 0% 0%)' }, { clipPath:'inset(0% 0% 0% 0%)', duration:1.2, ease:'expo.out' }, 0)
+        .from(split.words, { yPercent:110, duration:0.9, ease:'power4.out', stagger:0.06 }, 0.3)
+        .fromTo(plate.querySelector('[data-plate-line]'), { drawSVG:'0%' }, { drawSVG:'100%', duration:0.8, ease:'power2.inOut' }, 0.3)
+        .from(plate.querySelectorAll('[data-plate-fill]'), { opacity:0, duration:0.4, ease:'power2.out' }, 0.75)
+        .fromTo(meta.children, { opacity:0, y:10 }, { opacity:1, y:0, duration:0.4, ease:'power3.out', stagger:0.06 }, 1.05);
+      gsap.set([h1, plate, meta], { opacity:1 });
+
+      const tween = gsap.to(this.trackRef.current, { xPercent:-50, duration:30, ease:'none', repeat:-1 });
+      ScrollTrigger.create({ start:0, end:'max', onUpdate: self => {
+        const ts = Math.min(5, 1 + Math.abs(self.getVelocity()) / 300);
+        gsap.to(tween, { timeScale: ts, duration:0.15, overwrite:true, onComplete: () => gsap.to(tween, { timeScale:1, duration:0.8, ease:'power2.out' }) });
+      }});
+
+      gsap.set(needle, { rotation:-122, svgOrigin:'200 200' });
+      ScrollTrigger.create({ trigger:this.gaugeRef.current, start:'top 78%', once:true, onEnter: () => {
+        gsap.timeline({ onComplete: () => { this.swept = true; } })
+          .to(needle, { rotation:120, svgOrigin:'200 200', duration:0.5, ease:'power2.in' })
+          .to(needle, { rotation: angleFor(estado(this.state.now)), svgOrigin:'200 200', duration:0.9, ease:'power3.out' });
+      }});
+
+      gsap.fromTo(this.pinRef.current.querySelectorAll('path'), { drawSVG:'0%' }, { drawSVG:'100%', duration:1.4, ease:'power2.inOut',
+        scrollTrigger:{ trigger:this.pinRef.current, start:'top 88%', once:true } });
+
+      const st = SplitText.create(this.cartaTitleRef.current, { type:'lines', mask:'lines' });
+      gsap.from(st.lines, { yPercent:110, duration:0.9, ease:'power4.out', stagger:0.08,
+        scrollTrigger:{ trigger:this.cartaTitleRef.current, start:'top 88%', once:true } });
+
+      return () => { if (lenis) { gsap.ticker.remove(raf); lenis.destroy(); } split.revert(); st.revert(); };
+    });
+  }
+
+  updateNeedle(){
+    if (!this.swept) return;
+    const n = this.needleRef.current; if (!n) return;
+    const deg = angleFor(estado(this.state.now));
+    if (window.gsap && !this.reduced) gsap.to(n, { rotation:deg, svgOrigin:'200 200', duration:0.6, ease:'power3.out' });
+    else if (window.gsap) gsap.set(n, { rotation:deg, svgOrigin:'200 200' });
+    else n.setAttribute('transform', `rotate(${deg} 200 200)`);
+  }
+
+  moveBar(i, animate){
+    const el = this.tabEls[i], bar = this.barRef.current; if (!el || !bar) return;
+    const x = el.offsetLeft, s = el.offsetWidth / 100;
+    if (window.gsap && animate && !this.reduced) gsap.to(bar, { x, scaleX:s, duration:0.35, ease:'power3.out' });
+    else if (window.gsap) gsap.set(bar, { x, scaleX:s });
+    else bar.style.transform = `translateX(${x}px) scaleX(${s})`;
+    const list = this.tablistRef.current;
+    if (list && animate) list.scrollTo({ left: Math.max(0, x - 40), behavior: this.reduced ? 'auto' : 'smooth' });
+  }
+
+  selectTab(i){
+    if (i === this.state.tab) return;
+    this.moveBar(i, true);
+    const panel = this.panelRef.current;
+    if (window.gsap && !this.reduced && panel) {
+      gsap.to(panel, { x:-16, opacity:0, duration:0.16, ease:'power2.in', overwrite:true, onComplete: () => {
+        this.setState({ tab:i }, () => gsap.fromTo(panel, { x:16, opacity:0 }, { x:0, opacity:1, duration:0.35, ease:'power3.out' }));
+      }});
+    } else this.setState({ tab:i });
+  }
+
+  onTabKey = e => {
+    const n = CARTA.length, cur = this.state.tab;
+    let next = null;
+    if (e.key === 'ArrowRight') next = (cur + 1) % n;
+    if (e.key === 'ArrowLeft') next = (cur - 1 + n) % n;
+    if (e.key === 'Home') next = 0;
+    if (e.key === 'End') next = n - 1;
+    if (next === null) return;
+    e.preventDefault(); this.selectTab(next);
+    this.tabEls[next] && this.tabEls[next].focus();
+  };
+
+  setLang(code){
+    clearTimeout(this.toastT);
+    this.setState({ lang:code, toast: code === 'es' ? '' : `Demo: la versión ${code.toUpperCase()} llega con la web final, pensada para el turismo de verano.` });
+    if (code !== 'es') this.toastT = setTimeout(() => this.setState({ toast:'', lang:'es' }), 3200);
+  }
+
+  renderVals(){
+    const { now, tab, expanded, lang, toast, heroIn, footIn, mobile } = this.state;
+    const st = estado(now);
+    const on = st.open;
+    const c = CARTA[tab];
+    const showCta = mobile && !heroIn && !footIn;
+    return {
+      heroRef:this.heroRef, heroPhotoRef:this.heroPhotoRef, heroContentRef:this.heroContentRef, h1Ref:this.h1Ref,
+      plateRef:this.plateRef, heroMetaRef:this.heroMetaRef, cintaRef:this.cintaRef, trackRef:this.trackRef,
+      gaugeRef:this.gaugeRef, needleRef:this.needleRef, pinRef:this.pinRef, cartaTitleRef:this.cartaTitleRef,
+      tablistRef:this.tablistRef, barRef:this.barRef, panelRef:this.panelRef, footerRef:this.footerRef,
+      langs: ['es','en','fr'].map(l => ({ code:l.toUpperCase(), pressed: lang === l, bg: lang === l ? '#EEE8DE' : 'transparent', color: lang === l ? '#1D2125' : '#EEE8DE', onClick: () => this.setLang(l) })),
+      hasToast: !!toast, toast,
+      mapsUrl: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(LOCAL.mapsQuery),
+      pillText: on ? 'Abierto ahora' : 'Cerrado ahora',
+      ledBg: on ? '#F0A830' : '#3A4047',
+      ledShadow: on ? '0 0 0 3px rgba(240,168,48,.25), 0 0 14px rgba(240,168,48,.9)' : 'none',
+      statusWord: on ? 'Abierto' : 'Cerrado',
+      statusDetail: on ? `— cierra a las ${st.cierra}` : (st.abre ? `— abrimos ${st.cuando}a las ${st.abre}` : ''),
+      clock: now.clock, clockColor: on ? '#F0A830' : '#6E757C',
+      expanded, toggleWeek: () => this.setState(s => ({ expanded: !s.expanded })),
+      weekLabel: expanded ? 'Ocultar horario de la semana' : 'Ver horario de la semana',
+      chevron: expanded ? 'rotate(180deg)' : 'none',
+      days: [1,2,3,4,5,6,0].map(d => ({ name: DIAS[d], today: d === now.d,
+        hours: (HORARIO[d] || []).length ? HORARIO[d].map(fmtH).join(' y ') : 'Cerrado',
+        bg: d === now.d ? 'rgba(240,168,48,.12)' : 'transparent', weight: d === now.d ? 700 : 400 })),
+      tabs: CARTA.map((k, i) => ({ label:k.tab, tabId:'tab-' + k.id, selected: i === tab, tabIndex: i === tab ? 0 : -1,
+        color: i === tab ? '#1D2125' : '#545A60', star: !!k.destacado,
+        ref: el => { this.tabEls[i] = el; }, onClick: () => this.selectTab(i) })),
+      onTabKey: this.onTabKey,
+      cat: { tabId:'tab-' + c.id, title:c.titulo, hasNote: !!c.nota, note:c.nota || '',
+        hasPhoto: !!c.foto, foto:c.foto || '', alt:c.alt || '', caption:c.pie || '',
+        hasPlaceholder: !c.foto && !!c.hueco, placeholder:c.hueco || '',
+        items: c.platos.map(([name, p]) => ({ name, price: precio(p) })) },
+      ctaDisplay: mobile ? 'grid' : 'none',
+      ctaTransform: showCta ? 'translateY(0)' : 'translateY(110%)',
+      ctaHidden: !showCta, ctaTab: showCta ? 0 : -1
+    };
+  }
+}
+</script>
+</body>
+</html>

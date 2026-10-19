@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;family=Mrs+Saint+Delafield&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&amp;display=swap">
+<style>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#14110E;color:#F2ECE2;font-family:'Jost',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}a:hover{color:#C6A472}
+:focus-visible{outline:2px solid #C6A472;outline-offset:3px}
+::selection{background:#C6A472;color:#14110E}
+input,select,button,textarea{font:inherit}
+input::placeholder{color:#8F8579}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#14110E;color:#F2ECE2;font-family:'Jost',system-ui,sans-serif;overflow-x:clip">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50">
+  <div ref="{{ navBgRef }}" style="position:absolute;inset:0;background:rgba(20,17,14,.84);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(242,236,226,.08);opacity:0;transition:opacity .3s cubic-bezier(.22,1,.36,1)"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;height:72px;padding:0 clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px;box-sizing:border-box">
+    <a href="#inicio" aria-label="Inmobiliaria Alde Zaharra, inicio" style="display:flex;align-items:center;gap:12px;min-height:44px">
+      <img src="assets/az-monograma-marfil.png" alt="" style="height:36px;width:auto;display:block">
+      <img src="assets/az-wordmark-marfil.png" alt="Alde Zaharra" style="height:12px;width:auto;display:block">
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Secciones" style="display:flex;align-items:center;gap:30px;font:500 12px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase">
+        <a href="#servicios" style="color:#F2ECE2;padding:14px 0" style-hover="color:#C6A472">Servicios</a>
+        <a href="#valoracion" style="color:#F2ECE2;padding:14px 0" style-hover="color:#C6A472">Valoración</a>
+        <a href="#inmuebles" style="color:#F2ECE2;padding:14px 0" style-hover="color:#C6A472">Inmuebles</a>
+        <a href="#financiacion" style="color:#F2ECE2;padding:14px 0" style-hover="color:#C6A472">Financiación</a>
+        <a href="#contacto" style="color:#F2ECE2;padding:14px 0" style-hover="color:#C6A472">Contacto</a>
+      </nav>
+    </sc-if>
+    <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;height:44px;padding:0 16px;border:1px solid rgba(198,164,114,.7);border-radius:3px;color:#F2ECE2;font:500 13px/1 'Jost',sans-serif;letter-spacing:.08em;box-sizing:border-box;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-hover="color:#14110E;background:#C6A472" style-active="transform:scale(.97)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<section id="inicio" ref="{{ heroRef }}" data-screen-label="01 Hero" style="position:relative;height:clamp(620px,100svh,940px);background:#14110E;overflow:hidden">
+  <div ref="{{ clipRef }}" style="position:absolute;inset:0;will-change:clip-path">
+    <sc-if value="{{ heroVentanal }}" hint-placeholder-val="{{ true }}">
+      <img ref="{{ heroImgRef }}" src="uploads/ae78543bd7657dd75650b2fdd3bebfaf.jpg" alt="Salón en penumbra con ventanal al atardecer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 47%;will-change:transform">
+    </sc-if>
+    <sc-if value="{{ heroAtico }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;transform:scaleX(-1)"><img ref="{{ heroImgRef }}" src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada de noche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 50%;will-change:transform"></div>
+    </sc-if>
+    <sc-if value="{{ heroModerno }}" hint-placeholder-val="{{ false }}">
+      <img ref="{{ heroImgRef }}" src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial moderno con balcones al sol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;will-change:transform">
+    </sc-if>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.62) 0%,rgba(20,17,14,.08) 24%,rgba(20,17,14,.18) 46%,rgba(20,17,14,.78) 74%,rgba(20,17,14,.96) 100%)"></div>
+  </div>
+  <svg ref="{{ outlineSvgRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;z-index:2"><path ref="{{ outlineRef }}" d="" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linejoin="miter" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"></path></svg>
+  <div style="position:relative;z-index:3;height:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(40px,8vh,88px);display:flex;flex-direction:column;justify-content:flex-end;gap:22px;box-sizing:border-box">
+    <div data-hfade="" style="display:flex;align-items:center;gap:14px;font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#E3CFA8">
+      <span style="width:32px;height:1px;background:#C6A472;flex:none"></span>
+      <span>Inmobiliaria</span>
+      <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="border-bottom:1px dashed #C6A472;padding-bottom:3px">· [Localidad]</span></sc-if>
+    </div>
+    <h1 style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(40px,10.2vw,112px);line-height:1;letter-spacing:-.015em;color:#F2ECE2;max-width:12ch">
+      <span style="display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em"><span data-hline="" style="display:block">Tu tranquilidad,</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em"><span data-hline="" style="display:block;font-style:italic">nuestro compromiso</span></span>
+    </h1>
+    <p data-hfade="" style="margin:0;max-width:30ch;font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:clamp(20px,2.4vw,26px);line-height:1.35;color:#E9E1D4;text-wrap:pretty">Soluciones integrales para tu presente y tu futuro.</p>
+    <div data-hfade="" style="display:flex;flex-wrap:wrap;gap:12px;max-width:520px;margin-top:6px">
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20valoraci%C3%B3n%20gratuita%20de%20mi%20vivienda." target="_blank" rel="noopener" style="flex:1 1 210px;display:flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 24px;background:#F2ECE2;color:#1B1713;border-radius:3px;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em;box-sizing:border-box;transition:transform .16s cubic-bezier(.22,1,.36,1),background-color .2s" style-hover="background:#FFFFFF;color:#1B1713" style-active="transform:scale(.97)">
+        Valoración gratuita
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="#inmuebles" style="flex:1 1 170px;display:flex;align-items:center;justify-content:center;height:54px;padding:0 24px;border:1px solid #C6A472;color:#F2ECE2;border-radius:3px;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em;box-sizing:border-box;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:rgba(198,164,114,.16);color:#F2ECE2" style-active="transform:scale(.97)">Ver inmuebles</a>
+    </div>
+  </div>
+  <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+    <span data-hfade="" style="position:absolute;z-index:3;top:88px;right:clamp(20px,5vw,56px);font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;padding:7px 10px;background:rgba(20,17,14,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(242,236,226,.2);border-radius:2px">Imagen de ejemplo</span>
+  </sc-if>
+</section>
+
+<section id="servicios" data-screen-label="02 Servicios" style="background:#14110E;color:#F2ECE2;padding:clamp(80px,11vw,140px) clamp(20px,5vw,56px);scroll-margin-top:64px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:22px;max-width:760px">
+      <span data-reveal="0" style="font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#C6A472">Qué hacemos</span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.03;letter-spacing:-.012em;text-wrap:balance">Te acompañamos en cada paso</h2>
+      <span data-draw="" style="display:block;width:72px;height:1px;background:#C6A472;transform-origin:left center"></span>
+    </div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));column-gap:clamp(32px,5vw,72px)">
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Compra%20y%20venta%20de%20inmuebles" target="_blank" rel="noopener" data-reveal="0" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">01</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Compra y venta de inmuebles</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Te acompañamos en cada paso para que encuentres el hogar o la inversión perfecta.</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Alquiler%20de%20inmuebles" target="_blank" rel="noopener" data-reveal="60" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">02</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Alquiler de inmuebles</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Gestionamos tu alquiler con total transparencia y seguridad.</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Valoraciones%20gratuitas" target="_blank" rel="noopener" data-reveal="60" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">03</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Valoraciones gratuitas</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Conoce el valor real de tu propiedad.</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Asesoramiento%20financiero" target="_blank" rel="noopener" data-reveal="60" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">04</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Asesoramiento financiero</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Te ayudamos a tomar las mejores decisiones.</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Gesti%C3%B3n%20de%20obras" target="_blank" rel="noopener" data-reveal="60" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path><path d="M14 6a6 6 0 0 1 6 6v3"></path><path d="M4 15v-3a6 6 0 0 1 6-6"></path><rect x="2" y="15" width="20" height="4" rx="1"></rect></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">05</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Gestión de obras</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">De la planificación a la entrega, sin complicaciones.</span><span style="align-self:flex-start;margin-top:4px;font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E3CFA8;border:1px solid rgba(198,164,114,.55);border-radius:2px;padding:6px 9px">Reformas e interiorismo</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Tramitaci%C3%B3n%20de%20herencias" target="_blank" rel="noopener" data-reveal="60" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">06</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Tramitación de herencias</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Agilizamos y facilitamos todo el proceso.</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Departamento%20jur%C3%ADdico" target="_blank" rel="noopener" data-reveal="60" style="display:grid;grid-template-columns:48px minmax(0,1fr) 18px;align-items:start;gap:18px;padding:24px 0;border-top:1px solid rgba(242,236,226,.14);border-bottom:1px solid rgba(242,236,226,.14);color:#F2ECE2" style-hover="color:#E3CFA8">
+        <span style="width:48px;height:48px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">07</span><span style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(23px,2.4vw,28px);line-height:1.15">Departamento jurídico</span><span style="font:400 15px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Asesoramiento legal de confianza, siempre a tu lado.</span></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:28px"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <div data-reveal="60" style="margin:16px 0;background:#221B15;border:1px solid rgba(198,164,114,.28);border-radius:4px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:22px">
+        <span style="font-family:'Mrs Saint Delafield',cursive;font-size:clamp(42px,4.4vw,56px);line-height:1.15;color:#F2ECE2;transform:rotate(-3deg);transform-origin:left bottom;display:block;padding-top:6px">Tu proyecto, nuestra prioridad.</span>
+        <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;height:48px;padding:0 18px;border:1px solid #C6A472;border-radius:3px;color:#F2ECE2;font:500 13px/1 'Jost',sans-serif;letter-spacing:.08em;box-sizing:border-box;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-hover="color:#14110E;background:#C6A472" style-active="transform:scale(.97)"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg><span>Escribir por WhatsApp</span></a>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="margin-bottom:4px;font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#C6A472">¿En qué te ayudamos?</span>
+        <div role="tablist" aria-label="Servicios" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+          <button type="button" role="tab" aria-selected="{{ svm.s0.sel }}" aria-controls="az-svp" onClick="{{ svm.s0.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:108px;padding:14px 14px 16px;border-radius:4px;border:1px solid {{ svm.s0.bd }};background:{{ svm.s0.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;width:100%;justify-content:space-between;align-items:center;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em">01</span></span><span style="font:400 17px/1.2 'Newsreader',serif;text-wrap:balance">Compra y venta de inmuebles</span></button>
+          <button type="button" role="tab" aria-selected="{{ svm.s1.sel }}" aria-controls="az-svp" onClick="{{ svm.s1.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:108px;padding:14px 14px 16px;border-radius:4px;border:1px solid {{ svm.s1.bd }};background:{{ svm.s1.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;width:100%;justify-content:space-between;align-items:center;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></svg><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em">02</span></span><span style="font:400 17px/1.2 'Newsreader',serif;text-wrap:balance">Alquiler de inmuebles</span></button>
+          <button type="button" role="tab" aria-selected="{{ svm.s2.sel }}" aria-controls="az-svp" onClick="{{ svm.s2.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:108px;padding:14px 14px 16px;border-radius:4px;border:1px solid {{ svm.s2.bd }};background:{{ svm.s2.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;width:100%;justify-content:space-between;align-items:center;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em">03</span></span><span style="font:400 17px/1.2 'Newsreader',serif;text-wrap:balance">Valoraciones gratuitas</span></button>
+          <button type="button" role="tab" aria-selected="{{ svm.s3.sel }}" aria-controls="az-svp" onClick="{{ svm.s3.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:108px;padding:14px 14px 16px;border-radius:4px;border:1px solid {{ svm.s3.bd }};background:{{ svm.s3.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;width:100%;justify-content:space-between;align-items:center;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em">04</span></span><span style="font:400 17px/1.2 'Newsreader',serif;text-wrap:balance">Asesoramiento financiero</span></button>
+          <button type="button" role="tab" aria-selected="{{ svm.s4.sel }}" aria-controls="az-svp" onClick="{{ svm.s4.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:108px;padding:14px 14px 16px;border-radius:4px;border:1px solid {{ svm.s4.bd }};background:{{ svm.s4.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;width:100%;justify-content:space-between;align-items:center;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path><path d="M14 6a6 6 0 0 1 6 6v3"></path><path d="M4 15v-3a6 6 0 0 1 6-6"></path><rect x="2" y="15" width="20" height="4" rx="1"></rect></svg><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em">05</span></span><span style="font:400 17px/1.2 'Newsreader',serif;text-wrap:balance">Gestión de obras</span></button>
+          <button type="button" role="tab" aria-selected="{{ svm.s5.sel }}" aria-controls="az-svp" onClick="{{ svm.s5.pick }}" style="display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:108px;padding:14px 14px 16px;border-radius:4px;border:1px solid {{ svm.s5.bd }};background:{{ svm.s5.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;width:100%;justify-content:space-between;align-items:center;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em">06</span></span><span style="font:400 17px/1.2 'Newsreader',serif;text-wrap:balance">Tramitación de herencias</span></button>
+          <button type="button" role="tab" aria-selected="{{ svm.s6.sel }}" aria-controls="az-svp" onClick="{{ svm.s6.pick }}" style="grid-column:1 / -1;display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 14px;border-radius:4px;border:1px solid {{ svm.s6.bd }};background:{{ svm.s6.bg }};color:#F2ECE2;text-align:left;cursor:pointer;transition:background-color .25s,border-color .25s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="display:flex;color:#C6A472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.920 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></span><span style="flex:1;font:400 17px/1.2 'Newsreader',serif">Departamento jurídico</span><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">07</span></button>
+        </div>
+        <div ref="{{ svWrapRef }}" id="az-svp" role="tabpanel" style="margin-top:4px;background:#221B15;border:1px solid rgba(198,164,114,.3);border-radius:4px;padding:24px 22px">
+          <sc-if value="{{ svm.s0.on }}" hint-placeholder-val="{{ true }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">01 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Compra y venta de inmuebles</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Te acompañamos en cada paso para que encuentres el hogar o la inversión perfecta.</p>
+              <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Compra%20y%20venta%20de%20inmuebles" target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Consultar por WhatsApp</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ svm.s1.on }}" hint-placeholder-val="{{ false }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">02 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Alquiler de inmuebles</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Gestionamos tu alquiler con total transparencia y seguridad.</p>
+              <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Alquiler%20de%20inmuebles" target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Consultar por WhatsApp</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ svm.s2.on }}" hint-placeholder-val="{{ false }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">03 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Valoraciones gratuitas</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Conoce el valor real de tu propiedad.</p>
+              <a href="#valoracion" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)">Solicitar valoración<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ svm.s3.on }}" hint-placeholder-val="{{ false }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">04 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Asesoramiento financiero</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Te ayudamos a tomar las mejores decisiones.</p>
+              <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Asesoramiento%20financiero" target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Consultar por WhatsApp</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ svm.s4.on }}" hint-placeholder-val="{{ false }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">05 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Gestión de obras</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">De la planificación a la entrega, sin complicaciones.</p>
+              <span style="align-self:flex-start;font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E3CFA8;border:1px solid rgba(198,164,114,.55);border-radius:2px;padding:6px 9px">Reformas e interiorismo</span>
+              <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Gesti%C3%B3n%20de%20obras" target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Consultar por WhatsApp</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ svm.s5.on }}" hint-placeholder-val="{{ false }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">06 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Tramitación de herencias</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Agilizamos y facilitamos todo el proceso.</p>
+              <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Tramitaci%C3%B3n%20de%20herencias" target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Consultar por WhatsApp</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ svm.s6.on }}" hint-placeholder-val="{{ false }}">
+            <div data-svp="" style="display:flex;flex-direction:column;gap:14px">
+              <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.22em;color:#C6A472">07 / 07</span>
+              <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:28px;line-height:1.12;text-wrap:balance">Departamento jurídico</h3>
+              <p style="margin:0;font:400 16px/1.55 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Asesoramiento legal de confianza, siempre a tu lado.</p>
+              <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Departamento%20jur%C3%ADdico" target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Consultar por WhatsApp</a>
+            </div>
+          </sc-if>
+        </div>
+        <span style="display:block;padding-top:18px;font-family:'Mrs Saint Delafield',cursive;font-size:44px;line-height:1.15;color:#F2ECE2;transform:rotate(-3deg);transform-origin:left bottom">Tu proyecto, nuestra prioridad.</span>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="valoracion" data-screen-label="03 Valoración" style="background:#F2ECE2;color:#1B1713;padding:clamp(80px,11vw,140px) clamp(20px,5vw,56px);scroll-margin-top:64px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,7vw,110px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <span data-reveal="0" style="font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#7A5C33">Valoración gratuita</span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.03;letter-spacing:-.012em;text-wrap:balance">Valoración de viviendas</h2>
+      <span data-draw="" style="display:block;width:72px;height:1px;background:#7A5C33;transform-origin:left center"></span>
+      <div data-reveal="120" style="display:flex;flex-direction:column;gap:14px;max-width:52ch;font:400 17px/1.65 'Jost',sans-serif;color:#4A4036">
+        <p style="margin:0;text-wrap:pretty">Realizamos valoraciones gratuitas y sin compromiso, con un análisis riguroso del inmueble, su ubicación y la realidad del mercado.</p>
+        <p style="margin:0;text-wrap:pretty">Nuestro conocimiento de la zona nos permite ofrecer una valoración precisa y fundamentada.</p>
+      </div>
+      <div data-reveal="180" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:12px;border-top:1px solid rgba(27,23,19,.14);border-bottom:1px solid rgba(27,23,19,.14)">
+        <div style="padding:22px 6px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border-right:1px solid rgba(27,23,19,.14)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7A5C33" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+          <span style="font:500 11px/1.4 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase">Análisis riguroso</span>
+        </div>
+        <div style="padding:22px 6px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border-right:1px solid rgba(27,23,19,.14)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7A5C33" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span style="font:500 11px/1.4 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase">Conocimiento de la zona</span>
+        </div>
+        <div style="padding:22px 6px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7A5C33" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M8 17v-3"></path><path d="M12 17V9"></path><path d="M16 17v-6"></path><path d="M20 17V5"></path></svg>
+          <span style="font:500 11px/1.4 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase">Valoración precisa</span>
+        </div>
+      </div>
+    </div>
+
+    <form data-reveal="120" onSubmit="{{ onValoracion }}" style="position:relative;background:#221B15;color:#F2ECE2;border-radius:4px;padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;gap:22px;box-shadow:0 30px 60px -30px rgba(27,23,19,.55)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3vw,32px);line-height:1.1">Solicita tu valoración</h3>
+          <p style="margin:0;font:400 15px/1.5 'Jost',sans-serif;color:#CFC6B8">Gratuita y sin compromiso.</p>
+        </div>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="flex:none;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C6A472;border:1px solid rgba(198,164,114,.6);border-radius:2px;padding:6px 8px">Demo</span></sc-if>
+      </div>
+      <label for="az-tipo" style="display:flex;flex-direction:column;gap:6px">
+        <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#CFC6B8">Tipo de inmueble</span>
+        <select id="az-tipo" ref="{{ fTipo }}" style="appearance:none;-webkit-appearance:none;width:100%;height:48px;background:#221B15 url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23C6A472' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E&quot;) no-repeat right 4px center;border:0;border-bottom:1px solid rgba(242,236,226,.3);border-radius:0;color:#F2ECE2;font-size:17px;padding:0 28px 0 2px">
+          <option style="background:#221B15;color:#F2ECE2">Piso</option>
+          <option style="background:#221B15;color:#F2ECE2">Casa o chalet</option>
+          <option style="background:#221B15;color:#F2ECE2">Ático</option>
+          <option style="background:#221B15;color:#F2ECE2">Local comercial</option>
+          <option style="background:#221B15;color:#F2ECE2">Otro</option>
+        </select>
+      </label>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+        <label for="az-m2" style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#CFC6B8">Superficie (m²)</span>
+          <input id="az-m2" ref="{{ fM2 }}" type="number" inputmode="numeric" min="10" placeholder="85" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(242,236,226,.3);border-radius:0;color:#F2ECE2;font-size:17px;padding:0 2px;box-sizing:border-box">
+        </label>
+        <label for="az-hab" style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#CFC6B8">Habitaciones</span>
+          <select id="az-hab" ref="{{ fHab }}" style="appearance:none;-webkit-appearance:none;width:100%;height:48px;background:#221B15 url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23C6A472' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E&quot;) no-repeat right 4px center;border:0;border-bottom:1px solid rgba(242,236,226,.3);border-radius:0;color:#F2ECE2;font-size:17px;padding:0 28px 0 2px">
+            <option style="background:#221B15;color:#F2ECE2">1</option>
+            <option style="background:#221B15;color:#F2ECE2">2</option>
+            <option selected="" style="background:#221B15;color:#F2ECE2">3</option>
+            <option style="background:#221B15;color:#F2ECE2">4</option>
+            <option style="background:#221B15;color:#F2ECE2">5 o más</option>
+          </select>
+        </label>
+      </div>
+      <label for="az-zona" style="display:flex;flex-direction:column;gap:6px">
+        <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#CFC6B8">Zona o dirección</span>
+        <input id="az-zona" ref="{{ fZona }}" type="text" autocomplete="street-address" placeholder="Calle y número" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(242,236,226,.3);border-radius:0;color:#F2ECE2;font-size:17px;padding:0 2px;box-sizing:border-box">
+      </label>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px">
+        <label for="az-nombre" style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#CFC6B8">Nombre</span>
+          <input id="az-nombre" ref="{{ fNombre }}" type="text" autocomplete="name" placeholder="Tu nombre" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(242,236,226,.3);border-radius:0;color:#F2ECE2;font-size:17px;padding:0 2px;box-sizing:border-box">
+        </label>
+        <label for="az-tel" style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#CFC6B8">Teléfono</span>
+          <input id="az-tel" ref="{{ fTel }}" type="tel" autocomplete="tel" placeholder="600 000 000" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(242,236,226,.3);border-radius:0;color:#F2ECE2;font-size:17px;padding:0 2px;box-sizing:border-box">
+        </label>
+      </div>
+      <button type="submit" style="margin-top:6px;display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border:0;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em;cursor:pointer;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#FFFFFF" style-active="transform:scale(.97)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+        Enviar por WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<section id="inmuebles" data-screen-label="04 Inmuebles" style="background:#14110E;color:#F2ECE2;padding:clamp(80px,11vw,140px) clamp(20px,5vw,56px);scroll-margin-top:64px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:22px;max-width:640px">
+        <span data-reveal="0" style="font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#C6A472">Inmuebles</span>
+        <h2 data-reveal="60" style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.03;letter-spacing:-.012em;text-wrap:balance">Encuentra el hogar o la inversión perfecta</h2>
+        <span data-draw="" style="display:block;width:72px;height:1px;background:#C6A472;transform-origin:left center"></span>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}"><div data-reveal="120" role="group" aria-label="Filtrar inmuebles" style="display:flex;gap:8px">
+        <button type="button" onClick="{{ verTodos }}" aria-pressed="{{ chipTodos.pressed }}" style="height:44px;padding:0 18px;border-radius:2px;border:1px solid {{ chipTodos.bd }};background:{{ chipTodos.bg }};color:{{ chipTodos.fg }};font:500 12px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)">Todos</button>
+        <button type="button" onClick="{{ verVenta }}" aria-pressed="{{ chipVenta.pressed }}" style="height:44px;padding:0 18px;border-radius:2px;border:1px solid {{ chipVenta.bd }};background:{{ chipVenta.bg }};color:{{ chipVenta.fg }};font:500 12px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)">Venta</button>
+        <button type="button" onClick="{{ verAlquiler }}" aria-pressed="{{ chipAlquiler.pressed }}" style="height:44px;padding:0 18px;border-radius:2px;border:1px solid {{ chipAlquiler.bd }};background:{{ chipAlquiler.bg }};color:{{ chipAlquiler.fg }};font:500 12px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)">Alquiler</button>
+      </div></sc-if>
+    </div>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:clamp(36px,4vw,44px) 28px">
+      <sc-if value="{{ showVenta }}" hint-placeholder-val="{{ true }}">
+        <article data-reveal="0" style="display:flex;flex-direction:column;gap:18px">
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:3px;background:#221B15">
+            <img src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada y vistas nocturnas" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:30% 50%;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.04)">
+            <span style="position:absolute;top:14px;left:14px;font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 9px;border-radius:2px">Venta</span>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;right:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Ejemplo</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C6A472">Ref. AZ-001</span>
+            <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.15">Ático con terraza y vistas</h3>
+            <p style="margin:0;font:400 30px/1 'Newsreader',serif;color:#E3CFA8">485.000 €</p>
+            <p style="margin:4px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font:400 15px/1.4 'Jost',sans-serif;color:#CFC6B8"><span>120 m²</span><span>3 hab.</span><span>2 baños</span><span>Terraza</span></p>
+            <p style="margin:0;font:400 13px/1.4 'Jost',sans-serif;color:#A79D90">Certificado energético: pendiente</p>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-001" target="_blank" rel="noopener" style="margin-top:6px;align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 13px/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F2ECE2;border-bottom:1px solid #C6A472" style-hover="color:#C6A472">Me interesa<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+      </sc-if>
+      <sc-if value="{{ showVenta }}" hint-placeholder-val="{{ true }}">
+        <article data-reveal="80" style="display:flex;flex-direction:column;gap:18px">
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:3px;background:#221B15">
+            <img src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial de nueva construcción con balcones" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.04)">
+            <span style="position:absolute;top:14px;left:14px;font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 9px;border-radius:2px">Venta</span>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;right:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Ejemplo</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C6A472">Ref. AZ-002</span>
+            <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.15">Piso de obra nueva con balcón</h3>
+            <p style="margin:0;font:400 30px/1 'Newsreader',serif;color:#E3CFA8">320.000 €</p>
+            <p style="margin:4px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font:400 15px/1.4 'Jost',sans-serif;color:#CFC6B8"><span>95 m²</span><span>3 hab.</span><span>2 baños</span><span>Balcón</span></p>
+            <p style="margin:0;font:400 13px/1.4 'Jost',sans-serif;color:#A79D90">Certificado energético: pendiente</p>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-002" target="_blank" rel="noopener" style="margin-top:6px;align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 13px/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F2ECE2;border-bottom:1px solid #C6A472" style-hover="color:#C6A472">Me interesa<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+      </sc-if>
+      <sc-if value="{{ showAlquiler }}" hint-placeholder-val="{{ true }}">
+        <article data-reveal="160" style="display:flex;flex-direction:column;gap:18px">
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:3px;background:#221B15">
+            <img src="uploads/photo.avif" alt="Bloque de pisos clásico a contraluz" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block;transition:transform .7s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.04)">
+            <span style="position:absolute;top:14px;left:14px;font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#C6A472;padding:7px 9px;border-radius:2px">Alquiler</span>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;right:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Ejemplo</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C6A472">Ref. AZ-003</span>
+            <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.15">Piso exterior luminoso</h3>
+            <p style="margin:0;font:400 30px/1 'Newsreader',serif;color:#E3CFA8">950 €<span style="font-size:17px;color:#CFC6B8"> /mes</span></p>
+            <p style="margin:4px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px;font:400 15px/1.4 'Jost',sans-serif;color:#CFC6B8"><span>70 m²</span><span>2 hab.</span><span>1 baño</span><span>Exterior</span></p>
+            <p style="margin:0;font:400 13px/1.4 'Jost',sans-serif;color:#A79D90">Certificado energético: pendiente</p>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-003" target="_blank" rel="noopener" style="margin-top:6px;align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 13px/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F2ECE2;border-bottom:1px solid #C6A472" style-hover="color:#C6A472">Me interesa<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </article>
+      </sc-if>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div role="tablist" aria-label="Inmuebles" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+          <button type="button" role="tab" aria-selected="{{ pm.p0.sel }}" aria-label="Ático con terraza y vistas, 485.000 €" onClick="{{ pm.p0.go }}" style="display:flex;flex-direction:column;gap:10px;min-width:0;padding:0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;opacity:{{ pm.p0.op }};transition:opacity .3s cubic-bezier(.22,1,.36,1)"><span style="position:relative;display:block;width:100%;aspect-ratio:4/3;border-radius:3px;overflow:hidden;background:#221B15;outline:1.5px solid {{ pm.p0.ol }};outline-offset:3px"><img src="uploads/2z0jlptwsnc11.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%"></span><span style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#C6A472">Venta</span><span style="font:400 17px/1 'Newsreader',serif;white-space:nowrap">485.000 €</span></span></button>
+          <button type="button" role="tab" aria-selected="{{ pm.p1.sel }}" aria-label="Piso de obra nueva con balcón, 320.000 €" onClick="{{ pm.p1.go }}" style="display:flex;flex-direction:column;gap:10px;min-width:0;padding:0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;opacity:{{ pm.p1.op }};transition:opacity .3s cubic-bezier(.22,1,.36,1)"><span style="position:relative;display:block;width:100%;aspect-ratio:4/3;border-radius:3px;overflow:hidden;background:#221B15;outline:1.5px solid {{ pm.p1.ol }};outline-offset:3px"><img src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></span><span style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#C6A472">Venta</span><span style="font:400 17px/1 'Newsreader',serif;white-space:nowrap">320.000 €</span></span></button>
+          <button type="button" role="tab" aria-selected="{{ pm.p2.sel }}" aria-label="Piso exterior luminoso, 950 € /mes" onClick="{{ pm.p2.go }}" style="display:flex;flex-direction:column;gap:10px;min-width:0;padding:0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;opacity:{{ pm.p2.op }};transition:opacity .3s cubic-bezier(.22,1,.36,1)"><span style="position:relative;display:block;width:100%;aspect-ratio:4/3;border-radius:3px;overflow:hidden;background:#221B15;outline:1.5px solid {{ pm.p2.ol }};outline-offset:3px"><img src="uploads/photo.avif" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%"></span><span style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#C6A472">Alquiler</span><span style="font:400 17px/1 'Newsreader',serif;white-space:nowrap">950 €<span style="font-size:12px;color:#CFC6B8"> /mes</span></span></span></button>
+        </div>
+        <div ref="{{ pmTrackRef }}" onScroll="{{ onPm }}" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 calc(-1 * clamp(20px,5vw,56px));padding:4px clamp(20px,5vw,56px);scroll-padding-inline:clamp(20px,5vw,56px)">
+          <article style="flex:0 0 min(86%,440px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:3px;background:#221B15;color:#F2ECE2">
+              <img src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada y vistas nocturnas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,0) 40%,rgba(20,17,14,.9) 100%)"></div>
+              <span style="position:absolute;top:14px;left:14px;font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 9px;border-radius:2px">Venta</span>
+              <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;right:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Ejemplo</span></sc-if>
+              <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+                <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-001</span>
+                <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1.12;text-wrap:balance">Ático con terraza y vistas</h3>
+                <span style="font:400 30px/1 'Newsreader',serif;color:#E3CFA8">485.000 €</span>
+              </div>
+            </div>
+            <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 0;border-top:1px solid rgba(242,236,226,.14);border-bottom:1px solid rgba(242,236,226,.14);font:400 15px/1.4 'Jost',sans-serif;color:#CFC6B8"><span>120 m²</span><span>3 hab.</span><span>2 baños</span><span>Terraza</span></p>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-001" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border:1px solid #C6A472;border-radius:3px;color:#F2ECE2;font:500 14px/1 'Jost',sans-serif;letter-spacing:.06em;box-sizing:border-box" style-active="transform:scale(.97)"><svg width="17" height="17" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Me interesa</a>
+            <span style="font:400 13px/1.4 'Jost',sans-serif;color:#A79D90">Certificado energético: pendiente</span>
+          </article>
+          <article style="flex:0 0 min(86%,440px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:3px;background:#221B15;color:#F2ECE2">
+              <img src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial de nueva construcción con balcones" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,0) 40%,rgba(20,17,14,.9) 100%)"></div>
+              <span style="position:absolute;top:14px;left:14px;font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 9px;border-radius:2px">Venta</span>
+              <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;right:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Ejemplo</span></sc-if>
+              <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+                <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-002</span>
+                <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1.12;text-wrap:balance">Piso de obra nueva con balcón</h3>
+                <span style="font:400 30px/1 'Newsreader',serif;color:#E3CFA8">320.000 €</span>
+              </div>
+            </div>
+            <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 0;border-top:1px solid rgba(242,236,226,.14);border-bottom:1px solid rgba(242,236,226,.14);font:400 15px/1.4 'Jost',sans-serif;color:#CFC6B8"><span>95 m²</span><span>3 hab.</span><span>2 baños</span><span>Balcón</span></p>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-002" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border:1px solid #C6A472;border-radius:3px;color:#F2ECE2;font:500 14px/1 'Jost',sans-serif;letter-spacing:.06em;box-sizing:border-box" style-active="transform:scale(.97)"><svg width="17" height="17" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Me interesa</a>
+            <span style="font:400 13px/1.4 'Jost',sans-serif;color:#A79D90">Certificado energético: pendiente</span>
+          </article>
+          <article style="flex:0 0 min(86%,440px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:3px;background:#221B15;color:#F2ECE2">
+              <img src="uploads/photo.avif" alt="Bloque de pisos clásico a contraluz" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,0) 40%,rgba(20,17,14,.9) 100%)"></div>
+              <span style="position:absolute;top:14px;left:14px;font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#C6A472;padding:7px 9px;border-radius:2px">Alquiler</span>
+              <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;right:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Ejemplo</span></sc-if>
+              <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+                <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-003</span>
+                <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1.12;text-wrap:balance">Piso exterior luminoso</h3>
+                <span style="font:400 30px/1 'Newsreader',serif;color:#E3CFA8">950 €<span style="font-size:16px;color:#CFC6B8"> /mes</span></span>
+              </div>
+            </div>
+            <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 0;border-top:1px solid rgba(242,236,226,.14);border-bottom:1px solid rgba(242,236,226,.14);font:400 15px/1.4 'Jost',sans-serif;color:#CFC6B8"><span>70 m²</span><span>2 hab.</span><span>1 baño</span><span>Exterior</span></p>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-003" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;border:1px solid #C6A472;border-radius:3px;color:#F2ECE2;font:500 14px/1 'Jost',sans-serif;letter-spacing:.06em;box-sizing:border-box" style-active="transform:scale(.97)"><svg width="17" height="17" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Me interesa</a>
+            <span style="font:400 13px/1.4 'Jost',sans-serif;color:#A79D90">Certificado energético: pendiente</span>
+          </article>
+          <span aria-hidden="true" style="flex:0 0 1px"></span>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+      <p style="margin:0;font:400 14px/1.5 'Jost',sans-serif;color:#A79D90;border-top:1px solid rgba(242,236,226,.12);padding-top:20px">Inmuebles de ejemplo. Aquí irá vuestra cartera real, con fotos y datos propios.</p>
+    </sc-if>
+  </div>
+</section>
+
+<section id="financiacion" data-screen-label="05 Financiación" style="background:#E9DED3;color:#1B1713;padding:clamp(80px,11vw,140px) clamp(20px,5vw,56px);scroll-margin-top:64px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,7vw,110px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <span data-reveal="0" style="font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#7A5C33">Asesoramiento financiero</span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.03;letter-spacing:-.012em;text-wrap:balance">Servicios financieros</h2>
+      <span data-draw="" style="display:block;width:72px;height:1px;background:#7A5C33;transform-origin:left center"></span>
+      <p data-reveal="120" style="margin:0;max-width:46ch;font:400 17px/1.65 'Jost',sans-serif;color:#4A4036;text-wrap:pretty">Ofrecemos asesoramiento financiero personalizado y gestionamos las distintas alternativas de financiación.</p>
+      <div data-reveal="160" aria-hidden="true" style="display:flex;align-items:flex-start;margin-top:8px;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(120px,26vw,230px);line-height:.82;letter-spacing:-.045em;color:#1B1713">100<span style="font-size:.38em;letter-spacing:0;margin:.12em 0 0 .1em;color:#7A5C33">%</span></div>
+      <div data-reveal="200" style="display:flex;flex-direction:column;gap:10px;max-width:460px">
+        <p style="margin:0;background:#1B1713;color:#F2ECE2;padding:15px 18px;font:400 17px/1.5 'Jost',sans-serif">Podemos ayudar a nuestros clientes a conseguir hasta el <strong style="font-weight:600">100 % de financiación</strong>,</p>
+        <p style="margin:0;padding:0 18px;font:400 15px/1.5 'Jost',sans-serif;color:#4A4036">siempre sujeto a las condiciones y criterios de la entidad financiera.</p>
+      </div>
+    </div>
+
+    <div data-reveal="120" style="position:relative;background:#F2ECE2;border:1px solid rgba(27,23,19,.12);border-radius:4px;padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;gap:26px;box-shadow:0 30px 60px -36px rgba(53,36,18,.45)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3vw,32px);line-height:1.1">Simula tu cuota</h3>
+          <p style="margin:0;font:400 15px/1.5 'Jost',sans-serif;color:#4A4036">Mueve los valores y mira cómo cambia.</p>
+        </div>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="flex:none;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7A5C33;border:1px solid rgba(122,92,51,.6);border-radius:2px;padding:6px 8px">Demo</span></sc-if>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Precio de la vivienda</span><span style="font:400 24px/1 'Newsreader',serif;color:#1B1713;font-variant-numeric:tabular-nums">{{ sim.precioFmt }}</span></span>
+        <input type="range" min="50000" max="900000" step="5000" value="{{ sim.precio }}" onChange="{{ setPrecio }}" aria-label="Precio de la vivienda" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Financiación</span><span style="font:400 24px/1 'Newsreader',serif;color:#1B1713;font-variant-numeric:tabular-nums">{{ sim.pctFmt }}</span></span>
+        <input type="range" min="50" max="100" step="5" value="{{ sim.pct }}" onChange="{{ setPct }}" aria-label="Porcentaje financiado" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Plazo</span><span style="font:400 24px/1 'Newsreader',serif;color:#1B1713;font-variant-numeric:tabular-nums">{{ sim.plazoFmt }}</span></span>
+        <input type="range" min="10" max="40" step="1" value="{{ sim.plazo }}" onChange="{{ setPlazo }}" aria-label="Plazo en años" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+      </label>
+      <label style="display:flex;flex-direction:column;gap:8px">
+        <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Tipo de interés orientativo</span><span style="font:400 24px/1 'Newsreader',serif;color:#1B1713;font-variant-numeric:tabular-nums">{{ sim.tipoFmt }}</span></span>
+        <input type="range" min="0.5" max="7" step="0.05" value="{{ sim.tipo }}" onChange="{{ setTipo }}" aria-label="Tipo de interés orientativo" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+      </label>
+      <div style="border-top:1px solid rgba(27,23,19,.14);padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Cuota mensual aproximada</span>
+          <span style="font:300 clamp(44px,6vw,56px)/1 'Newsreader',serif;color:#1B1713;font-variant-numeric:tabular-nums">{{ sim.cuotaFmt }}<span style="font-size:18px;color:#4A4036"> /mes</span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;text-align:right">
+          <span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Importe financiado</span>
+          <span style="font:400 22px/1 'Newsreader',serif;color:#1B1713;font-variant-numeric:tabular-nums">{{ sim.financiadoFmt }}</span>
+        </div>
+      </div>
+      <a href="{{ waAsesor }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border-radius:3px;background:#1B1713;color:#F2ECE2;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#2E2620;color:#F2ECE2" style-active="transform:scale(.97)">Hablar con un asesor<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+      <p style="margin:-8px 0 0;font:400 13px/1.5 'Jost',sans-serif;color:#5C5146">Cálculo orientativo, sin valor de oferta. El tipo de interés es de ejemplo y la concesión depende de la entidad financiera.</p>
+    </div>
+  </div>
+</section>
+
+<section id="conocenos" data-screen-label="06 Quién soy" style="background:#221B15;color:#F2ECE2;padding:clamp(80px,11vw,140px) clamp(20px,5vw,56px);scroll-margin-top:64px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(44px,7vw,96px);align-items:center">
+    <sc-if value="{{ showVideo }}" hint-placeholder-val="{{ true }}">
+      <div data-reveal="0" style="position:relative;width:100%;max-width:380px;justify-self:center;aspect-ratio:9/16;border-radius:4px;overflow:hidden;background:#14110E;border:1px solid rgba(242,236,226,.12);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)">
+        <video ref="{{ videoRef }}" src="uploads/igexport-DUlw8Woj5Vf.mp4" autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Vídeo de presentación" style="width:100%;height:100%;object-fit:cover;display:block"></video>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;left:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 9px;border-radius:2px">Vídeo provisional</span></sc-if>
+        <button type="button" onClick="{{ toggleSound }}" aria-label="{{ soundLabel }}" style="position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:3px;border:1px solid rgba(242,236,226,.3);background:rgba(20,17,14,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#F2ECE2;font:500 12px/1 'Jost',sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)">
+          <sc-if value="{{ muted }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="m22 9-6 6"></path><path d="m16 9 6 6"></path></svg></sc-if>
+          <sc-if value="{{ unmuted }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="M16 9a5 5 0 0 1 0 6"></path><path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg></sc-if>
+          <span>{{ soundLabel }}</span>
+        </button>
+      </div>
+    </sc-if>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <span data-reveal="0" style="font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#C6A472">Quién soy</span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.03;letter-spacing:-.012em;text-wrap:balance">Gorka Urgel</h2>
+      <p data-reveal="90" style="margin:-6px 0 0;font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:clamp(21px,2.4vw,26px);line-height:1.3;color:#E3CFA8">Asesor inmobiliario</p>
+      <span data-draw="" style="display:block;width:72px;height:1px;background:#C6A472;transform-origin:left center"></span>
+      <p data-reveal="120" style="margin:0;max-width:48ch;font:400 17px/1.65 'Jost',sans-serif;color:#CFC6B8;border:1px dashed rgba(198,164,114,.5);border-radius:3px;padding:16px 18px">Texto pendiente. Aquí va la presentación de Gorka: trayectoria, forma de trabajar y zona.</p>
+      <div data-reveal="180" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:8px">
+        <div style="position:relative;aspect-ratio:4/5"><image-slot id="az-equipo" shape="rect" placeholder="Retrato de Gorka" style="display:block;width:100%;height:100%"></image-slot></div>
+        <div style="position:relative;aspect-ratio:4/5"><image-slot id="az-oficina" shape="rect" placeholder="Fachada o escaparate de la oficina" style="display:block;width:100%;height:100%"></image-slot></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="07 Contacto" style="background:#F2ECE2;color:#1B1713;padding:clamp(80px,11vw,140px) clamp(20px,5vw,56px);scroll-margin-top:64px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(44px,7vw,96px);align-items:stretch">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <span data-reveal="0" style="font:500 12px/1 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#7A5C33">Contacto</span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Newsreader',serif;font-weight:300;font-size:clamp(38px,6vw,72px);line-height:1.03;letter-spacing:-.012em;text-wrap:balance">Hablemos de tu casa</h2>
+      <span data-draw="" style="display:block;width:72px;height:1px;background:#7A5C33;transform-origin:left center"></span>
+      <a data-reveal="120" href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="margin-top:6px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:0 24px;border-radius:3px;background:#1B1713;color:#F2ECE2;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#2E2620;color:#F2ECE2" style-active="transform:scale(.98)">
+        <span style="display:flex;align-items:center;gap:14px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#C6A472">WhatsApp</span><span style="font:400 24px/1 'Newsreader',serif">+34 642 281 347</span></span>
+        </span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+      </a>
+      <dl data-reveal="160" style="margin:6px 0 0;display:grid;grid-template-columns:minmax(0,1fr);font:400 17px/1.5 'Jost',sans-serif">
+        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid rgba(27,23,19,.14)"><dt style="font:500 11px/1.9 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Dirección</dt><dd style="margin:0"><span style="color:#7A5C33;border-bottom:1px dashed #7A5C33">[Dirección pendiente]</span></dd></div>
+        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid rgba(27,23,19,.14)"><dt style="font:500 11px/1.9 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Horario</dt><dd style="margin:0"><span style="color:#7A5C33;border-bottom:1px dashed #7A5C33">[Horario pendiente]</span></dd></div>
+        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid rgba(27,23,19,.14)"><dt style="font:500 11px/1.9 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Email</dt><dd style="margin:0"><span style="color:#7A5C33;border-bottom:1px dashed #7A5C33">[Email pendiente]</span></dd></div>
+        <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid rgba(27,23,19,.14);border-bottom:1px solid rgba(27,23,19,.14)"><dt style="font:500 11px/1.9 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Instagram</dt><dd style="margin:0"><a href="https://www.instagram.com/inmobiliaria.aldezaharra/" target="_blank" rel="noopener" style="color:#1B1713;border-bottom:1px solid #7A5C33;overflow-wrap:anywhere" style-hover="color:#7A5C33">@inmobiliaria.aldezaharra</a></dd></div>
+      </dl>
+    </div>
+    <div data-reveal="120" style="min-height:340px;border:1px dashed rgba(27,23,19,.3);border-radius:4px;background:#E9DED3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px;text-align:center">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7A5C33" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      <span style="font-family:'Newsreader',serif;font-size:24px;line-height:1.2">Mapa de la oficina</span>
+      <span style="font:400 15px/1.5 'Jost',sans-serif;color:#5C5146;max-width:30ch">Se añade en cuanto confirméis la dirección.</span>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="08 Footer" style="background:#14110E;color:#F2ECE2;padding:clamp(64px,9vw,104px) clamp(20px,5vw,56px) calc(clamp(32px,4vw,44px) + 76px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:44px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:36px">
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <img src="assets/az-lockup-marfil.png" alt="Inmobiliaria Alde Zaharra" style="width:clamp(180px,22vw,240px);height:auto;display:block">
+        <p style="margin:0;font-family:'Newsreader',serif;font-style:italic;font-weight:300;font-size:20px;line-height:1.4;color:#E9E1D4;max-width:28ch">Soluciones integrales para tu presente y tu futuro.</p>
+      </div>
+      <nav aria-label="Secciones" style="display:flex;flex-wrap:wrap;gap:4px 26px;font:500 12px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase">
+        <a href="#servicios" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Servicios</a>
+        <a href="#valoracion" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Valoración</a>
+        <a href="#inmuebles" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Inmuebles</a>
+        <a href="#financiacion" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Financiación</a>
+        <a href="#contacto" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Contacto</a>
+      </nav>
+    </div>
+    <div style="border-top:1px solid rgba(242,236,226,.12);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 28px;font:400 13px/1.6 'Jost',sans-serif;color:#A79D90">
+      <span>© 2026 Inmobiliaria Alde Zaharra · <span style="border-bottom:1px dashed #A79D90">[Nº Registro de Agentes Inmobiliarios]</span></span>
+      <span style="display:flex;flex-wrap:wrap;gap:4px 18px"><a href="#" style="color:#A79D90" style-hover="color:#C6A472">Aviso legal</a><a href="#" style="color:#A79D90" style-hover="color:#C6A472">Privacidad</a><a href="#" style="color:#A79D90" style-hover="color:#C6A472">Cookies</a></span>
+    </div>
+    <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+      <p style="margin:-20px 0 0;font:400 13px/1.6 'Jost',sans-serif;color:#A79D90">Propuesta de diseño. Las fotos de inmuebles, los inmuebles y el vídeo son de ejemplo.</p>
+    </sc-if>
+  </div>
+</footer>
+
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+  <div ref="{{ stickyRef }}" style="position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(20,17,14,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(242,236,226,.12);display:flex;gap:10px;transform:translateY(110%);transition:transform .35s cubic-bezier(.22,1,.36,1)">
+    <a href="https://wa.me/34642281347?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20valoraci%C3%B3n%20gratuita%20de%20mi%20vivienda." target="_blank" rel="noopener" style="flex:1;display:flex;align-items:center;justify-content:center;height:52px;border-radius:3px;background:#F2ECE2;color:#1B1713;font:500 15px/1 'Jost',sans-serif;letter-spacing:.04em" style-active="transform:scale(.97)">Valoración gratuita</a>
+    <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" style="flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:3px;border:1px solid #C6A472;color:#C6A472;box-sizing:border-box" style-active="transform:scale(.97)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+    </a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ocultarDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reunión&quot;},&quot;mostrarVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reunión&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;fotoHero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Ventanal al atardecer&quot;,&quot;Ático con terraza&quot;,&quot;Edificio moderno&quot;],&quot;default&quot;:&quot;Ventanal al atardecer&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { svc: 0, pIdx: 0, filtro: 'todos', precio: 240000, pct: 80, plazo: 30, tipo: 2.9, muted: true, isMobile: true };
+  f = {};
+  timers = [];
+
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.onResize = () => {
+      const m = window.innerWidth < 1080;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m }, () => this.onScroll());
+    };
+    this.onScroll = () => {
+      const y = window.scrollY || 0;
+      if (this.navBg) this.navBg.style.opacity = y > 24 ? '1' : '0';
+      const h = this.hero ? this.hero.offsetHeight : 700;
+      if (this.sticky) this.sticky.style.transform = y > h * 0.75 ? 'translateY(0)' : 'translateY(110%)';
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onResize();
+    this.onScroll();
+    if ((this.props.intro ?? true) && !this.reduce) this.startIntro();
+    this.setupReveals();
+  }
+
+  startIntro(tries = 0) {
+    const h = this.hero;
+    const ok = h && h.clientWidth >= 50 && h.clientHeight >= 50 && document.visibilityState !== 'hidden';
+    if (ok) return this.playIntro();
+    if (tries < 30) this.timers.push(setTimeout(() => this.startIntro(tries + 1), 100));
+  }
+
+  componentDidUpdate(prev) {
+    prev = prev || {};
+    if (prev.intro === false && this.props.intro !== false && !this.reduce) this.startIntro();
+    if (this._svc !== undefined && this._svc !== this.state.svc) this.animSvc();
+    this._svc = this.state.svc;
+  }
+
+  animSvc() {
+    const w = this.svWrap; if (!w) return;
+    const el = w.querySelector('[data-svp]');
+    if (el && el.animate && !this.reduce) el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: 'cubic-bezier(.22,1,.36,1)' });
+    const r = w.getBoundingClientRect(), vh = window.innerHeight;
+    if (r.top > vh - 180) window.scrollBy({ top: r.top - vh + Math.min(r.height, 340) + 96, behavior: this.reduce ? 'auto' : 'smooth' });
+  }
+
+  onPm = () => {
+    const t = this.pmTrack; if (!t) return;
+    const cs = t.querySelectorAll('article'); if (!cs.length) return;
+    const w = cs[0].getBoundingClientRect().width + 12;
+    const i = Math.max(0, Math.min(cs.length - 1, Math.round(t.scrollLeft / w)));
+    if (i !== this.state.pIdx) this.setState({ pIdx: i });
+  };
+
+  pmGo(i) {
+    const t = this.pmTrack; if (!t) return;
+    const c = t.querySelector('article'); if (!c) return;
+    this.setState({ pIdx: i });
+    t.scrollTo({ left: i * (c.getBoundingClientRect().width + 12), behavior: this.reduce ? 'auto' : 'smooth' });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    this.timers.forEach(clearTimeout);
+    cancelAnimationFrame(this.raf);
+    if (this.io) this.io.disconnect();
+  }
+
+  playIntro() {
+    const hero = this.hero, clip = this.clip, img = this.heroImg, svg = this.outlineSvg, path = this.outline;
+    if (!hero || !clip || !svg || !path || !clip.animate) return;
+    this.timers.forEach(clearTimeout); this.timers = []; cancelAnimationFrame(this.raf);
+    const W = hero.clientWidth, H = hero.clientHeight;
+    if (W < 50 || H < 50) return;
+    const bw = Math.min(W * 0.7, H * 0.44, 500), bh = bw * 1.16;
+    const bx = (W - bw) / 2, by = Math.max(96, H * 0.42 - bh / 2);
+    const N = [[.5, 0], [.74, .173], [.74, .06], [.82, .06], [.82, .23], [1, .36], [1, 1], [0, 1], [0, .36]];
+    const P = N.map(([x, y]) => [bx + x * bw, by + y * bh]);
+    const F = N.map(([x, y]) => [x * W, y === 1 ? H : 0]);
+    const at = e => P.map((p, i) => [p[0] + (F[i][0] - p[0]) * e, p[1] + (F[i][1] - p[1]) * e]);
+    const poly = Q => 'polygon(' + Q.map(q => q[0].toFixed(1) + 'px ' + q[1].toFixed(1) + 'px').join(',') + ')';
+    const order = [7, 8, 0, 1, 2, 3, 4, 5, 6];
+    const dPath = Q => 'M' + order.map(i => Q[i][0].toFixed(1) + ' ' + Q[i][1].toFixed(1)).join(' L');
+    const lines = Array.from(hero.querySelectorAll('[data-hline]'));
+    const fades = Array.from(hero.querySelectorAll('[data-hfade]'));
+    const out = 'cubic-bezier(.22,1,.36,1)';
+    const T = (ms, fn) => this.timers.push(setTimeout(fn, ms));
+
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    path.setAttribute('d', dPath(P));
+    clip.style.clipPath = poly(P);
+    clip.style.opacity = '0';
+    svg.style.opacity = '1';
+    lines.forEach(l => { l.style.transform = 'translateY(110%)'; });
+    fades.forEach(f => { f.style.opacity = '0'; });
+
+    path.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], { duration: 1100, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'forwards' });
+    T(550, () => {
+      clip.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 700, easing: out, fill: 'forwards' }).onfinish = () => { clip.style.opacity = ''; };
+      if (this.heroImg && this.heroImg.animate) this.heroImg.animate([{ transform: 'scale(1.14)' }, { transform: 'scale(1)' }], { duration: 2800, easing: out });
+    });
+    T(1350, () => {
+      const t0 = performance.now(), dur = 1050;
+      const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const step = now => {
+        const t = Math.min(1, (now - t0) / dur), e = ease(t), Q = at(e);
+        clip.style.clipPath = poly(Q);
+        path.setAttribute('d', dPath(Q));
+        svg.style.opacity = String(Math.max(0, 1 - e * 1.5));
+        if (t < 1) this.raf = requestAnimationFrame(step);
+        else { clip.style.clipPath = ''; svg.style.opacity = '0'; }
+      };
+      this.raf = requestAnimationFrame(step);
+    });
+    T(1950, () => lines.forEach((l, i) => {
+      const a = l.animate([{ transform: 'translateY(110%)' }, { transform: 'translateY(0)' }], { duration: 950, delay: i * 110, easing: out, fill: 'forwards' });
+      a.onfinish = () => { l.style.transform = ''; a.cancel(); };
+    }));
+    T(2300, () => fades.forEach((f, i) => {
+      const a = f.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: i * 90, easing: out, fill: 'forwards' });
+      a.onfinish = () => { f.style.opacity = ''; a.cancel(); };
+    }));
+  }
+
+  setupReveals() {
+    if (this.reduce || !this.root || !('IntersectionObserver' in window)) return;
+    const out = 'cubic-bezier(.22,1,.36,1)';
+    this.io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target; this.io.unobserve(el);
+        if (el.hasAttribute('data-draw')) {
+          el.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 900, delay: 200, easing: out, fill: 'backwards' });
+        } else {
+          const d = +(el.getAttribute('data-reveal') || 0);
+          el.animate([{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: d, easing: out, fill: 'backwards' });
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+    const vh = window.innerHeight;
+    this.root.querySelectorAll('[data-reveal],[data-draw]').forEach(el => {
+      if (el.getBoundingClientRect().top < vh) return;
+      this.io.observe(el);
+    });
+  }
+
+  renderVals() {
+    const p = this.props, s = this.state;
+    const foto = p.fotoHero ?? 'Ventanal al atardecer';
+    const fin = s.precio * s.pct / 100, r = s.tipo / 100 / 12, n = s.plazo * 12;
+    const cuota = r > 0 ? fin * r / (1 - Math.pow(1 + r, -n)) : fin / n;
+    const miles = v => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const eur = v => miles(v) + '\u00A0€';
+    const chip = k => s.filtro === k
+      ? { bg: '#F2ECE2', fg: '#1B1713', bd: '#F2ECE2', pressed: 'true' }
+      : { bg: 'transparent', fg: '#F2ECE2', bd: 'rgba(242,236,226,.28)', pressed: 'false' };
+    const WA = 'https://wa.me/34642281347?text=';
+    const svm = {};
+    for (let i = 0; i < 7; i++) { const o = s.svc === i; svm['s' + i] = { on: o, sel: o ? 'true' : 'false', bg: o ? '#221B15' : 'transparent', bd: o ? '#C6A472' : 'rgba(242,236,226,.16)', pick: () => this.setState({ svc: i }) }; }
+    const pm = {};
+    for (let i = 0; i < 3; i++) { const o = s.pIdx === i; pm['p' + i] = { sel: o ? 'true' : 'false', op: o ? '1' : '.5', ol: o ? '#C6A472' : 'transparent', go: () => this.pmGo(i) }; }
+    return {
+      rootRef: el => { this.root = el; },
+      svWrapRef: el => { this.svWrap = el; },
+      pmTrackRef: el => { this.pmTrack = el; },
+      onPm: this.onPm, svm, pm,
+      navBgRef: el => { this.navBg = el; },
+      heroRef: el => { this.hero = el; },
+      clipRef: el => { this.clip = el; },
+      heroImgRef: el => { if (el) this.heroImg = el; },
+      outlineSvgRef: el => { this.outlineSvg = el; },
+      outlineRef: el => { this.outline = el; },
+      stickyRef: el => { this.sticky = el; if (el && this.onScroll) this.onScroll(); },
+      videoRef: el => {
+        this.video = el;
+        if (el) { el.muted = this.state.muted; const pr = el.play && el.play(); if (pr && pr.catch) pr.catch(() => {}); }
+      },
+      fTipo: el => { this.f.tipo = el; }, fM2: el => { this.f.m2 = el; }, fHab: el => { this.f.hab = el; },
+      fZona: el => { this.f.zona = el; }, fNombre: el => { this.f.nombre = el; }, fTel: el => { this.f.tel = el; },
+
+      showDemo: !(p.ocultarDemo ?? false),
+      showVideo: p.mostrarVideo ?? true,
+      isMobile: s.isMobile,
+      isDesktop: !s.isMobile,
+      heroVentanal: foto === 'Ventanal al atardecer',
+      heroAtico: foto === 'Ático con terraza',
+      heroModerno: foto === 'Edificio moderno',
+
+      chipTodos: chip('todos'), chipVenta: chip('venta'), chipAlquiler: chip('alquiler'),
+      verTodos: () => this.setState({ filtro: 'todos' }),
+      verVenta: () => this.setState({ filtro: 'venta' }),
+      verAlquiler: () => this.setState({ filtro: 'alquiler' }),
+      showVenta: s.filtro !== 'alquiler',
+      showAlquiler: s.filtro !== 'venta',
+
+      sim: {
+        precio: s.precio, pct: s.pct, plazo: s.plazo, tipo: s.tipo,
+        precioFmt: eur(s.precio), pctFmt: s.pct + '\u00A0%', plazoFmt: s.plazo + ' años',
+        tipoFmt: s.tipo.toFixed(2).replace('.', ',') + '\u00A0%',
+        financiadoFmt: eur(fin), cuotaFmt: eur(cuota)
+      },
+      setPrecio: e => this.setState({ precio: +e.target.value }),
+      setPct: e => this.setState({ pct: +e.target.value }),
+      setPlazo: e => this.setState({ plazo: +e.target.value }),
+      setTipo: e => this.setState({ tipo: +e.target.value }),
+      waAsesor: WA + encodeURIComponent('Hola, me gustaría hablar con un asesor sobre financiación. Vivienda de ' + eur(s.precio) + ', financiando el ' + s.pct + ' % a ' + s.plazo + ' años.'),
+
+      onValoracion: e => {
+        e.preventDefault();
+        const v = k => ((this.f[k] && this.f[k].value) || '').trim();
+        const L = ['Hola, me gustaría solicitar una valoración gratuita de mi vivienda.'];
+        if (v('tipo')) L.push('Tipo: ' + v('tipo'));
+        if (v('m2')) L.push('Superficie: ' + v('m2') + ' m²');
+        if (v('hab')) L.push('Habitaciones: ' + v('hab'));
+        if (v('zona')) L.push('Zona: ' + v('zona'));
+        if (v('nombre')) L.push('Nombre: ' + v('nombre'));
+        if (v('tel')) L.push('Teléfono: ' + v('tel'));
+        window.open(WA + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
+      },
+
+      muted: s.muted,
+      unmuted: !s.muted,
+      soundLabel: s.muted ? 'Activar sonido' : 'Silenciar',
+      toggleSound: () => {
+        const vid = this.video; if (!vid) return;
+        vid.muted = !vid.muted;
+        if (!vid.muted) { const pr = vid.play(); if (pr && pr.catch) pr.catch(() => {}); }
+        this.setState({ muted: vid.muted });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

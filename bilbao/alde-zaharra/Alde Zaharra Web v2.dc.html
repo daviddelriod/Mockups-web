@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&amp;family=Jost:wght@400;500;600&amp;family=Mrs+Saint+Delafield&amp;display=swap">
+<style>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#F2ECE2;color:#1B1713;font-family:'Jost',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}a:hover{color:#7A5C33}
+:focus-visible{outline:2px solid #9C7848;outline-offset:3px}
+::selection{background:#C6A472;color:#14110E}
+input,select,button,textarea{font:inherit}
+input::placeholder{color:#7D7368}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#F2ECE2;color:#1B1713;font-family:'Jost',system-ui,sans-serif;overflow-x:clip">
+
+<header ref="{{ headerRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50">
+  <div ref="{{ navBgRef }}" style="position:absolute;inset:0;background:rgba(242,236,226,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(27,23,19,.1);opacity:0;transition:opacity .3s cubic-bezier(.22,1,.36,1)"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;height:68px;padding:0 clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:20px">
+    <a href="#inicio" aria-label="Inmobiliaria Alde Zaharra, inicio" style="display:flex;align-items:center;gap:12px;min-height:44px">
+      <img src="assets/az-monograma-marfil.png" alt="" style="height:34px;width:auto;display:block;filter:var(--az-logo,brightness(.12));transition:filter .3s">
+      <img src="assets/az-wordmark-marfil.png" alt="Alde Zaharra" style="height:11px;width:auto;display:block;filter:var(--az-logo,brightness(.12));transition:filter .3s">
+    </a>
+    <sc-if value="{{ navFull }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Secciones" style="display:flex;align-items:center;gap:26px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase">
+        <a href="#servicios" style="color:#1B1713;padding:14px 0" style-hover="color:#7A5C33">Servicios</a>
+        <a href="#inmuebles" style="color:#1B1713;padding:14px 0" style-hover="color:#7A5C33">Inmuebles</a>
+        <a href="#valoracion" style="color:#1B1713;padding:14px 0" style-hover="color:#7A5C33">Valoración</a>
+        <a href="#financiacion" style="color:#1B1713;padding:14px 0" style-hover="color:#7A5C33">Financiación</a>
+        <a href="#conocenos" style="color:#1B1713;padding:14px 0" style-hover="color:#7A5C33">Quién soy</a>
+        <a href="#contacto" style="color:#1B1713;padding:14px 0" style-hover="color:#7A5C33">Contacto</a>
+      </nav>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;height:44px;padding:0 18px;border:1px solid #1B1713;color:#1B1713;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;box-sizing:border-box;transition:background-color .2s,color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2" style-active="transform:scale(.97)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.050 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.480-8.413Z"></path></svg>
+        <span>WhatsApp</span>
+      </a>
+    </sc-if>
+    <sc-if value="{{ navCompact }}" hint-placeholder-val="{{ true }}">
+      <button type="button" onClick="{{ openMenu }}" aria-label="Abrir menú" aria-expanded="{{ menuExp }}" style="display:flex;align-items:center;gap:12px;height:44px;padding:0 2px 0 12px;background:none;border:0;color:var(--az-fg,#1B1713);font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:color .3s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)">
+        <span>Menú</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 9h18"></path><path d="M9 15h12"></path></svg>
+      </button>
+    </sc-if>
+  </div>
+  <span ref="{{ progRef }}" aria-hidden="true" style="position:absolute;left:0;bottom:-1px;width:100%;height:1px;background:#7A5C33;transform-origin:0 50%;transform:scaleX(0)"></span>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div ref="{{ menuRef }}" role="dialog" aria-modal="true" aria-label="Menú" style="position:fixed;inset:0;z-index:80;background:#14110E;color:#F2ECE2;overflow-y:auto;display:flex;flex-direction:column;padding:0 clamp(20px,5vw,56px) calc(28px + env(safe-area-inset-bottom))">
+    <div style="height:68px;flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span style="display:flex;align-items:center;gap:12px"><img src="assets/az-monograma-marfil.png" alt="" style="height:34px;width:auto;display:block"><img src="assets/az-wordmark-marfil.png" alt="Alde Zaharra" style="height:11px;width:auto;display:block"></span>
+      <button type="button" onClick="{{ closeMenu }}" aria-label="Cerrar menú" style="display:flex;align-items:center;gap:12px;height:44px;padding:0 2px 0 12px;background:none;border:0;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;cursor:pointer"><span>Cerrar</span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+    </div>
+    <nav aria-label="Secciones" style="margin:auto 0;padding:32px 0;display:flex;flex-direction:column">
+      <a data-mi="" href="#servicios" onClick="{{ navTo }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid rgba(242,236,226,.12);color:#F2ECE2" style-hover="color:#E3CFA8"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">01</span><span style="font:400 clamp(32px,8.6vw,48px)/1.05 'Bodoni Moda',serif">Servicios</span></a>
+      <a data-mi="" href="#inmuebles" onClick="{{ navTo }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid rgba(242,236,226,.12);color:#F2ECE2" style-hover="color:#E3CFA8"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">02</span><span style="font:400 clamp(32px,8.6vw,48px)/1.05 'Bodoni Moda',serif">Inmuebles</span></a>
+      <a data-mi="" href="#valoracion" onClick="{{ navTo }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid rgba(242,236,226,.12);color:#F2ECE2" style-hover="color:#E3CFA8"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">03</span><span style="font:400 clamp(32px,8.6vw,48px)/1.05 'Bodoni Moda',serif">Valoración</span></a>
+      <a data-mi="" href="#financiacion" onClick="{{ navTo }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid rgba(242,236,226,.12);color:#F2ECE2" style-hover="color:#E3CFA8"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">04</span><span style="font:400 clamp(32px,8.6vw,48px)/1.05 'Bodoni Moda',serif">Financiación</span></a>
+      <a data-mi="" href="#conocenos" onClick="{{ navTo }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid rgba(242,236,226,.12);color:#F2ECE2" style-hover="color:#E3CFA8"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">05</span><span style="font:400 clamp(32px,8.6vw,48px)/1.05 'Bodoni Moda',serif">Quién soy</span></a>
+      <a data-mi="" href="#contacto" onClick="{{ navTo }}" style="display:flex;align-items:baseline;gap:18px;padding:16px 0;border-top:1px solid rgba(242,236,226,.12);border-bottom:1px solid rgba(242,236,226,.12);color:#F2ECE2" style-hover="color:#E3CFA8"><span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">06</span><span style="font:400 clamp(32px,8.6vw,48px)/1.05 'Bodoni Moda',serif">Contacto</span></a>
+    </nav>
+    <div data-mi="" style="display:flex;flex-direction:column;gap:16px">
+      <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:54px;background:#F2ECE2;color:#1B1713;font:500 12px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase" style-active="transform:scale(.97)">Escribir por WhatsApp</a>
+      <a href="https://www.instagram.com/inmobiliaria.aldezaharra/" target="_blank" rel="noopener" style="align-self:center;display:flex;align-items:center;min-height:44px;font:400 15px/1 'Jost',sans-serif;color:#CFC6B8" style-hover="color:#E3CFA8">@inmobiliaria.aldezaharra</a>
+    </div>
+  </div>
+</sc-if>
+
+<section id="inicio" ref="{{ heroRef }}" data-screen-label="01 Hero" style="position:relative;background:#F2ECE2;color:#1B1713">
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;height:clamp(680px,100svh,1000px);overflow:hidden">
+      <div ref="{{ frameRef }}" style="position:absolute;top:84px;right:0;bottom:0;left:46%;overflow:hidden;background:#1B1713">
+        <div ref="{{ heroParRef }}" style="position:absolute;left:0;right:0;top:-8%;height:116%;will-change:transform">
+          <div data-hzoom="" style="position:absolute;inset:0">
+            <img data-slide="0" src="uploads/ae78543bd7657dd75650b2fdd3bebfaf.jpg" alt="Salón en penumbra con ventanal al atardecer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;opacity:{{ hs.o0 }};transition:opacity 1.2s cubic-bezier(.4,0,.2,1)">
+            <img data-slide="1" src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada de noche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;opacity:{{ hs.o1 }};transition:opacity 1.2s cubic-bezier(.4,0,.2,1)">
+            <img data-slide="2" src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial moderno con balcones al sol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:{{ hs.o2 }};transition:opacity 1.2s cubic-bezier(.4,0,.2,1)">
+          </div>
+        </div>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,14,.64) 0%,rgba(20,17,14,.32) 32%,rgba(20,17,14,0) 58%),linear-gradient(0deg,rgba(20,17,14,.6) 0%,rgba(20,17,14,0) 28%)"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;display:flex;flex-direction:column;pointer-events:none"><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;box-shadow:0 1px 0 #F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#F2ECE2;transform:scaleY(0);transform-origin:50% 0"></span></div>
+        <div data-hfade="" role="group" aria-label="Fotos" style="position:absolute;right:clamp(24px,3vw,44px);bottom:clamp(18px,2.6vw,32px);display:flex;gap:12px;width:min(calc(100% - 48px),300px)"><button type="button" onClick="{{ hs.go0 }}" aria-label="Ver foto 1" aria-current="{{ hs.cur0 }}" style="flex:1;min-width:0;height:44px;padding:0;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;color:#F2ECE2;text-align:left"><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;opacity:{{ hs.l0 }};transition:opacity .3s">01</span><span style="display:block;width:100%;height:2px;background:rgba(242,236,226,.3);overflow:hidden"><span data-bar="0" style="display:block;height:100%;background:#F2ECE2;transform-origin:0 50%;transform:scaleX({{ hs.b0 }})"></span></span></button><button type="button" onClick="{{ hs.go1 }}" aria-label="Ver foto 2" aria-current="{{ hs.cur1 }}" style="flex:1;min-width:0;height:44px;padding:0;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;color:#F2ECE2;text-align:left"><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;opacity:{{ hs.l1 }};transition:opacity .3s">02</span><span style="display:block;width:100%;height:2px;background:rgba(242,236,226,.3);overflow:hidden"><span data-bar="1" style="display:block;height:100%;background:#F2ECE2;transform-origin:0 50%;transform:scaleX({{ hs.b1 }})"></span></span></button><button type="button" onClick="{{ hs.go2 }}" aria-label="Ver foto 3" aria-current="{{ hs.cur2 }}" style="flex:1;min-width:0;height:44px;padding:0;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;color:#F2ECE2;text-align:left"><span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;opacity:{{ hs.l2 }};transition:opacity .3s">03</span><span style="display:block;width:100%;height:2px;background:rgba(242,236,226,.3);overflow:hidden"><span data-bar="2" style="display:block;height:100%;background:#F2ECE2;transform-origin:0 50%;transform:scaleX({{ hs.b2 }})"></span></span></button></div>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:16px;right:16px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;padding:7px 10px;background:rgba(20,17,14,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">Imagen de ejemplo</span></sc-if>
+      </div>
+      <div style="position:relative;z-index:2;height:100%;padding:84px clamp(20px,5vw,56px) clamp(36px,6vh,72px);box-sizing:border-box;pointer-events:none">
+        <div style="max-width:1240px;height:100%;margin:0 auto;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3.2vh,30px)">
+          <div data-hfade="" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#7A5C33"><span style="width:28px;height:1px;background:currentColor;flex:none"></span><span>Inmobiliaria</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="border-bottom:1px dashed currentColor;padding-bottom:3px">· [Localidad]</span></sc-if></div>
+          <h1 ref="{{ h1Ref }}" style="position:relative;align-self:flex-start;width:max-content;margin:0;padding-right:.12em;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(64px,7.9vw,128px);line-height:1;letter-spacing:-.02em;color:#1B1713;white-space:nowrap">
+            <span style="display:block;clip-path:inset(-.15em calc(100% - var(--split,100%)) -.25em -.2em)"><span data-hline="" style="display:block;padding:0 .08em .12em 0;margin-bottom:-.12em">Tu tranquilidad,</span><span data-hline="" style="display:block;padding:0 .08em .12em 0;margin-bottom:-.12em;font-style:italic">nuestro compromiso</span></span>
+            <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;bottom:0;display:block;color:#F2ECE2;clip-path:inset(-.15em 0 -.25em var(--split,100%))"><span data-hline="" style="display:block;padding:0 .08em .12em 0;margin-bottom:-.12em">Tu tranquilidad,</span><span data-hline="" style="display:block;padding:0 .08em .12em 0;margin-bottom:-.12em;font-style:italic">nuestro compromiso</span></span>
+          </h1>
+          <span data-hdraw="" style="display:block;width:88px;height:1px;background:#7A5C33;transform-origin:0 50%"></span>
+          <div style="display:flex;flex-direction:column;gap:clamp(20px,3.2vh,28px);max-width:calc(46vw - max(clamp(20px,5vw,56px), (100vw - 1240px) / 2) - 48px)">
+          <p data-hfade="" style="margin:0;max-width:30ch;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,1.7vw,24px);line-height:1.4;color:#4A4036;text-wrap:pretty">Soluciones integrales para tu presente y tu futuro.</p>
+          <div data-hfade="" style="display:flex;flex-direction:column;gap:14px;pointer-events:auto">
+            <span style="display:flex;align-items:center;gap:14px;font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7A5C33"><span>Valoración gratuita</span><span style="flex:1;max-width:120px;height:1px;background:rgba(122,92,51,.4)"></span></span>
+            <span style="font:400 18px/1.4 'Jost',sans-serif;color:#1B1713">¿Qué quieres valorar?</span>
+            <div role="group" aria-label="Tipo de inmueble a valorar" style="display:flex;flex-wrap:wrap;gap:8px">
+              <button type="button" onClick="{{ hq.q0 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Piso</button>
+              <button type="button" onClick="{{ hq.q1 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Casa o chalet</button>
+              <button type="button" onClick="{{ hq.q2 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Ático</button>
+              <button type="button" onClick="{{ hq.q3 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Local comercial</button>
+              <button type="button" onClick="{{ hq.q4 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Otro</button>
+            </div>
+          </div>
+          <a data-hfade="" href="#inmuebles" style="align-self:flex-start;display:flex;align-items:center;gap:10px;min-height:44px;font:500 12px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1B1713;border-bottom:1px solid #7A5C33;pointer-events:auto" style-hover="color:#7A5C33">Ver inmuebles<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ true }}">
+    <div ref="{{ frameRef }}" onTouchStart="{{ hTouchS }}" onTouchEnd="{{ hTouchE }}" style="position:relative;height:clamp(460px,66svh,720px);overflow:hidden;background:#14110E">
+      <div ref="{{ heroParRef }}" style="position:absolute;left:0;right:0;top:-8%;height:116%;will-change:transform">
+        <div data-hzoom="" style="position:absolute;inset:0">
+            <img data-slide="0" src="uploads/ae78543bd7657dd75650b2fdd3bebfaf.jpg" alt="Salón en penumbra con ventanal al atardecer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;opacity:{{ hs.o0 }};transition:opacity 1.2s cubic-bezier(.4,0,.2,1)">
+            <img data-slide="1" src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada de noche" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%;opacity:{{ hs.o1 }};transition:opacity 1.2s cubic-bezier(.4,0,.2,1)">
+            <img data-slide="2" src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial moderno con balcones al sol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:{{ hs.o2 }};transition:opacity 1.2s cubic-bezier(.4,0,.2,1)">
+        </div>
+      </div>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.62) 0%,rgba(20,17,14,0) 26%,rgba(20,17,14,0) 42%,rgba(20,17,14,.88) 100%)"></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;display:flex;flex-direction:column;pointer-events:none"><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;box-shadow:0 1px 0 #14110E;transform:scaleY(0);transform-origin:50% 0"></span><span data-slat="" style="flex:1;background:#14110E;transform:scaleY(0);transform-origin:50% 0"></span></div>
+      <button type="button" onClick="{{ hs.prev }}" aria-label="Foto anterior" style="position:absolute;left:0;top:68px;bottom:0;width:34%;padding:0;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent"></button>
+      <button type="button" onClick="{{ hs.next }}" aria-label="Foto siguiente" style="position:absolute;right:0;top:68px;bottom:0;width:66%;padding:0;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent"></button>
+      <div data-hfade="" aria-hidden="true" style="position:absolute;top:76px;left:clamp(20px,5vw,56px);right:clamp(20px,5vw,56px);display:flex;gap:6px;pointer-events:none"><span style="flex:1;height:2px;background:rgba(242,236,226,.35);overflow:hidden"><span data-bar="0" style="display:block;height:100%;background:#F2ECE2;transform-origin:0 50%;transform:scaleX({{ hs.b0 }})"></span></span><span style="flex:1;height:2px;background:rgba(242,236,226,.35);overflow:hidden"><span data-bar="1" style="display:block;height:100%;background:#F2ECE2;transform-origin:0 50%;transform:scaleX({{ hs.b1 }})"></span></span><span style="flex:1;height:2px;background:rgba(242,236,226,.35);overflow:hidden"><span data-bar="2" style="display:block;height:100%;background:#F2ECE2;transform-origin:0 50%;transform:scaleX({{ hs.b2 }})"></span></span></div>
+      <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:92px;right:clamp(20px,5vw,56px);font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;padding:7px 10px;background:rgba(20,17,14,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">Imagen de ejemplo</span></sc-if>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,5vw,56px) 28px;display:flex;flex-direction:column;gap:16px;pointer-events:none">
+        <div data-hfade="" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#E3CFA8"><span style="width:28px;height:1px;background:currentColor;flex:none"></span><span>Inmobiliaria</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="border-bottom:1px dashed currentColor;padding-bottom:3px">· [Localidad]</span></sc-if></div>
+        <h1 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(38px,10.4vw,80px);line-height:1;letter-spacing:-.02em;color:#F2ECE2"><span data-hline="" style="display:block;padding:0 .08em .12em 0;margin-bottom:-.12em">Tu tranquilidad,</span><span data-hline="" style="display:block;padding:0 .08em .12em 0;margin-bottom:-.12em;font-style:italic">nuestro compromiso</span></h1>
+      </div>
+    </div>
+    <div style="padding:28px clamp(20px,5vw,56px) clamp(52px,10vw,80px);display:flex;flex-direction:column;gap:28px">
+          <p data-hfade="" style="margin:0;max-width:30ch;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,5.4vw,26px);line-height:1.4;color:#4A4036;text-wrap:pretty">Soluciones integrales para tu presente y tu futuro.</p>
+          <div data-hfade="" style="display:flex;flex-direction:column;gap:14px;pointer-events:auto">
+            <span style="display:flex;align-items:center;gap:14px;font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#7A5C33"><span>Valoración gratuita</span><span style="flex:1;max-width:120px;height:1px;background:rgba(122,92,51,.4)"></span></span>
+            <span style="font:400 18px/1.4 'Jost',sans-serif;color:#1B1713">¿Qué quieres valorar?</span>
+            <div role="group" aria-label="Tipo de inmueble a valorar" style="display:flex;flex-wrap:wrap;gap:8px">
+              <button type="button" onClick="{{ hq.q0 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Piso</button>
+              <button type="button" onClick="{{ hq.q1 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Casa o chalet</button>
+              <button type="button" onClick="{{ hq.q2 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Ático</button>
+              <button type="button" onClick="{{ hq.q3 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Local comercial</button>
+              <button type="button" onClick="{{ hq.q4 }}" style="height:46px;padding:0 18px;border:1px solid rgba(27,23,19,.28);background:transparent;color:#1B1713;font:500 14px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#1B1713;color:#F2ECE2;border-color:#1B1713" style-active="transform:scale(.97)">Otro</button>
+            </div>
+          </div>
+          <a data-hfade="" href="#inmuebles" style="align-self:flex-start;display:flex;align-items:center;gap:10px;min-height:44px;font:500 12px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1B1713;border-bottom:1px solid #7A5C33;pointer-events:auto" style-hover="color:#7A5C33">Ver inmuebles<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a>
+    </div>
+  </sc-if>
+</section>
+
+<section id="servicios" data-screen-label="02 Servicios" style="background:#14110E;color:#F2ECE2;padding:clamp(88px,11vw,150px) clamp(20px,5vw,56px);scroll-margin-top:60px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(48px,7vw,120px);align-items:start">
+    <div style="position:{{ svStick }};top:124px;display:flex;flex-direction:column;gap:24px">
+      <span data-reveal="0" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#C6A472"><span>01</span><span style="width:28px;height:1px;background:currentColor"></span><span>Qué hacemos</span></span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.4vw,74px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance">Te acompañamos en cada paso</h2>
+      <span data-draw="" style="display:block;width:88px;height:1px;background:#C6A472;transform-origin:0 50%"></span>
+      <sc-if value="{{ desk }}" hint-placeholder-val="{{ false }}">
+      <span data-reveal="120" style="display:block;font-family:'Mrs Saint Delafield',cursive;font-size:clamp(42px,4.4vw,58px);line-height:1.1;color:#F2ECE2;transform:rotate(-3deg);transform-origin:0 100%;padding:8px 0 4px">Tu proyecto, nuestra prioridad.</span>
+      <a data-reveal="160" href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:10px;height:52px;padding:0 22px;border:1px solid #C6A472;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;box-sizing:border-box;transition:background-color .2s,color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#C6A472;color:#14110E" style-active="transform:scale(.97)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884 2.640 0 5.122 1.030 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.450-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.050 0C5.495 0 .160 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.480-8.413Z"></path></svg>
+        <span>Escribir por WhatsApp</span>
+      </a>
+      </sc-if>
+    </div>
+
+    <div style="display:flex;flex-direction:column;border-bottom:1px solid rgba(242,236,226,.14)">
+      <div data-reveal="0" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s0.toggle }}" aria-expanded="{{ sv.s0.exp }}" aria-controls="az2-sv0" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">01</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Compra y venta de inmuebles</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s0.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv0" style="display:grid;grid-template-rows:{{ sv.s0.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s0.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Te acompañamos en cada paso para que encuentres el hogar o la inversión perfecta.</p>
+                  <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Compra%20y%20venta%20de%20inmuebles" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Consultar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="50" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s1.toggle }}" aria-expanded="{{ sv.s1.exp }}" aria-controls="az2-sv1" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">02</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Alquiler de inmuebles</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s1.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv1" style="display:grid;grid-template-rows:{{ sv.s1.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s1.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Gestionamos tu alquiler con total transparencia y seguridad.</p>
+                  <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Alquiler%20de%20inmuebles" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Consultar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="100" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s2.toggle }}" aria-expanded="{{ sv.s2.exp }}" aria-controls="az2-sv2" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">03</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Valoraciones gratuitas</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s2.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv2" style="display:grid;grid-template-rows:{{ sv.s2.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s2.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Conoce el valor real de tu propiedad.</p>
+                  <a href="#valoracion" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Solicitar valoración<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="150" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s3.toggle }}" aria-expanded="{{ sv.s3.exp }}" aria-controls="az2-sv3" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">04</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Asesoramiento financiero</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s3.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv3" style="display:grid;grid-template-rows:{{ sv.s3.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s3.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Te ayudamos a tomar las mejores decisiones.</p>
+                  <a href="#financiacion" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Simular cuota<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="200" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s4.toggle }}" aria-expanded="{{ sv.s4.exp }}" aria-controls="az2-sv4" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">05</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Gestión de obras</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s4.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv4" style="display:grid;grid-template-rows:{{ sv.s4.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s4.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"></path><path d="M14 6a6 6 0 0 1 6 6v3"></path><path d="M4 15v-3a6 6 0 0 1 6-6"></path><rect x="2" y="15" width="20" height="4" rx="1"></rect></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">De la planificación a la entrega, sin complicaciones.</p>
+                  <span style="align-self:flex-start;font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E3CFA8;border:1px solid rgba(198,164,114,.55);padding:7px 10px">Reformas e interiorismo</span>
+                  <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Gesti%C3%B3n%20de%20obras" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Consultar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="250" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s5.toggle }}" aria-expanded="{{ sv.s5.exp }}" aria-controls="az2-sv5" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">06</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Tramitación de herencias</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s5.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv5" style="display:grid;grid-template-rows:{{ sv.s5.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s5.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Agilizamos y facilitamos todo el proceso.</p>
+                  <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Tramitaci%C3%B3n%20de%20herencias" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Consultar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="300" style="border-top:1px solid rgba(242,236,226,.14)">
+        <button type="button" onClick="{{ sv.s6.toggle }}" aria-expanded="{{ sv.s6.exp }}" aria-controls="az2-sv6" style="width:100%;display:grid;grid-template-columns:40px minmax(0,1fr) 36px;align-items:center;gap:14px;padding:26px 0;background:none;border:0;color:#F2ECE2;text-align:left;cursor:pointer;transition:color .2s" style-hover="color:#E3CFA8">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">07</span>
+          <span style="font:400 clamp(23px,2.5vw,31px)/1.15 'Bodoni Moda',serif">Departamento jurídico</span>
+          <span style="width:36px;height:36px;border:1px solid rgba(198,164,114,.55);border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box;transition:transform .35s cubic-bezier(.22,1,.36,1);transform:rotate({{ sv.s6.rot }})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></span>
+        </button>
+        <div id="az2-sv6" style="display:grid;grid-template-rows:{{ sv.s6.rows }};transition:grid-template-rows .45s cubic-bezier(.22,1,.36,1)">
+          <div style="overflow:hidden;min-height:0">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:0 0 30px;opacity:{{ sv.s6.op }};transition:opacity .35s cubic-bezier(.22,1,.36,1)">
+              <span></span>
+              <div style="display:flex;gap:18px;align-items:flex-start">
+                <span style="flex:none;width:52px;height:52px;border:1px solid #C6A472;border-radius:50%;display:grid;place-items:center;color:#C6A472;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></span>
+                <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                  <p style="margin:0;font:400 16px/1.6 'Jost',sans-serif;color:#CFC6B8;text-wrap:pretty">Asesoramiento legal de confianza, siempre a tu lado.</p>
+                  <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%3A%20Departamento%20jur%C3%ADdico" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E3CFA8" style-hover="color:#F2ECE2">Consultar<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <sc-if value="{{ mob }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="display:block;font-family:'Mrs Saint Delafield',cursive;font-size:clamp(42px,4.4vw,58px);line-height:1.1;color:#F2ECE2;transform:rotate(-3deg);transform-origin:0 100%;padding:8px 0 4px">Tu proyecto, nuestra prioridad.</span>
+      <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:10px;height:52px;padding:0 22px;border:1px solid #C6A472;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;box-sizing:border-box;transition:background-color .2s,color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#C6A472;color:#14110E" style-active="transform:scale(.97)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.510-5.260c.001-5.450 4.436-9.884 9.888-9.884 2.640 0 5.122 1.030 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.450-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.050 0C5.495 0 .160 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.480-8.413Z"></path></svg>
+        <span>Escribir por WhatsApp</span>
+      </a>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="inmuebles" data-screen-label="03 Inmuebles" style="background:#F2ECE2;color:#1B1713;padding:clamp(88px,11vw,150px) 0;scroll-margin-top:60px">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:660px">
+      <span data-reveal="0" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#7A5C33"><span>02</span><span style="width:28px;height:1px;background:currentColor"></span><span>Inmuebles</span></span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.4vw,74px);line-height:1.04;letter-spacing:-.015em;text-wrap:balance">Encuentra el hogar o la inversión perfecta</h2>
+      <span data-draw="" style="display:block;width:88px;height:1px;background:#7A5C33;transform-origin:0 50%"></span>
+    </div>
+  </div>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1240px;margin:clamp(40px,5vw,60px) auto 0;padding:0 clamp(20px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px clamp(24px,3vw,40px)">
+      <article data-reveal="0" style="grid-row:1 / span 2;position:relative;min-height:600px;overflow:hidden;background:#1B1713;color:#F2ECE2;display:flex;flex-direction:column;justify-content:flex-end">
+        <img src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada y vistas nocturnas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:32% 50%;transition:transform 1.2s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.04)">
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.3) 0%,rgba(20,17,14,0) 24%,rgba(20,17,14,.2) 46%,rgba(20,17,14,.92) 100%);pointer-events:none"></div>
+        <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none"><span style="font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 10px">Venta</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Ejemplo</span></sc-if></div>
+        <div style="position:relative;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px;pointer-events:none">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-001</span>
+            <span style="font:400 clamp(34px,3.4vw,46px)/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums">485.000 €</span>
+          </div>
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,3vw,42px);line-height:1.08;text-wrap:balance">Ático con terraza y vistas</h3>
+          <dl style="margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(242,236,226,.22);border-bottom:1px solid rgba(242,236,226,.22)"><div style="padding:13px 8px 13px 0px;display:flex;flex-direction:column;gap:7px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#CFC6B8">Superficie</dt><dd style="margin:0;font:400 17px/1.2 'Jost',sans-serif">120 m²</dd></div><div style="padding:13px 8px 13px 14px;border-left:1px solid rgba(242,236,226,.22);display:flex;flex-direction:column;gap:7px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#CFC6B8">Hab.</dt><dd style="margin:0;font:400 17px/1.2 'Jost',sans-serif">3</dd></div><div style="padding:13px 8px 13px 14px;border-left:1px solid rgba(242,236,226,.22);display:flex;flex-direction:column;gap:7px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#CFC6B8">Baños</dt><dd style="margin:0;font:400 17px/1.2 'Jost',sans-serif">2</dd></div><div style="padding:13px 0px 13px 14px;border-left:1px solid rgba(242,236,226,.22);display:flex;flex-direction:column;gap:7px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#CFC6B8">Extra</dt><dd style="margin:0;font:400 17px/1.2 'Jost',sans-serif">Terraza</dd></div></dl>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+            <span style="font:400 13px/1.4 'Jost',sans-serif;color:#CFC6B8">Certificado energético: pendiente</span>
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-001" target="_blank" rel="noopener" style="pointer-events:auto;display:flex;align-items:center;gap:10px;height:50px;padding:0 22px;background:#F2ECE2;color:#1B1713;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;transition:background-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#FFFFFF;color:#1B1713" style-active="transform:scale(.97)">Me interesa<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+          </div>
+        </div>
+      </article>
+      <article data-reveal="80" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,2vw,28px)">
+        <div style="position:relative;min-height:288px;overflow:hidden;background:#E9DED3">
+          <img src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial de nueva construcción con balcones" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform 1.2s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05)">
+          <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none"><span style="font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 10px">Venta</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Ejemplo</span></sc-if></div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:2px 0">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7A5C33">Ref. AZ-002</span>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(22px,2vw,26px);line-height:1.15;text-wrap:balance">Piso de obra nueva con balcón</h3>
+            <span style="font:400 28px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums">320.000 €</span>
+          </div>
+          <dl style="margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;border-top:1px solid rgba(27,23,19,.15)"><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Superficie</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">95 m²</dd></div><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Hab.</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">3</dd></div><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Baños</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">2</dd></div><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Extra</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">Balcón</dd></div></dl>
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-002" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1B1713;border-bottom:1px solid #7A5C33" style-hover="color:#7A5C33">Me interesa<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+            <span style="font:400 13px/1.4 'Jost',sans-serif;color:#5C5146">Certificado energético: pendiente</span>
+          </div>
+        </div>
+      </article>
+      <article data-reveal="160" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,2vw,28px)">
+        <div style="position:relative;min-height:288px;overflow:hidden;background:#E9DED3">
+          <img src="uploads/photo.avif" alt="Bloque de pisos clásico a contraluz" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;transition:transform 1.2s cubic-bezier(.22,1,.36,1)" style-hover="transform:scale(1.05)">
+          <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none"><span style="font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#C6A472;padding:7px 10px">Alquiler</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Ejemplo</span></sc-if></div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:2px 0">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7A5C33">Ref. AZ-003</span>
+            <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(22px,2vw,26px);line-height:1.15;text-wrap:balance">Piso exterior luminoso</h3>
+            <span style="font:400 28px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums">950 €<span style="font:400 14px 'Jost',sans-serif;letter-spacing:0;color:#5C5146"> /mes</span></span>
+          </div>
+          <dl style="margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px;border-top:1px solid rgba(27,23,19,.15)"><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Superficie</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">70 m²</dd></div><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Hab.</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">2</dd></div><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Baños</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">1</dd></div><div style="padding:10px 0;border-bottom:1px solid rgba(27,23,19,.15);display:flex;flex-direction:column;gap:5px"><dt style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#5C5146">Extra</dt><dd style="margin:0;font:400 15px/1.2 'Jost',sans-serif">Exterior</dd></div></dl>
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+            <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-003" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;min-height:44px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1B1713;border-bottom:1px solid #7A5C33" style-hover="color:#7A5C33">Me interesa<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+            <span style="font:400 13px/1.4 'Jost',sans-serif;color:#5C5146">Certificado energético: pendiente</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </sc-if>
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ true }}">
+    <div style="margin-top:36px;display:flex;flex-direction:column;gap:20px">
+      <div role="tablist" aria-label="Inmuebles" style="padding:0 clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+        <button type="button" role="tab" aria-selected="{{ pm.p0.sel }}" aria-label="Ático con terraza y vistas, 485.000 €" onClick="{{ pm.p0.go }}" style="display:flex;flex-direction:column;gap:10px;min-width:0;padding:0;background:none;border:0;color:#1B1713;text-align:left;cursor:pointer;opacity:{{ pm.p0.op }};transition:opacity .3s cubic-bezier(.22,1,.36,1)"><span style="position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;background:#E9DED3;outline:1.5px solid {{ pm.p0.ol }};outline-offset:3px"><img src="uploads/2z0jlptwsnc11.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:32% 50%"></span><span style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7A5C33">Venta</span><span style="font:400 16px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums;white-space:nowrap">485.000 €</span></span></button>
+        <button type="button" role="tab" aria-selected="{{ pm.p1.sel }}" aria-label="Piso de obra nueva con balcón, 320.000 €" onClick="{{ pm.p1.go }}" style="display:flex;flex-direction:column;gap:10px;min-width:0;padding:0;background:none;border:0;color:#1B1713;text-align:left;cursor:pointer;opacity:{{ pm.p1.op }};transition:opacity .3s cubic-bezier(.22,1,.36,1)"><span style="position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;background:#E9DED3;outline:1.5px solid {{ pm.p1.ol }};outline-offset:3px"><img src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></span><span style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7A5C33">Venta</span><span style="font:400 16px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums;white-space:nowrap">320.000 €</span></span></button>
+        <button type="button" role="tab" aria-selected="{{ pm.p2.sel }}" aria-label="Piso exterior luminoso, 950 € /mes" onClick="{{ pm.p2.go }}" style="display:flex;flex-direction:column;gap:10px;min-width:0;padding:0;background:none;border:0;color:#1B1713;text-align:left;cursor:pointer;opacity:{{ pm.p2.op }};transition:opacity .3s cubic-bezier(.22,1,.36,1)"><span style="position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;background:#E9DED3;outline:1.5px solid {{ pm.p2.ol }};outline-offset:3px"><img src="uploads/photo.avif" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%"></span><span style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9.5px/1 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7A5C33">Alquiler</span><span style="font:400 16px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums;white-space:nowrap">950 €<span style="font:400 11px 'Jost',sans-serif;letter-spacing:0;color:#5C5146"> /mes</span></span></span></button>
+      </div>
+      <div ref="{{ pmTrackRef }}" onScroll="{{ onPm }}" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px clamp(20px,5vw,56px);scroll-padding-inline:clamp(20px,5vw,56px)">
+        <article style="flex:0 0 min(86%,440px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+          <div style="position:relative;aspect-ratio:1/1;overflow:hidden;background:#1B1713;color:#F2ECE2">
+            <img src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada y vistas nocturnas" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:32% 50%">
+            <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,0) 42%,rgba(20,17,14,.9) 100%)"></div>
+            <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none"><span style="font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 10px">Venta</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Ejemplo</span></sc-if></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-001</span>
+              <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;line-height:1.12;text-wrap:balance">Ático con terraza y vistas</h3>
+              <span style="font:400 30px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums">485.000 €</span>
+            </div>
+          </div>
+          <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 0;border-top:1px solid rgba(27,23,19,.15);border-bottom:1px solid rgba(27,23,19,.15);font:400 15px/1.4 'Jost',sans-serif;color:#4A4036"><span>120 m²</span><span>3 hab.</span><span>2 baños</span><span>Terraza</span></p>
+          <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-001" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;background:#1B1713;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Me interesa</a>
+          <span style="font:400 13px/1.4 'Jost',sans-serif;color:#5C5146">Certificado energético: pendiente</span>
+        </article>
+        <article style="flex:0 0 min(86%,440px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+          <div style="position:relative;aspect-ratio:1/1;overflow:hidden;background:#1B1713;color:#F2ECE2">
+            <img src="uploads/new-modern-apartment-flat-building-exterior-concept-residential-house-home_250132-17832.avif" alt="Edificio residencial de nueva construcción con balcones" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+            <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,0) 42%,rgba(20,17,14,.9) 100%)"></div>
+            <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none"><span style="font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#F2ECE2;padding:7px 10px">Venta</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Ejemplo</span></sc-if></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-002</span>
+              <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;line-height:1.12;text-wrap:balance">Piso de obra nueva con balcón</h3>
+              <span style="font:400 30px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums">320.000 €</span>
+            </div>
+          </div>
+          <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 0;border-top:1px solid rgba(27,23,19,.15);border-bottom:1px solid rgba(27,23,19,.15);font:400 15px/1.4 'Jost',sans-serif;color:#4A4036"><span>95 m²</span><span>3 hab.</span><span>2 baños</span><span>Balcón</span></p>
+          <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-002" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;background:#1B1713;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Me interesa</a>
+          <span style="font:400 13px/1.4 'Jost',sans-serif;color:#5C5146">Certificado energético: pendiente</span>
+        </article>
+        <article style="flex:0 0 min(86%,440px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px">
+          <div style="position:relative;aspect-ratio:1/1;overflow:hidden;background:#1B1713;color:#F2ECE2">
+            <img src="uploads/photo.avif" alt="Bloque de pisos clásico a contraluz" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%">
+            <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,0) 42%,rgba(20,17,14,.9) 100%)"></div>
+            <div style="position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none"><span style="font:600 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1B1713;background:#C6A472;padding:7px 10px">Alquiler</span><sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Ejemplo</span></sc-if></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#E3CFA8">Ref. AZ-003</span>
+              <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;line-height:1.12;text-wrap:balance">Piso exterior luminoso</h3>
+              <span style="font:400 30px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums">950 €<span style="font:400 14px 'Jost',sans-serif;letter-spacing:0;color:#CFC6B8"> /mes</span></span>
+            </div>
+          </div>
+          <p style="margin:0;display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 0;border-top:1px solid rgba(27,23,19,.15);border-bottom:1px solid rgba(27,23,19,.15);font:400 15px/1.4 'Jost',sans-serif;color:#4A4036"><span>70 m²</span><span>2 hab.</span><span>1 baño</span><span>Exterior</span></p>
+          <a href="https://wa.me/34642281347?text=Hola%2C%20me%20interesa%20el%20inmueble%20AZ-003" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px;background:#1B1713;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase" style-active="transform:scale(.97)"><svg width="16" height="16" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Me interesa</a>
+          <span style="font:400 13px/1.4 'Jost',sans-serif;color:#5C5146">Certificado energético: pendiente</span>
+        </article>
+        <span aria-hidden="true" style="flex:0 0 1px"></span>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1240px;margin:28px auto 0;padding:0 clamp(20px,5vw,56px)"><p style="margin:0;font:400 14px/1.5 'Jost',sans-serif;color:#5C5146">Inmuebles de ejemplo. Aquí irá vuestra cartera real, con fotos y datos propios.</p></div>
+  </sc-if>
+</section>
+
+<section id="valoracion" data-screen-label="04 Valoración" style="background:#1B1713;color:#F2ECE2;padding:0 0 clamp(88px,11vw,150px);scroll-margin-top:60px">
+  <div ref="{{ bandRef }}" data-wipe="0" style="position:relative;height:clamp(380px,50vw,640px);overflow:hidden;background:#14110E">
+    <img ref="{{ bandImgRef }}" src="uploads/2z0jlptwsnc11.jpg" alt="Ático con terraza acristalada al anochecer" loading="lazy" style="position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;object-position:38% 50%;will-change:transform">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,23,19,.35) 0%,rgba(27,23,19,.05) 35%,rgba(27,23,19,.6) 70%,#1B1713 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,5vw,56px) clamp(28px,4vw,56px)">
+      <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+        <span style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#E3CFA8"><span>03</span><span style="width:28px;height:1px;background:currentColor"></span><span>Valoración gratuita</span></span>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(44px,7.4vw,104px);line-height:1;letter-spacing:-.02em;color:#F2ECE2;text-wrap:balance">Valoración de viviendas</h2>
+      </div>
+    </div>
+    <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+      <span style="position:absolute;top:88px;right:clamp(20px,5vw,56px);font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;padding:7px 10px;background:rgba(20,17,14,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">Imagen de ejemplo</span>
+    </sc-if>
+  </div>
+
+  <div style="max-width:1240px;margin:0 auto;padding:clamp(44px,6vw,80px) clamp(20px,5vw,56px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,7vw,110px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:36px">
+      <div data-reveal="0" style="display:flex;flex-direction:column;gap:16px;max-width:50ch;font:400 17px/1.65 'Jost',sans-serif;color:#CFC6B8">
+        <p style="margin:0;text-wrap:pretty">Realizamos valoraciones gratuitas y sin compromiso, con un análisis riguroso del inmueble, su ubicación y la realidad del mercado.</p>
+        <p style="margin:0;text-wrap:pretty">Nuestro conocimiento de la zona nos permite ofrecer una valoración precisa y fundamentada.</p>
+      </div>
+      <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-bottom:1px solid rgba(242,236,226,.14)">
+        <li data-reveal="60" style="display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:18px;padding:20px 0;border-top:1px solid rgba(242,236,226,.14)">
+          <span style="width:52px;height:52px;border:1px solid rgba(198,164,114,.6);border-radius:50%;display:grid;place-items:center;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg></span>
+          <span style="font:400 clamp(21px,2.2vw,25px)/1.2 'Bodoni Moda',serif">Análisis riguroso</span>
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">I</span>
+        </li>
+        <li data-reveal="110" style="display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:18px;padding:20px 0;border-top:1px solid rgba(242,236,226,.14)">
+          <span style="width:52px;height:52px;border:1px solid rgba(198,164,114,.6);border-radius:50%;display:grid;place-items:center;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+          <span style="font:400 clamp(21px,2.2vw,25px)/1.2 'Bodoni Moda',serif">Conocimiento de la zona</span>
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">II</span>
+        </li>
+        <li data-reveal="160" style="display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:18px;padding:20px 0;border-top:1px solid rgba(242,236,226,.14)">
+          <span style="width:52px;height:52px;border:1px solid rgba(198,164,114,.6);border-radius:50%;display:grid;place-items:center;box-sizing:border-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A472" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M8 17v-3"></path><path d="M12 17V9"></path><path d="M16 17v-6"></path><path d="M20 17V5"></path></svg></span>
+          <span style="font:400 clamp(21px,2.2vw,25px)/1.2 'Bodoni Moda',serif">Valoración precisa</span>
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;color:#C6A472">III</span>
+        </li>
+      </ol>
+    </div>
+
+    <form ref="{{ formRef }}" data-reveal="100" onSubmit="{{ onValoracion }}" style="background:#F2ECE2;color:#1B1713;padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;gap:26px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.1">Solicita tu valoración</h3>
+          <p style="margin:0;font:400 15px/1.5 'Jost',sans-serif;color:#4A4036">Gratuita y sin compromiso.</p>
+        </div>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="flex:none;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7A5C33;border:1px solid rgba(122,92,51,.6);padding:6px 8px">Demo</span></sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;gap:12px;font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase"><span style="color:#1B1713">{{ wz.label }}</span><span style="color:#5C5146">{{ wz.count }}</span></div>
+        <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px">
+          <span style="height:2px;background:{{ wz.b1 }};transition:background-color .35s"></span>
+          <span style="height:2px;background:{{ wz.b2 }};transition:background-color .35s"></span>
+          <span style="height:2px;background:{{ wz.b3 }};transition:background-color .35s"></span>
+        </div>
+      </div>
+
+      <div ref="{{ step1Ref }}" style="display:{{ wz.d1 }};flex-direction:column;gap:12px">
+        <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4A4036">Tipo de inmueble</span>
+        <div role="group" aria-label="Tipo de inmueble" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:8px">
+          <button type="button" onClick="{{ tp.t0.pick }}" aria-pressed="{{ tp.t0.pressed }}" style="display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;border:1px solid {{ tp.t0.bd }};background:{{ tp.t0.bg }};color:{{ tp.t0.fg }};font:500 15px/1.2 'Jost',sans-serif;text-align:left;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="width:8px;height:8px;border-radius:50%;border:1px solid currentColor;background:{{ tp.t0.dot }};flex:none"></span>Piso</button>
+          <button type="button" onClick="{{ tp.t1.pick }}" aria-pressed="{{ tp.t1.pressed }}" style="display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;border:1px solid {{ tp.t1.bd }};background:{{ tp.t1.bg }};color:{{ tp.t1.fg }};font:500 15px/1.2 'Jost',sans-serif;text-align:left;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="width:8px;height:8px;border-radius:50%;border:1px solid currentColor;background:{{ tp.t1.dot }};flex:none"></span>Casa o chalet</button>
+          <button type="button" onClick="{{ tp.t2.pick }}" aria-pressed="{{ tp.t2.pressed }}" style="display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;border:1px solid {{ tp.t2.bd }};background:{{ tp.t2.bg }};color:{{ tp.t2.fg }};font:500 15px/1.2 'Jost',sans-serif;text-align:left;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="width:8px;height:8px;border-radius:50%;border:1px solid currentColor;background:{{ tp.t2.dot }};flex:none"></span>Ático</button>
+          <button type="button" onClick="{{ tp.t3.pick }}" aria-pressed="{{ tp.t3.pressed }}" style="display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;border:1px solid {{ tp.t3.bd }};background:{{ tp.t3.bg }};color:{{ tp.t3.fg }};font:500 15px/1.2 'Jost',sans-serif;text-align:left;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="width:8px;height:8px;border-radius:50%;border:1px solid currentColor;background:{{ tp.t3.dot }};flex:none"></span>Local comercial</button>
+          <button type="button" onClick="{{ tp.t4.pick }}" aria-pressed="{{ tp.t4.pressed }}" style="display:flex;align-items:center;gap:12px;height:56px;padding:0 16px;border:1px solid {{ tp.t4.bd }};background:{{ tp.t4.bg }};color:{{ tp.t4.fg }};font:500 15px/1.2 'Jost',sans-serif;text-align:left;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)"><span style="width:8px;height:8px;border-radius:50%;border:1px solid currentColor;background:{{ tp.t4.dot }};flex:none"></span>Otro</button>
+        </div>
+        <p style="margin:4px 0 0;font:400 13px/1.5 'Jost',sans-serif;color:#5C5146">Elige una opción para continuar.</p>
+      </div>
+
+      <div ref="{{ step2Ref }}" style="display:{{ wz.d2 }};flex-direction:column;gap:22px">
+        <label for="az2-m2" style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4A4036">Superficie (m²)</span>
+          <input id="az2-m2" type="number" inputmode="numeric" min="10" placeholder="85" value="{{ wz.m2 }}" onChange="{{ setM2 }}" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(27,23,19,.3);border-radius:0;color:#1B1713;font-size:17px;padding:0 2px;box-sizing:border-box">
+        </label>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4A4036">Habitaciones</span>
+          <div role="group" aria-label="Habitaciones" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
+            <button type="button" onClick="{{ hb.h0.pick }}" aria-pressed="{{ hb.h0.pressed }}" style="height:48px;border:1px solid {{ hb.h0.bd }};background:{{ hb.h0.bg }};color:{{ hb.h0.fg }};font:500 15px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s">1</button>
+            <button type="button" onClick="{{ hb.h1.pick }}" aria-pressed="{{ hb.h1.pressed }}" style="height:48px;border:1px solid {{ hb.h1.bd }};background:{{ hb.h1.bg }};color:{{ hb.h1.fg }};font:500 15px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s">2</button>
+            <button type="button" onClick="{{ hb.h2.pick }}" aria-pressed="{{ hb.h2.pressed }}" style="height:48px;border:1px solid {{ hb.h2.bd }};background:{{ hb.h2.bg }};color:{{ hb.h2.fg }};font:500 15px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s">3</button>
+            <button type="button" onClick="{{ hb.h3.pick }}" aria-pressed="{{ hb.h3.pressed }}" style="height:48px;border:1px solid {{ hb.h3.bd }};background:{{ hb.h3.bg }};color:{{ hb.h3.fg }};font:500 15px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s">4</button>
+            <button type="button" onClick="{{ hb.h4.pick }}" aria-pressed="{{ hb.h4.pressed }}" style="height:48px;border:1px solid {{ hb.h4.bd }};background:{{ hb.h4.bg }};color:{{ hb.h4.fg }};font:500 15px/1 'Jost',sans-serif;cursor:pointer;transition:background-color .2s,color .2s,border-color .2s">5+</button>
+          </div>
+        </div>
+        <label for="az2-zona" style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4A4036">Zona o dirección</span>
+          <input id="az2-zona" type="text" autocomplete="street-address" placeholder="Calle y número" value="{{ wz.zona }}" onChange="{{ setZona }}" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(27,23,19,.3);border-radius:0;color:#1B1713;font-size:17px;padding:0 2px;box-sizing:border-box">
+        </label>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px">
+          <button type="button" onClick="{{ back }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 4px;background:none;border:0;color:#4A4036;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer" style-hover="color:#1B1713"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Atrás</button>
+          <button type="button" onClick="{{ next2 }}" style="display:flex;align-items:center;gap:10px;height:52px;padding:0 24px;background:#1B1713;border:0;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#3A2F25" style-active="transform:scale(.97)">Siguiente<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+        </div>
+      </div>
+
+      <div ref="{{ step3Ref }}" style="display:{{ wz.d3 }};flex-direction:column;gap:22px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px">
+          <label for="az2-nombre" style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4A4036">Nombre</span>
+            <input id="az2-nombre" type="text" autocomplete="name" placeholder="Tu nombre" value="{{ wz.nombre }}" onChange="{{ setNombre }}" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(27,23,19,.3);border-radius:0;color:#1B1713;font-size:17px;padding:0 2px;box-sizing:border-box">
+          </label>
+          <label for="az2-tel" style="display:flex;flex-direction:column;gap:6px">
+            <span style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4A4036">Teléfono</span>
+            <input id="az2-tel" type="tel" autocomplete="tel" placeholder="600 000 000" value="{{ wz.tel }}" onChange="{{ setTel }}" style="width:100%;height:48px;background:transparent;border:0;border-bottom:1px solid rgba(27,23,19,.3);border-radius:0;color:#1B1713;font-size:17px;padding:0 2px;box-sizing:border-box">
+          </label>
+        </div>
+        <div style="background:#E9DED3;padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 10.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Tu inmueble</span>
+          <span style="font:400 15px/1.45 'Jost',sans-serif;color:#1B1713">{{ wz.resumen }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <button type="button" onClick="{{ back }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 4px;background:none;border:0;color:#4A4036;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer" style-hover="color:#1B1713"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Atrás</button>
+          <button type="submit" style="flex:1 1 220px;display:flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 22px;background:#1B1713;border:0;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#3A2F25" style-active="transform:scale(.97)">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#C6A472" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+            Enviar por WhatsApp
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="financiacion" data-screen-label="05 Financiación" style="background:#E9DED3;color:#1B1713;padding:clamp(88px,11vw,150px) clamp(20px,5vw,56px);scroll-margin-top:60px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(48px,7vw,104px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span data-reveal="0" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#7A5C33"><span>04</span><span style="width:28px;height:1px;background:currentColor"></span><span>Asesoramiento financiero</span></span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5.4vw,74px);line-height:1.04;letter-spacing:-.015em">Servicios financieros</h2>
+      <span data-draw="" style="display:block;width:88px;height:1px;background:#7A5C33;transform-origin:0 50%"></span>
+      <p data-reveal="120" style="margin:0;max-width:46ch;font:400 17px/1.65 'Jost',sans-serif;color:#4A4036;text-wrap:pretty">Ofrecemos asesoramiento financiero personalizado y gestionamos las distintas alternativas de financiación.</p>
+      <div data-reveal="160" style="margin-top:clamp(8px,2vw,20px);padding-top:clamp(24px,3vw,36px);border-top:1px solid rgba(27,23,19,.16);display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#5C5146">Hasta el</span>
+          <span aria-label="100 %" style="display:flex;align-items:flex-start;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(112px,15vw,220px);line-height:.84;letter-spacing:-.04em;color:#1B1713;font-variant-numeric:lining-nums"><span data-count="100" aria-hidden="true">100</span><span aria-hidden="true" style="font-size:.36em;letter-spacing:0;margin:.1em 0 0 .08em;color:#7A5C33">%</span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:480px">
+          <p style="margin:0;background:#1B1713;color:#F2ECE2;padding:16px 20px;font:400 17px/1.5 'Jost',sans-serif">Podemos ayudar a nuestros clientes a conseguir hasta el <strong style="font-weight:600">100 % de financiación</strong>,</p>
+          <p style="margin:0;padding:0 20px;font:400 15px/1.5 'Jost',sans-serif;color:#4A4036">siempre sujeto a las condiciones y criterios de la entidad financiera.</p>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="80" style="background:#F2ECE2;box-shadow:0 40px 80px -48px rgba(53,36,18,.5);display:flex;flex-direction:column">
+      <div style="padding:clamp(22px,3vw,36px) clamp(20px,3vw,36px) clamp(18px,2.4vw,24px);display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.1">Simula tu cuota</h3>
+          <p style="margin:0;font:400 15px/1.5 'Jost',sans-serif;color:#4A4036">Mueve los valores y mira cómo cambia.</p>
+        </div>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="flex:none;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#7A5C33;border:1px solid rgba(122,92,51,.6);padding:6px 8px">Demo</span></sc-if>
+      </div>
+      <div style="position:sticky;top:68px;z-index:2;background:#1B1713;color:#F2ECE2;padding:clamp(18px,2.6vw,28px) clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#CFC6B8">Cuota mensual aproximada</span>
+          <span style="font:400 clamp(46px,5.4vw,72px)/1 'Bodoni Moda',serif;letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums">{{ sim.cuotaFmt }}<span style="font:400 16px 'Jost',sans-serif;letter-spacing:0;color:#CFC6B8"> /mes</span></span>
+        </div>
+        <div aria-hidden="true" style="display:flex;height:6px;background:rgba(242,236,226,.16)"><span style="width:{{ sim.finW }};background:#C6A472;transition:width .35s cubic-bezier(.22,1,.36,1)"></span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;font:400 14px/1.3 'Jost',sans-serif;color:#CFC6B8">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#C6A472;flex:none"></span>Importe financiado <strong style="font-weight:500;color:#F2ECE2;font-variant-numeric:tabular-nums">{{ sim.financiadoFmt }}</strong></span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:rgba(242,236,226,.3);flex:none"></span>Aportación propia <strong style="font-weight:500;color:#F2ECE2;font-variant-numeric:tabular-nums">{{ sim.aporteFmt }}</strong></span>
+        </div>
+      </div>
+      <div style="padding:clamp(24px,3vw,36px) clamp(20px,3vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:26px 36px">
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Precio de la vivienda</span><span style="font:400 22px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap">{{ sim.precioFmt }}</span></span>
+          <input type="range" min="50000" max="900000" step="5000" value="{{ sim.precio }}" onChange="{{ setPrecio }}" aria-label="Precio de la vivienda" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Financiación</span><span style="font:400 22px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap">{{ sim.pctFmt }}</span></span>
+          <input type="range" min="50" max="100" step="5" value="{{ sim.pct }}" onChange="{{ setPct }}" aria-label="Porcentaje financiado" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Plazo</span><span style="font:400 22px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap">{{ sim.plazoFmt }}</span></span>
+          <input type="range" min="10" max="40" step="1" value="{{ sim.plazo }}" onChange="{{ setPlazo }}" aria-label="Plazo en años" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:8px">
+          <span style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4A4036">Tipo de interés orientativo</span><span style="font:400 22px/1 'Bodoni Moda',serif;font-variant-numeric:lining-nums tabular-nums;white-space:nowrap">{{ sim.tipoFmt }}</span></span>
+          <input type="range" min="0.5" max="7" step="0.05" value="{{ sim.tipo }}" onChange="{{ setTipo }}" aria-label="Tipo de interés orientativo" style="width:100%;height:32px;margin:0;accent-color:#7A5C33;cursor:pointer">
+        </label>
+      </div>
+      <div style="padding:0 clamp(20px,3vw,36px) clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:14px">
+        <a href="{{ waAsesor }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;height:56px;background:#1B1713;color:#F2ECE2;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;transition:background-color .2s,transform .16s cubic-bezier(.22,1,.36,1)" style-hover="background:#3A2F25;color:#F2ECE2" style-active="transform:scale(.97)">Hablar con un asesor<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+        <p style="margin:0;font:400 13px/1.5 'Jost',sans-serif;color:#5C5146">Cálculo orientativo, sin valor de oferta. El tipo de interés es de ejemplo y la concesión depende de la entidad financiera.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conocenos" data-screen-label="06 Quién soy" style="background:#14110E;color:#F2ECE2;padding:clamp(88px,11vw,150px) clamp(20px,5vw,56px);scroll-margin-top:60px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:clamp(44px,6vw,72px)">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+      <span data-reveal="0" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#C6A472"><span>05</span><span style="width:28px;height:1px;background:currentColor"></span><span>Quién soy</span></span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(58px,12vw,164px);line-height:.95;letter-spacing:-.03em">Gorka Urgel</h2>
+      <p data-reveal="110" style="margin:0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(21px,2.4vw,27px);line-height:1.3;color:#E3CFA8">Asesor inmobiliario</p>
+    </div>
+
+    <div style="width:100%;display:grid;grid-template-columns:{{ tri.cols }};gap:clamp(12px,1.6vw,20px);align-items:end">
+      <div data-wipe="0" style="position:relative;aspect-ratio:4/5"><image-slot id="az-equipo" shape="rect" placeholder="Retrato de Gorka" style="display:block;width:100%;height:100%"></image-slot></div>
+      <sc-if value="{{ showVideo }}" hint-placeholder-val="{{ true }}">
+        <div data-wipe="120" style="position:relative;grid-column:{{ tri.vcol }};order:{{ tri.vorder }};aspect-ratio:{{ tri.vaspect }};width:100%;max-width:{{ tri.vmax }};justify-self:center;overflow:hidden;background:#221B15">
+          <video ref="{{ videoRef }}" src="uploads/igexport-DUlw8Woj5Vf.mp4" autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" preload="metadata" aria-label="Vídeo de presentación" style="width:100%;height:100%;object-fit:cover;display:block"></video>
+          <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:14px;left:14px;font:500 10px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#F2ECE2;background:rgba(20,17,14,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:7px 10px">Vídeo provisional</span></sc-if>
+          <button type="button" onClick="{{ toggleSound }}" aria-label="{{ soundLabel }}" style="position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:1px solid rgba(242,236,226,.3);background:rgba(20,17,14,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#F2ECE2;font:500 11px/1 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:transform .16s cubic-bezier(.22,1,.36,1)" style-active="transform:scale(.97)">
+            <sc-if value="{{ muted }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="m22 9-6 6"></path><path d="m16 9 6 6"></path></svg></sc-if>
+            <sc-if value="{{ unmuted }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path><path d="M16 9a5 5 0 0 1 0 6"></path><path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg></sc-if>
+            <span>{{ soundLabel }}</span>
+          </button>
+        </div>
+      </sc-if>
+      <div data-wipe="240" style="position:relative;aspect-ratio:4/5"><image-slot id="az-oficina" shape="rect" placeholder="Fachada o escaparate de la oficina" style="display:block;width:100%;height:100%"></image-slot></div>
+    </div>
+
+    <p data-reveal="0" style="margin:0;max-width:52ch;text-align:center;font:400 17px/1.65 'Jost',sans-serif;color:#CFC6B8;border:1px dashed rgba(198,164,114,.5);padding:18px 22px">Texto pendiente. Aquí va la presentación de Gorka: trayectoria, forma de trabajar y zona.</p>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="07 Contacto" style="background:#F2ECE2;color:#1B1713;padding:clamp(88px,11vw,150px) clamp(20px,5vw,56px);scroll-margin-top:60px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span data-reveal="0" style="display:flex;align-items:center;gap:14px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#7A5C33"><span>06</span><span style="width:28px;height:1px;background:currentColor"></span><span>Contacto</span></span>
+      <h2 data-reveal="60" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(48px,9vw,132px);line-height:.98;letter-spacing:-.025em;text-wrap:balance">Hablemos de tu <em style="font-style:italic">casa</em></h2>
+    </div>
+
+    <a data-reveal="120" href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;padding:clamp(24px,3vw,36px) 0;border-top:1px solid #1B1713;border-bottom:1px solid #1B1713;color:#1B1713" style-hover="color:#7A5C33">
+      <span style="display:flex;flex-direction:column;gap:14px">
+        <span style="display:flex;align-items:center;gap:10px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#5C5146"><svg width="16" height="16" viewBox="0 0 24 24" fill="#7A5C33" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>WhatsApp</span>
+        <span style="font:400 clamp(36px,7.4vw,96px)/1 'Bodoni Moda',serif;letter-spacing:-.02em;font-variant-numeric:lining-nums;white-space:nowrap">+34 642 281 347</span>
+      </span>
+      <span style="flex:none;width:clamp(56px,6vw,80px);height:clamp(56px,6vw,80px);border:1px solid currentColor;border-radius:50%;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span>
+    </a>
+
+    <dl data-reveal="160" style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px 32px">
+      <div style="display:flex;flex-direction:column;gap:10px"><dt style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Dirección</dt><dd style="margin:0;display:flex;flex-direction:column;gap:6px;font:400 17px/1.5 'Jost',sans-serif"><span style="align-self:flex-start;color:#7A5C33;border-bottom:1px dashed #7A5C33">[Dirección pendiente]</span><span style="font-size:14px;color:#5C5146">El mapa se añade en cuanto confirméis la dirección.</span></dd></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><dt style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Horario</dt><dd style="margin:0;font:400 17px/1.5 'Jost',sans-serif"><span style="color:#7A5C33;border-bottom:1px dashed #7A5C33">[Horario pendiente]</span></dd></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><dt style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Email</dt><dd style="margin:0;font:400 17px/1.5 'Jost',sans-serif"><span style="color:#7A5C33;border-bottom:1px dashed #7A5C33">[Email pendiente]</span></dd></div>
+      <div style="display:flex;flex-direction:column;gap:10px"><dt style="font:500 11px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5C5146">Instagram</dt><dd style="margin:0;font:400 17px/1.5 'Jost',sans-serif"><a href="https://www.instagram.com/inmobiliaria.aldezaharra/" target="_blank" rel="noopener" style="color:#1B1713;border-bottom:1px solid #7A5C33;overflow-wrap:anywhere" style-hover="color:#7A5C33">@inmobiliaria.aldezaharra</a></dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer data-screen-label="08 Footer" style="background:#14110E;color:#F2ECE2;padding:clamp(72px,10vw,120px) clamp(20px,5vw,56px) calc(clamp(32px,4vw,44px) + 76px)">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:40px;text-align:center">
+    <img data-reveal="0" src="assets/az-lockup-marfil.png" alt="Inmobiliaria Alde Zaharra" style="width:clamp(200px,24vw,290px);height:auto;display:block">
+    <p data-reveal="60" style="margin:0;font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(19px,2vw,22px);line-height:1.4;color:#E9E1D4;max-width:30ch">Soluciones integrales para tu presente y tu futuro.</p>
+    <nav aria-label="Secciones" style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px 28px;font:500 11.5px/1 'Jost',sans-serif;letter-spacing:.2em;text-transform:uppercase">
+      <a href="#servicios" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Servicios</a>
+      <a href="#inmuebles" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Inmuebles</a>
+      <a href="#valoracion" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Valoración</a>
+      <a href="#financiacion" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Financiación</a>
+      <a href="#conocenos" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Quién soy</a>
+      <a href="#contacto" style="padding:14px 0;color:#F2ECE2" style-hover="color:#C6A472">Contacto</a>
+    </nav>
+    <div style="width:100%;border-top:1px solid rgba(242,236,226,.12);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 28px;font:400 13px/1.6 'Jost',sans-serif;color:#A79D90;text-align:left">
+      <span>© 2026 Inmobiliaria Alde Zaharra · <span style="border-bottom:1px dashed #A79D90">[Nº Registro de Agentes Inmobiliarios]</span></span>
+      <span style="display:flex;flex-wrap:wrap;gap:4px 18px"><a href="#" style="color:#A79D90" style-hover="color:#C6A472">Aviso legal</a><a href="#" style="color:#A79D90" style-hover="color:#C6A472">Privacidad</a><a href="#" style="color:#A79D90" style-hover="color:#C6A472">Cookies</a></span>
+    </div>
+    <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+      <p style="margin:-16px 0 0;align-self:flex-start;text-align:left;font:400 13px/1.6 'Jost',sans-serif;color:#A79D90">Propuesta de diseño. Las fotos de inmuebles, los inmuebles y el vídeo son de ejemplo.</p>
+    </sc-if>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}" hint-placeholder-val="{{ true }}">
+  <div ref="{{ stickyRef }}" style="position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(20,17,14,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(242,236,226,.12);display:flex;gap:10px;transform:translateY(110%);transition:transform .4s cubic-bezier(.22,1,.36,1)">
+    <a href="https://wa.me/34642281347?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20valoraci%C3%B3n%20gratuita%20de%20mi%20vivienda." target="_blank" rel="noopener" style="flex:1;display:flex;align-items:center;justify-content:center;height:52px;background:#F2ECE2;color:#1B1713;font:500 12px/1 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase" style-active="transform:scale(.97)">Valoración gratuita</a>
+    <a href="https://wa.me/34642281347?text=Hola%2C%20os%20escribo%20desde%20vuestra%20web." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" style="flex:none;width:52px;height:52px;display:grid;place-items:center;border:1px solid #C6A472;color:#C6A472;box-sizing:border-box" style-active="transform:scale(.97)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+    </a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ocultarDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reunión&quot;},&quot;mostrarVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reunión&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;pasarFotos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;fotoHero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Ventanal al atardecer&quot;,&quot;Ático con terraza&quot;,&quot;Edificio moderno&quot;],&quot;default&quot;:&quot;Ventanal al atardecer&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { nf: false, mb: true, menu: false, svc: 0, slide: 0, pIdx: 0, step: 1, tipo: '', hab: '3', m2: '', zona: '', nombre: '', tel: '', precio: 240000, pct: 80, plazo: 30, interes: 2.9, muted: true };
+  timers = [];
+  steps = {};
+  kb = {};
+  SLIDE_MS = 6000;
+  FOTOS = ['Ventanal al atardecer', 'Ático con terraza', 'Edificio moderno'];
+
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this._pp = Object.assign({}, this.props);
+    this.onResize = () => {
+      const w = window.innerWidth, nf = w >= 1180, mb = w < 1080;
+      if (nf !== this.state.nf || mb !== this.state.mb) this.setState({ nf, mb });
+      if (nf && this.state.menu) this.navTo();
+      this.updSplit(); this.req();
+    };
+    this.onScroll = () => this.req();
+    this.onKey = e => { if (e.key === 'Escape' && this.state.menu) this.closeMenu(); };
+    this.onVis = () => { if (document.visibilityState === 'hidden') this.pauseSlide(); else this.armSlide(); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    document.addEventListener('visibilitychange', this.onVis);
+    const w = window.innerWidth;
+    const i0 = Math.max(0, this.FOTOS.indexOf(this.props.fotoHero ?? this.FOTOS[0]));
+    const introOn = (this.props.intro ?? true) && !this.reduce;
+    this.setState({ nf: w >= 1180, mb: w < 1080, slide: i0 }, () => {
+      this._ps = Object.assign({}, this.state);
+      if (introOn) this.startIntro();
+      this.updSplit(); this.frame();
+      this.timers.push(setTimeout(() => this.setupReveals(), 60));
+      this.timers.push(setTimeout(() => this.armSlide(), introOn ? 1700 : 300));
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.updSplit());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    document.removeEventListener('visibilitychange', this.onVis);
+    this.timers.forEach(clearTimeout);
+    clearTimeout(this.tSlide); clearTimeout(this.tAdv);
+    cancelAnimationFrame(this.rafS); cancelAnimationFrame(this.rafC);
+    if (this.io) this.io.disconnect();
+    document.documentElement.style.overflow = '';
+  }
+
+  componentDidUpdate() {
+    const ps = this._ps || this.state, pp = this._pp || this.props;
+    this._ps = Object.assign({}, this.state);
+    this._pp = Object.assign({}, this.props);
+    const s = this.state, p = this.props, E = 'cubic-bezier(.77,0,.18,1)', O = 'cubic-bezier(.22,1,.36,1)';
+    if (pp.intro === false && p.intro !== false && !this.reduce) this.startIntro();
+    if (pp.pasarFotos !== p.pasarFotos) this.armSlide();
+    if (pp.fotoHero !== p.fotoHero) { const i = this.FOTOS.indexOf(p.fotoHero); if (i >= 0 && i !== s.slide) this.goSlide(i); }
+    if (!ps.menu && s.menu && this.menuEl && this.menuEl.animate && !this.reduce) {
+      this.menuEl.animate([{ clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)' }], { duration: 650, easing: E });
+      this.menuEl.querySelectorAll('[data-mi]').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 220 + i * 55, easing: O, fill: 'backwards' }));
+    }
+    if (ps.step !== s.step) {
+      const el = this.steps[s.step];
+      if (el && el.animate) {
+        const d = s.step > ps.step ? 1 : -1;
+        el.animate([{ opacity: 0, transform: 'translateX(' + (d * (this.reduce ? 0 : 24)) + 'px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: O });
+      }
+    }
+    if (ps.slide !== s.slide) { this.kenBurns(); this.armSlide(); }
+    if (ps.mb !== s.mb) { this._onImg = undefined; this.kb = {}; this.updSplit(); this.armSlide(); this.frame(); }
+  }
+
+  req() {
+    if (this.ticking) return;
+    this.ticking = true;
+    this.rafS = requestAnimationFrame(() => { this.ticking = false; this.frame(); });
+  }
+
+  frame() {
+    const y = window.scrollY || 0, vh = window.innerHeight, s = this.state;
+    if (this.navBg) this.navBg.style.opacity = y > 24 ? '1' : '0';
+    if (this.header) {
+      const on = s.mb && y <= 24;
+      if (on !== this._onImg) {
+        this._onImg = on;
+        this.header.style.setProperty('--az-logo', on ? 'none' : 'brightness(.12)');
+        this.header.style.setProperty('--az-fg', on ? '#F2ECE2' : '#1B1713');
+      }
+    }
+    const max = document.documentElement.scrollHeight - vh;
+    if (this.prog) this.prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+    if (this.sticky) this.sticky.style.transform = y > vh * 0.7 ? 'translateY(0)' : 'translateY(110%)';
+    if (this.reduce) return;
+    [[this.frameEl, this.heroPar], [this.band, this.bandImg]].forEach(([f, im]) => {
+      if (!f || !im) return;
+      const r = f.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const H = r.height, c = r.top + H / 2 - vh / 2;
+      const ty = Math.max(-0.075 * H, Math.min(0.075 * H, -c * 0.12));
+      im.style.transform = 'translate3d(0,' + ty.toFixed(1) + 'px,0)';
+    });
+  }
+
+  updSplit() {
+    const h = this.h1d, f = this.frameEl;
+    if (!h || !f || this.state.mb) return;
+    const x = f.getBoundingClientRect().left - h.getBoundingClientRect().left;
+    h.style.setProperty('--split', Math.max(0, x).toFixed(1) + 'px');
+  }
+
+  startIntro(tries = 0) {
+    const h = this.hero;
+    const ok = h && h.clientWidth > 50 && h.clientHeight > 50 && document.visibilityState !== 'hidden';
+    if (ok) return this.playIntro();
+    if (tries < 30) this.timers.push(setTimeout(() => this.startIntro(tries + 1), 100));
+  }
+
+  playIntro() {
+    const root = this.hero;
+    if (!root || !root.animate) return;
+    const E = 'cubic-bezier(.77,0,.18,1)', O = 'cubic-bezier(.22,1,.36,1)';
+    const q = sel => Array.from(root.querySelectorAll(sel));
+    q('[data-slat]').forEach((el, i) => el.animate([{ transform: 'scaleY(1)' }, { transform: 'scaleY(0)' }], { duration: 1050, delay: 120 + i * 70, easing: E, fill: 'backwards' }));
+    const z = root.querySelector('[data-hzoom]');
+    if (z) z.animate([{ transform: 'scale(1.18)' }, { transform: 'scale(1)' }], { duration: 2800, delay: 100, easing: O, fill: 'backwards' });
+    q('[data-hline]').forEach((el, i) => el.animate([{ clipPath: 'inset(0 100% 0 0)', transform: 'translateX(-.06em)' }, { clipPath: 'inset(0 0% 0 0)', transform: 'none' }], { duration: 1150, delay: 520 + (i % 2) * 170, easing: E, fill: 'backwards' }));
+    q('[data-hdraw]').forEach(el => el.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 1000, delay: 900, easing: E, fill: 'backwards' }));
+    q('[data-hfade]').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 850, delay: 980 + i * 90, easing: O, fill: 'backwards' }));
+  }
+
+  kenBurns() {
+    if (this.reduce || !this.hero) return;
+    const i = this.state.slide;
+    const im = this.hero.querySelector('[data-slide="' + i + '"]');
+    if (!im || !im.animate) return;
+    if (this.kb[i]) this.kb[i].cancel();
+    this.kb[i] = im.animate([{ transform: 'scale(1.12)' }, { transform: 'scale(1)' }], { duration: 8000, easing: 'cubic-bezier(.25,.1,.25,1)', fill: 'forwards' });
+  }
+
+  armSlide() {
+    clearTimeout(this.tSlide);
+    if (this.barAnim) { this.barAnim.cancel(); this.barAnim = null; }
+    if (!((this.props.pasarFotos ?? true) && !this.reduce) || document.visibilityState === 'hidden' || !this.hero) return;
+    const bar = this.hero.querySelector('[data-bar="' + this.state.slide + '"]');
+    if (bar && bar.animate) this.barAnim = bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: this.SLIDE_MS, easing: 'linear', fill: 'forwards' });
+    this.tSlide = setTimeout(() => this.goSlide(this.state.slide + 1), this.SLIDE_MS);
+  }
+
+  pauseSlide() { clearTimeout(this.tSlide); if (this.barAnim) this.barAnim.pause(); }
+
+  goSlide(i) { this.setState({ slide: ((i % 3) + 3) % 3 }); }
+
+  hTouchS = e => { const t = e.touches && e.touches[0]; this._tx = t ? t.clientX : null; this._ty = t ? t.clientY : null; };
+  hTouchE = e => {
+    if (this._tx == null) return;
+    const t = e.changedTouches && e.changedTouches[0]; if (!t) return;
+    const dx = t.clientX - this._tx, dy = t.clientY - this._ty;
+    this._tx = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) this.goSlide(this.state.slide + (dx < 0 ? 1 : -1));
+  };
+
+  quick(t) {
+    clearTimeout(this.tAdv);
+    this.setState({ tipo: t, step: 2 });
+    const f = this.formEl; if (!f) return;
+    const y = f.getBoundingClientRect().top + (window.scrollY || 0) - 84;
+    window.scrollTo({ top: y, behavior: this.reduce ? 'auto' : 'smooth' });
+  }
+
+  onPm = () => {
+    const t = this.pmTrack; if (!t) return;
+    const cs = t.querySelectorAll('article'); if (!cs.length) return;
+    const w = cs[0].getBoundingClientRect().width + 12;
+    const i = Math.max(0, Math.min(cs.length - 1, Math.round(t.scrollLeft / w)));
+    if (i !== this.state.pIdx) this.setState({ pIdx: i });
+  };
+
+  pmGo(i) {
+    const t = this.pmTrack; if (!t) return;
+    const c = t.querySelector('article'); if (!c) return;
+    this.setState({ pIdx: i });
+    t.scrollTo({ left: i * (c.getBoundingClientRect().width + 12), behavior: this.reduce ? 'auto' : 'smooth' });
+  }
+
+  setupReveals() {
+    if (!this.root || !('IntersectionObserver' in window)) return;
+    const E = 'cubic-bezier(.77,0,.18,1)', O = 'cubic-bezier(.22,1,.36,1)', R = this.reduce;
+    this.io = new IntersectionObserver(ens => ens.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; this.io.unobserve(el);
+      if (el.hasAttribute('data-count')) return this.count(el);
+      const d = +(el.getAttribute('data-reveal') || el.getAttribute('data-wipe') || 0);
+      if (R) { el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, delay: d, fill: 'backwards' }); return; }
+      if (el.hasAttribute('data-draw')) el.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 1000, delay: 150, easing: E, fill: 'backwards' });
+      else if (el.hasAttribute('data-wipe')) el.animate([{ clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)' }], { duration: 1300, delay: d, easing: E, fill: 'backwards' });
+      else el.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 850, delay: d, easing: O, fill: 'backwards' });
+    }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    const vh = window.innerHeight;
+    this.root.querySelectorAll('[data-reveal],[data-draw],[data-wipe],[data-count]').forEach(el => {
+      if (el.closest('#inicio')) return;
+      if (el.getBoundingClientRect().top < vh * 0.92) return;
+      this.io.observe(el);
+    });
+  }
+
+  count(el) {
+    const n = el.firstChild;
+    if (!n || this.reduce) return;
+    const t0 = performance.now(), D = 1700;
+    const f = t => {
+      const k = Math.min(1, (t - t0) / D), e = 1 - Math.pow(1 - k, 4);
+      n.nodeValue = String(Math.round(100 * e));
+      if (k < 1) this.rafC = requestAnimationFrame(f);
+    };
+    this.rafC = requestAnimationFrame(f);
+  }
+
+  openMenu = () => { document.documentElement.style.overflow = 'hidden'; this.setState({ menu: true }); };
+  navTo = () => { document.documentElement.style.overflow = ''; this.setState({ menu: false }); };
+  closeMenu = () => {
+    const m = this.menuEl;
+    if (m && m.animate && !this.reduce) {
+      const a = m.animate([{ clipPath: 'inset(0 0 0% 0)' }, { clipPath: 'inset(0 0 100% 0)' }], { duration: 420, easing: 'cubic-bezier(.77,0,.18,1)', fill: 'forwards' });
+      a.onfinish = () => this.navTo();
+    } else this.navTo();
+  };
+
+  pickTipo(t) {
+    this.setState({ tipo: t });
+    clearTimeout(this.tAdv);
+    if (this.state.step === 1) this.tAdv = setTimeout(() => this.setState({ step: 2 }), 300);
+  }
+
+  renderVals() {
+    const p = this.props, s = this.state;
+    const fin = s.precio * s.pct / 100, r = s.interes / 100 / 12, n = s.plazo * 12;
+    const cuota = r > 0 ? fin * r / (1 - Math.pow(1 + r, -n)) : fin / n;
+    const miles = v => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const eur = v => miles(v) + '\u00A0€';
+    const WA = 'https://wa.me/34642281347?text=';
+    const INK = '#1B1713', IV = '#F2ECE2';
+    const auto = (p.pasarFotos ?? true) && !this.reduce;
+
+    const sv = {};
+    for (let i = 0; i < 7; i++) {
+      const o = s.svc === i;
+      sv['s' + i] = { exp: o ? 'true' : 'false', rows: o ? '1fr' : '0fr', op: o ? '1' : '0', rot: o ? '45deg' : '0deg', toggle: () => this.setState(st => ({ svc: st.svc === i ? -1 : i })) };
+    }
+    const sel = on => ({ pressed: on ? 'true' : 'false', bg: on ? INK : 'transparent', fg: on ? IV : INK, bd: on ? INK : 'rgba(27,23,19,.22)', dot: on ? '#C6A472' : 'transparent' });
+    const tp = {};
+    ['Piso', 'Casa o chalet', 'Ático', 'Local comercial', 'Otro'].forEach((t, i) => { tp['t' + i] = Object.assign(sel(s.tipo === t), { pick: () => this.pickTipo(t) }); });
+    const hb = {};
+    ['1', '2', '3', '4', '5 o más'].forEach((x, i) => { hb['h' + i] = Object.assign(sel(s.hab === x), { pick: () => this.setState({ hab: x }) }); });
+    const seg = k => s.step >= k ? INK : 'rgba(27,23,19,.16)';
+    const resumen = [s.tipo, s.m2 && s.m2 + ' m²', s.hab && s.hab + ' hab.', s.zona].filter(Boolean).join(' · ') || 'Sin datos todavía';
+    const tri = s.nf
+      ? { cols: 'minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr)', vcol: 'auto', vorder: '0', vaspect: '9/16', vmax: 'none' }
+      : { cols: 'repeat(2,minmax(0,1fr))', vcol: '1 / -1', vorder: '-1', vaspect: '4/5', vmax: '420px' };
+    const hs = { prev: () => this.goSlide(s.slide - 1), next: () => this.goSlide(s.slide + 1) };
+    for (let i = 0; i < 3; i++) {
+      hs['o' + i] = s.slide === i ? '1' : '0';
+      hs['b' + i] = (i < s.slide || (!auto && i === s.slide)) ? '1' : '0';
+      hs['l' + i] = s.slide === i ? '1' : '.55';
+      hs['cur' + i] = s.slide === i ? 'true' : 'false';
+      hs['go' + i] = () => this.goSlide(i);
+    }
+    const hq = {};
+    ['Piso', 'Casa o chalet', 'Ático', 'Local comercial', 'Otro'].forEach((t, i) => { hq['q' + i] = () => this.quick(t); });
+    const pm = {};
+    for (let i = 0; i < 3; i++) { const o = s.pIdx === i; pm['p' + i] = { sel: o ? 'true' : 'false', op: o ? '1' : '.5', ol: o ? INK : 'transparent', go: () => this.pmGo(i) }; }
+
+    return {
+      rootRef: el => { this.root = el; },
+      headerRef: el => { this.header = el; },
+      navBgRef: el => { this.navBg = el; },
+      progRef: el => { this.prog = el; },
+      heroRef: el => { this.hero = el; },
+      frameRef: el => { this.frameEl = el; },
+      heroParRef: el => { this.heroPar = el; },
+      h1Ref: el => { this.h1d = el; },
+      bandRef: el => { this.band = el; },
+      bandImgRef: el => { this.bandImg = el; },
+      menuRef: el => { this.menuEl = el; },
+      formRef: el => { this.formEl = el; },
+      pmTrackRef: el => { this.pmTrack = el; },
+      stickyRef: el => { this.sticky = el; if (el && this.rafS !== undefined) this.req(); },
+      step1Ref: el => { this.steps[1] = el; }, step2Ref: el => { this.steps[2] = el; }, step3Ref: el => { this.steps[3] = el; },
+      videoRef: el => {
+        this.video = el;
+        if (el) { el.muted = this.state.muted; const pr = el.play && el.play(); if (pr && pr.catch) pr.catch(() => {}); }
+      },
+
+      showDemo: !(p.ocultarDemo ?? false),
+      showVideo: p.mostrarVideo ?? true,
+      navFull: s.nf, navCompact: !s.nf, showSticky: s.mb,
+      desk: !s.mb, mob: s.mb, svStick: s.mb ? 'static' : 'sticky',
+      menuOpen: s.menu, menuExp: s.menu ? 'true' : 'false',
+      openMenu: this.openMenu, closeMenu: this.closeMenu, navTo: this.navTo,
+
+      hs, hq, hTouchS: this.hTouchS, hTouchE: this.hTouchE,
+      sv, pm, onPm: this.onPm,
+
+      tp, hb,
+      wz: {
+        d1: s.step === 1 ? 'flex' : 'none', d2: s.step === 2 ? 'flex' : 'none', d3: s.step === 3 ? 'flex' : 'none',
+        b1: seg(1), b2: seg(2), b3: seg(3),
+        label: ['Tipo de inmueble', 'Detalles', 'Tus datos'][s.step - 1],
+        count: 'Paso ' + s.step + ' de 3',
+        m2: s.m2, zona: s.zona, nombre: s.nombre, tel: s.tel, resumen
+      },
+      setM2: e => this.setState({ m2: e.target.value }),
+      setZona: e => this.setState({ zona: e.target.value }),
+      setNombre: e => this.setState({ nombre: e.target.value }),
+      setTel: e => this.setState({ tel: e.target.value }),
+      next2: () => this.setState({ step: 3 }),
+      back: () => this.setState(st => ({ step: Math.max(1, st.step - 1) })),
+      onValoracion: e => {
+        e.preventDefault();
+        if (s.step < 3) { if (s.step === 1 && !s.tipo) return; this.setState({ step: s.step + 1 }); return; }
+        const L = ['Hola, me gustaría solicitar una valoración gratuita de mi vivienda.'];
+        const add = (k, v) => { if (v && String(v).trim()) L.push(k + ': ' + String(v).trim()); };
+        add('Tipo', s.tipo); add('Superficie', s.m2 && s.m2 + ' m²'); add('Habitaciones', s.hab); add('Zona', s.zona); add('Nombre', s.nombre); add('Teléfono', s.tel);
+        window.open(WA + encodeURIComponent(L.join('\n')), '_blank', 'noopener');
+      },
+
+      sim: {
+        precio: s.precio, pct: s.pct, plazo: s.plazo, tipo: s.interes,
+        precioFmt: eur(s.precio), pctFmt: s.pct + '\u00A0%', plazoFmt: s.plazo + ' años',
+        tipoFmt: s.interes.toFixed(2).replace('.', ',') + '\u00A0%',
+        financiadoFmt: eur(fin), aporteFmt: eur(s.precio - fin), cuotaFmt: eur(cuota),
+        finW: s.pct + '%'
+      },
+      setPrecio: e => this.setState({ precio: +e.target.value }),
+      setPct: e => this.setState({ pct: +e.target.value }),
+      setPlazo: e => this.setState({ plazo: +e.target.value }),
+      setTipo: e => this.setState({ interes: +e.target.value }),
+      waAsesor: WA + encodeURIComponent('Hola, me gustaría hablar con un asesor sobre financiación. Vivienda de ' + eur(s.precio) + ', financiando el ' + s.pct + ' % a ' + s.plazo + ' años.'),
+
+      tri,
+      muted: s.muted, unmuted: !s.muted,
+      soundLabel: s.muted ? 'Activar sonido' : 'Silenciar',
+      toggleSound: () => {
+        const vid = this.video; if (!vid) return;
+        vid.muted = !vid.muted;
+        if (!vid.muted) { const pr = vid.play(); if (pr && pr.catch) pr.catch(() => {}); }
+        this.setState({ muted: vid.muted });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

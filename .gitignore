@@ -3,6 +3,9 @@ _inbox/
  
 # ── Backups automáticos generados por el script ───────────────────────────────
 **/*_bak/
+
+# ── Mockups desactivados (copia local fuera de GitHub Pages) ──────────────────
+.disabled/
  
 # ── Python ────────────────────────────────────────────────────────────────────
 __pycache__/

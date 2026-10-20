@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;display=swap">
+  <script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+  <style>
+    :root{--tomato:#A33621;--tomato-dk:#862B19;--accent:#A33621;--accent-press:#862B19;--price:#A33621;--status-closed:#A33621;--leaf:#D4AE66;--font-serif:'DM Serif Display',Georgia,serif;--frame-bg:linear-gradient(135deg,#E6C987 0%,#A9772F 30%,#F0D89A 52%,#8E6122 78%,#CFA75E 100%);--frame-pad:clamp(9px,2vw,14px);--frame-shadow:inset 0 0 0 1px rgba(255,238,200,.75),inset 0 0 0 4px rgba(110,72,24,.35),inset 0 0 0 5px rgba(255,236,190,.3),0 30px 50px -26px rgba(40,20,5,.7);--mat:transparent;--mat-pad:0px;--mat-shadow:0 0 0 2px #5E3F17,0 0 0 3px rgba(255,236,190,.45)}
+    html.lenis,html.lenis body{height:auto}
+    html.lenis,html.lenis body,.lenis-smooth{scroll-behavior:auto!important}
+    body{overflow-x:clip;background:var(--cream)}
+    a{color:inherit}
+    a:hover{color:var(--accent)}
+    :focus-visible{outline:3px solid var(--leaf);outline-offset:3px}
+    ::selection{background:#A33621;color:#fff}
+  </style>
+</helmet>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:{{ navBg }};backdrop-filter:{{ navBlur }};-webkit-backdrop-filter:{{ navBlur }};border-bottom:1px solid {{ navLine }};transition:background-color .25s cubic-bezier(.4,0,.2,1),border-color .25s cubic-bezier(.4,0,.2,1)">
+  <nav aria-label="Principal" class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px">
+    <a href="#top" aria-label="Botticelli, volver al inicio" style="display:flex;align-items:center;gap:10px;color:{{ navFg }};transition:color .25s cubic-bezier(.4,0,.2,1)">
+      <img src="images/logo-b.jpg" alt="" width="40" height="40" style="width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(163,54,33,.25)">
+      <span style="font-family:var(--font-serif);font-size:1.3rem;letter-spacing:.08em;line-height:1">BOTTICELLI</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2.4vw,30px)">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:28px;font-weight:600;font-size:.98rem;color:{{ navFg }};transition:color .25s cubic-bezier(.4,0,.2,1)">
+          <a href="#casa">La casa</a>
+          <a href="#coleccion">La colección</a>
+          <a href="#horario">Horario</a>
+        </div>
+      </sc-if>
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="sm" href="#reservar" hint-size="110px,40px">Reservar</x-import>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
+  <section data-a="" data-screen-label="Hero animado" aria-labelledby="hero-title" style="position:relative;height:100svh;min-height:620px;overflow:hidden;background:#140D08;color:#F6EEDF;isolation:isolate">
+    <div data-a-spot="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(ellipse 50% 62% at 50% 36%,rgba(255,216,160,.26),rgba(255,216,160,.07) 52%,rgba(255,216,160,0) 74%)"></div>
+    <div data-a-hang="" style="position:absolute;inset:0">
+      <div data-a-zoom="" style="position:absolute;inset:0">
+        <div aria-hidden="true" style="position:absolute;inset:-46px;background:var(--frame-bg);border-radius:8px;box-shadow:inset 0 0 0 3px rgba(255,238,200,.75),inset 0 0 0 12px rgba(110,72,24,.35),inset 0 0 0 15px rgba(255,236,190,.3),0 110px 160px -60px rgba(0,0,0,.9)"></div>
+        <div style="position:absolute;inset:0;overflow:hidden;background:#140D08;box-shadow:0 0 0 6px #5E3F17,0 0 0 9px rgba(255,236,190,.45)">
+          <div data-a-img="" style="position:absolute;inset:0">
+            <img src="images/burger-sin-titulo.jpg" alt="Hamburguesa alta con bacon, carne y pollo crujiente junto a patatas, en la barra de Botticelli" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:30% 56%;transform:scaleX(-1);display:block">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-a-wall="" aria-hidden="true" style="position:absolute;left:0;right:0;top:20%;opacity:0;pointer-events:none;text-align:center;font-family:var(--font-serif);font-size:clamp(1.05rem,2.2vw,1.5rem);letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;color:#EAD9B8">Botticelli</div>
+    <div data-a-label="" aria-hidden="true" style="position:absolute;left:0;right:0;top:80%;margin-inline:auto;width:max-content;max-width:min(300px,80vw);opacity:0;pointer-events:none;background:#F7F1E6;color:var(--ink);padding:11px 15px 12px;border-radius:2px;box-shadow:0 16px 32px -16px rgba(0,0,0,.7)">
+      <span style="display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)">Sala I · Obra destacada</span>
+      <span style="display:block;font-family:var(--font-serif);font-size:1.3rem;line-height:1.05;margin-top:5px">Sin título nº 1</span>
+      <span style="display:block;font-style:italic;font-size:.86rem;color:var(--ink-soft);margin-top:3px">Técnica mixta sobre brioche, con patatas.</span>
+    </div>
+    <div data-a-shade="" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,13,8,.6) 0%,rgba(20,13,8,0) 24%,rgba(20,13,8,0) 42%,rgba(20,13,8,.93) 100%),linear-gradient(90deg,rgba(20,13,8,.8) 0%,rgba(20,13,8,.38) 42%,rgba(20,13,8,0) 66%)"></div>
+    <div data-a-content="" class="wrap" style="position:relative;z-index:2;height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;padding-bottom:clamp(36px,8vh,84px)">
+      <div style="max-width:700px">
+        <div data-a-fade="" style="margin-bottom:18px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--leaf)" hint-size="auto,20px">Hamburguesería · Deusto, Bilbao</x-import>
+        </div>
+        <h1 id="hero-title" data-a-title="" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(3rem,8.4vw,7rem);line-height:.94;letter-spacing:-.02em;margin:0;color:#F8F1E4;text-wrap:balance">Obras maestras <em style="font-style:italic;color:var(--leaf)">entre dos panes.</em></h1>
+        <p data-a-fade="" style="font-size:var(--fs-lead);color:#E8DCC8;max-width:32em;margin:20px 0 0;text-wrap:pretty">Hamburguesas con nombre propio, raciones para compartir, cócteles y terraza. Del primer café a la última copa, en Heliodoro de la Torre.</p>
+        <div data-a-fade="" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="#reservar" hint-size="200px,54px"><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Reservar mesa</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="lg" href="#coleccion" hint-size="200px,54px">Ver la colección</x-import>
+        </div>
+        <div data-a-fade="" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:24px;color:#F8F1E4">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ status.open }}" dc-props="{{ pillDark }}" hint-size="220px,34px">{{ status.text }}</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4 }}" score="4,2" count="347" dc-props="{{ ratingDark }}" hint-size="230px,24px"></x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ heroB }}" hint-placeholder-val="{{ false }}">
+  <section data-b="" data-screen-label="Hero elegante" aria-labelledby="hero-title" style="position:relative;min-height:100svh;overflow:hidden;background:#120C08;color:#F6EEDF;isolation:isolate">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:absolute;inset:-90px;z-index:0;pointer-events:none;opacity:.55">
+        <img data-b-amb="" src="images/venus-botticelli.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.35) brightness(.7);opacity:1;visibility:visible">
+        <img data-b-amb="" src="images/burger-sin-titulo.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.35) brightness(.7);opacity:0;visibility:hidden">
+        <img data-b-amb="" src="images/la-trufada.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.35) brightness(.7);opacity:0;visibility:hidden">
+        <img data-b-amb="" src="images/la-vasca.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.35) brightness(.7);opacity:0;visibility:hidden">
+        <img data-b-amb="" src="images/nachos.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.35) brightness(.7);opacity:0;visibility:hidden">
+        <img data-b-amb="" src="images/risotto-gamba.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.35) brightness(.7);opacity:0;visibility:hidden">
+      </div>
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(18,12,8,.84) 0%,rgba(18,12,8,.58) 55%,rgba(18,12,8,.2) 100%)"></div>
+    </sc-if>
+
+    <div data-b-stage="" style="position:absolute;top:0;right:0;bottom:{{ bStageBottom }};width:{{ bStageW }};height:{{ bStageH }};z-index:1;overflow:hidden;background:#0E0906">
+      <img data-b-img="" src="images/venus-botticelli.jpg" alt="Caja de madera con la Venus de Botticelli y el rótulo Botticelli Bilbao" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;opacity:1;transform-origin:50% 40%">
+      <img data-b-img="" src="images/burger-sin-titulo.jpg" alt="Hamburguesa alta con bacon, carne y pollo crujiente junto a patatas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 50%;opacity:0;transform-origin:30% 50%">
+      <img data-b-img="" src="images/la-trufada.jpg" alt="La Trufada: hamburguesa cubierta de trufa rallada sobre papel de periódico" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:0;transform-origin:50% 45%">
+      <img data-b-img="" src="images/la-vasca.jpg" alt="La Vasca: hamburguesa con queso a la plancha y pimiento rojo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;opacity:0;transform-origin:50% 45%">
+      <img data-b-img="" src="images/nachos.jpg" alt="Nachos con queso fundido volcado desde la sartén, carne picada, pico de gallo y jalapeños" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;opacity:0;transform-origin:40% 40%">
+      <img data-b-img="" src="images/risotto-gamba.jpg" alt="Risotto de setas con una gamba entera, sobre tabla de madera" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:0;transform-origin:52% 50%">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(14,9,6,.78) 0%,rgba(14,9,6,.42) 20%,rgba(14,9,6,0) 38%,rgba(14,9,6,0) 72%,rgba(14,9,6,.5) 100%),linear-gradient(90deg,rgba(18,12,8,.92) 0%,rgba(18,12,8,0) 24%)"></div>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <div aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(14,9,6,.8) 0%,rgba(14,9,6,.45) 22%,rgba(14,9,6,0) 40%,rgba(18,12,8,0) 56%,rgba(18,12,8,.86) 86%,#120C08 100%)"></div>
+      </sc-if>
+      <div data-b-chrome="" style="position:absolute;z-index:4;top:76px;left:0;right:0;padding-inline:clamp(18px,3vw,32px)">
+        <div style="display:flex;align-items:center;gap:6px">
+          <div role="group" aria-label="Obras de la sala" style="flex:1;min-width:0;display:flex;gap:6px">
+            <sc-for list="{{ bSegs }}" as="s" hint-placeholder-count="6">
+              <button type="button" aria-label="{{ s.label }}" aria-pressed="{{ s.pressed }}" onClick="{{ s.pick }}" style="flex:1;min-width:0;height:44px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;align-items:center">
+                <span style="position:relative;display:block;width:100%;height:2px;border-radius:2px;overflow:hidden;background:rgba(246,238,223,.3)"><span data-b-seg="" style="position:absolute;inset:0;background:#F6EEDF;transform-origin:0 50%;transform:scaleX(0)"></span></span>
+              </button>
+            </sc-for>
+          </div>
+          <button type="button" aria-label="{{ bPauseLabel }}" onClick="{{ bToggle }}" style="flex:none;width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:#F6EEDF;display:grid;place-items:center;cursor:pointer;padding:0;transition:background-color .2s cubic-bezier(.4,0,.2,1)" style-hover="background:rgba(246,238,223,.12)">
+            <sc-if value="{{ bPaused }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4l13 8-13 8z"></path></svg></sc-if>
+            <sc-if value="{{ bPlaying }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14M16 5v14"></path></svg></sc-if>
+          </button>
+        </div>
+        <div data-b-cap="" aria-live="polite" style="margin-top:2px;max-width:320px;text-shadow:0 1px 14px rgba(0,0,0,.55)">
+          <span style="display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--leaf)">{{ bWork.kicker }}</span>
+          <span style="display:block;font-family:var(--font-serif);font-size:1.5rem;line-height:1.08;margin-top:4px;color:#F8F1E4">{{ bWork.title }}</span>
+          <span style="display:block;font-style:italic;font-size:.92rem;color:#E6D9C4;margin-top:2px">{{ bWork.tech }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap" style="position:relative;z-index:2;min-height:100svh;box-sizing:border-box;display:flex;flex-direction:column;justify-content:{{ bJustify }};padding-top:{{ bPadTop }};padding-bottom:clamp(40px,8vh,88px)">
+      <div style="max-width:{{ bTextMax }}">
+        <div data-b-fade="" style="margin-bottom:20px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--leaf)" hint-size="auto,20px">Hamburguesería · Deusto, Bilbao</x-import>
+        </div>
+        <h1 id="hero-title" data-b-title="" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(2.9rem,6.3vw,6.2rem);line-height:.96;letter-spacing:-.018em;margin:0;color:#F8F1E4;text-wrap:balance">Obras maestras <em style="font-style:italic;color:var(--leaf)">entre dos panes.</em></h1>
+        <p data-b-fade="" style="font-size:var(--fs-lead);color:#E2D5C0;max-width:30em;margin:22px 0 0;text-wrap:pretty">Hamburguesas con nombre propio, raciones para compartir, cócteles y terraza. Del primer café a la última copa, en Heliodoro de la Torre.</p>
+        <div data-b-fade="" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="#reservar" hint-size="200px,54px"><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Reservar mesa</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" size="lg" href="#coleccion" hint-size="200px,54px">Ver la colección</x-import>
+        </div>
+        <div data-b-fade="" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:26px;color:#F8F1E4">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ status.open }}" dc-props="{{ pillDark }}" hint-size="220px,34px">{{ status.text }}</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4 }}" score="4,2" count="347" dc-props="{{ ratingDark }}" hint-size="230px,24px"></x-import>
+        </div>
+      </div>
+    </div>
+    <div data-b-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:6;background:#0B0705;opacity:0;pointer-events:none"></div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ heroO }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="hero-title" style="position:relative;min-height:100svh;display:flex;align-items:center;padding-top:clamp(104px,13vw,140px);padding-bottom:clamp(80px,9vw,110px)">
+    <div class="wrap" style="width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(56px,6vw,80px)">
+      <div style="flex:1 1 520px;min-width:0">
+        <div data-hero-fade="" style="margin-bottom:22px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="auto,20px">Hamburguesería · Deusto, Bilbao</x-import>
+        </div>
+        <h1 id="hero-title" data-hero-title="" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(2.75rem,7vw,5.1rem);line-height:.98;letter-spacing:-.015em;margin:0;color:var(--ink);text-wrap:balance">Obras maestras <em style="font-style:italic;color:var(--accent)">entre dos panes.</em></h1>
+        <p data-hero-fade="" style="font-size:var(--fs-lead);color:var(--ink-soft);max-width:34em;margin:22px 0 0;text-wrap:pretty">Hamburguesas con nombre propio, raciones para compartir, cócteles y terraza. Del primer café a la última copa, en Heliodoro de la Torre.</p>
+        <div data-hero-fade="" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="#reservar" hint-size="200px,54px"><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Reservar mesa</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" size="lg" href="#coleccion" hint-size="200px,54px">Ver la colección</x-import>
+        </div>
+        <div data-hero-fade="" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:28px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ status.open }}" hint-size="220px,34px">{{ status.text }}</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4 }}" score="4,2" count="347" hint-size="230px,24px"></x-import>
+        </div>
+      </div>
+
+      <div style="flex:0 1 460px;min-width:0;width:100%;max-width:520px;margin:0 auto 60px;position:relative">
+        <div aria-hidden="true" style="position:absolute;inset:-12% -14%;background:radial-gradient(closest-side,rgba(212,174,102,.28),rgba(212,174,102,0));pointer-events:none"></div>
+        <figure data-hero-frame="" style="position:relative;margin:0;transform-origin:50% -30px">
+          <span aria-hidden="true" style="position:absolute;left:50%;top:-36px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EBD6A4,#7A5524);box-shadow:0 2px 3px rgba(0,0,0,.35)"></span>
+          <svg aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none" style="position:absolute;left:18%;width:64%;top:-31px;height:31px;overflow:visible"><path d="M0 30 L50 1 L100 30" fill="none" stroke="#6B5236" stroke-width="1.4" vector-effect="non-scaling-stroke"></path></svg>
+          <div style="position:relative;background:var(--frame-bg);padding:var(--frame-pad);box-shadow:var(--frame-shadow);border-radius:3px">
+            <div style="background:var(--mat);padding:var(--mat-pad);box-shadow:var(--mat-shadow)">
+              <img src="images/burger-sin-titulo.jpg" alt="Hamburguesa alta con bacon, carne y pollo crujiente junto a patatas, en la barra de Botticelli" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:30% 50%;display:block">
+            </div>
+          </div>
+          <figcaption data-hero-label="" style="position:absolute;right:-6px;bottom:-54px;width:min(260px,74%);background:#FFFDF8;color:var(--ink);padding:14px 16px 14px;box-shadow:0 16px 32px -16px rgba(53,36,18,.55);border-radius:2px">
+            <span style="display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)">Obra destacada</span>
+            <span style="display:block;font-family:var(--font-serif);font-size:1.5rem;line-height:1.05;margin-top:6px">Sin título nº 1</span>
+            <span style="display:block;font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-top:4px">Técnica mixta sobre brioche, con patatas.</span>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;margin-top:10px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px dashed var(--accent);color:var(--accent)">Nombre por confirmar</span>
+            </sc-if>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  </sc-if>
+
+  <section id="casa" aria-labelledby="casa-title" style="background:var(--cream-2);padding-block:var(--pad-block)">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:clamp(48px,6vw,88px);align-items:center">
+      <div style="flex:1 1 460px;min-width:0">
+        <div data-reveal="">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="auto,20px">La casa</x-import>
+          <h2 id="casa-title" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(2.3rem,5.6vw,4.1rem);line-height:1;letter-spacing:-.012em;margin:14px 0 0;color:var(--ink);text-wrap:balance">El otro museo de Bilbao.</h2>
+          <p style="font-size:var(--fs-lead);color:var(--ink-soft);margin:18px 0 0;max-width:36em;text-wrap:pretty">En Heliodoro de la Torre, en pleno Deusto, colgamos otra clase de obras: hamburguesas con nombre propio, raciones para el centro de la mesa y cócteles para alargar la tarde. Con terraza y con platos veganos.</p>
+        </div>
+        <ol data-stagger="" style="list-style:none;padding:0;margin:34px 0 0;display:grid">
+          <li style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--line)">
+            <span aria-hidden="true" style="font-family:var(--font-serif);font-size:2rem;line-height:1;color:var(--accent)">I</span>
+            <div>
+              <span style="font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)">Por la mañana</span>
+              <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.55rem;letter-spacing:0;margin:4px 0 4px;color:var(--ink)">Café y desayunos</h3>
+              <p style="margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.5">Entre semana abrimos a las 8:00; los sábados, a las 10:00.</p>
+            </div>
+          </li>
+          <li style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--line)">
+            <span aria-hidden="true" style="font-family:var(--font-serif);font-size:2rem;line-height:1;color:var(--accent)">II</span>
+            <div>
+              <span style="font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)">Comida y cena</span>
+              <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.55rem;letter-spacing:0;margin:4px 0 4px;color:var(--ink)">Burgers, raciones y platos</h3>
+              <p style="margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.5">La colección permanente, nachos para el centro y algún risotto que se cuela en la carta.</p>
+            </div>
+          </li>
+          <li style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+            <span aria-hidden="true" style="font-family:var(--font-serif);font-size:2rem;line-height:1;color:var(--accent)">III</span>
+            <div>
+              <span style="font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)">Hasta las 23:00</span>
+              <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.55rem;letter-spacing:0;margin:4px 0 4px;color:var(--ink)">Cócteles y terraza</h3>
+              <p style="margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.5">Buenos cócteles y una terraza para que la sobremesa no se acabe.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div data-reveal="" style="flex:1 1 400px;min-width:0">
+        <div style="position:relative;max-width:540px;margin:0 auto;padding-bottom:24%">
+          <figure style="margin:0 0 0 auto;width:80%;background:#fff;padding:6px;border-radius:22px;box-shadow:var(--shadow)">
+            <img src="images/interior.jpg" alt="Interior de Botticelli: barra de mármol, lámparas colgantes y taburetes de madera" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px">
+          </figure>
+          <figure style="position:absolute;left:0;bottom:0;width:42%;margin:0;background:#fff;padding:6px;border-radius:16px;box-shadow:var(--shadow);transform:rotate(-4deg)">
+            <img src="images/venus-botticelli.jpg" alt="Caja de madera con la Venus de Botticelli y el rótulo Botticelli Bilbao" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:11px">
+          </figure>
+          <span class="script" style="position:absolute;left:46%;bottom:2%;font-size:clamp(1.4rem,3.4vw,1.75rem);line-height:1.1;color:var(--accent);transform:rotate(-3deg)">la Venus de la casa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coleccion" data-gallery="" aria-labelledby="col-title" style="position:relative;background:var(--char);color:var(--text-on-dark)">
+    <div data-gallery-inner="" style="display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:clamp(64px,9vh,96px);padding-bottom:clamp(44px,6vh,72px)">
+      <div class="wrap" style="width:100%;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 40px">
+        <div data-reveal="" style="flex:1 1 520px;min-width:0">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--leaf)" hint-size="auto,20px">Colección permanente</x-import>
+          <h2 id="col-title" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(2.3rem,5vw,3.8rem);line-height:1;letter-spacing:-.012em;margin:12px 0 0;color:#F6EEDF;text-wrap:balance">Se ruega no tocar las obras. <em style="font-style:italic;color:var(--leaf)">Comérselas, sí.</em></h2>
+        </div>
+        <div data-reveal="" data-gcount="" aria-hidden="true" style="display:flex;align-items:center;gap:14px;font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text-on-dark-soft)">
+          <span><span data-counter="" style="color:#F6EEDF">01</span> / 04</span>
+          <span style="position:relative;width:110px;height:2px;background:rgba(255,255,255,.16);border-radius:2px;overflow:hidden"><span data-progress="" style="position:absolute;inset:0;background:var(--leaf);transform-origin:0 50%;transform:scaleX(0)"></span></span>
+          <sc-if value="{{ narrow }}" hint-placeholder-val="{{ true }}">
+            <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-body);font-weight:600;font-size:.92rem">Desliza<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </sc-if>
+        </div>
+      </div>
+
+      <div data-mpill="" aria-hidden="true" style="display:none;position:sticky;top:80px;z-index:5;justify-content:center;pointer-events:none;margin-top:22px;height:0;overflow:visible">
+        <span style="display:flex;align-items:center;gap:12px;height:38px;padding:0 16px;border-radius:999px;background:rgba(30,21,14,.82);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 12px 28px -14px rgba(0,0,0,.8);font-family:var(--font-display);font-weight:700;font-size:.92rem;color:var(--text-on-dark-soft);white-space:nowrap">
+          <span>Obra <span data-mcounter="" style="color:#F6EEDF;font-variant-numeric:tabular-nums">01</span> / 04</span>
+          <span style="position:relative;width:64px;height:2px;background:rgba(255,255,255,.16);border-radius:2px;overflow:hidden"><span data-mprogress="" style="position:absolute;inset:0;background:var(--leaf);transform-origin:0 50%;transform:scaleX(0)"></span></span>
+        </span>
+      </div>
+
+      <div data-track="" tabindex="0" aria-label="Obras de la colección. Desliza para ver más." style="display:flex;align-items:flex-start;gap:clamp(28px,5vw,72px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);scrollbar-width:none;padding-top:64px;padding-bottom:20px;padding-inline:max(var(--gutter),calc((100% - var(--maxw)) / 2 + var(--gutter)));margin-top:8px">
+
+        <article style="flex:none;scroll-snap-align:start;position:relative;width:min(84vw,calc(42vh + 290px));display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 26px">
+          <div aria-hidden="true" style="position:absolute;left:-12%;top:-64px;width:min(100vw,calc(42vh + 120px));height:90%;background:radial-gradient(ellipse 55% 65% at 45% 0%,rgba(255,214,150,.15),rgba(255,214,150,0) 70%);pointer-events:none"></div>
+          <div data-swing="" style="position:relative;width:min(76vw,42vh);transform-origin:50% -30px">
+            <span aria-hidden="true" style="position:absolute;left:50%;top:-36px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EBD6A4,#7A5524)"></span>
+            <svg aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none" style="position:absolute;left:18%;width:64%;top:-31px;height:31px;overflow:visible"><path d="M0 30 L50 1 L100 30" fill="none" stroke="#8C7558" stroke-width="1.3" vector-effect="non-scaling-stroke"></path></svg>
+            <div style="background:var(--frame-bg);padding:var(--frame-pad);box-shadow:var(--frame-shadow);border-radius:3px">
+              <div style="background:var(--mat);padding:var(--mat-pad);box-shadow:var(--mat-shadow)">
+                <img src="images/la-trufada.jpg" alt="La Trufada: hamburguesa cubierta de trufa rallada sobre papel de periódico" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+              </div>
+            </div>
+          </div>
+          <div style="flex:1 1 200px;max-width:250px;background:#F7F1E6;color:var(--ink);padding:14px 16px 15px;border-radius:2px;box-shadow:0 14px 30px -18px rgba(0,0,0,.7)">
+            <span style="display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)">Obra I · Burgers</span>
+            <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.6rem;line-height:1.05;letter-spacing:0;margin:6px 0 0;color:var(--ink)">La Trufada</h3>
+            <span style="display:block;font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-top:3px">Trufa rallada sobre brioche</span>
+            <p style="margin:10px 0 0;font-size:.92rem;line-height:1.45;color:var(--ink)">Carne, salsa blanca, rúcula y una nevada de trufa rallada.</p>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;margin-top:10px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px dashed var(--accent);color:var(--accent)">[Precio]</span>
+            </sc-if>
+          </div>
+        </article>
+
+        <article style="flex:none;scroll-snap-align:start;position:relative;width:min(84vw,calc(42vh + 290px));display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 26px">
+          <div aria-hidden="true" style="position:absolute;left:-12%;top:-64px;width:min(100vw,calc(42vh + 120px));height:90%;background:radial-gradient(ellipse 55% 65% at 45% 0%,rgba(255,214,150,.15),rgba(255,214,150,0) 70%);pointer-events:none"></div>
+          <div data-swing="" style="position:relative;width:min(76vw,42vh);transform-origin:50% -30px">
+            <span aria-hidden="true" style="position:absolute;left:50%;top:-36px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EBD6A4,#7A5524)"></span>
+            <svg aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none" style="position:absolute;left:18%;width:64%;top:-31px;height:31px;overflow:visible"><path d="M0 30 L50 1 L100 30" fill="none" stroke="#8C7558" stroke-width="1.3" vector-effect="non-scaling-stroke"></path></svg>
+            <div style="background:var(--frame-bg);padding:var(--frame-pad);box-shadow:var(--frame-shadow);border-radius:3px">
+              <div style="background:var(--mat);padding:var(--mat-pad);box-shadow:var(--mat-shadow)">
+                <img src="images/la-vasca.jpg" alt="La Vasca: hamburguesa con queso a la plancha y pimiento rojo" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+              </div>
+            </div>
+          </div>
+          <div style="flex:1 1 200px;max-width:250px;background:#F7F1E6;color:var(--ink);padding:14px 16px 15px;border-radius:2px;box-shadow:0 14px 30px -18px rgba(0,0,0,.7)">
+            <span style="display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)">Obra II · Burgers</span>
+            <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.6rem;line-height:1.05;letter-spacing:0;margin:6px 0 0;color:var(--ink)">La Vasca</h3>
+            <span style="display:block;font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-top:3px">Escuela vasca, sobre brioche</span>
+            <p style="margin:10px 0 0;font-size:.92rem;line-height:1.45;color:var(--ink)">Carne, queso a la plancha y pimiento rojo.</p>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;margin-top:10px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px dashed var(--accent);color:var(--accent)">[Precio]</span>
+            </sc-if>
+          </div>
+        </article>
+
+        <article style="flex:none;scroll-snap-align:start;position:relative;width:min(84vw,calc(42vh + 290px));display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 26px">
+          <div aria-hidden="true" style="position:absolute;left:-12%;top:-64px;width:min(100vw,calc(42vh + 120px));height:90%;background:radial-gradient(ellipse 55% 65% at 45% 0%,rgba(255,214,150,.15),rgba(255,214,150,0) 70%);pointer-events:none"></div>
+          <div data-swing="" style="position:relative;width:min(76vw,42vh);transform-origin:50% -30px">
+            <span aria-hidden="true" style="position:absolute;left:50%;top:-36px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EBD6A4,#7A5524)"></span>
+            <svg aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none" style="position:absolute;left:18%;width:64%;top:-31px;height:31px;overflow:visible"><path d="M0 30 L50 1 L100 30" fill="none" stroke="#8C7558" stroke-width="1.3" vector-effect="non-scaling-stroke"></path></svg>
+            <div style="background:var(--frame-bg);padding:var(--frame-pad);box-shadow:var(--frame-shadow);border-radius:3px">
+              <div style="background:var(--mat);padding:var(--mat-pad);box-shadow:var(--mat-shadow)">
+                <img src="images/nachos.jpg" alt="Nachos con queso fundido volcado desde la sartén, carne picada, pico de gallo y jalapeños" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+              </div>
+            </div>
+          </div>
+          <div style="flex:1 1 200px;max-width:250px;background:#F7F1E6;color:var(--ink);padding:14px 16px 15px;border-radius:2px;box-shadow:0 14px 30px -18px rgba(0,0,0,.7)">
+            <span style="display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)">Obra III · Para compartir</span>
+            <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.6rem;line-height:1.05;letter-spacing:0;margin:6px 0 0;color:var(--ink)">Los Nachos</h3>
+            <span style="display:block;font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-top:3px">Queso fundido sobre totopo</span>
+            <p style="margin:10px 0 0;font-size:.92rem;line-height:1.45;color:var(--ink)">El queso gratinado cae al momento sobre carne picada, pico de gallo y jalapeños.</p>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;margin-top:10px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px dashed var(--accent);color:var(--accent)">[Precio] · [Nombre]</span>
+            </sc-if>
+          </div>
+        </article>
+
+        <article style="flex:none;scroll-snap-align:start;position:relative;width:min(84vw,calc(42vh + 290px));display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 26px">
+          <div aria-hidden="true" style="position:absolute;left:-12%;top:-64px;width:min(100vw,calc(42vh + 120px));height:90%;background:radial-gradient(ellipse 55% 65% at 45% 0%,rgba(255,214,150,.15),rgba(255,214,150,0) 70%);pointer-events:none"></div>
+          <div data-swing="" style="position:relative;width:min(76vw,42vh);transform-origin:50% -30px">
+            <span aria-hidden="true" style="position:absolute;left:50%;top:-36px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#EBD6A4,#7A5524)"></span>
+            <svg aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none" style="position:absolute;left:18%;width:64%;top:-31px;height:31px;overflow:visible"><path d="M0 30 L50 1 L100 30" fill="none" stroke="#8C7558" stroke-width="1.3" vector-effect="non-scaling-stroke"></path></svg>
+            <div style="background:var(--frame-bg);padding:var(--frame-pad);box-shadow:var(--frame-shadow);border-radius:3px">
+              <div style="background:var(--mat);padding:var(--mat-pad);box-shadow:var(--mat-shadow)">
+                <img src="images/risotto-gamba.jpg" alt="Risotto de setas con una gamba entera, sobre tabla de madera" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
+              </div>
+            </div>
+          </div>
+          <div style="flex:1 1 200px;max-width:250px;background:#F7F1E6;color:var(--ink);padding:14px 16px 15px;border-radius:2px;box-shadow:0 14px 30px -18px rgba(0,0,0,.7)">
+            <span style="display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)">Obra IV · Platos</span>
+            <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.6rem;line-height:1.05;letter-spacing:0;margin:6px 0 0;color:var(--ink)">Risotto de setas y gamba</h3>
+            <span style="display:block;font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-top:3px">Bodegón con gamba</span>
+            <p style="margin:10px 0 0;font-size:.92rem;line-height:1.45;color:var(--ink)">Arroz cremoso con setas, coronado con una gamba entera.</p>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+              <span style="display:inline-flex;margin-top:10px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px dashed var(--accent);color:var(--accent)">[Precio]</span>
+            </sc-if>
+          </div>
+        </article>
+
+        <div style="flex:none;scroll-snap-align:start;align-self:center;width:min(80vw,320px);padding:30px 28px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:var(--char-2)">
+          <h3 style="font-family:var(--font-serif);font-weight:400;font-size:2rem;line-height:1.05;letter-spacing:0;margin:0;color:#F6EEDF">¿Quieres ver la carta entera?</h3>
+          <p style="margin:12px 0 22px;color:var(--text-on-dark-soft);font-size:1rem;line-height:1.5">Burgers, raciones, platos y cócteles, con precios e información de alérgenos.</p>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="{{ menuUrl }}" hint-size="220px,48px">Ver la carta completa<svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></x-import>
+          <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+            <span style="display:flex;margin-top:16px;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1.5px dashed var(--leaf);color:var(--leaf);width:max-content;max-width:100%">Falta la carta del local</span>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reservar" aria-labelledby="res-title" style="padding-block:var(--pad-block)">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:clamp(44px,6vw,88px);align-items:center">
+      <div data-reveal="" style="flex:1 1 420px;min-width:0">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="auto,20px">Reserva tu visita</x-import>
+        <h2 id="res-title" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(2.3rem,5.6vw,4.1rem);line-height:1;letter-spacing:-.012em;margin:14px 0 0;color:var(--ink);text-wrap:balance"><span data-count="347" style="font-variant-numeric:tabular-nums">347</span> críticas, <span data-count="4.2" data-dec="1" style="font-variant-numeric:tabular-nums">4,2</span> de media. <em data-res-stamp="" style="font-style:italic;color:var(--accent);display:inline-block;transform-origin:20% 70%">Falta la tuya.</em></h2>
+        <div style="margin-top:20px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4 }}" score="4,2" count="347" size="{{ 22 }}" hint-size="250px,26px"></x-import>
+        </div>
+        <p style="font-size:var(--fs-lead);color:var(--ink-soft);margin:18px 0 0;max-width:32em;text-wrap:pretty">Elige día y hora y te guardamos la mesa. Si prefieres comer en casa, pide online.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="tel:+34639054353" hint-size="190px,48px"><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>639 05 43 53</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" href="{{ orderUrl }}" hint-size="150px,48px">Pedir online</x-import>
+        </div>
+        <a href="{{ reviewsUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;margin-top:10px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:4px">Leer las reseñas en Google</a>
+      </div>
+
+      <div data-res-card="" style="flex:1 1 400px;min-width:0;max-width:560px;margin-inline:auto">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" accent="{{ true }}" pad="{{ 0 }}" hint-size="100%,560px">
+          <div data-res-body="" style="padding:clamp(22px,4vw,32px)">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <h3 style="font-family:var(--font-serif);font-weight:400;font-size:1.8rem;letter-spacing:0;margin:0;color:var(--ink)">Tu mesa</h3>
+              <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+                <span style="font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1.5px dashed var(--accent);color:var(--accent)">Demo</span>
+              </sc-if>
+            </div>
+
+            <div style="font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:22px 0 10px">Personas</div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <button type="button" aria-label="Una persona menos" onClick="{{ dec }}" style="width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0;transition:transform .15s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg></button>
+              <output data-people="" aria-live="polite" style="display:inline-block;font-family:var(--font-display);font-weight:800;font-size:1.7rem;min-width:2ch;text-align:center;color:var(--ink)">{{ people }}</output>
+              <button type="button" aria-label="Una persona más" onClick="{{ inc }}" style="width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);background:var(--ink);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;transition:transform .15s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></button>
+              <span style="color:var(--ink-soft);font-size:1rem">{{ peopleWord }}</span>
+            </div>
+
+            <div style="font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:22px 0 10px">Día</div>
+            <div role="group" aria-label="Día" data-res-days="" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -4px;padding:2px 4px 4px">
+              <sc-for list="{{ days }}" as="d" hint-placeholder-count="6">
+                <button type="button" aria-pressed="{{ d.pressed }}" onClick="{{ d.pick }}" style="flex:none;min-width:70px;min-height:58px;padding:8px 12px;border-radius:14px;border:1.5px solid {{ d.border }};background:{{ d.bg }};color:{{ d.fg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;font-family:var(--font-body);transition:background-color .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)">
+                  <span style="font-weight:800;font-size:.95rem;line-height:1">{{ d.top }}</span>
+                  <span style="font-size:.8rem;line-height:1">{{ d.sub }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <div style="font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:22px 0 10px">Hora</div>
+            <div role="group" aria-label="Hora" data-res-times="" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+              <sc-for list="{{ times }}" as="t" hint-placeholder-count="8">
+                <button type="button" aria-pressed="{{ t.pressed }}" disabled="{{ t.disabled }}" onClick="{{ t.pick }}" style="min-height:46px;padding:0 4px;border-radius:999px;border:1.5px {{ t.borderStyle }} {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};font-family:var(--font-display);font-weight:700;font-size:.98rem;cursor:{{ t.cursor }};font-variant-numeric:tabular-nums;transition:background-color .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)">{{ t.label }}</button>
+              </sc-for>
+            </div>
+
+            <div data-res-book="" style="margin-top:26px">
+              <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="{{ bookUrl }}" target="_blank" rel="noopener" dc-props="{{ fullBtn }}" hint-size="100%,56px">Reservar para {{ bookLabel }}</x-import>
+            </div>
+            <p style="margin:12px 0 0;font-size:.86rem;line-height:1.45;color:var(--ink-soft);text-align:center">La reserva se confirma en dish.co, el sistema de reservas de Botticelli.</p>
+          </div>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <section id="horario" aria-labelledby="hor-title" style="background:var(--cream-2);padding-block:var(--pad-block)">
+    <div class="wrap">
+      <div data-reveal="">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="auto,20px">Dónde estamos</x-import>
+        <h2 id="hor-title" style="font-family:var(--font-serif);font-weight:400;font-size:clamp(2.3rem,5.6vw,4.1rem);line-height:1;letter-spacing:-.012em;margin:14px 0 0;color:var(--ink);text-wrap:balance">Horario de visitas.</h2>
+        <p style="font-size:var(--fs-lead);color:var(--ink-soft);margin:16px 0 0;max-width:36em">Heliodoro de la Torre Kalea, 7 · Deusto, 48014 Bilbao.</p>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px;margin-top:36px;align-items:stretch">
+        <div style="background:#fff;padding:6px;border-radius:22px;box-shadow:var(--shadow);display:flex;min-height:340px">
+          <iframe title="Mapa: Botticelli en Heliodoro de la Torre Kalea 7, Bilbao" loading="lazy" src="{{ mapUrl }}" style="border:0;width:100%;min-height:328px;flex:1;border-radius:16px;display:block"></iframe>
+        </div>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" pad="{{ 28 }}" hint-size="100%,460px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ status.open }}" hint-size="240px,34px">{{ status.text }}</x-import>
+          <div role="list" aria-label="Horario semanal" style="margin-top:18px;display:grid">
+            <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
+              <div role="listitem" style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 10px;border-top:1px dashed var(--line);background:{{ h.bg }};border-radius:8px;font-weight:{{ h.weight }};color:var(--ink)">
+                <span>{{ h.day }}</span>
+                <span style="color:{{ h.color }};font-variant-numeric:tabular-nums">{{ h.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:12px 0 0;font-size:.85rem;line-height:1.45;color:var(--ink-soft)">* Horario de los lunes por confirmar. El lunes 12 de octubre (Fiesta Nacional) está cerrado.</p>
+          </sc-if>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="{{ directionsUrl }}" target="_blank" rel="noopener" hint-size="170px,48px"><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Cómo llegar</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" href="tel:+34639054353" hint-size="120px,48px">Llamar</x-import>
+          </div>
+        </x-import>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="background:var(--char-deep);color:var(--text-on-dark-soft);padding-top:56px;padding-bottom:{{ footPad }}">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:28px 48px;justify-content:space-between;align-items:flex-start">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="images/logo-b.jpg" alt="Logotipo de Botticelli" width="56" height="56" style="width:56px;height:56px;border-radius:50%;object-fit:cover">
+      <div>
+        <div style="font-family:var(--font-serif);font-size:1.7rem;letter-spacing:.08em;line-height:1;color:#F6EEDF">BOTTICELLI</div>
+        <div style="font-size:.95rem;margin-top:6px">Hamburguesería en Deusto, Bilbao</div>
+      </div>
+    </div>
+    <div style="display:grid;gap:6px;font-size:.98rem">
+      <a href="#horario">Heliodoro de la Torre Kalea, 7 · 48014 Bilbao</a>
+      <a href="tel:+34639054353">639 05 43 53</a>
+      <span>20–30 € por persona</span>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:32px">
+    <div style="padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;line-height:1.5;display:grid;gap:6px">
+      <p style="margin:0">¿Alergias o intolerancias? Pregúntanos antes de pedir: tenemos la información de alérgenos de cada plato.</p>
+      <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0">Propuesta web de demostración. Las fotos son del local; la carta, los precios y el sistema de reserva están pendientes de confirmar.</p>
+      </sc-if>
+    </div>
+  </div>
+</footer>
+
+<div aria-hidden="{{ barHidden }}" style="position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;align-items:center;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom));background:rgba(251,244,230,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:{{ barTransform }};visibility:{{ barVis }};transition:transform .32s cubic-bezier(.32,.72,0,1),visibility .32s">
+  <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="#reservar" dc-props="{{ fullBtn }}" style="flex:1;min-width:0" hint-size="100%,50px"><svg viewBox="0 0 24 24" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Reservar mesa</x-import>
+  <a href="tel:+34639054353" aria-label="Llamar a Botticelli" style="flex:none;width:52px;height:52px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;hero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;animado&quot;,&quot;elegante&quot;,&quot;original&quot;],&quot;default&quot;:&quot;animado&quot;,&quot;tsType&quot;:&quot;\&quot;animado\&quot; | \&quot;elegante\&quot; | \&quot;original\&quot;&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reunión&quot;},&quot;frameStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dorado&quot;,&quot;galeria&quot;],&quot;default&quot;:&quot;dorado&quot;,&quot;tsType&quot;:&quot;\&quot;dorado\&quot; | \&quot;galeria\&quot;&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;completo&quot;,&quot;suave&quot;],&quot;default&quot;:&quot;completo&quot;,&quot;tsType&quot;:&quot;\&quot;completo\&quot; | \&quot;suave\&quot;&quot;,&quot;section&quot;:&quot;Estilo&quot;}}">
+class Component extends DCLogic {
+  state = { wide: false, scrolled: false, pastHero: false, people: 2, day: 0, time: '21:00', now: new Date(), bIdx: 0, bPaused: false };
+
+  B_DUR = 6.5;
+  WORKS = [
+    { kicker: 'Sala I · La casa', title: 'La Venus de la casa', tech: 'Sobre caja de madera' },
+    { kicker: 'Obra destacada', title: 'Sin título nº 1', tech: 'Técnica mixta sobre brioche, con patatas' },
+    { kicker: 'Obra I · Burgers', title: 'La Trufada', tech: 'Trufa rallada sobre brioche' },
+    { kicker: 'Obra II · Burgers', title: 'La Vasca', tech: 'Escuela vasca, sobre brioche' },
+    { kicker: 'Obra III · Para compartir', title: 'Los Nachos', tech: 'Queso fundido sobre totopo' },
+    { kicker: 'Obra IV · Platos', title: 'Risotto de setas y gamba', tech: 'Bodegón con gamba' },
+  ];
+
+  heroKey() { return this.props.hero ?? 'animado'; }
+
+  SCHED = { 0: [], 1: [[480, 1380]], 2: [[480, 1380]], 3: [[480, 1380]], 4: [[480, 1380]], 5: [[480, 1380]], 6: [[600, 1380]] };
+  HOLIDAYS = ['2026-10-12'];
+  TIMES = ['13:30', '14:00', '14:30', '15:00', '20:30', '21:00', '21:30', '22:00'];
+  DAY_NAMES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  Q = encodeURIComponent('Botticelli, Heliodoro de la Torre Kalea 7, 48014 Bilbao');
+  URLS = {
+    book: 'https://www.dish.co/',
+    order: '#pedir-online',
+    menu: '#carta-completa',
+  };
+
+  fmt(min) { return `${Math.floor(min / 60)}:${String(min % 60).padStart(2, '0')}`; }
+  key(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+  rangesFor(d) { return this.HOLIDAYS.includes(this.key(d)) ? [] : this.SCHED[d.getDay()]; }
+
+  status(now) {
+    const m = now.getHours() * 60 + now.getMinutes();
+    const today = this.rangesFor(now);
+    for (const [a, b] of today) if (m >= a && m < b) return { open: true, text: `Abierto ahora · cierra a las ${this.fmt(b)}` };
+    for (const [a] of today) if (m < a) return { open: false, text: `Cerrado · abre hoy a las ${this.fmt(a)}` };
+    for (let i = 1; i <= 8; i++) {
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+      const r = this.rangesFor(d);
+      if (r.length) return { open: false, text: `Cerrado · abre ${i === 1 ? 'mañana' : 'el ' + this.DAY_NAMES[d.getDay()].toLowerCase()} a las ${this.fmt(r[0][0])}` };
+    }
+    return { open: false, text: 'Cerrado' };
+  }
+
+  days(now) {
+    const out = [], m = now.getHours() * 60 + now.getMinutes();
+    for (let i = 0; out.length < 6 && i < 14; i++) {
+      const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+      if (!this.rangesFor(d).length) continue;
+      if (i === 0 && m > 21 * 60 + 30) continue;
+      const wd = d.toLocaleDateString('es-ES', { weekday: 'short' }).replace('.', '');
+      const mo = d.toLocaleDateString('es-ES', { month: 'short' }).replace('.', '');
+      out.push({
+        top: i === 0 ? 'Hoy' : i === 1 ? 'Mañana' : wd.charAt(0).toUpperCase() + wd.slice(1),
+        sub: `${d.getDate()} ${mo}`,
+        short: i === 0 ? 'hoy' : i === 1 ? 'mañana' : `el ${wd} ${d.getDate()}`,
+        isToday: i === 0,
+      });
+    }
+    return out;
+  }
+
+  renderVals() {
+    const s = this.state, now = s.now;
+    const showDemo = this.props.showDemo ?? true;
+    const status = this.status(now);
+    const allDays = this.days(now);
+    const dayIdx = Math.min(s.day, allDays.length - 1);
+    const days = allDays.map((d, i) => {
+      const on = i === dayIdx;
+      return { ...d, pressed: on ? 'true' : 'false', bg: on ? 'var(--ink)' : '#fff', fg: on ? '#fff' : 'var(--ink)', border: on ? 'var(--ink)' : 'var(--line)', pick: () => this.setState({ day: i }) };
+    });
+    const dSel = allDays[dayIdx] || { isToday: false, short: '' };
+    const nowMin = now.getHours() * 60 + now.getMinutes();
+    const base = this.TIMES.map((t) => { const [h, mm] = t.split(':').map(Number); return { label: t, disabled: dSel.isToday && h * 60 + mm < nowMin + 30 }; });
+    let time = s.time;
+    const cur = base.find((t) => t.label === time);
+    if (!cur || cur.disabled) time = (base.find((t) => !t.disabled) || base[0]).label;
+    const times = base.map((t) => {
+      const on = t.label === time;
+      return {
+        label: t.label, disabled: t.disabled, pressed: on ? 'true' : 'false',
+        bg: on ? 'var(--accent)' : t.disabled ? 'transparent' : '#fff',
+        fg: on ? '#fff' : t.disabled ? 'var(--ink-faint)' : 'var(--ink)',
+        border: on ? 'var(--accent)' : 'var(--line)',
+        borderStyle: t.disabled ? 'dashed' : 'solid',
+        cursor: t.disabled ? 'not-allowed' : 'pointer',
+        pick: () => { if (!t.disabled) this.setState({ time: t.label }); },
+      };
+    });
+    const todayDow = now.getDay();
+    const hours = [1, 2, 3, 4, 5, 6, 0].map((dw) => {
+      const r = this.SCHED[dw], today = dw === todayDow;
+      return {
+        day: this.DAY_NAMES[dw] + (today ? ' · hoy' : ''),
+        text: r.length ? r.map(([a, b]) => `${this.fmt(a)}–${this.fmt(b)}`).join(' · ') + (dw === 1 && showDemo ? '*' : '') : 'Cerrado',
+        weight: today ? '800' : '500',
+        bg: today ? 'rgba(163,54,33,.08)' : 'transparent',
+        color: r.length ? 'var(--ink)' : 'var(--ink-soft)',
+      };
+    });
+    const showBar = !s.wide && s.pastHero;
+    const hero = this.heroKey();
+    const W = this.WORKS[s.bIdx] || this.WORKS[0];
+    return {
+      heroA: hero === 'animado', heroB: hero === 'elegante', heroO: hero === 'original',
+      navFg: hero !== 'original' && !s.scrolled ? '#F6EEDF' : 'var(--ink)',
+      pillDark: { style: { color: status.open ? '#9CD58F' : '#F4A58F', background: 'rgba(20,13,8,.5)', border: '1px solid rgba(246,238,223,.16)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' } },
+      ratingDark: { style: { '--ink-soft': '#D9CBB4', color: '#F8F1E4' } },
+      bWork: W,
+      bSegs: this.WORKS.map((w, j) => ({ label: `Ver ${w.title}`, pressed: j === s.bIdx ? 'true' : 'false', pick: () => this.bGo(j) })),
+      bPaused: s.bPaused, bPlaying: !s.bPaused,
+      bPauseLabel: s.bPaused ? 'Reanudar la sala' : 'Pausar la sala',
+      bToggle: () => this.bToggle(),
+      bStageW: s.wide ? 'min(46vw, 640px)' : '100%',
+      bStageH: s.wide ? 'auto' : '64svh',
+      bStageBottom: s.wide ? '0' : 'auto',
+      bJustify: s.wide ? 'center' : 'flex-start',
+      bPadTop: s.wide ? '96px' : 'calc(64svh - 76px)',
+      bTextMax: s.wide ? 'min(580px, calc(54vw - 110px))' : '100%',
+      showDemo, status, days, times, hours,
+      wide: s.wide, narrow: !s.wide,
+      people: s.people,
+      peopleWord: s.people === 1 ? 'persona' : 'personas',
+      dec: () => this.setState((p) => ({ people: Math.max(1, p.people - 1) })),
+      inc: () => this.setState((p) => ({ people: Math.min(12, p.people + 1) })),
+      bookLabel: `${s.people} · ${dSel.short}, ${time}`,
+      bookUrl: this.URLS.book,
+      orderUrl: this.URLS.order,
+      menuUrl: this.URLS.menu,
+      reviewsUrl: `https://www.google.com/maps/search/?api=1&query=${this.Q}`,
+      directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${this.Q}`,
+      mapUrl: `https://www.google.com/maps?q=${this.Q}&output=embed`,
+      fullBtn: { style: { width: '100%', justifyContent: 'center', whiteSpace: 'normal', textAlign: 'center' } },
+      navBg: s.scrolled ? 'rgba(251,244,230,.88)' : 'rgba(251,244,230,0)',
+      navBlur: s.scrolled ? 'blur(12px)' : 'none',
+      navLine: s.scrolled ? 'var(--line)' : 'transparent',
+      barTransform: showBar ? 'translateY(0)' : 'translateY(110%)',
+      barVis: showBar ? 'visible' : 'hidden',
+      barHidden: showBar ? 'false' : 'true',
+      footPad: s.wide ? '56px' : 'calc(96px + env(safe-area-inset-bottom))',
+    };
+  }
+
+  componentDidMount() {
+    this.mq = window.matchMedia('(min-width: 900px)');
+    this.onMq = () => this.setState({ wide: this.mq.matches });
+    this.mq.addEventListener('change', this.onMq);
+    this.onMq();
+    this.onScroll = () => {
+      const y = window.scrollY, sc = y > 40, ph = y > window.innerHeight * 0.75;
+      if (sc !== this.state.scrolled || ph !== this.state.pastHero) this.setState({ scrolled: sc, pastHero: ph });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.clock = setInterval(() => this.setState({ now: new Date() }), 60000);
+    this.applyFrame();
+    this.prehide();
+    this.tries = 0;
+    this.boot();
+  }
+
+  componentDidUpdate(prev, prevState) {
+    if (prevState && this.ready && window.gsap && !this._reduce) {
+      const g = window.gsap;
+      if (prevState.people !== this.state.people) {
+        const o = document.querySelector('[data-people]');
+        if (o) g.fromTo(o, { scale: 1.35, y: this.state.people > prevState.people ? -6 : 6 }, { scale: 1, y: 0, duration: 0.45, ease: 'back.out(2.4)', overwrite: true });
+      }
+      if (prevState.people !== this.state.people || prevState.day !== this.state.day || prevState.time !== this.state.time) {
+        const b = document.querySelector('[data-res-book]');
+        if (b) g.fromTo(b, { scale: 0.97 }, { scale: 1, duration: 0.5, ease: 'back.out(3)', overwrite: true });
+      }
+    }
+    if (prev.frameStyle !== this.props.frameStyle) this.applyFrame();
+    if (prev.hero !== this.props.hero) {
+      this.bIdx = 0;
+      if (this.state.bIdx || this.state.bPaused) this.setState({ bIdx: 0, bPaused: false });
+      this.prehide();
+      if (this.ready) { this.teardown(); this.initMotion(); }
+      return;
+    }
+    if (prev.motion !== this.props.motion && this.ready) { this.teardown(); this.initMotion(); }
+    if (prevState && prevState.wide !== this.state.wide && this.heroKey() === 'elegante') this.syncAmb();
+  }
+
+  prehide() {
+    this.clearPrehide();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const h = this.heroKey();
+    const sels = h === 'animado' ? ['[data-a-hang]', '[data-a-shade]', '[data-a-content]', 'header'] : h === 'elegante' ? ['[data-b-veil]', 'header'] : [];
+    sels.forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      this._pre.push([el, el.style.opacity]);
+      el.style.opacity = sel === '[data-b-veil]' ? '1' : '0';
+    });
+  }
+
+  clearPrehide() {
+    (this._pre || []).forEach(([el, v]) => { el.style.opacity = v; });
+    this._pre = [];
+  }
+
+  componentWillUnmount() {
+    this.teardown();
+    clearTimeout(this.bootT);
+    clearInterval(this.clock);
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+    if (this.lenis) { window.gsap.ticker.remove(this.rafFn); this.lenis.destroy(); this.lenis = null; }
+  }
+
+  applyFrame() {
+    const st = document.documentElement.style;
+    const keys = ['--frame-bg', '--frame-pad', '--frame-shadow', '--mat', '--mat-pad', '--mat-shadow'];
+    if ((this.props.frameStyle ?? 'dorado') === 'galeria') {
+      const v = ['#1C1510', '7px', '0 28px 50px -24px rgba(20,10,0,.7), inset 0 0 0 1px rgba(255,255,255,.08)', '#FBF8F1', 'clamp(14px,3.2vw,26px)', 'inset 0 2px 6px rgba(0,0,0,.16)'];
+      keys.forEach((k, i) => st.setProperty(k, v[i]));
+    } else keys.forEach((k) => st.removeProperty(k));
+  }
+
+  boot() {
+    if (window.gsap && window.ScrollTrigger && window.SplitText) { this.ready = true; this.initMotion(); return; }
+    if (this.tries++ < 80) this.bootT = setTimeout(() => this.boot(), 100);
+    else this.clearPrehide();
+  }
+
+  introO(full, lively) {
+    const gsap = window.gsap, Split = window.SplitText;
+    const q = (sel) => Array.from(document.querySelectorAll(sel));
+    const h1 = document.querySelector('[data-hero-title]');
+    if (!h1) return;
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    let split = null;
+    if (full) {
+      split = Split.create(h1, { type: 'lines', mask: 'lines' });
+      tl.from(split.lines, { yPercent: 110, duration: 1.1, stagger: 0.09 }, 0);
+    } else tl.from(h1, { opacity: 0, duration: 0.5 }, 0);
+    tl.from(q('[data-hero-fade]'), { y: full ? 16 : 0, opacity: 0, duration: 0.8, stagger: 0.07 }, 0.2);
+    const frame = document.querySelector('[data-hero-frame]');
+    if (frame) {
+      if (lively) tl.from(frame, { y: -50, rotation: -8, opacity: 0, duration: 1.9, ease: 'elastic.out(1, 0.42)' }, 0.15);
+      else tl.from(frame, { y: full ? 20 : 0, opacity: 0, duration: 0.9, ease: 'power3.out' }, 0.15);
+    }
+    tl.from(q('[data-hero-label]'), { y: 12, opacity: 0, duration: 0.6, ease: 'power3.out' }, 0.9);
+    if (split) tl.eventCallback('onComplete', () => split.revert());
+  }
+
+  introA(full, lively) {
+    const g = window.gsap, Split = window.SplitText, sec = document.querySelector('[data-a]');
+    if (!sec) return;
+    const $ = (s) => sec.querySelector(s), $$ = (s) => Array.from(sec.querySelectorAll(s));
+    const hang = $('[data-a-hang]'), zoom = $('[data-a-zoom]'), img = $('[data-a-img]'), spot = $('[data-a-spot]'), shade = $('[data-a-shade]');
+    const wall = $('[data-a-wall]'), label = $('[data-a-label]'), h1 = $('[data-a-title]'), fades = $$('[data-a-fade]'), header = document.querySelector('header');
+    if (!full) { g.from([h1, ...fades], { opacity: 0, duration: 0.6, stagger: 0.06, ease: 'power2.out' }); return; }
+    const s0 = this.state.wide ? (lively ? 0.42 : 0.6) : (lively ? 0.6 : 0.74);
+    wall.style.top = `calc(${(1 - s0) * 50}% - 58px)`;
+    label.style.top = `calc(${(1 + s0) * 50}% + 24px)`;
+    const split = Split.create(h1, { type: 'lines', mask: 'lines' });
+    g.set(hang, { transformOrigin: `50% ${(1 - s0) * 50}%` });
+    g.set(zoom, { scale: s0 });
+    g.set(img, { scale: 1.14 });
+    g.set(shade, { opacity: 0 });
+    g.set(fades, { opacity: 0, y: 16 });
+    g.set(split.lines, { yPercent: 110 });
+    g.set(header, { autoAlpha: 0 });
+    const tl = g.timeline({ defaults: { ease: 'expo.out' }, onComplete: () => split.revert() });
+    let Z;
+    if (lively) {
+      const chars = Split.create(wall, { type: 'chars' }).chars;
+      g.set(wall, { opacity: 1 });
+      g.set(chars, { opacity: 0 });
+      tl.to(spot, { opacity: 0.8, duration: 0.05, ease: 'none' }, 0.25)
+        .to(spot, { opacity: 0.1, duration: 0.09, ease: 'none' })
+        .to(spot, { opacity: 0.9, duration: 0.05, ease: 'none' }, '+=0.12')
+        .to(spot, { opacity: 0.3, duration: 0.06, ease: 'none' })
+        .to(spot, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+      tl.fromTo(hang, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.55);
+      tl.fromTo(hang, { y: -70, rotation: -6 }, { y: 0, rotation: 0, duration: 2.1, ease: 'elastic.out(1, 0.4)' }, 0.55);
+      tl.fromTo(chars, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.045 }, 0.85);
+      tl.fromTo(label, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 1.3);
+      Z = 2.75;
+      tl.to([wall, label], { opacity: 0, duration: 0.45, ease: 'power2.out' }, Z - 0.15);
+    } else {
+      tl.fromTo(spot, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.out' }, 0);
+      tl.fromTo(hang, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0.1);
+      Z = 0.9;
+    }
+    tl.to(zoom, { scale: 1, duration: lively ? 1.8 : 1.3, ease: 'expo.inOut' }, Z);
+    tl.to(img, { scale: 1, duration: lively ? 2.1 : 1.5, ease: 'power3.inOut' }, Z);
+    tl.to(spot, { opacity: 0, duration: 0.8, ease: 'power2.out' }, Z + 0.5);
+    tl.to(shade, { opacity: 1, duration: 1, ease: 'power2.out' }, Z + 1);
+    tl.to(split.lines, { yPercent: 0, duration: 1.15, stagger: 0.1 }, Z + 1.25);
+    tl.to(fades, { opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out' }, Z + 1.45);
+    tl.to(header, { autoAlpha: 1, duration: 0.8, ease: 'power2.out' }, Z + 1.5);
+    if (lively) tl.call(() => g.to(img, { scale: 1.05, duration: 9, ease: 'sine.inOut', yoyo: true, repeat: -1 }), null, '>');
+    const evs = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
+    const fast = () => { tl.timeScale(4); if (this.offFast) this.offFast(); };
+    evs.forEach((e) => window.addEventListener(e, fast, { passive: true }));
+    this.offFast = () => { evs.forEach((e) => window.removeEventListener(e, fast)); this.offFast = null; };
+    tl.call(() => { if (this.offFast) this.offFast(); }, null, Z + 1.2);
+    g.to(hang, { yPercent: 16, ease: 'none', scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom top', scrub: true } });
+  }
+
+  introB(full) {
+    const g = window.gsap, Split = window.SplitText, sec = document.querySelector('[data-b]');
+    if (!sec) return;
+    const $ = (s) => sec.querySelector(s), $$ = (s) => Array.from(sec.querySelectorAll(s));
+    const veil = $('[data-b-veil]'), stage = $('[data-b-stage]'), imgs = $$('[data-b-img]'), h1 = $('[data-b-title]'), fades = $$('[data-b-fade]'), chrome = $('[data-b-chrome]'), header = document.querySelector('header');
+    this.bIdx = 0;
+    if (this.state.bIdx) this.setState({ bIdx: 0 });
+    imgs.forEach((el, j) => g.set(el, { opacity: j ? 0 : 1, zIndex: j ? 0 : 1 }));
+    g.set($$('[data-b-seg]'), { scaleX: 0 });
+    this.syncAmb();
+    if (!full) { g.from([h1, ...fades, chrome], { opacity: 0, duration: 0.6, stagger: 0.06, ease: 'power2.out' }); this.bGo(0, true); return; }
+    const split = Split.create(h1, { type: 'lines', mask: 'lines' });
+    const tl = g.timeline({ defaults: { ease: 'expo.out' }, onComplete: () => split.revert() });
+    tl.fromTo(veil, { opacity: 1 }, { opacity: 0, duration: 1.8, ease: 'power2.out' }, 0);
+    tl.fromTo(stage, { clipPath: this.state.wide ? 'inset(0% 0% 0% 100%)' : 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.7, ease: 'expo.inOut' }, 0.1);
+    tl.fromTo(imgs[0], { scale: 1.3 }, { scale: 1.1, duration: 2.6 }, 0.1);
+    tl.from(split.lines, { yPercent: 108, duration: 1.4, stagger: 0.12, ease: 'power4.out' }, 0.75);
+    tl.fromTo(fades, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, 1.05);
+    tl.fromTo(chrome, { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power2.out' }, 1.4);
+    tl.fromTo(header, { autoAlpha: 0 }, { autoAlpha: 1, duration: 1, ease: 'power2.out' }, 1);
+    tl.call(() => this.bGo(0, true), null, 1.5);
+    g.to(imgs, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom top', scrub: true } });
+  }
+
+  bGo(i, first) {
+    const g = window.gsap, sec = document.querySelector('[data-b]');
+    if (!g || !sec) return;
+    const imgs = Array.from(sec.querySelectorAll('[data-b-img]')), amb = Array.from(sec.querySelectorAll('[data-b-amb]')), segs = Array.from(sec.querySelectorAll('[data-b-seg]')), cap = sec.querySelector('[data-b-cap]');
+    const n = imgs.length;
+    i = ((i % n) + n) % n;
+    const prev = this.bIdx || 0;
+    this.bIdx = i;
+    if (i !== prev) {
+      imgs.forEach((el, j) => g.set(el, { zIndex: j === i ? 2 : j === prev ? 1 : 0 }));
+      g.killTweensOf(imgs[i], 'opacity');
+      g.fromTo(imgs[i], { opacity: 0 }, { opacity: 1, duration: this._reduce ? 1 : 1.4, ease: 'power2.inOut', onComplete: () => imgs.forEach((el, j) => { if (j !== this.bIdx) g.set(el, { opacity: 0 }); }) });
+      if (amb[prev]) g.to(amb[prev], { autoAlpha: 0, duration: 1.8, ease: 'power2.inOut', overwrite: 'auto' });
+      if (amb[i]) g.to(amb[i], { autoAlpha: 1, duration: 1.8, ease: 'power2.inOut', overwrite: 'auto' });
+      if (cap) g.fromTo(cap, { opacity: 0, y: this._reduce ? 0 : 8 }, { opacity: 1, y: 0, duration: 0.7, delay: 0.15, ease: 'power3.out' });
+    }
+    if (this.bKb) this.bKb.kill();
+    this.bKb = this._reduce ? null : g.fromTo(imgs[i], { scale: first ? g.getProperty(imgs[i], 'scale') : (this._soft ? 1.05 : 1.12) }, { scale: 1, duration: this.B_DUR + 1.4, ease: 'none' });
+    segs.forEach((s, j) => { g.killTweensOf(s); if (j !== i) g.set(s, { scaleX: j < i ? 1 : 0 }); });
+    if (this.bSeg) this.bSeg.kill();
+    this.bSeg = segs[i] ? g.fromTo(segs[i], { scaleX: 0 }, { scaleX: 1, duration: this.B_DUR, ease: 'none', onComplete: () => this.bGo(this.bIdx + 1) }) : null;
+    if (this.state.bPaused) [this.bSeg, this.bKb].forEach((t) => t && t.pause());
+    if (this.state.bIdx !== i) this.setState({ bIdx: i });
+  }
+
+  bToggle() {
+    const p = !this.state.bPaused;
+    this.setState({ bPaused: p });
+    [this.bSeg, this.bKb].forEach((t) => t && (p ? t.pause() : t.resume()));
+  }
+
+  bStop() {
+    const g = window.gsap;
+    [this.bSeg, this.bKb].forEach((t) => t && t.kill());
+    this.bSeg = this.bKb = null;
+    const sec = document.querySelector('[data-b]');
+    if (g && sec) g.killTweensOf(sec.querySelectorAll('[data-b-img],[data-b-amb],[data-b-seg],[data-b-cap]'));
+  }
+
+  syncAmb() {
+    const g = window.gsap;
+    if (!g) return;
+    document.querySelectorAll('[data-b-amb]').forEach((el, j) => g.set(el, { autoAlpha: j === (this.bIdx || 0) ? 1 : 0 }));
+  }
+
+  setCounter(p) {
+    const n = Math.min(4, Math.floor(p * 4.4) + 1);
+    if (n === this._n) return;
+    this._n = n;
+    const el = document.querySelector('[data-counter]');
+    if (el) el.textContent = '0' + n;
+  }
+
+  swing(els, v) {
+    const g = window.gsap, r = g.utils.clamp(-5, 5, -v / 220);
+    els.forEach((el, i) => g.to(el, { rotation: r * (i % 2 ? 0.8 : 1), duration: 0.35, ease: 'power2.out', overwrite: 'auto' }));
+    clearTimeout(this.settleT);
+    this.settleT = setTimeout(() => els.forEach((el) => g.to(el, { rotation: 0, duration: 1.6, ease: 'elastic.out(1, 0.3)', overwrite: 'auto' })), 90);
+  }
+
+  initMotion() {
+    const gsap = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText;
+    gsap.registerPlugin(ST, Split);
+    const soft = (this.props.motion ?? 'completo') === 'suave';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.clearPrehide();
+    this._soft = soft;
+    this._reduce = reduce;
+    if (window.Lenis && !reduce && !this.lenis) {
+      this.lenis = new window.Lenis({ lerp: 0.1, anchors: { offset: -72 } });
+      this.lenis.on('scroll', ST.update);
+      this.rafFn = (t) => this.lenis && this.lenis.raf(t * 1000);
+      gsap.ticker.add(this.rafFn);
+      gsap.ticker.lagSmoothing(0);
+    }
+    const q = (sel) => Array.from(document.querySelectorAll(sel));
+    this.mm = gsap.matchMedia();
+
+    this.mm.add({ full: '(prefers-reduced-motion: no-preference)', red: '(prefers-reduced-motion: reduce)' }, (ctx) => {
+      const full = ctx.conditions.full, lively = full && !soft;
+      this._reduce = !full;
+      const hero = this.heroKey();
+      if (hero === 'animado') this.introA(full, lively);
+      else if (hero === 'elegante') this.introB(full);
+      else this.introO(full, lively);
+
+      q('[data-reveal]').forEach((el) => gsap.from(el, { y: full ? 24 : 0, opacity: 0, duration: full ? 0.8 : 0.4, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
+      q('[data-stagger]').forEach((g) => gsap.from(g.children, { y: full ? 18 : 0, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08, scrollTrigger: { trigger: g, start: 'top 85%', once: true } }));
+      return () => { if (this.offFast) this.offFast(); this.bStop(); };
+    });
+
+    const works = q('[data-swing]');
+    const bar = document.querySelector('[data-progress]');
+
+    this.mm.add('(min-width: 900px) and (prefers-reduced-motion: no-preference)', () => {
+      const sec = document.querySelector('[data-gallery]');
+      const inner = document.querySelector('[data-gallery-inner]');
+      const track = document.querySelector('[data-track]');
+      if (!sec || !inner || !track) return;
+      gsap.set(inner, { position: 'sticky', top: 0, height: '100vh' });
+      gsap.set(track, { overflowX: 'visible', scrollSnapType: 'none' });
+      const dist = () => {
+        const last = track.lastElementChild;
+        const pr = parseFloat(getComputedStyle(track).paddingRight) || 0;
+        return Math.max(0, last.offsetLeft + last.offsetWidth + pr - track.clientWidth);
+      };
+      const setH = () => { sec.style.height = (window.innerHeight + dist()) + 'px'; };
+      setH();
+      ST.addEventListener('refreshInit', setH);
+      gsap.to(track, {
+        x: () => -dist(), ease: 'none',
+        scrollTrigger: {
+          trigger: sec, start: 'top top', end: () => '+=' + dist(), scrub: 0.6, invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            this.setCounter(self.progress);
+            if (bar) gsap.set(bar, { scaleX: self.progress });
+            if (!soft) this.swing(works, self.getVelocity());
+          },
+        },
+      });
+      ST.refresh();
+      return () => { ST.removeEventListener('refreshInit', setH); sec.style.height = ''; };
+    });
+
+    this.mm.add({ full: '(prefers-reduced-motion: no-preference)', red: '(prefers-reduced-motion: reduce)' }, (ctx) => this.resMotion(ctx.conditions.full, soft));
+
+    this.mm.add({ narrow: '(max-width: 899px)', full: '(prefers-reduced-motion: no-preference)' }, (ctx) => {
+      if (ctx.conditions.narrow) this.galleryMobile(ctx.conditions.full && !soft, ctx.conditions.full);
+    });
+
+    this.mm.add('(min-width: 900px) and (prefers-reduced-motion: reduce)', () => {
+      const track = document.querySelector('[data-track]');
+      if (!track) return;
+      const lively = !soft && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let lx = track.scrollLeft, lt = performance.now();
+      const onS = () => {
+        const t = performance.now(), x = track.scrollLeft;
+        const v = ((x - lx) / Math.max(1, t - lt)) * 1000;
+        lx = x; lt = t;
+        const max = track.scrollWidth - track.clientWidth;
+        const p = max > 0 ? x / max : 0;
+        this.setCounter(p);
+        if (bar) gsap.set(bar, { scaleX: p });
+        if (lively) this.swing(works, v);
+      };
+      track.addEventListener('scroll', onS, { passive: true });
+      onS();
+      return () => track.removeEventListener('scroll', onS);
+    });
+
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ST.refresh());
+  }
+
+  galleryMobile(lively, full) {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    const inner = document.querySelector('[data-gallery-inner]'), track = document.querySelector('[data-track]');
+    const pill = document.querySelector('[data-mpill]'), cnt = document.querySelector('[data-mcounter]'), prog = document.querySelector('[data-mprogress]');
+    if (!inner || !track) return;
+    const arts = Array.from(track.querySelectorAll('article')), cta = track.lastElementChild;
+    g.set(inner, { overflow: 'clip' });
+    g.set('[data-gcount]', { display: 'none' });
+    g.set(track, { flexDirection: 'column', overflowX: 'visible', scrollSnapType: 'none', gap: 96, paddingTop: 72, paddingBottom: 40 });
+    if (pill) g.set(pill, { display: 'flex', autoAlpha: 0 });
+    if (cta) g.set(cta, { alignSelf: 'stretch', width: 'auto' });
+    arts.forEach((a, i) => {
+      const odd = i % 2 === 1;
+      const frame = a.querySelector('[data-swing]'), label = frame && frame.nextElementSibling, img = a.querySelector('img');
+      g.set(a, { width: '100%', flexDirection: 'column', flexWrap: 'nowrap', alignItems: 'stretch', gap: 0 });
+      if (frame) g.set(frame, { width: '80%', alignSelf: odd ? 'flex-end' : 'flex-start' });
+      if (label) g.set(label, { width: '72%', maxWidth: 'none', flex: 'none', alignSelf: odd ? 'flex-start' : 'flex-end', marginTop: -70, position: 'relative', zIndex: 2, rotation: lively ? (odd ? -1.5 : 1.5) : 0 });
+      if (img) g.set(img.parentElement, { overflow: 'hidden' });
+      ST.create({ trigger: a, start: 'top 55%', end: 'bottom 55%', onToggle: (self) => { if (self.isActive && cnt) cnt.textContent = '0' + (i + 1); } });
+      if (!full) return;
+      if (img) g.fromTo(img, { yPercent: -7, scale: 1.18 }, { yPercent: 7, scale: 1.18, ease: 'none', scrollTrigger: { trigger: a, start: 'top bottom', end: 'bottom top', scrub: true } });
+      const tl = g.timeline({ scrollTrigger: { trigger: a, start: 'top 82%', once: true } });
+      if (frame) {
+        if (lively) tl.fromTo(frame, { y: -50, rotation: odd ? 8 : -8, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 1.8, ease: 'elastic.out(1, 0.42)', onComplete: () => { frame._hung = true; } }, 0);
+        else tl.fromTo(frame, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0);
+      }
+      if (label) {
+        if (lively) tl.fromTo(label, { x: odd ? -56 : 56, rotation: odd ? -6 : 6, opacity: 0 }, { x: 0, rotation: odd ? -1.5 : 1.5, opacity: 1, duration: 0.9, ease: 'back.out(1.6)' }, 0.35);
+        else tl.fromTo(label, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 0.3);
+      }
+    });
+    if (cta && full) g.fromTo(cta, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: cta, start: 'top 88%', once: true } });
+    const frames = arts.map((a) => a.querySelector('[data-swing]')).filter(Boolean);
+    ST.create({
+      trigger: track, start: 'top 75%', end: 'bottom 45%',
+      onToggle: (self) => pill && g.to(pill, { autoAlpha: self.isActive ? 1 : 0, duration: 0.3, ease: 'power2.out', overwrite: true }),
+      onUpdate: (self) => {
+        if (prog) g.set(prog, { scaleX: self.progress });
+        if (!lively) return;
+        const r = g.utils.clamp(-3, 3, -self.getVelocity() / 700);
+        frames.forEach((f, i) => {
+          if (!f._hung) return;
+          g.to(f, { rotation: r * (i % 2 ? -0.8 : 1), duration: 0.3, ease: 'power2.out', overwrite: true, onComplete: () => g.to(f, { rotation: 0, duration: 1.6, ease: 'elastic.out(1, 0.3)' }) });
+        });
+      },
+    });
+    ST.refresh();
+  }
+
+  resMotion(full, soft) {
+    const g = window.gsap;
+    const fmt = (v, d) => (d ? v.toFixed(d).replace('.', ',') : String(Math.round(v)));
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      const to = parseFloat(el.dataset.count), d = el.dataset.dec ? 1 : 0, o = { v: 0 }, final = el.textContent;
+      if (!full) return;
+      el.textContent = fmt(0, d);
+      g.to(o, { v: to, duration: 1.6, ease: 'power3.out', onUpdate: () => { el.textContent = fmt(o.v, d); }, onComplete: () => { el.textContent = final; }, scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
+    });
+    const stamp = document.querySelector('[data-res-stamp]');
+    if (stamp) {
+      if (full && !soft) g.fromTo(stamp, { scale: 1.5, rotation: -8, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.7, delay: 1.1, ease: 'back.out(2)', scrollTrigger: { trigger: stamp, start: 'top 85%', once: true } });
+      else g.from(stamp, { opacity: 0, duration: 0.5, delay: full ? 0.6 : 0, scrollTrigger: { trigger: stamp, start: 'top 85%', once: true } });
+    }
+    const card = document.querySelector('[data-res-card]');
+    if (!card) return;
+    const body = card.querySelector('[data-res-body]'), days = card.querySelector('[data-res-days]'), times = card.querySelector('[data-res-times]');
+    const tl = g.timeline({ scrollTrigger: { trigger: card, start: 'top 85%', once: true } });
+    if (!full) { tl.from(card, { opacity: 0, duration: 0.5 }); return; }
+    tl.fromTo(card, { y: 70, rotation: soft ? 0 : -2.5, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 1.1, ease: 'expo.out' }, 0);
+    if (body) tl.fromTo(Array.from(body.children).filter((c) => c !== days && c !== times), { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: 'power3.out' }, 0.2);
+    if (days) {
+      tl.fromTo(days.children, { x: 44, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, stagger: 0.05, ease: 'power3.out' }, 0.35);
+      if (days.scrollWidth > days.clientWidth + 8) tl.fromTo(days, { scrollLeft: 0 }, { scrollLeft: 70, duration: 0.7, ease: 'power2.inOut', yoyo: true, repeat: 1, repeatDelay: 0.25 }, 1.1);
+    }
+    if (times) tl.fromTo(times.children, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, stagger: { each: 0.035, from: 'start' }, ease: 'back.out(2)' }, 0.55);
+  }
+
+  teardown() {
+    clearTimeout(this.settleT);
+    if (this.offFast) this.offFast();
+    this.bStop();
+    if (this.mm) { this.mm.revert(); this.mm = null; }
+  }
+}
+</script>
+</body>
+</html>

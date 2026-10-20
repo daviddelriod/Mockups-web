@@ -17,13 +17,13 @@
 <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
 <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&amp;family=Hanken+Grotesk:wght@300..800&amp;display=swap">
 <script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 <style>
 :root{--serif:'Bodoni Moda','Times New Roman',serif;--font-display:'Hanken Grotesk',system-ui,sans-serif;--font-body:'Hanken Grotesk',system-ui,sans-serif;--accent:#0C0C0B;--accent-press:#000;--price:#0F0F0E;--ink:#0F0F0E;--ink-soft:#55534E;--ink-faint:#6E6B64;--line:#E2DED6;--cream:#F4F2ED;--cream-2:#EAE7E0;--paper:#FFFFFF;--star:#0F0F0E;--status-closed:#9A968E;--shadow-sm:0 8px 22px -14px rgba(0,0,0,.30);--shadow:0 18px 44px -22px rgba(0,0,0,.45);}
 html,body{margin:0;background:#0C0C0B;}
@@ -647,6 +647,7 @@ class Component extends DCLogic {
     const root = this.rootRef.current;
     if (!g || !ST || !root || this.ctx) return;
     g.registerPlugin(ST);
+    if (ST.config) ST.config({ ignoreMobileResize: true });
     if (Split) g.registerPlugin(Split);
     const q = (s) => root.querySelector('[data-a="' + s + '"]');
     const qa = (s) => Array.from(root.querySelectorAll('[data-a="' + s + '"]'));
@@ -755,7 +756,7 @@ class Component extends DCLogic {
 
         // BARRA (pinned horizontal on desktop)
         const vp = q('barra-vp'), track = q('barra-track'), pinEl = q('barra-pin');
-        if (rich && desk && vp && track && pinEl && pinEl.offsetHeight <= window.innerHeight + 2) {
+        if (rich && vp && track && pinEl && pinEl.offsetHeight <= window.innerHeight + 2) {
           this.pinned = true;
           vp.scrollLeft = 0;
           g.set(vp, { overflowX: 'hidden', scrollSnapType: 'none' });

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar Andrés · Tapas en Laredo</title>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&amp;family=Hanken+Grotesk:wght@300..800&amp;display=swap">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+<style>
+:root{--serif:'Bodoni Moda','Times New Roman',serif;--font-display:'Hanken Grotesk',system-ui,sans-serif;--font-body:'Hanken Grotesk',system-ui,sans-serif;--accent:#0C0C0B;--accent-press:#000;--price:#0F0F0E;--ink:#0F0F0E;--ink-soft:#55534E;--ink-faint:#6E6B64;--line:#E2DED6;--cream:#F4F2ED;--cream-2:#EAE7E0;--paper:#FFFFFF;--star:#0F0F0E;--status-closed:#9A968E;--shadow-sm:0 8px 22px -14px rgba(0,0,0,.30);--shadow:0 18px 44px -22px rgba(0,0,0,.45);}
+html,body{margin:0;background:#0C0C0B;}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:125;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+html.lenis,html.lenis body{height:auto;}
+html.lenis{scroll-behavior:auto;}
+.lenis.lenis-smooth{scroll-behavior:auto !important;}
+a{color:#0F0F0E;}
+a:hover{color:#55534E;}
+input,button,textarea{font:inherit;}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#0C0C0B; color:var(--ink); font-family:var(--font-body); overflow-x:clip;">
+
+<div data-a="progress" aria-hidden="true" style="position:fixed; top:0; left:0; right:0; height:2px; background:#FFFFFF; mix-blend-mode:difference; transform-origin:0 50%; transform:scaleX(0); z-index:120; pointer-events:none;"></div>
+
+<nav ref="{{ navRef }}" style="position:fixed; top:0; left:0; right:0; z-index:110; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px var(--gutter); transition:background-color .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.22,1,.36,1);">
+  <a href="#top" aria-label="Café Bar Andrés, inicio" style="display:inline-flex; flex-direction:column; gap:2px; background:#F4F2ED; color:#0C0C0B; font-family:var(--serif); text-transform:uppercase; line-height:1; padding:6px 12px 7px 11px; border-radius:2px; text-decoration:none;">
+    <span style="font-family:var(--font-body); font-weight:700; font-size:.54rem; letter-spacing:.24em;">Café · Bar</span>
+    <span style="font-weight:600; font-size:1.18rem; letter-spacing:.02em;">Andrés</span>
+  </a>
+  <div style="display:flex; align-items:center; gap:30px;">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:28px; font-weight:500; font-size:.92rem; letter-spacing:.02em;">
+        <a href="#barra" style="color:#F4F2ED; text-decoration:none;" style-hover="color:#B4B0A7;">Pinchos</a>
+        <a href="#carta" style="color:#F4F2ED; text-decoration:none;" style-hover="color:#B4B0A7;">Carta</a>
+        <a href="#casa" style="color:#F4F2ED; text-decoration:none;" style-hover="color:#B4B0A7;">La casa</a>
+        <a href="#contacto" style="color:#F4F2ED; text-decoration:none;" style-hover="color:#B4B0A7;">Contacto</a>
+      </div>
+    </sc-if>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" size="sm" href="#carta" dc-props="{{ btnLight }}" hint-size="140px,44px">Hacer pedido</x-import>
+  </div>
+</nav>
+
+<header id="top" data-a="hero" ref="{{ heroRef }}" data-screen-label="Hero" style="position:relative; min-height:max(100svh, 640px); display:flex; flex-direction:column; overflow:hidden; background:#0C0C0B; color:#F4F2ED;">
+  <div data-a="hero-cols" aria-hidden="true" style="position:absolute; top:-14%; bottom:-14%; left:calc(50% - max(55%, 420px)); width:max(110%, 840px); display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:14px;">
+    <sc-for list="{{ heroCols }}" as="col" hint-placeholder-count="5">
+      <div data-a="hero-col" data-dir="{{ col.dir }}" style="min-width:0;">
+        <div data-a="hero-col-track" style="display:flex; flex-direction:column; gap:14px; padding-bottom:14px;">
+          <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="8">
+            <img src="{{ it.src }}" alt="" style="display:block; width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:4px; background:#1A1A19;">
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(75% 62% at 50% 48%, rgba(12,12,11,.92) 0%, rgba(12,12,11,.74) 46%, rgba(12,12,11,.42) 100%), linear-gradient(180deg, rgba(12,12,11,.75) 0%, rgba(12,12,11,0) 22%, rgba(12,12,11,0) 68%, rgba(12,12,11,1) 100%);"></div>
+  <div data-a="hero-dim" aria-hidden="true" style="position:absolute; inset:0; background:#0C0C0B; opacity:0; pointer-events:none;"></div>
+
+  <div data-a="hero-content" style="position:relative; z-index:2; flex:1; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:104px var(--gutter) 128px;">
+    <div data-a="hero-eyebrow">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#B4B0A7" dc-props="{{ eyebrowFine }}" hint-size="200px,18px">Bar Andrés · Laredo</x-import>
+    </div>
+    <h1 data-a="hero-title" style="margin:22px 0 0; font-family:var(--serif); font-weight:500; font-size:clamp(3.4rem, min(17vw, 20vh), 13.5rem); line-height:.9; letter-spacing:-.025em; color:#F4F2ED; perspective:900px;">
+      <span style="display:block;">Tapas</span>
+      <span style="display:block; font-style:italic; font-weight:400;">en Laredo</span>
+    </h1>
+    <span data-a="hero-rule" aria-hidden="true" style="display:block; width:72px; height:1px; background:#B4B0A7; margin:32px auto 0;"></span>
+    <p data-a="hero-fade" style="margin:26px 0 0; max-width:36ch; font-size:clamp(1.05rem, 1.6vw, 1.22rem); font-weight:400; line-height:1.55; color:#CFCBC2; text-wrap:balance;">Tapas y pinchos artesanales de elaboración propia.</p>
+    <div data-a="hero-fade" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:30px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="#barra" dc-props="{{ btnLight }}" hint-size="150px,54px">Ver pinchos</x-import>
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" href="#carta" hint-size="170px,54px">Hacer pedido</x-import>
+    </div>
+  </div>
+
+  <div data-a="hero-meta" style="position:absolute; z-index:2; left:0; right:0; bottom:22px; box-sizing:border-box; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:10px 20px;">
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ false }}" dc-props="{{ pillDark }}" hint-size="200px,34px">Cerrado temporalmente</x-import>
+    <sc-if value="{{ tall }}" hint-placeholder-val="{{ false }}">
+      <div aria-hidden="true" style="display:flex; flex-direction:column; align-items:center; gap:10px; font-size:.64rem; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:#85827B;">Desliza<span style="position:relative; display:block; width:1px; height:40px; background:rgba(244,242,237,.18); overflow:hidden;"><span data-a="cue" style="position:absolute; left:0; top:0; width:1px; height:14px; background:#F4F2ED;"></span></span></div>
+    </sc-if>
+    <span style="display:inline-flex; align-items:center; gap:10px; font-size:.92rem; color:#F4F2ED;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 5 }}" size="{{ 12 }}" color="#F4F2ED" hint-size="80px,14px"></x-import>
+      <span style="font-weight:600;">4,8</span><span style="color:#B4B0A7;">· 293 reseñas</span>
+    </span>
+  </div>
+</header>
+
+<div data-a="marquee" aria-hidden="true" style="background:#F4F2ED; color:#0C0C0B; overflow:hidden; padding:22px 0; border-bottom:1px solid #E2DED6;">
+  <div data-a="marquee-track" style="display:flex; width:max-content;">
+    <div style="display:flex; align-items:center; gap:36px; padding-right:36px; font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(1.6rem, 4vw, 3rem); white-space:nowrap;">
+      <span>Pinchos artesanales</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Elaboración propia</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Para llevar a casa</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Calle Revellón, 20</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Laredo</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:36px; padding-right:36px; font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(1.6rem, 4vw, 3rem); white-space:nowrap;">
+      <span>Pinchos artesanales</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Elaboración propia</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Para llevar a casa</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Calle Revellón, 20</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+      <span>Laredo</span><span style="width:9px; height:9px; flex:none; border:1px solid #0C0C0B; transform:rotate(45deg);"></span>
+    </div>
+  </div>
+</div>
+
+<section id="pinchos" data-screen-label="Nuestros pinchos" style="background:#F4F2ED; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-a="rv" style="display:flex; align-items:center; gap:16px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#0F0F0E" dc-props="{{ eyebrowFine }}" hint-size="220px,18px">01 · Nuestros pinchos</x-import>
+      <span data-a="line" style="flex:1; height:1px; background:#CFCAC0; transform-origin:0 50%;"></span>
+    </div>
+    <p data-a="statement" style="margin:28px 0 0; max-width:20ch; font-family:var(--serif); font-weight:400; font-size:clamp(2.2rem, 6vw, 4.8rem); line-height:1.06; letter-spacing:-.02em; color:#0F0F0E;">Podrás degustar nuestra variedad de Tapas y pinchos artesanales de <em style="font-style:italic;">elaboración propia.</em></p>
+    <p data-a="rv" style="margin:32px 0 0; max-width:46ch; font-size:var(--fs-lead); line-height:1.65; color:#55534E; text-wrap:pretty;">Aquí encontrarás diferentes manjares elaborados por nuestro chef mientras disfrutas y te relajas en un buen ambiente.</p>
+    <div data-a="trio-wrap" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(10px, 2.4vw, 28px); margin-top:clamp(48px, 7vw, 92px); align-items:start;">
+      <figure data-a="trio" data-speed="7" style="margin:0;">
+        <div data-a="trio-clip" style="aspect-ratio:3/4; border-radius:4px; overflow:hidden; background:#E2DED6;"><img data-a="trio-img" src="fotos/f9.jpg" alt="Pinchos de chipirón a la plancha sobre champiñón" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+      </figure>
+      <figure data-a="trio" data-speed="14" style="margin:clamp(40px, 9vw, 120px) 0 0;">
+        <div data-a="trio-clip" style="aspect-ratio:3/4; border-radius:4px; overflow:hidden; background:#E2DED6;"><img data-a="trio-img" src="fotos/f2.jpg" alt="Pinchos de calabacín con beicon y queso de cabra" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+        <figcaption style="margin-top:16px; font-family:var(--serif); font-style:italic; font-size:clamp(1rem, 2vw, 1.3rem); line-height:1.3; color:#55534E; text-align:center; text-wrap:balance;">tus mejores pinchos en Laredo para llevar a casa</figcaption>
+      </figure>
+      <figure data-a="trio" data-speed="4" style="margin:clamp(16px, 3vw, 40px) 0 0;">
+        <div data-a="trio-clip" style="aspect-ratio:3/4; border-radius:4px; overflow:hidden; background:#E2DED6;"><img data-a="trio-img" src="fotos/f3.jpg" alt="Pinchos con huevo de codorniz sobre pimiento rojo" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="barra" data-screen-label="La barra" style="background:#0C0C0B; color:#F4F2ED;">
+  <div data-a="barra-pin" style="min-height:100svh; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; padding:clamp(64px, 8vh, 96px) 0 clamp(28px, 4vh, 56px);">
+    <div style="max-width:var(--maxw); width:100%; box-sizing:border-box; margin:0 auto; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px 32px;">
+      <div data-a="rv" style="flex:1 1 300px; min-width:0;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#B4B0A7" dc-props="{{ eyebrowFine }}" hint-size="140px,18px">02 · La barra</x-import>
+        <h2 style="margin:16px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem, 5.4vw, 4.2rem); line-height:1; letter-spacing:-.02em; color:#F4F2ED;">Recórrela <em style="font-style:italic;">con la vista.</em></h2>
+        <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}">
+          <span style="display:inline-flex; margin-top:16px; font-weight:600; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:#B4B0A7; border:1px dashed rgba(244,242,237,.35); border-radius:999px; padding:4px 10px;">Fotos reales · nombres descriptivos salvo los de la carta</span>
+        </sc-if>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span style="font-family:var(--serif); font-size:1.3rem; font-variant-numeric:tabular-nums; min-width:76px;"><span ref="{{ counterRef }}">01</span><span style="color:#6E6B64; font-style:italic;"> / 08</span></span>
+        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; gap:10px;">
+            <button type="button" aria-label="Pincho anterior" onClick="{{ prev }}" style="width:48px; height:48px; padding:0; border-radius:999px; border:1px solid rgba(244,242,237,.35); background:transparent; color:#F4F2ED; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:18px; height:18px; display:inline-flex;">{{ ic.left }}</span></button>
+            <button type="button" aria-label="Pincho siguiente" onClick="{{ next }}" style="width:48px; height:48px; padding:0; border-radius:999px; border:1px solid #F4F2ED; background:#F4F2ED; color:#0C0C0B; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:18px; height:18px; display:inline-flex;">{{ ic.right }}</span></button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div data-a="barra-vp" ref="{{ railRef }}" onScroll="{{ onRail }}" tabIndex="0" aria-label="La barra: desliza para ver los pinchos" style="margin-top:clamp(24px, 4vh, 44px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; scroll-padding-inline:max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); outline-offset:-4px;">
+      <div data-a="barra-track" style="display:flex; gap:clamp(16px, 2.4vw, 36px); width:max-content; padding:0 max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));">
+        <sc-for list="{{ barra }}" as="b" hint-placeholder-count="4">
+          <article data-a="barra-card" style="flex:none; width:clamp(170px, 70vw, min(360px, 30vh)); scroll-snap-align:start;">
+            <div style="position:relative; aspect-ratio:3/4; border-radius:4px; overflow:hidden; background:#1A1A19;">
+              <img data-a="barra-img" src="{{ b.src }}" alt="{{ b.alt }}" loading="lazy" style="position:absolute; top:0; left:-8%; width:116%; height:100%; object-fit:cover;">
+            </div>
+            <div style="display:flex; align-items:baseline; gap:12px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(244,242,237,.14);">
+              <span style="font-family:var(--serif); font-style:italic; font-size:1rem; color:#85827B; font-variant-numeric:tabular-nums;">{{ b.num }}</span>
+              <h3 style="margin:0; font-family:var(--serif); font-weight:500; font-size:1.36rem; line-height:1.1; letter-spacing:-.01em; color:#F4F2ED;">{{ b.nombre }}</h3>
+            </div>
+            <p style="margin:8px 0 0; max-width:32ch; font-size:.93rem; line-height:1.5; color:#B4B0A7; text-wrap:pretty;">{{ b.desc }}</p>
+          </article>
+        </sc-for>
+        <a href="#carta" style="flex:none; width:clamp(170px, 70vw, min(360px, 30vh)); aspect-ratio:3/4; box-sizing:border-box; border-radius:4px; background:#F4F2ED; color:#0C0C0B; display:flex; flex-direction:column; justify-content:space-between; padding:26px; text-decoration:none; scroll-snap-align:start; transition:background-color .25s cubic-bezier(.4,0,.2,1);" style-hover="background-color:#FFFFFF; color:#0C0C0B;">
+          <span style="font-weight:600; font-size:.7rem; letter-spacing:.28em; text-transform:uppercase;">La carta</span>
+          <span style="font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem, 3vw, 2.6rem); line-height:1.02; letter-spacing:-.02em;">20 pinchos, <em style="font-style:italic;">todos a 2,50€.</em></span>
+          <span style="display:flex; align-items:center; gap:10px; font-weight:600; font-size:.95rem;">Ver la carta <span style="width:18px; height:18px; display:inline-flex;">{{ ic.right }}</span></span>
+        </a>
+      </div>
+    </div>
+    <div style="max-width:var(--maxw); width:100%; box-sizing:border-box; margin:clamp(20px, 3vh, 32px) auto 0; padding:0 var(--gutter);">
+      <div style="height:1px; background:rgba(244,242,237,.16); overflow:hidden;">
+        <div ref="{{ progressRef }}" style="height:100%; background:#F4F2ED; transform-origin:0 50%; transform:scaleX(.11);"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carta" data-screen-label="Carta" style="background:#F4F2ED; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-a="rv" style="display:flex; align-items:center; gap:16px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#0F0F0E" dc-props="{{ eyebrowFine }}" hint-size="230px,18px">03 · Para llevar a casa</x-import>
+      <sc-if value="{{ demoPedido }}" hint-placeholder-val="{{ true }}"><span style="background:#0C0C0B; color:#F4F2ED; font-weight:700; font-size:.6rem; letter-spacing:.14em; padding:3px 8px; border-radius:999px;">DEMO</span></sc-if>
+      <span data-a="line" style="flex:1; height:1px; background:#CFCAC0; transform-origin:0 50%;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:20px 64px; align-items:end; margin-top:28px;">
+      <h2 data-a="split" style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(2.6rem, 6.4vw, 5rem); line-height:1; letter-spacing:-.025em; color:#0F0F0E;">20 pinchos. <em style="font-style:italic;">Todos a 2,50€.</em></h2>
+      <div data-a="rv">
+        <p style="margin:0; max-width:44ch; font-size:var(--fs-lead); line-height:1.6; color:#55534E; text-wrap:pretty;">La carta de nuestra tienda online, para llevar a casa.</p>
+        <sc-if value="{{ pedido }}" hint-placeholder-val="{{ true }}"><p style="margin:6px 0 0; max-width:44ch; font-size:var(--fs-lead); line-height:1.6; color:#55534E;">Elige, suma y envíanos el pedido por WhatsApp.</p></sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:32px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <span aria-live="polite" style="font-family:var(--serif); font-size:1.25rem; font-variant-numeric:tabular-nums;">{{ cartaRange }}<span style="color:#6E6B64; font-style:italic;"> de 20</span></span>
+          <div style="display:flex; gap:10px;">
+            <button type="button" aria-label="Pinchos anteriores" onClick="{{ cartaPrev }}" style="width:48px; height:48px; padding:0; border-radius:999px; border:1px solid #CFCAC0; background:transparent; color:#0F0F0E; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:18px; height:18px; display:inline-flex;">{{ ic.left }}</span></button>
+            <button type="button" aria-label="Pinchos siguientes" onClick="{{ cartaNext }}" style="width:48px; height:48px; padding:0; border-radius:999px; border:1px solid #0F0F0E; background:#0F0F0E; color:#F4F2ED; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:18px; height:18px; display:inline-flex;">{{ ic.right }}</span></button>
+          </div>
+        </div>
+        <div ref="{{ cartaRef }}" onScroll="{{ onCarta }}" data-lenis-prevent="true" tabIndex="0" aria-label="Carta: desliza para ver más pinchos" style="display:flex; align-items:flex-start; gap:14px; margin:16px calc(-1 * var(--gutter)) 0; padding:0 var(--gutter); overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:var(--gutter); scrollbar-width:none; overscroll-behavior-x:contain; outline-offset:-4px;">
+          <sc-for list="{{ cartaPages }}" as="pg" hint-placeholder-count="2">
+            <div data-page="true" role="group" aria-label="{{ pg.label }}" style="flex:0 0 calc(100% - 40px); min-width:0; scroll-snap-align:start; border-top:1px solid #0F0F0E;">
+              <sc-for list="{{ pg.items }}" as="c" hint-placeholder-count="5">
+                <div data-a="row" style="display:flex; align-items:center; gap:12px; border-bottom:1px solid #E2DED6;">
+                  <div style="flex:1; min-width:0;">
+                    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="{{ c.name }}" desc="{{ c.desc }}" price="2,50€" dc-props="{{ menuRowSm }}" hint-size="100%,72px"></x-import>
+                  </div>
+                  <sc-if value="{{ pedido }}" hint-placeholder-val="{{ true }}">
+                    <sc-if value="{{ c.noQty }}" hint-placeholder-val="{{ true }}">
+                      <button type="button" aria-label="{{ c.addLabel }}" onClick="{{ c.inc }}" style="flex:none; width:44px; height:44px; padding:0; border-radius:999px; border:1px solid #0F0F0E; background:transparent; color:#0F0F0E; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:16px; height:16px; display:inline-flex;">{{ ic.plus }}</span></button>
+                    </sc-if>
+                    <sc-if value="{{ c.hasQty }}" hint-placeholder-val="{{ false }}">
+                      <div style="flex:none; display:flex; align-items:center; gap:2px;">
+                        <button type="button" aria-label="{{ c.decLabel }}" onClick="{{ c.dec }}" style="width:44px; height:44px; padding:0; border-radius:999px; border:1px solid #CFCAC0; background:#FFFFFF; color:#0F0F0E; display:grid; place-items:center; cursor:pointer;"><span style="width:14px; height:14px; display:inline-flex;">{{ ic.minus }}</span></button>
+                        <span aria-live="polite" style="min-width:22px; text-align:center; font-family:var(--serif); font-size:1.15rem; font-variant-numeric:tabular-nums;">{{ c.qty }}</span>
+                        <button type="button" aria-label="{{ c.incLabel }}" onClick="{{ c.inc }}" style="width:44px; height:44px; padding:0; border-radius:999px; border:1px solid #0F0F0E; background:#0F0F0E; color:#F4F2ED; display:grid; place-items:center; cursor:pointer;"><span style="width:14px; height:14px; display:inline-flex;">{{ ic.plus }}</span></button>
+                      </div>
+                    </sc-if>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:6px; margin-top:8px;">
+          <sc-for list="{{ cartaDots }}" as="d" hint-placeholder-count="4">
+            <button type="button" aria-label="{{ d.label }}" aria-current="{{ d.current }}" onClick="{{ d.go }}" style="height:44px; padding:0; border:0; background:transparent; cursor:pointer; display:flex; align-items:center;">
+              <sc-if value="{{ d.on }}" hint-placeholder-val="{{ false }}"><span style="display:block; width:100%; height:2px; background:#0F0F0E;"></span></sc-if>
+              <sc-if value="{{ d.off }}" hint-placeholder-val="{{ true }}"><span style="display:block; width:100%; height:2px; background:#CFCAC0;"></span></sc-if>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); column-gap:64px; margin-top:clamp(36px, 5vw, 56px); border-top:1px solid #0F0F0E;">
+      <sc-for list="{{ carta }}" as="c" hint-placeholder-count="8">
+        <div data-a="row" style="display:flex; align-items:center; gap:14px; border-bottom:1px solid #E2DED6;">
+          <div style="flex:1; min-width:0;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="{{ c.name }}" desc="{{ c.desc }}" price="2,50€" dc-props="{{ menuRow }}" hint-size="100%,72px"></x-import>
+          </div>
+          <sc-if value="{{ pedido }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ c.noQty }}" hint-placeholder-val="{{ true }}">
+              <button type="button" aria-label="{{ c.addLabel }}" onClick="{{ c.inc }}" style="flex:none; display:inline-flex; align-items:center; gap:6px; height:44px; padding:0 16px; border-radius:999px; border:1px solid #0F0F0E; background:transparent; color:#0F0F0E; font-weight:600; font-size:.88rem; cursor:pointer; transition:background-color .2s cubic-bezier(.4,0,.2,1), color .2s cubic-bezier(.4,0,.2,1), transform .15s cubic-bezier(.4,0,.2,1);" style-hover="background-color:#0F0F0E; color:#F4F2ED;" style-active="transform:scale(.97);">Añadir <span style="width:14px; height:14px; display:inline-flex;">{{ ic.plus }}</span></button>
+            </sc-if>
+            <sc-if value="{{ c.hasQty }}" hint-placeholder-val="{{ false }}">
+              <div style="flex:none; display:flex; align-items:center; gap:6px;">
+                <button type="button" aria-label="{{ c.decLabel }}" onClick="{{ c.dec }}" style="width:44px; height:44px; padding:0; border-radius:999px; border:1px solid #CFCAC0; background:#FFFFFF; color:#0F0F0E; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:14px; height:14px; display:inline-flex;">{{ ic.minus }}</span></button>
+                <span aria-live="polite" style="min-width:24px; text-align:center; font-family:var(--serif); font-size:1.2rem; font-variant-numeric:tabular-nums;">{{ c.qty }}</span>
+                <button type="button" aria-label="{{ c.incLabel }}" onClick="{{ c.inc }}" style="width:44px; height:44px; padding:0; border-radius:999px; border:1px solid #0F0F0E; background:#0F0F0E; color:#F4F2ED; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:14px; height:14px; display:inline-flex;">{{ ic.plus }}</span></button>
+              </div>
+            </sc-if>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+    <p data-a="rv" style="margin:26px 0 0; max-width:70ch; font-size:.86rem; line-height:1.6; color:#6E6B64;">Precios de la tienda online actual. ¿Alergias o intolerancias? Pregúntanos antes de pedir y te decimos qué lleva cada pincho.</p>
+  </div>
+</section>
+
+<section id="casa" data-screen-label="La casa" style="background:#0C0C0B; color:#F4F2ED; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:40px 72px; align-items:center;">
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <figure style="margin:calc(-1 * var(--pad-block)) calc(-1 * var(--gutter)) 0;">
+        <div data-a="casa-photo" style="position:relative; aspect-ratio:5/6; overflow:hidden; background:#1A1A19;">
+          <img data-a="casa-img" src="fotos/interior.jpg" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:58% 60%; filter:grayscale(1) contrast(1.08) brightness(.9);">
+          <img data-a="casa-color" src="fotos/interior.jpg" alt="Interior del Bar Andrés: barra de mármol, taburetes de madera y botellero iluminado" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:58% 60%;">
+          <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(12,12,11,0) 42%, rgba(12,12,11,.55) 72%, #0C0C0B 100%);"></div>
+          <figcaption style="position:absolute; left:var(--gutter); right:var(--gutter); bottom:14px; display:flex; justify-content:space-between; gap:12px; font-size:.68rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:#B4B0A7;"><span>Calle Revellón, 20</span><span>Laredo</span></figcaption>
+        </div>
+      </figure>
+    </sc-if>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <figure style="margin:0;">
+        <div data-a="casa-photo" style="position:relative; aspect-ratio:7/4.6; border-radius:4px; overflow:hidden; background:#1A1A19;">
+          <img data-a="casa-img" src="fotos/interior.jpg" alt="" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.08) brightness(.9);">
+          <img data-a="casa-color" src="fotos/interior.jpg" alt="Interior del Bar Andrés: barra de mármol, taburetes de madera y botellero iluminado" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+        </div>
+        <figcaption style="display:flex; justify-content:space-between; gap:12px; margin-top:14px; font-size:.7rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:#85827B;"><span>Calle Revellón, 20</span><span>Laredo</span></figcaption>
+      </figure>
+    </sc-if>
+    <div data-a="rv">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#B4B0A7" dc-props="{{ eyebrowFine }}" hint-size="130px,18px">04 · La casa</x-import>
+      <h2 style="margin:18px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem, 5.4vw, 4.2rem); line-height:1; letter-spacing:-.02em; color:#F4F2ED;">Busca el <em style="font-style:italic;">azulejo azul.</em></h2>
+      <p style="margin:20px 0 0; max-width:40ch; font-size:var(--fs-lead); line-height:1.6; color:#B4B0A7; text-wrap:pretty;">En la calle Revellón, 20. Entra, pide en barra y quédate lo que haga falta.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="onDark" dc-props="{{ chipDark }}" hint-size="160px,34px">Se admiten perros</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="onDark" dc-props="{{ chipDark }}" hint-size="260px,34px">Amigable con la comunidad LGBTQ+</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="onDark" dc-props="{{ chipDark }}" hint-size="160px,34px">1–10 € por persona</x-import>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:14px 22px; margin-top:34px; padding-top:28px; border-top:1px solid rgba(244,242,237,.14);">
+        <span data-a="count" style="font-family:var(--serif); font-weight:400; font-size:clamp(4rem, 9vw, 5.6rem); line-height:.8; letter-spacing:-.03em; color:#F4F2ED; font-variant-numeric:tabular-nums;">4,8</span>
+        <div>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 5 }}" size="{{ 16 }}" color="#F4F2ED" hint-size="110px,18px"></x-import>
+          <div style="margin-top:6px; font-size:.92rem; color:#B4B0A7;">293 reseñas en Google · <a href="https://www.google.com/maps/search/?api=1&amp;query=Bar%20Andr%C3%A9s%20Calle%20Revell%C3%B3n%2020%20Laredo" target="_blank" rel="noopener" style="color:#F4F2ED; font-weight:600; text-underline-offset:3px;" style-hover="color:#B4B0A7;">Leer reseñas</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="Contacto" style="background:#F4F2ED; color:#0F0F0E; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-a="rv" style="display:flex; align-items:center; gap:16px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#0F0F0E" dc-props="{{ eyebrowFine }}" hint-size="140px,18px">05 · Contacto</x-import>
+      <span data-a="line" style="flex:1; height:1px; background:#CFCAC0; transform-origin:0 50%;"></span>
+    </div>
+    <h2 data-a="split" style="margin:28px 0 0; max-width:16ch; font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem, 5.8vw, 4.6rem); line-height:1; letter-spacing:-.025em; color:#0F0F0E;">Escríbenos o pásate <em style="font-style:italic;">por la barra.</em></h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:32px 56px; margin-top:clamp(36px, 5vw, 56px); align-items:start;">
+      <div data-a="rv">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" pad="{{ 28 }}" dc-props="{{ cardLight }}" hint-size="100%,520px">
+          <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex; margin-bottom:16px; background:#0C0C0B; color:#F4F2ED; font-weight:700; font-size:.6rem; letter-spacing:.14em; padding:3px 8px; border-radius:999px;">DEMO · SE ENVÍA POR WHATSAPP</span></sc-if>
+          <div style="display:flex; flex-wrap:wrap; gap:14px;">
+            <label style="flex:1 1 180px; display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#55534E;">Nombre</span>
+              <input type="text" value="{{ cNombre }}" onChange="{{ onNombre }}" autocomplete="name" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 14px; border-radius:4px; border:1px solid #CFCAC0; background:#FFFFFF; color:#0F0F0E; font-size:1rem;" style-focus="outline:2px solid #0F0F0E; outline-offset:1px; border-color:#0F0F0E;">
+            </label>
+            <label style="flex:1 1 180px; display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#55534E;">Teléfono</span>
+              <input type="tel" value="{{ cTel }}" onChange="{{ onTel }}" autocomplete="tel" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 14px; border-radius:4px; border:1px solid #CFCAC0; background:#FFFFFF; color:#0F0F0E; font-size:1rem;" style-focus="outline:2px solid #0F0F0E; outline-offset:1px; border-color:#0F0F0E;">
+            </label>
+          </div>
+          <label style="display:flex; flex-direction:column; gap:6px; margin-top:14px;">
+            <span style="font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#55534E;">Email</span>
+            <input type="email" value="{{ cEmail }}" onChange="{{ onEmail }}" autocomplete="email" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 14px; border-radius:4px; border:1px solid #CFCAC0; background:#FFFFFF; color:#0F0F0E; font-size:1rem;" style-focus="outline:2px solid #0F0F0E; outline-offset:1px; border-color:#0F0F0E;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:6px; margin-top:14px;">
+            <span style="font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#55534E;">Mensaje</span>
+            <textarea rows="4" value="{{ cMsg }}" onChange="{{ onMsg }}" style="width:100%; box-sizing:border-box; padding:12px 14px; border-radius:4px; border:1px solid #CFCAC0; background:#FFFFFF; color:#0F0F0E; font-size:1rem; resize:vertical;" style-focus="outline:2px solid #0F0F0E; outline-offset:1px; border-color:#0F0F0E;"></textarea>
+          </label>
+          <div style="margin-top:20px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" size="lg" href="{{ waContacto }}" target="_blank" rel="noopener" icon="{{ ic.wa }}" dc-props="{{ btnFull }}" hint-size="100%,58px">Enviar por WhatsApp</x-import>
+          </div>
+        </x-import>
+      </div>
+      <div data-a="rv" style="display:flex; flex-direction:column;">
+        <div style="display:grid; grid-template-columns:110px 1fr; gap:6px 16px; padding:0 0 18px; border-bottom:1px solid #E2DED6;">
+          <span style="font-size:.68rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#6E6B64; padding-top:4px;">Dirección</span>
+          <span style="font-family:var(--serif); font-size:1.2rem; line-height:1.35;">C. Revellón, 20, 39770 Laredo, Cantabria</span>
+        </div>
+        <div style="display:grid; grid-template-columns:110px 1fr; gap:6px 16px; padding:18px 0; border-bottom:1px solid #E2DED6;">
+          <span style="font-size:.68rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#6E6B64; padding-top:4px;">Teléfono</span>
+          <a href="tel:+34676784255" style="font-family:var(--serif); font-size:1.2rem; color:#0F0F0E; text-decoration:none; font-variant-numeric:tabular-nums; width:max-content;" style-hover="color:#55534E;">676 78 42 55</a>
+        </div>
+        <div style="display:grid; grid-template-columns:110px 1fr; gap:6px 16px; padding:18px 0; border-bottom:1px solid #E2DED6;">
+          <span style="font-size:.68rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#6E6B64; padding-top:8px;">Horario</span>
+          <div style="min-width:0;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ false }}" dc-props="{{ pillLight }}" hint-size="200px,34px">Cerrado temporalmente</x-import>
+            <p style="margin:10px 0 0; font-size:.95rem; line-height:1.55; color:#55534E; text-wrap:pretty;">Publicaremos aquí el horario en cuanto volvamos a abrir.</p>
+            <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex; margin-top:10px; font-weight:600; font-size:.68rem; letter-spacing:.1em; color:#55534E; border:1px dashed #9A968E; border-radius:999px; padding:2px 8px;">[HORARIO]</span></sc-if>
+          </div>
+        </div>
+        <div style="margin-top:22px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo" target="_blank" rel="noopener" icon="{{ ic.pin }}" dc-props="{{ btnFull }}" hint-size="100%,54px">Cómo llegar</x-import>
+        </div>
+        <div style="margin-top:20px; border-radius:4px; overflow:hidden; border:1px solid #E2DED6; background:#E2DED6;">
+          <iframe title="Mapa: Bar Andrés, calle Revellón 20, Laredo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo&amp;output=embed" style="display:block; width:100%; height:250px; border:0; filter:grayscale(1) contrast(1.05);"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Pie" style="background:#0C0C0B; color:#B4B0A7;">
+  <div aria-hidden="true" style="height:14px; background-color:#141413; background-image:linear-gradient(90deg, rgba(244,242,237,.09) 1px, transparent 1px), linear-gradient(180deg, rgba(244,242,237,.09) 1px, transparent 1px); background-size:14px 14px, 14px 14px;"></div>
+  <div style="padding:clamp(28px, 4vw, 48px) var(--gutter) 22px;">
+    <div style="max-width:var(--maxw); margin:0 auto;">
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:20px 48px;">
+        <div aria-hidden="true" style="overflow:hidden; padding-top:.08em;">
+          <div data-a="foot-word" style="font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(2.4rem, 7vw, 5.4rem); line-height:.95; letter-spacing:-.03em; color:#F4F2ED; white-space:nowrap;">Bar Andrés</div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:16px 44px; font-size:.92rem; line-height:1.4;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:.62rem; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:#85827B;">Productos</div>
+            <a href="#carta" style="color:#F4F2ED; text-decoration:none; width:max-content;" style-hover="color:#B4B0A7;">Tapas y pinchos</a>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="font-size:.62rem; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:#85827B;">Contacto</div>
+            <div style="display:flex; flex-wrap:wrap; gap:4px 16px;">
+              <a href="https://wa.me/34676784255" target="_blank" rel="noopener" style="color:#F4F2ED; text-decoration:none;" style-hover="color:#B4B0A7;">WhatsApp</a>
+              <a href="tel:+34676784255" style="color:#F4F2ED; text-decoration:none; font-variant-numeric:tabular-nums;" style-hover="color:#B4B0A7;">676 78 42 55</a>
+            </div>
+            <span>C. Revellón, 20 · Laredo</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px 32px; margin-top:clamp(18px, 2.6vw, 28px); padding-top:14px; border-top:1px solid rgba(244,242,237,.12);">
+        <nav aria-label="Información legal" style="display:flex; flex-wrap:wrap; gap:4px 18px; font-size:.78rem;">
+          <a href="#" style="color:#B4B0A7; text-decoration:none;" style-hover="color:#F4F2ED;">Aviso legal</a>
+          <a href="#" style="color:#B4B0A7; text-decoration:none;" style-hover="color:#F4F2ED;">Términos y condiciones</a>
+          <a href="#" style="color:#B4B0A7; text-decoration:none;" style-hover="color:#F4F2ED;">Política de privacidad</a>
+          <a href="#" style="color:#B4B0A7; text-decoration:none;" style-hover="color:#F4F2ED;">Política de cookies</a>
+        </nav>
+        <p style="margin:0; max-width:62ch; font-size:.72rem; line-height:1.55; color:#85827B; text-wrap:pretty;">Propuesta de rediseño de tapaslaredo.com. Fotos del propio bar; la carta y los precios salen de su tienda online. Los nombres de algunos pinchos de la barra son descriptivos, y el pedido y el formulario por WhatsApp son una demostración.</p>
+      </div>
+      <sc-if value="{{ footSpace }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="height:78px;"></div></sc-if>
+    </div>
+  </div>
+</footer>
+
+<sc-if value="{{ orderOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="region" aria-label="Tu pedido" style="position:fixed; left:50%; bottom:max(14px, env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:100; width:min(calc(100% - 28px), 520px); box-sizing:border-box; display:flex; align-items:center; gap:10px; background:#0C0C0B; color:#F4F2ED; padding:8px 8px 8px 22px; border-radius:999px; border:1px solid rgba(244,242,237,.16); box-shadow:0 20px 50px -18px rgba(0,0,0,.6);">
+    <div style="flex:1; min-width:0; line-height:1.2;">
+      <div style="font-family:var(--serif); font-size:1.12rem;">{{ countLabel }}</div>
+      <div style="font-size:.82rem; color:#B4B0A7;">{{ totalLabel }}</div>
+    </div>
+    <button type="button" aria-label="Vaciar pedido" onClick="{{ clearOrder }}" style="width:44px; height:44px; flex:none; padding:0; border-radius:999px; border:1px solid rgba(244,242,237,.22); background:transparent; color:#F4F2ED; display:grid; place-items:center; cursor:pointer;"><span style="width:14px; height:14px; display:inline-flex;">{{ ic.x }}</span></button>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="{{ waPedido }}" target="_blank" rel="noopener" icon="{{ ic.wa }}" dc-props="{{ btnLight }}" hint-size="170px,54px">Enviar pedido</x-import>
+  </div>
+</sc-if>
+
+<sc-if value="{{ stickyOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:50%; bottom:max(14px, env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:100; display:flex; gap:8px; background:#F4F2ED; padding:8px; border-radius:999px; box-shadow:0 20px 50px -18px rgba(0,0,0,.6);">
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="tel:+34676784255" icon="{{ ic.phone }}" hint-size="130px,54px">Llamar</x-import>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" href="#carta" hint-size="170px,54px">Hacer pedido</x-import>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;movimiento&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Completo&quot;,&quot;Suave&quot;],&quot;default&quot;:&quot;Completo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Animación&quot;},&quot;pedidoOnline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;etiquetasProvisionales&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+const BARRA = [
+  { src: 'fotos/f11.jpg', nombre: 'Bomba de jamón', desc: 'Rebozada y dorada, sobre jamón, con pimiento asado y cebolla crujiente.' },
+  { src: 'fotos/f2.jpg', nombre: 'Calabacín beicon', desc: 'Calabacín con beicon y queso de cabra.' },
+  { src: 'fotos/f9.jpg', nombre: 'Chipirón con champiñones', desc: 'A la plancha con ajo y perejil, sobre champiñón salteado.' },
+  { src: 'fotos/f6.jpg', nombre: 'Bonito gilda', desc: 'Bonito con mayonesa, cebolla caramelizada y piparra.' },
+  { src: 'fotos/f3.jpg', nombre: 'Codorniz y piquillo', desc: 'Bocado empanado con huevo de codorniz, sobre pimiento rojo.' },
+  { src: 'fotos/f7.jpg', nombre: 'Champiñón con jamón', desc: 'Champiñón a la plancha sobre jamón, con alioli y salsa.' },
+  { src: 'fotos/f8.jpg', nombre: 'Codorniz con gulas', desc: 'Huevo de codorniz sobre gulas y jamón.' },
+  { src: 'fotos/f5.jpg', nombre: 'Croquetas con alioli', desc: 'Doradas por fuera, con alioli y cebollino.' }
+];
+
+const COLS = [
+  ['f11', 'f7', 'f3', 'f5'],
+  ['f9', 'f2', 'f8', 'f6'],
+  ['f2', 'f11', 'f6', 'f9'],
+  ['f8', 'f5', 'f11', 'f7'],
+  ['f3', 'f6', 'f9', 'f2']
+].map((c, i) => ({ dir: i % 2 ? '-1' : '1', items: c.concat(c).map((f) => ({ src: 'fotos/' + f + '.jpg' })) }));
+
+const CARTA = [
+  ['BONITO GILDA', 'Bonito con mayonesa, cebolla caramelizada y piparra'],
+  ['BONITO PICANTÓN', 'Bonito con tomate picantón'],
+  ['CALABACÍN BEICON', 'Calabacín con beicon y queso de cabra'],
+  ['CALABACÍN GULAS', 'Calabacín con serrano, queso de cabra y gulas'],
+  ['CALABACÍN JAMONES', 'Calabacín con relleno de tres jamones'],
+  ['FAJITAS PICANTES', 'Fajitas de pollo picantillo'],
+  ['JAMONES', 'Tres jamones'],
+  ['MINIBURGUER FOIE', 'Miniburguer con cebolla caramelizada y foie, o beicon y queso'],
+  ['MINIBURGUER QUESO', null],
+  ['PICADILLO CON GULAS O SALMÓN', 'Revuelto de surimi con gulas o salmón'],
+  ['POLLO MOSTAZA-MIEL', 'Beicon, pollo y cebolla crujiente con mostaza y miel'],
+  ['POLLO-PIMIENTO', 'Pollo con beicon, setas, salsa de curry y pimiento'],
+  ['ROLLO JAMÓN Y QUESO', 'Rollo de tramezzino con jamón y queso'],
+  ['RUSOS CON PISTO', 'Rusos con foie, cebolla crujiente y pisto'],
+  ['RUSOS MOSTAZA Y MIEL', 'Rusos con foie, cebolla crujiente, mostaza y miel'],
+  ['SALCHICHA LEGENDARIA', 'Rollo de tramezzino con salchicha Viena de queso'],
+  ['SOLOMILLO AZUL', 'Solomillo de cerdo con foie y queso azul'],
+  ['SOLOMILLO CREMA', 'Solomillo de cerdo con cebolla caramelizada, queso crema, pasas y Pedro Ximénez'],
+  ['TOMATE CABRA', 'Tomate relleno de queso de cabra con confitura de tomate'],
+  ['TOMATE CECINA', 'Tomate con queso de cabra y rollo de cecina con foie']
+].map(([name, desc], i) => ({ id: i, name, desc }));
+
+const HERO_INTRO = ['hero-eyebrow', 'hero-title', 'hero-rule', 'hero-fade', 'hero-meta', 'hero-col'];
+const eur = (n) => n.toFixed(2).replace('.', ',') + '€';
+
+class Component extends DCLogic {
+  state = { qty: {}, sticky: false, wide: false, cartaPage: 0, cNombre: '', cTel: '', cEmail: '', cMsg: '' };
+  rootRef = React.createRef();
+  cartaRef = React.createRef();
+  navRef = React.createRef();
+  heroRef = React.createRef();
+  railRef = React.createRef();
+  progressRef = React.createRef();
+  counterRef = React.createRef();
+
+  componentDidMount() {
+    this.lastY = 0;
+    this._onScroll = () => this.onScroll();
+    this._onResize = () => this.onResize();
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize, { passive: true });
+    window.addEventListener('load', this._onResize);
+    if ('ResizeObserver' in window) {
+      this.ro = new ResizeObserver(() => this.onResize());
+      this.ro.observe(document.documentElement);
+    }
+    this.onResize();
+    this.t1 = setTimeout(() => this.onResize(), 300);
+    this.preHide();
+    this.bootMotion();
+  }
+
+  componentDidUpdate(prev) {
+    if (prev.movimiento !== this.props.movimiento) {
+      this.killMotion();
+      this.preHide();
+      requestAnimationFrame(() => this.initMotion());
+    } else if (prev.pedidoOnline !== this.props.pedidoOnline || prev.etiquetasProvisionales !== this.props.etiquetasProvisionales) {
+      requestAnimationFrame(() => window.ScrollTrigger && window.ScrollTrigger.refresh());
+    }
+  }
+
+  componentWillUnmount() {
+    this.dead = true;
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('load', this._onResize);
+    clearTimeout(this.t1); clearTimeout(this.t2); clearTimeout(this.bootT); clearTimeout(this.safeT);
+    if (this.ro) this.ro.disconnect();
+    if (this._onMove) window.removeEventListener('pointermove', this._onMove);
+    this.killMotion();
+  }
+
+  heroEls() {
+    const root = this.rootRef.current;
+    if (!root) return [];
+    return HERO_INTRO.flatMap((k) => Array.from(root.querySelectorAll('[data-a="' + k + '"]')));
+  }
+
+  preHide() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    this.heroEls().forEach((el) => { el.style.opacity = '0'; });
+    clearTimeout(this.safeT);
+    this.safeT = setTimeout(() => { if (!this.ctx) this.heroEls().forEach((el) => { el.style.opacity = ''; }); }, 3000);
+  }
+
+  onResize() {
+    const wide = window.innerWidth >= 900, tall = window.innerHeight >= 760;
+    if (wide !== this.state.wide || tall !== this.state.tall) this.setState({ wide, tall });
+    this.onScroll();
+    if (!this.pinned) this.updateRailNative();
+  }
+
+  onScroll() {
+    const y = window.scrollY || 0;
+    const nav = this.navRef.current;
+    if (nav) {
+      const s = y > 40;
+      nav.style.backgroundColor = s ? 'rgba(12,12,11,.82)' : 'transparent';
+      nav.style.boxShadow = s ? '0 1px 0 rgba(244,242,237,.08)' : 'none';
+      nav.style.backdropFilter = s ? 'blur(14px)' : 'none';
+      nav.style.webkitBackdropFilter = s ? 'blur(14px)' : 'none';
+      const dy = y - this.lastY;
+      if (y < 300 || dy < -4) nav.style.transform = 'translateY(0)';
+      else if (dy > 6) nav.style.transform = 'translateY(-110%)';
+    }
+    this.lastY = y;
+    const hero = this.heroRef.current;
+    const sticky = window.innerWidth < 900 && !!hero && hero.offsetHeight > 0 && y > 0 && y > hero.offsetHeight - 40;
+    if (sticky !== this.state.sticky) this.setState({ sticky });
+  }
+
+  setRailUI(p) {
+    const n = BARRA.length;
+    const i = Math.max(0, Math.min(n - 1, Math.round(p * (n - 1))));
+    if (this.progressRef.current) this.progressRef.current.style.transform = `scaleX(${Math.max(1 / (n + 1), p)})`;
+    if (this.counterRef.current) this.counterRef.current.textContent = String(i + 1).padStart(2, '0');
+  }
+
+  updateRailNative() {
+    const vp = this.railRef.current;
+    if (!vp) return;
+    const max = vp.scrollWidth - vp.clientWidth;
+    this.setRailUI(max > 0 ? vp.scrollLeft / max : 0);
+  }
+
+  onRail = () => {
+    if (this.pinned || this.raf) return;
+    this.raf = requestAnimationFrame(() => { this.raf = null; this.updateRailNative(); });
+  };
+
+  move(dir) {
+    const vp = this.railRef.current;
+    if (!vp) return;
+    const cards = vp.querySelectorAll('article');
+    const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 300;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    vp.scrollBy({ left: dir * step, behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  cartaStep(vp) {
+    const pages = vp.querySelectorAll('[data-page]');
+    return { n: pages.length, step: pages.length > 1 ? pages[1].offsetLeft - pages[0].offsetLeft : vp.clientWidth };
+  }
+
+  goPage(i) {
+    const vp = this.cartaRef.current;
+    if (!vp) return;
+    const { n, step } = this.cartaStep(vp);
+    if (!n) return;
+    i = Math.max(0, Math.min(n - 1, i));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    vp.scrollTo({ left: i * step, behavior: reduce ? 'auto' : 'smooth' });
+    this.setState({ cartaPage: i });
+  }
+
+  onCarta = () => {
+    if (this.craf) return;
+    this.craf = requestAnimationFrame(() => {
+      this.craf = null;
+      const vp = this.cartaRef.current;
+      if (!vp) return;
+      const { n, step } = this.cartaStep(vp);
+      const max = vp.scrollWidth - vp.clientWidth;
+      const i = vp.scrollLeft >= max - 2 ? n - 1 : Math.round(vp.scrollLeft / step);
+      if (i !== this.state.cartaPage) this.setState({ cartaPage: i });
+    });
+  };
+
+  bootMotion() {
+    let tries = 0;
+    const go = () => {
+      if (this.dead) return;
+      if (window.gsap && window.ScrollTrigger) {
+        const fonts = document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1200))]) : Promise.resolve();
+        fonts.then(() => { if (!this.dead) this.initMotion(); });
+        return;
+      }
+      if (++tries < 100) this.bootT = setTimeout(go, 50);
+    };
+    go();
+  }
+
+  initMotion() {
+    const g = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText;
+    const root = this.rootRef.current;
+    if (!g || !ST || !root || this.ctx) return;
+    g.registerPlugin(ST);
+    if (Split) g.registerPlugin(Split);
+    const q = (s) => root.querySelector('[data-a="' + s + '"]');
+    const qa = (s) => Array.from(root.querySelectorAll('[data-a="' + s + '"]'));
+    const suave = (this.props.movimiento ?? 'Completo') === 'Suave';
+    const E = 'expo.out';
+
+    this.ctx = g.context(() => {
+      const mm = g.matchMedia();
+      mm.add({ ok: '(prefers-reduced-motion: no-preference)', rm: '(prefers-reduced-motion: reduce)', desk: '(min-width: 900px)', fine: '(pointer: fine)' }, (c) => {
+        const rich = c.conditions.ok && !suave;
+        const desk = c.conditions.desk && window.innerHeight >= 600;
+        const reveal = (els) => els.forEach((el) => g.from(el, rich
+          ? { y: 36, autoAlpha: 0, duration: 1.2, ease: E, scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
+          : { autoAlpha: 0, duration: .6, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } }));
+
+        g.to(q('progress'), { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+
+        // HERO
+        const hero = q('hero'), title = q('hero-title'), cols = qa('hero-col'), tracks = qa('hero-col-track');
+        const fades = qa('hero-fade');
+        const tl = g.timeline({ defaults: { ease: E } });
+        if (rich) {
+          g.set(title, { autoAlpha: 1 });
+          const chars = Split ? Split.create(title, { type: 'lines,words,chars', mask: 'lines' }).chars : null;
+          tl.fromTo(cols, { autoAlpha: 0, yPercent: (i) => (i % 2 ? -14 : 14) }, { autoAlpha: 1, yPercent: 0, duration: 2.2, stagger: { each: .09, from: 'center' } }, 0);
+          tl.fromTo(q('hero-eyebrow'), { autoAlpha: 0, y: 14, letterSpacing: '.6em' }, { autoAlpha: 1, y: 0, letterSpacing: '0em', duration: 1.4 }, .25);
+          if (chars) tl.fromTo(chars, { yPercent: 120, rotationX: -75, transformOrigin: '50% 100%' }, { yPercent: 0, rotationX: 0, duration: 1.5, stagger: .045 }, .35);
+          else tl.fromTo(title, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1.2 }, .35);
+          tl.fromTo(q('hero-rule'), { autoAlpha: 1, scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'expo.inOut' }, 1.0);
+          tl.fromTo(fades, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 1.1, stagger: .1 }, 1.15);
+          tl.fromTo(q('hero-meta'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.2 }, 1.5);
+
+          const loops = tracks.map((t) => {
+            const dir = Number(t.parentElement.getAttribute('data-dir') || 1);
+            return g.fromTo(t, { yPercent: dir > 0 ? 0 : -50 }, { yPercent: dir > 0 ? -50 : 0, ease: 'none', duration: 70 + Math.random() * 20, repeat: -1 });
+          });
+          ST.create({
+            trigger: hero, start: 'top top', end: 'bottom top',
+            onUpdate: (self) => {
+              const v = g.utils.clamp(0, 8, Math.abs(self.getVelocity()) / 220);
+              loops.forEach((l) => g.to(l, { timeScale: 1 + v, duration: .25, overwrite: true, onComplete: () => g.to(l, { timeScale: 1, duration: 1.4, overwrite: true }) }));
+            }
+          });
+          const cue = q('cue');
+          if (cue) g.fromTo(cue, { y: -14 }, { y: 40, duration: 1.6, ease: 'power2.inOut', repeat: -1, repeatDelay: .3 });
+
+          const sc = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true };
+          g.to(q('hero-content'), { yPercent: -22, scale: .92, autoAlpha: 0, ease: 'none', scrollTrigger: sc });
+          g.to(q('hero-meta'), { autoAlpha: 0, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: '30% top', scrub: true } });
+          g.to(q('hero-cols'), { scale: 1.18, ease: 'none', scrollTrigger: { ...sc } });
+          g.fromTo(q('hero-dim'), { opacity: 0 }, { opacity: .75, ease: 'none', scrollTrigger: { ...sc } });
+
+          if (c.conditions.fine && c.conditions.desk) {
+            const wrap = q('hero-cols');
+            const xTo = g.quickTo(wrap, 'x', { duration: 1.2, ease: 'power3.out' });
+            const yTo = g.quickTo(wrap, 'y', { duration: 1.2, ease: 'power3.out' });
+            const onMove = (e) => { xTo((e.clientX / window.innerWidth - .5) * -36); yTo((e.clientY / window.innerHeight - .5) * -24); };
+            hero.addEventListener('pointermove', onMove);
+            this._heroMove = () => hero.removeEventListener('pointermove', onMove);
+          }
+        } else {
+          tl.fromTo(this.heroEls(), { autoAlpha: 0 }, { autoAlpha: 1, duration: .7, stagger: .03, ease: 'power1.out' });
+        }
+
+        // MARQUEE
+        const mt = q('marquee-track');
+        if (mt && c.conditions.ok) {
+          const loop = g.to(mt, { xPercent: -50, ease: 'none', duration: suave ? 60 : 38, repeat: -1 });
+          if (rich) ST.create({
+            trigger: q('marquee'), start: 'top bottom', end: 'bottom top',
+            onUpdate: (self) => {
+              const v = g.utils.clamp(0, 5, Math.abs(self.getVelocity()) / 350);
+              g.to(loop, { timeScale: 1 + v, duration: .2, overwrite: true, onComplete: () => g.to(loop, { timeScale: 1, duration: 1.2, overwrite: true }) });
+            }
+          });
+        }
+
+        // LINES
+        qa('line').forEach((l) => g.from(l, { scaleX: 0, duration: rich ? 1.4 : .6, ease: rich ? 'expo.inOut' : 'power1.out', scrollTrigger: { trigger: l, start: 'top 90%', once: true } }));
+
+        // STATEMENT
+        const stEl = q('statement');
+        if (stEl) {
+          if (rich && Split) {
+            const words = Split.create(stEl, { type: 'words' }).words;
+            g.fromTo(words, { opacity: .12 }, { opacity: 1, ease: 'none', stagger: .08, scrollTrigger: { trigger: stEl, start: 'top 80%', end: 'bottom 48%', scrub: true } });
+          } else reveal([stEl]);
+        }
+
+        qa('split').forEach((h) => {
+          if (rich && Split) {
+            const lines = Split.create(h, { type: 'lines', mask: 'lines' }).lines;
+            g.from(lines, { yPercent: 110, duration: 1.3, ease: E, stagger: .12, scrollTrigger: { trigger: h, start: 'top 86%', once: true } });
+          } else reveal([h]);
+        });
+
+        reveal(qa('rv'));
+
+        // TRIO
+        const tw = q('trio-wrap');
+        if (rich && tw) {
+          qa('trio-clip').forEach((el, i) => g.fromTo(el, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5, ease: 'expo.inOut', delay: i * .14, scrollTrigger: { trigger: tw, start: 'top 82%', once: true } }));
+          qa('trio').forEach((el) => { const sp = Number(el.dataset.speed || 0); g.fromTo(el, { yPercent: sp }, { yPercent: -sp, ease: 'none', scrollTrigger: { trigger: tw, start: 'top bottom', end: 'bottom top', scrub: true } }); });
+          qa('trio-img').forEach((img) => g.fromTo(img, { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: tw, start: 'top bottom', end: 'bottom 30%', scrub: true } }));
+        } else reveal(qa('trio'));
+
+        // BARRA (pinned horizontal on desktop)
+        const vp = q('barra-vp'), track = q('barra-track'), pinEl = q('barra-pin');
+        if (rich && desk && vp && track && pinEl && pinEl.offsetHeight <= window.innerHeight + 2) {
+          this.pinned = true;
+          vp.scrollLeft = 0;
+          g.set(vp, { overflowX: 'hidden', scrollSnapType: 'none' });
+          const dist = () => Math.max(0, track.scrollWidth - vp.clientWidth);
+          const htw = g.to(track, {
+            x: () => -dist(), ease: 'none',
+            scrollTrigger: { trigger: pinEl, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1, onUpdate: (s) => this.setRailUI(s.progress) }
+          });
+          qa('barra-img').forEach((img) => g.fromTo(img, { xPercent: -6 }, { xPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, containerAnimation: htw, start: 'left right', end: 'right left', scrub: true } }));
+        } else {
+          this.pinned = false;
+          reveal(qa('barra-card').slice(0, 2));
+        }
+
+        // CARTA rows
+        const rows = qa('row');
+        if (rows.length) {
+          g.set(rows, { autoAlpha: 0, y: rich ? 22 : 0 });
+          ST.batch(rows, { start: 'top 94%', once: true, onEnter: (b) => g.to(b, { autoAlpha: 1, y: 0, duration: rich ? 1 : .5, ease: rich ? E : 'power1.out', stagger: .05, overwrite: true }) });
+        }
+
+        // CASA: grey to colour
+        const cp = q('casa-photo'), cc = q('casa-color');
+        if (cp && cc) {
+          if (rich) {
+            g.fromTo(cc, { clipPath: 'inset(0% 50% 0% 50%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', scrollTrigger: { trigger: cp, start: 'top 75%', end: 'center 40%', scrub: true } });
+            g.fromTo([q('casa-img'), cc], { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: cp, start: 'top bottom', end: 'bottom top', scrub: true } });
+          } else reveal([cp]);
+        }
+
+        const cnt = q('count');
+        if (cnt && rich) {
+          const o = { v: 0 };
+          g.to(o, { v: 4.8, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: cnt, start: 'top 90%', once: true }, onUpdate: () => { cnt.textContent = o.v.toFixed(1).replace('.', ','); } });
+        }
+
+        const fw = q('foot-word');
+        if (fw) {
+          if (rich && Split) {
+            const ch = Split.create(fw, { type: 'words,chars' }).chars;
+            g.from(ch, { yPercent: 110, duration: 1.4, ease: E, stagger: .04, scrollTrigger: { trigger: fw, start: 'top 96%', once: true } });
+          } else reveal([fw]);
+        }
+
+        return () => {
+          this.pinned = false;
+          if (this._heroMove) { this._heroMove(); this._heroMove = null; }
+          this.updateRailNative();
+        };
+      });
+      this.mm = mm;
+    }, root);
+
+    const okMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (window.Lenis && !suave && okMotion && window.matchMedia('(pointer: fine)').matches) {
+      this.lenis = new window.Lenis({ lerp: .09, anchors: { offset: -72 } });
+      this.lenis.on('scroll', ST.update);
+      this._lraf = (t) => { if (this.lenis) this.lenis.raf(t * 1000); };
+      g.ticker.add(this._lraf);
+      g.ticker.lagSmoothing(0);
+    }
+
+    this._stRefresh = () => ST.refresh();
+    window.addEventListener('load', this._stRefresh);
+    this.t2 = setTimeout(() => ST.refresh(), 1500);
+  }
+
+  killMotion() {
+    const g = window.gsap;
+    if (this.lenis) { if (g) g.ticker.remove(this._lraf); this.lenis.destroy(); this.lenis = null; }
+    if (this._stRefresh) window.removeEventListener('load', this._stRefresh);
+    if (this._heroMove) { this._heroMove(); this._heroMove = null; }
+    if (this.mm) { this.mm.revert(); this.mm = null; }
+    if (this.ctx) { this.ctx.revert(); this.ctx = null; }
+    this.pinned = false;
+  }
+
+  add(id, d) {
+    this.setState((s) => ({ qty: { ...s.qty, [id]: Math.max(0, (s.qty[id] || 0) + d) } }));
+  }
+
+  icons() {
+    if (this._ic) return this._ic;
+    const e = React.createElement;
+    const svg = (filled, ...kids) => e('svg', { viewBox: '0 0 24 24', width: '100%', height: '100%', fill: filled ? 'currentColor' : 'none', stroke: filled ? 'none' : 'currentColor', strokeWidth: 1.75, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true, focusable: 'false' }, ...kids);
+    const p = (d) => e('path', { d });
+    this._ic = {
+      phone: svg(false, p('M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z')),
+      pin: svg(false, p('M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'), e('circle', { cx: 12, cy: 10, r: 3 })),
+      left: svg(false, p('m12 19-7-7 7-7'), p('M19 12H5')),
+      right: svg(false, p('M5 12h14'), p('m12 5 7 7-7 7')),
+      plus: svg(false, p('M12 5v14'), p('M5 12h14')),
+      minus: svg(false, p('M5 12h14')),
+      x: svg(false, p('M18 6 6 18'), p('m6 6 12 12')),
+      wa: svg(true, p('M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z'))
+    };
+    return this._ic;
+  }
+
+  renderVals() {
+    const pr = this.props;
+    const prov = pr.etiquetasProvisionales ?? true;
+    const pedido = pr.pedidoOnline ?? true;
+    const { qty, cNombre, cTel, cEmail, cMsg } = this.state;
+
+    const lines = [];
+    let count = 0;
+    const carta = CARTA.map((c) => {
+      const n = qty[c.id] || 0;
+      if (n) { count += n; lines.push(`• ${n} × ${c.name}`); }
+      return {
+        ...c, qty: n, hasQty: n > 0, noQty: n === 0,
+        inc: () => this.add(c.id, 1), dec: () => this.add(c.id, -1),
+        addLabel: 'Añadir ' + c.name, incLabel: 'Añadir otro: ' + c.name, decLabel: 'Quitar uno: ' + c.name
+      };
+    });
+    const total = eur(count * 2.5);
+    const msgPedido = `¡Hola, Bar Andrés! Quiero hacer un pedido para llevar:\n${lines.join('\n')}\nTotal: ${total}`;
+    const msgContacto = `¡Hola, Bar Andrés!\n${cMsg.trim() || '[mensaje]'}\n👤 ${cNombre.trim() || '[nombre]'}` + (cTel.trim() ? `\n📞 ${cTel.trim()}` : '') + (cEmail.trim() ? `\n✉️ ${cEmail.trim()}` : '');
+    const orderOpen = pedido && count > 0;
+    const PER = 5, pages = Math.ceil(carta.length / PER), cp = Math.min(this.state.cartaPage, pages - 1);
+    const pad = (n) => String(n).padStart(2, '0');
+
+    return {
+      ic: this.icons(),
+      rootRef: this.rootRef, navRef: this.navRef, heroRef: this.heroRef,
+      railRef: this.railRef, progressRef: this.progressRef, counterRef: this.counterRef,
+      wide: this.state.wide, narrow: !this.state.wide, tall: this.state.wide && this.state.tall,
+      prov, pedido, demoPedido: prov && pedido,
+      heroCols: COLS,
+      barra: BARRA.map((b, i) => ({ ...b, num: String(i + 1).padStart(2, '0'), alt: b.nombre + ', pincho del Bar Andrés' })),
+      onRail: this.onRail,
+      prev: () => this.move(-1),
+      next: () => this.move(1),
+      carta,
+      cartaRef: this.cartaRef,
+      onCarta: this.onCarta,
+      cartaPages: Array.from({ length: pages }, (_, p) => ({ label: `Pinchos ${p * PER + 1} a ${Math.min(carta.length, p * PER + PER)}`, items: carta.slice(p * PER, p * PER + PER) })),
+      cartaDots: Array.from({ length: pages }, (_, p) => ({ on: p === cp, off: p !== cp, current: p === cp ? 'true' : 'false', label: 'Ir a la página ' + (p + 1), go: () => this.goPage(p) })),
+      cartaRange: pad(cp * PER + 1) + '–' + pad(Math.min(carta.length, cp * PER + PER)),
+      cartaPrev: () => this.goPage(cp - 1),
+      cartaNext: () => this.goPage(cp + 1),
+      footSpace: !this.state.wide || orderOpen,
+      orderOpen,
+      stickyOpen: !orderOpen && this.state.sticky,
+      countLabel: count === 1 ? '1 pincho' : count + ' pinchos',
+      totalLabel: 'Total ' + total,
+      clearOrder: () => this.setState({ qty: {} }),
+      waPedido: 'https://wa.me/34676784255?text=' + encodeURIComponent(msgPedido),
+      cNombre, cTel, cEmail, cMsg,
+      onNombre: (e) => this.setState({ cNombre: e.target.value }),
+      onTel: (e) => this.setState({ cTel: e.target.value }),
+      onEmail: (e) => this.setState({ cEmail: e.target.value }),
+      onMsg: (e) => this.setState({ cMsg: e.target.value }),
+      waContacto: 'https://wa.me/34676784255?text=' + encodeURIComponent(msgContacto),
+      btnLight: { style: { background: '#F4F2ED', color: '#0C0C0B', boxShadow: 'none', fontWeight: 600 } },
+      btnFull: { style: { width: '100%', justifyContent: 'center' } },
+      pillDark: { style: { background: 'rgba(244,242,237,.08)', color: '#F4F2ED', fontWeight: 500 } },
+      pillLight: { style: { background: '#EAE7E0', color: '#0F0F0E', fontWeight: 500 } },
+      chipDark: { style: { background: 'transparent', border: '1px solid rgba(244,242,237,.28)', color: '#F4F2ED', fontWeight: 500 } },
+      cardLight: { style: { borderRadius: 6, boxShadow: 'none', border: '1px solid #E2DED6' } },
+      eyebrowFine: { style: { fontWeight: 600, letterSpacing: '.28em', fontSize: '.72rem' } },
+      menuRow: { style: { borderTop: '0', padding: '18px 0' } },
+      menuRowSm: { style: { borderTop: '0', padding: '14px 0' } }
+    };
+  }
+}
+</script>
+</body>
+</html>

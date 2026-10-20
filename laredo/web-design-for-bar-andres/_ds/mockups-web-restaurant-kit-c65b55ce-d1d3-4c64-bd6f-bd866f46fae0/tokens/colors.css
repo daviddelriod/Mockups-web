@@ -1,0 +1,64 @@
+/* ============================================================
+   COLORS — Mockups Web Restaurant Kit
+   A warm, appetizing hospitality palette: cream "paper"
+   backgrounds, near-black brown ink, a hot accent (tomato),
+   and a gold secondary. Per-restaurant brand accents can be
+   re-pointed by overriding --accent / --accent-2.
+   ============================================================ */
+
+:root {
+  /* ---- Warm neutrals (the "paper" the food sits on) ---- */
+  --cream:       #FBF4E6;  /* primary warm background */
+  --cream-2:     #F4E8D0;  /* alternating section background */
+  --paper:       #FFFFFF;  /* cards / surfaces */
+  --line:        #E7D9BF;  /* hairline borders on cream */
+
+  /* ---- Ink (warm near-black brown, never pure #000) ---- */
+  --ink:         #2A2018;  /* primary text */
+  --ink-soft:    #6B5C4D;  /* secondary text */
+  --ink-faint:   #9A8B7B;  /* tertiary / meta text */
+
+  /* ---- Dark surfaces (for "night" sections + footers) ---- */
+  --char:        #211912;  /* dark section background */
+  --char-2:      #2E241B;  /* dark card on dark section */
+  --char-deep:   #160F09;  /* footer / deepest */
+
+  /* ---- Brand accents (the appetite colors) ---- */
+  --tomato:      #DA3B23;  /* primary accent — CTAs, prices, eyebrows */
+  --tomato-dk:   #B92E18;  /* primary accent, pressed/hover */
+  --gold:        #F2A30B;  /* secondary — stars, highlights on dark */
+  --gold-dk:     #D98700;  /* gold on light backgrounds */
+  --coral:       #FF6F5E;  /* warm alt accent (seafood/playful brands) */
+  --green:       #4E8C4A;  /* "open now" / fresh / success */
+
+  /* ---- Utility brand color ---- */
+  --whatsapp:    #25D366;  /* WhatsApp reservation CTA */
+
+  /* =========================================================
+     SEMANTIC ALIASES — reference these in components
+     ========================================================= */
+  --bg-page:        var(--cream);
+  --bg-alt:         var(--cream-2);
+  --bg-dark:        var(--char);
+  --surface-card:   var(--paper);
+  --surface-card-dark: var(--char-2);
+
+  --text-strong:    var(--ink);
+  --text-body:      var(--ink-soft);
+  --text-muted:     var(--ink-faint);
+  --text-on-dark:   #ECE1CF;
+  --text-on-dark-soft: #CDBFA9;
+
+  --border-hair:    var(--line);
+  --border-on-dark: rgba(255,255,255,.10);
+
+  --accent:         var(--tomato);    /* re-point per brand */
+  --accent-press:   var(--tomato-dk);
+  --accent-2:       var(--gold);      /* re-point per brand */
+  --accent-2-ink:   var(--gold-dk);
+
+  --price:          var(--tomato);    /* menu prices */
+  --star:           var(--gold);      /* rating stars */
+  --status-open:    var(--green);
+  --status-closed:  var(--tomato);
+}

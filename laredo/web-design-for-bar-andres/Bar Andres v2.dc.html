@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar Andrés · Tapas en Laredo</title>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+<style>
+:root{--accent:#1B4A86;--accent-press:#143A6B;--price:#1B4A86;--accent-2:#EBD84A;}
+html,body{margin:0;background:#0E1A30;}
+html.lenis,html.lenis body{height:auto;}
+.lenis.lenis-smooth{scroll-behavior:auto !important;}
+a{color:#1B4A86;}
+a:hover{color:#143A6B;}
+input,button,textarea{font:inherit;}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#0E1A30; color:var(--ink); font-family:var(--font-body); overflow-x:clip;">
+
+<div data-a="progress" aria-hidden="true" style="position:fixed; top:0; left:0; right:0; height:3px; background:#EBD84A; transform-origin:0 50%; transform:scaleX(0); z-index:120; pointer-events:none;"></div>
+
+<nav ref="{{ navRef }}" style="position:fixed; top:0; left:0; right:0; z-index:110; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px var(--gutter); transition:background-color .35s cubic-bezier(.4,0,.2,1), box-shadow .35s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.22,1,.36,1);">
+  <a href="#top" aria-label="Café Bar Andrés, inicio" style="display:inline-flex; flex-direction:column; background:#EBD84A; color:#0E1A30; font-family:var(--font-display); font-weight:800; text-transform:uppercase; line-height:1; gap:2px; padding:6px 12px 7px 10px; border-right:6px solid #1F4F8F; border-radius:3px; text-decoration:none;">
+    <span style="font-size:.58rem; letter-spacing:.18em;">Café · Bar</span>
+    <span style="font-size:1.28rem; letter-spacing:-.01em;">Andrés</span>
+  </a>
+  <div style="display:flex; align-items:center; gap:28px;">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:26px; font-weight:600; font-size:.98rem;">
+        <a href="#barra" style="color:#E9EEF7; text-decoration:none;" style-hover="color:#EBD84A;">Pinchos</a>
+        <a href="#carta" style="color:#E9EEF7; text-decoration:none;" style-hover="color:#EBD84A;">Carta</a>
+        <a href="#casa" style="color:#E9EEF7; text-decoration:none;" style-hover="color:#EBD84A;">La casa</a>
+        <a href="#contacto" style="color:#E9EEF7; text-decoration:none;" style-hover="color:#EBD84A;">Contacto</a>
+      </div>
+    </sc-if>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" size="sm" href="#carta" dc-props="{{ btnYellow }}" hint-size="140px,44px">Hacer pedido</x-import>
+  </div>
+</nav>
+
+<header id="top" data-a="hero" ref="{{ heroRef }}" data-screen-label="Hero" style="position:relative; overflow:hidden; background-color:#0E1A30; background-image:radial-gradient(55% 45% at 88% 28%, rgba(91,159,210,.20), transparent 70%); color:#F3EEE4; padding:112px var(--gutter) 64px;">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-a="hero-eyebrow">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#EBD84A" hint-size="260px,20px">Bar Andrés · Calle Revellón, 20</x-import>
+    </div>
+    <h1 data-a="hero-title" style="margin:18px 0 0; font-family:var(--font-display); font-weight:800; font-size:clamp(3.4rem, 14.5vw, 11rem); line-height:.9; letter-spacing:-.04em; color:#F3EEE4;">
+      <span style="display:block;">Tapas</span>
+      <span style="display:block;"><span style="display:inline-block; font-family:var(--font-script); font-weight:700; font-size:.6em; letter-spacing:0; color:#EBD84A; margin-right:.12em; transform:rotate(-6deg);">en</span>Laredo</span>
+    </h1>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap:56px 64px; align-items:end; margin-top:36px;">
+      <div>
+        <p data-a="hero-fade" style="margin:0; max-width:34ch; font-size:clamp(1.12rem, 1.8vw, 1.32rem); line-height:1.5; color:#C9D4E6; text-wrap:pretty;">Tapas y pinchos artesanales de elaboración propia, en la calle Revellón de Laredo.</p>
+        <div data-a="hero-fade" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="#barra" dc-props="{{ btnYellow }}" hint-size="150px,54px">Ver pinchos</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" href="#carta" hint-size="170px,54px">Hacer pedido</x-import>
+        </div>
+        <div data-a="hero-fade" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-top:28px; padding-top:22px; border-top:1px solid rgba(255,255,255,.14);">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ false }}" dc-props="{{ pillCream }}" hint-size="200px,34px">Cerrado temporalmente</x-import>
+          <span style="display:inline-flex; align-items:center; gap:10px; color:#F3EEE4; font-weight:700;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 5 }}" size="{{ 15 }}" color="#EBD84A" hint-size="90px,18px"></x-import>
+            <span>4,8 <span style="font-weight:500; color:#AEBBD2;">· 293 reseñas en Google</span></span>
+          </span>
+        </div>
+        <div data-a="hero-fade" aria-hidden="true" style="display:flex; align-items:center; gap:12px; margin-top:40px; color:#8D9AB3; font-size:.74rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;"><span style="width:44px; height:1px; background:#8D9AB3;"></span>Desliza</div>
+      </div>
+      <div style="position:relative; justify-self:center; width:min(100%, 380px);">
+        <div data-a="hero-tiles" aria-hidden="true" style="position:absolute; right:-18px; bottom:-18px; width:82%; height:74%; border-radius:18px; background-color:#5B9FD2; background-image:linear-gradient(180deg, rgba(255,255,255,.10), rgba(16,40,80,.18)), linear-gradient(90deg, rgba(228,244,255,.55) 2px, transparent 2px), linear-gradient(180deg, rgba(228,244,255,.55) 2px, transparent 2px); background-size:100% 100%, 20px 20px, 20px 20px;"></div>
+        <div data-a="hero-photo" style="position:relative; aspect-ratio:3/4; border-radius:999px 999px 22px 22px; overflow:hidden; border:6px solid #FBF4E6; box-shadow:0 40px 80px -40px rgba(0,0,0,.75); background:#22324F;">
+          <img data-a="hero-img" src="{{ hero.src }}" alt="{{ hero.alt }}" style="position:absolute; left:0; top:-10%; width:100%; height:120%; object-fit:cover;">
+        </div>
+        <div data-a="hero-badge" style="position:absolute; left:-14px; top:30%; width:124px; height:124px; border-radius:50%; background:#EBD84A; color:#0E1A30; display:grid; place-items:center; box-shadow:0 16px 32px -14px rgba(0,0,0,.65);">
+          <div data-a="badge-rot" aria-hidden="true" style="position:absolute; inset:5px;">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+              <defs><path id="badge-circle" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"></path></defs>
+              <text fill="#0E1A30" style="font-family:var(--font-body); font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:.2em;"><textPath href="#badge-circle" textLength="496" lengthAdjust="spacing">Pinchos artesanales · elaboración propia ·</textPath></text>
+            </svg>
+          </div>
+          <div style="position:relative; text-align:center; line-height:1;">
+            <div style="font-family:var(--font-display); font-weight:800; font-size:1.45rem; letter-spacing:-.02em;">2,50€</div>
+            <div style="font-size:.62rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; margin-top:3px;">el pincho</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div data-a="marquee" aria-hidden="true" style="background:#EBD84A; color:#0E1A30; overflow:hidden; padding:18px 0;">
+  <div data-a="marquee-track" style="display:flex; width:max-content;">
+    <div style="display:flex; align-items:center; gap:30px; padding-right:30px; font-family:var(--font-display); font-weight:800; font-size:clamp(1.4rem, 3.4vw, 2.4rem); letter-spacing:-.01em; white-space:nowrap;">
+      <span>Pinchos artesanales</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Elaboración propia</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Para llevar a casa</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Calle Revellón, 20</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Laredo</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+    </div>
+    <div style="display:flex; align-items:center; gap:30px; padding-right:30px; font-family:var(--font-display); font-weight:800; font-size:clamp(1.4rem, 3.4vw, 2.4rem); letter-spacing:-.01em; white-space:nowrap;">
+      <span>Pinchos artesanales</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Elaboración propia</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Para llevar a casa</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Calle Revellón, 20</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+      <span>Laredo</span><span style="width:16px; height:16px; flex:none; border-radius:2px; background:#5B9FD2; box-shadow:inset 0 0 0 2px rgba(228,244,255,.8);"></span>
+    </div>
+  </div>
+</div>
+
+<section id="pinchos" data-screen-label="Nuestros pinchos" style="background:var(--cream); padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-a="rv">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="170px,20px">Nuestros pinchos</x-import>
+    </div>
+    <p data-a="statement" style="margin:22px 0 0; max-width:22ch; font-family:var(--font-display); font-weight:700; font-size:clamp(2rem, 5.6vw, 4.2rem); line-height:1.04; letter-spacing:-.03em; color:var(--ink);">Podrás degustar nuestra variedad de Tapas y pinchos artesanales de elaboración propia.</p>
+    <p data-a="rv" style="margin:30px 0 0; max-width:46ch; font-size:var(--fs-lead); line-height:1.6; color:var(--ink-soft); text-wrap:pretty;">Aquí encontrarás diferentes manjares elaborados por nuestro chef mientras disfrutas y te relajas en un buen ambiente.</p>
+    <div data-a="trio-wrap" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(10px, 2.4vw, 28px); margin-top:clamp(44px, 7vw, 84px); align-items:start;">
+      <figure data-a="trio" data-speed="7" style="margin:0;">
+        <div data-a="trio-clip" style="aspect-ratio:3/4; border-radius:clamp(12px, 2vw, 22px); overflow:hidden; background:#EFE3CC;"><img data-a="trio-img" src="fotos/f9.jpg" alt="Pintxos de chipirón a la plancha sobre champiñón" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+      </figure>
+      <figure data-a="trio" data-speed="14" style="margin:clamp(40px, 9vw, 120px) 0 0;">
+        <div data-a="trio-clip" style="aspect-ratio:3/4; border-radius:clamp(12px, 2vw, 22px); overflow:hidden; background:#EFE3CC;"><img data-a="trio-img" src="fotos/f2.jpg" alt="Pinchos de calabacín con beicon y queso de cabra" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+        <figcaption style="margin-top:14px; font-family:var(--font-script); font-weight:700; font-size:clamp(1.2rem, 2.6vw, 1.7rem); line-height:1.1; color:var(--ink-soft); text-align:center;">tus mejores pinchos en Laredo para llevar a casa</figcaption>
+      </figure>
+      <figure data-a="trio" data-speed="4" style="margin:clamp(16px, 3vw, 40px) 0 0;">
+        <div data-a="trio-clip" style="aspect-ratio:3/4; border-radius:clamp(12px, 2vw, 22px); overflow:hidden; background:#EFE3CC;"><img data-a="trio-img" src="fotos/f3.jpg" alt="Pinchos con huevo de codorniz sobre pimiento rojo" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover;"></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="barra" data-screen-label="La barra" style="background:#0E1A30; color:#F3EEE4;">
+  <div data-a="barra-pin" style="min-height:100svh; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; padding:clamp(64px, 8vh, 96px) 0 clamp(28px, 4vh, 56px);">
+    <div style="max-width:var(--maxw); width:100%; box-sizing:border-box; margin:0 auto; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px 32px;">
+      <div data-a="rv" style="flex:1 1 300px; min-width:0;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#EBD84A" hint-size="110px,20px">La barra</x-import>
+        <h2 style="margin:14px 0 0; font-size:clamp(2.2rem, 5vw, 3.8rem); color:#F3EEE4;">Recórrela con la vista.</h2>
+        <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}">
+          <span style="display:inline-flex; margin-top:14px; font-weight:700; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:#EBD84A; border:1.5px dashed rgba(235,216,74,.6); border-radius:999px; padding:4px 10px;">Fotos reales · nombres descriptivos salvo los de la carta</span>
+        </sc-if>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span style="font-family:var(--font-display); font-weight:800; font-size:1.15rem; font-variant-numeric:tabular-nums; min-width:70px;"><span ref="{{ counterRef }}">01</span><span style="color:#6F7F9E;"> / 08</span></span>
+        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; gap:10px;">
+            <button type="button" aria-label="Pincho anterior" onClick="{{ prev }}" style="width:48px; height:48px; padding:0; border-radius:999px; border:1.5px solid rgba(255,255,255,.35); background:transparent; color:#F3EEE4; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.left }}</span></button>
+            <button type="button" aria-label="Pincho siguiente" onClick="{{ next }}" style="width:48px; height:48px; padding:0; border-radius:999px; border:1.5px solid #EBD84A; background:#EBD84A; color:#0E1A30; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.right }}</span></button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div data-a="barra-vp" ref="{{ railRef }}" onScroll="{{ onRail }}" tabIndex="0" aria-label="La barra: desliza para ver los pinchos" style="margin-top:clamp(24px, 4vh, 40px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; scroll-padding-inline:max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); outline-offset:-4px;">
+      <div data-a="barra-track" style="display:flex; gap:clamp(14px, 2vw, 28px); width:max-content; padding:0 max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter)));">
+        <sc-for list="{{ barra }}" as="b" hint-placeholder-count="4">
+          <article data-a="barra-card" style="flex:none; width:clamp(170px, 70vw, min(360px, 30vh)); scroll-snap-align:start;">
+            <div style="position:relative; aspect-ratio:3/4; border-radius:18px; overflow:hidden; background:#16264A;">
+              <img data-a="barra-img" src="{{ b.src }}" alt="{{ b.alt }}" loading="lazy" style="position:absolute; top:0; left:-8%; width:116%; height:100%; object-fit:cover;">
+              <span style="position:absolute; top:14px; left:14px; font-family:var(--font-display); font-weight:800; font-size:.9rem; color:#0E1A30; background:#EBD84A; border-radius:999px; padding:4px 11px;">{{ b.num }}</span>
+            </div>
+            <h3 style="margin:16px 0 0; font-size:1.3rem; line-height:1.1; color:#F3EEE4;">{{ b.nombre }}</h3>
+            <p style="margin:6px 0 0; max-width:32ch; font-size:.95rem; line-height:1.45; color:#AEBBD2; text-wrap:pretty;">{{ b.desc }}</p>
+          </article>
+        </sc-for>
+        <a href="#carta" style="flex:none; width:clamp(170px, 70vw, min(360px, 30vh)); aspect-ratio:3/4; box-sizing:border-box; border-radius:18px; background:#EBD84A; color:#0E1A30; display:flex; flex-direction:column; justify-content:space-between; padding:26px; text-decoration:none; scroll-snap-align:start; transition:background-color .2s cubic-bezier(.4,0,.2,1);" style-hover="background-color:#F2E46E; color:#0E1A30;">
+          <span style="font-weight:800; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase;">La carta</span>
+          <span style="font-family:var(--font-display); font-weight:800; font-size:clamp(2rem, 3.2vw, 2.7rem); line-height:.98; letter-spacing:-.03em;">20 pinchos, todos a 2,50€.</span>
+          <span style="display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:800; font-size:1.05rem;">Ver la carta <span style="width:22px; height:22px; display:inline-flex;">{{ ic.right }}</span></span>
+        </a>
+      </div>
+    </div>
+    <div style="max-width:var(--maxw); width:100%; box-sizing:border-box; margin:clamp(20px, 3vh, 32px) auto 0; padding:0 var(--gutter);">
+      <div style="height:2px; border-radius:2px; background:rgba(255,255,255,.14); overflow:hidden;">
+        <div ref="{{ progressRef }}" style="height:100%; background:#EBD84A; transform-origin:0 50%; transform:scaleX(.11);"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carta" data-screen-label="Carta" style="background:var(--cream); padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:20px 64px; align-items:end;">
+      <div>
+        <div data-a="rv" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="170px,20px">Para llevar a casa</x-import>
+          <sc-if value="{{ demoPedido }}" hint-placeholder-val="{{ true }}"><span style="background:#1B4A86; color:#fff; font-weight:800; font-size:.64rem; letter-spacing:.1em; padding:3px 8px; border-radius:999px;">DEMO</span></sc-if>
+        </div>
+        <h2 data-a="split" style="margin:16px 0 0; font-size:clamp(2.4rem, 6vw, 4.6rem); line-height:.98; color:var(--ink);">20 pinchos. Todos a 2,50€.</h2>
+      </div>
+      <div data-a="rv">
+        <p style="margin:0; max-width:44ch; font-size:var(--fs-lead); line-height:1.55; color:var(--ink-soft); text-wrap:pretty;">La carta de nuestra tienda online, para llevar a casa.</p>
+        <sc-if value="{{ pedido }}" hint-placeholder-val="{{ true }}"><p style="margin:8px 0 0; max-width:44ch; font-size:var(--fs-lead); line-height:1.55; color:var(--ink-soft);">Elige, suma y envíanos el pedido por WhatsApp.</p></sc-if>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); column-gap:56px; margin-top:clamp(32px, 5vw, 52px); border-top:1px solid var(--line);">
+      <sc-for list="{{ carta }}" as="c" hint-placeholder-count="8">
+        <div data-a="row" style="display:flex; align-items:center; gap:14px; border-bottom:1px dashed var(--line);">
+          <div style="flex:1; min-width:0;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" name="{{ c.name }}" desc="{{ c.desc }}" price="2,50€" dc-props="{{ menuRow }}" hint-size="100%,72px"></x-import>
+          </div>
+          <sc-if value="{{ pedido }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ c.noQty }}" hint-placeholder-val="{{ true }}">
+              <button type="button" aria-label="{{ c.addLabel }}" onClick="{{ c.inc }}" style="flex:none; display:inline-flex; align-items:center; gap:6px; height:44px; padding:0 16px; border-radius:999px; border:1.5px solid #1B4A86; background:transparent; color:#1B4A86; font-weight:800; font-size:.92rem; cursor:pointer; transition:background-color .15s cubic-bezier(.4,0,.2,1), color .15s cubic-bezier(.4,0,.2,1), transform .15s cubic-bezier(.4,0,.2,1);" style-hover="background-color:#1B4A86; color:#fff;" style-active="transform:scale(.97);">Añadir <span style="width:16px; height:16px; display:inline-flex;">{{ ic.plus }}</span></button>
+            </sc-if>
+            <sc-if value="{{ c.hasQty }}" hint-placeholder-val="{{ false }}">
+              <div style="flex:none; display:flex; align-items:center; gap:6px;">
+                <button type="button" aria-label="{{ c.decLabel }}" onClick="{{ c.dec }}" style="width:44px; height:44px; padding:0; border-radius:999px; border:1.5px solid var(--line); background:#fff; color:var(--ink); display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:16px; height:16px; display:inline-flex;">{{ ic.minus }}</span></button>
+                <span aria-live="polite" style="min-width:24px; text-align:center; font-family:var(--font-display); font-weight:800; font-size:1.1rem; font-variant-numeric:tabular-nums;">{{ c.qty }}</span>
+                <button type="button" aria-label="{{ c.incLabel }}" onClick="{{ c.inc }}" style="width:44px; height:44px; padding:0; border-radius:999px; border:1.5px solid #1B4A86; background:#1B4A86; color:#fff; display:grid; place-items:center; cursor:pointer; transition:transform .15s cubic-bezier(.4,0,.2,1);" style-active="transform:scale(.97);"><span style="width:16px; height:16px; display:inline-flex;">{{ ic.plus }}</span></button>
+              </div>
+            </sc-if>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <p data-a="rv" style="margin:24px 0 0; max-width:70ch; font-size:.88rem; line-height:1.55; color:var(--ink-faint);">Precios de la tienda online actual. ¿Alergias o intolerancias? Pregúntanos antes de pedir y te decimos qué lleva cada pincho.</p>
+  </div>
+</section>
+
+<section id="casa" data-screen-label="La casa" style="background-color:#5B9FD2; background-image:linear-gradient(180deg, rgba(255,255,255,.08), rgba(16,40,80,.16)), linear-gradient(90deg, rgba(228,244,255,.55) 2px, transparent 2px), linear-gradient(180deg, rgba(228,244,255,.55) 2px, transparent 2px); background-size:100% 100%, 22px 22px, 22px 22px; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:28px; align-items:center;">
+    <div data-a="casa-photo" style="position:relative; aspect-ratio:7/4.4; border-radius:22px; overflow:hidden; border:6px solid #FBF4E6; box-shadow:0 40px 70px -40px rgba(14,26,48,.85); background:#5B9FD2;">
+      <img data-a="casa-img" src="fotos/f4.jpg" alt="Fachada del Café Bar Andrés: pared de azulejo azul y rótulo amarillo en la calle Revellón" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+    </div>
+    <div data-a="rv" style="background:var(--cream); border-radius:22px; padding:clamp(24px, 4vw, 40px); box-shadow:0 30px 60px -36px rgba(14,26,48,.7);">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="100px,20px">La casa</x-import>
+      <h2 style="margin:14px 0 0; font-size:var(--fs-h2); color:var(--ink);">Busca el azulejo azul.</h2>
+      <p style="margin:16px 0 0; max-width:42ch; font-size:var(--fs-lead); line-height:1.55; color:var(--ink-soft); text-wrap:pretty;">En la calle Revellón, 20. Entra, pide en barra y quédate lo que haga falta.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="160px,34px">Se admiten perros</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="260px,34px">Amigable con la comunidad LGBTQ+</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="160px,34px">1–10 € por persona</x-import>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px 18px; margin-top:26px; padding-top:22px; border-top:1px solid var(--line);">
+        <span data-a="count" style="font-family:var(--font-display); font-weight:800; font-size:clamp(3.4rem, 8vw, 4.6rem); line-height:.82; letter-spacing:-.04em; color:#1B4A86; font-variant-numeric:tabular-nums;">4,8</span>
+        <div>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 5 }}" size="{{ 20 }}" hint-size="130px,22px"></x-import>
+          <div style="margin-top:4px; font-size:.95rem; color:var(--ink-soft);">293 reseñas en Google · <a href="https://www.google.com/maps/search/?api=1&amp;query=Bar%20Andr%C3%A9s%20Calle%20Revell%C3%B3n%2020%20Laredo" target="_blank" rel="noopener" style="color:#1B4A86; font-weight:700;" style-hover="color:#143A6B;">Leer reseñas</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" data-screen-label="Contacto" style="background:#0E1A30; color:#F3EEE4; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-a="rv">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#EBD84A" hint-size="110px,20px">Contacto</x-import>
+    </div>
+    <h2 data-a="split" style="margin:14px 0 0; max-width:16ch; font-size:clamp(2.2rem, 5.4vw, 4rem); color:#F3EEE4;">Escríbenos o pásate por la barra.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:28px; margin-top:clamp(32px, 5vw, 52px); align-items:start;">
+      <div data-a="rv">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" tone="dark" pad="{{ 28 }}" dc-props="{{ cardNavy }}" hint-size="100%,520px">
+          <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex; margin-bottom:14px; background:#EBD84A; color:#0E1A30; font-weight:800; font-size:.64rem; letter-spacing:.1em; padding:3px 8px; border-radius:999px;">DEMO · SE ENVÍA POR WHATSAPP</span></sc-if>
+          <div style="display:flex; flex-wrap:wrap; gap:14px;">
+            <label style="flex:1 1 180px; display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#C9D4E6;">Nombre</span>
+              <input type="text" value="{{ cNombre }}" onChange="{{ onNombre }}" autocomplete="name" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 14px; border-radius:12px; border:1.5px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#F3EEE4; font-size:1rem;" style-focus="outline:2px solid #EBD84A; outline-offset:1px; border-color:#EBD84A;">
+            </label>
+            <label style="flex:1 1 180px; display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#C9D4E6;">Teléfono</span>
+              <input type="tel" value="{{ cTel }}" onChange="{{ onTel }}" autocomplete="tel" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 14px; border-radius:12px; border:1.5px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#F3EEE4; font-size:1rem;" style-focus="outline:2px solid #EBD84A; outline-offset:1px; border-color:#EBD84A;">
+            </label>
+          </div>
+          <label style="display:flex; flex-direction:column; gap:6px; margin-top:14px;">
+            <span style="font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#C9D4E6;">Email</span>
+            <input type="email" value="{{ cEmail }}" onChange="{{ onEmail }}" autocomplete="email" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 14px; border-radius:12px; border:1.5px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#F3EEE4; font-size:1rem;" style-focus="outline:2px solid #EBD84A; outline-offset:1px; border-color:#EBD84A;">
+          </label>
+          <label style="display:flex; flex-direction:column; gap:6px; margin-top:14px;">
+            <span style="font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#C9D4E6;">Mensaje</span>
+            <textarea rows="4" value="{{ cMsg }}" onChange="{{ onMsg }}" style="width:100%; box-sizing:border-box; padding:12px 14px; border-radius:12px; border:1.5px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#F3EEE4; font-size:1rem; resize:vertical;" style-focus="outline:2px solid #EBD84A; outline-offset:1px; border-color:#EBD84A;"></textarea>
+          </label>
+          <div style="margin-top:20px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" size="lg" href="{{ waContacto }}" target="_blank" rel="noopener" icon="{{ ic.wa }}" dc-props="{{ btnFull }}" hint-size="100%,58px">Enviar por WhatsApp</x-import>
+          </div>
+        </x-import>
+      </div>
+      <div data-a="rv" style="display:flex; flex-direction:column; gap:0;">
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:0 0 18px;">
+          <span style="width:44px; height:44px; flex:none; border-radius:12px; background:rgba(255,255,255,.07); color:#EBD84A; display:grid; place-items:center;"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.pin }}</span></span>
+          <div><div style="font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#8D9AB3;">Dirección</div><div style="margin-top:3px; font-weight:600;">C. Revellón, 20, 39770 Laredo, Cantabria</div></div>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:18px 0; border-top:1px solid rgba(255,255,255,.1);">
+          <span style="width:44px; height:44px; flex:none; border-radius:12px; background:rgba(255,255,255,.07); color:#EBD84A; display:grid; place-items:center;"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.phone }}</span></span>
+          <div><div style="font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#8D9AB3;">Teléfono</div><a href="tel:+34676784255" style="display:inline-block; margin-top:3px; font-weight:700; color:#F3EEE4; text-decoration:none; font-variant-numeric:tabular-nums;" style-hover="color:#EBD84A;">676 78 42 55</a></div>
+        </div>
+        <div style="display:flex; gap:14px; align-items:flex-start; padding:18px 0; border-top:1px solid rgba(255,255,255,.1);">
+          <span style="width:44px; height:44px; flex:none; border-radius:12px; background:rgba(255,255,255,.07); color:#EBD84A; display:grid; place-items:center;"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.clock }}</span></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#8D9AB3;">Horario</div>
+            <div style="margin:8px 0 8px;"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ false }}" dc-props="{{ pillCream }}" hint-size="200px,34px">Cerrado temporalmente</x-import></div>
+            <p style="margin:0; font-size:.95rem; line-height:1.5; color:#AEBBD2; text-wrap:pretty;">Publicaremos aquí el horario en cuanto volvamos a abrir.</p>
+            <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex; margin-top:10px; font-weight:700; font-size:.7rem; letter-spacing:.06em; color:#EBD84A; border:1.5px dashed rgba(235,216,74,.6); border-radius:999px; padding:2px 8px;">[HORARIO]</span></sc-if>
+          </div>
+        </div>
+        <div style="margin-top:6px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo" target="_blank" rel="noopener" icon="{{ ic.pin }}" dc-props="{{ btnFull }}" hint-size="100%,54px">Cómo llegar</x-import>
+        </div>
+        <div style="margin-top:20px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.12); min-height:240px; background:#16264A;">
+          <iframe title="Mapa: Bar Andrés, calle Revellón 20, Laredo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo&amp;output=embed" style="display:block; width:100%; height:240px; border:0;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Pie" style="background:#0A1426; color:#AEBBD2;">
+  <div aria-hidden="true" style="height:28px; background-color:#5B9FD2; background-image:linear-gradient(90deg, rgba(228,244,255,.55) 2px, transparent 2px), linear-gradient(180deg, rgba(228,244,255,.55) 2px, transparent 2px); background-size:20px 20px, 20px 20px;"></div>
+  <div style="padding:clamp(48px, 7vw, 80px) var(--gutter) 0;">
+    <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:32px;">
+      <div>
+        <div style="font-size:.72rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#EBD84A;">Productos</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;"><a href="#carta" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">Tapas y pinchos</a></div>
+      </div>
+      <div>
+        <div style="font-size:.72rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#EBD84A;">Información</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+          <a href="#" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">Aviso legal</a>
+          <a href="#" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">Términos y condiciones</a>
+          <a href="#" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">Política de privacidad</a>
+          <a href="#" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">Política de cookies</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.72rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#EBD84A;">Contacto</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+          <a href="https://wa.me/34676784255" target="_blank" rel="noopener" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">WhatsApp</a>
+          <a href="tel:+34676784255" style="color:#E9EEF7; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">676 78 42 55</a>
+          <span>C. Revellón, 20 · Laredo</span>
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" style="overflow:hidden; margin-top:clamp(40px, 7vw, 80px);">
+      <div data-a="foot-word" style="font-family:var(--font-display); font-weight:800; font-size:clamp(3rem, 13.5vw, 12.5rem); line-height:.86; letter-spacing:-.045em; color:#F3EEE4; white-space:nowrap; text-align:center;">Bar Andrés</div>
+    </div>
+    <p style="max-width:var(--maxw); margin:28px auto 0; padding-bottom:120px; font-size:.82rem; line-height:1.55; color:#8D9AB3; text-wrap:pretty;">Propuesta de rediseño de tapaslaredo.com. Fotos del propio bar; la carta y los precios salen de su tienda online. Los nombres de algunos pinchos de la barra son descriptivos, y el pedido y el formulario por WhatsApp son una demostración.</p>
+  </div>
+</footer>
+
+<sc-if value="{{ orderOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="region" aria-label="Tu pedido" style="position:fixed; left:50%; bottom:max(14px, env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:100; width:min(calc(100% - 28px), 520px); box-sizing:border-box; display:flex; align-items:center; gap:10px; background:#0E1A30; color:#F3EEE4; padding:8px 8px 8px 20px; border-radius:999px; border:1px solid rgba(255,255,255,.14); box-shadow:var(--shadow-pop);">
+    <div style="flex:1; min-width:0; line-height:1.15;">
+      <div style="font-family:var(--font-display); font-weight:800; font-size:1.05rem;">{{ countLabel }}</div>
+      <div style="font-size:.85rem; color:#EBD84A; font-weight:700;">{{ totalLabel }}</div>
+    </div>
+    <button type="button" aria-label="Vaciar pedido" onClick="{{ clearOrder }}" style="width:44px; height:44px; flex:none; padding:0; border-radius:999px; border:1px solid rgba(255,255,255,.2); background:transparent; color:#F3EEE4; display:grid; place-items:center; cursor:pointer;"><span style="width:16px; height:16px; display:inline-flex;">{{ ic.x }}</span></button>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" href="{{ waPedido }}" target="_blank" rel="noopener" icon="{{ ic.wa }}" hint-size="170px,54px">Enviar pedido</x-import>
+  </div>
+</sc-if>
+
+<sc-if value="{{ stickyOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:50%; bottom:max(14px, env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:100; display:flex; gap:8px; background:#fff; padding:8px; border-radius:999px; box-shadow:var(--shadow-pop);">
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="tel:+34676784255" icon="{{ ic.phone }}" hint-size="130px,54px">Llamar</x-import>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="#carta" hint-size="170px,54px">Hacer pedido</x-import>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;movimiento&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Completo&quot;,&quot;Suave&quot;],&quot;default&quot;:&quot;Completo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Animación&quot;},&quot;pedidoOnline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;etiquetasProvisionales&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;fotoHero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bomba de jamón&quot;,&quot;Chipirón&quot;,&quot;Calabacín beicon&quot;],&quot;default&quot;:&quot;Bomba de jamón&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+const HERO = {
+  'Bomba de jamón': { src: 'fotos/f11.jpg', alt: 'Bomba rebozada sobre jamón con pimiento asado y palillo de perla' },
+  'Chipirón': { src: 'fotos/f9.jpg', alt: 'Pinchos de chipirón a la plancha sobre champiñón' },
+  'Calabacín beicon': { src: 'fotos/f2.jpg', alt: 'Pinchos de calabacín con beicon y queso de cabra' }
+};
+
+const BARRA = [
+  { src: 'fotos/f11.jpg', nombre: 'Bomba de jamón', desc: 'Rebozada y dorada, sobre jamón, con pimiento asado y cebolla crujiente.' },
+  { src: 'fotos/f2.jpg', nombre: 'Calabacín beicon', desc: 'Calabacín con beicon y queso de cabra.' },
+  { src: 'fotos/f9.jpg', nombre: 'Chipirón con champiñones', desc: 'A la plancha con ajo y perejil, sobre champiñón salteado.' },
+  { src: 'fotos/f6.jpg', nombre: 'Bonito gilda', desc: 'Bonito con mayonesa, cebolla caramelizada y piparra.' },
+  { src: 'fotos/f3.jpg', nombre: 'Codorniz y piquillo', desc: 'Bocado empanado con huevo de codorniz, sobre pimiento rojo.' },
+  { src: 'fotos/f7.jpg', nombre: 'Champiñón con jamón', desc: 'Champiñón a la plancha sobre jamón, con alioli y salsa.' },
+  { src: 'fotos/f8.jpg', nombre: 'Codorniz con gulas', desc: 'Huevo de codorniz sobre gulas y jamón.' },
+  { src: 'fotos/f5.jpg', nombre: 'Croquetas con alioli', desc: 'Doradas por fuera, con alioli y cebollino.' }
+];
+
+const CARTA = [
+  ['BONITO GILDA', 'Bonito con mayonesa, cebolla caramelizada y piparra'],
+  ['BONITO PICANTÓN', 'Bonito con tomate picantón'],
+  ['CALABACÍN BEICON', 'Calabacín con beicon y queso de cabra'],
+  ['CALABACÍN GULAS', 'Calabacín con serrano, queso de cabra y gulas'],
+  ['CALABACÍN JAMONES', 'Calabacín con relleno de tres jamones'],
+  ['FAJITAS PICANTES', 'Fajitas de pollo picantillo'],
+  ['JAMONES', 'Tres jamones'],
+  ['MINIBURGUER FOIE', 'Miniburguer con cebolla caramelizada y foie, o beicon y queso'],
+  ['MINIBURGUER QUESO', null],
+  ['PICADILLO CON GULAS O SALMÓN', 'Revuelto de surimi con gulas o salmón'],
+  ['POLLO MOSTAZA-MIEL', 'Beicon, pollo y cebolla crujiente con mostaza y miel'],
+  ['POLLO-PIMIENTO', 'Pollo con beicon, setas, salsa de curry y pimiento'],
+  ['ROLLO JAMÓN Y QUESO', 'Rollo de tramezzino con jamón y queso'],
+  ['RUSOS CON PISTO', 'Rusos con foie, cebolla crujiente y pisto'],
+  ['RUSOS MOSTAZA Y MIEL', 'Rusos con foie, cebolla crujiente, mostaza y miel'],
+  ['SALCHICHA LEGENDARIA', 'Rollo de tramezzino con salchicha Viena de queso'],
+  ['SOLOMILLO AZUL', 'Solomillo de cerdo con foie y queso azul'],
+  ['SOLOMILLO CREMA', 'Solomillo de cerdo con cebolla caramelizada, queso crema, pasas y Pedro Ximénez'],
+  ['TOMATE CABRA', 'Tomate relleno de queso de cabra con confitura de tomate'],
+  ['TOMATE CECINA', 'Tomate con queso de cabra y rollo de cecina con foie']
+].map(([name, desc], i) => ({ id: i, name, desc }));
+
+const eur = (n) => n.toFixed(2).replace('.', ',') + '€';
+
+class Component extends DCLogic {
+  state = { qty: {}, sticky: false, wide: false, cNombre: '', cTel: '', cEmail: '', cMsg: '' };
+  rootRef = React.createRef();
+  navRef = React.createRef();
+  heroRef = React.createRef();
+  railRef = React.createRef();
+  progressRef = React.createRef();
+  counterRef = React.createRef();
+
+  componentDidMount() {
+    this.lastY = 0;
+    this._onScroll = () => this.onScroll();
+    this._onResize = () => this.onResize();
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize, { passive: true });
+    window.addEventListener('load', this._onResize);
+    if ('ResizeObserver' in window) {
+      this.ro = new ResizeObserver(() => this.onResize());
+      this.ro.observe(document.documentElement);
+    }
+    this.onResize();
+    this.t1 = setTimeout(() => this.onResize(), 300);
+    this.bootMotion();
+  }
+
+  componentDidUpdate(prev) {
+    if (prev.movimiento !== this.props.movimiento) {
+      this.killMotion();
+      requestAnimationFrame(() => this.initMotion());
+    } else if (prev.pedidoOnline !== this.props.pedidoOnline || prev.etiquetasProvisionales !== this.props.etiquetasProvisionales) {
+      requestAnimationFrame(() => window.ScrollTrigger && window.ScrollTrigger.refresh());
+    }
+  }
+
+  componentWillUnmount() {
+    this.dead = true;
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('load', this._onResize);
+    clearTimeout(this.t1); clearTimeout(this.t2); clearTimeout(this.bootT);
+    if (this.ro) this.ro.disconnect();
+    this.killMotion();
+  }
+
+  onResize() {
+    const wide = window.innerWidth >= 900;
+    if (wide !== this.state.wide) this.setState({ wide });
+    this.onScroll();
+    if (!this.pinned) this.updateRailNative();
+  }
+
+  onScroll() {
+    const y = window.scrollY || 0;
+    const nav = this.navRef.current;
+    if (nav) {
+      const s = y > 40;
+      nav.style.backgroundColor = s ? 'rgba(14,26,48,.82)' : 'transparent';
+      nav.style.boxShadow = s ? '0 10px 30px -18px rgba(0,0,0,.6)' : 'none';
+      nav.style.backdropFilter = s ? 'blur(12px)' : 'none';
+      nav.style.webkitBackdropFilter = s ? 'blur(12px)' : 'none';
+      const dy = y - this.lastY;
+      if (y < 300 || dy < -4) nav.style.transform = 'translateY(0)';
+      else if (dy > 6) nav.style.transform = 'translateY(-110%)';
+    }
+    this.lastY = y;
+    const hero = this.heroRef.current;
+    const sticky = window.innerWidth < 900 && !!hero && hero.offsetHeight > 0 && y > 0 && y > hero.offsetHeight - 40;
+    if (sticky !== this.state.sticky) this.setState({ sticky });
+  }
+
+  setRailUI(p) {
+    const n = BARRA.length;
+    const i = Math.max(0, Math.min(n - 1, Math.round(p * (n - 1))));
+    if (this.progressRef.current) this.progressRef.current.style.transform = `scaleX(${Math.max(1 / (n + 1), p)})`;
+    if (this.counterRef.current) this.counterRef.current.textContent = String(i + 1).padStart(2, '0');
+  }
+
+  updateRailNative() {
+    const vp = this.railRef.current;
+    if (!vp) return;
+    const max = vp.scrollWidth - vp.clientWidth;
+    this.setRailUI(max > 0 ? vp.scrollLeft / max : 0);
+  }
+
+  onRail = () => {
+    if (this.pinned || this.raf) return;
+    this.raf = requestAnimationFrame(() => { this.raf = null; this.updateRailNative(); });
+  };
+
+  move(dir) {
+    const vp = this.railRef.current;
+    if (!vp) return;
+    const cards = vp.querySelectorAll('article');
+    const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 300;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    vp.scrollBy({ left: dir * step, behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  bootMotion() {
+    let tries = 0;
+    const go = () => {
+      if (this.dead) return;
+      if (window.gsap && window.ScrollTrigger) {
+        const fonts = document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1200))]) : Promise.resolve();
+        fonts.then(() => { if (!this.dead) this.initMotion(); });
+        return;
+      }
+      if (++tries < 100) this.bootT = setTimeout(go, 50);
+    };
+    go();
+  }
+
+  initMotion() {
+    const g = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText;
+    const root = this.rootRef.current;
+    if (!g || !ST || !root || this.ctx) return;
+    g.registerPlugin(ST);
+    if (Split) g.registerPlugin(Split);
+    const q = (s) => root.querySelector('[data-a="' + s + '"]');
+    const qa = (s) => Array.from(root.querySelectorAll('[data-a="' + s + '"]'));
+    const suave = (this.props.movimiento ?? 'Completo') === 'Suave';
+    const E = 'expo.out';
+
+    this.ctx = g.context(() => {
+      const mm = g.matchMedia();
+      mm.add({ ok: '(prefers-reduced-motion: no-preference)', rm: '(prefers-reduced-motion: reduce)', desk: '(min-width: 900px)' }, (c) => {
+        const rich = c.conditions.ok && !suave;
+        const desk = c.conditions.desk && window.innerHeight >= 600;
+        const soft = { autoAlpha: 0, duration: .6, ease: 'power1.out' };
+        const reveal = (els) => els.forEach((el) => g.from(el, rich
+          ? { y: 34, autoAlpha: 0, duration: 1.1, ease: E, scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
+          : { ...soft, scrollTrigger: { trigger: el, start: 'top 92%', once: true } }));
+
+        g.to(q('progress'), { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .3 } });
+
+        const title = q('hero-title');
+        const tl = g.timeline({ defaults: { ease: E } });
+        if (rich) {
+          const chars = Split ? Split.create(title, { type: 'lines,words,chars', mask: 'lines' }).chars : null;
+          tl.from(q('hero-eyebrow'), { y: 18, autoAlpha: 0, duration: .9 }, .05);
+          if (chars) tl.from(chars, { yPercent: 115, duration: 1.2, stagger: .035 }, .1);
+          else tl.from(title, { y: 40, autoAlpha: 0, duration: 1 }, .1);
+          tl.fromTo(q('hero-photo'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5, ease: 'expo.inOut' }, .2);
+          tl.from(q('hero-img'), { scale: 1.3, duration: 2 }, .2);
+          tl.from(q('hero-tiles'), { autoAlpha: 0, x: 40, y: 40, duration: 1.3 }, .65);
+          tl.from(q('hero-badge'), { scale: 0, rotate: -120, duration: 1.1, ease: 'back.out(1.7)' }, 1.05);
+          tl.from(qa('hero-fade'), { y: 22, autoAlpha: 0, duration: 1, stagger: .09 }, .6);
+          const hero = q('hero');
+          const sc = { trigger: hero, start: 'top top', end: 'bottom top', scrub: true };
+          g.to(q('hero-img'), { yPercent: 9, ease: 'none', scrollTrigger: sc });
+          g.to(title, { yPercent: -16, ease: 'none', scrollTrigger: { ...sc } });
+          g.to(q('badge-rot'), { rotate: 360, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: .6 } });
+        } else {
+          tl.from([q('hero-eyebrow'), title, q('hero-photo'), q('hero-badge')].concat(qa('hero-fade')), { autoAlpha: 0, duration: .6, stagger: .05, ease: 'power1.out' });
+        }
+
+        const mt = q('marquee-track');
+        if (mt && c.conditions.ok) {
+          const loop = g.to(mt, { xPercent: -50, ease: 'none', duration: suave ? 44 : 28, repeat: -1 });
+          if (rich) ST.create({
+            trigger: q('marquee'), start: 'top bottom', end: 'bottom top',
+            onUpdate: (self) => {
+              const v = g.utils.clamp(0, 5, Math.abs(self.getVelocity()) / 350);
+              g.to(loop, { timeScale: 1 + v, duration: .2, overwrite: true, onComplete: () => g.to(loop, { timeScale: 1, duration: 1.2, overwrite: true }) });
+            }
+          });
+        }
+
+        const stEl = q('statement');
+        if (stEl) {
+          if (rich && Split) {
+            const words = Split.create(stEl, { type: 'words' }).words;
+            g.fromTo(words, { opacity: .14 }, { opacity: 1, ease: 'none', stagger: .08, scrollTrigger: { trigger: stEl, start: 'top 80%', end: 'bottom 48%', scrub: true } });
+          } else reveal([stEl]);
+        }
+
+        qa('split').forEach((h) => {
+          if (rich && Split) {
+            const lines = Split.create(h, { type: 'lines', mask: 'lines' }).lines;
+            g.from(lines, { yPercent: 108, duration: 1.15, ease: E, stagger: .1, scrollTrigger: { trigger: h, start: 'top 86%', once: true } });
+          } else reveal([h]);
+        });
+
+        reveal(qa('rv'));
+
+        const tw = q('trio-wrap');
+        if (rich && tw) {
+          qa('trio-clip').forEach((el, i) => g.fromTo(el, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.35, ease: 'expo.inOut', delay: i * .12, scrollTrigger: { trigger: tw, start: 'top 82%', once: true } }));
+          qa('trio').forEach((el) => { const sp = Number(el.dataset.speed || 0); g.fromTo(el, { yPercent: sp }, { yPercent: -sp, ease: 'none', scrollTrigger: { trigger: tw, start: 'top bottom', end: 'bottom top', scrub: true } }); });
+          qa('trio-img').forEach((img) => g.fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: tw, start: 'top bottom', end: 'bottom 30%', scrub: true } }));
+        } else reveal(qa('trio'));
+
+        const vp = q('barra-vp'), track = q('barra-track'), pinEl = q('barra-pin');
+        if (rich && desk && vp && track && pinEl && pinEl.offsetHeight <= window.innerHeight + 2) {
+          this.pinned = true;
+          vp.scrollLeft = 0;
+          g.set(vp, { overflowX: 'hidden', scrollSnapType: 'none' });
+          const dist = () => Math.max(0, track.scrollWidth - vp.clientWidth);
+          const htw = g.to(track, {
+            x: () => -dist(), ease: 'none',
+            scrollTrigger: { trigger: pinEl, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1, onUpdate: (s) => this.setRailUI(s.progress) }
+          });
+          qa('barra-img').forEach((img) => g.fromTo(img, { xPercent: -6 }, { xPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, containerAnimation: htw, start: 'left right', end: 'right left', scrub: true } }));
+        } else {
+          this.pinned = false;
+          reveal(qa('barra-card').slice(0, 2));
+        }
+
+        const rows = qa('row');
+        if (rows.length) {
+          g.set(rows, { autoAlpha: 0, y: rich ? 22 : 0 });
+          ST.batch(rows, { start: 'top 94%', once: true, onEnter: (b) => g.to(b, { autoAlpha: 1, y: 0, duration: rich ? .9 : .5, ease: rich ? E : 'power1.out', stagger: .05, overwrite: true }) });
+        }
+
+        const cp = q('casa-photo');
+        if (cp) {
+          if (rich) {
+            g.fromTo(cp, { clipPath: 'inset(10% 12% 10% 12% round 22px)' }, { clipPath: 'inset(0% 0% 0% 0% round 22px)', ease: 'none', scrollTrigger: { trigger: cp, start: 'top 92%', end: 'center 50%', scrub: true } });
+            g.fromTo(q('casa-img'), { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: cp, start: 'top bottom', end: 'bottom top', scrub: true } });
+          } else reveal([cp]);
+        }
+
+        const cnt = q('count');
+        if (cnt && rich) {
+          const o = { v: 0 };
+          g.to(o, { v: 4.8, duration: 1.6, ease: 'power3.out', scrollTrigger: { trigger: cnt, start: 'top 90%', once: true }, onUpdate: () => { cnt.textContent = o.v.toFixed(1).replace('.', ','); } });
+        }
+
+        const fw = q('foot-word');
+        if (fw) {
+          if (rich && Split) {
+            const ch = Split.create(fw, { type: 'words,chars' }).chars;
+            g.from(ch, { yPercent: 105, duration: 1.2, ease: E, stagger: .035, scrollTrigger: { trigger: fw, start: 'top 96%', once: true } });
+          } else reveal([fw]);
+        }
+
+        return () => { this.pinned = false; this.updateRailNative(); };
+      });
+      this.mm = mm;
+    }, root);
+
+    const okMotion = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (window.Lenis && !suave && okMotion && window.matchMedia('(pointer: fine)').matches) {
+      this.lenis = new window.Lenis({ lerp: .1, anchors: { offset: -72 } });
+      this.lenis.on('scroll', ST.update);
+      this._lraf = (t) => { if (this.lenis) this.lenis.raf(t * 1000); };
+      g.ticker.add(this._lraf);
+      g.ticker.lagSmoothing(0);
+    }
+
+    this._stRefresh = () => ST.refresh();
+    window.addEventListener('load', this._stRefresh);
+    this.t2 = setTimeout(() => ST.refresh(), 1500);
+  }
+
+  killMotion() {
+    const g = window.gsap;
+    if (this.lenis) { if (g) g.ticker.remove(this._lraf); this.lenis.destroy(); this.lenis = null; }
+    if (this._stRefresh) window.removeEventListener('load', this._stRefresh);
+    if (this.mm) { this.mm.revert(); this.mm = null; }
+    if (this.ctx) { this.ctx.revert(); this.ctx = null; }
+    this.pinned = false;
+  }
+
+  add(id, d) {
+    this.setState((s) => {
+      const n = Math.max(0, (s.qty[id] || 0) + d);
+      return { qty: { ...s.qty, [id]: n } };
+    });
+  }
+
+  icons() {
+    if (this._ic) return this._ic;
+    const e = React.createElement;
+    const svg = (filled, ...kids) => e('svg', { viewBox: '0 0 24 24', width: '100%', height: '100%', fill: filled ? 'currentColor' : 'none', stroke: filled ? 'none' : 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true, focusable: 'false' }, ...kids);
+    const p = (d) => e('path', { d });
+    this._ic = {
+      phone: svg(false, p('M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z')),
+      pin: svg(false, p('M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'), e('circle', { cx: 12, cy: 10, r: 3 })),
+      clock: svg(false, e('circle', { cx: 12, cy: 12, r: 10 }), e('polyline', { points: '12 6 12 12 16 14' })),
+      left: svg(false, p('m12 19-7-7 7-7'), p('M19 12H5')),
+      right: svg(false, p('M5 12h14'), p('m12 5 7 7-7 7')),
+      plus: svg(false, p('M12 5v14'), p('M5 12h14')),
+      minus: svg(false, p('M5 12h14')),
+      x: svg(false, p('M18 6 6 18'), p('m6 6 12 12')),
+      wa: svg(true, p('M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z'))
+    };
+    return this._ic;
+  }
+
+  renderVals() {
+    const pr = this.props;
+    const prov = pr.etiquetasProvisionales ?? true;
+    const pedido = pr.pedidoOnline ?? true;
+    const hero = HERO[pr.fotoHero ?? 'Bomba de jamón'] || HERO['Bomba de jamón'];
+    const { qty, cNombre, cTel, cEmail, cMsg } = this.state;
+
+    const lines = [];
+    let count = 0;
+    const carta = CARTA.map((c) => {
+      const n = qty[c.id] || 0;
+      if (n) { count += n; lines.push(`• ${n} × ${c.name}`); }
+      return {
+        ...c, qty: n, hasQty: n > 0, noQty: n === 0,
+        inc: () => this.add(c.id, 1), dec: () => this.add(c.id, -1),
+        addLabel: 'Añadir ' + c.name, incLabel: 'Añadir otro: ' + c.name, decLabel: 'Quitar uno: ' + c.name
+      };
+    });
+    const total = eur(count * 2.5);
+    const msgPedido = `¡Hola, Bar Andrés! Quiero hacer un pedido para llevar:\n${lines.join('\n')}\nTotal: ${total}`;
+    const msgContacto = `¡Hola, Bar Andrés!\n${cMsg.trim() || '[mensaje]'}\n👤 ${cNombre.trim() || '[nombre]'}` + (cTel.trim() ? `\n📞 ${cTel.trim()}` : '') + (cEmail.trim() ? `\n✉️ ${cEmail.trim()}` : '');
+    const orderOpen = pedido && count > 0;
+
+    return {
+      ic: this.icons(),
+      rootRef: this.rootRef, navRef: this.navRef, heroRef: this.heroRef,
+      railRef: this.railRef, progressRef: this.progressRef, counterRef: this.counterRef,
+      wide: this.state.wide, narrow: !this.state.wide,
+      prov, pedido, demoPedido: prov && pedido,
+      hero,
+      barra: BARRA.map((b, i) => ({ ...b, num: String(i + 1).padStart(2, '0'), alt: b.nombre + ', pincho del Bar Andrés' })),
+      onRail: this.onRail,
+      prev: () => this.move(-1),
+      next: () => this.move(1),
+      carta,
+      orderOpen,
+      stickyOpen: !orderOpen && this.state.sticky,
+      countLabel: count === 1 ? '1 pincho' : count + ' pinchos',
+      totalLabel: 'Total ' + total,
+      clearOrder: () => this.setState({ qty: {} }),
+      waPedido: 'https://wa.me/34676784255?text=' + encodeURIComponent(msgPedido),
+      cNombre, cTel, cEmail, cMsg,
+      onNombre: (e) => this.setState({ cNombre: e.target.value }),
+      onTel: (e) => this.setState({ cTel: e.target.value }),
+      onEmail: (e) => this.setState({ cEmail: e.target.value }),
+      onMsg: (e) => this.setState({ cMsg: e.target.value }),
+      waContacto: 'https://wa.me/34676784255?text=' + encodeURIComponent(msgContacto),
+      btnYellow: { style: { background: '#EBD84A', color: '#0E1A30', boxShadow: '0 12px 28px -14px rgba(235,216,74,.7)' } },
+      btnFull: { style: { width: '100%', justifyContent: 'center' } },
+      pillCream: { style: { background: '#FBF4E6' } },
+      cardNavy: { style: { background: '#16264A', border: '1px solid rgba(255,255,255,.1)' } },
+      menuRow: { style: { borderTop: '0' } }
+    };
+  }
+}
+</script>
+</body>
+</html>

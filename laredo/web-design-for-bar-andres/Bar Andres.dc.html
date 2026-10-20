@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar Andrés · Pintxos y tapas en Laredo</title>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<style>
+:root{--accent:#1B4A86;--accent-press:#143A6B;--price:#1B4A86;--accent-2:#EBD84A;}
+html,body{margin:0;background:#FBF4E6;}
+a{color:#1B4A86;}
+a:hover{color:#143A6B;}
+input,button,select{font:inherit;}
+</style>
+</helmet>
+<div style="background:var(--cream); color:var(--ink); font-family:var(--font-body); overflow-x:clip; min-height:100vh;">
+
+<nav ref="{{ navRef }}" style="position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:10px var(--gutter); transition:background .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1);">
+  <a href="#top" aria-label="Café Bar Andrés, inicio" style="display:inline-flex; flex-direction:column; background:#EBD84A; color:#1B2C4F; font-family:var(--font-display); font-weight:800; text-transform:uppercase; line-height:1; gap:2px; padding:6px 12px 7px 10px; border-right:6px solid #1F4F8F; border-radius:3px; box-shadow:0 6px 14px -8px rgba(18,30,56,.6); text-decoration:none;">
+    <span style="font-size:.58rem; letter-spacing:.18em;">Café · Bar</span>
+    <span style="font-size:1.28rem; letter-spacing:-.01em;">Andrés</span>
+  </a>
+  <div style="display:flex; align-items:center; gap:26px;">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:22px; font-weight:700; font-size:.98rem;">
+        <a href="#barra" style="color:#1B2C4F; text-decoration:none;" style-hover="color:#1B4A86;">La barra</a>
+        <a href="#casa" style="color:#1B2C4F; text-decoration:none;" style-hover="color:#1B4A86;">La casa</a>
+        <sc-if value="{{ encargos }}" hint-placeholder-val="{{ true }}"><a href="#encargos" style="color:#1B2C4F; text-decoration:none;" style-hover="color:#1B4A86;">Encargos</a></sc-if>
+        <a href="#donde" style="color:#1B2C4F; text-decoration:none;" style-hover="color:#1B4A86;">Dónde estamos</a>
+      </div>
+    </sc-if>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" size="sm" href="tel:+34676784255" icon="{{ ic.phone }}" hint-size="110px,44px">Llamar</x-import>
+  </div>
+</nav>
+
+<header id="top" ref="{{ heroRef }}" data-screen-label="Hero" style="position:relative; background-color:#5B9FD2; background-image:linear-gradient(180deg, rgba(255,255,255,.10), rgba(16,40,80,.14)), linear-gradient(90deg, rgba(228,244,255,.55) 2px, transparent 2px), linear-gradient(180deg, rgba(228,244,255,.55) 2px, transparent 2px); background-size:100% 100%, 20px 20px, 20px 20px; border-bottom:10px solid #1B2C4F; padding:96px var(--gutter) 0;">
+  <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:8px 56px; align-items:end;">
+    <div style="padding:12px 0 44px;">
+      <h1 ref="{{ signRef }}" style="display:inline-flex; flex-direction:column; gap:6px; margin:0; background:#EBD84A; color:#1B2C4F; padding:14px 24px 16px 20px; border-right:12px solid #1F4F8F; border-radius:4px; box-shadow:0 22px 34px -18px rgba(18,30,56,.65); transform:rotate(-2deg); transform-origin:50% 0; font-family:var(--font-display); font-weight:800; line-height:.86; text-transform:uppercase;">
+        <span style="font-size:clamp(1rem, 4.4vw, 1.5rem); letter-spacing:.16em;">Café · Bar</span>
+        <span style="font-size:clamp(3.5rem, 16.5vw, 7rem); letter-spacing:-.03em;">Andrés</span>
+      </h1>
+      <p style="margin:28px 0 0; max-width:30ch; font-size:clamp(1.14rem, 2vw, 1.32rem); line-height:1.42; font-weight:600; color:#13254A; text-wrap:pretty;">Pintxos y tapas de barra en la calle Revellón, 20. De 1 a 10 € por persona.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="#barra" hint-size="150px,54px">Ver la barra</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo" target="_blank" rel="noopener" icon="{{ ic.pin }}" dc-props="{{ heroOutline }}" hint-size="170px,54px">Cómo llegar</x-import>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:24px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ status.open }}" dc-props="{{ pillCream }}" hint-size="190px,34px">{{ status.text }}</x-import>
+        <span style="display:inline-flex; align-items:center; background:#FBF4E6; color:var(--ink); border-radius:999px; padding:5px 14px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 5 }}" score="4,8" count="293" size="{{ 15 }}" hint-size="220px,24px"></x-import>
+        </span>
+      </div>
+    </div>
+    <figure ref="{{ photoRef }}" style="position:relative; z-index:2; margin:0 0 -72px; justify-self:center; width:min(100%, 400px);">
+      <img src="{{ hero.src }}" alt="{{ hero.alt }}" style="display:block; width:100%; aspect-ratio:3/4; object-fit:cover; border:6px solid #fff; border-radius:22px; box-shadow:0 30px 60px -28px rgba(18,30,56,.7); transform:rotate(2deg); background:#e9dcc4;">
+      <figcaption style="position:absolute; left:6px; bottom:-48px; font-family:var(--font-script); font-weight:700; font-size:1.75rem; line-height:1; color:#1B2C4F; transform:rotate(-3deg);">{{ hero.caption }}</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="barra" data-screen-label="La barra" style="padding:calc(84px + var(--pad-block)) 0 var(--pad-block); background:var(--cream);">
+  <div style="max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:22px 32px;">
+    <div data-reveal="0" style="flex:1 1 320px; min-width:0;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.SectionHeading" eyebrow="La barra" title="Uno de cada, para empezar." lead="Pintxos de palillo y de perla, montados en barra. Desliza para recorrerla." hint-size="100%,190px"></x-import>
+      <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}">
+        <span style="display:inline-flex; margin-top:14px; font-family:var(--font-body); font-weight:700; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:#1B4A86; background:rgba(91,159,210,.14); border:1.5px dashed #5B9FD2; border-radius:999px; padding:4px 10px;">Provisional · nombres sacados de las fotos, precios pendientes de carta</span>
+      </sc-if>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span style="font-family:var(--font-display); font-weight:800; font-size:1.15rem; color:var(--ink); font-variant-numeric:tabular-nums; min-width:68px;"><span ref="{{ counterRef }}">01</span><span style="color:var(--ink-faint);"> / {{ total }}</span></span>
+      <button type="button" aria-label="Pintxo anterior" onClick="{{ prev }}" style="width:48px; height:48px; border-radius:999px; border:2px solid #2A2018; background:transparent; color:#2A2018; display:grid; place-items:center; cursor:pointer; padding:0; transition:transform .15s cubic-bezier(.4,0,.2,1), background-color .15s cubic-bezier(.4,0,.2,1), color .15s cubic-bezier(.4,0,.2,1);" style-hover="background-color:#2A2018; color:#fff;" style-active="transform:scale(.97);"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.left }}</span></button>
+      <button type="button" aria-label="Pintxo siguiente" onClick="{{ next }}" style="width:48px; height:48px; border-radius:999px; border:2px solid #2A2018; background:#2A2018; color:#fff; display:grid; place-items:center; cursor:pointer; padding:0; transition:transform .15s cubic-bezier(.4,0,.2,1), background-color .15s cubic-bezier(.4,0,.2,1);" style-hover="background-color:#1B4A86; border-color:#1B4A86;" style-active="transform:scale(.97);"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.right }}</span></button>
+    </div>
+  </div>
+
+  <div data-reveal="80" style="margin-top:26px;">
+    <div ref="{{ railRef }}" onScroll="{{ onRail }}" tabIndex="0" aria-label="La barra: desliza para ver los pintxos" style="display:flex; gap:18px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-width:none; padding:36px max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter))) 14px; scroll-padding-inline:max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter))); outline-offset:-4px;">
+      <sc-for list="{{ pintxos }}" as="p" hint-placeholder-count="4">
+        <article style="flex:none; width:clamp(240px, 72vw, 290px); scroll-snap-align:start; position:relative; background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-sm); padding:8px 8px 20px;">
+          <sc-if value="{{ p.hasPick }}" hint-placeholder-val="{{ true }}">
+            <span data-pick="1" aria-hidden="true" style="position:absolute; top:-28px; left:30px; z-index:2; display:flex; flex-direction:column; align-items:center; transition:transform .45s cubic-bezier(.34,1.56,.64,1);">
+              <sc-if value="{{ p.perla }}" hint-placeholder-val="{{ true }}"><span style="width:18px; height:18px; border-radius:50%; background:radial-gradient(circle at 35% 32%, #ffffff 0%, #f1eef6 40%, #b8b2c6 100%); box-shadow:0 3px 6px rgba(42,32,24,.35);"></span></sc-if>
+              <sc-if value="{{ p.rojo }}" hint-placeholder-val="{{ false }}"><span style="width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 35% 32%, #ff7a63 0%, #DA3B23 50%, #8f200f 100%); box-shadow:0 3px 6px rgba(42,32,24,.35);"></span></sc-if>
+              <sc-if value="{{ p.negro }}" hint-placeholder-val="{{ false }}"><span style="width:6px; height:16px; border-radius:2px; background:#2A2018;"></span></sc-if>
+              <span style="width:3px; height:40px; margin-top:-2px; border-radius:2px; background:linear-gradient(90deg, #c9a46e, #e6cc9f);"></span>
+            </span>
+          </sc-if>
+          <img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy" style="display:block; width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:12px; background:#efe3cc;">
+          <div style="padding:16px 8px 0;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;">
+              <h3 style="margin:0; font-size:1.24rem; line-height:1.1; color:var(--ink); text-wrap:balance;">{{ p.nombre }}</h3>
+              <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}">
+                <span style="flex:none; font-weight:700; font-size:.72rem; letter-spacing:.06em; color:#1B4A86; border:1.5px dashed #5B9FD2; border-radius:999px; padding:2px 8px;">[PRECIO]</span>
+              </sc-if>
+            </div>
+            <p style="margin:8px 0 0; font-size:.96rem; line-height:1.45; color:var(--ink-soft); text-wrap:pretty;">{{ p.desc }}</p>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <div style="max-width:var(--maxw); margin:18px auto 0; padding:0 var(--gutter);">
+      <div style="height:3px; border-radius:3px; background:var(--line); overflow:hidden;">
+        <div ref="{{ progressRef }}" style="height:100%; width:100%; background:#1B4A86; transform-origin:0 50%; transform:scaleX(.125); transition:transform .2s linear;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="casa" data-screen-label="La casa" style="background:var(--cream-2); padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:40px 64px; align-items:center;">
+    <figure data-reveal="0" style="margin:0;">
+      <img src="fotos/f4.jpg" alt="Fachada del Café Bar Andrés: pared de azulejo azul y rótulo amarillo en la calle Revellón" loading="lazy" style="display:block; width:100%; aspect-ratio:7/4; object-fit:cover; border:6px solid #fff; border-radius:22px; box-shadow:var(--shadow); background:#5B9FD2;">
+    </figure>
+    <div data-reveal="80">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.SectionHeading" eyebrow="La casa" title="Busca el azulejo azul." lead="Fachada de azulejo celeste y rótulo amarillo en la calle Revellón, 20. Entra, pide en barra y quédate lo que haga falta." hint-size="100%,220px"></x-import>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="160px,34px">Se admiten perros</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="260px,34px">Amigable con la comunidad LGBTQ+</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="160px,34px">1–10 € por persona</x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" hint-size="110px,34px">Bar de tapas</x-import>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" data-screen-label="Lo que dicen" style="background:#1B2C4F; color:#E6ECF5; padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap:40px 64px; align-items:center;">
+    <div data-reveal="0">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#EBD84A" hint-size="140px,20px">Lo que dicen</x-import>
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:12px 20px; margin-top:18px;">
+        <span style="font-family:var(--font-display); font-weight:800; font-size:clamp(5.2rem, 18vw, 8.4rem); line-height:.8; letter-spacing:-.04em; color:#EBD84A;">4,8</span>
+        <div style="padding-bottom:6px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 5 }}" size="{{ 24 }}" hint-size="150px,26px"></x-import>
+          <div style="margin-top:6px; font-weight:700; color:#fff;">293 reseñas en Google</div>
+        </div>
+      </div>
+      <p style="margin:24px 0 0; max-width:38ch; font-size:var(--fs-lead); line-height:1.55; color:#C9D4E6; text-wrap:pretty;">Lo dicen 293 personas en Google. Nosotros ponemos los pintxos.</p>
+      <div style="margin-top:26px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Bar%20Andr%C3%A9s%20Calle%20Revell%C3%B3n%2020%20Laredo" target="_blank" rel="noopener" hint-size="230px,54px">Leer reseñas en Google</x-import>
+      </div>
+    </div>
+    <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}">
+      <div data-reveal="100" style="display:grid; gap:14px;">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" tone="dark" stars="{{ 5 }}" quote="[RESEÑA REAL] Pega aquí una opinión de Google que hable de los pintxos." author="[Nombre]" when="[Fecha] · Google" dc-props="{{ reviewNavy }}" hint-size="100%,170px"></x-import>
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.ReviewCard" tone="dark" stars="{{ 5 }}" quote="[RESEÑA REAL] Otra opinión, mejor si menciona el trato o el ambiente." author="[Nombre]" when="[Fecha] · Google" dc-props="{{ reviewNavy }}" hint-size="100%,170px"></x-import>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<sc-if value="{{ encargos }}" hint-placeholder-val="{{ true }}">
+<section id="encargos" data-screen-label="Encargos" style="background:var(--cream); padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:40px 64px; align-items:center;">
+    <figure data-reveal="0" style="margin:0; justify-self:center; width:min(100%, 460px);">
+      <img src="fotos/f10.jpg" alt="Bandeja de pintxos especiales de Semana Santa con palillos de perla" loading="lazy" style="display:block; width:100%; aspect-ratio:1/1; object-fit:cover; object-position:50% 0; border:6px solid #fff; border-radius:22px; box-shadow:var(--shadow); transform:rotate(-1.5deg); background:#efe3cc;">
+    </figure>
+    <div data-reveal="80">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" accent="{{ true }}" pad="{{ 28 }}" hint-size="100%,520px">
+        <div style="display:flex; align-items:center; gap:10px; margin-top:6px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="110px,20px">Por encargo</x-import>
+          <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="background:#1B4A86; color:#fff; font-weight:800; font-size:.66rem; letter-spacing:.1em; padding:3px 8px; border-radius:999px;">DEMO</span></sc-if>
+        </div>
+        <h2 style="margin:14px 0 0; font-size:clamp(1.9rem, 4.6vw, 2.7rem); color:var(--ink); text-wrap:balance;">¿Celebras algo? Pide una bandeja.</h2>
+        <p style="margin:14px 0 0; color:var(--ink-soft); line-height:1.55; text-wrap:pretty;">En Semana Santa la barra se llenó de pintxos especiales. Si quieres una bandeja para casa o para una celebración, encárgala por WhatsApp y la preparamos.</p>
+        <div role="group" aria-label="Tamaño de la bandeja" style="margin-top:22px;">
+          <div style="font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);">Tamaño de la bandeja</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+            <sc-for list="{{ bandejas }}" as="b" hint-placeholder-count="3">
+              <sc-if value="{{ b.active }}" hint-placeholder-val="{{ false }}">
+                <button type="button" aria-pressed="true" onClick="{{ b.pick }}" style="min-height:44px; padding:0 18px; border-radius:999px; border:2px solid #1B4A86; background:#1B4A86; color:#fff; font-family:var(--font-display); font-weight:700; font-size:1rem; cursor:pointer;">{{ b.label }}</button>
+              </sc-if>
+              <sc-if value="{{ b.inactive }}" hint-placeholder-val="{{ true }}">
+                <button type="button" aria-pressed="false" onClick="{{ b.pick }}" style="min-height:44px; padding:0 18px; border-radius:999px; border:2px solid var(--line); background:#fff; color:var(--ink-soft); font-family:var(--font-display); font-weight:700; font-size:1rem; cursor:pointer; transition:border-color .15s cubic-bezier(.4,0,.2,1), color .15s cubic-bezier(.4,0,.2,1), transform .15s cubic-bezier(.4,0,.2,1);" style-hover="border-color:#1B4A86; color:#1B4A86;" style-active="transform:scale(.97);">{{ b.label }}</button>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:18px;">
+          <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);">Día</span>
+            <input type="date" value="{{ fecha }}" onChange="{{ onFecha }}" style="min-height:48px; padding:10px 14px; border-radius:12px; border:1.5px solid var(--line); background:#fff; color:var(--ink); font-size:1rem;" style-focus="outline:2px solid #1B4A86; outline-offset:1px; border-color:#1B4A86;">
+          </label>
+          <label style="flex:1 1 160px; display:flex; flex-direction:column; gap:6px;">
+            <span style="font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);">Nombre</span>
+            <input type="text" value="{{ nombre }}" onChange="{{ onNombre }}" placeholder="Tu nombre" autocomplete="given-name" style="min-height:48px; padding:10px 14px; border-radius:12px; border:1.5px solid var(--line); background:#fff; color:var(--ink); font-size:1rem;" style-focus="outline:2px solid #1B4A86; outline-offset:1px; border-color:#1B4A86;">
+          </label>
+        </div>
+        <div style="margin-top:22px;">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" size="lg" href="{{ waHref }}" target="_blank" rel="noopener" icon="{{ ic.wa }}" dc-props="{{ btnFull }}" hint-size="100%,58px">Enviar por WhatsApp</x-import>
+        </div>
+      </x-import>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<section id="donde" data-screen-label="Dónde estamos" style="background:var(--cream-2); padding:var(--pad-block) var(--gutter);">
+  <div style="max-width:var(--maxw); margin:0 auto;">
+    <div data-reveal="0">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.SectionHeading" eyebrow="Dónde estamos" title="Calle Revellón, 20. Laredo." lead="Ven andando, pide en barra y, si vienes con perro, que entre también." hint-size="100%,200px"></x-import>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap:24px; margin-top:36px; align-items:stretch;">
+      <div data-reveal="0" style="border:6px solid #fff; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); min-height:340px; background:#e9dcc4;">
+        <iframe title="Mapa: Bar Andrés, calle Revellón 20, Laredo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo&amp;output=embed" style="display:block; width:100%; height:100%; min-height:340px; border:0;"></iframe>
+      </div>
+      <div data-reveal="80">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" pad="{{ 26 }}" hint-size="100%,460px">
+          <div style="display:flex; gap:14px; align-items:flex-start; padding-bottom:14px;">
+            <span style="width:42px; height:42px; border-radius:11px; background:var(--cream-2); color:#1B4A86; display:grid; place-items:center; flex:none;"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.pin }}</span></span>
+            <div>
+              <div style="font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:700;">Dirección</div>
+              <div style="font-weight:600; color:var(--ink); margin-top:2px;">C. Revellón, 20, 39770 Laredo, Cantabria</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-top:1px solid var(--line);">
+            <span style="width:42px; height:42px; border-radius:11px; background:var(--cream-2); color:#1B4A86; display:grid; place-items:center; flex:none;"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.phone }}</span></span>
+            <div>
+              <div style="font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:700;">Teléfono</div>
+              <a href="tel:+34676784255" style="display:inline-block; font-weight:700; color:var(--ink); margin-top:2px; text-decoration:none; font-variant-numeric:tabular-nums;" style-hover="color:#1B4A86;">676 78 42 55</a>
+            </div>
+          </div>
+          <div style="display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-top:1px solid var(--line);">
+            <span style="width:42px; height:42px; border-radius:11px; background:var(--cream-2); color:#1B4A86; display:grid; place-items:center; flex:none;"><span style="width:20px; height:20px; display:inline-flex;">{{ ic.clock }}</span></span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:700;">Horario</div>
+              <div style="margin:8px 0 10px;">
+                <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ status.open }}" hint-size="190px,34px">{{ status.text }}</x-import>
+              </div>
+              <sc-if value="{{ cerrado }}" hint-placeholder-val="{{ true }}">
+                <p style="margin:0; color:var(--ink-soft); font-size:.95rem; line-height:1.5; text-wrap:pretty;">Google marca el bar como cerrado temporalmente. Publicaremos aquí el horario en cuanto volvamos a abrir.</p>
+                <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex; margin-top:10px; font-weight:700; font-size:.72rem; letter-spacing:.06em; color:#1B4A86; border:1.5px dashed #5B9FD2; border-radius:999px; padding:2px 8px;">[HORARIO]</span></sc-if>
+              </sc-if>
+              <sc-if value="{{ ejemplo }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <sc-for list="{{ horario }}" as="h" hint-placeholder-count="7">
+                    <sc-if value="{{ h.today }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.93rem; color:var(--ink); font-weight:700;"><span>{{ h.dia }}</span><span style="text-align:right; font-variant-numeric:tabular-nums;">{{ h.horas }}</span></div>
+                    </sc-if>
+                    <sc-if value="{{ h.notToday }}" hint-placeholder-val="{{ true }}">
+                      <div style="display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.93rem; color:var(--ink-soft);"><span>{{ h.dia }}</span><span style="text-align:right; font-variant-numeric:tabular-nums;">{{ h.horas }}</span></div>
+                    </sc-if>
+                  </sc-for>
+                  <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex; margin-top:10px; font-weight:700; font-size:.72rem; letter-spacing:.06em; color:#1B4A86; border:1.5px dashed #5B9FD2; border-radius:999px; padding:2px 8px;">Horario de ejemplo · pendiente de confirmar</span></sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+          <div style="margin-top:8px;">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo" target="_blank" rel="noopener" icon="{{ ic.pin }}" dc-props="{{ btnFull }}" hint-size="100%,54px">Cómo llegar</x-import>
+          </div>
+        </x-import>
+      </div>
+    </div>
+    <div data-reveal="0" style="margin-top:24px;">
+      <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" pad="{{ 24 }}" hint-size="100%,130px">
+        <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 14px;">
+          <h3 style="margin:0; font-size:var(--fs-h3); color:var(--ink);">Alérgenos</h3>
+          <sc-if value="{{ prov }}" hint-placeholder-val="{{ true }}"><span style="font-weight:700; font-size:.72rem; letter-spacing:.06em; color:#1B4A86; border:1.5px dashed #5B9FD2; border-radius:999px; padding:2px 8px;">Provisional · falta la tabla de la carta</span></sc-if>
+        </div>
+        <p style="margin:10px 0 0; color:var(--ink-soft); line-height:1.55; max-width:62ch; text-wrap:pretty;">Si tienes alguna alergia o intolerancia, pregúntanos en barra antes de pedir: te decimos qué lleva cada pintxo.</p>
+      </x-import>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Pie" style="background:#121E38; color:#C9D4E6;">
+  <div aria-hidden="true" style="height:30px; background-color:#5B9FD2; background-image:linear-gradient(90deg, rgba(228,244,255,.55) 2px, transparent 2px), linear-gradient(180deg, rgba(228,244,255,.55) 2px, transparent 2px); background-size:20px 20px, 20px 20px; border-bottom:6px solid #1B2C4F;"></div>
+  <div style="max-width:var(--maxw); margin:0 auto; padding:52px var(--gutter) 112px;">
+    <div style="display:inline-flex; flex-direction:column; background:#EBD84A; color:#1B2C4F; font-family:var(--font-display); font-weight:800; text-transform:uppercase; line-height:.9; padding:10px 18px 12px 14px; border-right:8px solid #1F4F8F; border-radius:3px;">
+      <span style="font-size:.78rem; letter-spacing:.18em;">Café · Bar</span>
+      <span style="font-size:2.1rem; letter-spacing:-.02em;">Andrés</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:4px; margin-top:22px; font-size:1rem;">
+      <span>C. Revellón, 20, 39770 Laredo, Cantabria</span>
+      <a href="tel:+34676784255" style="color:#fff; font-weight:700; text-decoration:none; width:max-content;" style-hover="color:#EBD84A;">676 78 42 55</a>
+      <span>Bar de tapas · 1–10 € por persona · tapaslaredo.com</span>
+    </div>
+    <p style="margin:26px 0 0; max-width:70ch; font-size:.84rem; line-height:1.55; color:#8D9AB3; text-wrap:pretty;">Propuesta web de demostración. Las fotos son del propio bar. Los nombres de los pintxos son descriptivos; el horario de ejemplo, el encargo de bandejas y los huecos de reseñas sirven para ilustrar el diseño.</p>
+  </div>
+</footer>
+
+<sc-if value="{{ sticky }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:50%; bottom:max(14px, env(safe-area-inset-bottom)); transform:translateX(-50%); z-index:90; display:flex; gap:8px; background:#fff; padding:8px; border-radius:999px; box-shadow:var(--shadow-pop);">
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="tel:+34676784255" icon="{{ ic.phone }}" hint-size="130px,54px">Llamar</x-import>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bar%20Andr%C3%A9s%2C%20Calle%20Revell%C3%B3n%2020%2C%2039770%20Laredo" target="_blank" rel="noopener" icon="{{ ic.pin }}" hint-size="170px,54px">Cómo llegar</x-import>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;estado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Cerrado temporalmente&quot;,&quot;Horario de ejemplo&quot;],&quot;default&quot;:&quot;Horario de ejemplo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;etiquetasProvisionales&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;mostrarEncargos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;},&quot;fotoHero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bomba de jamón&quot;,&quot;Chipirón&quot;,&quot;Rulo de cabra&quot;],&quot;default&quot;:&quot;Bomba de jamón&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+const FOTOS = {
+  bomba: { src: 'fotos/f11.jpg', alt: 'Bomba rebozada sobre jamón con pimiento asado y palillo de perla', caption: 'de palillo y perla' },
+  chipiron: { src: 'fotos/f9.jpg', alt: 'Pintxos de chipirón a la plancha sobre champiñón y pan', caption: 'a la plancha, con perla' },
+  cabra: { src: 'fotos/f2.jpg', alt: 'Pintxos de rulo de cabra caramelizado con bacon', caption: 'queso quemado y bola roja' }
+};
+const HERO_KEYS = { 'Bomba de jamón': 'bomba', 'Chipirón': 'chipiron', 'Rulo de cabra': 'cabra' };
+
+const PINTXOS = [
+  { src: 'fotos/f11.jpg', nombre: 'Bomba de jamón', desc: 'Rebozada y dorada, sobre jamón, con pimiento asado y cebolla crujiente.', pick: 'perla' },
+  { src: 'fotos/f9.jpg', nombre: 'Chipirón con champiñones', desc: 'A la plancha con ajo y perejil, sobre champiñón salteado y pan.', pick: 'perla' },
+  { src: 'fotos/f2.jpg', nombre: 'Rulo de cabra caramelizado', desc: 'Queso de cabra quemado, bacon y calabacín sobre pan tostado.', pick: 'rojo' },
+  { src: 'fotos/f3.jpg', nombre: 'Codorniz y piquillo', desc: 'Bocado empanado con huevo de codorniz, sobre pimiento rojo.', pick: 'rojo' },
+  { src: 'fotos/f7.jpg', nombre: 'Champiñón con jamón', desc: 'Champiñón a la plancha sobre jamón, con alioli y salsa.', pick: 'madera' },
+  { src: 'fotos/f8.jpg', nombre: 'Codorniz con gulas', desc: 'Huevo de codorniz sobre gulas y jamón, con cebollino.', pick: 'negro' },
+  { src: 'fotos/f5.jpg', nombre: 'Croquetas con alioli', desc: 'Tres croquetas doradas con alioli y cebollino.', pick: null },
+  { src: 'fotos/f6.jpg', nombre: 'Pintxo de dos cremas', desc: 'Dos cremas sobre pan, con guindilla y cebollino.', pick: 'rojo' }
+];
+
+// Horario de ejemplo (minutos desde medianoche). 0 = domingo.
+const H = (h, m = 0) => h * 60 + m;
+const HORARIO = {
+  1: [],
+  2: [[H(11), H(15, 30)], [H(19), H(23)]],
+  3: [[H(11), H(15, 30)], [H(19), H(23)]],
+  4: [[H(11), H(15, 30)], [H(19), H(23)]],
+  5: [[H(11), H(16)], [H(19), H(24)]],
+  6: [[H(11), H(16)], [H(19), H(24)]],
+  0: [[H(11), H(16)]]
+};
+const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+const fmt = (m) => String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const DIR = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Bar Andrés, Calle Revellón 20, 39770 Laredo');
+
+class Component extends DCLogic {
+  state = { bandeja: 24, fecha: '', nombre: '', sticky: false, wide: false, now: Date.now() };
+  navRef = React.createRef();
+  heroRef = React.createRef();
+  signRef = React.createRef();
+  photoRef = React.createRef();
+  railRef = React.createRef();
+  progressRef = React.createRef();
+  counterRef = React.createRef();
+
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this._onScroll = () => this.onScroll();
+    this._onResize = () => this.onResize();
+    this._reveal = () => this.revealAll();
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize, { passive: true });
+    window.addEventListener('beforeprint', this._reveal);
+    window.addEventListener('load', this._onResize);
+    this.onResize();
+    this.tick = setInterval(() => this.setState({ now: Date.now() }), 60000);
+    if ('ResizeObserver' in window) {
+      this.ro = new ResizeObserver(() => this.onResize());
+      this.ro.observe(document.documentElement);
+    }
+    this.t1 = setTimeout(() => this.onResize(), 300);
+    requestAnimationFrame(() => { this.onResize(); this.updateRail(true); this.intro(); this.setupReveal(); });
+    this.t2 = setTimeout(() => this.checkReveal(), 1000);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('beforeprint', this._reveal);
+    window.removeEventListener('load', this._onResize);
+    clearInterval(this.tick);
+    clearTimeout(this.t1); clearTimeout(this.t2);
+    if (this.ro) this.ro.disconnect();
+    if (this.io) this.io.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  onResize() {
+    const wide = window.innerWidth >= 860;
+    if (wide !== this.state.wide) this.setState({ wide });
+    this.onScroll();
+    this.updateRail(true);
+  }
+
+  onScroll() {
+    const y = window.scrollY || 0;
+    const nav = this.navRef.current;
+    if (nav) {
+      const s = y > 40;
+      nav.style.background = s ? 'rgba(251,244,230,.92)' : 'transparent';
+      nav.style.boxShadow = s ? '0 6px 24px -16px rgba(53,36,18,.5)' : 'none';
+      nav.style.backdropFilter = s ? 'blur(10px)' : 'none';
+      nav.style.webkitBackdropFilter = s ? 'blur(10px)' : 'none';
+    }
+    const hero = this.heroRef.current;
+    const sticky = window.innerWidth < 860 && !!hero && hero.offsetHeight > 0 && y > 0 && y > hero.offsetHeight - 40;
+    if (sticky !== this.state.sticky) this.setState({ sticky });
+    this.checkReveal();
+  }
+
+  checkReveal() {
+    if (!this.hidden || !this.hidden.length) return;
+    const vh = window.innerHeight;
+    this.hidden = this.hidden.filter((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { this.show(el); return false; }
+      return true;
+    });
+  }
+
+  show(el) {
+    if (el.__shown) return;
+    el.__shown = true;
+    const ease = 'cubic-bezier(.22,1,.36,1)', d = Number(el.getAttribute('data-reveal')) || 0;
+    el.style.transition = `opacity ${this.reduce ? 300 : 700}ms ${ease} ${d}ms, transform 700ms ${ease} ${d}ms`;
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    if (this.io) this.io.unobserve(el);
+  }
+
+  intro() {
+    const sign = this.signRef.current, photo = this.photoRef.current;
+    if (!sign || !sign.animate) return;
+    const ease = 'cubic-bezier(.22,1,.36,1)';
+    if (this.reduce) {
+      [sign, photo].forEach((el) => el && el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease-out' }));
+      return;
+    }
+    sign.animate([
+      { opacity: 0, transform: 'translateY(-30px) rotate(-8deg)' },
+      { opacity: 1, transform: 'translateY(3px) rotate(-1deg)', offset: 0.65 },
+      { opacity: 1, transform: 'translateY(0) rotate(-2deg)' }
+    ], { duration: 900, easing: ease });
+    if (photo) photo.animate([
+      { opacity: 0, transform: 'translateY(36px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], { duration: 800, delay: 220, easing: ease, fill: 'backwards' });
+  }
+
+  setupReveal() {
+    if (!('IntersectionObserver' in window)) return;
+    const vh = window.innerHeight;
+    const els = Array.from(document.querySelectorAll('[data-reveal]')).filter((el) => el.getBoundingClientRect().top > vh * 0.9);
+    if (!els.length) return;
+    els.forEach((el) => { el.style.opacity = '0'; el.style.transform = this.reduce ? 'none' : 'translateY(24px)'; });
+    this.hidden = els;
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) this.show(e.target); });
+      this.hidden = this.hidden.filter((el) => !el.__shown);
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach((el) => this.io.observe(el));
+  }
+
+  revealAll() {
+    document.querySelectorAll('[data-reveal]').forEach((el) => { el.__shown = true; el.style.opacity = '1'; el.style.transform = 'none'; });
+    this.hidden = [];
+  }
+
+  railStep() {
+    const rail = this.railRef.current;
+    const cards = rail ? rail.querySelectorAll('article') : [];
+    return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 300;
+  }
+
+  updateRail(force) {
+    const rail = this.railRef.current;
+    if (!rail) return;
+    const cards = rail.querySelectorAll('article');
+    const n = cards.length;
+    if (!n) return;
+    const max = rail.scrollWidth - rail.clientWidth, x = rail.scrollLeft;
+    let i = Math.round(x / this.railStep());
+    if (max > 0 && x >= max - 4) i = n - 1;
+    i = Math.max(0, Math.min(n - 1, i));
+    const p = max > 0 ? x / max : 0;
+    if (this.progressRef.current) this.progressRef.current.style.transform = `scaleX(${(1 + p * (n - 1)) / n})`;
+    if (this.counterRef.current) this.counterRef.current.textContent = String(i + 1).padStart(2, '0');
+    if (force || i !== this.activeI) {
+      this.activeI = i;
+      cards.forEach((c, j) => {
+        const pk = c.querySelector('[data-pick]');
+        if (pk) pk.style.transform = j === i ? 'translateY(-8px)' : 'translateY(0)';
+      });
+    }
+  }
+
+  onRail = () => {
+    if (this.raf) return;
+    this.raf = requestAnimationFrame(() => { this.raf = null; this.updateRail(); });
+  };
+
+  move(dir) {
+    const rail = this.railRef.current;
+    if (rail) rail.scrollBy({ left: dir * this.railStep(), behavior: this.reduce ? 'auto' : 'smooth' });
+  }
+
+  status(ejemplo) {
+    if (!ejemplo) return { open: false, text: 'Cerrado temporalmente' };
+    const now = new Date(this.state.now);
+    const d = now.getDay(), m = now.getHours() * 60 + now.getMinutes();
+    const cur = (HORARIO[d] || []).find(([a, b]) => m >= a && m < b);
+    if (cur) return { open: true, text: 'Abierto · cierra a las ' + fmt(cur[1]) };
+    for (let k = 0; k < 7; k++) {
+      const dd = (d + k) % 7;
+      const r = (HORARIO[dd] || []).find(([a]) => k > 0 || a > m);
+      if (r) {
+        const cuando = k === 0 ? 'hoy' : k === 1 ? 'mañana' : 'el ' + DIAS[dd];
+        return { open: false, text: `Cerrado · abre ${cuando} a las ${fmt(r[0])}` };
+      }
+    }
+    return { open: false, text: 'Cerrado' };
+  }
+
+  icons() {
+    if (this._ic) return this._ic;
+    const e = React.createElement;
+    const svg = (filled, ...kids) => e('svg', { viewBox: '0 0 24 24', width: '100%', height: '100%', fill: filled ? 'currentColor' : 'none', stroke: filled ? 'none' : 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true, focusable: 'false' }, ...kids);
+    const p = (d) => e('path', { d });
+    this._ic = {
+      phone: svg(false, p('M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z')),
+      pin: svg(false, p('M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'), e('circle', { cx: 12, cy: 10, r: 3 })),
+      clock: svg(false, e('circle', { cx: 12, cy: 12, r: 10 }), e('polyline', { points: '12 6 12 12 16 14' })),
+      left: svg(false, p('m12 19-7-7 7-7'), p('M19 12H5')),
+      right: svg(false, p('M5 12h14'), p('m12 5 7 7-7 7')),
+      wa: svg(true, p('M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z'))
+    };
+    return this._ic;
+  }
+
+  renderVals() {
+    const pr = this.props;
+    const prov = pr.etiquetasProvisionales ?? true;
+    const ejemplo = (pr.estado ?? 'Cerrado temporalmente') === 'Horario de ejemplo';
+    const encargos = pr.mostrarEncargos ?? true;
+    const hero = FOTOS[HERO_KEYS[pr.fotoHero ?? 'Bomba de jamón'] || 'bomba'];
+    const today = new Date(this.state.now).getDay();
+    const { bandeja, fecha, nombre } = this.state;
+
+    let fechaTxt = '';
+    if (fecha) {
+      const [yy, mm, dd] = fecha.split('-').map(Number);
+      fechaTxt = new Date(yy, mm - 1, dd).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+    }
+    const msg = `¡Hola, Bar Andrés! Me gustaría encargar una bandeja de ${bandeja} pintxos.` +
+      (fechaTxt ? `\n📅 Para el ${fechaTxt}` : '') +
+      `\n👤 ${nombre.trim() || '[tu nombre]'}`;
+
+    return {
+      ic: this.icons(),
+      navRef: this.navRef, heroRef: this.heroRef, signRef: this.signRef, photoRef: this.photoRef,
+      railRef: this.railRef, progressRef: this.progressRef, counterRef: this.counterRef,
+      wide: this.state.wide, sticky: this.state.sticky,
+      prov, encargos, ejemplo, cerrado: !ejemplo,
+      status: this.status(ejemplo),
+      hero,
+      total: String(PINTXOS.length).padStart(2, '0'),
+      pintxos: PINTXOS.map((p) => ({
+        ...p,
+        alt: p.nombre + ' (pintxo del Bar Andrés)',
+        hasPick: !!p.pick,
+        perla: p.pick === 'perla',
+        rojo: p.pick === 'rojo',
+        negro: p.pick === 'negro'
+      })),
+      onRail: this.onRail,
+      prev: () => this.move(-1),
+      next: () => this.move(1),
+      bandejas: [12, 24, 36].map((n) => ({
+        label: n + ' pintxos', active: n === bandeja, inactive: n !== bandeja,
+        pick: () => this.setState({ bandeja: n })
+      })),
+      fecha, nombre,
+      onFecha: (e) => this.setState({ fecha: e.target.value }),
+      onNombre: (e) => this.setState({ nombre: e.target.value }),
+      waHref: 'https://wa.me/34676784255?text=' + encodeURIComponent(msg),
+      horario: [1, 2, 3, 4, 5, 6, 0].map((d) => {
+        const r = HORARIO[d];
+        return { dia: cap(DIAS[d]), horas: r.length ? r.map(([a, b]) => fmt(a) + '–' + fmt(b)).join(' · ') : 'Cerrado', today: d === today, notToday: d !== today };
+      }),
+      heroOutline: { style: { color: '#1B2C4F', border: '2px solid #1B2C4F' } },
+      pillCream: { style: { background: '#FBF4E6' } },
+      reviewNavy: { style: { background: '#24385F', border: '1px solid rgba(255,255,255,.1)' } },
+      btnFull: { style: { width: '100%', justifyContent: 'center' } },
+      dirHref: DIR
+    };
+  }
+}
+</script>
+</body>
+</html>

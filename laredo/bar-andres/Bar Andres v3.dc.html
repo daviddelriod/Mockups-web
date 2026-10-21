@@ -300,7 +300,7 @@ input,button,textarea{font:inherit;}
     </sc-if>
     <div data-a="rv">
       <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#B4B0A7" dc-props="{{ eyebrowFine }}" hint-size="130px,18px">04 · La casa</x-import>
-      <h2 style="margin:18px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem, 5.4vw, 4.2rem); line-height:1; letter-spacing:-.02em; color:#F4F2ED;">Busca el <em style="font-style:italic;">azulejo azul.</em></h2>
+      <h2 style="margin:18px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem, 5.4vw, 4.2rem); line-height:1; letter-spacing:-.02em; color:#F4F2ED;">Encuentra tu<em style="font-style: italic;">&nbsp;bar<br>de confianza<br></em></h2>
       <p style="margin:20px 0 0; max-width:40ch; font-size:var(--fs-lead); line-height:1.6; color:#B4B0A7; text-wrap:pretty;">En la calle Revellón, 20. Entra, pide en barra y quédate lo que haga falta.</p>
       <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;">
         <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="onDark" dc-props="{{ chipDark }}" hint-size="160px,34px">Se admiten perros</x-import>
@@ -756,7 +756,23 @@ class Component extends DCLogic {
 
         // BARRA (pinned horizontal on desktop)
         const vp = q('barra-vp'), track = q('barra-track'), pinEl = q('barra-pin');
-        if (rich && vp && track && pinEl && pinEl.offsetHeight <= window.innerHeight + 2) {
+        if (rich && vp && track && pinEl) {
+          const cards = qa('barra-card');
+          const fit = () => {
+            cards.forEach((c) => { c.style.width = ''; });
+            for (let k = 0; k < 4 && cards.length; k++) {
+              const over = pinEl.offsetHeight - window.innerHeight;
+              if (over <= 0) break;
+              const w = cards[0].offsetWidth;
+              const nw = Math.max(120, w - over * 0.75 - 6);
+              if (nw >= w) break;
+              cards.forEach((c) => { c.style.width = nw + 'px'; });
+            }
+          };
+          fit();
+          if (this._fit) ST.removeEventListener('refreshInit', this._fit);
+          this._fit = fit;
+          ST.addEventListener('refreshInit', fit);
           this.pinned = true;
           vp.scrollLeft = 0;
           g.set(vp, { overflowX: 'hidden', scrollSnapType: 'none' });

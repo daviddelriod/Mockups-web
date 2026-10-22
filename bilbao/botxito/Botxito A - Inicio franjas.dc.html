@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Botxito, el bollo de Bilbao · Propuesta A, inicio con franjas</title>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Caveat:wght@600&amp;display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css" integrity="sha384-gvLq/iOMNnPchdosgVym5huSVkKipHCQaqSw2Eg0V52Mzmlf169ZOsXcNc2cNu8x" crossorigin="anonymous">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/CustomEase.min.js" integrity="sha384-bk/dsRkKcZYqsQ8OzP86S+TVAAI6D7V0ApKLhj3ssXqZPNYYO77EXxOrTX+pp1g/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+<style>
+html,body{margin:0;background:#FCF3F0;color:#4A1424;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#4A1424}
+a:hover{color:#A85B6F}
+::selection{background:#4A1424;color:#FFF8F3}
+:focus-visible{outline:3px solid #A85B6F;outline-offset:3px}
+</style>
+</helmet>
+<div ref="{{ setRoot }}" style="--accent:#4A1424;--accent-press:#2F0C17;--ink:#4A1424;--ink-soft:#6E3340;--star:#B98A3A;--status-open:#2E6B4E;--status-closed:#A33A4E;--font-display:'Hanken Grotesk',system-ui,sans-serif;--font-body:'Hanken Grotesk',system-ui,sans-serif;font-family:'Hanken Grotesk',system-ui,sans-serif;color:#4A1424;background:#FCF3F0;overflow-x:clip">
+
+<header data-header="1" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px clamp(14px,3vw,36px);background:{{ hdrBg }};box-shadow:{{ hdrShadow }};backdrop-filter:{{ hdrBlur }};-webkit-backdrop-filter:{{ hdrBlur }};transition:background-color .35s,box-shadow .35s">
+<a href="#inicio" aria-label="Botxito, ir al inicio" style="display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;background:#D6EBDD;border:2px solid #C2A065;color:#1F4535;text-decoration:none;font:600 19px/1 'Frank Ruhl Libre',Georgia,serif;letter-spacing:.08em;box-shadow:0 0 0 4px rgba(255,255,255,.16)">BOTXITO</a>
+<nav aria-label="Principal" style="display:flex;align-items:center;gap:clamp(14px,2.4vw,28px)">
+<a href="#tiendas" style="font:600 15px/1 'Hanken Grotesk',sans-serif;color:{{ hdrFg }};text-decoration:none;padding:12px 0;overflow:hidden;white-space:nowrap;max-width:max(0px,calc((100vw - 520px) * 99));transition:color .35s" style-hover="text-decoration:underline;text-underline-offset:5px">Tiendas</a>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" type="button" onClick="{{ abrirPedido }}" size="sm" dc-props="{{ hdrBtn }}" hint-size="170px,40px">Pedir para recoger</x-import>
+</nav>
+</header>
+
+<section id="inicio" data-hero="1" data-screen-label="Inicio" style="position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;background:#2F0C17;color:#FFF8F3;isolation:isolate">
+<div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden">
+<div style="position:absolute;top:0;bottom:0;left:50%;width:max(100vw + 180px,900px);transform:translateX(-50%);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,1.1vw,16px)">
+<sc-for list="{{ franjas }}" as="c" hint-placeholder-count="5"><div data-col="{{ c.dir }}" style="position:relative;min-width:0"><div data-colp="{{ c.dir }}">
+<div data-track="{{ c.dir }}" style="display:flex;flex-direction:column;will-change:transform">
+<sc-for list="{{ c.tiles }}" as="t" hint-placeholder-count="0"><div style="flex:none;height:{{ t.h }};margin-bottom:clamp(8px,1.1vw,16px);border-radius:8px;overflow:hidden;background-color:#5A2232;background:{{ t.bg }}"></div></sc-for>
+</div>
+</div></div></sc-for>
+</div>
+</div>
+
+<div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none">
+<sc-if value="{{ tVino }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:linear-gradient(160deg,#C77A8E 0%,#9A4560 44%,#6A7EA3 100%);mix-blend-mode:multiply;opacity:.8"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(47,12,23,.74) 0%,rgba(74,20,36,.34) 30%,rgba(74,20,36,.38) 64%,rgba(36,10,18,.94) 100%)"></div>
+</sc-if>
+<sc-if value="{{ tRosa }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:linear-gradient(160deg,#F4C2C6 0%,#E393A3 46%,#B5687F 100%);mix-blend-mode:multiply;opacity:.92"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,20,36,.66) 0%,rgba(110,51,64,.34) 30%,rgba(110,51,64,.4) 64%,rgba(74,20,36,.92) 100%)"></div>
+</sc-if>
+<sc-if value="{{ tVerde }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:linear-gradient(160deg,#9CCAB0 0%,#3F7A60 50%,#1F4535 100%);mix-blend-mode:multiply;opacity:.82"></div>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,34,26,.74) 0%,rgba(31,69,53,.32) 30%,rgba(31,69,53,.38) 64%,rgba(11,28,21,.94) 100%)"></div>
+</sc-if>
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse 48% 44% at 50% 50%,rgba(28,8,15,.5),rgba(28,8,15,0) 100%)"></div>
+</div>
+
+<div data-hcontent="1" style="position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(88px,12vh,130px) 20px clamp(18px,3vh,30px)">
+<p data-hin="150" style="margin:0 0 clamp(16px,2.6vh,26px);font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.34em;padding-left:.34em;color:#FFF8F3">BOTXITO · BILBAO · MADRID</p>
+<h1 style="margin:0;font:500 clamp(60px,min(11.5vw,17vh),176px)/.88 'Frank Ruhl Libre',Georgia,serif;letter-spacing:-.025em;color:#FFF8F3">
+<span style="display:block;overflow:hidden;padding:.08em .06em .04em;margin:-.08em 0 -.04em"><span data-hl="1" style="display:block">El bollo</span></span>
+<span style="display:block;overflow:hidden;padding:.06em .06em .12em;margin:-.06em 0 -.12em"><span data-hl="1" style="display:block;color:#D6EBDD">de Bilbao</span></span>
+</h1>
+<span data-hrule="1" aria-hidden="true" style="display:block;width:76px;height:1.5px;background:rgba(255,248,243,.7);margin:clamp(22px,3.6vh,34px) 0 clamp(16px,2.6vh,24px)"></span>
+<p data-hin="800" style="margin:0;max-width:32ch;font:500 clamp(17px,1.55vw,21px)/1.5 'Hanken Grotesk',sans-serif;color:#FFF8F3;text-wrap:balance">El bollo de mantequilla de toda la vida, fermentado y horneado en tienda.</p>
+<div data-hin="900" style="margin-top:clamp(22px,3.6vh,32px);display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="#caja" size="lg" dc-props="{{ btnClaro }}" hint-size="170px,52px">Llena tu caja</x-import>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="#tiendas" variant="ghost" size="lg" hint-size="160px,52px">Ver tiendas</x-import>
+</div>
+<a data-hin="1000" href="{{ glovo }}" target="_blank" rel="noopener noreferrer" style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 7px;border-radius:999px;background:#FFC244;color:#1D1D1B;font:600 14px/1.2 'Hanken Grotesk',sans-serif;text-decoration:none" style-hover="background:#FFB81F;color:#1D1D1B"><span style="display:grid;place-items:center;height:30px;padding:0 10px;border-radius:999px;background:#1D1D1B;color:#FFC244;font:700 11px/1 'Hanken Grotesk',sans-serif;letter-spacing:.08em">NUEVO</span>En Bilbao, también a domicilio con Glovo</a>
+<a data-hin="1150" href="#original" style="margin-top:clamp(20px,3.6vh,40px);display:flex;flex-direction:column;align-items:center;gap:10px;color:#FFF8F3;text-decoration:none;font:700 11px/1 'Hanken Grotesk',sans-serif;letter-spacing:.3em;padding:6px 0 0 .3em">DESLIZA<span aria-hidden="true" style="position:relative;display:block;width:1px;height:clamp(28px,4.6vh,44px);background:rgba(255,248,243,.3);overflow:hidden"><span data-cue="1" style="position:absolute;left:0;top:0;width:1px;height:40%;background:#FFF8F3"></span></span></a>
+</div>
+
+<div style="position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;padding:0 clamp(14px,3vw,36px) clamp(16px,3vh,26px)">
+<div data-hin="1100" style="--status-open:#93E2AE;--status-closed:#FFA3B1"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ heroOpen }}" dc-props="{{ pillOscura }}" hint-size="250px,34px">{{ heroEstado }}</x-import></div>
+<div data-hin="1180" style="--ink:#FFF8F3;--ink-soft:#F6E6E2;--star:#F0CB7E;display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(36,10,18,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="5" score="4,7" count="10" size="15" hint-size="190px,20px"></x-import><span style="font:400 14px/1 'Hanken Grotesk',sans-serif;color:#F6E6E2">en Google</span></div>
+</div>
+</section>
+
+<div aria-hidden="true" style="position:relative;z-index:3;background:#4A1424;color:#FFF8F3;overflow:hidden;padding:14px 0">
+<div data-marquee="1" style="display:flex;width:max-content">
+<sc-for list="{{ marquee }}" as="m" hint-placeholder-count="18"><div style="display:flex;align-items:center;gap:16px;padding-right:22px;font:500 clamp(22px,2.4vw,30px)/1 'Frank Ruhl Libre',Georgia,serif;white-space:nowrap"><span aria-hidden="true" style="display:block;width:12px;height:12px;background:#EDB0B4;transform:rotate(45deg)"></span>{{ m.nombre }}</div></sc-for>
+</div>
+</div>
+
+<section id="original" data-screen-label="El original" style="position:relative;background:#FCF3F0;padding:0 0 clamp(64px,10vw,128px)">
+<div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(8px,4vw,64px)">
+<div style="position:relative;flex:1 1 440px;max-width:820px;margin-top:-16px">
+<img data-bun="1" src="img/bollo-original.jpg" alt="Bollo de mantequilla original, abierto y relleno de crema, con su azúcar por encima" style="display:block;width:100%;height:auto;transform-origin:50% 0">
+<div data-sugar="1" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;cursor:crosshair;touch-action:pan-y"></div>
+<p aria-hidden="true" style="position:absolute;right:7%;bottom:4%;margin:0;font:600 clamp(20px,2vw,26px)/1 'Caveat',cursive;color:#A85B6F;transform:rotate(-6deg);pointer-events:none">tócalo: lleva su azúcar</p>
+</div>
+<div style="flex:1 1 380px;padding:clamp(8px,3vw,56px) 20px 0">
+<p style="margin:0;font:700 13px/1 'Hanken Grotesk',sans-serif;letter-spacing:.24em;color:#A85B6F">EL ORIGINAL</p>
+<h2 data-split="1" style="margin:.35em 0 .45em;font:500 clamp(46px,6.4vw,92px)/.98 'Frank Ruhl Libre',Georgia,serif;color:#A85B6F;letter-spacing:-.01em">Un clásico de Bilbao.</h2>
+<p data-lines="1" style="margin:0;max-width:50ch;font:400 clamp(17px,1.4vw,19px)/1.6 'Hanken Grotesk',sans-serif;color:#4A1424;text-wrap:pretty">El bollo de Bilbao de toda la vida: tierno, esponjoso y con ese sabor inconfundible a mantequilla que invita a disfrutarlo desde el primer bocado. Hecho para acompañar el café, compartir en casa o darse un capricho a cualquier hora. Un clásico de Bilbao que siempre apetece.</p>
+</div>
+</div>
+</section>
+
+<section id="caja" data-screen-label="Llena tu caja" style="position:relative;background:#F7DADB;padding:0 0 clamp(64px,9vw,120px)">
+<svg aria-hidden="true" width="100%" height="22" style="display:block"><defs><pattern id="rombosA" width="28" height="22" patternUnits="userSpaceOnUse"><rect width="28" height="22" fill="#FCF3F0"></rect><path d="M14 1L27 11L14 21L1 11Z" fill="#EDB0B4"></path><path d="M0 8.5L2.5 11L0 13.5Z M28 8.5L25.5 11L28 13.5Z" fill="#7489AA"></path></pattern></defs><rect width="100%" height="22" fill="url(#rombosA)"></rect></svg>
+<div style="max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(16px,3vw,40px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:clamp(22px,3vw,36px)">
+<div style="flex:1 1 420px">
+<h2 data-split="1" style="margin:0 0 .3em;font:500 clamp(46px,6.4vw,92px)/.98 'Frank Ruhl Libre',Georgia,serif;color:#4A1424;letter-spacing:-.01em">Llena tu caja</h2>
+<p style="margin:0;max-width:46ch;font:400 clamp(17px,1.4vw,19px)/1.55 'Hanken Grotesk',sans-serif;color:#6E3340;text-wrap:pretty">Elige caja y tamaño. En la Mix, toca los sabores de la vitrina para meterlos dentro.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+<div role="group" aria-label="Tipo de caja" style="position:relative;display:grid;grid-template-columns:1fr 1fr;background:#FCF3F0;border:2px solid #4A1424;border-radius:14px;padding:4px;min-width:250px">
+<span aria-hidden="true" style="position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:#4A1424;border-radius:10px;transform:translateX({{ tipoX }});transition:transform .28s cubic-bezier(.32,.72,0,1)"></span>
+<button type="button" aria-pressed="{{ isOriginal }}" onClick="{{ pickOriginal }}" style="position:relative;appearance:none;border:0;background:none;padding:12px 16px;min-height:44px;font:700 15px/1 'Hanken Grotesk',sans-serif;color:{{ tOrigFg }};cursor:pointer;transition:color .2s">Originales</button>
+<button type="button" aria-pressed="{{ isMix }}" onClick="{{ pickMix }}" style="position:relative;appearance:none;border:0;background:none;padding:12px 16px;min-height:44px;font:700 15px/1 'Hanken Grotesk',sans-serif;color:{{ tMixFg }};cursor:pointer;transition:color .2s">Mix</button>
+</div>
+<div role="group" aria-label="Tamaño de la caja" style="display:flex;gap:8px">
+<sc-for list="{{ sizes }}" as="z" hint-placeholder-count="3"><button type="button" aria-pressed="{{ z.selected }}" disabled="{{ z.disabled }}" onClick="{{ z.onClick }}" style="appearance:none;border:2px solid #4A1424;border-radius:12px;padding:8px 12px;min-width:74px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:{{ z.bg }};color:{{ z.fg }};opacity:{{ z.op }};cursor:pointer;transition:background .2s,color .2s" style-active="transform:scale(.97)"><span style="font:500 20px/1 'Frank Ruhl Libre',Georgia,serif">{{ z.n }}</span><span style="font:600 12px/1 'Hanken Grotesk',sans-serif">{{ z.precio }}</span></button></sc-for>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:clamp(20px,4vw,64px)">
+<div style="position:sticky;top:62px;z-index:4;flex:1 1 400px;max-width:560px;background:#F7DADB;padding:10px 0 14px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px">
+<p style="flex:1 1 auto;margin:0;font:600 15px/1.3 'Hanken Grotesk',sans-serif;color:#4A1424">{{ nombreCaja }}<span style="display:block;font-weight:400;color:#6E3340"><span data-count="1" style="display:inline-block;font-variant-numeric:tabular-nums">{{ count }}</span> de {{ size }}</span></p>
+<p style="margin:0;font:500 clamp(30px,3vw,40px)/1 'Frank Ruhl Libre',Georgia,serif;color:#4A1424;font-variant-numeric:tabular-nums">{{ precio }}</p>
+</div>
+<div data-box="1" style="position:relative;perspective:1000px">
+<div style="background:#EFA3B0;border-radius:16px;padding:clamp(8px,1.2vw,12px);box-shadow:inset 0 -5px 0 #D9879A,0 22px 40px -22px rgba(74,20,36,.55)">
+<div style="position:relative;background:#FFFDFB;border-radius:9px;padding:clamp(6px,1vw,10px);display:grid;grid-template-columns:{{ cols }};gap:clamp(4px,.8vw,8px)">
+<span aria-hidden="true" style="position:absolute;left:8px;right:8px;top:calc(50% - 1px);height:2px;background:#F3CDD3"></span>
+<sc-for list="{{ slotList }}" as="s" hint-placeholder-count="8"><div data-slot="{{ s.i }}" style="position:relative;aspect-ratio:2/1.15;border:1.5px dashed rgba(74,20,36,.2);border-radius:999px;display:grid;place-items:center"><sc-if value="{{ s.filled }}" hint-placeholder-val="{{ false }}"><div data-bollo="1" style="position:relative;width:112%;z-index:2"><dc-import name="Bollo" sabor="{{ s.sabor }}" hint-size="100%,30px"></dc-import></div></sc-if></div></sc-for>
+</div>
+</div>
+<div data-lid="1" aria-hidden="true" style="position:absolute;inset:0;z-index:5;transform-origin:50% 0;transform:rotateX(-100deg);backface-visibility:hidden;visibility:hidden;background:linear-gradient(180deg,#F3B3BE,#EBA0AE);border-radius:16px;display:grid;place-items:center;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35),0 22px 40px -22px rgba(74,20,36,.55)">
+<div style="background:#D6EBDD;border:2px solid #C2A065;border-radius:999px;padding:10px 26px;text-align:center;font:600 clamp(26px,3vw,36px)/1 'Frank Ruhl Libre',Georgia,serif;color:#1F4535;letter-spacing:.06em">BOTXITO<span style="display:block;font:700 9px/1 'Hanken Grotesk',sans-serif;letter-spacing:.3em;margin-top:6px">EL BOLLO DE BILBAO</span></div>
+</div>
+</div>
+<div style="margin-top:14px;min-height:52px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px">
+<sc-if value="{{ full }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" type="button" onClick="{{ pedirCaja }}" size="lg" hint-size="270px,52px">Pedir para recoger · {{ precio }}</x-import>
+<button type="button" onClick="{{ abrir }}" style="appearance:none;border:0;background:none;padding:12px 4px;min-height:44px;font:600 15px/1 'Hanken Grotesk',sans-serif;color:#4A1424;text-decoration:underline;text-underline-offset:4px;cursor:pointer">Abrir la caja</button>
+<a href="{{ glovo }}" target="_blank" rel="noopener noreferrer" style="font:600 15px/1 'Hanken Grotesk',sans-serif;color:#6E3340;padding:12px 4px">o pídela en Glovo</a>
+</sc-if>
+<sc-if value="{{ notFull }}" hint-placeholder-val="{{ true }}">
+<p aria-live="polite" style="margin:0;font:600 15px/1.3 'Hanken Grotesk',sans-serif;color:#6E3340;flex:1 1 auto">{{ faltanTxt }}</p>
+<button type="button" onClick="{{ sorprende }}" style="appearance:none;border:2px solid #4A1424;background:#FCF3F0;border-radius:12px;padding:10px 16px;min-height:44px;font:700 15px/1 'Hanken Grotesk',sans-serif;color:#4A1424;cursor:pointer" style-active="transform:scale(.97)">Sorpréndeme</button>
+<button type="button" onClick="{{ vaciar }}" style="appearance:none;border:0;background:none;padding:10px 4px;min-height:44px;font:600 15px/1 'Hanken Grotesk',sans-serif;color:#6E3340;text-decoration:underline;text-underline-offset:4px;cursor:pointer">Vaciar</button>
+</sc-if>
+</div>
+<p style="margin:10px 0 0;font:400 15px/1.5 'Hanken Grotesk',sans-serif;color:#6E3340;max-width:52ch;text-wrap:pretty">{{ desc }}</p>
+</div>
+
+<div data-vitrina="1" style="flex:1 1 460px;min-width:0">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2vw,26px) clamp(6px,1.4vw,18px)">
+<sc-for list="{{ sabores }}" as="f" hint-placeholder-count="9"><button type="button" data-sabor="{{ f.id }}" onClick="{{ f.onAdd }}" aria-label="Añadir {{ f.nombre }} a la caja" style="appearance:none;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;color:#4A1424;min-height:44px" style-active="transform:scale(.97)">
+<span data-rombo="1" style="position:relative;width:64%;aspect-ratio:1;margin:16% 0 6%;display:grid;place-items:center">
+<span data-rombobg="1" style="position:absolute;inset:0;background:#FCF3F0;border:2px solid #E9A9B0;border-radius:14px;transform:rotate(45deg)"></span>
+<span data-src="1" style="position:relative;display:block;width:124%"><dc-import name="Bollo" sabor="{{ f.id }}" hint-size="100%,40px"></dc-import></span>
+</span>
+<span style="font:500 clamp(15px,1.5vw,20px)/1.15 'Frank Ruhl Libre',Georgia,serif;text-align:center;text-wrap:balance">{{ f.nombre }}</span>
+<span style="font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.06em;color:#A85B6F">+ Añadir</span>
+</button></sc-for>
+</div>
+<p style="margin:clamp(22px,3vw,34px) 0 0;font:400 14px/1.5 'Hanken Grotesk',sans-serif;color:#6E3340">Todos los sabores parten de la crema de mantequilla del original. Alérgenos: pregunta en tienda por la información de cada bollo.</p>
+</div>
+</div>
+
+<div data-up="1" style="margin-top:clamp(40px,6vw,72px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;background:#4A1424;color:#FFF8F3;border-radius:22px;padding:clamp(20px,3vw,32px) clamp(22px,3.4vw,44px)">
+<p style="margin:0;font:500 clamp(26px,3vw,40px)/1.05 'Frank Ruhl Libre',Georgia,serif">¿Es para ahora? Botxito + café</p>
+<p style="margin:0;font:500 clamp(40px,4.6vw,64px)/1 'Frank Ruhl Libre',Georgia,serif;color:#D6EBDD;font-variant-numeric:tabular-nums">3,90 €</p>
+</div>
+</div>
+</section>
+
+<section id="pasion" data-screen-label="Nuestra pasión" style="position:relative;background:#4A1424;color:#FFF8F3;padding:clamp(72px,10vw,140px) 0 clamp(64px,9vw,120px);overflow:hidden">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(16px,3vw,40px);display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,80px);align-items:center">
+<div data-reveal="1" style="position:relative;flex:1 1 460px;aspect-ratio:931/583;border-radius:28px;overflow:hidden;background:#3A1E18">
+<img data-par="1" src="img/bandeja.jpg" alt="Una mano coloca bollos recién horneados con azúcar en la bandeja" style="position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover">
+</div>
+<div style="flex:1 1 400px">
+<p style="margin:0;font:700 13px/1 'Hanken Grotesk',sans-serif;letter-spacing:.24em;color:#BFE0CB">NUESTRA PASIÓN</p>
+<h2 data-clip="1" style="margin:.35em 0 .5em;font:500 clamp(44px,6vw,86px)/1 'Frank Ruhl Libre',Georgia,serif;letter-spacing:-.01em">Más de <span data-count25="1" style="color:#D6EBDD;font-variant-numeric:tabular-nums">25</span> años de oficio.</h2>
+<p data-lines="1" style="margin:0 0 1em;max-width:52ch;font:400 clamp(17px,1.4vw,19px)/1.6 'Hanken Grotesk',sans-serif;color:#F6E6E2;text-wrap:pretty">Hace más de 25 años abrimos un pequeño obrador de pan en Bizkaia. Desde entonces trabajamos cada día entre masas, fermentaciones y hornos.</p>
+<p data-lines="1" style="margin:0;max-width:52ch;font:400 clamp(17px,1.4vw,19px)/1.6 'Hanken Grotesk',sans-serif;color:#F6E6E2;text-wrap:pretty">De esa experiencia nace Botxito, un nuevo concepto de pastelería especializado en el bollo de mantequilla de Bilbao. Nuestro objetivo es ofrecerlo en su mejor versión.</p>
+</div>
+</div>
+<div data-puntos="1" style="max-width:1280px;margin:clamp(48px,7vw,96px) auto 0;padding:0 clamp(16px,3vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:0 clamp(32px,5vw,80px)">
+<div style="position:relative;padding:22px 0 26px">
+<span data-line="1" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:1px;background:rgba(255,248,243,.35)"></span>
+<p style="margin:0;display:flex;gap:18px;align-items:baseline;font:500 clamp(26px,2.6vw,36px)/1.15 'Frank Ruhl Libre',Georgia,serif"><span style="color:#BFE0CB;font-size:.7em">01</span>Fermentado y horneado en tienda.</p>
+</div>
+<div style="position:relative;padding:22px 0 26px">
+<span data-line="1" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:1px;background:rgba(255,248,243,.35)"></span>
+<p style="margin:0;display:flex;gap:18px;align-items:baseline;font:500 clamp(26px,2.6vw,36px)/1.15 'Frank Ruhl Libre',Georgia,serif"><span style="color:#BFE0CB;font-size:.7em">02</span>Ingredientes de proximidad</p>
+<ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font:400 16px/1.4 'Hanken Grotesk',sans-serif;color:#F6E6E2">
+<li style="display:flex;gap:12px;align-items:center"><span aria-hidden="true" style="flex:none;width:10px;height:10px;background:#EDB0B4;transform:rotate(45deg)"></span>Harina de gran fuerza de Villamayor (Huesca)</li>
+<li style="display:flex;gap:12px;align-items:center"><span aria-hidden="true" style="flex:none;width:10px;height:10px;background:#EDB0B4;transform:rotate(45deg)"></span>Huevos camperos de caserío de Muskiz</li>
+<li style="display:flex;gap:12px;align-items:center"><span aria-hidden="true" style="flex:none;width:10px;height:10px;background:#EDB0B4;transform:rotate(45deg)"></span>Leche de la ganadería Santana Esnekiak, en Gernika</li>
+</ul>
+</div>
+</div>
+<div aria-hidden="true" style="margin-top:clamp(48px,7vw,96px);overflow:hidden">
+<div data-strip="1" style="display:flex;align-items:center;gap:clamp(14px,2vw,28px);width:max-content;padding-left:clamp(16px,6vw,120px)">
+<div style="width:clamp(280px,40vw,620px);aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#A05F31"><img src="img/m05.webp" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></div>
+<div style="width:clamp(180px,22vw,320px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#9A6F5A;box-shadow:0 0 0 8px #6E3340"><img src="img/tienda-caja.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 70%"></div>
+<div style="width:clamp(200px,24vw,360px);aspect-ratio:3/4;border-radius:22px;overflow:hidden;background:#99684D"><img src="img/m07.webp" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></div>
+<div style="width:clamp(280px,36vw,560px);aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:#99856E"><img src="img/m04.webp" alt="" style="display:block;width:100%;height:100%;object-fit:cover;object-position:30% 50%"></div>
+</div>
+</div>
+</section>
+
+<section id="recien" data-screen-label="Recién hechos" style="position:relative;background:#F7DADB;padding:0 0 clamp(56px,8vw,110px)">
+<svg aria-hidden="true" width="100%" height="22" style="display:block"><defs><pattern id="rombosR" width="28" height="22" patternUnits="userSpaceOnUse"><rect width="28" height="22" fill="#FCF3F0"></rect><path d="M14 1L27 11L14 21L1 11Z" fill="#EDB0B4"></path><path d="M0 8.5L2.5 11L0 13.5Z M28 8.5L25.5 11L28 13.5Z" fill="#7489AA"></path></pattern></defs><rect width="100%" height="22" fill="url(#rombosR)"></rect></svg>
+<div style="max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(16px,3vw,40px) 0">
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 40px;margin-bottom:clamp(20px,3vw,36px)">
+<div style="flex:1 1 460px">
+<p style="margin:0;font:700 13px/1 'Hanken Grotesk',sans-serif;letter-spacing:.24em;color:#A85B6F">DEL OBRADOR A LA VITRINA</p>
+<h2 data-split="1" style="margin:.35em 0 .4em;font:500 clamp(44px,6vw,86px)/1 'Frank Ruhl Libre',Georgia,serif;letter-spacing:-.01em;color:#4A1424">Recién hechos, todo el día.</h2>
+<p data-lines="1" style="margin:0;max-width:46ch;font:400 clamp(17px,1.4vw,19px)/1.55 'Hanken Grotesk',sans-serif;color:#6E3340;text-wrap:pretty">Fermentamos al momento. Cuando compras el bollo está recién fermentado y horneado.</p>
+</div>
+<a href="https://www.instagram.com/elbollodebilbao/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;border:2px solid #4A1424;color:#4A1424;font:700 15px/1 'Hanken Grotesk',sans-serif;text-decoration:none;white-space:nowrap" style-hover="background:#4A1424;color:#FFF8F3" style-active="transform:scale(.97)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.5 6.5h.01"></path></svg>@elbollodebilbao</a>
+</div>
+<div data-galeria="1" style="display:flex;align-items:flex-end;gap:clamp(12px,1.8vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * clamp(16px,3vw,40px));padding:10px clamp(16px,3vw,40px) 30px;scroll-padding-inline:clamp(16px,3vw,40px)">
+<sc-for list="{{ galeria }}" as="m" hint-placeholder-count="4"><figure data-tile="1" style="margin:0;flex:{{ m.grow }} 1 0;min-width:min(68vw,250px);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px">
+<div onClick="{{ m.toggle }}" style="position:relative;aspect-ratio:{{ m.ratio }};border-radius:999px 999px 20px 20px;overflow:hidden;background:#E9A9B0;box-shadow:0 0 0 6px #FCF3F0,0 26px 44px -26px rgba(74,20,36,.55)">
+<sc-if value="{{ m.esVideo }}" hint-placeholder-val="{{ false }}"><video data-vid="1" data-media="1" src="{{ m.src }}" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" aria-label="{{ m.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video></sc-if>
+<sc-if value="{{ m.esFoto }}" hint-placeholder-val="{{ false }}"><img data-media="1" src="{{ m.src }}" alt="{{ m.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></sc-if>
+</div>
+<figcaption style="display:flex;align-items:center;gap:10px;padding-left:6px;font:600 14px/1.3 'Hanken Grotesk',sans-serif;color:#6E3340"><span aria-hidden="true" style="flex:none;width:8px;height:8px;background:#A85B6F;transform:rotate(45deg)"></span>{{ m.pie }}</figcaption>
+</figure></sc-for>
+</div>
+</div>
+</section>
+
+<section id="tiendas" data-screen-label="Tiendas" style="position:relative;background:#FCF3F0;padding:clamp(72px,10vw,136px) 0">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:clamp(28px,4vw,52px)">
+<div style="flex:1 1 420px">
+<h2 data-split="1" style="margin:0 0 .3em;font:500 clamp(44px,6vw,86px)/1 'Frank Ruhl Libre',Georgia,serif;letter-spacing:-.01em">Cuatro tiendas, el mismo bollo</h2>
+<p style="margin:0;font:400 clamp(17px,1.4vw,19px)/1.55 'Hanken Grotesk',sans-serif;color:#6E3340">Tres en Bilbao y una en Madrid, con los mismos sabores en todas.</p>
+</div>
+<p style="margin:0;display:flex;align-items:center;gap:10px;white-space:nowrap;font:600 15px/1 'Hanken Grotesk',sans-serif;color:#4A1424"><span aria-hidden="true" style="width:10px;height:10px;background:#7489AA;transform:rotate(45deg)"></span>Ahora son las <span style="font-variant-numeric:tabular-nums">{{ hora }}</span></p>
+</div>
+<div data-tiendas="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,390px),1fr));gap:clamp(16px,2vw,24px)">
+<sc-for list="{{ tiendas }}" as="s" hint-placeholder-count="4"><article data-tienda="1" style="position:relative;background:#FFFDFB;border-radius:6px 6px 18px 18px;box-shadow:0 18px 40px -24px rgba(74,20,36,.45);padding:0 0 20px">
+<div data-tapa="1" aria-hidden="true" style="height:20px;background:#EFA3B0;border-radius:6px 6px 0 0;border-bottom:4px solid #D9879A;transform-origin:0 100%"></div>
+<div style="padding:18px 20px 0;display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.24em;color:#A85B6F">{{ s.ciudadMay }}</p>
+<h3 style="margin:0;font:500 clamp(28px,2.6vw,34px)/1.05 'Frank Ruhl Libre',Georgia,serif;color:#4A1424">{{ s.calle }}</h3>
+<div><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ s.open }}" hint-size="190px,32px">{{ s.estado }}</x-import></div>
+<p style="margin:0;font:400 15px/1.5 'Hanken Grotesk',sans-serif;color:#6E3340">Horario: {{ s.horario }}<span style="display:block">{{ s.nota }}</span></p>
+<a href="{{ s.telHref }}" style="font:500 24px/1 'Frank Ruhl Libre',Georgia,serif;color:#4A1424;text-decoration:none;font-variant-numeric:tabular-nums;padding:6px 0">{{ s.tel }}</a>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" type="button" onClick="{{ s.onRecoger }}" size="sm" hint-size="130px,40px">Recoger aquí</x-import>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="{{ s.telHref }}" variant="outline" size="sm" hint-size="96px,40px">Llamar</x-import>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="{{ s.maps }}" target="_blank" rel="noopener noreferrer" variant="outline" size="sm" hint-size="130px,40px">Cómo llegar</x-import>
+</div>
+</div>
+</article></sc-for>
+</div>
+</div>
+</section>
+
+<section id="opiniones" data-screen-label="Opiniones" style="position:relative;background:#F7DADB;padding:clamp(72px,10vw,136px) 0">
+<div style="max-width:1100px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:clamp(22px,3vw,36px)">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="5" score="4,7" count="10" size="22" hint-size="220px,24px"></x-import>
+<span style="font:400 15px/1.4 'Hanken Grotesk',sans-serif;color:#6E3340">en Google, tienda de Berástegui</span>
+</div>
+<blockquote style="margin:clamp(40px,5vw,64px) 0 0;position:relative">
+<span aria-hidden="true" style="position:absolute;left:-.05em;top:-.42em;font:500 clamp(90px,10vw,150px)/1 'Frank Ruhl Libre',Georgia,serif;color:#E9A9B0">“</span>
+<p data-quote="1" style="position:relative;margin:0;font:400 clamp(26px,3.4vw,46px)/1.22 'Frank Ruhl Libre',Georgia,serif;color:#4A1424;text-wrap:pretty">Tres chicas súper majas te preparan y te aconsejan el mejor bollo de mantequilla o de sabores de Bizkaia, o sea, del planeta. Probé el de mantequilla de maracuyá y me pareció brutal!!</p>
+<footer style="margin-top:18px;font:700 14px/1 'Hanken Grotesk',sans-serif;letter-spacing:.14em;color:#A85B6F">JON ANDONI</footer>
+</blockquote>
+<div style="margin-top:clamp(36px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px">
+<figure data-mini="1" style="margin:0;background:#FCF3F0;border-radius:18px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start">
+<span aria-hidden="true" style="flex:none;width:12px;height:12px;margin-top:8px;background:#A85B6F;transform:rotate(45deg)"></span>
+<div><blockquote style="margin:0;font:400 18px/1.5 'Hanken Grotesk',sans-serif">«Tiernísimos y sabrosos bollos de mantequilla en diferentes versiones que sirven en bonitas cajas.»</blockquote><figcaption style="margin-top:10px;font:600 14px/1 'Hanken Grotesk',sans-serif;color:#6E3340">Juan Manuel Estoquera</figcaption></div>
+</figure>
+<figure data-mini="1" style="margin:0;background:#FCF3F0;border-radius:18px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start">
+<span aria-hidden="true" style="flex:none;width:12px;height:12px;margin-top:8px;background:#A85B6F;transform:rotate(45deg)"></span>
+<div><blockquote style="margin:0;font:400 18px/1.5 'Hanken Grotesk',sans-serif">«Muy rico el bollo. La atención de las chicas y el chico muy majo, el café espectacular parace De especialidad»</blockquote><figcaption style="margin-top:10px;font:600 14px/1 'Hanken Grotesk',sans-serif;color:#6E3340">Cesar Garrido</figcaption></div>
+</figure>
+</div>
+</div>
+</section>
+
+<footer id="contacto" data-screen-label="Cierre" style="position:relative;background:#4A1424;color:#FFF8F3;padding:clamp(72px,10vw,128px) 0 32px;overflow:hidden">
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(16px,3vw,40px)">
+<p style="margin:0 0 24px;max-width:16ch;font:500 clamp(38px,5vw,72px)/1.02 'Frank Ruhl Libre',Georgia,serif;text-wrap:balance">Pasa a por uno. O llévate una caja de diez.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;--accent:#D6EBDD;--ink:#FFF8F3">
+<a href="#caja" style="display:inline-flex;align-items:center;white-space:nowrap;min-height:52px;padding:0 26px;border-radius:999px;background:#D6EBDD;color:#1F4535;font:700 17px/1 'Hanken Grotesk',sans-serif;text-decoration:none" style-hover="background:#C4E1CE;color:#1F4535" style-active="transform:scale(.97)">Llena tu caja</a>
+<button type="button" onClick="{{ abrirPedido }}" style="appearance:none;display:inline-flex;align-items:center;white-space:nowrap;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid #FFF8F3;background:none;color:#FFF8F3;font:700 17px/1 'Hanken Grotesk',sans-serif;cursor:pointer" style-hover="background:rgba(255,248,243,.12)" style-active="transform:scale(.97)">Pedir para recoger</button>
+<a href="{{ glovo }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;white-space:nowrap;min-height:52px;padding:0 26px;border-radius:999px;background:#FFC244;color:#1D1D1B;font:700 17px/1 'Hanken Grotesk',sans-serif;text-decoration:none" style-hover="background:#FFB81F;color:#1D1D1B" style-active="transform:scale(.97)">Pídelo en Glovo</a>
+</div>
+</div>
+<div data-marca="1" aria-hidden="true" style="margin:clamp(56px,8vw,110px) 0 0;text-align:center">
+<div style="display:flex;justify-content:center;overflow:hidden;font:600 16vw/.9 'Frank Ruhl Libre',Georgia,serif;letter-spacing:.03em;color:#FFF8F3;padding-bottom:.04em"><span data-letra="1" style="display:inline-block">B</span><span data-letra="1" style="display:inline-block">O</span><span data-letra="1" style="display:inline-block">T</span><span data-letra="1" style="display:inline-block">X</span><span data-letra="1" style="display:inline-block">I</span><span data-letra="1" style="display:inline-block">T</span><span data-letra="1" style="display:inline-block">O</span></div>
+<p style="margin:14px 0 0;font:700 clamp(11px,1.2vw,15px)/1 'Hanken Grotesk',sans-serif;letter-spacing:.38em;color:#D6EBDD">EL BOLLO DE BILBAO</p>
+</div>
+<div style="max-width:1280px;margin:clamp(48px,6vw,80px) auto 0;padding:28px clamp(16px,3vw,40px) 0;border-top:1px solid rgba(255,248,243,.2);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;font:400 14px/1.6 'Hanken Grotesk',sans-serif;color:#F2DEDA">
+<div><p style="margin:0 0 8px;font-weight:700;color:#FFF8F3">Tiendas</p><p style="margin:0">Sombrerería 3, Bilbao · 946 294 614<br>Ercilla 28, Bilbao · 946 295 442<br>Berástegui 5, Bilbao · 946 295 538<br>Arenal 8, Madrid · 919 120 871</p></div>
+<div><p style="margin:0 0 8px;font-weight:700;color:#FFF8F3">Horario</p><p style="margin:0">Bilbao: 9:00–20:30<br>Madrid: 9:00–22:00</p></div>
+<div><p style="margin:0 0 8px;font-weight:700;color:#FFF8F3">Lo legal</p><p style="margin:0">Alérgenos: tenemos a tu disposición la información sobre los alérgenos de cada producto (Reglamento UE 1169/2011). Pregunta en tienda.</p><p style="margin:8px 0 0"><a href="#" style="color:#FFF8F3">Aviso legal</a> · <a href="#" style="color:#FFF8F3">Privacidad</a> · <a href="#" style="color:#FFF8F3">Cookies</a></p></div>
+<div><p style="margin:0 0 8px;font-weight:700;color:#FFF8F3">Sobre esta propuesta</p><p style="margin:0">Fotos de Botxito y de clientes en Google Maps (T H, Ane Pelaez, JON ANDONI, Juan Manuel Estoquera, Cesar Garrido). Vídeos y fotos del Instagram de Botxito (@elbollodebilbao). Lista de sabores provisional; precios de la tienda online. El pedido para recoger es una demo.</p></div>
+</div>
+</footer>
+
+<sc-if value="{{ pedido }}" hint-placeholder-val="{{ false }}">
+<div data-modal="1" role="dialog" aria-modal="true" aria-label="Pedido para recoger en tienda" style="position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:12px">
+<div data-backdrop="1" onClick="{{ cerrarPedido }}" style="position:absolute;inset:0;background:rgba(36,10,18,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)"></div>
+<div data-sheet="1" data-lenis-prevent="1" style="position:relative;width:min(100%,620px);max-height:calc(100svh - 24px);overflow-y:auto;overscroll-behavior:contain;background:#FCF3F0;color:#4A1424;border-radius:22px;box-shadow:0 40px 90px -30px rgba(36,10,18,.7)">
+<div style="position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:20px 18px 16px 24px;background:#FCF3F0;border-bottom:1px solid rgba(74,20,36,.12)">
+<div>
+<p style="margin:0 0 10px;display:flex;align-items:center;gap:10px;font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.2em;color:#A85B6F">PARA RECOGER EN TIENDA<span style="padding:4px 9px;border-radius:999px;background:#F7DADB;color:#4A1424;font:700 11px/1 'Hanken Grotesk',sans-serif;letter-spacing:.04em">demo</span></p>
+<h2 style="margin:0;font:500 clamp(28px,4vw,36px)/1.05 'Frank Ruhl Libre',Georgia,serif;letter-spacing:-.01em">{{ pedidoTitulo }}</h2>
+</div>
+<button type="button" data-close="1" onClick="{{ cerrarPedido }}" aria-label="Cerrar" style="flex:none;appearance:none;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(74,20,36,.25);background:#FFFDFB;color:#4A1424;cursor:pointer;display:grid;place-items:center" style-hover="background:#F7DADB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+</div>
+<sc-if value="{{ pasoForm }}" hint-placeholder-val="{{ true }}">
+<div style="padding:4px 24px 0">
+<p style="margin:18px 0 0;font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.2em;color:#A85B6F">QUÉ TE LLEVAS</p>
+<div style="margin-top:4px">
+<sc-for list="{{ lineas }}" as="l" hint-placeholder-count="6"><div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(74,20,36,.18)">
+<div style="flex:1 1 auto;min-width:0"><p style="margin:0;font:600 16px/1.25 'Hanken Grotesk',sans-serif">{{ l.nombre }}</p><p style="margin:3px 0 0;font:400 14px/1.35 'Hanken Grotesk',sans-serif;color:#6E3340;text-wrap:pretty">{{ l.detalle }}</p></div>
+<div style="flex:none;display:flex;align-items:center;border:1.5px solid {{ l.borde }};background:{{ l.fondo }};border-radius:999px;transition:border-color .2s,background .2s">
+<button type="button" onClick="{{ l.menos }}" disabled="{{ l.vacio }}" aria-label="Quitar uno: {{ l.nombre }}" style="appearance:none;border:0;background:none;width:44px;height:44px;font:500 22px/1 'Hanken Grotesk',sans-serif;color:#4A1424;opacity:{{ l.opMenos }};cursor:pointer">−</button>
+<span style="min-width:18px;text-align:center;font:700 16px/1 'Hanken Grotesk',sans-serif;font-variant-numeric:tabular-nums">{{ l.qty }}</span>
+<button type="button" onClick="{{ l.mas }}" aria-label="Añadir uno: {{ l.nombre }}" style="appearance:none;border:0;background:none;width:44px;height:44px;font:500 22px/1 'Hanken Grotesk',sans-serif;color:#4A1424;cursor:pointer">+</button>
+</div>
+</div></sc-for>
+</div>
+<p style="margin:24px 0 0;font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.2em;color:#A85B6F">EN QUÉ TIENDA</p>
+<div role="radiogroup" aria-label="Tienda" style="margin-top:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+<sc-for list="{{ tiendasPedido }}" as="t" hint-placeholder-count="4"><button type="button" role="radio" aria-checked="{{ t.sel }}" onClick="{{ t.onClick }}" style="appearance:none;text-align:left;min-height:58px;padding:10px 14px;border-radius:14px;border:1.5px solid {{ t.borde }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;transition:background .2s,color .2s"><span style="display:block;font:600 15px/1.2 'Hanken Grotesk',sans-serif">{{ t.calle }}</span><span style="display:block;margin-top:4px;font:400 13px/1.2 'Hanken Grotesk',sans-serif;opacity:.8">{{ t.ciudad }} · hasta las {{ t.cierraTxt }}</span></button></sc-for>
+</div>
+<p style="margin:24px 0 0;font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.2em;color:#A85B6F">CUÁNDO PASAS</p>
+<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ dias }}" as="d" hint-placeholder-count="2"><button type="button" aria-pressed="{{ d.sel }}" disabled="{{ d.dis }}" onClick="{{ d.onClick }}" style="appearance:none;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid #4A1424;background:{{ d.bg }};color:{{ d.fg }};opacity:{{ d.op }};font:600 15px/1 'Hanken Grotesk',sans-serif;cursor:pointer;transition:background .2s,color .2s">{{ d.label }}</button></sc-for>
+</div>
+<div role="group" aria-label="Hora de recogida" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+<sc-for list="{{ horas }}" as="h" hint-placeholder-count="10"><button type="button" aria-pressed="{{ h.sel }}" onClick="{{ h.onClick }}" style="appearance:none;min-width:64px;min-height:44px;padding:0 10px;border-radius:10px;border:1.5px solid {{ h.borde }};background:{{ h.bg }};color:{{ h.fg }};font:600 14px/1 'Hanken Grotesk',sans-serif;font-variant-numeric:tabular-nums;cursor:pointer;transition:background .2s,color .2s">{{ h.t }}</button></sc-for>
+</div>
+<p style="margin:24px 0 0;font:700 12px/1 'Hanken Grotesk',sans-serif;letter-spacing:.2em;color:#A85B6F">A NOMBRE DE</p>
+<div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px">
+<label style="display:flex;flex-direction:column;gap:6px;font:600 13px/1 'Hanken Grotesk',sans-serif;color:#6E3340">Nombre<input type="text" name="nombre" value="{{ nombre }}" onChange="{{ onNombre }}" placeholder="Ane" style="appearance:none;width:100%;min-height:48px;padding:0 14px;border-radius:12px;border:1.5px solid rgba(74,20,36,.3);background:#FFFDFB;font:500 16px/1 'Hanken Grotesk',sans-serif;color:#4A1424" style-focus="border-color:#4A1424"></label>
+<label style="display:flex;flex-direction:column;gap:6px;font:600 13px/1 'Hanken Grotesk',sans-serif;color:#6E3340">Teléfono<input type="tel" name="tel" value="{{ tel }}" onChange="{{ onTel }}" placeholder="600 000 000" style="appearance:none;width:100%;min-height:48px;padding:0 14px;border-radius:12px;border:1.5px solid rgba(74,20,36,.3);background:#FFFDFB;font:500 16px/1 'Hanken Grotesk',sans-serif;color:#4A1424" style-focus="border-color:#4A1424"></label>
+</div>
+<p style="margin:22px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:500 14px/1.4 'Hanken Grotesk',sans-serif;color:#6E3340"><span aria-hidden="true" style="flex:none;width:10px;height:10px;border-radius:50%;background:#FFC244;box-shadow:0 0 0 3px rgba(255,194,68,.35)"></span>¿Mejor a domicilio? En Bilbao también nos pides por Glovo.<a href="{{ glovo }}" target="_blank" rel="noopener noreferrer" style="font-weight:700;color:#4A1424;text-underline-offset:3px">Abrir Glovo</a></p>
+</div>
+<div style="position:sticky;bottom:0;z-index:2;margin-top:22px;padding:14px 24px 18px;background:#FCF3F0;border-top:1px solid rgba(74,20,36,.12);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px">
+<div><p style="margin:0;font:500 13px/1.2 'Hanken Grotesk',sans-serif;color:#6E3340">{{ resumenUds }} · pagas al recoger</p><p style="margin:4px 0 0;font:500 30px/1 'Frank Ruhl Libre',Georgia,serif;font-variant-numeric:tabular-nums">{{ total }}</p></div>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" type="button" onClick="{{ confirmar }}" size="lg" hint-size="200px,52px">Confirmar pedido</x-import>
+<sc-if value="{{ hayAviso }}" hint-placeholder-val="{{ false }}"><p role="alert" style="flex:1 0 100%;margin:0;font:600 14px/1.3 'Hanken Grotesk',sans-serif;color:#A33A4E">{{ aviso }}</p></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ pasoOk }}" hint-placeholder-val="{{ false }}">
+<div style="padding:20px 24px 26px">
+<p style="margin:0;font:400 17px/1.5 'Hanken Grotesk',sans-serif;text-wrap:pretty">Te lo dejamos preparado en <strong style="font-weight:700">{{ okTienda }}</strong>, {{ okCuando }}.</p>
+<div data-okcode="1" style="margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding:18px 20px;border-radius:16px;background:#4A1424;color:#FFF8F3">
+<span style="font:700 12px/1.3 'Hanken Grotesk',sans-serif;letter-spacing:.2em;color:#D6EBDD">CÓDIGO DE RECOGIDA</span>
+<span style="font:600 clamp(30px,6vw,40px)/1 'Frank Ruhl Libre',Georgia,serif;letter-spacing:.06em;font-variant-numeric:tabular-nums">{{ codigo }}</span>
+</div>
+<div style="margin-top:14px">
+<sc-for list="{{ okLineas }}" as="l" hint-placeholder-count="2"><div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(74,20,36,.18);font:500 15px/1.35 'Hanken Grotesk',sans-serif"><span>{{ l.qty }} × {{ l.nombre }}</span><span style="font-variant-numeric:tabular-nums;white-space:nowrap">{{ l.sub }}</span></div></sc-for>
+<div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0 0;font:700 16px/1.3 'Hanken Grotesk',sans-serif"><span>A pagar en tienda</span><span style="font-variant-numeric:tabular-nums">{{ total }}</span></div>
+</div>
+<p style="margin:18px 0 0;font:400 14px/1.5 'Hanken Grotesk',sans-serif;color:#6E3340;text-wrap:pretty">Esto es una demo: en la web real el pedido llegaría al momento a la tienda, que te llamaría si hubiera cualquier cambio.</p>
+<div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px">
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" href="{{ okMaps }}" target="_blank" rel="noopener noreferrer" size="lg" hint-size="160px,52px">Cómo llegar</x-import>
+<x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" type="button" onClick="{{ cerrarPedido }}" variant="outline" size="lg" hint-size="110px,52px">Hecho</x-import>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tinte&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;vino&quot;,&quot;rosa&quot;,&quot;verde&quot;],&quot;default&quot;:&quot;vino&quot;,&quot;tsType&quot;:&quot;'vino' | 'rosa' | 'verde'&quot;,&quot;section&quot;:&quot;Inicio&quot;},&quot;velocidad&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.4,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Inicio&quot;},&quot;movimiento&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;completo&quot;,&quot;suave&quot;],&quot;default&quot;:&quot;completo&quot;,&quot;tsType&quot;:&quot;'completo' | 'suave'&quot;,&quot;section&quot;:&quot;Propuesta&quot;},&quot;enlaceGlovo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://glovoapp.com/es/es/bilbao/&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Propuesta&quot;}}">
+const FR = [
+  ['up', [['m08.webp', 52], ['bandeja.jpg', 34], ['m10.webp', 46], ['m03.webp', 38]]],
+  ['down', [['bollos-azucar.jpg', 48, '50% 55%'], ['m09.webp', 32], ['m04.webp', 50], ['tienda-mostrador.jpg', 36]]],
+  ['up', [['m01.webp', 44], ['m05.webp', 34], ['m07.webp', 50], ['tienda-caja.jpg', 46, '50% 70%']]],
+  ['down', [['m03.webp', 36], ['m10.webp', 50], ['bandeja.jpg', 34], ['m08.webp', 48]]],
+  ['up', [['m02.webp', 50, '50% 70%'], ['bollos-azucar.jpg', 38, '50% 55%'], ['m09.webp', 34], ['m07.webp', 46]]]
+];
+const FRANJAS = FR.map(([dir, set]) => { const tiles = set.map(([f, vh, pos]) => ({ bg: '#5A2232 url(img/' + f + ') ' + (pos || '50% 50%') + ' / cover no-repeat', h: 'max(' + Math.round(vh * 4.4) + 'px,' + vh + 'vh)' })); return { dir, tiles: tiles.concat(tiles) }; });
+const BTN_NADA = {};
+const BTN_HDR = { style: { background: '#FFF8F3', color: '#4A1424', boxShadow: 'none' } };
+const BTN_CLARO = { style: { background: '#FFF8F3', color: '#4A1424', boxShadow: '0 14px 30px -16px rgba(20,6,10,.8)' } };
+const PILL_OSCURA = { style: { background: 'rgba(36,10,18,.45)', color: '#FFF8F3', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' } };
+const SABORES = [
+  { id: 'original', nombre: 'Original' }, { id: 'maracuya', nombre: 'Maracuyá' }, { id: 'kinder', nombre: 'Kinder' },
+  { id: 'dubai', nombre: 'Dubái' }, { id: 'lotus', nombre: 'Lotus' }, { id: 'cookies', nombre: 'Cookies&Cream' },
+  { id: 'almendrado', nombre: 'Almendrado' }, { id: 'praline', nombre: 'Praliné de avellana' }, { id: 'tiramisu', nombre: 'Tiramisú' }
+];
+const CAJAS = {
+  original: {
+    6: { precio: '14,90 €', desc: 'Elaborados con ingredientes clásicos y un sabor auténtico que nunca falla. Perfectos para compartir, picar o darte un capricho en cualquier momento' },
+    8: { precio: '19,50 €', desc: 'Ideales para reuniones o para quienes no se conforman con poco. Conservan todo el sabor tradicional que los hace irresistibles' },
+    10: { precio: '23,90 €', desc: 'La opción más generosa de la gama original. Perfecta para eventos, grupos grandes o para asegurarte de que nunca falten' }
+  },
+  mix: {
+    8: { precio: '19,50 €', desc: 'Diferentes sabores en una sola caja para una experiencia más completa y divertida' },
+    10: { precio: '23,90 €', desc: 'La experiencia más completa en versión mix. Ideal para celebraciones o grupos grandes' }
+  }
+};
+const GALERIA = [
+  { tipo: 'foto', src: 'img/bollos-azucar.jpg', alt: 'Bollos de mantequilla recién horneados, apilados y con su azúcar', pie: 'El original, con su azúcar', ratio: '4/5', grow: 1.3 },
+  { tipo: 'video', src: 'media/v1.mp4', alt: 'Vídeo: con las pinzas, cogiendo bollos de sabores de la vitrina', pie: 'La vitrina', ratio: '720/872', grow: 1 },
+  { tipo: 'video', src: 'media/v3.mp4', alt: 'Vídeo: la fachada de una tienda Botxito, con su toldo rosa', pie: 'Pasa a vernos', ratio: '9/16', grow: .85 },
+  { tipo: 'video', src: 'media/v2.mp4', alt: 'Vídeo: la crema de mantequilla, de cerca', pie: 'La crema de mantequilla', ratio: '720/872', grow: 1 }
+].map(m => ({ ...m, esVideo: m.tipo === 'video', esFoto: m.tipo === 'foto' }));
+const q = s => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(s);
+const TIENDAS = [
+  { calle: 'Sombrerería 3', ciudad: 'Bilbao', tel: '946 294 614', e164: '+34946294614', cierra: 1230, cierraTxt: '20:30', nota: 'Casco Viejo' },
+  { calle: 'Ercilla 28', ciudad: 'Bilbao', tel: '946 295 442', e164: '+34946295442', cierra: 1230, cierraTxt: '20:30', nota: '' },
+  { calle: 'Berástegui 5', ciudad: 'Bilbao', tel: '946 295 538', e164: '+34946295538', cierra: 1230, cierraTxt: '20:30', nota: '4,7 ★ en Google' },
+  { calle: 'Arenal 8', ciudad: 'Madrid', tel: '919 120 871', e164: '+34919120871', cierra: 1320, cierraTxt: '22:00', nota: 'Junto a Sol' }
+].map(t => ({ ...t, maps: q('Botxito ' + t.calle + ' ' + t.ciudad), telHref: 'tel:' + t.e164, ciudadMay: t.ciudad.toUpperCase(), horario: '9:00–' + t.cierraTxt }));
+
+const GLOVO = 'https://glovoapp.com/es/es/bilbao/';
+const PRODUCTOS = [
+  { id: 'cafe', nombre: 'Botxito + café', precio: 3.9 },
+  { id: 'o6', nombre: 'Caja 6 Originales', precio: 14.9 },
+  { id: 'o8', nombre: 'Caja 8 Originales', precio: 19.5 },
+  { id: 'o10', nombre: 'Caja 10 Originales', precio: 23.9 },
+  { id: 'm8', nombre: 'Caja 8 Mix', precio: 19.5, detalle: 'Surtido de sabores' },
+  { id: 'm10', nombre: 'Caja 10 Mix', precio: 23.9, detalle: 'Surtido de sabores' }
+];
+const eur = n => n.toFixed(2).replace('.', ',') + ' €';
+const hhmm = m => Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0');
+function slotsFor(t, dia, nowMin) {
+  const out = [];
+  for (let m = 570; m <= t.cierra - 30; m += 30) if (dia !== 'hoy' || m >= nowMin + 30) out.push(m);
+  return out;
+}
+
+function madrid() {
+  const p = new Intl.DateTimeFormat('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+  const h = +p.find(x => x.type === 'hour').value, m = +p.find(x => x.type === 'minute').value;
+  return { min: h * 60 + m, txt: h + ':' + String(m).padStart(2, '0') };
+}
+
+class Component extends DCLogic {
+  state = { solid: false, tipo: 'mix', size: 8, slots: ['maracuya', 'dubai', 'kinder'], t: 0, pedido: false, paso: 'form', cart: {}, cajaMia: null, tiendaIdx: 0, dia: 'hoy', hora: null, nombre: '', tel: '', aviso: '', codigo: '' };
+  marquee = SABORES.concat(SABORES);
+
+  componentDidMount() {
+    this.tick = setInterval(() => this.setState({ t: Date.now() }), 30000);
+    this.boot(0);
+    this._onScroll = () => { const v = window.scrollY > 60; if (v !== this.state.solid) this.setState({ solid: v }); };
+    window.addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
+    this.setupHero();
+    this._vidT = setTimeout(() => this.setupVideos(), 0);
+  }
+  componentWillUnmount() {
+    clearInterval(this.tick); clearTimeout(this.bootT); clearTimeout(this._vidT);
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._fit) window.removeEventListener('resize', this._fit);
+    if (this._hio) this._hio.disconnect();
+    (this._loops || []).forEach(a => a.cancel()); if (this._cue) this._cue.cancel();
+    if (this._io) this._io.disconnect();
+    if (this._esc) document.removeEventListener('keydown', this._esc);
+    document.documentElement.style.overflow = '';
+    if (this._vis) document.removeEventListener('visibilitychange', this._vis);
+    if (this.ctx) this.ctx.revert();
+    if (this.lenis) this.lenis.destroy();
+    if (this._mq) this._mq.cancel();
+    if (window.gsap) { if (this._raf) gsap.ticker.remove(this._raf); if (this._spring) gsap.ticker.remove(this._spring); }
+    if (this.root && this._click) this.root.removeEventListener('click', this._click);
+  }
+  boot(n) {
+    const w = window;
+    if (w.gsap && w.ScrollTrigger && w.SplitText && w.CustomEase) {
+      const go = () => this.probe(ok => {
+        if (ok) { this.initAnim(); return; }
+        if (this._vis) return;
+        this._vis = () => { if (document.visibilityState === 'visible') this.probe(ok2 => { if (ok2) { document.removeEventListener('visibilitychange', this._vis); this.initAnim(); } }); };
+        document.addEventListener('visibilitychange', this._vis);
+      });
+      (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(go, go);
+      return;
+    }
+    if (n > 160) return;
+    this.bootT = setTimeout(() => this.boot(n + 1), 50);
+  }
+
+  probe(cb) {
+    // Solo animamos si el navegador pinta de verdad (pestaña visible y rAF a ritmo normal)
+    if (document.visibilityState !== 'visible') { cb(false); return; }
+    let n = 0, done = false; const t0 = performance.now();
+    const end = () => { if (done) return; done = true; cb(n >= 8); };
+    const f = () => { n++; if (performance.now() - t0 < 400) requestAnimationFrame(f); else end(); };
+    requestAnimationFrame(f); setTimeout(end, 800);
+  }
+  initAnim() {
+    if (this.inited || !this.root) return; this.inited = true;
+    const g = gsap, ST = ScrollTrigger, R = this.root;
+    g.registerPlugin(ST, SplitText, CustomEase);
+    CustomEase.create('botxito', '0.32,0.72,0,1');
+    const $ = s => Array.from(R.querySelectorAll(s)), $1 = s => R.querySelector(s);
+    const reduced = this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || this.props.movimiento === 'suave';
+    const hover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    this._click = e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+      const h = a.getAttribute('href'); if (!h || h.length < 2) return;
+      const el = R.querySelector(h); if (!el) return;
+      e.preventDefault();
+      if (this.lenis) this.lenis.scrollTo(el, { offset: -56, duration: 1.2 });
+      else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 56, behavior: reduced ? 'auto' : 'smooth' });
+    };
+    R.addEventListener('click', this._click);
+
+    if (!reduced && window.Lenis) {
+      this.lenis = new Lenis({ lerp: 0.09 });
+      this.lenis.on('scroll', ST.update);
+      this._raf = t => this.lenis.raf(t * 1000);
+      g.ticker.add(this._raf); g.ticker.lagSmoothing(0);
+    }
+
+    if (!reduced && !this.touched) this.setState({ slots: [] });
+    this.lid = $1('[data-lid]');
+    g.set(this.lid, { rotationX: -100, transformPerspective: 900, transformOrigin: '50% 0%', autoAlpha: 0 });
+
+    this.ctx = g.context(() => {
+      ST.create({ trigger: '#caja', start: 'top 30%', once: true, onEnter: () => this.demo() });
+
+      if (reduced) return;
+
+      // Inicio: las franjas aceleran con el scroll y el texto se aleja
+      const hero = $1('[data-hero]'), boost = { r: 1 };
+      const setR = r => (this._loops || []).forEach(a => { a.playbackRate = r; });
+      let bT;
+      ST.create({ trigger: hero, start: 'top top', end: 'bottom top', onUpdate: s => { boost.r = 1 + Math.min(Math.abs(s.getVelocity()) / 260, 7); setR(boost.r); clearTimeout(bT); bT = setTimeout(() => g.to(boost, { r: 1, duration: 1, ease: 'power2.out', overwrite: true, onUpdate: () => setR(boost.r) }), 90); } });
+      g.to('[data-hcontent]', { y: -90, opacity: .15, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+      $('[data-colp]').forEach(c => g.to(c, { y: c.dataset.colp === 'down' ? 80 : -120, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } }));
+
+      // Cinta de sabores: corre más con la velocidad del scroll
+      const track = $1('[data-marquee]');
+      const mq = track.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }], { duration: 34000, iterations: Infinity });
+      this._mq = mq;
+      const rate = { r: 1 };
+      let mqT;
+      ST.create({ start: 0, end: 'max', onUpdate: s => { rate.r = 1 + Math.min(Math.abs(s.getVelocity()) / 300, 6); mq.playbackRate = rate.r; clearTimeout(mqT); mqT = setTimeout(() => g.to(rate, { r: 1, duration: .9, ease: 'power2.out', onUpdate: () => { mq.playbackRate = rate.r; } }), 90); } });
+
+      // El original
+      g.fromTo('[data-bun]', { scale: .9, rotation: -3 }, { scale: 1.06, rotation: 1.5, ease: 'none', scrollTrigger: { trigger: '#original', start: 'top bottom', end: 'bottom top', scrub: true } });
+      $('[data-split]').forEach(h => { const s = new SplitText(h, { type: 'words,chars', mask: 'words' }); g.from(s.chars, { yPercent: 115, duration: .9, ease: 'botxito', stagger: .02, scrollTrigger: { trigger: h, start: 'top 86%', once: true } }); });
+      $('[data-lines]').forEach(p => { const s = new SplitText(p, { type: 'lines', mask: 'lines' }); g.from(s.lines, { yPercent: 100, duration: .8, ease: 'botxito', stagger: .07, scrollTrigger: { trigger: p, start: 'top 90%', once: true } }); });
+
+      const sugar = $1('[data-sugar]');
+      const spawn = (x, y, n, spread) => {
+        for (let i = 0; i < n; i++) {
+          const d = document.createElement('span'); const s = 2 + Math.random() * 3.6;
+          d.style.cssText = 'position:absolute;left:' + x + 'px;top:' + y + 'px;width:' + s + 'px;height:' + s + 'px;border-radius:50%;background:#FFFDF8;box-shadow:0 0 0 .6px rgba(74,20,36,.14);pointer-events:none';
+          sugar.appendChild(d);
+          g.to(d, { x: (Math.random() - .5) * spread, y: 50 + Math.random() * 110, opacity: 0, duration: .9 + Math.random() * .7, ease: 'power1.in', onComplete: () => d.remove() });
+        }
+      };
+      let last = 0;
+      sugar.addEventListener('pointermove', e => { const now = performance.now(); if (now - last < 36) return; last = now; const r = sugar.getBoundingClientRect(); spawn(e.clientX - r.left, e.clientY - r.top, 3, 34); });
+      sugar.addEventListener('pointerdown', e => { const r = sugar.getBoundingClientRect(); spawn(e.clientX - r.left, e.clientY - r.top, 26, 140); });
+
+      // Vitrina
+      g.from('[data-rombo]', { scale: .3, rotation: -90, opacity: 0, duration: .75, ease: 'back.out(1.7)', stagger: .06, scrollTrigger: { trigger: '[data-vitrina]', start: 'top 88%', once: true } });
+      if (hover) $('[data-sabor]').forEach(b => {
+        const bg = b.querySelector('[data-rombobg]'), bun = b.querySelector('[data-src]');
+        b.addEventListener('mouseenter', () => { g.to(bg, { rotation: 0, borderRadius: 26, backgroundColor: '#FFFFFF', duration: .45, ease: 'botxito' }); g.to(bun, { y: -6, rotation: -5, duration: .45, ease: 'back.out(2)' }); });
+        b.addEventListener('mouseleave', () => { g.to(bg, { rotation: 45, borderRadius: 14, backgroundColor: '#FCF3F0', duration: .45, ease: 'botxito' }); g.to(bun, { y: 0, rotation: 0, duration: .4, ease: 'botxito' }); });
+      });
+
+      // Nuestra pasión
+      g.fromTo('[data-reveal]', { clipPath: 'inset(14% 12% 14% 12% round 28px)' }, { clipPath: 'inset(0% 0% 0% 0% round 28px)', ease: 'none', scrollTrigger: { trigger: '[data-reveal]', start: 'top 92%', end: 'top 30%', scrub: true } });
+      $('[data-par]').forEach(img => g.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+      g.from('[data-clip]', { clipPath: 'inset(0% 0% 100% 0%)', y: 40, duration: 1, ease: 'botxito', scrollTrigger: { trigger: '[data-clip]', start: 'top 86%', once: true } });
+      const c25 = $1('[data-count25]'), o = { v: 0 };
+      g.to(o, { v: 25, duration: 1.6, ease: 'power2.out', delay: .2, scrollTrigger: { trigger: c25, start: 'top 86%', once: true }, onUpdate: () => { c25.textContent = Math.round(o.v); } });
+      g.from('[data-line]', { scaleX: 0, transformOrigin: '0% 50%', duration: 1.1, ease: 'botxito', stagger: .15, scrollTrigger: { trigger: '[data-puntos]', start: 'top 85%', once: true } });
+      g.fromTo('[data-strip]', { xPercent: 4 }, { xPercent: -22, ease: 'none', scrollTrigger: { trigger: '[data-strip]', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+      // Recién hechos: las piezas suben en cascada
+      g.from('[data-tile]', { y: 90, opacity: 0, duration: .9, ease: 'botxito', stagger: .1, scrollTrigger: { trigger: '[data-galeria]', start: 'top 88%', once: true } });
+      g.from('[data-tile] [data-media]', { scale: 1.2, duration: 1.4, ease: 'botxito', stagger: .1, scrollTrigger: { trigger: '[data-galeria]', start: 'top 88%', once: true } });
+
+      // Tiendas
+      g.from('[data-tienda]', { y: 70, rotation: i => (i % 2 ? 2.5 : -2.5), opacity: 0, duration: .85, ease: 'botxito', stagger: .1, scrollTrigger: { trigger: '[data-tiendas]', start: 'top 85%', once: true } });
+      if (hover) $('[data-tienda]').forEach(card => {
+        const tapa = card.querySelector('[data-tapa]');
+        card.addEventListener('mouseenter', () => { g.to(card, { y: -8, duration: .5, ease: 'back.out(2)' }); g.to(tapa, { rotation: -5, y: -6, duration: .5, ease: 'back.out(2.5)' }); });
+        card.addEventListener('mouseleave', () => { g.to(card, { y: 0, duration: .5, ease: 'botxito' }); g.to(tapa, { rotation: 0, y: 0, duration: .5, ease: 'botxito' }); });
+      });
+
+      // Opiniones: la cita se enciende palabra a palabra
+      const qt = $1('[data-quote]'); const sw = new SplitText(qt, { type: 'words' });
+      g.fromTo(sw.words, { opacity: .16 }, { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: qt, start: 'top 82%', end: 'bottom 48%', scrub: true } });
+      g.from('[data-mini]', { y: 40, opacity: 0, stagger: .12, duration: .75, ease: 'botxito', scrollTrigger: { trigger: '[data-mini]', start: 'top 88%', once: true } });
+      const ups = $('[data-up]').filter(el => el.getBoundingClientRect().top > innerHeight);
+      g.set(ups, { y: 30, opacity: 0 });
+      ST.batch(ups, { start: 'top 90%', once: true, onEnter: els => g.to(els, { y: 0, opacity: 1, duration: .75, ease: 'botxito', stagger: .08 }) });
+
+      // Cierre: la marca sube letra a letra
+      g.fromTo('[data-letra]', { yPercent: 105 }, { yPercent: 0, ease: 'none', stagger: .08, scrollTrigger: { trigger: '[data-marca]', start: 'top bottom', end: 'bottom 85%', scrub: true } });
+    }, R);
+  }
+
+  componentDidUpdate(prev) { if (prev.velocidad !== this.props.velocidad && this._fit) this._fit(); }
+  speedMul() { const v = +this.props.velocidad; return v > 0 ? v : 1; }
+  // Franjas del inicio: bucles infinitos que se alternan arriba / abajo
+  setupHero() {
+    const R = this.root; if (!R || this._loops) return;
+    this._loops = [];
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches || this.props.movimiento === 'suave';
+    const tracks = Array.from(R.querySelectorAll('[data-track]'));
+    if (still || !Element.prototype.animate) { tracks.forEach(t => { t.style.transform = 'translateY(' + (t.dataset.track === 'down' ? -30 : -8) + '%)'; }); return; }
+    const E = 'cubic-bezier(.32,.72,0,1)', offs = [0, .35, .62, .18, .8];
+    const dur = t => Math.max(6000, t.offsetHeight / 2 / (34 * this.speedMul()) * 1000);
+    tracks.forEach((t, i) => {
+      const down = t.dataset.track === 'down';
+      const a = t.animate([{ transform: 'translateY(' + (down ? '-50%' : '0%') + ')' }, { transform: 'translateY(' + (down ? '0%' : '-50%') + ')' }], { duration: dur(t), iterations: Infinity });
+      a.currentTime = offs[i % 5] * a.effect.getTiming().duration;
+      this._loops.push(a);
+    });
+    this._fit = () => this._loops.forEach((a, i) => { const p = (a.currentTime || 0) / a.effect.getTiming().duration, d = dur(tracks[i]); a.effect.updateTiming({ duration: d }); a.currentTime = p * d; });
+    window.addEventListener('resize', this._fit);
+    Array.from(R.querySelectorAll('[data-col]')).forEach((c, i) => c.animate([{ transform: 'translateY(' + (c.dataset.col === 'down' ? -16 : 16) + '%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 1600, delay: Math.abs(i - 2) * 120, easing: E, fill: 'backwards' }));
+    Array.from(R.querySelectorAll('[data-hl]')).forEach((el, i) => el.animate([{ transform: 'translateY(110%)' }, { transform: 'none' }], { duration: 1100, delay: 350 + i * 130, easing: E, fill: 'backwards' }));
+    const rule = R.querySelector('[data-hrule]'); if (rule) rule.animate([{ transform: 'scaleX(0)' }, { transform: 'none' }], { duration: 900, delay: 700, easing: E, fill: 'backwards' });
+    Array.from(R.querySelectorAll('[data-hin]')).forEach(el => el.animate([{ transform: 'translateY(18px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 800, delay: +el.dataset.hin || 0, easing: E, fill: 'backwards' }));
+    const cue = R.querySelector('[data-cue]'); if (cue) this._cue = cue.animate([{ transform: 'translateY(-110%)' }, { transform: 'translateY(260%)' }], { duration: 1900, delay: 1400, iterations: Infinity, easing: 'cubic-bezier(.6,0,.3,1)' });
+    const hero = R.querySelector('[data-hero]');
+    if ('IntersectionObserver' in window && hero) { this._hio = new IntersectionObserver(([e]) => { this._loops.forEach(a => e.isIntersecting ? a.play() : a.pause()); if (this._cue) e.isIntersecting ? this._cue.play() : this._cue.pause(); }); this._hio.observe(hero); }
+  }
+  heroVals(now) {
+    const solid = this.state.solid, t = this.props.tinte || 'vino', open = now.min >= 540 && now.min < 1230;
+    return {
+      franjas: FRANJAS, tVino: t === 'vino', tRosa: t === 'rosa', tVerde: t === 'verde',
+      hdrBg: solid ? 'rgba(252,243,240,.9)' : 'rgba(252,243,240,0)',
+      hdrBlur: solid ? 'blur(10px)' : 'none',
+      hdrShadow: solid ? '0 10px 30px -22px rgba(74,20,36,.5)' : '0 0 0 rgba(74,20,36,0)',
+      hdrFg: solid ? '#4A1424' : '#FFF8F3',
+      hdrBtn: solid ? BTN_NADA : BTN_HDR, btnClaro: BTN_CLARO, pillOscura: PILL_OSCURA,
+      heroOpen: open,
+      heroEstado: open ? 'Bilbao · abierto hasta las 20:30' : now.min < 540 ? 'Bilbao · abre a las 9:00' : 'Bilbao · abre mañana a las 9:00'
+    };
+  }
+
+  pedirCaja() {
+    const { tipo, size, slots } = this.state;
+    if (tipo === 'original') { this.abrirPedido({ add: 'o' + size }); return; }
+    const cnt = {}; slots.forEach(id => { cnt[id] = (cnt[id] || 0) + 1; });
+    const nom = id => (SABORES.find(f => f.id === id) || {}).nombre || id;
+    const detalle = Object.keys(cnt).map(id => nom(id) + (cnt[id] > 1 ? ' ×' + cnt[id] : '')).join(', ');
+    this.abrirPedido({ mia: { nombre: 'Tu caja Mix de ' + size, detalle, precio: size === 10 ? 23.9 : 19.5 } });
+  }
+
+  // --- La caja ---
+  srcFor(id) { return this.root && this.root.querySelector('[data-sabor="' + id + '"] [data-src]'); }
+  demo() {
+    if (this.touched) return;
+    ['maracuya', 'dubai', 'kinder'].forEach((id, i) => setTimeout(() => { if (!this.touched) this.addSabor(id, this.srcFor(id), true); }, 250 + i * 420));
+  }
+  tapSabor(id, btn) {
+    this.touched = true;
+    const src = btn && btn.querySelector('[data-src]');
+    if (this.state.tipo === 'original' && id !== 'original') {
+      this.openLid();
+      this.setState({ tipo: 'mix', size: Math.max(8, this.state.size), slots: [] }, () => this.addSabor(id, src));
+      return;
+    }
+    this.addSabor(id, src);
+  }
+  addSabor(id, src, isDemo) {
+    const { slots, size } = this.state;
+    if (slots.length >= size) { this.shake(); return; }
+    const r = src ? src.getBoundingClientRect() : null, i = slots.length;
+    this.setState({ slots: slots.concat(id) }, () => {
+      const t = this.root && this.root.querySelector('[data-slot="' + i + '"] [data-bollo]');
+      if (this.inited && t && r && !this.reduced) {
+        const tr = t.getBoundingClientRect();
+        gsap.fromTo(t, { x: r.left + r.width / 2 - (tr.left + tr.width / 2), y: r.top + r.height / 2 - (tr.top + tr.height / 2), scale: r.width / Math.max(1, tr.width), rotation: -28, zIndex: 30 },
+          { x: 0, y: 0, scale: 1, rotation: 0, duration: .72, ease: 'back.out(1.4)', clearProps: 'zIndex' });
+      }
+      this.bump();
+      if (i + 1 === size) this.closeLid(.8);
+    });
+  }
+  setTipo(tipo) {
+    this.touched = true;
+    if (tipo === this.state.tipo) return;
+    this.openLid();
+    if (tipo === 'original') this.setState({ tipo, slots: Array(this.state.size).fill('original') }, () => this.dropAll());
+    else this.setState({ tipo, size: Math.max(8, this.state.size), slots: [] });
+  }
+  setSize(n) {
+    this.touched = true;
+    const { tipo, size, slots } = this.state;
+    if ((tipo === 'mix' && n === 6) || n === size) return;
+    this.openLid();
+    if (tipo === 'original') this.setState({ size: n, slots: Array(n).fill('original') }, () => this.dropAll());
+    else this.setState({ size: n, slots: slots.slice(0, n) }, () => { if (this.state.slots.length >= n) this.closeLid(.3); });
+  }
+  dropAll() {
+    const els = this.root ? Array.from(this.root.querySelectorAll('[data-box] [data-bollo]')) : [];
+    if (this.inited && !this.reduced) gsap.fromTo(els, { y: -100, opacity: 0, rotation: () => gsap.utils.random(-35, 35) }, { y: 0, opacity: 1, rotation: 0, duration: .6, ease: 'back.out(1.7)', stagger: .07 });
+    this.closeLid(.45 + els.length * .07);
+  }
+  sorprende() {
+    this.touched = true;
+    const fill = () => {
+      const n = this.state.size - this.state.slots.length;
+      for (let k = 0; k < n; k++) setTimeout(() => { const f = SABORES[Math.floor(Math.random() * SABORES.length)].id; this.addSabor(f, this.srcFor(f)); }, k * 170);
+    };
+    if (this.state.tipo === 'original') { this.openLid(); this.setState({ tipo: 'mix', size: Math.max(8, this.state.size), slots: [] }, fill); }
+    else fill();
+  }
+  vaciar() {
+    this.touched = true; this.openLid();
+    const els = this.root ? Array.from(this.root.querySelectorAll('[data-box] [data-bollo]')) : [];
+    if (this.inited && els.length && !this.reduced) gsap.to(els, { y: -36, opacity: 0, duration: .26, stagger: { each: .04, from: 'end' }, onComplete: () => this.setState({ slots: [] }) });
+    else this.setState({ slots: [] });
+  }
+  openLid() { if (this.inited && this.lid) gsap.to(this.lid, { rotationX: -100, duration: this.reduced ? 0 : .45, ease: 'power2.inOut', overwrite: true, onComplete: () => gsap.set(this.lid, { autoAlpha: 0 }) }); }
+  closeLid(delay) { if (this.inited && this.lid) gsap.to(this.lid, { rotationX: 0, autoAlpha: 1, immediateRender: false, duration: this.reduced ? 0 : .75, ease: 'back.out(1.3)', delay: this.reduced ? 0 : delay || 0, overwrite: true }); }
+  shake() { const b = this.root && this.root.querySelector('[data-box]'); if (this.inited && b) gsap.fromTo(b, { x: -8 }, { x: 0, duration: .6, ease: 'elastic.out(1,.3)' }); }
+  bump() { const c = this.root && this.root.querySelector('[data-count]'); if (this.inited && c && !this.reduced) gsap.fromTo(c, { yPercent: -45 }, { yPercent: 0, duration: .32, ease: 'back.out(3)' }); }
+
+  // --- Vídeos: se reproducen solo cuando están a la vista ---
+  setupVideos() {
+    if (!this.root || this._io || !('IntersectionObserver' in window)) return;
+    const vids = Array.from(this.root.querySelectorAll('video[data-vid]'));
+    if (!vids.length) return;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches || this.props.movimiento === 'suave';
+    vids.forEach(v => { v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.setAttribute('muted', ''); });
+    this._io = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (v.preload === 'none') v.preload = 'auto';
+        if (!still && v.dataset.paused !== '1') { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      } else if (!v.paused) v.pause();
+    }), { rootMargin: '240px 0px 240px 0px' });
+    vids.forEach(v => this._io.observe(v));
+  }
+  toggleVid(e) {
+    const v = e.currentTarget && e.currentTarget.querySelector('video'); if (!v) return;
+    if (v.paused) { v.dataset.paused = '0'; v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    else { v.dataset.paused = '1'; v.pause(); }
+  }
+
+  // --- Pedido para recoger ---
+  rm() { return this.reduced || this.props.movimiento === 'suave' || matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  abrirPedido(o) {
+    o = o || {};
+    const now = madrid().min, s = this.state;
+    const tiendaIdx = o.tienda != null ? o.tienda : s.tiendaIdx;
+    const cart = { ...s.cart };
+    let cajaMia = s.cajaMia;
+    if (o.mia) { cajaMia = o.mia; cart.mia = 1; }
+    if (o.add) cart[o.add] = (cart[o.add] || 0) + 1;
+    const dia = slotsFor(TIENDAS[tiendaIdx], 'hoy', now).length ? 'hoy' : 'manana';
+    if (!s.pedido) this._lastFocus = document.activeElement;
+    this.setState({ pedido: true, paso: 'form', cart, cajaMia, tiendaIdx, dia, hora: null, aviso: '' }, () => this.animPedido());
+    if (this.lenis) this.lenis.stop();
+    document.documentElement.style.overflow = 'hidden';
+    if (!this._esc) { this._esc = e => { if (e.key === 'Escape' && this.state.pedido) this.cerrarPedido(); }; document.addEventListener('keydown', this._esc); }
+  }
+  animPedido() {
+    const R = this.root; if (!R) return;
+    const sh = R.querySelector('[data-sheet]'), bd = R.querySelector('[data-backdrop]'), x = R.querySelector('[data-close]');
+    if (x) x.focus({ preventScroll: true });
+    if (window.gsap && sh && !this.rm()) {
+      gsap.fromTo(bd, { opacity: 0 }, { opacity: 1, duration: .3, ease: 'power1.out' });
+      gsap.fromTo(sh, { y: 48, opacity: 0 }, { y: 0, opacity: 1, duration: .55, ease: 'expo.out' });
+    }
+  }
+  cerrarPedido() {
+    if (this._closing || !this.state.pedido) return;
+    const R = this.root, sh = R && R.querySelector('[data-sheet]'), bd = R && R.querySelector('[data-backdrop]');
+    const done = () => {
+      this._closing = false;
+      const ok = this.state.paso === 'ok';
+      this.setState(ok ? { pedido: false, paso: 'form', cart: {}, cajaMia: null } : { pedido: false });
+      if (this.lenis) this.lenis.start();
+      document.documentElement.style.overflow = '';
+      if (this._lastFocus && this._lastFocus.focus) this._lastFocus.focus({ preventScroll: true });
+    };
+    if (window.gsap && sh && !this.rm()) { this._closing = true; gsap.to(bd, { opacity: 0, duration: .22 }); gsap.to(sh, { y: 32, opacity: 0, duration: .24, ease: 'power2.in', onComplete: done }); }
+    else done();
+  }
+  setQty(id, d) { const cart = { ...this.state.cart }; cart[id] = Math.max(0, (cart[id] || 0) + d); this.setState({ cart, aviso: '' }); }
+  setTienda(i) {
+    const now = madrid().min, s = this.state;
+    let dia = s.dia; if (dia === 'hoy' && !slotsFor(TIENDAS[i], 'hoy', now).length) dia = 'manana';
+    const keep = s.hora != null && slotsFor(TIENDAS[i], dia, now).indexOf(s.hora) > -1;
+    this.setState({ tiendaIdx: i, dia, hora: keep ? s.hora : null, aviso: '' });
+  }
+  confirmar() {
+    const s = this.state, uds = Object.keys(s.cart).reduce((a, k) => a + s.cart[k], 0);
+    let aviso = '';
+    if (!uds) aviso = 'Añade algo al pedido.';
+    else if (s.hora == null) aviso = 'Elige a qué hora pasas.';
+    else if (!s.nombre.trim()) aviso = 'Falta el nombre para el pedido.';
+    else if (s.tel.replace(/\D/g, '').length < 9) aviso = 'Déjanos un teléfono de contacto.';
+    if (aviso) { this.setState({ aviso }); return; }
+    this.setState({ paso: 'ok', aviso: '', codigo: 'BX-' + (1000 + Math.floor(Math.random() * 9000)) }, () => {
+      const sh = this.root && this.root.querySelector('[data-sheet]'); if (sh) sh.scrollTop = 0;
+      const c = this.root && this.root.querySelector('[data-okcode]');
+      if (window.gsap && c && !this.rm()) gsap.from(c, { scale: .92, opacity: 0, duration: .5, ease: 'back.out(2)' });
+    });
+  }
+  pedidoVals() {
+    const s = this.state, now = madrid().min, T = TIENDAS[s.tiendaIdx];
+    const src = (s.cajaMia ? [{ id: 'mia', ...s.cajaMia }] : []).concat(PRODUCTOS);
+    const lineas = src.map(p => {
+      const qty = s.cart[p.id] || 0;
+      return { id: p.id, nombre: p.nombre, precio: p.precio, qty, detalle: (p.detalle ? p.detalle + ' · ' : '') + eur(p.precio), vacio: !qty, opMenos: qty ? 1 : .3, borde: qty ? '#4A1424' : 'rgba(74,20,36,.22)', fondo: qty ? '#FFFDFB' : 'transparent', menos: () => this.setQty(p.id, -1), mas: () => this.setQty(p.id, 1) };
+    });
+    const uds = lineas.reduce((a, l) => a + l.qty, 0), tot = lineas.reduce((a, l) => a + l.qty * l.precio, 0);
+    const hoy = slotsFor(T, 'hoy', now), n1 = s.nombre.trim().split(/\s+/)[0];
+    return {
+      pedido: s.pedido, pasoForm: s.paso === 'form', pasoOk: s.paso === 'ok',
+      pedidoTitulo: s.paso === 'ok' ? 'Apuntado' + (n1 ? ', ' + n1 : '') + '.' : 'Pídelo y pasa a por él',
+      abrirPedido: () => this.abrirPedido(), cerrarPedido: () => this.cerrarPedido(), confirmar: () => this.confirmar(),
+      lineas, total: eur(tot), resumenUds: uds === 1 ? '1 producto' : uds + ' productos',
+      tiendasPedido: TIENDAS.map((t, i) => { const sel = i === s.tiendaIdx; return { calle: t.calle, ciudad: t.ciudad, cierraTxt: t.cierraTxt, sel, bg: sel ? '#4A1424' : '#FFFDFB', fg: sel ? '#FFF8F3' : '#4A1424', borde: sel ? '#4A1424' : 'rgba(74,20,36,.2)', onClick: () => this.setTienda(i) }; }),
+      dias: [['hoy', 'Hoy'], ['manana', 'Mañana']].map(([k, label]) => { const sel = s.dia === k, dis = k === 'hoy' && !hoy.length; return { label: dis ? 'Hoy ya no da tiempo' : label, sel, dis, op: dis ? .45 : 1, bg: sel ? '#4A1424' : 'transparent', fg: sel ? '#FFF8F3' : '#4A1424', onClick: () => this.setState({ dia: k, hora: null, aviso: '' }) }; }),
+      horas: slotsFor(T, s.dia, now).map(m => { const sel = s.hora === m; return { t: hhmm(m), sel, bg: sel ? '#4A1424' : '#FFFDFB', fg: sel ? '#FFF8F3' : '#4A1424', borde: sel ? '#4A1424' : 'rgba(74,20,36,.2)', onClick: () => this.setState({ hora: m, aviso: '' }) }; }),
+      nombre: s.nombre, tel: s.tel,
+      onNombre: e => this.setState({ nombre: e.target.value, aviso: '' }),
+      onTel: e => this.setState({ tel: e.target.value, aviso: '' }),
+      aviso: s.aviso, hayAviso: !!s.aviso, codigo: s.codigo,
+      okTienda: T.calle + ', ' + T.ciudad,
+      okCuando: (s.dia === 'hoy' ? 'hoy' : 'mañana') + (s.hora != null ? ' a las ' + hhmm(s.hora) : ''),
+      okMaps: T.maps,
+      okLineas: lineas.filter(l => l.qty).map(l => ({ qty: l.qty, nombre: l.nombre, sub: eur(l.qty * l.precio) })),
+      glovo: this.props.enlaceGlovo || GLOVO,
+      toggleVid: e => this.toggleVid(e)
+    };
+  }
+
+  renderVals() {
+    const { tipo, size, slots } = this.state;
+    const caja = CAJAS[tipo][size] || CAJAS[tipo][8];
+    const now = madrid();
+    const full = slots.length >= size;
+    const faltan = size - slots.length;
+    return {
+      ...this.pedidoVals(),
+      ...this.heroVals(now),
+      pedirCaja: () => this.pedirCaja(),
+      setRoot: el => { this.root = el; },
+      marquee: this.marquee,
+      galeria: this._gal || (this._gal = GALERIA.map(m => ({ ...m, toggle: e => this.toggleVid(e) }))),
+      sabores: SABORES.map(f => ({ ...f, onAdd: e => this.tapSabor(f.id, e.currentTarget) })),
+      isOriginal: tipo === 'original', isMix: tipo === 'mix',
+      tipoX: tipo === 'original' ? '0%' : '100%',
+      tOrigFg: tipo === 'original' ? '#FFF8F3' : '#4A1424',
+      tMixFg: tipo === 'mix' ? '#FFF8F3' : '#4A1424',
+      pickOriginal: () => this.setTipo('original'),
+      pickMix: () => this.setTipo('mix'),
+      sizes: [6, 8, 10].map(n => {
+        const c = CAJAS[tipo][n], sel = n === size, dis = !c;
+        return { n, precio: c ? c.precio : 'Solo original', selected: sel, disabled: dis, bg: sel ? '#4A1424' : '#FCF3F0', fg: sel ? '#FFF8F3' : '#4A1424', op: dis ? .45 : 1, onClick: () => this.setSize(n) };
+      }),
+      cols: 'repeat(' + size / 2 + ',minmax(0,1fr))',
+      slotList: Array.from({ length: size }, (_, i) => ({ i, filled: i < slots.length, sabor: slots[i] || 'original' })),
+      count: slots.length, size,
+      precio: caja.precio, desc: caja.desc,
+      nombreCaja: 'Caja ' + size + ' Botxitos ' + (tipo === 'mix' ? 'Mix' : 'Originales'),
+      full, notFull: !full,
+      faltanTxt: tipo === 'mix' ? (slots.length ? 'Te faltan ' + faltan + (faltan === 1 ? ' bollo' : ' bollos') : 'Toca un sabor para empezar') : 'Faltan ' + faltan,
+      abrir: () => { this.touched = true; this.openLid(); },
+      sorprende: () => this.sorprende(),
+      vaciar: () => this.vaciar(),
+      hora: now.txt,
+      tiendas: TIENDAS.map((t, ti) => {
+        const open = now.min >= 540 && now.min < t.cierra;
+        return { ...t, open, onRecoger: () => this.abrirPedido({ tienda: ti }), estado: open ? 'Abierto · cierra a las ' + t.cierraTxt : (now.min < 540 ? 'Cerrado · abre a las 9:00' : 'Cerrado · abre mañana a las 9:00') };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

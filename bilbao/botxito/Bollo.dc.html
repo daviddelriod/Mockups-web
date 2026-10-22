@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<svg viewBox="0 0 200 116" role="img" aria-label="{{ label }}" style="display:block;width:100%;height:auto;overflow:visible">
+<ellipse cx="100" cy="108" rx="80" ry="6" fill="rgba(74,20,36,.14)"></ellipse>
+<path d="M18 66 C18 92 50 104 100 104 C150 104 182 92 182 66 Z" fill="#C98543"></path>
+<path d="M18 66 L182 66 C182 72 160 77 100 77 C40 77 18 72 18 66 Z" fill="#F1D3A2"></path>
+<path d="M14 66 C20 54 30 58 40 54 C52 50 60 58 72 53 C84 48 92 57 104 52 C116 47 126 56 138 52 C150 48 160 56 170 53 C178 51 186 58 186 66 C170 74 130 76 100 76 C70 76 30 74 14 66 Z" fill="{{ crema }}"></path>
+<path d="M22 56 C22 20 60 6 100 6 C140 6 178 20 178 56 C160 62 130 64 100 64 C70 64 40 62 22 56 Z" fill="#D58E45"></path>
+<ellipse cx="80" cy="24" rx="42" ry="10" fill="#EDB06A" opacity=".75"></ellipse>
+<path d="M30 44 C36 18 68 9 100 9 C132 9 164 18 170 44 C152 37 130 40 100 38 C70 40 48 37 30 44 Z" fill="{{ glaseado }}" opacity="{{ glaseadoOp }}"></path>
+<path d="M40 32 L58 46 L72 18 L90 48 L104 14 L120 48 L134 18 L150 44 L162 32" fill="none" stroke="{{ hilo }}" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" opacity="{{ hiloOp }}"></path>
+<g fill="{{ puntos }}" opacity="{{ puntosOp }}">
+<circle cx="48" cy="34" r="2.4"></circle><circle cx="62" cy="22" r="2"></circle><circle cx="74" cy="38" r="2.6"></circle><circle cx="86" cy="16" r="2.2"></circle><circle cx="96" cy="30" r="2.4"></circle><circle cx="108" cy="44" r="2"></circle><circle cx="114" cy="20" r="2.6"></circle><circle cx="126" cy="34" r="2.2"></circle><circle cx="138" cy="24" r="2.4"></circle><circle cx="150" cy="38" r="2"></circle><circle cx="58" cy="48" r="2"></circle><circle cx="88" cy="50" r="2.2"></circle><circle cx="140" cy="48" r="2.2"></circle><circle cx="40" cy="46" r="1.8"></circle><circle cx="162" cy="44" r="1.8"></circle><circle cx="102" cy="12" r="1.8"></circle><circle cx="70" cy="28" r="1.6"></circle><circle cx="130" cy="14" r="1.6"></circle>
+</g>
+</svg>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:220,&quot;height&quot;:130},&quot;sabor&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;original&quot;,&quot;maracuya&quot;,&quot;kinder&quot;,&quot;dubai&quot;,&quot;lotus&quot;,&quot;cookies&quot;,&quot;almendrado&quot;,&quot;praline&quot;,&quot;tiramisu&quot;],&quot;default&quot;:&quot;original&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const S = {
+  original:   { label: 'Bollo original',            crema: '#FFF3D6', puntos: '#FFFFFF' },
+  maracuya:   { label: 'Bollo de maracuyá',         crema: '#F6C743', glaseado: '#F2B417', puntos: '#2A1A10' },
+  kinder:     { label: 'Bollo Kinder',              crema: '#F7EBDD', hilo: '#6B3A1F' },
+  dubai:      { label: 'Bollo Dubái',               crema: '#9DB35A', hilo: '#5A2E1A', puntos: '#E8C98A' },
+  lotus:      { label: 'Bollo Lotus',               crema: '#E0A96D', puntos: '#9B5A26' },
+  cookies:    { label: 'Bollo Cookies&Cream',       crema: '#F4F0EA', puntos: '#2B2220' },
+  almendrado: { label: 'Bollo almendrado',          crema: '#F2DDB0', glaseado: '#F6E7C8', puntos: '#E3C690' },
+  praline:    { label: 'Bollo de praliné de avellana', crema: '#C8915C', hilo: '#7A4A26', puntos: '#8A5A2E' },
+  tiramisu:   { label: 'Bollo tiramisú',            crema: '#F3E6D0', puntos: '#5A341E' }
+};
+class Component extends DCLogic {
+  renderVals() {
+    const s = S[this.props.sabor] || S.original;
+    return {
+      label: s.label, crema: s.crema,
+      glaseado: s.glaseado || '#000', glaseadoOp: s.glaseado ? .95 : 0,
+      hilo: s.hilo || '#000', hiloOp: s.hilo ? 1 : 0,
+      puntos: s.puntos || '#000', puntosOp: s.puntos ? 1 : 0
+    };
+  }
+}
+</script>
+</body>
+</html>

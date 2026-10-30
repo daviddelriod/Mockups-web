@@ -1,0 +1,77 @@
+/* ============================================================
+   BASE — element defaults for the Restaurant Kit.
+   Sets the warm "paper" canvas, type defaults, and a few
+   reusable primitives (.wrap, .eyebrow, headings) that the
+   mockups lean on. Pulled into styles.css after the tokens.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--text-strong);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  margin: 0;
+}
+
+/* ---- Layout helper ---- */
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.section { padding-block: var(--pad-block); }
+
+/* ---- Eyebrow (uppercase kicker) ---- */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+}
+
+/* ---- Script accent ---- */
+.script {
+  font-family: var(--font-script);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0;
+}
+
+/* ---- Reveal-on-scroll (opt-in via JS adding .in) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-reveal) var(--ease),
+              transform var(--dur-reveal) var(--ease);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}

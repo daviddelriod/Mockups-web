@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<style>
+:root{
+  --navy:#063872; --navy-dk:#042A57; --navy-deep:#061B38; --navy-2:#0D2747;
+  --cognac:#9A5526; --cognac-lt:#E0A26A;
+  --cream:#F8F3EA; --cream-2:#EFE6D6; --paper:#FFFDF9; --line:#E1D6C3;
+  --ink:#0E2140; --ink-soft:#46536B; --ink-faint:#5E6A80;
+  --char:#061B38; --char-2:#0D2747; --char-deep:#04142B;
+  --green:#3A7236;
+  --accent:var(--navy); --accent-press:var(--navy-dk); --accent-2:var(--cognac); --accent-2-ink:var(--cognac);
+  --price:var(--navy); --text-on-dark:#F1EBDF; --text-on-dark-soft:#BCC5D4;
+}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--cream);color:var(--ink)}
+a{color:var(--navy)}
+a:hover{color:var(--cognac)}
+::selection{background:var(--navy);color:#fff}
+:focus-visible{outline:2px solid var(--cognac);outline-offset:3px}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="overflow-x:clip; background:var(--cream); color:var(--ink); font-family:var(--font-body)">
+
+<header style="position:fixed; top:0; left:0; right:0; z-index:50; background:{{ navBg }}; backdrop-filter:{{ navBlur }}; -webkit-backdrop-filter:{{ navBlur }}; border-bottom:1px solid {{ navLine }}; transition:background-color .3s cubic-bezier(.4,0,.2,1), border-color .3s cubic-bezier(.4,0,.2,1)">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter); height:64px; display:flex; align-items:center; gap:20px">
+    <a href="#inicio" aria-label="La Cuesta del Infierno, inicio" style="flex:none; font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; letter-spacing:.03em; font-size:1.12rem; line-height:1; color:var(--navy)">La Cuesta del Infierno</a>
+    <nav aria-label="Principal" style="flex:1; min-width:0; height:24px; overflow:hidden; display:flex; flex-wrap:wrap; justify-content:flex-end; align-content:flex-start; column-gap:clamp(18px, 2.4vw, 32px); row-gap:40px">
+      <span aria-hidden="true" style="width:0; height:24px"></span>
+      <a href="#carta" style="font-weight:600; font-size:.95rem; line-height:24px; color:var(--ink)" style-hover="color:var(--cognac)">Carta</a>
+      <a href="#casa" style="font-weight:600; font-size:.95rem; line-height:24px; color:var(--ink)" style-hover="color:var(--cognac)">La casa</a>
+      <a href="#un-dia" style="font-weight:600; font-size:.95rem; line-height:24px; color:var(--ink)" style-hover="color:var(--cognac)">Un día aquí</a>
+      <a href="#horario" style="font-weight:600; font-size:.95rem; line-height:24px; color:var(--ink)" style-hover="color:var(--cognac)">Horario</a>
+    </nav>
+    <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="sm" href="#reserva" hint-size="98px,44px">Reservar</x-import>
+  </div>
+</header>
+
+<section id="inicio" ref="{{ heroRef }}" data-screen-label="Inicio" style="position:relative; z-index:1; height:{{ heroH }}">
+  <div ref="{{ stageRef }}" style="position:sticky; top:0; min-height:100svh; display:flex; align-items:center">
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div ref="{{ heroInnerRef }}" style="box-sizing:border-box; width:100%; max-width:1180px; margin-inline:auto; padding:clamp(92px, 10vw, 108px) var(--gutter) clamp(52px, 6vw, 64px); display:flex; flex-wrap:wrap; align-items:flex-end; gap:clamp(36px, 5vw, 64px)">
+      <div ref="{{ heroLeftRef }}" style="position:relative; z-index:1; flex:1 1 520px; min-width:0; container-type:inline-size; display:flex; flex-direction:column; gap:clamp(22px, 3vw, 30px)">
+          <div data-hero-fade="" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="220px,20px">Bar · Restaurante · Laredo</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" hint-size="230px,34px">{{ statusText }}</x-import>
+          </div>
+        <h1 ref="{{ titleRef }}" onPointerMove="{{ titleMove }}" onPointerLeave="{{ titleLeave }}" onClick="{{ titleTap }}" aria-label="La Cuesta del Infierno" style="margin:0; font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; color:var(--navy); line-height:.86; letter-spacing:-.005em; font-size:clamp(3.4rem, 19cqi, 8.2rem); -webkit-tap-highlight-color:transparent">
+          <span aria-hidden="true" style="display:flex; align-items:flex-start; gap:.07em">
+            <span data-hero-small="" style="font-size:.26em; line-height:1; padding-top:.5em; letter-spacing:.08em">La</span>
+            <span style="display:block; overflow:hidden; padding-block:.03em"><span data-hero-word="" style="display:block; white-space:nowrap"><span data-ch="" style="display:inline-block">C</span><span data-ch="" style="display:inline-block">u</span><span data-ch="" style="display:inline-block">e</span><span data-ch="" style="display:inline-block">s</span><span data-ch="" style="display:inline-block">t</span><span data-ch="" style="display:inline-block">a</span></span></span>
+          </span>
+          <span aria-hidden="true" style="display:flex; align-items:flex-start; gap:.07em">
+            <span data-hero-small="" style="font-size:.26em; line-height:1; padding-top:.5em; letter-spacing:.08em">del</span>
+            <span style="display:block; overflow:hidden; padding-block:.03em"><span data-hero-word="" style="display:block; white-space:nowrap"><span data-ch="" style="display:inline-block">I</span><span data-ch="" style="display:inline-block">n</span><span data-ch="" style="display:inline-block">f</span><span data-ch="" style="display:inline-block">i</span><span data-ch="" style="display:inline-block">e</span><span data-ch="" style="display:inline-block">r</span><span data-ch="" style="display:inline-block">n</span><span data-ch="" style="display:inline-block">o</span></span></span>
+          </span>
+        </h1>
+          <p data-hero-fade="" style="margin:0; max-width:34ch; font-size:clamp(1.08rem, 1.7vw, 1.22rem); line-height:1.55; color:var(--ink-soft); text-wrap:pretty">Cocina sin descanso, de las nueve de la mañana a medianoche. Pinchos, raciones, pescado de costa y vaca rubia en la calle Menéndez Pelayo.</p>
+          <div data-hero-fade="" style="display:flex; flex-wrap:wrap; gap:12px">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="#reserva" hint-size="190px,56px">Reservar mesa</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" size="lg" href="#carta" hint-size="170px,56px">Ver la carta</x-import>
+          </div>
+          <div data-hero-fade="" style="display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; color:var(--ink); font-size:.95rem">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4.4 }}" score="4,4" count="47" size="{{ 17 }}" hint-size="230px,24px"></x-import>
+            <span style="color:var(--ink-soft)">· 20–30 € por persona</span>
+          </div>
+      </div>
+      <div style="position:relative; z-index:3; flex:1 1 340px; min-width:0">
+        <div ref="{{ slotRef }}" onClick="{{ slotTap }}" onPointerEnter="{{ slotEnter }}" onPointerMove="{{ slotMove }}" onPointerLeave="{{ slotLeave }}" style="position:relative; width:100%; aspect-ratio:4 / 5; max-height:min(calc(100svh - 250px), 680px); cursor:pointer">
+          <div ref="{{ mediaRef }}" data-hero-photo="" style="position:absolute; left:0; top:0; width:100%; height:100%; overflow:hidden; border-radius:22px; background:var(--cream-2); box-shadow:var(--shadow)">
+            <div data-hero-zoom="" style="position:absolute; inset:0">
+              <div ref="{{ tiltRef }}" style="position:absolute; inset:-16px">
+                <img src="img/hero-fachada.jpg" alt="Fachada de La Cuesta del Infierno de noche, con el escaparate iluminado" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:30% 50%; opacity:{{ hs.o2 }}; z-index:{{ hs.z2 }}; transform:scale({{ hs.s2 }}); transition:opacity .9s cubic-bezier(.4,0,.2,1), transform 7s cubic-bezier(.16,1,.3,1)">
+                <img src="img/hero-sala-barra.jpg" alt="Sala con butacas color coñac, la barra iluminada al fondo y un panel de madera tallada" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:48% 50%; opacity:{{ hs.o1 }}; z-index:{{ hs.z1 }}; transform:scale({{ hs.s1 }}); transition:opacity .9s cubic-bezier(.4,0,.2,1), transform 7s cubic-bezier(.16,1,.3,1)">
+                <img src="img/hero-comedor.jpg" alt="Comedor de La Cuesta del Infierno con ventanales a la calle, plantas y mesas puestas" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:38% 50%; opacity:{{ hs.o0 }}; z-index:{{ hs.z0 }}; transform:scale({{ hs.s0 }}); transition:opacity .9s cubic-bezier(.4,0,.2,1), transform 7s cubic-bezier(.16,1,.3,1)">
+              </div>
+            </div>
+            <div ref="{{ scrimRef }}" aria-hidden="true" style="position:absolute; inset:0; opacity:0; pointer-events:none; background:linear-gradient(180deg, rgba(6,27,56,0) 35%, rgba(6,27,56,.8) 100%)"></div>
+            <div ref="{{ infoRef }}" style="position:absolute; left:0; right:0; bottom:0; opacity:0; pointer-events:none">
+              <div style="max-width:1180px; margin-inline:auto; padding:0 var(--gutter) clamp(32px, 6vh, 64px); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:14px 40px; color:#FFFFFF">
+                <p style="margin:0; font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; font-size:clamp(2.4rem, 6vw, 4.8rem); line-height:.88">Menéndez<br>Pelayo, 32</p>
+                <p style="margin:0; font-size:1.06rem; line-height:1.55; color:#F1EBDF">Laredo, Cantabria<br>9:00 – 24:00 · martes cerrado</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ref="{{ ctrlRef }}" data-hero-fade="" style="display:flex; align-items:center; gap:14px; margin-top:6px">
+          <span style="flex:none; font-size:.86rem; font-weight:800; letter-spacing:.06em; color:var(--ink); font-variant-numeric:tabular-nums">{{ heroNum }}</span>
+          <span style="flex:1; min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-size:.92rem; color:var(--ink-soft)">{{ heroCaption }}</span>
+          <div role="group" aria-label="Fotos de portada" style="flex:none; width:clamp(112px, 38%, 180px); display:flex; gap:6px">
+            <sc-for list="{{ heroSegs }}" as="s" hint-placeholder-count="3">
+              <button type="button" onClick="{{ s.onClick }}" aria-label="{{ s.aria }}" aria-pressed="{{ s.pressed }}" style="flex:1; height:44px; margin:0; padding:0; border:0; background:none; cursor:pointer; display:flex; align-items:center">
+                <span style="position:relative; display:block; width:100%; height:2px; overflow:hidden; background:var(--line)"><span ref="{{ s.ref }}" style="position:absolute; inset:0; background:var(--navy); transform-origin:left center; transform:scaleX(0)"></span></span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <div ref="{{ heroInnerRef }}" style="box-sizing:border-box; width:100%; min-height:100svh; padding:78px var(--gutter) 16px; display:flex; flex-direction:column; gap:16px">
+        <div ref="{{ heroLeftRef }}" style="position:relative; z-index:1; container-type:inline-size; display:flex; flex-direction:column; gap:12px">
+          <div data-hero-fade="">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="220px,20px">Bar · Restaurante · Laredo</x-import>
+          </div>
+          <h1 ref="{{ titleRef }}" onPointerMove="{{ titleMove }}" onPointerLeave="{{ titleLeave }}" onClick="{{ titleTap }}" aria-label="La Cuesta del Infierno" style="margin:0; font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; color:var(--navy); line-height:.86; letter-spacing:-.005em; font-size:clamp(3.4rem, 19cqi, 8.2rem); -webkit-tap-highlight-color:transparent">
+          <span aria-hidden="true" style="display:flex; align-items:flex-start; gap:.07em">
+            <span data-hero-small="" style="font-size:.26em; line-height:1; padding-top:.5em; letter-spacing:.08em">La</span>
+            <span style="display:block; overflow:hidden; padding-block:.03em"><span data-hero-word="" style="display:block; white-space:nowrap"><span data-ch="" style="display:inline-block">C</span><span data-ch="" style="display:inline-block">u</span><span data-ch="" style="display:inline-block">e</span><span data-ch="" style="display:inline-block">s</span><span data-ch="" style="display:inline-block">t</span><span data-ch="" style="display:inline-block">a</span></span></span>
+          </span>
+          <span aria-hidden="true" style="display:flex; align-items:flex-start; gap:.07em">
+            <span data-hero-small="" style="font-size:.26em; line-height:1; padding-top:.5em; letter-spacing:.08em">del</span>
+            <span style="display:block; overflow:hidden; padding-block:.03em"><span data-hero-word="" style="display:block; white-space:nowrap"><span data-ch="" style="display:inline-block">I</span><span data-ch="" style="display:inline-block">n</span><span data-ch="" style="display:inline-block">f</span><span data-ch="" style="display:inline-block">i</span><span data-ch="" style="display:inline-block">e</span><span data-ch="" style="display:inline-block">r</span><span data-ch="" style="display:inline-block">n</span><span data-ch="" style="display:inline-block">o</span></span></span>
+          </span>
+        </h1>
+          <div data-hero-fade="" style="display:flex; flex-wrap:wrap; align-items:center; gap:4px 10px; color:var(--ink); font-size:.92rem">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="{{ 4.4 }}" score="4,4" count="47" size="{{ 15 }}" hint-size="210px,22px"></x-import>
+          </div>
+        </div>
+        <div style="position:relative; z-index:3; flex:1 1 auto; min-height:230px; display:flex">
+          <div ref="{{ slotRef }}" onClick="{{ slotTap }}" style="position:relative; flex:1; min-height:230px; cursor:pointer; -webkit-tap-highlight-color:transparent">
+            <div ref="{{ mediaRef }}" data-hero-photo="" style="position:absolute; left:0; top:0; width:100%; height:100%; overflow:hidden; border-radius:22px; background:var(--cream-2); box-shadow:var(--shadow)">
+              <div data-hero-zoom="" style="position:absolute; inset:0">
+                <div ref="{{ tiltRef }}" style="position:absolute; inset:0">
+                  <img src="img/hero-fachada.jpg" alt="Fachada de La Cuesta del Infierno de noche, con el escaparate iluminado" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:30% 50%; opacity:{{ hs.o2 }}; z-index:{{ hs.z2 }}; transform:scale({{ hs.s2 }}); transition:opacity .9s cubic-bezier(.4,0,.2,1), transform 7s cubic-bezier(.16,1,.3,1)">
+                <img src="img/hero-sala-barra.jpg" alt="Sala con butacas color coñac, la barra iluminada al fondo y un panel de madera tallada" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:48% 50%; opacity:{{ hs.o1 }}; z-index:{{ hs.z1 }}; transform:scale({{ hs.s1 }}); transition:opacity .9s cubic-bezier(.4,0,.2,1), transform 7s cubic-bezier(.16,1,.3,1)">
+                <img src="img/hero-comedor.jpg" alt="Comedor de La Cuesta del Infierno con ventanales a la calle, plantas y mesas puestas" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:38% 50%; opacity:{{ hs.o0 }}; z-index:{{ hs.z0 }}; transform:scale({{ hs.s0 }}); transition:opacity .9s cubic-bezier(.4,0,.2,1), transform 7s cubic-bezier(.16,1,.3,1)">
+                </div>
+              </div>
+              <div ref="{{ ctrlRef }}" style="position:absolute; inset:0; z-index:3; pointer-events:none; display:flex; flex-direction:column; justify-content:space-between">
+                <div style="padding:12px">
+                  <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" dc-props="{{ pillGlass }}" hint-size="230px,34px">{{ statusText }}</x-import>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px; padding:56px 14px 0 16px; background:linear-gradient(180deg, rgba(6,27,56,0) 0%, rgba(6,27,56,.72) 100%); color:#FFFFFF">
+                  <span style="flex:none; font-size:.8rem; font-weight:800; letter-spacing:.06em; font-variant-numeric:tabular-nums">{{ heroNum }}</span>
+                  <span style="flex:1; min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-size:.9rem; font-weight:600">{{ heroCaption }}</span>
+                  <div role="group" aria-label="Fotos de portada" style="flex:none; width:92px; display:flex; gap:5px; pointer-events:auto">
+                    <sc-for list="{{ heroSegs }}" as="s" hint-placeholder-count="3">
+                      <button type="button" onClick="{{ s.onClick }}" aria-label="{{ s.aria }}" aria-pressed="{{ s.pressed }}" style="flex:1; height:44px; margin:0; padding:0; border:0; background:none; cursor:pointer; display:flex; align-items:center">
+                        <span style="position:relative; display:block; width:100%; height:2px; overflow:hidden; border-radius:2px; background:rgba(255,255,255,.38)"><span ref="{{ s.ref }}" style="position:absolute; inset:0; background:#FFFFFF; transform-origin:left center; transform:scaleX(0)"></span></span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+              <div ref="{{ scrimRef }}" aria-hidden="true" style="position:absolute; inset:0; z-index:3; opacity:0; pointer-events:none; background:linear-gradient(180deg, rgba(6,27,56,.2) 0%, rgba(6,27,56,0) 28%, rgba(6,27,56,.9) 100%)"></div>
+              <div ref="{{ infoRef }}" style="position:absolute; left:0; right:0; bottom:0; z-index:4; opacity:0; pointer-events:none; padding:0 var(--gutter) calc(100px + env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:12px; color:#FFFFFF">
+                <span style="font-size:.78rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cognac-lt)">Dónde estamos</span>
+                <p style="margin:0; font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; font-size:clamp(2.8rem, 15vw, 4.4rem); line-height:.88">Menéndez<br>Pelayo, 32</p>
+                <p style="margin:0; font-size:1rem; line-height:1.55; color:#F1EBDF">Laredo, Cantabria<br>9:00 – 24:00 · martes cerrado</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ref="{{ ctaRef }}">
+          <div data-hero-fade="" style="display:grid; grid-template-columns:minmax(0, 1.2fr) minmax(0, 1fr); gap:10px">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" dc-props="{{ ctaBtn }}" style="width:100%" href="#reserva" hint-size="170px,50px">Reservar mesa</x-import>
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" dc-props="{{ ctaBtn }}" style="width:100%" href="#carta" hint-size="140px,50px">Ver la carta</x-import>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ cueOn }}" hint-placeholder-val="{{ false }}">
+      <div ref="{{ cueRef }}" aria-hidden="true" style="position:absolute; left:50%; bottom:12px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; font-size:.7rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-faint)">
+        <span>Desliza</span>
+        <span style="position:relative; display:block; width:1px; height:26px; overflow:hidden; background:var(--line)"><span ref="{{ cueLineRef }}" style="position:absolute; inset:0; background:var(--navy)"></span></span>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<section id="casa" data-screen-label="La casa" style="position:relative; z-index:2; margin-top:calc(clamp(24px, 3vw, 40px) * -1); border-radius:clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) 0 0; box-shadow:0 -24px 48px -32px rgba(53,36,18,.45); background:var(--cream-2); padding-block:clamp(76px, 12vw, 150px)">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter)">
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:22px clamp(32px, 6vw, 96px); margin-bottom:clamp(40px, 6vw, 72px)">
+      <div style="flex:1.25 1 420px; min-width:0; display:flex; flex-direction:column; gap:18px">
+        <div data-reveal=""><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="100px,20px">La casa</x-import></div>
+        <h2 data-split="" style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(2.3rem, 7vw, 4.4rem); line-height:.98; letter-spacing:-.02em; color:var(--ink); text-wrap:balance">Aquí se viene a comer. No a tener prisa.</h2>
+      </div>
+      <p data-reveal="" style="flex:1 1 300px; min-width:0; margin:0; max-width:46ch; font-size:1.06rem; line-height:1.65; color:var(--ink-soft); text-wrap:pretty">Un comedor luminoso, con ventanales a la calle y butacas color coñac. Abrimos de 9:00 a 24:00 todos los días menos el martes, y también puedes pedir para llevar o a domicilio.</p>
+    </div>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-start; gap:clamp(16px, 2.4vw, 28px)">
+      <figure style="flex:1.35 1 380px; min-width:0; margin:0">
+        <div data-mask="" style="position:relative; overflow:hidden; border-radius:22px; aspect-ratio:4 / 3; background:var(--cream)">
+          <img data-parallax="" src="img/comedor-ventanales.jpg" alt="Comedor con ventanales a la calle, plantas y mesas con mantel negro" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+        </div>
+      </figure>
+      <figure style="flex:1 1 300px; min-width:0; margin:clamp(0px, calc((100vw - 760px) * .3), 120px) 0 0">
+        <div data-mask="" style="position:relative; overflow:hidden; border-radius:22px; aspect-ratio:4 / 3; background:var(--cream)">
+          <img data-parallax="" src="img/comedor-barra.jpg" alt="Sala con la barra al fondo y un panel de madera tallada en la pared" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+        </div>
+      </figure>
+    </div>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:18px">
+        <p aria-hidden="true" style="align-self:flex-end; margin:0 6px -6px 0; font-family:var(--font-script); font-size:1.5rem; line-height:1; color:var(--cognac); transform:rotate(-3deg)">desliza las fotos</p>
+        <div ref="{{ stackRef }}" onPointerDown="{{ stackDown }}" onPointerMove="{{ stackMove }}" onPointerUp="{{ stackUp }}" onPointerCancel="{{ stackCancel }}" role="group" aria-label="Fotos de la casa" style="position:relative; width:calc(100% - 28px); margin:0 auto; aspect-ratio:5 / 6; touch-action:pan-y; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent; cursor:grab">
+          <sc-for list="{{ casaCards }}" as="k" hint-placeholder-count="4">
+            <figure ref="{{ k.ref }}" aria-hidden="{{ k.hidden }}" style="position:absolute; inset:0; margin:0; box-sizing:border-box; overflow:hidden; border:6px solid var(--paper); border-radius:22px; background:var(--paper); box-shadow:var(--shadow); z-index:{{ k.z }}; transform:{{ k.tf }}; transition:transform .6s cubic-bezier(.16,1,.3,1)">
+              <img src="{{ k.src }}" alt="{{ k.alt }}" draggable="false" loading="lazy" decoding="async" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ k.pos }}; border-radius:16px; pointer-events:none">
+            </figure>
+          </sc-for>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:14px">
+          <span style="flex:none; font-size:.86rem; font-weight:800; letter-spacing:.06em; color:var(--ink); font-variant-numeric:tabular-nums">{{ casaNum }}</span>
+          <p aria-live="polite" style="flex:1; min-width:0; margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:1.15rem; line-height:1.15; color:var(--ink); text-wrap:pretty">{{ casaCap }}</p>
+          <button type="button" onClick="{{ casaPrev }}" aria-label="Foto anterior" style="flex:none; width:44px; height:44px; margin:0; padding:0; display:flex; align-items:center; justify-content:center; border-radius:999px; border:2px solid var(--ink); background:transparent; color:var(--ink); cursor:pointer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg></button>
+          <button type="button" onClick="{{ casaNext }}" aria-label="Foto siguiente" style="flex:none; width:44px; height:44px; margin:0; padding:0; display:flex; align-items:center; justify-content:center; border-radius:999px; border:2px solid var(--navy); background:var(--navy); color:#FFFFFF; cursor:pointer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
+        </div>
+      </div>
+    </sc-if>
+    <dl data-stagger="" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap:0 32px; margin:clamp(48px, 7vw, 88px) 0 0">
+      <div style="border-top:1px solid var(--line); padding:18px 0">
+        <dt style="font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)">Precio medio</dt>
+        <dd style="margin:8px 0 0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:1.55rem; line-height:1.1; color:var(--ink)">20–30 € por persona</dd>
+      </div>
+      <div style="border-top:1px solid var(--line); padding:18px 0">
+        <dt style="font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)">En Google</dt>
+        <dd style="margin:8px 0 0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:1.55rem; line-height:1.1; color:var(--ink)">4,4 sobre 5 · 47 reseñas</dd>
+      </div>
+      <div style="border-top:1px solid var(--line); padding:18px 0">
+        <dt style="font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)">Servicio</dt>
+        <dd style="margin:8px 0 0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:1.55rem; line-height:1.1; color:var(--ink)">En sala, para llevar y a domicilio</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section id="un-dia" data-screen-label="Un día en La Cuesta" style="position:relative; z-index:2; margin-top:calc(clamp(24px, 3vw, 40px) * -1); border-radius:clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) 0 0; box-shadow:0 -24px 48px -32px rgba(53,36,18,.45); background:var(--cream); padding:clamp(76px, 12vw, 150px) 0 clamp(64px, 9vw, 120px)">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter)">
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:22px clamp(32px, 6vw, 96px)">
+      <div style="flex:1.25 1 420px; min-width:0; display:flex; flex-direction:column; gap:18px">
+        <div data-reveal=""><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="200px,20px">Un día en La Cuesta</x-import></div>
+        <h2 data-split="" style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(2.3rem, 7vw, 4.4rem); line-height:.98; letter-spacing:-.02em; color:var(--ink); text-wrap:balance">Cocina sin descanso.</h2>
+      </div>
+      <p data-reveal="" style="flex:1 1 300px; min-width:0; margin:0; max-width:46ch; font-size:1.06rem; line-height:1.65; color:var(--ink-soft); text-wrap:pretty">Quince horas de cocina abierta, seis días a la semana: del chocolate de la mañana a la tarta de la noche. Los martes descansamos.</p>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:0 clamp(32px, 6vw, 96px); margin-top:clamp(32px, 5vw, 64px)">
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:1 1 300px; min-width:0; position:sticky; top:64px; align-self:flex-start; z-index:2; background:var(--cream); padding:clamp(14px, calc((100vw - 860px) * .35), 150px) 0 16px">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="160px,20px"><span ref="{{ labelRef }}">Por la mañana</span></x-import>
+        <div aria-hidden="true" style="margin:8px 0 14px; font-family:var(--font-display); font-stretch:75%; font-weight:300; font-size:clamp(3.4rem, 15vw, 10rem); line-height:.88; letter-spacing:-.02em; color:var(--navy); font-variant-numeric:tabular-nums"><span ref="{{ clockRef }}">09:00</span></div>
+        <div aria-hidden="true" style="position:relative; height:2px; max-width:420px; background:var(--line)">
+          <span ref="{{ fillRef }}" style="position:absolute; inset:0; background:var(--navy); transform-origin:left center; transform:scaleX(0)"></span>
+          <span style="position:absolute; top:-3px; left:0%; width:8px; height:8px; margin-left:-4px; border-radius:50%; background:var(--cream); border:2px solid var(--navy)"></span>
+          <span style="position:absolute; top:-3px; left:26.67%; width:8px; height:8px; margin-left:-4px; border-radius:50%; background:var(--cream); border:2px solid var(--navy)"></span>
+          <span style="position:absolute; top:-3px; left:36.67%; width:8px; height:8px; margin-left:-4px; border-radius:50%; background:var(--cream); border:2px solid var(--navy)"></span>
+          <span style="position:absolute; top:-3px; left:76.67%; width:8px; height:8px; margin-left:-4px; border-radius:50%; background:var(--cream); border:2px solid var(--navy)"></span>
+          <span style="position:absolute; top:-3px; left:90%; width:8px; height:8px; margin-left:-4px; border-radius:50%; background:var(--cream); border:2px solid var(--navy)"></span>
+        </div>
+        <div aria-hidden="true" style="display:flex; justify-content:space-between; max-width:420px; margin-top:10px; font-size:.82rem; color:var(--ink-faint); font-variant-numeric:tabular-nums">
+          <span>9:00</span>
+          <span>24:00</span>
+        </div>
+      </div>
+
+      </sc-if>
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:1 1 100%; min-width:0; position:sticky; top:64px; z-index:2; align-self:flex-start; margin-inline:calc(var(--gutter) * -1); padding:12px var(--gutter) 2px; background:rgba(248,243,234,.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--line)">
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px">
+          <div style="min-width:0; display:flex; flex-direction:column; gap:6px; padding-bottom:4px">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="160px,20px"><span ref="{{ labelRef }}">Por la mañana</span></x-import>
+            <span style="font-size:.84rem; color:var(--ink-faint)">Toca una hora para saltar</span>
+          </div>
+          <div aria-hidden="true" style="flex:none; font-family:var(--font-display); font-stretch:75%; font-weight:300; font-size:3.1rem; line-height:.9; letter-spacing:-.02em; color:var(--navy); font-variant-numeric:tabular-nums"><span ref="{{ clockRef }}">09:00</span></div>
+        </div>
+        <div role="group" aria-label="Momentos del día" style="display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:5px; margin-top:8px">
+          <sc-for list="{{ dayStops }}" as="d" hint-placeholder-count="5">
+            <button type="button" onClick="{{ d.onClick }}" aria-label="{{ d.aria }}" aria-pressed="{{ d.pressed }}" style="min-width:0; height:44px; margin:0; padding:0; border:0; background:none; cursor:pointer; display:flex; align-items:center; font:inherit; -webkit-tap-highlight-color:transparent">
+              <span style="display:block; width:100%; padding:6px 0; border-radius:999px; border:1px solid {{ d.bd }}; background:{{ d.bg }}; color:{{ d.fg }}; text-align:center; font-size:.8rem; font-weight:700; line-height:1.2; font-variant-numeric:tabular-nums; transition:background-color .3s cubic-bezier(.4,0,.2,1), color .3s cubic-bezier(.4,0,.2,1), border-color .3s cubic-bezier(.4,0,.2,1)">{{ d.t }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+      <div ref="{{ momentsRef }}" style="flex:1.25 1 420px; min-width:0; display:flex; flex-direction:column; gap:clamp(64px, 12vw, 140px); padding:28px 0 clamp(24px, 8vw, 120px)">
+        <article data-moment="" style="display:flex; flex-direction:column; gap:14px; max-width:560px; transition:opacity .5s cubic-bezier(.4,0,.2,1)">
+          <div data-mask="" style="position:relative; overflow:hidden; border-radius:18px; aspect-ratio:1 / 1; background:var(--cream-2)">
+            <img data-parallax="" src="img/churros.jpg" alt="Churros con azúcar y una taza de chocolate caliente" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+          </div>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:8px">
+            <span style="font-family:var(--font-display); font-stretch:75%; font-weight:600; font-size:1.3rem; color:var(--cognac); font-variant-numeric:tabular-nums">09:00</span>
+            <span style="flex:1; height:1px; background:var(--line)"></span>
+          </div>
+          <h3 style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.7rem, 4.4vw, 2.4rem); line-height:1.02; letter-spacing:-.015em; color:var(--ink)">Churros con chocolate</h3>
+          <p style="margin:0; max-width:44ch; font-size:1.02rem; line-height:1.6; color:var(--ink-soft); text-wrap:pretty">Abrimos a las nueve, para empezar el día sin mirar el reloj.</p>
+        </article>
+        <article data-moment="" style="display:flex; flex-direction:column; gap:14px; max-width:560px; transition:opacity .5s cubic-bezier(.4,0,.2,1)">
+          <div data-mask="" style="position:relative; overflow:hidden; border-radius:18px; aspect-ratio:1 / 1; background:var(--cream-2)">
+            <img data-parallax="" src="img/carta-vino.jpg" alt="Dos copas de vino blanco junto a la carta de La Cuesta del Infierno" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+          </div>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:8px">
+            <span style="font-family:var(--font-display); font-stretch:75%; font-weight:600; font-size:1.3rem; color:var(--cognac); font-variant-numeric:tabular-nums">13:00</span>
+            <span style="flex:1; height:1px; background:var(--line)"></span>
+          </div>
+          <h3 style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.7rem, 4.4vw, 2.4rem); line-height:1.02; letter-spacing:-.015em; color:var(--ink)">La hora del pincho</h3>
+          <p style="margin:0; max-width:44ch; font-size:1.02rem; line-height:1.6; color:var(--ink-soft); text-wrap:pretty">Brocheta de pulpo, taco de bonito con vinagreta o tosta de anchoa, ricotta, brie y pimiento rojo. Con un blanco bien frío.</p>
+        </article>
+        <article data-moment="" style="display:flex; flex-direction:column; gap:14px; max-width:560px; transition:opacity .5s cubic-bezier(.4,0,.2,1)">
+          <div data-mask="" style="position:relative; overflow:hidden; border-radius:18px; aspect-ratio:1 / 1; background:var(--cream-2)">
+            <img data-parallax="" src="img/rodaballo.jpg" alt="Rodaballo al horno con ajos laminados sobre plato de cerámica" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+          </div>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:8px">
+            <span style="font-family:var(--font-display); font-stretch:75%; font-weight:600; font-size:1.3rem; color:var(--cognac); font-variant-numeric:tabular-nums">14:30</span>
+            <span style="flex:1; height:1px; background:var(--line)"></span>
+          </div>
+          <h3 style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.7rem, 4.4vw, 2.4rem); line-height:1.02; letter-spacing:-.015em; color:var(--ink)">Pescado de costa</h3>
+          <p style="margin:0; max-width:44ch; font-size:1.02rem; line-height:1.6; color:var(--ink-soft); text-wrap:pretty">Rodaballo al horno con guarnición, lubina de costa o rape en salsa verde con almejas.</p>
+        </article>
+        <article data-moment="" style="display:flex; flex-direction:column; gap:14px; max-width:560px; transition:opacity .5s cubic-bezier(.4,0,.2,1)">
+          <div data-mask="" style="position:relative; overflow:hidden; border-radius:18px; aspect-ratio:1 / 1; background:var(--cream-2)">
+            <img data-parallax="" src="img/chipirones.jpg" alt="Chipirones encebollados en plato de cerámica, con pan y vino blanco" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+          </div>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:8px">
+            <span style="font-family:var(--font-display); font-stretch:75%; font-weight:600; font-size:1.3rem; color:var(--cognac); font-variant-numeric:tabular-nums">20:30</span>
+            <span style="flex:1; height:1px; background:var(--line)"></span>
+          </div>
+          <h3 style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.7rem, 4.4vw, 2.4rem); line-height:1.02; letter-spacing:-.015em; color:var(--ink)">Chipirones encebollados</h3>
+          <p style="margin:0; max-width:44ch; font-size:1.02rem; line-height:1.6; color:var(--ink-soft); text-wrap:pretty">Y para seguir, entrecot de novilla, chuletillas de cordero o chuleta de vaca rubia al peso.</p>
+        </article>
+        <article data-moment="" style="display:flex; flex-direction:column; gap:14px; max-width:560px; transition:opacity .5s cubic-bezier(.4,0,.2,1)">
+          <div data-mask="" style="position:relative; overflow:hidden; border-radius:18px; aspect-ratio:1 / 1; background:var(--cream-2)">
+            <img data-parallax="" src="img/tarta-pistacho.jpg" alt="Porción de tarta de pistacho con pistacho picado" loading="lazy" decoding="async" style="position:absolute; left:0; top:-8%; width:100%; height:116%; object-fit:cover">
+          </div>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:8px">
+            <span style="font-family:var(--font-display); font-stretch:75%; font-weight:600; font-size:1.3rem; color:var(--cognac); font-variant-numeric:tabular-nums">22:30</span>
+            <span style="flex:1; height:1px; background:var(--line)"></span>
+          </div>
+          <h3 style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.7rem, 4.4vw, 2.4rem); line-height:1.02; letter-spacing:-.015em; color:var(--ink)">Tarta de pistacho</h3>
+          <p style="margin:0; max-width:44ch; font-size:1.02rem; line-height:1.6; color:var(--ink-soft); text-wrap:pretty">O tarta de queso casera, o torrija de sobao. Cerramos a medianoche.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="carta" data-screen-label="Carta" style="position:relative; z-index:2; margin-top:calc(clamp(24px, 3vw, 40px) * -1); border-radius:clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) 0 0; box-shadow:0 -24px 48px -32px rgba(53,36,18,.45); background:var(--cream-2); padding:clamp(76px, 12vw, 150px) 0 clamp(56px, 8vw, 100px)">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter)">
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:22px clamp(32px, 6vw, 96px)">
+      <div style="flex:1.25 1 420px; min-width:0; display:flex; flex-direction:column; gap:18px">
+        <div data-reveal=""><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="100px,20px">La carta</x-import></div>
+        <h2 data-split="" style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(2.3rem, 7vw, 4.4rem); line-height:.98; letter-spacing:-.02em; color:var(--ink); text-wrap:balance">Buen producto, cocina honesta.</h2>
+      </div>
+      <p data-reveal="" style="flex:1 1 300px; min-width:0; margin:0; max-width:46ch; font-size:1.06rem; line-height:1.65; color:var(--ink-soft); text-wrap:pretty">Pinchos, raciones para compartir y platos de cuchillo y tenedor. Los pescados enteros y la chuleta se sirven al peso.</p>
+    </div>
+
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div role="group" aria-label="Secciones de la carta" style="display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; margin:clamp(28px, 4vw, 44px) calc(var(--gutter) * -1) 0; padding:0 var(--gutter) 2px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+        <button type="button" onClick="{{ t.onClick }}" aria-pressed="{{ t.pressed }}" style="flex:none; margin:0; padding:5px 0; border:0; background:none; border-radius:999px; cursor:pointer; font:inherit">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="{{ t.tone }}" hint-size="104px,34px">{{ t.label }}</x-import>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-start; gap:clamp(24px, 4vw, 64px); margin-top:clamp(18px, 3vw, 34px)">
+      <div style="flex:1 1 320px; min-width:0; position:sticky; top:clamp(-600px, calc((100vw - 880px) * 12), 96px)">
+        <div ref="{{ photoRef }}" style="position:relative; overflow:hidden; border-radius:22px; height:clamp(240px, 46vw, 620px); background:var(--navy); container-type:inline-size">
+          <sc-if value="{{ cat.hasPhoto }}" hint-placeholder-val="{{ false }}">
+            <sc-if value="{{ ph.pinchos }}" hint-placeholder-val="{{ false }}"><img src="img/hojaldre.jpg" alt="Hojaldre en salsa con pasas" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.picar }}" hint-placeholder-val="{{ false }}"><img src="img/tabla-quesos.jpg" alt="Tabla de quesos con uvas, nueces y pasas" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.sugerencias }}" hint-placeholder-val="{{ false }}"><img src="img/pimientos-salsa.jpg" alt="Plato en salsa anaranjada sobre cerámica" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.carnes }}" hint-placeholder-val="{{ false }}"><img src="img/entrecot.jpg" alt="Entrecot de novilla con patatas y pimientos asados" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.pescados }}" hint-placeholder-val="{{ false }}"><img src="img/rodaballo.jpg" alt="Rodaballo al horno sobre plato de cerámica" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.postres }}" hint-placeholder-val="{{ false }}"><img src="img/tarta-pistacho.jpg" alt="Porción de tarta de pistacho" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ cat.hasCaption }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute; left:14px; bottom:14px">
+                <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="base" hint-size="140px,34px">{{ cat.caption }}</x-import>
+              </span>
+            </sc-if>
+          </sc-if>
+          <sc-if value="{{ cat.noPhoto }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(22px, 3vw, 36px); color:var(--text-on-dark)">
+              <span style="font-size:.78rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cognac-lt)">La Cuesta del Infierno · Laredo</span>
+              <span style="font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; font-size:clamp(2.6rem, 17cqi, 6.4rem); line-height:.86; letter-spacing:-.005em">{{ cat.label }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="flex:1.5 1 420px; min-width:0">
+        <h3 style="margin:0 0 10px; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.6rem, 3.6vw, 2.2rem); line-height:1.05; letter-spacing:-.015em; color:var(--ink)">{{ cat.label }}</h3>
+        <div ref="{{ listRef }}">
+          <sc-for list="{{ cat.items }}" as="d" hint-placeholder-count="8">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" dc-props="{{ d }}" hint-size="100%,54px"></x-import>
+          </sc-for>
+        </div>
+        <p style="margin:26px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:.94rem; line-height:1.55; color:var(--ink-soft); text-wrap:pretty"><strong style="color:var(--ink)">Alérgenos.</strong> Si tienes alguna alergia o intolerancia, avísanos al pedir y te diremos qué lleva cada plato.</p>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+      <div style="position:sticky; top:64px; z-index:4; margin:28px calc(var(--gutter) * -1) 0; padding:4px 0; background:rgba(239,230,214,.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px)">
+        <div ref="{{ tabsRef }}" role="group" aria-label="Secciones de la carta" style="position:relative; display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding:0 var(--gutter)">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+            <button type="button" onClick="{{ t.onClick }}" aria-pressed="{{ t.pressed }}" style="flex:none; margin:0; padding:5px 0; border:0; background:none; border-radius:999px; cursor:pointer; font:inherit">
+              <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="{{ t.tone }}" hint-size="104px,34px">{{ t.label }}</x-import>
+            </button>
+          </sc-for>
+          <span aria-hidden="true" style="flex:none; width:8px"></span>
+        </div>
+      </div>
+      <div ref="{{ cardRef }}" onPointerDown="{{ cartaDown }}" onPointerMove="{{ cartaMove }}" onPointerUp="{{ cartaUp }}" onPointerCancel="{{ cartaUp }}" style="margin-top:14px; overflow:hidden; border-radius:22px; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow-sm); touch-action:pan-y">
+        <div ref="{{ photoRef }}" style="position:relative; height:clamp(200px, 58vw, 320px); overflow:hidden; background:var(--navy); container-type:inline-size">
+          <sc-if value="{{ ph.pinchos }}" hint-placeholder-val="{{ false }}"><img src="img/hojaldre.jpg" alt="Hojaldre en salsa con pasas" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.picar }}" hint-placeholder-val="{{ false }}"><img src="img/tabla-quesos.jpg" alt="Tabla de quesos con uvas, nueces y pasas" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.sugerencias }}" hint-placeholder-val="{{ false }}"><img src="img/pimientos-salsa.jpg" alt="Plato en salsa anaranjada sobre cerámica" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.carnes }}" hint-placeholder-val="{{ false }}"><img src="img/entrecot.jpg" alt="Entrecot de novilla con patatas y pimientos asados" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.pescados }}" hint-placeholder-val="{{ false }}"><img src="img/rodaballo.jpg" alt="Rodaballo al horno sobre plato de cerámica" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+            <sc-if value="{{ ph.postres }}" hint-placeholder-val="{{ false }}"><img src="img/tarta-pistacho.jpg" alt="Porción de tarta de pistacho" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover"></sc-if>
+          <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,27,56,0) 30%, rgba(6,27,56,.8) 100%)"></div>
+          <div style="position:absolute; left:18px; right:16px; bottom:16px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; color:#FFFFFF">
+            <div style="min-width:0; display:flex; flex-direction:column; gap:8px">
+              <span style="font-size:.74rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cognac-lt); font-variant-numeric:tabular-nums">{{ cat.num }}</span>
+              <h3 style="margin:0; font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; font-size:clamp(2.2rem, 14cqi, 3.4rem); line-height:.88; color:#FFFFFF">{{ cat.label }}</h3>
+            </div>
+            <span aria-hidden="true" style="flex:none; display:flex; align-items:center; gap:6px; padding:7px 11px; border-radius:999px; background:rgba(255,255,255,.16); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); font-size:.78rem; font-weight:700"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="m18 8 4 4-4 4M6 8l-4 4 4 4M2 12h20"></path></svg>Desliza</span>
+          </div>
+        </div>
+        <div ref="{{ listRef }}" style="padding:4px 18px 10px">
+          <sc-for list="{{ cat.items }}" as="d" hint-placeholder-count="8">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.MenuItem" dc-props="{{ d }}" hint-size="100%,54px"></x-import>
+          </sc-for>
+        </div>
+        <div style="display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:8px; padding:12px; border-top:1px solid var(--line); background:var(--cream)">
+          <button type="button" onClick="{{ cartaPrev }}" style="min-width:0; min-height:62px; margin:0; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:4px; padding:8px 14px; border-radius:16px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; font:inherit; text-align:left">
+            <span style="display:flex; align-items:center; gap:6px; font-size:.7rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint)"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>Anterior</span>
+            <span style="max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-family:var(--font-display); font-weight:700; font-size:1rem; line-height:1.15">{{ cat.prev }}</span>
+          </button>
+          <button type="button" onClick="{{ cartaNext }}" style="min-width:0; min-height:62px; margin:0; display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:4px; padding:8px 14px; border-radius:16px; border:1px solid var(--navy); background:var(--navy); color:#FFFFFF; cursor:pointer; font:inherit; text-align:right">
+            <span style="display:flex; align-items:center; gap:6px; font-size:.7rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--text-on-dark-soft)">Siguiente<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+            <span style="max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-family:var(--font-display); font-weight:700; font-size:1rem; line-height:1.15">{{ cat.next }}</span>
+          </button>
+        </div>
+      </div>
+      <p style="margin:26px 0 0; padding-top:18px; border-top:1px solid var(--line); font-size:.94rem; line-height:1.55; color:var(--ink-soft); text-wrap:pretty"><strong style="color:var(--ink)">Alérgenos.</strong> Si tienes alguna alergia o intolerancia, avísanos al pedir y te diremos qué lleva cada plato.</p>
+    </sc-if>
+  </div>
+</section>
+
+<section id="reserva" ref="{{ resRef }}" data-screen-label="Reserva" style="background:var(--cream-2); padding:clamp(8px, 2vw, 24px) 0 clamp(96px, 13vw, 160px); scroll-margin-top:64px">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-start; gap:32px clamp(32px, 6vw, 96px)">
+    <div style="flex:1 1 300px; min-width:0; display:flex; flex-direction:column; gap:18px; padding-top:clamp(0px, calc((100vw - 860px) * .2), 36px)">
+      <div data-reveal=""><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac)" hint-size="100px,20px">Reservas</x-import></div>
+      <h2 data-split="" style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(2.3rem, 7vw, 4.4rem); line-height:.98; letter-spacing:-.02em; color:var(--ink); text-wrap:balance">Te guardamos sitio.</h2>
+      <p data-reveal="" style="margin:0; max-width:40ch; font-size:1.06rem; line-height:1.65; color:var(--ink-soft); text-wrap:pretty">Elige el día, cuántos sois y el turno. Te llamamos para confirmar la mesa.</p>
+    </div>
+    <div data-reveal="" style="flex:1.25 1 420px; min-width:0">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Card" accent="{{ true }}" dc-props="{{ fillCard }}" style="flex:1" hint-size="100%,460px">
+          <div style="height:100%; display:flex; flex-direction:column; gap:24px; color:var(--ink)">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding-top:4px">
+              <h3 style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.7rem, 4vw, 2.3rem); line-height:1.02; letter-spacing:-.015em; color:var(--ink)">Reserva tu mesa</h3>
+              <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+                <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="base" hint-size="140px,32px">Demostración</x-import>
+              </sc-if>
+            </div>
+
+            <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex; flex-direction:column; gap:24px">
+                <div style="display:flex; flex-direction:column; gap:10px">
+                  <span id="lbl-dia" style="font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)">Día</span>
+                  <div role="group" aria-labelledby="lbl-dia" style="display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:6px">
+                    <sc-for list="{{ days }}" as="d" hint-placeholder-count="7">
+                      <button type="button" onClick="{{ d.onClick }}" disabled="{{ d.disabled }}" aria-pressed="{{ d.pressed }}" aria-label="{{ d.aria }}" style="min-width:0; min-height:68px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; padding:6px 0; border-radius:14px; border:1px solid {{ d.border }}; background:{{ d.bg }}; color:{{ d.fg }}; opacity:{{ d.opacity }}; cursor:{{ d.cursor }}; font:inherit; transition:background-color .2s cubic-bezier(.4,0,.2,1), color .2s cubic-bezier(.4,0,.2,1)">
+                        <span style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase">{{ d.dow }}</span>
+                        <span style="font-family:var(--font-display); font-weight:600; font-size:1.35rem; line-height:1">{{ d.num }}</span>
+                        <span style="font-size:.64rem; line-height:1">{{ d.note }}</span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-wrap:wrap; gap:24px 48px">
+                  <div style="display:flex; flex-direction:column; gap:10px">
+                    <span style="font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)">Personas</span>
+                    <div style="display:flex; align-items:center; gap:14px">
+                      <button type="button" onClick="{{ dec }}" aria-label="Una persona menos" style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:999px; border:2px solid var(--ink); background:transparent; color:var(--ink); font-size:1.3rem; line-height:1; cursor:pointer; font-family:inherit">−</button>
+                      <span aria-live="polite" style="min-width:2ch; text-align:center; font-family:var(--font-display); font-weight:600; font-size:1.7rem; line-height:1; font-variant-numeric:tabular-nums">{{ people }}</span>
+                      <button type="button" onClick="{{ inc }}" aria-label="Una persona más" style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:999px; border:2px solid var(--ink); background:transparent; color:var(--ink); font-size:1.3rem; line-height:1; cursor:pointer; font-family:inherit">+</button>
+                    </div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:10px">
+                    <span id="lbl-turno" style="font-size:.78rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint)">Turno</span>
+                    <div role="group" aria-labelledby="lbl-turno" style="display:flex; gap:6px">
+                      <sc-for list="{{ turnos }}" as="t" hint-placeholder-count="2">
+                        <button type="button" onClick="{{ t.onClick }}" aria-pressed="{{ t.pressed }}" style="margin:0; padding:5px 0; border:0; background:none; border-radius:999px; cursor:pointer; font:inherit">
+                          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="{{ t.tone }}" hint-size="90px,34px">{{ t.label }}</x-import>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding-top:20px; border-top:1px dashed var(--line)">
+                  <p style="margin:0; font-weight:600; color:var(--ink)">{{ summary }}</p>
+                  <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" onClick="{{ submit }}" hint-size="200px,56px">Solicitar reserva</x-import>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; flex-direction:column; align-items:flex-start; gap:14px">
+                <p style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:1.6rem; line-height:1.1; color:var(--navy)">Solicitud enviada</p>
+                <p style="margin:0; color:var(--ink-soft)">{{ summary }}. Te llamaremos para confirmarla.</p>
+                <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" onClick="{{ reset }}" hint-size="190px,50px">Hacer otra reserva</x-import>
+              </div>
+            </sc-if>
+
+            <p style="margin:auto 0 0; font-size:.92rem; color:var(--ink-soft)">¿Prefieres llamar? <a href="tel:+34942231299" style="font-weight:700; color:var(--navy)" style-hover="color:var(--cognac)">942 23 12 99</a></p>
+          </div>
+        </x-import>
+      </div>
+  </div>
+</section>
+
+<section id="horario" data-screen-label="Dónde estamos" style="position:relative; z-index:2; margin-top:calc(clamp(24px, 3vw, 40px) * -1); border-radius:clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) 0 0; box-shadow:0 -24px 48px -32px rgba(53,36,18,.45); background:var(--navy-deep); color:var(--text-on-dark); padding:clamp(76px, 12vw, 150px) 0 clamp(44px, 5vw, 64px)">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter)">
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:32px clamp(32px, 6vw, 96px)">
+      <div style="flex:1 1 420px; min-width:0; display:flex; flex-direction:column; gap:18px">
+        <div data-reveal=""><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--cognac-lt)" hint-size="140px,20px">Dónde estamos</x-import></div>
+        <h2 data-split="" style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(2.3rem, 7vw, 4.4rem); line-height:.98; letter-spacing:-.02em; color:#FFFFFF; text-wrap:balance">Te esperamos en Laredo.</h2>
+      </div>
+      <div data-reveal="" style="flex:0 1 auto; min-width:0; display:flex; flex-direction:column; gap:16px">
+        <p style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:500; font-size:clamp(1.5rem, 3.2vw, 1.9rem); line-height:1.2; color:#FFFFFF">C. Menéndez Pelayo, 32<br>39770 Laredo, Cantabria</p>
+        <a href="tel:+34942231299" style="align-self:flex-start; font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1.5rem, 3.2vw, 1.9rem); line-height:1.2; color:var(--cognac-lt)" style-hover="color:#FFFFFF">942 23 12 99</a>
+        <div style="display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(0, 1fr); gap:10px; margin-top:6px; width:100%; max-width:330px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" dc-props="{{ ctaBtn }}" style="width:100%" href="https://www.google.com/maps/search/?api=1&amp;query=La+Cuesta+del+Infierno+Calle+Menendez+Pelayo+32+Laredo" target="_blank" rel="noopener" hint-size="170px,50px"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Cómo llegar</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" dc-props="{{ ctaBtn }}" style="width:100%" href="tel:+34942231299" hint-size="130px,50px"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Llamar</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="" style="display:flex; flex-direction:column; gap:18px; margin-top:clamp(44px, 6vw, 76px)">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px 24px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,.16)">
+        <span style="font-size:.78rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--cognac-lt)">Horario</span>
+        <span style="font-size:.92rem; font-weight:600; color:#FFFFFF">{{ statusShort }}</span>
+      </div>
+      <p style="margin:0; font-family:var(--font-display); font-stretch:80%; font-weight:500; font-size:clamp(1.35rem, 3vw, 1.9rem); line-height:1.2; color:#FFFFFF; text-wrap:balance">De 9:00 a 24:00, todos los días menos el martes.</p>
+      <ul aria-label="Horario por días" style="list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(7, minmax(0, 1fr)); gap:clamp(4px, 1vw, 10px)">
+        <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
+          <li aria-label="{{ h.aria }}" style="min-width:0; display:flex; flex-direction:column; align-items:center; gap:5px; padding:10px 2px 11px; border-radius:14px; border:1px {{ h.bs }} {{ h.bd }}; background:{{ h.bg }}; color:{{ h.fg }}">
+            <span aria-hidden="true" style="font-size:.62rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; line-height:1">{{ h.tag }}</span>
+            <span aria-hidden="true" style="font-family:var(--font-display); font-stretch:80%; font-weight:600; font-size:clamp(1rem, 2.4vw, 1.5rem); line-height:1">{{ h.abbr }}</span>
+            <span aria-hidden="true" style="font-size:clamp(.62rem, 1.4vw, .84rem); line-height:1.2; white-space:nowrap; font-variant-numeric:tabular-nums">{{ h.hours }}</span>
+          </li>
+        </sc-for>
+      </ul>
+      <p style="margin:0; font-size:.9rem; line-height:1.5; color:var(--text-on-dark-soft)">En festivos el horario puede cambiar. Llámanos para confirmar.</p>
+    </div>
+  </div>
+</section>
+
+<footer data-screen-label="Pie" style="background:var(--char-deep); color:var(--text-on-dark-soft); padding:clamp(40px, 5vw, 56px) 0 calc(96px + env(safe-area-inset-bottom)); font-size:.92rem; line-height:1.55">
+  <div style="max-width:1180px; margin-inline:auto; padding-inline:var(--gutter); display:flex; flex-direction:column; gap:24px">
+    <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:14px 40px">
+      <a href="#inicio" style="font-family:var(--font-display); font-stretch:75%; font-weight:700; text-transform:uppercase; letter-spacing:.03em; font-size:1.3rem; line-height:1; color:var(--text-on-dark)" style-hover="color:var(--cognac-lt)">La Cuesta del Infierno</a>
+      <div style="display:flex; flex-wrap:wrap; gap:6px 28px">
+        <span>C. Menéndez Pelayo, 32 · Laredo</span>
+        <a href="tel:+34942231299" style="color:var(--text-on-dark)" style-hover="color:var(--cognac-lt)">942 23 12 99</a>
+        <span>9:00–24:00 · martes cerrado</span>
+      </div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 32px; padding-top:18px; border-top:1px solid rgba(255,255,255,.1); font-size:.8rem">
+      <p style="margin:0">© La Cuesta del Infierno, Laredo · Información sobre alérgenos disponible en el local.</p>
+      <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0">Propuesta de diseño. Fotos y carta del restaurante; la reserva online es una demostración.</p>
+      </sc-if>
+    </div>
+  </div>
+</footer>
+
+<div aria-hidden="{{ barHidden }}" style="position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:60; max-width:340px; margin-inline:auto; display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(0, 1fr); gap:6px; padding:6px; border-radius:999px; background:rgba(255,253,249,.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid var(--line); box-shadow:var(--shadow-pop); transform:translateY({{ barY }}); visibility:{{ barVis }}; transition:transform .5s cubic-bezier(.16,1,.3,1), visibility .5s">
+  <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" dc-props="{{ ctaBtn }}" style="width:100%" href="#reserva" hint-size="170px,50px"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>Reservar</x-import>
+  <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" dc-props="{{ ctaBtn }}" style="width:100%" href="tel:+34942231299" hint-size="130px,50px"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Llamar</x-import>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;Mostrar avisos de demostración&quot;},&quot;heroPhoto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Comedor&quot;,&quot;Sala y barra&quot;,&quot;Fachada de noche&quot;],&quot;default&quot;:&quot;Comedor&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Foto inicial de portada&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Completo&quot;,&quot;Suave&quot;],&quot;default&quot;:&quot;Completo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Movimiento&quot;},&quot;heroScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;Portada que se abre al hacer scroll&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 0, day: null, people: 2, turno: 'Cena', sent: false, scrolled: false, bar: false, heroPin: false, mobile: typeof window !== 'undefined' && window.innerWidth < 900, casa: 0, casaFan: false, casaNudge: false, dayIdx: 0,
+    slide: Math.max(0, ['Comedor', 'Sala y barra', 'Fachada de noche'].indexOf((this.props && this.props.heroPhoto) || 'Comedor')), prevSlide: -1 };
+  sref() { const f = (el) => { if (el) f.current = el; else if (f.current && !f.current.isConnected) f.current = null; }; f.current = null; return f; }
+  rootRef = this.sref(); clockRef = this.sref(); fillRef = this.sref(); labelRef = this.sref();
+  momentsRef = this.sref(); listRef = this.sref(); photoRef = this.sref();
+  heroRef = this.sref(); stageRef = this.sref(); heroInnerRef = this.sref(); heroLeftRef = this.sref();
+  titleRef = this.sref(); slotRef = this.sref(); mediaRef = this.sref(); tiltRef = this.sref();
+  scrimRef = this.sref(); infoRef = this.sref(); ctrlRef = this.sref(); cueRef = this.sref(); cueLineRef = this.sref();
+  segRefs = [0, 1, 2].map(() => this.sref());
+  ctaRef = this.sref(); stackRef = this.sref(); tabsRef = this.sref(); cardRef = this.sref(); resRef = this.sref();
+  casaRefs = [0, 1, 2, 3].map(() => this.sref());
+  pillGlass = { style: { background: 'rgba(255,253,249,.94)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', boxShadow: '0 8px 20px -12px rgba(6,27,56,.6)' } };
+  casaTrans = 'transform .6s cubic-bezier(.16,1,.3,1)';
+  fanTf = ['translate3d(0px, 0px, 0px) rotate(0deg) scale(1)', 'translate3d(16px, 10px, 0px) rotate(4deg) scale(.95)', 'translate3d(-16px, 16px, 0px) rotate(-4.5deg) scale(.91)', 'translate3d(6px, 22px, 0px) rotate(2deg) scale(.87)'];
+  casaPics = [
+    { src: 'img/comedor-ventanales.jpg', pos: '50% 50%', cap: 'Ventanales a la calle', alt: 'Comedor con ventanales a la calle, plantas y mesas con mantel negro' },
+    { src: 'img/comedor-barra.jpg', pos: '64% 50%', cap: 'Butacas color coñac y la barra al fondo', alt: 'Sala con butacas color coñac, la barra al fondo y un panel de madera tallada' },
+    { src: 'img/comedor-palmera.jpg', pos: '40% 50%', cap: 'Una mesa larga para venir en grupo', alt: 'Mesa larga puesta junto a la ventana, con una palmera en maceta' },
+    { src: 'img/fachada-noche.jpg', pos: '42% 50%', cap: 'La fachada, de noche', alt: 'Fachada de La Cuesta del Infierno de noche, con los escaparates iluminados' }
+  ];
+  ctaBtn = { style: { width: '100%', boxSizing: 'border-box', justifyContent: 'center', gap: '.5em', padding: '.9em 1.2em', fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '1rem', letterSpacing: '.01em', lineHeight: 1.1 } };
+  fillCard = { style: { height: '100%', boxSizing: 'border-box' } };
+  heroNames = ['Comedor', 'Sala y barra', 'Fachada de noche'];
+  heroCaps = ['El comedor', 'La sala y la barra', 'La fachada, de noche'];
+  times = [540, 780, 870, 1230, 1350];
+  labels = ['Por la mañana', 'El aperitivo', 'La comida', 'La cena', 'La sobremesa'];
+  week = [['Lunes', 1], ['Martes', 2], ['Miércoles', 3], ['Jueves', 4], ['Viernes', 5], ['Sábado', 6], ['Domingo', 0]];
+  dShort = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  dLong = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  carta = [
+    { label: 'Pinchos', photo: 'img/hojaldre.jpg', alt: 'Hojaldre en salsa con pasas', items: [
+      ['Brocheta de pulpo', '10€'], ['Taco de bonito con vinagreta', '8€'], ['Pepinillo relleno de bonito', '8€'],
+      ['Queso de cabra, cebolla caramelizada y virutas de jamón', '8€'], ['Hojaldre relleno de foie', '8€'],
+      ['Tosta de jamón con setas', '8€'], ['Tosta de gulas y langostinos', '8€'], ['Calamar relleno de cangrejo', '8€'],
+      ['Bacalao con tomate y piperrada', '10€'], ['Tosta de anchoa, ricotta, brie y pimiento rojo', '6€'], ['Brioche de cordero', '8€']] },
+    { label: 'Para picar', photo: 'img/tabla-quesos.jpg', alt: 'Tabla de quesos con uvas, nueces y pasas', caption: 'Tabla de quesos', items: [
+      ['Jamón de cebo ibérico', '24€'], ['Jamón de bellota 100%', '32€'], ['Tabla de quesos', '18€'], ['Rabas de jibia', '12€'],
+      ['Anchoa serie limitada «Codesa»', '28€'], ['Boquerones en vinagreta', '12€'], ['Zamburiñas a la plancha (6 ud.)', '18€'],
+      ['Pimientos rellenos de marisco (3 ud. / 6 ud.)', '9€ / 16€'], ['Salpicón de marisco', '16€'],
+      ['Almejas de San Vicente en salsa verde', '24€'], ['Pulpo a la gallega o vinagreta', '24€'], ['Langostinos a la plancha', '24€'],
+      ['Ensaladilla rusa', '12€'], ['Croquetas de jamón caseras', '12€'], ['Almejas de San Vicente con langostinos', '28€']] },
+    { label: 'Sugerencias', photo: 'img/pimientos-salsa.jpg', alt: 'Plato en salsa anaranjada sobre cerámica', items: [
+      ['Ceviche de lubina con naranja sanguina', '24€'], ['Provolone a la plancha con vinagreta de tomate seco', '18€'],
+      ['Calamares a la brasa (4 ud.)', '18€'], ['Almejas con cocochas pilpil', '28€'],
+      ['Ensalada de piña, coco y frutos rojos', '20€', 'Piña, coco, frutos rojos, tofe, menta y sorbete de limón']] },
+    { label: 'Ensaladas', items: [
+      ['Ensalada de ventresca', '18€', 'Brotes tiernos, pimiento rojo asado, ventresca de bonito y vinagreta de tomate'],
+      ['Ensalada de jamón, foie, frutos secos', '18€', 'Brotes tiernos, jamón ibérico, pasas, nueces, foie y vinagreta de fresas'],
+      ['Ensalada de temporada', '18€', 'Tomate, burrata, bonito casero, pimiento asado y vinagreta de albahaca y menta'],
+      ['Ensalada de cangrejo oculta', '20€', 'Tomate, cangrejo, yogurt y emulsión mango-mostaza'],
+      ['Ensalada de bacalao', '18€', 'Lascas de bacalao, tomate en dados, aceituna, pimiento asado y brotes']] },
+    { label: 'Carnes', photo: 'img/entrecot.jpg', alt: 'Entrecot de novilla con patatas y pimientos asados', items: [
+      ['Solomillo de vaca rubia', '28€'], ['Chuletillas de cordero', '24€'], ['Entrecot de novilla', '22€'],
+      ['Chuleta de vaca rubia', '60€/kg'], ['Lingote de cochinillo', '24€'], ['Cachopo ibérico de ternera', '24€']] },
+    { label: 'Pescados', photo: 'img/rodaballo.jpg', alt: 'Rodaballo al horno sobre plato de cerámica', caption: 'Rodaballo al horno', items: [
+      ['Lomo de bacalao, con tomate casero y piperrada', '24€'], ['Lubina de costa', '60€/kg'], ['Rodaballo al horno con guarnición', '60€/kg'],
+      ['Chipirones encebollados (6 ud.)', '24€'], ['Rape en salsa verde con almejas', '28€'], ['Merluza rellena de marisco', '24€']] },
+    { label: 'Postres', photo: 'img/tarta-pistacho.jpg', alt: 'Porción de tarta de pistacho', caption: 'Tarta de pistacho', items: [
+      ['Tarta de hojaldre', '10€'], ['Tarta de queso casera', '8€'], ['Tarta de pistacho', '10€'],
+      ['Tarta de 3 chocolates', '8€'], ['Tiramisú', '10€'], ['Torrija de sobao', '10€']] }
+  ];
+
+  componentDidMount() {
+    this._mountT = performance.now();
+    this._prevTab = this.state.tab; this._prevMotion = this.props.motion;
+    this._onScroll = () => { if (!this._scrollBuilt) this.tryScrollMotion(); if (!this._raf) this._raf = requestAnimationFrame(this.frame); };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onResize = () => { this.checkMobile(); this.measureHero(); this._onScroll(); };
+    this.checkMobile();
+    window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver && this.heroInnerRef.current) { this._ro = new ResizeObserver(() => { this.measureHero(); this.updateHero(window.innerHeight, true); }); this._ro.observe(this.heroInnerRef.current); }
+    this._prevMobile = this.state.mobile; this._prevSlide = this.state.slide; this._prevPin = this.state.heroPin; this._prevHeroPhoto = this.props.heroPhoto; this._prevHeroScroll = this.props.heroScroll;
+    this.startAuto();
+    this._onLoad = () => { this.checkMobile(); this.measureHero(); this.tryScrollMotion(); if (window.ScrollTrigger) window.ScrollTrigger.refresh(); this.frame(); };
+    window.addEventListener('load', this._onLoad);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this._onLoad && this._onLoad());
+    this._retries = [400, 1000, 2000, 3500, 6000].map(ms => setTimeout(this._onLoad, ms));
+    this.frame();
+    this._timer = setInterval(() => this.forceUpdate(), 60000);
+    this.waitLibs(0);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._ro) this._ro.disconnect();
+    if (this._prog) this._prog.kill(); clearTimeout(this._autoT);
+    if (this._typeRaf) cancelAnimationFrame(this._typeRaf);
+    if (this._cueTw) this._cueTw.kill();
+    window.removeEventListener('load', this._onLoad);
+    clearInterval(this._timer); clearTimeout(this._wait); clearTimeout(this._remT); clearTimeout(this._nudgeT); clearTimeout(this._flyT); clearTimeout(this._heroSafe); clearTimeout(this._refreshT); clearTimeout(this._pinT); (this._retries || []).forEach(clearTimeout);
+    if (this._raf) cancelAnimationFrame(this._raf);
+    this.teardown();
+  }
+
+  componentDidUpdate() {
+    const tab = this.state.tab, mot = this.props.motion;
+    const tabChanged = this._prevTab !== undefined && this._prevTab !== tab;
+    const motChanged = this._prevMotion !== mot;
+    this._prevTab = tab; this._prevMotion = mot;
+    if (this._prevMobile !== this.state.mobile) {
+      this._prevMobile = this.state.mobile;
+      this.teardown(); this._scrollBuilt = false;
+      if (this._ro) { this._ro.disconnect(); if (this.heroInnerRef.current) this._ro.observe(this.heroInnerRef.current); }
+      clearTimeout(this._remT);
+      this._remT = setTimeout(() => { if (window.gsap && window.ScrollTrigger) this.safeInit(); this.measureHero(); this.startAuto(); }, 60);
+    }
+    if (this._prevSlide !== this.state.slide) { this._prevSlide = this.state.slide; this.startAuto(); }
+    if (this._prevHeroPhoto !== this.props.heroPhoto) {
+      this._prevHeroPhoto = this.props.heroPhoto;
+      const i = this.heroNames.indexOf(this.props.heroPhoto); if (i >= 0) this.go(i);
+    }
+    if (this._prevHeroScroll !== this.props.heroScroll || motChanged) { this._prevHeroScroll = this.props.heroScroll; this.measureHero(); }
+    if (this._prevPin !== this.state.heroPin) {
+      this._prevPin = this.state.heroPin;
+      this.updateHero(window.innerHeight, true);
+      if (this._cueTw) { this._cueTw.kill(); this._cueTw = null; }
+      if (this.state.heroPin && window.gsap && this.cueLineRef.current) this._cueTw = window.gsap.fromTo(this.cueLineRef.current, { yPercent: -100 }, { yPercent: 100, duration: 1.6, ease: 'power2.inOut', repeat: -1 });
+      clearTimeout(this._pinT);
+      this._pinT = setTimeout(() => { if (window.ScrollTrigger) window.ScrollTrigger.refresh(); this.frame(); }, 60);
+    }
+    if (tabChanged) {
+      const g = window.gsap;
+      if (g) {
+        const mob = this.state.mobile, dir = this._tabDir || 1;
+        if (this.listRef.current) g.fromTo(this.listRef.current, { opacity: 0, x: mob ? 40 * dir : 0, y: mob ? 0 : 10 }, { opacity: 1, x: 0, y: 0, duration: mob ? 0.45 : 0.3, ease: mob ? 'power3.out' : 'power2.out', overwrite: true, clearProps: 'transform,opacity' });
+        const im = mob && this.photoRef.current && this.photoRef.current.querySelector('img');
+        if (im) g.fromTo(im, { scale: 1.12 }, { scale: 1, duration: 1, ease: 'expo.out' });
+        if (this.photoRef.current) g.fromTo(this.photoRef.current, { opacity: 0.2 }, { opacity: 1, duration: 0.4, ease: 'power2.out', overwrite: true });
+      }
+      const strip = this.tabsRef.current, tb = strip && strip.querySelectorAll('button')[tab];
+      if (tb) strip.scrollTo({ left: tb.offsetLeft - (strip.clientWidth - tb.offsetWidth) / 2, behavior: 'smooth' });
+      clearTimeout(this._refreshT);
+      this._refreshT = setTimeout(() => { if (window.ScrollTrigger) window.ScrollTrigger.refresh(); }, 80);
+    }
+    if (motChanged && this._ctx) { this.teardown(); this._scrollBuilt = false; this.safeInit(); }
+  }
+
+  now() {
+    try { return new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Madrid' })); } catch (e) { return new Date(); }
+  }
+
+  checkMobile() { const w = window.innerWidth || document.documentElement.clientWidth; if (!w) return; const m = w < 900; if (m !== this.state.mobile) this.setState({ mobile: m }); }
+
+  frame = () => {
+    this._raf = 0;
+    this.checkMobile();
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    const vh = window.innerHeight;
+    let resVis = false; const rs = this.resRef.current;
+    if (rs) { const rr = rs.getBoundingClientRect(); resVis = rr.top < vh * 0.7 && rr.bottom > vh * 0.3; }
+    const scrolled = y > 24, bar = y > vh * 0.8 && !resVis;
+    if (!this.state.casaFan && this.stackRef.current) { const sr = this.stackRef.current.getBoundingClientRect(); if (sr.top < vh * 0.8 && sr.bottom > 0) this.fanCasa(); }
+    if (scrolled !== this.state.scrolled || bar !== this.state.bar) this.setState({ scrolled, bar });
+    this.updateHero(vh);
+    this.updateClock(vh);
+  };
+
+  reduced() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  measureHero() {
+    const inner = this.heroInnerRef.current, left = this.heroLeftRef.current, slot = this.slotRef.current;
+    if (!inner || !left || !slot) return;
+    const side = this.state.mobile || slot.parentElement.offsetLeft > left.offsetLeft + 40;
+    const ok = (this.props.heroScroll ?? true) && (this.props.motion ?? 'Completo') === 'Completo' && !this.reduced() && side && inner.offsetHeight <= window.innerHeight + 1;
+    if (ok !== this.state.heroPin) this.setState({ heroPin: ok });
+  }
+
+  updateHero(vh, force) {
+    const sec = this.heroRef.current, stage = this.stageRef.current, slot = this.slotRef.current, media = this.mediaRef.current;
+    if (!sec || !stage || !slot || !media) return;
+    const cl = v => Math.max(0, Math.min(1, v));
+    let p = 0;
+    if (this.state.heroPin) { const r = sec.getBoundingClientRect(); p = cl(-r.top / Math.max(1, r.height - vh)); }
+    const t = cl(p / 0.7), e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    if (!force && e === this._heroE && p === this._heroP) return;
+    this._heroE = e; this._heroP = p;
+    const L = this.heroLeftRef.current, C = this.ctrlRef.current, S = this.scrimRef.current, I = this.infoRef.current, Q = this.cueRef.current;
+    if (e <= 0) {
+      media.style.left = '0px'; media.style.top = '0px'; media.style.width = '100%'; media.style.height = '100%'; media.style.borderRadius = '22px';
+      if (L) { L.style.opacity = ''; L.style.transform = ''; }
+    } else {
+      const sr = slot.getBoundingClientRect(), cr = stage.getBoundingClientRect();
+      media.style.left = (-(sr.left - cr.left) * e).toFixed(2) + 'px';
+      media.style.top = (-(sr.top - cr.top) * e).toFixed(2) + 'px';
+      media.style.width = (sr.width + (cr.width - sr.width) * e).toFixed(2) + 'px';
+      media.style.height = (sr.height + (cr.height - sr.height) * e).toFixed(2) + 'px';
+      media.style.borderRadius = (22 * (1 - e)).toFixed(2) + 'px';
+      if (L) { L.style.opacity = (1 - cl(e / 0.55)).toFixed(3); L.style.transform = 'translateY(' + (-48 * e).toFixed(1) + 'px)'; }
+    }
+    if (C) C.style.opacity = e > 0 ? (1 - cl(e / 0.25)).toFixed(3) : '';
+    const A = this.ctaRef.current; if (A) { A.style.opacity = e > 0 ? (1 - cl(e / 0.35)).toFixed(3) : ''; A.style.visibility = e > 0.4 ? 'hidden' : ''; }
+    if (S) S.style.opacity = cl((p - 0.42) / 0.3).toFixed(3);
+    if (I) { const o = cl((p - 0.6) / 0.22); I.style.opacity = o.toFixed(3); I.style.transform = 'translateY(' + (24 * (1 - o)).toFixed(1) + 'px)'; }
+    if (Q) Q.style.opacity = (1 - cl(p / 0.12)).toFixed(3);
+  }
+
+  go(i) { if (i === this.state.slide) return; this.setState(s => ({ prevSlide: s.slide, slide: i })); }
+
+  startAuto() {
+    clearTimeout(this._autoT);
+    if (this._prog) { this._prog.kill(); this._prog = null; }
+    const slide = this.state.slide, g = window.gsap;
+    this.segRefs.forEach((r, i) => { if (!r.current) return; if (g) g.killTweensOf(r.current); r.current.style.transform = 'scaleX(' + (i < slide ? 1 : 0) + ')'; });
+    if (this.reduced()) { const r = this.segRefs[slide].current; if (r) r.style.transform = 'scaleX(1)'; return; }
+    const next = (slide + 1) % 3, el = this.segRefs[slide].current;
+    if (g && el) {
+      this._prog = g.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 6, ease: 'none', onComplete: () => this.go(next) });
+      if (this._hover) this._prog.pause();
+    } else this._autoT = setTimeout(() => this.go(next), 6000);
+  }
+
+  slotTap = () => this.go((this.state.slide + 1) % 3);
+  slotEnter = (ev) => { if (ev.pointerType !== 'mouse') return; this._hover = true; if (this._prog) this._prog.pause(); };
+  slotLeave = () => {
+    this._hover = false; if (this._prog) this._prog.resume();
+    if (this._tiltX) { this._tiltX(0); this._tiltY(0); }
+  };
+  slotMove = (ev) => {
+    if (ev.pointerType !== 'mouse' || !this._tiltX || (this._heroE || 0) > 0.02) return;
+    const r = ev.currentTarget.getBoundingClientRect();
+    this._tiltX(((ev.clientX - r.left) / r.width - 0.5) * -22);
+    this._tiltY(((ev.clientY - r.top) / r.height - 0.5) * -22);
+  };
+
+  titleMove = (ev) => { if (ev.pointerType !== 'mouse' || !this._typeOn) return; this._pt = { x: ev.clientX, y: ev.clientY }; this.kickType(); };
+  titleLeave = () => { if (!this._pt) return; this._pt = null; this.kickType(); };
+  titleTap = () => this.startWave();
+  startWave() { if (!this._typeOn) return; this._wave = { t0: performance.now(), dur: 1700 }; this.kickType(); }
+  kickType() { if (!this._typeRaf) this._typeRaf = requestAnimationFrame(this.typeLoop); }
+  typeLoop = () => {
+    this._typeRaf = 0;
+    const h1 = this.titleRef.current; if (!h1) return;
+    const chars = Array.from(h1.querySelectorAll('[data-ch]')); if (!chars.length) return;
+    if (!this._cw || this._cw.length !== chars.length) this._cw = chars.map(() => 700);
+    const fs = parseFloat(getComputedStyle(h1).fontSize) || 100;
+    let wx = null;
+    if (this._wave) {
+      const t = (performance.now() - this._wave.t0) / this._wave.dur;
+      if (t >= 1) this._wave = null;
+      else { const hr = h1.getBoundingClientRect(), R = fs * 1.2, q = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; wx = hr.left - R + (hr.width + 2 * R) * q; }
+    }
+    let moving = false;
+    chars.forEach((el, i) => {
+      let f = 0;
+      if (this._pt || wx != null) {
+        const r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        if (this._pt) f = Math.max(f, 1 - Math.hypot(cx - this._pt.x, (cy - this._pt.y) * 1.3) / (fs * 1.7));
+        if (wx != null) f = Math.max(f, 1 - Math.abs(cx - wx) / (fs * 1.1));
+      }
+      f = Math.max(0, Math.min(1, f)); f = f * f * (3 - 2 * f);
+      const target = 700 - 480 * f;
+      let w = this._cw[i] + (target - this._cw[i]) * 0.16;
+      if (Math.abs(target - w) > 0.6) moving = true; else w = target;
+      this._cw[i] = w;
+      el.style.fontVariationSettings = "'wght' " + Math.round(w) + ", 'wdth' 75";
+    });
+    if (moving || this._wave) this.kickType();
+  };
+
+  cardTf(k) { return this.state.casaFan ? this.fanTf[k] : 'translate3d(0px, ' + (k * 3) + 'px, 0px) rotate(0deg) scale(' + (1 - k * 0.015).toFixed(3) + ')'; }
+  fanCasa() {
+    if (this.state.casaFan) return;
+    this.setState({ casaFan: true });
+    if (this.reduced() || (this.props.motion ?? 'Completo') !== 'Completo') return;
+    clearTimeout(this._nudgeT);
+    this._nudgeT = setTimeout(() => {
+      if (this._sd || this._flying) return;
+      this.setState({ casaNudge: true });
+      this._nudgeT = setTimeout(() => this.setState({ casaNudge: false }), 460);
+    }, 1200);
+  }
+  topCard() { return this.casaRefs[this.state.casa].current; }
+  stackDown = (ev) => {
+    if (this._flying || (ev.pointerType === 'mouse' && ev.button !== 0)) return;
+    this._sd = { x: ev.clientX, y: ev.clientY, dx: 0, on: false };
+  };
+  stackMove = (ev) => {
+    const d = this._sd; if (!d) return;
+    const dx = ev.clientX - d.x, dy = ev.clientY - d.y;
+    if (!d.on) {
+      if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) { d.on = true; try { ev.currentTarget.setPointerCapture(ev.pointerId); } catch (e) {} }
+      else { if (Math.abs(dy) > 10) this._sd = null; return; }
+    }
+    d.dx = dx;
+    const el = this.topCard();
+    if (el) { el.style.transition = 'none'; el.style.transform = 'translate3d(' + dx.toFixed(1) + 'px, ' + (Math.abs(dx) * 0.05).toFixed(1) + 'px, 0px) rotate(' + (dx * 0.05).toFixed(2) + 'deg)'; }
+  };
+  stackUp = () => {
+    const d = this._sd; this._sd = null; if (!d) return;
+    if (!d.on) { this.casaFly(-1); return; }
+    if (Math.abs(d.dx) > 70) { this.casaFly(d.dx > 0 ? 1 : -1); return; }
+    const el = this.topCard(); if (el) { el.style.transition = this.casaTrans; el.style.transform = this.cardTf(0); }
+  };
+  stackCancel = () => {
+    const d = this._sd; this._sd = null;
+    const el = this.topCard(); if (d && d.on && el) { el.style.transition = this.casaTrans; el.style.transform = this.cardTf(0); }
+  };
+  casaFly(dir) {
+    if (this._flying) return;
+    const n = this.casaPics.length, el = this.topCard();
+    if (!el || this.reduced()) { this.setState(s => ({ casa: (s.casa + 1) % n })); return; }
+    this._flying = true;
+    el.style.transition = 'transform .34s cubic-bezier(.4,0,.2,1)';
+    el.style.transform = 'translate3d(' + (dir * 120) + '%, 30px, 0px) rotate(' + (dir * 16) + 'deg)';
+    clearTimeout(this._flyT);
+    this._flyT = setTimeout(() => { el.style.transition = this.casaTrans; this._flying = false; this.setState(s => ({ casa: (s.casa + 1) % n })); }, 300);
+  }
+  casaNext = () => this.casaFly(-1);
+  casaPrev = () => {
+    if (this._flying) return;
+    const n = this.casaPics.length, j = (this.state.casa - 1 + n) % n, el = this.casaRefs[j].current;
+    if (el && !this.reduced()) { el.style.transition = 'none'; el.style.transform = 'translate3d(-120%, 30px, 0px) rotate(-16deg)'; el.style.zIndex = String(n + 1); void el.offsetWidth; el.style.transition = this.casaTrans; }
+    this.setState({ casa: j });
+  };
+
+  scrollToY(y) {
+    y = Math.max(0, y);
+    if (this.lenis) this.lenis.scrollTo(y, { duration: 0.9 });
+    else window.scrollTo({ top: y, behavior: this.reduced() ? 'auto' : 'smooth' });
+  }
+  dayJump(i) {
+    const list = this.momentsRef.current, el = list && list.children[i]; if (!el) return;
+    this.scrollToY((window.scrollY || 0) + el.getBoundingClientRect().top - window.innerHeight * 0.5 + 40);
+  }
+  cartaTop() {
+    const c = this.cardRef.current; if (!c) return;
+    const r = c.getBoundingClientRect(); if (r.top < 100) this.scrollToY((window.scrollY || 0) + r.top - 128);
+  }
+  cartaStep(dir) { const n = this.carta.length; this._tabDir = dir; this.setState(s => ({ tab: (s.tab + dir + n) % n })); this.cartaTop(); }
+  cartaPrev = () => this.cartaStep(-1);
+  cartaNext = () => this.cartaStep(1);
+  cartaDown = (ev) => { if (ev.pointerType === 'mouse') return; this._cs = { x: ev.clientX, y: ev.clientY, dx: 0, on: false }; };
+  cartaMove = (ev) => {
+    const d = this._cs; if (!d) return;
+    const dx = ev.clientX - d.x, dy = ev.clientY - d.y;
+    if (!d.on) { if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.2) d.on = true; else { if (Math.abs(dy) > 12) this._cs = null; return; } }
+    d.dx = dx;
+    const l = this.listRef.current;
+    if (l) { l.style.transform = 'translate3d(' + (dx * 0.4).toFixed(1) + 'px, 0px, 0px)'; l.style.opacity = (1 - Math.min(0.6, Math.abs(dx) / 360)).toFixed(3); }
+  };
+  cartaUp = () => {
+    const d = this._cs; this._cs = null; if (!d || !d.on) return;
+    const l = this.listRef.current;
+    if (Math.abs(d.dx) > 64) { if (l) { l.style.transform = ''; l.style.opacity = ''; } this.cartaStep(d.dx < 0 ? 1 : -1); return; }
+    if (l) {
+      l.style.transition = 'transform .3s cubic-bezier(.16,1,.3,1), opacity .3s';
+      l.style.transform = 'translate3d(0px, 0px, 0px)'; l.style.opacity = '1';
+      setTimeout(() => { l.style.transition = ''; l.style.transform = ''; l.style.opacity = ''; }, 320);
+    }
+  };
+
+  updateClock(vh) {
+    const list = this.momentsRef.current, clock = this.clockRef.current;
+    if (!list || !clock || !list.children.length) return;
+    if (document.documentElement.scrollHeight <= vh * 1.6) return;
+    const els = Array.from(list.children), n = els.length;
+    const tops = els.map(e => e.getBoundingClientRect().top);
+    const end = els[n - 1].getBoundingClientRect().bottom;
+    const a = vh * 0.5;
+    let idx = 0, m = this.times[0];
+    for (let i = 0; i < n; i++) {
+      const s0 = tops[i], s1 = i < n - 1 ? tops[i + 1] : end;
+      if (a < s0) break;
+      idx = i;
+      const t0 = this.times[i], t1 = i < n - 1 ? this.times[i + 1] : 1440;
+      let f = (a - s0) / Math.max(1, s1 - s0);
+      f = Math.min(1, Math.max(0, (f - 0.3) / 0.7));
+      m = t0 + (t1 - t0) * f;
+    }
+    const mm = Math.min(1440, Math.round(m / 5) * 5);
+    const txt = String(Math.floor(mm / 60)).padStart(2, '0') + ':' + String(mm % 60).padStart(2, '0');
+    const tn = clock.firstChild; if (tn && tn.nodeValue !== txt) tn.nodeValue = txt;
+    if (this.fillRef.current) this.fillRef.current.style.transform = 'scaleX(' + Math.max(0, Math.min(1, (m - 540) / 900)).toFixed(4) + ')';
+    const ln = this.labelRef.current && this.labelRef.current.firstChild;
+    if (ln && ln.nodeValue !== this.labels[idx]) ln.nodeValue = this.labels[idx];
+    if (idx !== this.state.dayIdx) this.setState({ dayIdx: idx });
+    const can = document.documentElement.scrollHeight > vh * 1.6;
+    els.forEach((e, i) => { const o = !can || i === idx ? '1' : '0.38'; if (e.style.opacity !== o) e.style.opacity = o; });
+  }
+
+  waitLibs(n) {
+    if (window.gsap && window.ScrollTrigger) { this.safeInit(); return; }
+    if (n > 80) return;
+    this._wait = setTimeout(() => this.waitLibs(n + 1), 100);
+  }
+
+  safeInit() {
+    try { this.initMotion(); } catch (e) { console.warn('[motion] init:', e && e.message); this.teardown(); }
+  }
+
+  teardown() {
+    if (this._ctx) { try { this._ctx.revert(); } catch (e) {} this._ctx = null; }
+    if (this.lenis) {
+      if (window.gsap) window.gsap.ticker.remove(this._lenisRaf);
+      this.lenis.destroy(); this.lenis = null;
+    }
+  }
+
+  initMotion() {
+    const root = this.rootRef.current;
+    if (!root || this._ctx) return;
+    const gsap = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText;
+    gsap.registerPlugin(ST); if (Split) gsap.registerPlugin(Split);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const full = (this.props.motion ?? 'Completo') === 'Completo' && !reduce;
+    const early = performance.now() - this._mountT < 1800;
+    this._full = full;
+
+    const ctx = gsap.context(() => {}, root);
+    this._ctx = ctx;
+    try { ctx.add(() => this.buildHero(gsap, full, early && !document.hidden)); }
+    catch (e) { console.warn('[motion] hero:', e && e.message); }
+    this._scrollBuilt = false;
+    this._typeOn = full;
+    this._tiltX = this._tiltY = null;
+    if (full && gsap.quickTo && this.tiltRef.current) {
+      this._tiltX = gsap.quickTo(this.tiltRef.current, 'x', { duration: 0.9, ease: 'power3.out' });
+      this._tiltY = gsap.quickTo(this.tiltRef.current, 'y', { duration: 0.9, ease: 'power3.out' });
+    }
+    this.startAuto();
+    this.measureHero();
+    this.tryScrollMotion();
+  }
+
+  tryScrollMotion = () => {
+    if (this._scrollBuilt || !this._ctx || !window.gsap) return;
+    const vh = window.innerHeight;
+    if (document.documentElement.scrollHeight <= vh * 1.6) return;
+    this._scrollBuilt = true;
+    const gsap = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText, full = this._full;
+    if (full && window.Lenis) {
+      try {
+        this.lenis = new window.Lenis({ lerp: 0.1, anchors: { offset: -72 } });
+        this.lenis.on('scroll', ST.update);
+        this._lenisRaf = (t) => { if (this.lenis) this.lenis.raf(t * 1000); };
+        gsap.ticker.add(this._lenisRaf); gsap.ticker.lagSmoothing(0);
+      } catch (e) { this.lenis = null; }
+    }
+
+    try { this._ctx.add(() => this.buildScroll(gsap, ST, Split, full)); ST.refresh(); }
+    catch (e) { console.warn('[motion] scroll:', e && e.message); }
+    this.frame();
+  };
+
+  buildHero(gsap, full, early) {
+    {
+      if (early) {
+        const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+        if (full) {
+          tl.from('[data-ch]', { yPercent: 112, duration: 1.15, stagger: 0.035 }, 0.05)
+            .from('[data-hero-small]', { opacity: 0, x: -8, duration: 0.9, stagger: 0.12 }, 0.35)
+            .fromTo('[data-hero-photo]', { clipPath: 'inset(100% 0% 0% 0% round 22px)' }, { clipPath: 'inset(0% 0% 0% 0% round 22px)', duration: 1.5, ease: 'expo.inOut', clearProps: 'clipPath' }, 0)
+            .from('[data-hero-zoom]', { scale: 1.22, duration: 2, ease: 'expo.out' }, 0.2)
+            .from('[data-hero-fade]', { y: 18, opacity: 0, duration: 1, stagger: 0.08, ease: 'power3.out' }, 0.45)
+            .call(() => this.startWave(), null, 1.5);
+        } else {
+          tl.from('[data-hero-word], [data-hero-small], [data-hero-fade], [data-hero-photo]', { opacity: 0, duration: 0.6, stagger: 0.05, ease: 'power2.out' });
+        }
+        clearTimeout(this._heroSafe);
+        this._heroSafe = setTimeout(() => { if (tl.progress() < 1) tl.progress(1); }, 2800);
+      }
+    }
+  }
+
+  buildScroll(gsap, ST, Split, full) {
+    {
+
+      const rise = full ? 28 : 0;
+      gsap.utils.toArray('[data-reveal]').forEach(el => gsap.from(el, { y: rise, opacity: 0, duration: full ? 0.95 : 0.6, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
+      gsap.utils.toArray('[data-stagger]').forEach(g => gsap.from(g.children, { y: rise * 0.8, opacity: 0, duration: 0.85, ease: 'power3.out', stagger: 0.09, scrollTrigger: { trigger: g, start: 'top 88%', once: true } }));
+
+      const heads = gsap.utils.toArray('[data-split]');
+      if (full && Split) {
+        const fallback = () => heads.forEach(el => gsap.from(el, { y: rise, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
+        Promise.resolve(document.fonts && document.fonts.ready).then(() => {
+          if (!this._ctx) return;
+          try {
+            this._ctx.add(() => {
+              heads.forEach(el => {
+                const s = Split.create(el, { type: 'lines', mask: 'lines' });
+                gsap.from(s.lines, { yPercent: 110, duration: 1.15, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: el, start: 'top 88%', once: true }, onComplete: () => s.revert() });
+              });
+            });
+          } catch (e) {
+            console.warn('[motion] SplitText:', e && e.message);
+            try { this._ctx.add(fallback); } catch (_) {}
+          }
+          ST.refresh();
+        }).catch(e => console.warn('[motion] fonts:', e && e.message));
+      } else {
+        heads.forEach(el => gsap.from(el, { y: rise, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
+      }
+
+      if (full) {
+        gsap.utils.toArray('[data-parallax]').forEach(img => gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+        gsap.utils.toArray('[data-mask]').forEach(el => gsap.fromTo(el, { clipPath: 'inset(10% 7% 10% 7% round 18px)' }, { clipPath: 'inset(0% 0% 0% 0% round 18px)', ease: 'none', scrollTrigger: { trigger: el, start: 'top 98%', end: 'top 50%', scrub: true } }));
+      }
+    }
+  }
+
+  renderVals() {
+    const p = this.props, s = this.state;
+    const now = this.now(), dow = now.getDay(), hr = now.getHours();
+    const isOpen = dow !== 2 && hr >= 9;
+    const statusText = isOpen ? 'Abierto ahora · hasta las 24:00' : dow === 2 ? 'Hoy descansamos · mañana desde las 9:00' : 'Cerrado · abrimos a las 9:00';
+    const statusShort = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+    const hours = this.week.map(([day, i]) => {
+      const today = i === dow, closed = i === 2;
+      return { abbr: day.slice(0, 3), tag: today ? 'Hoy' : '\u00a0', hours: closed ? 'cerrado' : '9–24 h',
+        aria: day + (closed ? ', cerrado' : ', de 9:00 a 24:00') + (today ? ' (hoy)' : ''),
+        bg: today ? 'var(--cognac-lt)' : closed ? 'transparent' : 'rgba(255,255,255,.05)',
+        fg: today ? 'var(--navy-deep)' : closed ? 'var(--text-on-dark-soft)' : '#FFFFFF',
+        bd: today ? 'var(--cognac-lt)' : closed ? 'rgba(255,255,255,.26)' : 'rgba(255,255,255,.12)', bs: closed ? 'dashed' : 'solid' };
+    });
+
+    const hs = {};
+    for (let i = 0; i < 3; i++) {
+      const on = i === s.slide, pv = i === s.prevSlide;
+      hs['o' + i] = on || pv ? 1 : 0; hs['z' + i] = on ? 2 : pv ? 1 : 0; hs['s' + i] = on ? 1 : 1.08;
+    }
+    const heroSegs = this.heroCaps.map((c, i) => ({ ref: this.segRefs[i], aria: 'Ver foto: ' + c, pressed: i === s.slide ? 'true' : 'false', onClick: (ev) => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.go(i); } }));
+
+    const c = this.carta[s.tab];
+    const cat = {
+      label: c.label, photo: c.photo || '', alt: c.alt || '', caption: c.caption || '',
+      hasPhoto: !!c.photo, noPhoto: !c.photo, hasCaption: !!c.caption,
+      num: '0' + (s.tab + 1) + ' / 0' + this.carta.length, prev: this.carta[(s.tab + this.carta.length - 1) % this.carta.length].label, next: this.carta[(s.tab + 1) % this.carta.length].label,
+      items: c.items.map(([name, price, desc]) => (desc ? { name, price, desc } : { name, price }))
+    };
+    const tabs = this.carta.map((t, i) => ({ label: t.label, tone: i === s.tab ? 'accent' : 'default', pressed: i === s.tab ? 'true' : 'false', onClick: () => { if (i === s.tab) return; this._tabDir = i > s.tab ? 1 : -1; this.setState({ tab: i }); this.cartaTop(); } }));
+
+    const base = this.now(); base.setHours(12, 0, 0, 0);
+    const list = [];
+    for (let i = 0; i < 7; i++) { const d = new Date(base); d.setDate(base.getDate() + i); list.push(d); }
+    let sel = s.day;
+    if (sel == null || list[sel].getDay() === 2) sel = list.findIndex(d => d.getDay() !== 2);
+    const days = list.map((d, i) => {
+      const closed = d.getDay() === 2, on = i === sel;
+      return {
+        dow: i === 0 ? 'hoy' : this.dShort[d.getDay()], num: String(d.getDate()), note: closed ? 'cerrado' : '\u00a0',
+        aria: this.dLong[d.getDay()] + ' ' + d.getDate() + (closed ? ', cerrado' : ''),
+        disabled: closed, pressed: on ? 'true' : 'false',
+        bg: on ? 'var(--navy)' : 'var(--paper)', fg: on ? '#FFFFFF' : 'var(--ink)', border: on ? 'var(--navy)' : 'var(--line)',
+        opacity: closed ? '0.42' : '1', cursor: closed ? 'not-allowed' : 'pointer',
+        onClick: () => this.setState({ day: i })
+      };
+    });
+    const sd = list[sel];
+    const summary = 'Mesa para ' + s.people + (s.people === 1 ? ' persona' : ' personas') + ' · ' + this.dLong[sd.getDay()] + ' ' + sd.getDate() + ' · ' + s.turno.toLowerCase();
+    const turnos = ['Comida', 'Cena'].map(t => ({ label: t, tone: s.turno === t ? 'accent' : 'default', pressed: s.turno === t ? 'true' : 'false', onClick: () => this.setState({ turno: t }) }));
+
+    const nc = this.casaPics.length;
+    const casaCards = this.casaPics.map((c, i) => {
+      const k = (i - s.casa + nc) % nc;
+      return { ref: this.casaRefs[i], src: c.src, alt: c.alt, pos: c.pos, z: String(nc - k), hidden: k === 0 ? 'false' : 'true',
+        tf: k === 0 && s.casaNudge ? 'translate3d(-40px, 4px, 0px) rotate(-6deg) scale(1)' : this.cardTf(k) };
+    });
+    const hhmm = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+    const dayStops = this.times.map((t, i) => {
+      const on = i === s.dayIdx;
+      return { t: hhmm(t), aria: this.labels[i] + ', ' + hhmm(t), pressed: on ? 'true' : 'false',
+        bg: on ? 'var(--navy)' : 'var(--paper)', fg: on ? '#FFFFFF' : i < s.dayIdx ? 'var(--navy)' : 'var(--ink-soft)', bd: on ? 'var(--navy)' : 'var(--line)',
+        onClick: () => this.dayJump(i) };
+    });
+
+    return {
+      mobile: s.mobile, desktop: !s.mobile, cueOn: s.heroPin && !s.mobile,
+      ctaRef: this.ctaRef, stackRef: this.stackRef, tabsRef: this.tabsRef, cardRef: this.cardRef, resRef: this.resRef, pillGlass: this.pillGlass,
+      casaCards, casaNum: '0' + (s.casa + 1) + ' / 0' + nc, casaCap: this.casaPics[s.casa].cap,
+      casaPrev: this.casaPrev, casaNext: this.casaNext, stackDown: this.stackDown, stackMove: this.stackMove, stackUp: this.stackUp, stackCancel: this.stackCancel,
+      dayStops, cartaPrev: this.cartaPrev, cartaNext: this.cartaNext, cartaDown: this.cartaDown, cartaMove: this.cartaMove, cartaUp: this.cartaUp,
+      rootRef: this.rootRef, clockRef: this.clockRef, fillRef: this.fillRef, labelRef: this.labelRef,
+      momentsRef: this.momentsRef, listRef: this.listRef, photoRef: this.photoRef,
+      ph: { pinchos: s.tab === 0, picar: s.tab === 1, sugerencias: s.tab === 2, carnes: s.tab === 4, pescados: s.tab === 5, postres: s.tab === 6 },
+      heroRef: this.heroRef, stageRef: this.stageRef, heroInnerRef: this.heroInnerRef, heroLeftRef: this.heroLeftRef, titleRef: this.titleRef,
+      slotRef: this.slotRef, mediaRef: this.mediaRef, tiltRef: this.tiltRef, scrimRef: this.scrimRef, infoRef: this.infoRef, ctrlRef: this.ctrlRef,
+      cueRef: this.cueRef, cueLineRef: this.cueLineRef,
+      ctaBtn: this.ctaBtn, fillCard: this.fillCard, hs, heroSegs, heroNum: '0' + (s.slide + 1) + ' / 03', heroCaption: this.heroCaps[s.slide],
+      heroPin: s.heroPin, heroH: s.heroPin ? '230vh' : 'auto',
+      titleMove: this.titleMove, titleLeave: this.titleLeave, titleTap: this.titleTap,
+      slotTap: this.slotTap, slotEnter: this.slotEnter, slotMove: this.slotMove, slotLeave: this.slotLeave,
+      isOpen, statusText, statusShort, hours, cat, tabs, days, turnos, summary,
+      people: s.people,
+      dec: () => this.setState(st => ({ people: Math.max(1, st.people - 1) })),
+      inc: () => this.setState(st => ({ people: Math.min(12, st.people + 1) })),
+      submit: () => this.setState({ sent: true }),
+      reset: () => this.setState({ sent: false }),
+      sent: s.sent, notSent: !s.sent,
+      showDemo: p.showDemo ?? true,
+      navBg: s.scrolled ? 'rgba(248,243,234,.88)' : 'rgba(248,243,234,0)',
+      navBlur: s.scrolled ? 'blur(12px)' : 'none',
+      navLine: s.scrolled ? 'var(--line)' : 'transparent',
+      barY: s.bar ? '0%' : '160%', barVis: s.bar ? 'visible' : 'hidden', barHidden: s.bar ? 'false' : 'true'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -38,7 +38,7 @@ from pathlib import Path
 # ─── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 REPO_PATH        = Path.home() / "OneDrive - ATHLETIC CLUB/Escritorio/Main/PP" / "Mockups-web"
 INBOX            = REPO_PATH / "_inbox"
-CITIES           = ["bilbao", "laredo", "santander"]
+CITIES           = ["bilbao", "laredo", "santander", "local"]
 LINKS_FILE       = REPO_PATH / "LINKS.md"         # gitignoreado — índice local de URLs
 SHORT_LINKS_FILE = REPO_PATH / "short_links.json"  # tracked en git — mapa de URLs cortas
 DEPLOY_CONFIG    = REPO_PATH / "_deploy.json"      # tracked en git — visibilidad global de diseños

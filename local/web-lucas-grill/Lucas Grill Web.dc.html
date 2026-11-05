@@ -86,17 +86,17 @@
         <span data-a="hero-tag" style="display:inline-block; background:#EFA61F; color:#161A35; font-weight:700; font-size:clamp(15px, 1.4vw, 18px); padding:6px 12px; transform:rotate(-2deg); transform-origin:0 50%; box-shadow:0 10px 24px -12px rgba(0,0,0,.7);">«Golden Egg Yolk Burger»</span>
         <h1 data-a="hero-title" style="margin:16px 0 0; font-weight:800; font-stretch:75%; font-size:clamp(4.4rem, min(25vw, 17svh), 9.6rem); line-height:.86; letter-spacing:-.01em; text-transform:uppercase; color:#F6EFDF;">Luca's<br>Grill ®</h1>
         <p data-a="hero-sub" style="margin:22px 0 0; font-weight:700; font-size:clamp(22px, 2.4vw, 30px); line-height:1.15; color:#F6EFDF; max-width:520px; text-wrap:balance;">Vaca gallega y yema de huevo confitada</p>
-        <p data-a="hero-p" style="margin:10px 0 0; font-size:clamp(16px, 1.3vw, 18px); line-height:1.45; color:#E4DCCB; max-width:440px;">«Golden Egg Yolk Burger»: medallón de 180 g, queso COMTE y cebolla caramelizada.</p>
+        <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ false }}"><p data-a="hero-p" style="margin:10px 0 0; font-size:clamp(16px, 1.3vw, 18px); line-height:1.45; color:#E4DCCB; max-width:440px;">«Golden Egg Yolk Burger»: medallón de 180 g, queso COMTE y cebolla caramelizada.</p></sc-if>
         <div data-a="hero-ctas" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; max-width:430px;">
           <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" href="#carta" onClick="{{ orderNow }}" dc-props="{{ btnGold }}" hint-size="200px,54px">Pedir a domicilio</x-import>
           <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" size="lg" href="{{ mapsDir }}" target="_blank" rel="noopener" dc-props="{{ btnOutline }}" hint-size="180px,54px">Cómo llegar</x-import>
         </div>
-        <a data-a="hero-rating" href="#resenas" onClick="{{ goResenas }}" aria-label="Valoración 4,6 sobre 5 en Google, 1.137 reseñas. Ver opiniones" style="position:relative; overflow:hidden; margin-top:22px; display:inline-flex; align-items:center; gap:10px; max-width:100%; min-height:44px; box-sizing:border-box; padding:8px 14px 8px 12px; background:rgba(255,255,255,.08); border:1px solid rgba(246,239,223,.2); border-radius:4px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#E4DCCB; font-size:14px; line-height:1.2;" style-hover="background:rgba(255,255,255,.14); color:#F6EFDF">
+        <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ false }}"><a data-a="hero-rating" href="#resenas" onClick="{{ goResenas }}" aria-label="Valoración 4,6 sobre 5 en Google, 1.137 reseñas. Ver opiniones" style="position:relative; overflow:hidden; margin-top:22px; display:inline-flex; align-items:center; gap:10px; max-width:100%; min-height:44px; box-sizing:border-box; padding:8px 14px 8px 12px; background:rgba(255,255,255,.08); border:1px solid rgba(246,239,223,.2); border-radius:4px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#E4DCCB; font-size:14px; line-height:1.2;" style-hover="background:rgba(255,255,255,.14); color:#F6EFDF">
           <span data-a="hero-score" aria-hidden="true" style="font-weight:800; font-stretch:75%; font-size:26px; line-height:1; color:#EFA61F; font-variant-numeric:tabular-nums;">4,6</span>
           <span data-a="hero-stars" aria-hidden="true" style="display:flex; gap:3px;"><span data-star="" style="position:relative; display:block; width:16px; height:16px; flex:none;"><svg viewBox="0 0 24 24" style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="rgba(246,239,223,.38)" stroke-width="1.5" stroke-linejoin="round"></polygon></svg><span data-star-fill="" style="position:absolute; inset:0; clip-path:inset(0% 0% 0% 0%);"><svg viewBox="0 0 24 24" style="display:block; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#EFA61F" stroke="#EFA61F" stroke-width="1.5" stroke-linejoin="round"></polygon></svg></span></span><span data-star="" style="position:relative; display:block; width:16px; height:16px; flex:none;"><svg viewBox="0 0 24 24" style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="rgba(246,239,223,.38)" stroke-width="1.5" stroke-linejoin="round"></polygon></svg><span data-star-fill="" style="position:absolute; inset:0; clip-path:inset(0% 0% 0% 0%);"><svg viewBox="0 0 24 24" style="display:block; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#EFA61F" stroke="#EFA61F" stroke-width="1.5" stroke-linejoin="round"></polygon></svg></span></span><span data-star="" style="position:relative; display:block; width:16px; height:16px; flex:none;"><svg viewBox="0 0 24 24" style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="rgba(246,239,223,.38)" stroke-width="1.5" stroke-linejoin="round"></polygon></svg><span data-star-fill="" style="position:absolute; inset:0; clip-path:inset(0% 0% 0% 0%);"><svg viewBox="0 0 24 24" style="display:block; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#EFA61F" stroke="#EFA61F" stroke-width="1.5" stroke-linejoin="round"></polygon></svg></span></span><span data-star="" style="position:relative; display:block; width:16px; height:16px; flex:none;"><svg viewBox="0 0 24 24" style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="rgba(246,239,223,.38)" stroke-width="1.5" stroke-linejoin="round"></polygon></svg><span data-star-fill="" style="position:absolute; inset:0; clip-path:inset(0% 0% 0% 0%);"><svg viewBox="0 0 24 24" style="display:block; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#EFA61F" stroke="#EFA61F" stroke-width="1.5" stroke-linejoin="round"></polygon></svg></span></span><span data-star="" style="position:relative; display:block; width:16px; height:16px; flex:none;"><svg viewBox="0 0 24 24" style="position:absolute; inset:0; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="none" stroke="rgba(246,239,223,.38)" stroke-width="1.5" stroke-linejoin="round"></polygon></svg><span data-star-fill="" style="position:absolute; inset:0; clip-path:inset(0% 41.7% 0% 0%);"><svg viewBox="0 0 24 24" style="display:block; width:100%; height:100%; overflow:visible;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#EFA61F" stroke="#EFA61F" stroke-width="1.5" stroke-linejoin="round"></polygon></svg></span></span></span>
           <span aria-hidden="true"><strong style="color:#F6EFDF;">1.137</strong> reseñas en Google</span>
           <span data-a="hero-glint" aria-hidden="true" style="position:absolute; top:0; bottom:0; left:0; width:45%; background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.22) 50%, rgba(255,255,255,0) 100%); transform:translateX(-130%); pointer-events:none;"></span>
-        </a>
+        </a></sc-if>
       </div>
     </div>
 
@@ -217,10 +217,10 @@
           <div data-a="stack-burger" style="position:relative; width:min(100%, 380px); display:flex; flex-direction:column; align-items:center;">
             <div data-layer="6" style="position:relative; z-index:6; width:100%; margin-top:0; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/08-pan-arriba.png" alt="Pan brioche de arriba" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
             <div data-layer="5" style="position:relative; z-index:5; width:100%; margin-top:-16%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/07-salsa.png" alt="Salsa blanca con especias" style="position:relative; z-index:3; display:block; width:100%; height:auto; margin-top:0;"><img src="img/capas/06-nachos.png" alt="Nachos" style="position:relative; z-index:2; display:block; width:100%; height:auto; margin-top:-15%;"><img src="img/capas/05-pulled.png" alt="Carne desmechada en salsa BBQ" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:-21%;"></div>
-            <div data-layer="4" style="position:relative; z-index:4; width:100%; margin-top:-20%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/04-queso.png" alt="Queso fundido" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
-            <div data-layer="3" style="position:relative; z-index:3; width:100%; margin-top:-28%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/03-carne.png" alt="Medallón de vaca" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
-            <div data-layer="2" style="position:relative; z-index:2; width:100%; margin-top:-20%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/02-guacamole.png" alt="Guacamole" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
-            <div data-layer="1" style="position:relative; z-index:1; width:100%; margin-top:-18%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/01-pan-abajo.png" alt="Pan brioche de abajo" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
+            <div data-layer="4" style="position:relative; z-index:4; width:100%; margin-top:-20%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/04-queso-v2.png" alt="Queso fundido" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
+            <div data-layer="3" style="position:relative; z-index:3; width:100%; margin-top:-28%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/03-carne-v2.png" alt="Medallón de vaca" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
+            <div data-layer="2" style="position:relative; z-index:2; width:100%; margin-top:-20%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/02-guacamole-v2.png" alt="Guacamole" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
+            <div data-layer="1" style="position:relative; z-index:1; width:100%; margin-top:-18%; display:flex; flex-direction:column; filter:drop-shadow(0 6px 6px rgba(22,26,53,.16));"><img src="img/capas/01-pan-abajo-v2.png" alt="Pan brioche de abajo" style="position:relative; z-index:1; display:block; width:100%; height:auto; margin-top:0;"></div>
             <div aria-hidden="true" style="width:84%; height:16px; margin-top:8px; background:radial-gradient(ellipse at center, rgba(22,26,53,.3), rgba(22,26,53,0) 70%);"></div>
           </div>
         </div>
@@ -312,6 +312,9 @@
           </div>
         </sc-for>
       </div>
+      <sc-if value="{{ moreShow }}" hint-placeholder-val="{{ false }}">
+        <button data-a="menu-more" onClick="{{ toggleMore }}" aria-expanded="{{ moreExpanded }}" style="width:100%; min-height:52px; margin-top:6px; display:flex; align-items:center; justify-content:center; gap:10px; background:transparent; color:#161A35; border:2px solid #161A35; border-radius:4px; font-weight:800; font-size:16px; cursor:pointer;" style-hover="background:#161A35; color:#EFA61F"><span>{{ moreLabel }}</span><svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;"><path d="{{ morePath }}"></path></svg></button>
+      </sc-if>
 
       <div data-reveal="" style="margin-top:36px; padding-top:20px; border-top:2px solid #161A35; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap:14px 40px; font-size:15px; line-height:1.5; color:#4A4D66;">
         <p style="margin:0;"><strong style="color:#161A35;">Alérgenos.</strong> Tenemos opciones para las personas con alergias alimentarias. Pregúntanos antes de pedir o déjalo en las notas del pedido y te indicamos los alérgenos de cada plato.</p>
@@ -366,6 +369,17 @@
         <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="#161A35" hint-size="140px,18px">Nuevo local</x-import>
         <h2 data-split="" style="margin:10px 0 0; font-weight:800; font-stretch:75%; text-transform:uppercase; font-size:clamp(44px, 6.8vw, 100px); line-height:.88; text-wrap:balance;">Rúa Afonso X o Sabio, 17</h2>
         <p style="margin:12px 0 0; font-weight:700; font-size:20px;">27002 Lugo</p>
+        <sc-if value="{{ isMob }}" hint-placeholder-val="{{ true }}">
+          <div data-a="map-m" data-reveal="" style="position:relative; margin-top:20px; border-radius:6px; overflow:hidden; background:#161A35; box-shadow:0 24px 44px -26px rgba(22,26,53,.7);">
+            <div style="position:relative; height:160px; overflow:hidden; background:#1F2448;">
+              <iframe title="Mapa de Luca's Grill en Rúa Afonso X o Sabio, 17, Lugo" tabindex="-1" aria-hidden="true" src="https://maps.google.com/maps?q=R%C3%BAa%20Afonso%20X%20o%20Sabio%2017%2C%2027002%20Lugo&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position:absolute; left:0; top:-130px; width:100%; height:calc(100% + 240px); border:0; display:block; pointer-events:none; filter:saturate(.8);"></iframe>
+            </div>
+            <a href="{{ mapsDir }}" target="_blank" rel="noopener" aria-label="Cómo llegar: abrir la ruta a Luca's Grill en Google Maps" style="display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:64px; padding:10px 10px 10px 16px; box-sizing:border-box; color:#F6EFDF;" style-before="content:''; position:absolute; inset:0;">
+              <span style="display:flex; flex-direction:column; gap:3px; min-width:0;"><span style="font-weight:800; font-stretch:80%; text-transform:uppercase; font-size:20px; line-height:1;">Cómo llegar</span><span style="font-size:13px; line-height:1.2; color:#CFC6B4;">Abrir la ruta en Google Maps</span></span>
+              <span aria-hidden="true" style="flex:none; width:44px; height:44px; display:grid; place-items:center; background:#EFA61F; color:#161A35; border-radius:4px;"><svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span>
+            </a>
+          </div>
+        </sc-if>
         <div data-reveal="" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:22px;">
           <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="solid" hint-size="90px,34px">Terraza</x-import>
           <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="solid" hint-size="100px,34px">Chimenea</x-import>
@@ -384,20 +398,23 @@
           </div>
         </div>
         <div data-reveal="" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;">
-          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" size="lg" href="{{ mapsDir }}" target="_blank" rel="noopener" dc-props="{{ btnNavy }}" hint-size="170px,54px">Cómo llegar</x-import>
+          <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" size="lg" href="{{ mapsDir }}" target="_blank" rel="noopener" dc-props="{{ btnNavy }}" hint-size="170px,54px">Cómo llegar</x-import></sc-if>
           <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" size="lg" href="tel:+34982247066" hint-size="220px,54px">Llamar · 982 24 70 66</x-import>
         </div>
       </div>
+      <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ false }}">
       <div data-a="map" style="position:relative; aspect-ratio:4 / 3.6; border-radius:6px; overflow:hidden; background:#161A35; border:6px solid #161A35; box-shadow:0 30px 60px -30px rgba(22,26,53,.6); clip-path:inset(0% 0% 0% 0%);">
         <iframe title="Mapa: Luca's Grill en Rúa Afonso X o Sabio, 17, Lugo" src="https://maps.google.com/maps?q=R%C3%BAa%20Afonso%20X%20o%20Sabio%2017%2C%2027002%20Lugo&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:100%; border:0; display:block;"></iframe>
       </div>
+      </sc-if>
     </div>
   </section>
 
   <footer data-a="footer" data-screen-label="08 Pie" style="position:relative; z-index:1; overflow:hidden; background:#0E1126; color:#F6EFDF; padding:64px 0 clamp(36px, calc((900px - 100vw) * 999), 110px);">
     <div style="max-width:1240px; margin:0 auto; box-sizing:border-box; padding:0 clamp(20px, 5vw, 48px);">
-      <div style="display:flex; flex-wrap:wrap; gap:32px 56px; align-items:flex-start;">
+      <div style="display:flex; flex-wrap:wrap; gap:32px clamp(24px, 5vw, 56px); align-items:flex-start;">
         <img data-a="foot-seal" src="img/sello-lucas-grill.png" alt="Sello de Luca's Grill, American Premium Burgers" style="width:120px; height:120px; display:block; flex:none;">
+        <sc-if value="{{ isDesk }}" hint-placeholder-val="{{ false }}">
         <div style="flex:1 1 180px;">
           <p style="margin:0 0 8px; font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#EFA61F;">Visítanos</p>
           <p style="margin:0; line-height:1.5;">Rúa Afonso X o Sabio, 17<br>27002 Lugo</p>
@@ -406,6 +423,7 @@
           <p style="margin:0 0 8px; font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#EFA61F;">Horario</p>
           <p style="margin:0; line-height:1.5;">Todos los días<br>13:00–15:45 · 20:00–23:30</p>
         </div>
+        </sc-if>
         <div style="flex:1 1 180px;">
           <p style="margin:0 0 8px; font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:#EFA61F;">Contacto</p>
           <div style="display:flex; flex-direction:column; gap:2px;">
@@ -662,7 +680,7 @@ class Component extends DCLogic {
   state = {
     isDesk: typeof window !== 'undefined' && !!window.matchMedia && window.matchMedia('(min-width: 900px)').matches,
     cart: {}, cartOpen: false, step: 1, mode: 'recoger', slot: '', name: '', phone: '', address: '', notes: '',
-    tried: false, handoff: null, cat: 'burgers', menuOpen: false, now: Date.now(), toastName: ''
+    tried: false, handoff: null, cat: 'burgers', showAll: false, menuOpen: false, now: Date.now(), toastName: ''
   };
 
   componentDidMount() {
@@ -801,7 +819,7 @@ class Component extends DCLogic {
         intro.from(st.chars, { yPercent: 115, duration: 1, stagger: 0.035, ease: 'power4.out' }, 0.45);
       }
       intro.from(q('hero-tag'), { y: -50, rotation: -16, autoAlpha: 0, duration: 0.9, ease: 'back.out(2)' }, 0.8)
-        .from([q('hero-sub'), q('hero-p'), q('hero-ctas'), q('hero-rating')], { y: 26, autoAlpha: 0, duration: 0.8, stagger: 0.08 }, 0.95)
+        .from([q('hero-sub'), q('hero-p'), q('hero-ctas'), q('hero-rating')].filter(Boolean), { y: 26, autoAlpha: 0, duration: 0.8, stagger: 0.08 }, 0.95)
         .from(q('hero-badge'), { scale: 0, duration: 1.1, ease: 'back.out(1.7)' }, 1.15)
         .from(q('hero-core'), { scale: 0.4, autoAlpha: 0, duration: 0.7, ease: 'back.out(2.4)' }, 1.5);
       this.initHeroRating(gsap, intro);
@@ -809,6 +827,10 @@ class Component extends DCLogic {
       gsap.to(q('hero-img'), { yPercent: 10, ease: 'none', scrollTrigger: { trigger: q('hero'), start: 'top top', end: 'bottom top', scrub: true } });
       gsap.to(q('hero-content'), { y: -90, opacity: 0, ease: 'none', scrollTrigger: { trigger: q('hero'), start: '35% top', end: 'bottom top', scrub: true } });
       gsap.to(q('hero-badge'), { y: -140, ease: 'none', scrollTrigger: { trigger: q('hero'), start: 'top top', end: 'bottom top', scrub: true } });
+      if (!desk) {
+        gsap.to(q('hero-img'), { scale: 1.12, xPercent: -3, duration: 9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 });
+        gsap.to(q('hero-tag'), { rotation: 1.5, duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2.2 });
+      }
 
       const spin = gsap.to(q('hero-ring'), { rotation: 360, duration: 20, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
       gsap.fromTo(spin, { timeScale: 10 }, { timeScale: 1, duration: 2.4, ease: 'power2.out', delay: 1.15 });
@@ -896,55 +918,45 @@ class Component extends DCLogic {
       if (rib && vp && track) {
         const cards = Array.from(track.querySelectorAll('[data-card]')), N = cards.length;
         const label = (i) => String(i + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0');
-        if (desk) {
-          gsap.set(vp, { overflow: 'hidden', scrollSnapType: 'none' });
-          const dist = () => Math.max(0, track.scrollWidth - vp.clientWidth);
-          const skew = gsap.quickTo(cards, 'skewX', { duration: 0.5, ease: 'power3' });
-          const tw = gsap.to(track, {
-            x: () => -dist(), ease: 'none',
-            scrollTrigger: {
-              trigger: rib, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 0.7, invalidateOnRefresh: true,
-              onUpdate: (self) => {
-                if (rbar) gsap.set(rbar, { scaleX: 0.06 + 0.94 * self.progress });
-                if (rcount) rcount.textContent = label(Math.min(N - 1, Math.round(self.progress * (N - 1))));
-                skew(gsap.utils.clamp(-7, 7, self.getVelocity() / -320));
-              }
+        gsap.set(vp, { overflow: 'hidden', scrollSnapType: 'none' });
+        const dist = () => Math.max(0, track.scrollWidth - vp.clientWidth);
+        const skew = gsap.quickTo(cards, 'skewX', { duration: 0.5, ease: 'power3' }), skMax = desk ? 7 : 4;
+        const focus = desk ? null : () => {
+          const x = gsap.getProperty(track, 'x'), mid = vp.clientWidth / 2;
+          let best = 0, bd = 1e9;
+          cards.forEach((c, i) => {
+            const d = (c.offsetLeft + x + c.offsetWidth / 2 - mid) / vp.clientWidth;
+            if (Math.abs(d) < bd) { bd = Math.abs(d); best = i; }
+            gsap.set(c, { scale: 1 - Math.min(0.08, Math.abs(d) * 0.1) });
+          });
+          if (rcount) rcount.textContent = label(best);
+        };
+        const tw = gsap.to(track, {
+          x: () => -dist(), ease: 'none', onUpdate: focus,
+          scrollTrigger: {
+            trigger: rib, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: desk ? 0.7 : 0.5, anticipatePin: 1, invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              if (rbar) gsap.set(rbar, { scaleX: 0.06 + 0.94 * self.progress });
+              if (desk && rcount) rcount.textContent = label(Math.min(N - 1, Math.round(self.progress * (N - 1))));
+              skew(gsap.utils.clamp(-skMax, skMax, self.getVelocity() / -320));
             }
-          });
-          cards.forEach((c) => {
-            const img = c.querySelector('img');
-            if (img) gsap.fromTo(img, { xPercent: -7, scale: 1.16 }, { xPercent: 7, scale: 1.16, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: tw, start: 'left right', end: 'right left', scrub: true } });
-          });
-          gsap.to(q('ribbon-bg'), { xPercent: -35, ease: 'none', scrollTrigger: { trigger: rib, start: 'top bottom', end: () => '+=' + (dist() + window.innerHeight * 2), scrub: true } });
-          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            const offs = cards.map((c) => {
-              const en = () => gsap.to(c, { y: -10, scale: 1.02, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
-              const lv = () => gsap.to(c, { y: 0, scale: 1, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
-              c.addEventListener('mouseenter', en); c.addEventListener('mouseleave', lv);
-              return () => { c.removeEventListener('mouseenter', en); c.removeEventListener('mouseleave', lv); };
-            });
-            this._ribbonOff = () => offs.forEach((f) => f());
           }
-        } else {
-          let raf = 0;
-          const upd = () => {
-            raf = 0;
-            const max = vp.scrollWidth - vp.clientWidth, p = max > 0 ? vp.scrollLeft / max : 0;
-            if (rbar) rbar.style.transform = 'scaleX(' + (0.06 + 0.94 * p) + ')';
-            const mid = vp.scrollLeft + vp.clientWidth / 2;
-            let best = 0, bd = 1e9;
-            cards.forEach((c, i) => {
-              const d = (c.offsetLeft + c.offsetWidth / 2 - mid) / vp.clientWidth;
-              if (Math.abs(d) < bd) { bd = Math.abs(d); best = i; }
-              gsap.set(c, { scale: 1 - Math.min(0.08, Math.abs(d) * 0.1) });
-            });
-            if (rcount) rcount.textContent = label(best);
-          };
-          const onS = () => { if (!raf) raf = requestAnimationFrame(upd); };
-          vp.addEventListener('scroll', onS, { passive: true });
-          upd();
-          this._ribbonOff = () => { vp.removeEventListener('scroll', onS); cancelAnimationFrame(raf); };
-          gsap.from(cards.slice(0, 3), { x: 90, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: vp, start: 'top 85%', once: true } });
+        });
+        if (focus) focus();
+        cards.forEach((c) => {
+          const img = c.querySelector('img');
+          if (img) gsap.fromTo(img, { xPercent: -7, scale: 1.16 }, { xPercent: 7, scale: 1.16, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: tw, start: 'left right', end: 'right left', scrub: true } });
+        });
+        gsap.to(q('ribbon-bg'), { xPercent: -35, ease: 'none', scrollTrigger: { trigger: rib, start: 'top bottom', end: () => '+=' + (dist() + window.innerHeight * 2), scrub: true } });
+        if (!desk) gsap.from(cards.slice(0, 2), { x: 80, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: rib, start: 'top 75%', once: true } });
+        if (desk && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+          const offs = cards.map((c) => {
+            const en = () => gsap.to(c, { y: -10, scale: 1.02, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+            const lv = () => gsap.to(c, { y: 0, scale: 1, duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
+            c.addEventListener('mouseenter', en); c.addEventListener('mouseleave', lv);
+            return () => { c.removeEventListener('mouseenter', en); c.removeEventListener('mouseleave', lv); };
+          });
+          this._ribbonOff = () => offs.forEach((f) => f());
         }
       }
 
@@ -1221,12 +1233,26 @@ class Component extends DCLogic {
 
   pickCat(k) {
     if (k === this.state.cat) return;
-    this.setState({ cat: k }, () => {
+    this.setState({ cat: k, showAll: false }, () => {
       const g = this.G, rows = this.qa('[data-row]');
       if (g && rows.length) g.fromTo(rows, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.025, ease: 'power2.out', overwrite: true });
       if (this.ST) this.ST.refresh();
     });
   }
+
+  toggleMore = () => {
+    const open = !this.state.showAll;
+    this.setState({ showAll: open }, () => {
+      const g = this.G, rows = this.qa('[data-row]');
+      if (open && g) g.fromTo(rows.slice(6), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.03, ease: 'power2.out', overwrite: true });
+      if (this.ST) this.ST.refresh();
+      const grid = this.q('menu-grid');
+      if (!open && grid && grid.getBoundingClientRect().top < 0) {
+        const y = grid.getBoundingClientRect().top + window.scrollY - 150;
+        if (this._lenis) this._lenis.scrollTo(y, { duration: 0.9 }); else window.scrollTo({ top: y, behavior: this.reduced() ? 'auto' : 'smooth' });
+      }
+    });
+  };
 
   next = () => {
     const s = this.state;
@@ -1262,12 +1288,13 @@ class Component extends DCLogic {
     const mark = (i) => i.n + (demo && i.prov ? ' *' : '');
     const priceOf = (i) => (i.sizes ? 'desde ' + this.fmt(i.sizes[0][1]) : this.fmt(i.p));
     const tfs = ['rotate(-1.6deg)', 'rotate(1.2deg)', 'rotate(-0.6deg)'];
-    const ribbon = Component.ITEMS.filter((i) => i.r).sort((a, b) => a.r - b.r).map((i, k) => ({
+    const ribbon = Component.ITEMS.filter((i) => i.r).sort((a, b) => a.r - b.r).slice(0, 11).map((i, k) => ({
       num: String(i.r).padStart(2, '0'), name: i.n, desc: i.d || '', img: i.img, priceTxt: priceOf(i), tf: tfs[k % 3],
       showProv: demo && !!i.prov, aria: 'Añadir ' + i.n + ' al pedido',
       add: (e) => this.add(i.id, i.sizes ? i.sizes[0][0] : null, e)
     }));
-    const menuItems = Component.ITEMS.filter((i) => i.c === s.cat).map((i) => ({
+    const catAll = Component.ITEMS.filter((i) => i.c === s.cat), moreShow = !desk && catAll.length > 7, clipped = moreShow && !s.showAll;
+    const menuItems = (clipped ? catAll.slice(0, 6) : catAll).map((i) => ({
       name: mark(i), desc: i.d || null, photo: i.img || null, priceTxt: priceOf(i), single: !i.sizes, hasSizes: !!i.sizes,
       aria: 'Añadir ' + i.n + ' al pedido', add: (e) => this.add(i.id, null, e),
       sizes: (i.sizes || []).map((z) => ({ label: z[0] + ' ' + this.fmt(z[1]), aria: 'Añadir ' + i.n + ' ' + z[0] + ' al pedido', add: (e) => this.add(i.id, z[0], e) }))
@@ -1298,9 +1325,10 @@ class Component extends DCLogic {
       btnNavy: { style: { color: '#F6EFDF' } },
       mapsDir: Component.MAPS,
       addGolden: (e) => this.add('golden', null, e),
-      ribbon, ribbonCountTxt: '01 / ' + String(ribbon.length).padStart(2, '0'), ribbonHint: desk ? 'Sigue bajando' : 'Desliza',
+      ribbon, ribbonCountTxt: '01 / ' + String(ribbon.length).padStart(2, '0'), ribbonHint: 'Sigue bajando',
       cats: Component.CATS.map((c) => ({ label: c[1], tone: s.cat === c[0] ? 'solid' : 'default', pressed: s.cat === c[0] ? 'true' : 'false', pick: () => this.pickCat(c[0]) })),
       menuItems, noBorder: { style: { borderTop: 0, width: '100%' } },
+      moreShow, moreExpanded: s.showAll ? 'true' : 'false', moreLabel: s.showAll ? 'Ver menos' : 'Ver ' + (catAll.length - 6) + ' platos más', morePath: s.showAll ? 'm18 15-6-6-6 6' : 'm6 9 6 6 6-6', toggleMore: this.toggleMore,
       quotes: Component.QUOTES.map((x, k) => ({ t: x.t, who: x.who, where: x.where, aria: 'Ver opinión ' + (k + 1), go: () => { if (this._qShow) this._qShow(k); } })),
       steps: [[1, 'Pedido'], [2, 'Entrega'], [3, 'Pago']].map((x) => ({ n: String(x[0]), label: x[1], bg: x[0] <= s.step ? '#161A35' : 'transparent', fg: x[0] <= s.step ? '#EFA61F' : '#4A4D66', border: x[0] <= s.step ? '2px solid #161A35' : '2px solid #A99E86', color: x[0] === s.step ? '#161A35' : '#4A4D66' })),
       step1: s.step === 1, step2: s.step === 2, step3: s.step === 3,

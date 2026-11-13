@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+  <link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+  <script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+  <style>
+    html:root{--cream:#FBF3EE;--cream-2:#F5E4DD;--paper:#FFFFFF;--line:#EAD3CB;--ink:#2B1719;--ink-soft:#6B4E51;--ink-faint:#87686C;--char:#5C1E1D;--char-2:#6B2826;--char-deep:#3B1312;--tomato:#B4204A;--tomato-dk:#951A3D;--coral:#F49E95;--gold:#C9A24A;--gold-dk:#A9832F;--accent:#B4204A;--accent-press:#951A3D;--accent-2:#F49E95;--accent-2-ink:#A9832F;--price:#B4204A;--text-on-dark:#F8E9E4;--text-on-dark-soft:#E3C6C0;--bg-page:#FBF3EE;--bg-alt:#F5E4DD}
+    body{margin:0;background:#FBF3EE;overflow-x:clip}
+    a{color:inherit}
+    a:hover{color:var(--accent)}
+    ::selection{background:#F49E95;color:#2B1719}
+    :focus-visible{outline:2px solid #B4204A;outline-offset:3px}
+    html.lenis,html.lenis body{height:auto}
+    .lenis.lenis-smooth{scroll-behavior:auto!important}
+    .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+    .lenis.lenis-stopped{overflow:hidden}
+  </style>
+</helmet>
+<div ref="{{ rootRef }}" id="top" style="background:var(--cream); color:var(--ink); font-family:var(--font-body); min-height:100vh">
+
+  <header aria-label="Navegación" style="position:fixed; top:0; left:0; right:0; z-index:40; transform:{{ navTransform }}; transition:transform .36s cubic-bezier(.32,.72,0,1)">
+    <div aria-hidden="true" style="height:6px; background:repeating-linear-gradient(90deg, var(--ink) 0 18px, #FFFDFB 18px 36px)"></div>
+    <div style="background:rgba(251,243,238,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line)">
+      <div style="max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); height:58px; display:flex; align-items:center; justify-content:space-between; gap:16px">
+        <a href="#top" onClick="{{ go }}" aria-label="Victoria by Victoria, volver arriba" style="display:flex; align-items:baseline; gap:8px; text-decoration:none; color:var(--ink)">
+          <span style="font-family:var(--font-body); font-weight:500; font-size:17px; letter-spacing:.3em; text-transform:uppercase">Victoria</span>
+          <span style="font-family:var(--font-script); font-weight:700; font-size:20px; color:var(--accent)">by Victoria</span>
+        </a>
+        <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ false }}">
+          <nav aria-label="Secciones" style="display:flex; gap:28px; font-weight:600; font-size:15px">
+            <a href="#lookbook" onClick="{{ go }}" style="text-decoration:none">Lookbook</a>
+            <a href="#tienda" onClick="{{ go }}" style="text-decoration:none">Tienda online</a>
+            <a href="#como-comprar" onClick="{{ go }}" style="text-decoration:none">Cómo comprar</a>
+            <a href="#visitanos" onClick="{{ go }}" style="text-decoration:none">Visítanos</a>
+          </nav>
+        </sc-if>
+        <button type="button" onClick="{{ openBag }}" aria-label="{{ bagLabel }}" style="position:relative; width:44px; height:44px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink); display:inline-grid; place-items:center; cursor:pointer; transition:transform .16s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)">
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <sc-if value="{{ hasBag }}" hint-placeholder-val="{{ false }}"><span data-badge style="position:absolute; top:-5px; right:-5px; min-width:20px; height:20px; padding:0 5px; border-radius:999px; background:var(--accent); color:#fff; font-size:12px; font-weight:800; display:grid; place-items:center">{{ bagCount }}</span></sc-if>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div data-hero-track style="position:relative; height:100svh">
+    <section data-hero data-screen-label="01 Portada" style="position:sticky; top:0; height:100svh; min-height:560px; overflow:hidden; background:var(--cream)">
+      <div data-arch style="position:absolute; inset:0; background:var(--char); clip-path:inset(min(calc(196px + 12vw), 380px) max(7vw, calc(50% - 250px)) 0px max(7vw, calc(50% - 250px)) round min(43vw, 250px) min(43vw, 250px) 0px 0px); will-change:clip-path">
+        <div data-arch-in style="position:absolute; inset:0">
+          <img data-arch-img src="{{ heroSrc }}" alt="{{ heroAlt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:{{ heroPos }}; transform-origin:50% 0%; transform:translateY(min(calc(110px + 6.6vw), 210px)) scale(1.1)">
+        </div>
+        <div data-hero-shade style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(43,23,25,0) 38%, rgba(43,23,25,.8) 100%)"></div>
+      </div>
+
+      <div data-arch-frame-in aria-hidden="true" style="position:absolute; inset:0; pointer-events:none">
+        <div data-arch-frame style="position:absolute; top:calc(min(calc(196px + 12vw), 380px) - 9px); left:calc(max(7vw, calc(50% - 250px)) - 9px); right:calc(max(7vw, calc(50% - 250px)) - 9px); bottom:-2px; border:1.5px solid var(--gold); border-bottom:0; border-radius:calc(min(43vw, 250px) + 9px) calc(min(43vw, 250px) + 9px) 0 0"></div>
+      </div>
+
+      <div data-hero-top style="position:absolute; top:0; left:0; right:0; z-index:2">
+        <div data-awning aria-hidden="true" style="height:34px; background:repeating-linear-gradient(90deg, var(--ink) 0 26px, #FFFDFB 26px 52px)"></div>
+        <div aria-hidden="true" style="filter:drop-shadow(0 4px 3px rgba(43,23,25,.18))">
+          <div data-scallop style="height:13px; background:repeating-linear-gradient(90deg, var(--ink) 0 26px, #FFFDFB 26px 52px); -webkit-mask:radial-gradient(circle at 50% 0, #000 12.5px, transparent 13px) 0 0 / 26px 13px repeat-x; mask:radial-gradient(circle at 50% 0, #000 12.5px, transparent 13px) 0 0 / 26px 13px repeat-x"></div>
+        </div>
+        <div style="max-width:var(--maxw); margin:0 auto; padding:10px var(--gutter) 0; display:flex; align-items:center; justify-content:space-between; gap:12px">
+          <div data-hero-fade style="min-width:0">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" hint-size="200px,34px">{{ statusText }}</x-import>
+          </div>
+          <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ false }}">
+            <nav data-hero-fade aria-label="Secciones" style="display:flex; gap:28px; font-weight:600; font-size:15px">
+              <a href="#lookbook" onClick="{{ go }}" style="text-decoration:none">Lookbook</a>
+              <a href="#tienda" onClick="{{ go }}" style="text-decoration:none">Tienda online</a>
+              <a href="#como-comprar" onClick="{{ go }}" style="text-decoration:none">Cómo comprar</a>
+              <a href="#visitanos" onClick="{{ go }}" style="text-decoration:none">Visítanos</a>
+            </nav>
+          </sc-if>
+          <div data-hero-fade>
+            <button type="button" onClick="{{ openBag }}" aria-label="{{ bagLabel }}" style="position:relative; width:46px; height:46px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink); display:inline-grid; place-items:center; cursor:pointer; box-shadow:var(--shadow-sm); transition:transform .16s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)">
+              <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              <sc-if value="{{ hasBag }}" hint-placeholder-val="{{ false }}"><span data-badge style="position:absolute; top:-5px; right:-5px; min-width:20px; height:20px; padding:0 5px; border-radius:999px; background:var(--accent); color:#fff; font-size:12px; font-weight:800; display:grid; place-items:center">{{ bagCount }}</span></sc-if>
+            </button>
+          </div>
+        </div>
+        <div style="text-align:center; padding:clamp(14px, 2.4vw, 24px) var(--gutter) 0">
+          <h1 aria-label="Victoria by Victoria, boutique de moda mujer en Laredo" style="margin:0; font-family:var(--font-body); font-weight:500; font-size:clamp(38px, 10.6vw, 108px); line-height:1; letter-spacing:.3em; padding-left:.3em; text-transform:uppercase; color:var(--ink)">
+            <span data-wordmark aria-hidden="true">Victoria</span>
+          </h1>
+          <div data-byline aria-hidden="true" style="display:inline-block; margin-top:-.08em; font-family:var(--font-script); font-weight:700; font-size:clamp(30px, 7.6vw, 62px); line-height:1.05; color:var(--accent); transform:rotate(-5deg)">by Victoria</div>
+          <p data-hero-fade style="margin:4px 0 0; font-size:13px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft)">Boutique de moda mujer · Laredo</p>
+        </div>
+      </div>
+
+      <div data-hero-end style="position:absolute; left:0; right:0; bottom:0; z-index:3; padding:0 calc(max(7vw, calc(50% - 250px)) + 22px) clamp(28px, 6svh, 56px); display:flex; flex-direction:column; align-items:center; text-align:center; gap:14px; color:#fff">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--accent-2)" hint-size="220px,20px">Nueva temporada · Otoño</x-import>
+        <h2 style="margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(34px, 8.4vw, 64px); line-height:1; letter-spacing:-.025em; color:#fff; text-wrap:balance">Lo nuevo ya está en la percha.</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="#tienda" onClick="{{ go }}" hint-size="160px,48px">Comprar online</x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" href="#lookbook" onClick="{{ go }}" hint-size="170px,48px">Ver el lookbook</x-import>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div aria-hidden="true" style="background:var(--accent-2); color:var(--ink); overflow:hidden; padding:15px 0; border-block:1px solid rgba(43,23,25,.12)">
+    <div data-marquee style="display:flex; width:max-content">
+      <div style="display:flex; align-items:center; gap:26px; padding-right:26px">
+        <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="10">
+          <span style="display:flex; align-items:center; gap:26px; font-family:var(--font-display); font-weight:400; font-size:clamp(20px, 3vw, 28px); letter-spacing:-.01em; white-space:nowrap">{{ m }}<span style="width:7px; height:7px; border-radius:999px; background:var(--ink)"></span></span>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; gap:26px; padding-right:26px">
+        <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="10">
+          <span style="display:flex; align-items:center; gap:26px; font-family:var(--font-display); font-weight:400; font-size:clamp(20px, 3vw, 28px); letter-spacing:-.01em; white-space:nowrap">{{ m }}<span style="width:7px; height:7px; border-radius:999px; background:var(--ink)"></span></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div data-lb-track id="lookbook" style="position:relative">
+    <section data-lb data-screen-label="02 Lookbook" style="position:sticky; top:0; min-height:100svh; background:var(--char); color:var(--text-on-dark); overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:84px 0 clamp(22px, 4svh, 40px)">
+      <div style="max-width:var(--maxw); width:100%; margin:0 auto; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px 32px">
+        <div style="max-width:620px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" color="var(--accent-2)" hint-size="180px,20px">Lookbook · Otoño</x-import>
+          <h2 data-split style="margin:10px 0 0; font-family:var(--font-display); font-weight:400; font-size:var(--fs-h2); line-height:1.02; letter-spacing:-.025em; color:var(--text-on-dark); text-wrap:balance">Cinco formas de llevar el otoño.</h2>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; font-size:14px; font-weight:600; color:var(--text-on-dark-soft)">
+          <span>Desliza</span>
+          <div style="width:120px; height:2px; border-radius:2px; background:rgba(255,255,255,.2); overflow:hidden"><div data-lb-bar style="width:100%; height:100%; background:var(--accent-2); transform-origin:0 50%"></div></div>
+        </div>
+      </div>
+      <div data-lb-rail style="display:flex; gap:clamp(16px, 3vw, 36px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:clamp(20px, 3svh, 34px) var(--gutter) 6px max(var(--gutter), calc((100% - var(--maxw)) / 2 + var(--gutter)))">
+        <sc-for list="{{ looks }}" as="lk" hint-placeholder-count="5">
+          <article style="flex:0 0 auto; width:clamp(250px, 74vw, 400px); scroll-snap-align:start; display:flex; flex-direction:column; gap:14px">
+            <div style="position:relative; height:clamp(300px, 52svh, 620px); border-radius:var(--radius-lg); overflow:hidden; background:var(--char-2)">
+              <img data-lb-img src="{{ lk.img }}" alt="{{ lk.alt }}" loading="lazy" style="position:absolute; top:0; left:-7%; width:114%; height:100%; object-fit:cover; object-position:{{ lk.lbPos }}">
+              <span style="position:absolute; top:14px; left:16px; font-family:var(--font-display); font-weight:600; font-size:14px; letter-spacing:.04em; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.35)">{{ lk.n }} / 05</span>
+            </div>
+            <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:14px">
+              <div style="min-width:0">
+                <p style="margin:0 0 4px; font-family:var(--font-script); font-weight:700; font-size:26px; line-height:1.05; color:var(--accent-2)">{{ lk.note }}</p>
+                <h3 style="margin:0; font-family:var(--font-body); font-weight:600; font-size:17px; line-height:1.3; letter-spacing:0; color:var(--text-on-dark)">{{ lk.name }}</h3>
+                <p style="margin:2px 0 0; font-weight:700; font-size:16px; color:var(--accent-2)">{{ lk.priceTxt }}</p>
+              </div>
+              <div style="flex:none">
+                <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="ghost" onClick="{{ lk.open }}" aria-label="{{ lk.wantLabel }}" hint-size="120px,48px">Lo quiero</x-import>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+        <div aria-hidden="true" style="flex:0 0 1px"></div>
+      </div>
+    </section>
+  </div>
+
+  <section id="tienda" data-screen-label="03 Tienda online" style="background:var(--cream); padding:var(--pad-block) 0">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter)">
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px 32px; margin-bottom:24px">
+        <div style="max-width:640px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="140px,20px">Tienda online</x-import>
+          <h2 data-split style="margin:10px 0 12px; font-family:var(--font-display); font-weight:400; font-size:var(--fs-h2); line-height:1.02; letter-spacing:-.025em; text-wrap:balance">Elige online, pruébatelo en la plaza.</h2>
+          <sc-if value="{{ withShipping }}" hint-placeholder-val="{{ true }}">
+            <p data-reveal style="margin:0; font-size:var(--fs-lead); color:var(--ink-soft); max-width:52ch; text-wrap:pretty">Reserva tu talla desde el móvil y te la guardamos en la tienda. Si lo prefieres, te la mandamos a casa.</p>
+          </sc-if>
+          <sc-if value="{{ pickupOnly }}" hint-placeholder-val="{{ false }}">
+            <p data-reveal style="margin:0; font-size:var(--fs-lead); color:var(--ink-soft); max-width:52ch; text-wrap:pretty">Reserva tu talla desde el móvil y te la guardamos en la tienda para que te la pruebes.</p>
+          </sc-if>
+        </div>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="base" hint-size="220px,34px">Precios y tallas de ejemplo</x-import>
+        </sc-if>
+      </div>
+
+      <div role="group" aria-label="Filtrar por categoría" style="display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; margin:0 calc(var(--gutter) * -1) 18px; padding:0 var(--gutter)">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+          <button type="button" onClick="{{ f.onClick }}" aria-pressed="{{ f.active }}" style="flex:none; min-height:44px; padding:0; border:0; background:none; cursor:pointer; display:flex; align-items:center; transition:transform .16s cubic-bezier(.4,0,.2,1)" style-active="transform:scale(.97)">
+            <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Chip" tone="{{ f.tone }}" hint-size="96px,34px">{{ f.label }} · {{ f.count }}</x-import>
+          </button>
+        </sc-for>
+      </div>
+
+      <div data-grid style="display:grid; grid-template-columns:repeat(auto-fill, minmax(clamp(148px, 40vw, 250px), 1fr)); gap:clamp(18px, 2.6vw, 30px) clamp(12px, 2vw, 22px)">
+        <sc-for list="{{ items }}" as="p" hint-placeholder-count="8">
+          <article data-card style="min-width:0">
+            <button type="button" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="display:flex; flex-direction:column; gap:10px; width:100%; padding:0; border:0; background:none; text-align:left; cursor:pointer; color:inherit; font:inherit">
+              <span style="position:relative; display:block; width:100%; aspect-ratio:3 / 4; border-radius:var(--radius); overflow:hidden; background:var(--cream-2); box-shadow:var(--shadow-sm)">
+                <span style="position:absolute; inset:0; display:block; transition:transform .6s cubic-bezier(.4,0,.2,1)" style-hover="transform:scale(1.05)">
+                  <img src="{{ p.img }}" alt="" loading="lazy" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ p.pos }}; transform-origin:{{ p.pos }}; transform:scale({{ p.zoom }})">
+                </span>
+                <sc-if value="{{ p.isNew }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute; top:10px; left:10px; padding:4px 10px; border-radius:999px; background:var(--ink); color:#fff; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase">Nuevo</span>
+                </sc-if>
+                <span aria-hidden="true" style="position:absolute; right:10px; bottom:10px; width:40px; height:40px; border-radius:999px; background:rgba(255,255,255,.94); color:var(--ink); display:grid; place-items:center; box-shadow:var(--shadow-sm)">
+                  <svg viewBox="0 0 24 24" style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                </span>
+              </span>
+              <span style="display:block; padding:0 2px">
+                <span style="display:block; font-weight:600; font-size:15.5px; line-height:1.3; color:var(--ink); text-wrap:pretty">{{ p.name }}</span>
+                <span style="display:block; margin-top:3px; font-weight:700; font-size:15px; color:var(--accent)">{{ p.priceTxt }}</span>
+              </span>
+            </button>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div data-how-track id="como-comprar" style="position:relative; background:var(--cream-2)">
+    <section data-how data-screen-label="04 Cómo comprar" style="position:sticky; top:0; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:76px 0 {{ howPadB }}; overflow:hidden; background:var(--cream-2)">
+      <div style="max-width:var(--maxw); width:100%; margin:0 auto; padding:0 var(--gutter); display:grid; grid-template-columns:{{ howCols }}; gap:{{ howGap }}; align-items:center">
+        <div style="min-width:0">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="140px,20px">Cómo comprar</x-import>
+          <h2 data-split style="margin:10px 0 0; font-family:var(--font-display); font-weight:400; font-size:var(--fs-h2); line-height:1.02; letter-spacing:-.025em; text-wrap:balance">Tres pasos y es tuyo.</h2>
+          <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ false }}">
+            <p data-reveal style="margin:14px 0 0; font-size:var(--fs-lead); color:var(--ink-soft); max-width:44ch; text-wrap:pretty">Sin crearte ninguna cuenta: eliges, nos lo confirmas por WhatsApp y te lo guardamos en la tienda.</p>
+            <ol style="list-style:none; margin:26px 0 0; padding:0; position:relative; display:grid; gap:4px">
+              <span aria-hidden="true" style="position:absolute; left:21px; top:32px; bottom:32px; width:2px; border-radius:2px; background:var(--line); overflow:hidden">
+                <span data-how-fill-y style="display:block; width:100%; height:100%; background:var(--accent); transform-origin:50% 0%; transform:{{ howFillY }}"></span>
+              </span>
+              <sc-for list="{{ howSteps }}" as="s" hint-placeholder-count="3">
+                <li style="position:relative">
+                  <button type="button" onClick="{{ s.go }}" aria-current="{{ s.current }}" style="display:flex; align-items:flex-start; gap:18px; width:100%; padding:10px 0; border:0; background:none; text-align:left; cursor:pointer; color:inherit; font:inherit">
+                    <span style="position:relative; z-index:1; flex:none; width:44px; height:44px; border-radius:999px; border:1.5px solid {{ s.numBorder }}; background:{{ s.numBg }}; color:{{ s.numFg }}; display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:15px; transition:background .4s cubic-bezier(.4,0,.2,1), color .4s cubic-bezier(.4,0,.2,1), border-color .4s cubic-bezier(.4,0,.2,1)">{{ s.n }}</span>
+                    <span style="flex:1; min-width:0; padding-top:8px">
+                      <span style="display:block; font-family:var(--font-display); font-weight:600; font-size:var(--fs-h3); line-height:1.15; letter-spacing:-.015em; color:{{ s.titleColor }}; transition:color .4s cubic-bezier(.4,0,.2,1)">{{ s.title }}</span>
+                      <span style="display:grid; grid-template-rows:{{ s.rows }}; transition:grid-template-rows .55s cubic-bezier(.32,.72,0,1)">
+                        <span style="overflow:hidden; min-height:0">
+                          <span style="display:block; padding-top:6px; max-width:42ch; font-size:16.5px; line-height:1.5; color:var(--ink-soft); text-wrap:pretty; opacity:{{ s.descOp }}; transition:opacity .45s cubic-bezier(.4,0,.2,1)">{{ s.desc }}</span>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              </sc-for>
+            </ol>
+            <div data-reveal style="display:flex; flex-wrap:wrap; gap:10px; margin-top:22px">
+              <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" href="#tienda" onClick="{{ go }}" hint-size="190px,48px">Empezar a comprar</x-import>
+            </div>
+          </sc-if>
+        </div>
+
+        <div data-how-stage style="position:relative; display:grid; place-items:center; min-width:0; padding:8px 0 0">
+          <div style="position:relative">
+            <div data-how-arch aria-hidden="true" style="position:absolute; left:-30%; right:-30%; top:12%; bottom:0">
+              <div style="position:absolute; inset:0; border-radius:999px 999px 0 0; background:{{ howArchBg }}; transition:background .8s cubic-bezier(.4,0,.2,1)"></div>
+              <div style="position:absolute; inset:-11px -11px 0 -11px; border:1.5px solid var(--gold); border-bottom:0; border-radius:999px 999px 0 0"></div>
+            </div>
+
+            <div data-how-phone aria-hidden="true" style="position:relative; z-index:2; height:{{ howPhoneH }}; aspect-ratio:9 / 18.6; padding:7px; border-radius:40px; background:var(--ink); box-shadow:0 50px 70px -40px rgba(43,23,25,.6), 0 18px 30px -18px rgba(43,23,25,.35)">
+              <div style="position:relative; width:100%; height:100%; border-radius:33px; overflow:hidden; background:var(--cream); container-type:size; isolation:isolate; color:var(--ink); font-family:var(--font-body)">
+                <span style="position:absolute; z-index:6; top:2.6cqw; left:50%; width:27cqw; height:7.4cqw; margin-left:-13.5cqw; border-radius:999px; background:var(--ink)"></span>
+                <span style="position:absolute; z-index:6; bottom:2cqw; left:50%; width:34cqw; height:1.3cqw; margin-left:-17cqw; border-radius:999px; background:var(--ink); opacity:.85"></span>
+
+                <div data-how-screen="0" style="position:absolute; inset:0; z-index:{{ scr0.z }}; clip-path:{{ scr0.clip }}; transition:clip-path .75s cubic-bezier(.65,0,.35,1); background:var(--cream)">
+                  <div style="position:absolute; inset:0; transform:{{ scr0.inner }}; transition:transform .75s cubic-bezier(.65,0,.35,1)">
+                    <div style="display:flex; justify-content:space-between; align-items:center; height:12cqw; padding:1cqw 8cqw 0; font-size:3.9cqw; font-weight:700; color:var(--ink)"><span>11:30</span><span style="width:6.6cqw; height:3.3cqw; border:1.5px solid currentColor; border-radius:1.2cqw"></span></div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; padding:1cqw 6cqw 0">
+                      <span style="font-weight:500; font-size:4.3cqw; letter-spacing:.28em; text-transform:uppercase">Victoria</span>
+                      <span style="position:relative; width:8cqw; height:8cqw; display:grid; place-items:center">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:6cqw; height:6cqw; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        <span data-how-badge style="position:absolute; top:-.6cqw; right:-1.2cqw; width:4.6cqw; height:4.6cqw; border-radius:999px; background:var(--accent); color:#fff; font-size:2.8cqw; font-weight:800; display:grid; place-items:center">1</span>
+                      </span>
+                    </div>
+                    <div style="margin:3cqw 5cqw 0; height:55cqh; border-radius:5cqw; overflow:hidden; background:var(--cream-2)">
+                      <img src="img/blazer-camel.jpg" alt="" style="display:block; width:100%; height:100%; object-fit:cover; object-position:50% 18%">
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:2cqw; padding:3.4cqw 6cqw 0">
+                      <span style="font-weight:600; font-size:4.5cqw; line-height:1.2">Blazer cruzado camel</span>
+                      <span style="flex:none; font-weight:700; font-size:4.3cqw; color:var(--accent)">79,90 €</span>
+                    </div>
+                    <div style="display:flex; gap:1.8cqw; padding:3.4cqw 6cqw 0">
+                      <span style="flex:1; height:9.6cqw; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink); display:grid; place-items:center; font-size:3.4cqw; font-weight:700">XS</span><span style="flex:1; height:9.6cqw; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink); display:grid; place-items:center; font-size:3.4cqw; font-weight:700">S</span><span data-how-m style="flex:1; height:9.6cqw; border-radius:999px; border:1px solid var(--ink); background:var(--ink); color:#fff; display:grid; place-items:center; font-size:3.4cqw; font-weight:700">M</span><span style="flex:1; height:9.6cqw; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink); display:grid; place-items:center; font-size:3.4cqw; font-weight:700">L</span><span style="flex:1; height:9.6cqw; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink-faint); text-decoration:line-through; display:grid; place-items:center; font-size:3.4cqw; font-weight:700">XL</span>
+                    </div>
+                    <div data-how-add style="margin:3.6cqw 6cqw 0; height:12cqw; border-radius:999px; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; gap:2cqw; font-weight:700; font-size:4cqw"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:4.6cqw; height:4.6cqw; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>Añadir a la bolsa</div>
+                    <span data-how-tap style="position:absolute; left:0; top:0; z-index:4; width:11cqw; height:11cqw; border-radius:999px; background:rgba(255,255,255,.5); border:2px solid rgba(43,23,25,.55); box-shadow:0 4px 14px rgba(43,23,25,.3); opacity:0; pointer-events:none"></span>
+                  </div>
+                </div>
+
+                <div data-how-screen="1" style="position:absolute; inset:0; z-index:{{ scr1.z }}; clip-path:{{ scr1.clip }}; transition:clip-path .75s cubic-bezier(.65,0,.35,1); background:var(--cream-2)">
+                  <div style="position:absolute; inset:0; display:flex; flex-direction:column; transform:{{ scr1.inner }}; transition:transform .75s cubic-bezier(.65,0,.35,1)">
+                    <div style="background:var(--paper); border-bottom:1px solid var(--line)">
+                      <div style="display:flex; justify-content:space-between; align-items:center; height:12cqw; padding:1cqw 8cqw 0; font-size:3.9cqw; font-weight:700; color:var(--ink)"><span>11:30</span><span style="width:6.6cqw; height:3.3cqw; border:1.5px solid currentColor; border-radius:1.2cqw"></span></div>
+                      <div style="display:flex; align-items:center; gap:2.6cqw; padding:1cqw 4.5cqw 3cqw">
+                        <svg viewBox="0 0 24 24" style="width:5cqw; height:5cqw; flex:none; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round"><path d="m15 18-6-6 6-6"></path></svg>
+                        <span style="flex:none; width:10cqw; height:10cqw; border-radius:999px; background:var(--char); color:#fff; display:grid; place-items:center; font-family:var(--font-script); font-weight:700; font-size:6cqw">V</span>
+                        <span style="display:flex; flex-direction:column; min-width:0">
+                          <span style="font-weight:700; font-size:3.8cqw; white-space:nowrap">Victoria by Victoria</span>
+                          <span style="font-size:3cqw; color:var(--ink-soft)">en línea</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div style="flex:1; min-height:0; display:flex; flex-direction:column; gap:2.6cqw; padding:4cqw 4cqw 3cqw">
+                      <span style="align-self:center; padding:1cqw 3cqw; border-radius:999px; background:rgba(255,255,255,.75); font-size:2.8cqw; font-weight:700; color:var(--ink-soft)">Hoy</span>
+                      <div data-how-out style="align-self:flex-end; max-width:86cqw; padding:2.6cqw 3.2cqw 1.8cqw; border-radius:3.6cqw 3.6cqw 1cqw 3.6cqw; background:color-mix(in oklch, var(--whatsapp) 24%, #fff); font-size:3.4cqw; line-height:1.42; box-shadow:0 1px 0 rgba(43,23,25,.08)">
+                        <span style="display:block; white-space:pre-line">{{ howMsg }}</span>
+                        <span style="display:block; margin-top:.6cqw; text-align:right; font-size:2.6cqw; color:var(--ink-soft)">11:32 ✓✓</span>
+                      </div>
+                      <div data-how-typing style="display:none; align-self:flex-start; align-items:center; gap:1.4cqw; padding:3cqw 4cqw; border-radius:3.6cqw 3.6cqw 3.6cqw 1cqw; background:var(--paper)">
+                        <span style="width:1.8cqw; height:1.8cqw; border-radius:999px; background:var(--ink-faint)"></span>
+                        <span style="width:1.8cqw; height:1.8cqw; border-radius:999px; background:var(--ink-faint)"></span>
+                        <span style="width:1.8cqw; height:1.8cqw; border-radius:999px; background:var(--ink-faint)"></span>
+                      </div>
+                      <div data-how-in style="align-self:flex-start; max-width:80cqw; padding:2.6cqw 3.2cqw 1.8cqw; border-radius:3.6cqw 3.6cqw 3.6cqw 1cqw; background:var(--paper); font-size:3.4cqw; line-height:1.42; box-shadow:0 1px 0 rgba(43,23,25,.08)">
+                        <span style="display:block">¡Hola! Sí, la tenemos en tu talla. Te la guardamos para cuando quieras pasar 😊</span>
+                        <span style="display:block; margin-top:.6cqw; text-align:right; font-size:2.6cqw; color:var(--ink-soft)">11:34</span>
+                      </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:2cqw; padding:2cqw 4cqw 8cqw">
+                      <span style="flex:1; height:10cqw; border-radius:999px; border:1px solid var(--line); background:var(--paper); display:flex; align-items:center; padding:0 4cqw; font-size:3.4cqw; color:var(--ink-faint)">Mensaje</span>
+                      <span style="flex:none; width:10cqw; height:10cqw; border-radius:999px; background:var(--whatsapp); color:#fff; display:grid; place-items:center">
+                        <svg viewBox="0 0 24 24" style="width:4.8cqw; height:4.8cqw; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div data-how-screen="2" style="position:absolute; inset:0; z-index:{{ scr2.z }}; clip-path:{{ scr2.clip }}; transition:clip-path .75s cubic-bezier(.65,0,.35,1); background:var(--cream)">
+                  <div style="position:absolute; inset:0; transform:{{ scr2.inner }}; transition:transform .75s cubic-bezier(.65,0,.35,1)">
+                    <div style="display:flex; justify-content:space-between; align-items:center; height:12cqw; padding:1cqw 8cqw 0; font-size:3.9cqw; font-weight:700; color:var(--ink)"><span>11:30</span><span style="width:6.6cqw; height:3.3cqw; border:1.5px solid currentColor; border-radius:1.2cqw"></span></div>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; padding:1cqw 7cqw 0">
+                      <span style="font-weight:500; font-size:4.3cqw; letter-spacing:.28em; text-transform:uppercase">Victoria</span>
+                      <span style="font-family:var(--font-script); font-weight:700; font-size:5.2cqw; color:var(--accent)">by Victoria</span>
+                    </div>
+                    <div style="margin:4cqw 10cqw 0; padding:1.8cqw 1.8cqw 0; border:1.5px solid var(--gold); border-bottom:0; border-radius:999px 999px 0 0">
+                      <div style="height:48cqh; border-radius:999px 999px 0 0; overflow:hidden; background:var(--char)">
+                        <img data-how-photo src="img/tienda-fachada.jpg" alt="" style="display:block; width:100%; height:100%; object-fit:cover; object-position:50% 35%">
+                      </div>
+                    </div>
+                    <div data-how-ticket style="position:relative; z-index:2; margin:-14cqw 5cqw 0; padding:5cqw 5cqw 4.4cqw; border-radius:5cqw; background:var(--paper); box-shadow:var(--shadow)">
+                      <span style="display:block; font-size:2.7cqw; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)">Pedido VV-10482</span>
+                      <span style="display:block; margin-top:1.4cqw; font-family:var(--font-display); font-weight:600; font-size:6.2cqw; line-height:1.05; letter-spacing:-.02em">Listo para recoger</span>
+                      <span style="display:block; margin:3.4cqw 0; border-top:1.5px dashed var(--line)"></span>
+                      <span style="display:flex; align-items:center; gap:2cqw; font-size:3.3cqw; color:var(--ink-soft)"><svg viewBox="0 0 24 24" style="width:3.8cqw; height:3.8cqw; flex:none; fill:none; stroke:var(--accent); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Pl. la Constitución, 4</span>
+                      <span style="display:flex; align-items:center; gap:2cqw; margin-top:1.6cqw; font-size:3.3cqw; color:var(--ink-soft)"><svg viewBox="0 0 24 24" style="width:3.8cqw; height:3.8cqw; flex:none; fill:none; stroke:var(--accent); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>{{ howToday }}</span>
+                      <span data-how-stamp style="position:absolute; top:-7cqw; right:-2cqw; width:20cqw; height:20cqw; border-radius:999px; background:var(--accent); color:#fff; display:grid; place-items:center; text-align:center; font-family:var(--font-script); font-weight:700; font-size:4.6cqw; line-height:.9; transform:rotate(12deg); box-shadow:0 8px 18px -8px var(--accent)">¡te<br>esperamos!</span>
+                    </div>
+                    <sc-if value="{{ withShipping }}" hint-placeholder-val="{{ true }}">
+                      <span style="display:block; margin-top:3cqw; text-align:center; font-family:var(--font-script); font-weight:700; font-size:5cqw; color:var(--ink-soft)">o te lo enviamos a casa</span>
+                    </sc-if>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <sc-if value="{{ howStickers }}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{ howSteps }}" as="s" hint-placeholder-count="3">
+                <span aria-hidden="true" style="position:absolute; z-index:3; top:{{ s.stTop }}; bottom:{{ s.stBottom }}; left:{{ s.stLeft }}; right:{{ s.stRight }}; width:max-content; max-width:180px; padding:8px 16px 10px; border-radius:14px; background:var(--paper); box-shadow:var(--shadow); font-family:var(--font-script); font-weight:700; font-size:27px; line-height:1; text-align:center; color:var(--accent); opacity:{{ s.stOp }}; transform:{{ s.stTf }}; transition:opacity .35s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.34,1.56,.64,1)">{{ s.sticker }}</span>
+              </sc-for>
+            </sc-if>
+          </div>
+        </div>
+
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+          <div style="min-width:0">
+            <div role="group" aria-label="Pasos para comprar" style="display:flex; gap:6px">
+              <sc-for list="{{ howSteps }}" as="s" hint-placeholder-count="3">
+                <button type="button" onClick="{{ s.go }}" aria-current="{{ s.current }}" style="flex:1; min-width:0; min-height:44px; padding:0 8px; border-radius:999px; border:1.5px solid {{ s.tabBorder }}; background:{{ s.tabBg }}; color:{{ s.tabFg }}; display:flex; align-items:center; justify-content:center; gap:6px; font-family:var(--font-body); font-weight:700; font-size:14px; cursor:pointer; transition:background .35s cubic-bezier(.4,0,.2,1), color .35s cubic-bezier(.4,0,.2,1), border-color .35s cubic-bezier(.4,0,.2,1)">
+                  <span style="font-family:var(--font-display); font-size:12px; opacity:.7">{{ s.n }}</span>{{ s.short }}
+                </button>
+              </sc-for>
+            </div>
+            <div aria-hidden="true" style="height:2px; margin-top:10px; border-radius:2px; background:var(--line); overflow:hidden">
+              <div data-how-fill-x style="height:100%; background:var(--accent); transform-origin:0% 50%; transform:{{ howFillX }}"></div>
+            </div>
+            <div style="display:grid; margin-top:12px">
+              <sc-for list="{{ howSteps }}" as="s" hint-placeholder-count="3">
+                <div aria-hidden="{{ s.hidden }}" style="grid-area:1 / 1; opacity:{{ s.capOp }}; transform:{{ s.capTf }}; transition:opacity .4s cubic-bezier(.4,0,.2,1), transform .5s cubic-bezier(.32,.72,0,1)">
+                  <h3 style="margin:0; font-family:var(--font-display); font-weight:600; font-size:22px; line-height:1.15; letter-spacing:-.015em">{{ s.title }}</h3>
+                  <p style="margin:4px 0 0; font-size:15.5px; line-height:1.45; color:var(--ink-soft); text-wrap:pretty">{{ s.desc }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+  </div>
+
+  <section data-screen-label="04b Dudas" aria-labelledby="dudas-titulo" style="background:var(--cream-2); padding:clamp(24px, 4vw, 48px) 0 var(--pad-block)">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:flex-start; gap:28px 64px">
+      <div style="flex:1 1 280px; max-width:420px">
+        <h2 id="dudas-titulo" data-split style="margin:0; font-family:var(--font-display); font-weight:400; font-size:clamp(30px, 4.4vw, 46px); line-height:1.02; letter-spacing:-.025em; text-wrap:balance">Dudas rápidas.</h2>
+        <p data-reveal style="margin:12px 0 18px; font-size:17px; color:var(--ink-soft); max-width:36ch; text-wrap:pretty">Si te queda alguna, escríbenos y te contestamos.</p>
+        <div data-reveal>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" href="{{ waGeneral }}" target="_blank" rel="noopener" hint-size="200px,48px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>Pregúntanos</x-import>
+        </div>
+      </div>
+      <ul style="flex:1 1 360px; min-width:0; list-style:none; margin:0; padding:0; border-top:1px solid var(--line)">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+          <li data-reveal style="border-bottom:1px solid var(--line)">
+            <h3 style="margin:0">
+              <button type="button" onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" aria-controls="{{ f.id }}" style="width:100%; min-height:60px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; border:0; background:none; text-align:left; cursor:pointer; color:var(--ink); font-family:var(--font-display); font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-.01em">
+                <span>{{ f.q }}</span>
+                <span aria-hidden="true" style="flex:none; width:36px; height:36px; border-radius:999px; border:1px solid var(--line); background:{{ f.iconBg }}; color:{{ f.iconFg }}; display:grid; place-items:center; transform:{{ f.rot }}; transition:transform .45s cubic-bezier(.32,.72,0,1), background .3s cubic-bezier(.4,0,.2,1), color .3s cubic-bezier(.4,0,.2,1)">
+                  <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                </span>
+              </button>
+            </h3>
+            <div id="{{ f.id }}" style="display:grid; grid-template-rows:{{ f.rows }}; transition:grid-template-rows .45s cubic-bezier(.32,.72,0,1)">
+              <div style="overflow:hidden; min-height:0">
+                <p style="margin:0; padding:0 52px 18px 0; font-size:16.5px; line-height:1.55; color:var(--ink-soft); text-wrap:pretty">{{ f.a }}</p>
+              </div>
+            </div>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+  <section id="visitanos" data-screen-label="05 Visítanos" style="background:var(--cream); padding:var(--pad-block) 0; overflow:hidden">
+    <div style="max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); display:flex; flex-wrap:wrap; align-items:center; gap:40px 64px">
+      <div style="position:relative; flex:1 1 320px; max-width:520px; height:clamp(360px, 92vw, 470px)">
+        <figure data-polaroid style="position:absolute; left:2%; top:2%; z-index:2; margin:0; width:clamp(140px, 40vw, 190px); padding:8px 8px 0; background:#fff; box-shadow:var(--shadow); transform:rotate(-5deg)">
+          <img src="img/tienda-fachada.jpg" alt="Fachada de la tienda con el toldo de rayas blancas y negras y el rótulo Victoria" style="display:block; width:100%; aspect-ratio:4 / 5; object-fit:cover">
+          <figcaption style="padding:6px 4px 10px; text-align:center; font-family:var(--font-script); font-weight:700; font-size:22px; color:var(--ink-soft)">nuestra fachada</figcaption>
+        </figure>
+        <figure data-polaroid style="position:absolute; right:2%; top:9%; z-index:1; margin:0; width:clamp(140px, 40vw, 190px); padding:8px 8px 0; background:#fff; box-shadow:var(--shadow); transform:rotate(4deg)">
+          <img src="img/tienda-percha.jpg" alt="Percha con vestidos bordados delante del papel pintado de rosas" style="display:block; width:100%; aspect-ratio:4 / 5; object-fit:cover">
+          <figcaption style="padding:6px 4px 10px; text-align:center; font-family:var(--font-script); font-weight:700; font-size:22px; color:var(--ink-soft)">lo último en la percha</figcaption>
+        </figure>
+        <figure data-polaroid style="position:absolute; left:25%; top:33%; z-index:3; margin:0; width:clamp(140px, 40vw, 190px); padding:8px 8px 0; background:#fff; box-shadow:var(--shadow); transform:rotate(-1.5deg)">
+          <img src="img/tienda-estanteria.jpg" alt="Estantería dorada con bolsos y chanclas estampadas" style="display:block; width:100%; aspect-ratio:4 / 5; object-fit:cover">
+          <figcaption style="padding:6px 4px 10px; text-align:center; font-family:var(--font-script); font-weight:700; font-size:22px; color:var(--ink-soft)">bolsos y chanclas</figcaption>
+        </figure>
+      </div>
+
+      <div style="flex:1 1 340px; min-width:0">
+        <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="120px,20px">Visítanos</x-import>
+        <h2 data-split style="margin:10px 0 12px; font-family:var(--font-display); font-weight:400; font-size:var(--fs-h2); line-height:1.02; letter-spacing:-.025em; text-wrap:balance">Pásate a probártelo.</h2>
+        <p data-reveal style="margin:0 0 16px; font-size:var(--fs-lead); color:var(--ink-soft)">Pl. la Constitución, 4 · 39770 Laredo, Cantabria</p>
+        <div data-reveal style="margin-bottom:18px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StatusPill" open="{{ isOpen }}" hint-size="220px,34px">{{ statusText }}</x-import>
+        </div>
+        <dl data-reveal style="margin:0 0 8px; display:grid; gap:2px; max-width:420px">
+          <sc-for list="{{ hours }}" as="h" hint-placeholder-count="7">
+            <div style="display:flex; justify-content:space-between; gap:16px; padding:9px 12px; border-radius:10px; border-bottom:1px dashed var(--line); background:{{ h.bg }}; font-weight:{{ h.fw }}">
+              <dt style="margin:0">{{ h.d }}</dt>
+              <dd style="margin:0; font-variant-numeric:tabular-nums">{{ h.h }}</dd>
+            </div>
+          </sc-for>
+        </dl>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0 0 4px; font-size:13px; color:var(--ink-faint); max-width:420px">Horario tomado de Google Maps. El domingo aparece con horario de festivo: confirmar el habitual.</p>
+        </sc-if>
+        <div data-reveal style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" href="https://www.google.com/maps/search/?api=1&amp;query=VICTORIA%20by%20VICTORIA%20Pl.%20la%20Constituci%C3%B3n%204%20Laredo" target="_blank" rel="noopener" hint-size="150px,48px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Cómo llegar
+          </x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="tel:+34666414939" hint-size="170px,48px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>666 41 49 39
+          </x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="whatsapp" href="{{ waGeneral }}" target="_blank" rel="noopener" hint-size="140px,48px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>WhatsApp
+          </x-import>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="06 Pie" style="background:var(--char-deep); color:var(--text-on-dark); padding-bottom:{{ footPad }}">
+    <div aria-hidden="true" style="height:10px; background:repeating-linear-gradient(90deg, var(--ink) 0 26px, #FFFDFB 26px 52px)"></div>
+    <div aria-hidden="true" style="height:13px; background:repeating-linear-gradient(90deg, var(--ink) 0 26px, #FFFDFB 26px 52px); -webkit-mask:radial-gradient(circle at 50% 0, #000 12.5px, transparent 13px) 0 0 / 26px 13px repeat-x; mask:radial-gradient(circle at 50% 0, #000 12.5px, transparent 13px) 0 0 / 26px 13px repeat-x"></div>
+    <div style="max-width:var(--maxw); margin:0 auto; padding:48px var(--gutter) 28px; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap:32px">
+      <div>
+        <div style="font-family:var(--font-body); font-weight:500; font-size:26px; letter-spacing:.3em; text-transform:uppercase; line-height:1">Victoria</div>
+        <div style="font-family:var(--font-script); font-weight:700; font-size:30px; color:var(--accent-2); line-height:1.1">by Victoria</div>
+        <p style="margin:12px 0 0; color:var(--text-on-dark-soft); font-size:16px">Boutique de moda mujer en Laredo.</p>
+      </div>
+      <nav aria-label="Secciones del pie">
+        <p style="margin:0 0 10px; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--accent-2)">Tienda</p>
+        <div style="display:grid; gap:4px; font-size:16px">
+          <a href="#lookbook" onClick="{{ go }}" style="text-decoration:none; padding:6px 0">Lookbook</a>
+          <a href="#tienda" onClick="{{ go }}" style="text-decoration:none; padding:6px 0">Tienda online</a>
+          <a href="#como-comprar" onClick="{{ go }}" style="text-decoration:none; padding:6px 0">Cómo comprar</a>
+          <a href="#visitanos" onClick="{{ go }}" style="text-decoration:none; padding:6px 0">Visítanos</a>
+        </div>
+      </nav>
+      <div>
+        <p style="margin:0 0 10px; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--accent-2)">Contacto</p>
+        <div style="display:grid; gap:4px; font-size:16px">
+          <a href="tel:+34666414939" style="text-decoration:none; padding:6px 0">666 41 49 39</a>
+          <a href="{{ waGeneral }}" target="_blank" rel="noopener" style="text-decoration:none; padding:6px 0">WhatsApp</a>
+          <a href="#" style="text-decoration:none; padding:6px 0">Instagram</a>
+          <span style="padding:6px 0; color:var(--text-on-dark-soft)">Pl. la Constitución, 4 · Laredo</span>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:var(--maxw); margin:0 auto; padding:18px var(--gutter) 30px; border-top:1px solid rgba(255,255,255,.1); display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; font-size:13px; color:var(--text-on-dark-soft)">
+      <span>© 2026 Victoria by Victoria</span>
+      <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+        <span style="max-width:70ch">Propuesta de diseño (demo). Fotos del Instagram y de la ficha de Google de la tienda. Nombres de producto, precios y tallas son de ejemplo.</span>
+      </sc-if>
+    </div>
+  </footer>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; left:0; right:0; bottom:0; z-index:35; padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom)); background:rgba(251,243,238,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-top:1px solid var(--line); display:flex; gap:10px; transform:{{ barTransform }}; transition:transform .36s cubic-bezier(.32,.72,0,1)">
+      <a href="{{ waGeneral }}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" style="flex:none; width:50px; height:50px; border-radius:999px; background:var(--whatsapp); color:#fff; display:grid; place-items:center">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:22px; height:22px; fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+      </a>
+      <sc-if value="{{ hasBag }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ openBag }}" style="flex:1; min-height:50px; border-radius:999px; border:0; background:var(--accent); color:#fff; font-family:var(--font-display); font-weight:700; font-size:16px; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; box-shadow:0 10px 24px -12px var(--accent)">Ver mi bolsa ({{ bagCount }}) · {{ subtotalTxt }}</button>
+      </sc-if>
+      <sc-if value="{{ noBag }}" hint-placeholder-val="{{ true }}">
+        <a href="#tienda" onClick="{{ go }}" style="flex:1; min-height:50px; border-radius:999px; background:var(--ink); color:#fff; font-family:var(--font-display); font-weight:700; font-size:16px; display:flex; align-items:center; justify-content:center; text-decoration:none">Comprar online</a>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <div role="status" aria-live="polite" style="position:fixed; left:50%; bottom:{{ toastBottom }}; z-index:45; transform:{{ toastTransform }}; opacity:{{ toastOpacity }}; pointer-events:{{ toastPE }}; transition:transform .3s cubic-bezier(.32,.72,0,1), opacity .2s cubic-bezier(.4,0,.2,1); background:var(--ink); color:#fff; border-radius:999px; padding:8px 8px 8px 16px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-pop); font-weight:600; font-size:15px; white-space:nowrap">
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; fill:none; stroke:var(--accent-2); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg>
+    <span>{{ toastText }}</span>
+    <button type="button" onClick="{{ openBag }}" style="min-height:38px; padding:0 14px; border-radius:999px; border:0; background:var(--accent-2); color:var(--ink); font-weight:700; font-size:14px; cursor:pointer">Ver bolsa</button>
+  </div>
+
+  <div onClick="{{ closeAll }}" aria-hidden="true" style="position:fixed; inset:0; z-index:50; background:rgba(20,12,6,.55); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:{{ backdropOpacity }}; pointer-events:{{ backdropPE }}; transition:opacity .26s cubic-bezier(.4,0,.2,1)"></div>
+
+  <div role="dialog" aria-modal="true" aria-label="{{ qvName }}" aria-hidden="{{ qvHidden }}" data-lenis-prevent style="position:fixed; left:50%; bottom:0; z-index:60; width:min(100%, 920px); max-height:92svh; overflow-y:auto; overscroll-behavior:contain; background:var(--cream); border-radius:24px 24px 0 0; box-shadow:var(--shadow-pop); transform:{{ sheetTransform }}; visibility:{{ qvVis }}; transition:{{ sheetTrans }}">
+    <div style="display:flex; flex-wrap:wrap">
+      <div style="flex:1 1 300px; position:relative; min-width:0">
+        <div style="width:100%; aspect-ratio:4 / 5; max-height:54svh; overflow:hidden; background:var(--cream-2)">
+          <img src="{{ qvImg }}" alt="{{ qvAlt }}" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ qvPos }}; transform-origin:{{ qvPos }}; transform:scale({{ qvZoom }})">
+        </div>
+        <span aria-hidden="true" style="position:absolute; top:8px; left:50%; width:40px; height:4px; margin-left:-20px; border-radius:4px; background:rgba(255,255,255,.85)"></span>
+        <button type="button" ref="{{ closeRef }}" onClick="{{ closeAll }}" aria-label="Cerrar" style="position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:999px; border:0; background:rgba(255,255,255,.94); color:var(--ink); display:grid; place-items:center; cursor:pointer; box-shadow:var(--shadow-sm)">
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+      <div style="flex:1 1 320px; min-width:0; padding:22px var(--gutter) calc(26px + env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:18px">
+        <div>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Eyebrow" hint-size="120px,20px">{{ qvCat }}</x-import>
+          <h3 style="margin:8px 0 6px; font-family:var(--font-display); font-weight:600; font-size:clamp(26px, 3vw, 34px); line-height:1.05; letter-spacing:-.02em; text-wrap:balance">{{ qvName }}</h3>
+          <p style="margin:0; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap">
+            <span style="font-weight:700; font-size:21px; color:var(--accent)">{{ qvPrice }}</span>
+            <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}"><span style="font-size:13px; color:var(--ink-faint)">precio de ejemplo</span></sc-if>
+          </p>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px">
+            <span style="font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase">Talla</span>
+            <sc-if value="{{ qvHint }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px; font-weight:700; color:var(--accent)">Elige tu talla</span></sc-if>
+          </div>
+          <div data-sizes style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px">
+            <sc-for list="{{ qvSizes }}" as="s" hint-placeholder-count="5">
+              <button type="button" onClick="{{ s.onClick }}" disabled="{{ s.out }}" aria-pressed="{{ s.sel }}" aria-label="{{ s.aria }}" style="min-width:54px; min-height:46px; padding:0 14px; border-radius:999px; border:1.5px solid {{ s.border }}; background:{{ s.bg }}; color:{{ s.fg }}; font-family:var(--font-body); font-weight:700; font-size:15px; text-decoration:{{ s.deco }}; cursor:{{ s.cursor }}; transition:background .18s cubic-bezier(.4,0,.2,1), color .18s cubic-bezier(.4,0,.2,1), border-color .18s cubic-bezier(.4,0,.2,1)">{{ s.s }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="primary" size="lg" onClick="{{ addToBag }}" hint-size="210px,54px">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>Añadir a la bolsa
+          </x-import>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="outline" size="lg" href="{{ qvWa }}" target="_blank" rel="noopener" hint-size="200px,54px">Preguntar por WhatsApp</x-import>
+        </div>
+        <ul style="list-style:none; margin:0; padding:16px 0 0; border-top:1px dashed var(--line); display:grid; gap:10px; font-size:15px; color:var(--ink-soft)">
+          <li style="display:flex; gap:10px; align-items:center">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; flex:none; fill:none; stroke:var(--accent); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Recogida gratis en Pl. de la Constitución, 4
+          </li>
+          <sc-if value="{{ withShipping }}" hint-placeholder-val="{{ true }}">
+            <li style="display:flex; gap:10px; align-items:center">
+              <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px; height:18px; flex:none; fill:none; stroke:var(--accent); stroke-width:2; stroke-linecap:round; stroke-linejoin:round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+              Envío a domicilio
+            </li>
+          </sc-if>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <aside role="dialog" aria-modal="true" aria-label="Tu bolsa" aria-hidden="{{ bagHidden }}" data-lenis-prevent style="position:fixed; top:0; right:0; bottom:0; z-index:60; width:min(100%, 440px); background:var(--cream); box-shadow:var(--shadow-pop); display:flex; flex-direction:column; transform:{{ bagTransform }}; visibility:{{ bagVis }}; transition:{{ bagTrans }}">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px var(--gutter); border-bottom:1px solid var(--line)">
+      <div style="display:flex; align-items:center; gap:10px">
+        <h3 style="margin:0; font-family:var(--font-display); font-weight:600; font-size:24px; letter-spacing:-.02em">Tu bolsa</h3>
+        <sc-if value="{{ showDemo }}" hint-placeholder-val="{{ true }}">
+          <span style="padding:3px 9px; border-radius:999px; background:var(--cream-2); border:1px solid var(--line); font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)">demo</span>
+        </sc-if>
+      </div>
+      <button type="button" onClick="{{ closeAll }}" aria-label="Cerrar la bolsa" style="width:44px; height:44px; border-radius:999px; border:1px solid var(--line); background:var(--paper); color:var(--ink); display:grid; place-items:center; cursor:pointer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+
+    <div data-lenis-prevent style="flex:1; overflow-y:auto; overscroll-behavior:contain; padding:18px var(--gutter)">
+      <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:40px 0; text-align:center; display:flex; flex-direction:column; align-items:center; gap:14px">
+          <p style="margin:0; font-family:var(--font-script); font-weight:700; font-size:34px; color:var(--accent); line-height:1">aún está vacía</p>
+          <p style="margin:0; color:var(--ink-soft); max-width:30ch">Echa un vistazo a lo nuevo y añade lo que te guste.</p>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" href="#tienda" onClick="{{ go }}" hint-size="170px,48px">Ver la tienda</x-import>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showItems }}" hint-placeholder-val="{{ false }}">
+        <ul style="list-style:none; margin:0; padding:0; display:grid; gap:14px">
+          <sc-for list="{{ bagLines }}" as="b" hint-placeholder-count="2">
+            <li style="display:flex; gap:14px; padding-bottom:14px; border-bottom:1px dashed var(--line)">
+              <div style="flex:none; width:72px; height:94px; border-radius:12px; overflow:hidden; background:var(--cream-2)">
+                <img src="{{ b.img }}" alt="" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ b.pos }}; transform-origin:{{ b.pos }}; transform:scale({{ b.zoom }})">
+              </div>
+              <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:6px">
+                <div style="display:flex; justify-content:space-between; gap:10px">
+                  <span style="font-weight:600; font-size:15.5px; line-height:1.3">{{ b.name }}</span>
+                  <span style="flex:none; font-weight:700; color:var(--accent)">{{ b.lineTxt }}</span>
+                </div>
+                <span style="font-size:14px; color:var(--ink-soft)">Talla {{ b.size }}</span>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto">
+                  <div style="display:flex; align-items:center; border:1px solid var(--line); border-radius:999px; background:var(--paper)">
+                    <button type="button" onClick="{{ b.dec }}" aria-label="{{ b.decLabel }}" style="width:40px; height:40px; border:0; background:none; border-radius:999px; cursor:pointer; color:var(--ink); display:grid; place-items:center">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round"><path d="M5 12h14"></path></svg>
+                    </button>
+                    <span style="min-width:22px; text-align:center; font-weight:700; font-variant-numeric:tabular-nums">{{ b.qty }}</span>
+                    <button type="button" onClick="{{ b.inc }}" aria-label="{{ b.incLabel }}" style="width:40px; height:40px; border:0; background:none; border-radius:999px; cursor:pointer; color:var(--ink); display:grid; place-items:center">
+                      <svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                  </div>
+                  <button type="button" onClick="{{ b.remove }}" style="min-height:40px; padding:0 4px; border:0; background:none; color:var(--ink-soft); font:inherit; font-size:14px; text-decoration:underline; text-underline-offset:3px; cursor:pointer">Quitar</button>
+                </div>
+              </div>
+            </li>
+          </sc-for>
+        </ul>
+
+        <fieldset style="border:0; margin:22px 0 0; padding:0">
+          <legend style="padding:0; margin-bottom:10px; font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase">Entrega</legend>
+          <div style="display:grid; gap:10px">
+            <sc-for list="{{ deliveryOpts }}" as="d" hint-placeholder-count="2">
+              <label style="display:flex; align-items:flex-start; gap:12px; padding:14px; border-radius:var(--radius-sm); border:1.5px solid {{ d.border }}; background:var(--paper); cursor:pointer">
+                <input type="radio" name="vv-entrega" value="{{ d.id }}" checked="{{ d.checked }}" onChange="{{ d.onChange }}" style="margin:3px 0 0; width:18px; height:18px; accent-color:#B4204A; flex:none">
+                <span style="display:flex; flex-direction:column; gap:2px; min-width:0">
+                  <span style="font-weight:700">{{ d.title }}</span>
+                  <span style="font-size:14px; color:var(--ink-soft)">{{ d.sub }}</span>
+                </span>
+              </label>
+            </sc-for>
+          </div>
+        </fieldset>
+
+        <div style="display:grid; gap:12px; margin-top:22px">
+          <div style="display:grid; gap:6px">
+            <label for="vv-nombre" style="font-size:14px; font-weight:700">Tu nombre</label>
+            <input id="vv-nombre" type="text" autocomplete="name" onInput="{{ onName }}" aria-invalid="{{ nameErr }}" style="width:100%; min-height:48px; padding:0 14px; border-radius:var(--radius-sm); border:1.5px solid {{ nameBorder }}; background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:16px">
+            <sc-if value="{{ nameErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:14px; font-weight:600; color:var(--accent)">Dinos tu nombre para preparar el pedido.</span></sc-if>
+          </div>
+          <div style="display:grid; gap:6px">
+            <label for="vv-tel" style="font-size:14px; font-weight:700">Teléfono <span style="font-weight:500; color:var(--ink-soft)">(opcional)</span></label>
+            <input id="vv-tel" type="tel" inputmode="tel" autocomplete="tel" onInput="{{ onPhone }}" style="width:100%; min-height:48px; padding:0 14px; border-radius:var(--radius-sm); border:1.5px solid var(--line); background:var(--paper); color:var(--ink); font-family:var(--font-body); font-size:16px">
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showOk }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:36px 0; text-align:center; display:flex; flex-direction:column; align-items:center; gap:14px">
+          <span style="width:64px; height:64px; border-radius:999px; background:var(--accent); color:#fff; display:grid; place-items:center">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:30px; height:30px; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round"><path d="M20 6 9 17l-5-5"></path></svg>
+          </span>
+          <p style="margin:0; font-family:var(--font-display); font-weight:600; font-size:28px; letter-spacing:-.02em">¡Pedido enviado!</p>
+          <p style="margin:0; color:var(--ink-soft); max-width:32ch; text-wrap:pretty">Te escribimos por WhatsApp para confirmar la disponibilidad y cuándo pasar a recogerlo.</p>
+          <p style="margin:0; font-size:14px; color:var(--ink-faint)">Pedido {{ orderNo }}</p>
+          <x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.Button" variant="dark" onClick="{{ finish }}" hint-size="170px,48px">Seguir mirando</x-import>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ showItems }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:16px var(--gutter) calc(16px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); background:var(--cream-2); display:grid; gap:12px">
+        <div style="display:flex; justify-content:space-between; align-items:baseline">
+          <span style="font-weight:600">Total</span>
+          <span style="font-family:var(--font-display); font-weight:700; font-size:24px">{{ subtotalTxt }}</span>
+        </div>
+        <span style="font-size:13px; color:var(--ink-soft)">{{ deliveryNote }}</span>
+        <a href="{{ waOrder }}" target="_blank" rel="noopener" onClick="{{ confirm }}" style="min-height:52px; border-radius:999px; background:var(--whatsapp); color:#fff; font-family:var(--font-display); font-weight:700; font-size:17px; display:flex; align-items:center; justify-content:center; gap:10px; text-decoration:none; box-shadow:0 10px 24px -12px var(--whatsapp)">
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px; height:20px; fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+          Confirmar por WhatsApp
+        </a>
+      </div>
+    </sc-if>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showDemo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reunión&quot;},&quot;delivery&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;recogida-envio&quot;,&quot;solo-recogida&quot;],&quot;default&quot;:&quot;recogida-envio&quot;,&quot;tsType&quot;:&quot;'recogida-envio' | 'solo-recogida'&quot;,&quot;section&quot;:&quot;Tienda&quot;},&quot;heroPhoto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;rayas&quot;,&quot;camel&quot;,&quot;girasoles&quot;],&quot;default&quot;:&quot;rayas&quot;,&quot;tsType&quot;:&quot;'rayas' | 'camel' | 'girasoles'&quot;,&quot;section&quot;:&quot;Portada&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;completo&quot;,&quot;suave&quot;],&quot;default&quot;:&quot;completo&quot;,&quot;tsType&quot;:&quot;'completo' | 'suave'&quot;,&quot;section&quot;:&quot;Movimiento&quot;}}">
+class Component extends DCLogic {
+  state = { filter: 'todo', qv: null, qvLast: 'blazer-camel', qvSize: null, qvHint: false, bag: [], bagOpen: false, step: 'bag', delivery: 'recogida', nameErr: false, toast: false, navShown: false, isMobile: typeof window !== 'undefined' ? window.innerWidth < 760 : true, tick: 0, orderNo: '', howPinned: false, howStep: 0, faqOpen: 0, wide: typeof window !== 'undefined' ? window.innerWidth >= 1080 : false };
+  rootRef = React.createRef();
+  closeRef = React.createRef();
+  form = { name: '', phone: '' };
+  WA = '34666414939';
+  CATS = [['todo', 'Todo'], ['vestidos', 'Vestidos'], ['chaquetas', 'Chaquetas'], ['tops', 'Tops'], ['pantalones', 'Pantalones']];
+  CAT_NAME = { vestidos: 'Vestidos', chaquetas: 'Chaquetas', tops: 'Tops y camisetas', pantalones: 'Pantalones' };
+  P = [
+    { id: 'blazer-camel', name: 'Blazer cruzado camel', cat: 'chaquetas', price: 79.9, img: 'img/blazer-camel.jpg', pos: '50% 22%', zoom: 1, isNew: true, out: ['XL'], alt: 'Blazer cruzado color camel con botones dorados' },
+    { id: 'blazer-cuadros', name: 'Blazer de cuadros con broches', cat: 'chaquetas', price: 89.9, img: 'img/blazer-cuadros.jpg', pos: '50% 30%', zoom: 1, isNew: true, alt: 'Blazer de cuadros gris y granate con broches bordados' },
+    { id: 'vestido-denim', name: 'Vestido camisero vaquero con tachas', cat: 'vestidos', price: 69.9, img: 'img/vestido-denim.jpg', pos: '50% 30%', zoom: 1, isNew: true, alt: 'Vestido camisero vaquero oscuro con tachas plateadas' },
+    { id: 'vestido-flores', name: 'Vestido corto de flores', cat: 'vestidos', price: 59.9, img: 'img/vestido-flores-negro.jpg', pos: '50% 40%', zoom: 1, isNew: true, out: ['XS'], alt: 'Vestido corto negro con estampado de flores rojas y lilas' },
+    { id: 'top-rayas', name: 'Top de rayas con escote en pico', cat: 'tops', price: 39.9, img: 'img/top-rayas.jpg', pos: '50% 45%', zoom: 1, isNew: true, alt: 'Top de manga larga con rayas rosa, granate, negro y crema' },
+    { id: 'camiseta-estampada', name: 'Camiseta estampada con nudo', cat: 'tops', price: 34.9, img: 'img/top-estampado-vaquero.jpg', pos: '50% 14%', zoom: 1.45, isNew: true, alt: 'Camiseta azul marino de manga larga, estampada y con nudo en el escote' },
+    { id: 'vaquero-recto', name: 'Vaquero recto con bolsillos', cat: 'pantalones', price: 54.9, img: 'img/top-estampado-vaquero.jpg', pos: '50% 88%', zoom: 1.5, isNew: true, alt: 'Vaquero recto oscuro con bolsillos de parche' },
+    { id: 'camiseta-bordado', name: 'Camiseta oversize con bordado', cat: 'tops', price: 29.9, img: 'img/camiseta-pantalon-cebra.jpg', pos: '50% 18%', zoom: 1.3, alt: 'Camiseta oversize gris marengo con un tigre bordado' },
+    { id: 'pantalon-cebra', name: 'Pantalón cebra', cat: 'pantalones', price: 39.9, img: 'img/camiseta-pantalon-cebra.jpg', pos: '50% 92%', zoom: 1.45, alt: 'Pantalón ancho con estampado de cebra' },
+    { id: 'vestido-coral', name: 'Vestido corto bordado coral', cat: 'vestidos', price: 64.9, img: 'img/vestido-coral-campo.jpg', pos: '50% 45%', zoom: 1, alt: 'Vestido corto blanco con bordados en coral y fucsia' },
+    { id: 'vestido-gasa', name: 'Vestido largo de gasa rosa', cat: 'vestidos', price: 74.9, img: 'img/vestido-girasoles.jpg', pos: '50% 62%', zoom: 1, alt: 'Vestido largo de gasa rosa con bordados fucsia' },
+    { id: 'vestido-rosa', name: 'Vestido camisero bordado rosa', cat: 'vestidos', price: 69.9, img: 'img/vestido-rosa-bordado.jpg', pos: '50% 40%', zoom: 1, alt: 'Vestido camisero rosa palo con bordados blancos y rojos' }
+  ];
+  LOOKS = [['blazer-camel', 'el blazer que lo arregla todo'], ['blazer-cuadros', 'con broches, porque sí'], ['vestido-denim', 'vaquero, pero de vestido'], ['vestido-flores', 'flores también en otoño'], ['camiseta-estampada', 'básicos con chispa']];
+  HOURS = [['Lunes', 690, 1230], ['Martes', 690, 1230], ['Miércoles', 690, 1230], ['Jueves', 690, 1230], ['Viernes', 690, 1230], ['Sábado', 690, 1230], ['Domingo', 690, 870]];
+  HERO = {
+    rayas: { src: 'img/top-rayas.jpg', pos: '50% 18%', alt: 'Modelo con top de rayas rosa, granate y negro sobre fondo granate' },
+    camel: { src: 'img/blazer-camel.jpg', pos: '50% 12%', alt: 'Modelo con blazer cruzado camel sobre fondo granate' },
+    girasoles: { src: 'img/vestido-girasoles.jpg', pos: '50% 30%', alt: 'Modelo con vestido largo rosa caminando entre girasoles' }
+  };
+  MARQUEE = ['Nueva temporada', 'Compra online', 'Recoge en la tienda', 'Pl. de la Constitución, 4', 'Laredo'];
+
+  byId(id) { return this.P.find(p => p.id === id) || this.P[0]; }
+  eur(n) { return n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €'; }
+  fmt(m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+  madrid() {
+    try {
+      const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date());
+      const g = t => (parts.find(p => p.type === t) || {}).value;
+      const map = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 };
+      return { dow: map[g('weekday')] ?? 0, min: parseInt(g('hour'), 10) * 60 + parseInt(g('minute'), 10) };
+    } catch (e) { const d = new Date(); return { dow: (d.getDay() + 6) % 7, min: d.getHours() * 60 + d.getMinutes() }; }
+  }
+  status() {
+    const { dow, min } = this.madrid(); const h = this.HOURS[dow];
+    if (min >= h[1] && min < h[2]) return { open: true, text: 'Abierto · hasta las ' + this.fmt(h[2]), dow };
+    if (min < h[1]) return { open: false, text: 'Cerrado · abre hoy a las ' + this.fmt(h[1]), dow };
+    return { open: false, text: 'Cerrado · abre mañana a las ' + this.fmt(this.HOURS[(dow + 1) % 7][1]), dow };
+  }
+  shipping() { return (this.props.delivery ?? 'recogida-envio') === 'recogida-envio'; }
+  total() { return this.state.bag.reduce((a, b) => a + b.qty * this.byId(b.id).price, 0); }
+
+  waGeneralHref() { return 'https://wa.me/' + this.WA + '?text=' + encodeURIComponent('Hola Victoria 😊 Os escribo desde la web.'); }
+  waOrderHref() {
+    const st = this.state;
+    const lines = st.bag.map(b => { const p = this.byId(b.id); return '• ' + p.name + ' · talla ' + b.size + ' · x' + b.qty + ' · ' + this.eur(p.price * b.qty); });
+    const envio = st.delivery === 'envio' && this.shipping() ? 'Envío a domicilio' : 'Recoger en tienda (Pl. de la Constitución, 4)';
+    const msg = ['Hola Victoria 👋 Quiero hacer este pedido desde la web:', ''].concat(lines, ['', 'Total: ' + this.eur(this.total()), '🛍️ Entrega: ' + envio, '👤 Nombre: ' + this.form.name.trim()]);
+    if (this.form.phone.trim()) msg.push('📞 Teléfono: ' + this.form.phone.trim());
+    return 'https://wa.me/' + this.WA + '?text=' + encodeURIComponent(msg.join('\n'));
+  }
+
+  openQV = id => { clearTimeout(this.toastT); this.setState({ qv: id, qvLast: id, qvSize: null, qvHint: false, toast: false, bagOpen: false }); };
+  closeAll = () => this.setState({ qv: null, bagOpen: false });
+  openBag = () => { clearTimeout(this.toastT); this.setState({ bagOpen: true, qv: null, toast: false }); };
+  addToBag = () => {
+    const { qv, qvSize } = this.state;
+    if (!qv) return;
+    if (!qvSize) { this.setState({ qvHint: true }); const g = this.G, el = this.rootRef.current && this.rootRef.current.querySelector('[data-sizes]'); if (g && el) g.fromTo(el, { x: -6 }, { x: 0, duration: .4, ease: 'elastic.out(1,.3)' }); return; }
+    this.setState(st => {
+      const key = qv + '|' + qvSize; const ex = st.bag.find(b => b.key === key);
+      const bag = ex ? st.bag.map(b => b.key === key ? Object.assign({}, b, { qty: b.qty + 1 }) : b) : st.bag.concat([{ key, id: qv, size: qvSize, qty: 1 }]);
+      return { bag, qv: null, toast: true, step: 'bag' };
+    });
+    clearTimeout(this.toastT); this.toastT = setTimeout(() => this.setState({ toast: false }), 2800);
+  };
+  setQty = (key, d) => this.setState(st => ({ bag: st.bag.map(b => b.key === key ? Object.assign({}, b, { qty: b.qty + d }) : b).filter(b => b.qty > 0) }));
+  onName = e => { this.form.name = e.target.value; if (this.state.nameErr && this.form.name.trim()) this.setState({ nameErr: false }); };
+  onPhone = e => { this.form.phone = e.target.value; };
+  confirm = e => {
+    if (!this.form.name.trim()) { e.preventDefault(); this.setState({ nameErr: true }); const i = document.getElementById('vv-nombre'); if (i) i.focus(); return; }
+    e.currentTarget.href = this.waOrderHref();
+    this.setState({ step: 'ok', orderNo: 'VV-' + String(Date.now()).slice(-5) });
+  };
+  finish = () => { this.setState({ bag: [], step: 'bag', bagOpen: false }); };
+  go = e => {
+    const href = e.currentTarget && e.currentTarget.getAttribute('href');
+    if (!href || href.charAt(0) !== '#') return;
+    e.preventDefault();
+    this.setState({ qv: null, bagOpen: false });
+    const el = href === '#top' ? null : document.querySelector(href);
+    const y = el ? el.getBoundingClientRect().top + window.scrollY - 58 : 0;
+    setTimeout(() => { if (this.lenis) { this.lenis.start(); this.lenis.scrollTo(y, { duration: 1.4 }); } else window.scrollTo({ top: y, behavior: 'smooth' }); }, 30);
+  };
+
+  goHowStep = i => {
+    const t = this.howST;
+    if (t) { const y = t.start + (t.end - t.start) * (i + .5) / 3; if (this.lenis) this.lenis.scrollTo(y, { duration: 1.2 }); else window.scrollTo({ top: y, behavior: 'smooth' }); }
+    else this.setState({ howStep: i });
+  };
+  playHow = i => {
+    const g = this.G, root = this.rootRef.current;
+    if (!g || !root || !this.howAnim) return;
+    if (this.howTl) { this.howTl.kill(); this.howTl = null; }
+    const scr = root.querySelector('[data-how-screen="' + i + '"]');
+    if (!scr) return;
+    const q = s => scr.querySelector(s);
+    const rel = (el, stop) => { let x = 0, y = 0, n = el; while (n && n !== stop) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; } return { x, y, w: el.offsetWidth, h: el.offsetHeight }; };
+    const build = () => {
+      const tl = g.timeline({ delay: .35 });
+      if (i === 0) {
+        const tap = q('[data-how-tap]'), m = q('[data-how-m]'), add = q('[data-how-add]'), badge = q('[data-how-badge]');
+        if (!tap || !m || !add || !badge) return;
+        const inner = tap.offsetParent, a = rel(m, inner), b = rel(add, inner), tw = tap.offsetWidth;
+        const ax = a.x + a.w / 2 - tw / 2, ay = a.y + a.h / 2 - tw / 2, bx = b.x + b.w * .62 - tw / 2, by = b.y + b.h / 2 - tw / 2;
+        tl.set(m, { backgroundColor: '#FFFFFF', color: '#2B1719', borderColor: '#EAD3CB' }, 0)
+          .set(badge, { scale: 0 }, 0)
+          .set(tap, { x: ax + 30, y: ay + 70, opacity: 0, scale: 1 }, 0)
+          .to(tap, { x: ax, y: ay, opacity: 1, duration: .6, ease: 'power3.out' })
+          .to(tap, { scale: .75, duration: .12, yoyo: true, repeat: 1, ease: 'power1.inOut' })
+          .to(m, { backgroundColor: '#2B1719', color: '#FFFFFF', borderColor: '#2B1719', duration: .2 }, '<')
+          .to(tap, { x: bx, y: by, duration: .7, ease: 'power3.inOut' }, '+=.3')
+          .to(tap, { scale: .75, duration: .12, yoyo: true, repeat: 1, ease: 'power1.inOut' })
+          .to(add, { scale: .95, duration: .12, yoyo: true, repeat: 1, ease: 'power1.inOut' }, '<')
+          .to(tap, { opacity: 0, duration: .3 }, '+=.05')
+          .to(badge, { scale: 1, duration: .55, ease: 'back.out(3)' }, '<');
+      } else if (i === 1) {
+        const out = q('[data-how-out]'), typ = q('[data-how-typing]'), inn = q('[data-how-in]');
+        if (!out || !typ || !inn) return;
+        tl.set(inn, { opacity: 0, y: 16 }, 0).set(typ, { display: 'none' }, 0)
+          .fromTo(out, { opacity: 0, y: 24, scale: .94, transformOrigin: '100% 100%' }, { opacity: 1, y: 0, scale: 1, duration: .55, ease: 'back.out(1.6)' }, 0)
+          .set(typ, { display: 'inline-flex', opacity: 0 }, '+=.35')
+          .to(typ, { opacity: 1, duration: .2 })
+          .fromTo(typ.children, { y: 0 }, { y: -4, duration: .28, stagger: .12, yoyo: true, repeat: 3, ease: 'sine.inOut' }, '<')
+          .to(typ, { opacity: 0, duration: .15 })
+          .set(typ, { display: 'none' })
+          .to(inn, { opacity: 1, y: 0, duration: .5, ease: 'back.out(1.6)' });
+      } else {
+        const photo = q('[data-how-photo]'), ticket = q('[data-how-ticket]'), stamp = q('[data-how-stamp]');
+        if (!photo || !ticket || !stamp) return;
+        tl.fromTo(photo, { scale: 1.18 }, { scale: 1, duration: 1.2, ease: 'power3.out' }, 0)
+          .fromTo(ticket, { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .7, ease: 'power3.out' }, .15)
+          .fromTo(stamp, { scale: 2.4, opacity: 0, rotation: -25 }, { scale: 1, opacity: 1, rotation: 12, duration: .55, ease: 'back.out(2)' }, .75);
+      }
+      this.howTl = tl;
+    };
+    if (this.ctx) this.ctx.add(build); else build();
+  };
+
+  componentDidMount() {
+    this.onScroll = () => { const s = window.scrollY > window.innerHeight * 0.8; if (s !== this.state.navShown) this.setState({ navShown: s }); };
+    this.onResize = () => { const m = window.innerWidth < 760, w = window.innerWidth >= 1080; if (m !== this.state.isMobile || w !== this.state.wide) this.setState({ isMobile: m, wide: w }); };
+    this.onKey = e => { if (e.key === 'Escape' && (this.state.qv || this.state.bagOpen)) this.closeAll(); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
+    this._ps = Object.assign({}, this.state); this._pp = Object.assign({}, this.props);
+    this.onResize();
+    const r0 = this.rootRef.current;
+    if (window.ResizeObserver && r0) {
+      this._w = r0.offsetWidth;
+      this.ro = new ResizeObserver(() => { const r = this.rootRef.current, w = r ? r.offsetWidth : 0; if (w && !this._w) { this.onResize(); setTimeout(() => this.STc && this.STc.refresh(), 60); } this._w = w; });
+      this.ro.observe(r0);
+    }
+    this.clock = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 60000);
+    this.waitMotion(0);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey);
+    clearInterval(this.clock); clearTimeout(this.waitT); clearTimeout(this.toastT); clearTimeout(this.faqT); clearTimeout(this.reT); clearTimeout(this.fT); if (this.ro) this.ro.disconnect();
+    this.teardown();
+  }
+  componentDidUpdate(pp, ps) {
+    ps = this._ps || this.state; pp = this._pp || this.props;
+    this._ps = Object.assign({}, this.state); this._pp = Object.assign({}, this.props);
+    const g = this.G, root = this.rootRef.current;
+    const cnt = s => s.bag.reduce((a, b) => a + b.qty, 0);
+    if (g && root && cnt(this.state) > cnt(ps)) root.querySelectorAll('[data-badge]').forEach(el => g.fromTo(el, { scale: 1.6 }, { scale: 1, duration: .5, ease: 'back.out(3)' }));
+    if (ps.filter !== this.state.filter) {
+      clearTimeout(this.fT);
+      this.fT = setTimeout(() => {
+        const g2 = this.G, r2 = this.rootRef.current;
+        if (g2 && r2) g2.fromTo(r2.querySelectorAll('[data-card]'), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .45, stagger: .035, ease: 'power3.out', overwrite: true });
+        if (this.STc) this.STc.refresh();
+      }, 60);
+    }
+    const open = !!this.state.qv || this.state.bagOpen, was = !!ps.qv || ps.bagOpen;
+    if (open !== was) {
+      if (this.lenis) { open ? this.lenis.stop() : this.lenis.start(); }
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+      if (open && this.state.qv) setTimeout(() => this.closeRef.current && this.closeRef.current.focus({ preventScroll: true }), 80);
+    }
+    if (ps.howStep !== this.state.howStep) this.playHow(this.state.howStep);
+    if (ps.faqOpen !== this.state.faqOpen && this.STc) { clearTimeout(this.faqT); this.faqT = setTimeout(() => this.STc.refresh(), 520); }
+    if (ps.isMobile !== this.state.isMobile && this.ctx) { clearTimeout(this.reT); this.reT = setTimeout(() => { this.teardown(); this.initMotion(); }, 80); }
+    if (pp.motion !== this.props.motion) { this.teardown(); this.initMotion(); }
+  }
+
+  waitMotion(n) {
+    if (!this.G && window.gsap && window.ScrollTrigger) { this.G = window.gsap; this.STc = window.ScrollTrigger; this.SPc = window.SplitText; }
+    if (this.G) { this.initMotion(); return; }
+    if (n > 100) return;
+    this.waitT = setTimeout(() => this.waitMotion(n + 1), 100);
+  }
+  teardown() {
+    const g = this.G, ST = this.STc;
+    if (this.ctx) { this.ctx.revert(); this.ctx = null; }
+    if (ST && this.setH) { ST.removeEventListener('refreshInit', this.setH); this.setH = null; }
+    if (this.lenis) { g && g.ticker.remove(this.rafFn); this.lenis.destroy(); this.lenis = null; }
+    if (this.onLoad) { window.removeEventListener('load', this.onLoad); this.onLoad = null; }
+    if (ST && this.setHowH) { ST.removeEventListener('refreshInit', this.setHowH); this.setHowH = null; }
+    if (this.howTl) { this.howTl.kill(); this.howTl = null; }
+    this.howST = null; this.howPinned = false; this.howAnim = false;
+    if (this.state.howPinned && this.rootRef.current) this.setState({ howPinned: false });
+    const root = this.rootRef.current;
+    if (root) {
+      const ht = root.querySelector('[data-how-track]'); if (ht) ht.style.height = '';
+      const hsec = root.querySelector('[data-how]'); if (hsec) hsec.style.top = '0px';
+      const t = root.querySelector('[data-hero-track]'); if (t) t.style.height = '100svh';
+      const lt = root.querySelector('[data-lb-track]'); if (lt) lt.style.height = '';
+      const r = root.querySelector('[data-lb-rail]'); if (r) { r.style.overflowX = 'auto'; r.style.scrollSnapType = 'x mandatory'; }
+    }
+  }
+  initMotion() {
+    const gsap = this.G, ST = this.STc, Split = this.SPc;
+    const root = this.rootRef.current;
+    if (!gsap || !ST || !root) return;
+    gsap.registerPlugin(ST); if (Split) gsap.registerPlugin(Split);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || this.props.motion === 'suave';
+    const $ = s => root.querySelector(s), $$ = s => Array.from(root.querySelectorAll(s));
+    this.howAnim = !reduce;
+
+    this.ctx = gsap.context(() => {
+      if (reduce) {
+        $$('[data-reveal],[data-card],[data-polaroid]').forEach(el => gsap.from(el, { opacity: 0, duration: .6, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 94%', once: true } }));
+        return;
+      }
+
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      intro.from('[data-awning]', { scaleY: 0, transformOrigin: '50% 0%', duration: .8, ease: 'power4.out' }, 0)
+        .from('[data-scallop]', { scaleY: 0, transformOrigin: '50% 0%', duration: .5 }, .45)
+        .from('[data-arch-in]', { yPercent: 16, opacity: 0, duration: 1.3 }, .3)
+        .from('[data-arch-frame-in]', { y: 40, opacity: 0, duration: 1.2 }, .5)
+        .from('[data-hero-fade]', { y: 14, opacity: 0, duration: .7, stagger: .08 }, .95);
+      const wm = $('[data-wordmark]');
+      if (Split && wm) { const sp = Split.create(wm, { type: 'chars', mask: 'chars' }); intro.from(sp.chars, { yPercent: 115, duration: 1, stagger: .055, ease: 'power4.out' }, .2); }
+      intro.fromTo('[data-byline]', { clipPath: 'inset(-30% 100% -30% -10%)' }, { clipPath: 'inset(-30% -10% -30% -10%)', duration: 1, ease: 'power2.inOut' }, .8);
+
+      const track = $('[data-hero-track]'), hero = $('[data-hero]');
+      if (track && hero) {
+        track.style.height = (window.CSS && CSS.supports('height', '1svh')) ? '240svh' : '240vh';
+        const geo = () => {
+          const vw = window.innerWidth / 100, W = hero.clientWidth;
+          const top = Math.min(196 + 12 * vw, 380), side = Math.max(7 * vw, W / 2 - 250), r = Math.min(43 * vw, 250);
+          return 'inset(' + top + 'px ' + side + 'px 0px ' + side + 'px round ' + r + 'px ' + r + 'px 0px 0px)';
+        };
+        gsap.set('[data-hero-end] > *', { y: 44, opacity: 0 });
+        const tl = gsap.timeline({ scrollTrigger: { trigger: track, start: 'top top', end: 'bottom bottom', scrub: .6, invalidateOnRefresh: true } });
+        tl.fromTo('[data-arch]', { clipPath: geo }, { clipPath: 'inset(0px 0px 0px 0px round 0px 0px 0px 0px)', ease: 'power2.inOut', duration: 1 }, 0)
+          .fromTo('[data-arch-img]', { y: () => Math.min(110 + 6.6 * window.innerWidth / 100, 210), scale: 1.1 }, { y: 0, scale: 1, ease: 'power2.inOut', duration: 1 }, 0)
+          .to('[data-hero-top]', { y: -90, opacity: 0, ease: 'power1.in', duration: .42 }, 0)
+          .to('[data-arch-frame]', { opacity: 0, scale: 1.06, ease: 'power1.in', duration: .4 }, 0)
+          .fromTo('[data-hero-shade]', { opacity: 0 }, { opacity: 1, ease: 'none', duration: .4 }, .5)
+          .to('[data-hero-end] > *', { y: 0, opacity: 1, stagger: .08, duration: .34, ease: 'power2.out' }, .62)
+          .to({}, { duration: .22 });
+      }
+
+      const mq = $('[data-marquee]');
+      if (mq) {
+        const mt = gsap.to(mq, { xPercent: -50, duration: 30, ease: 'none', repeat: -1 });
+        mt.totalTime(30 * 200);
+        ST.create({ trigger: mq, start: 'top bottom', end: 'bottom top', onUpdate: self => {
+          const v = Math.abs(self.getVelocity()), d = self.direction;
+          gsap.to(mt, { timeScale: d * Math.min(1 + v / 450, 6), duration: .2, overwrite: true, onComplete: () => gsap.to(mt, { timeScale: d, duration: 1.2, overwrite: true }) });
+        } });
+      }
+
+      const lt = $('[data-lb-track]'), sec = $('[data-lb]'), rail = $('[data-lb-rail]');
+      if (lt && sec && rail) {
+        rail.style.overflowX = 'visible'; rail.style.scrollSnapType = 'none';
+        const dist = () => Math.max(0, rail.scrollWidth - rail.clientWidth);
+        this.setH = () => { lt.style.height = (sec.offsetHeight + dist()) + 'px'; };
+        this.setH(); ST.addEventListener('refreshInit', this.setH);
+        const tw = gsap.to(rail, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: lt, start: 'top top', end: () => '+=' + dist(), scrub: .6, invalidateOnRefresh: true } });
+        gsap.fromTo('[data-lb-bar]', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: lt, start: 'top top', end: () => '+=' + dist(), scrub: true, invalidateOnRefresh: true } });
+        $$('[data-lb-img]').forEach(img => gsap.fromTo(img, { xPercent: -5 }, { xPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentNode, containerAnimation: tw, start: 'left right', end: 'right left', scrub: true } }));
+      }
+
+      const ht = $('[data-how-track]'), hsec = $('[data-how]');
+      if (ht && hsec) {
+        this.setHowH = () => { if (!window.innerHeight) return; hsec.style.top = Math.min(0, window.innerHeight - hsec.offsetHeight) + 'px'; ht.style.height = (hsec.offsetHeight + window.innerHeight * 1.8) + 'px'; };
+        this.setHowH(); ST.addEventListener('refreshInit', this.setHowH);
+        this.howST = ST.create({ trigger: ht, start: 'top top', end: 'bottom bottom', invalidateOnRefresh: true, onUpdate: self => { const s = Math.min(2, Math.floor(self.progress * 3)); if (s !== this.state.howStep) this.setState({ howStep: s }); } });
+        const fillST = { trigger: ht, start: 'top top', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true };
+        if ($('[data-how-fill-y]')) gsap.fromTo('[data-how-fill-y]', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: fillST });
+        if ($('[data-how-fill-x]')) gsap.fromTo('[data-how-fill-x]', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: Object.assign({}, fillST) });
+        gsap.fromTo('[data-how-phone]', { rotation: -5, y: 50 }, { rotation: 4, y: -16, ease: 'none', scrollTrigger: { trigger: ht, start: 'top bottom', end: 'bottom bottom', scrub: .8 } });
+        gsap.fromTo('[data-how-arch]', { scale: .8, transformOrigin: '50% 100%' }, { scale: 1, ease: 'none', scrollTrigger: { trigger: ht, start: 'top bottom', end: 'top top', scrub: .8 } });
+        ST.create({ trigger: ht, start: 'top 55%', onEnter: () => this.playHow(this.state.howStep) });
+      }
+
+      if (Split) $$('[data-split]').forEach(el => Split.create(el, { type: 'lines', mask: 'lines', autoSplit: true, onSplit: self => gsap.from(self.lines, { yPercent: 105, duration: 1, stagger: .09, ease: 'power4.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }) }));
+
+      $$('[data-reveal]').forEach(el => {
+        const i = el.parentNode ? Array.prototype.indexOf.call(el.parentNode.children, el) : 0;
+        gsap.from(el, { y: 28, opacity: 0, duration: .9, delay: el.tagName === 'LI' ? i * .09 : 0, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+      });
+
+      const cards = $$('[data-card]');
+      gsap.set(cards, { opacity: 0, y: 34 });
+      ST.batch(cards, { start: 'top 94%', once: true, onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: .8, stagger: .08, ease: 'power3.out', overwrite: true }) });
+
+      $$('[data-polaroid]').forEach((el, i) => gsap.from(el, { y: 90, rotation: i % 2 ? 16 : -16, opacity: 0, duration: 1.1, delay: i * .12, ease: 'power3.out', scrollTrigger: { trigger: el.parentNode, start: 'top 80%', once: true } }));
+    }, root);
+
+    if (!reduce && window.Lenis) {
+      this.lenis = new window.Lenis({ lerp: .09, smoothWheel: true });
+      this.lenis.on('scroll', ST.update);
+      this.rafFn = t => { if (this.lenis) this.lenis.raf(t * 1000); };
+      gsap.ticker.add(this.rafFn); gsap.ticker.lagSmoothing(0);
+    }
+    this.onLoad = () => ST.refresh();
+    window.addEventListener('load', this.onLoad);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ST.refresh());
+    setTimeout(() => ST.refresh(), 600);
+    this.howPinned = !!this.howST;
+    if (this.state.howPinned !== this.howPinned) this.setState({ howPinned: this.howPinned });
+  }
+
+  renderVals() {
+    const st = this.state, pr = this.props;
+    const showDemo = pr.showDemo ?? true;
+    const withShipping = this.shipping();
+    const hero = this.HERO[pr.heroPhoto ?? 'rayas'] || this.HERO.rayas;
+    const s = this.status();
+    const counts = {}; this.P.forEach(p => { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+    const view = p => Object.assign({}, p, { priceTxt: this.eur(p.price), open: () => this.openQV(p.id), aria: p.name + ', ' + this.eur(p.price) + '. Ver tallas', wantLabel: 'Lo quiero: ' + p.name });
+    const filters = this.CATS.map(([id, label]) => ({ id, label, count: id === 'todo' ? this.P.length : counts[id], active: st.filter === id, tone: st.filter === id ? 'solid' : 'default', onClick: () => this.setState({ filter: id }) }));
+    const items = this.P.filter(p => st.filter === 'todo' || p.cat === st.filter).map(view);
+    const looks = this.LOOKS.map(([id, note], i) => Object.assign(view(this.byId(id)), { note, n: String(i + 1).padStart(2, '0'), lbPos: '50% 25%' }));
+    const q = this.byId(st.qvLast);
+    const qvSizes = (q.sizes || ['XS', 'S', 'M', 'L', 'XL']).map(sz => {
+      const out = (q.out || []).indexOf(sz) > -1, sel = st.qvSize === sz;
+      return { s: sz, out, sel, aria: out ? 'Talla ' + sz + ', agotada' : 'Talla ' + sz, onClick: () => this.setState({ qvSize: sz, qvHint: false }), bg: sel ? 'var(--ink)' : 'var(--paper)', fg: out ? 'var(--ink-faint)' : (sel ? '#fff' : 'var(--ink)'), border: sel ? 'var(--ink)' : 'var(--line)', cursor: out ? 'not-allowed' : 'pointer', deco: out ? 'line-through' : 'none' };
+    });
+    const count = st.bag.reduce((a, b) => a + b.qty, 0);
+    const bagLines = st.bag.map(b => { const p = this.byId(b.id); return { key: b.key, name: p.name, size: b.size, qty: b.qty, img: p.img, pos: p.pos, zoom: p.zoom, lineTxt: this.eur(p.price * b.qty), inc: () => this.setQty(b.key, 1), dec: () => this.setQty(b.key, -1), remove: () => this.setQty(b.key, -b.qty), incLabel: 'Una más de ' + p.name, decLabel: 'Una menos de ' + p.name }; });
+    const delivery = withShipping ? st.delivery : 'recogida';
+    const deliveryOpts = [{ id: 'recogida', title: 'Recoger en tienda', sub: 'Gratis · Pl. de la Constitución, 4, Laredo' }].concat(withShipping ? [{ id: 'envio', title: 'Envío a domicilio', sub: showDemo ? 'Coste según destino (demo)' : 'Coste según destino' }] : []).map(d => Object.assign(d, { checked: delivery === d.id, border: delivery === d.id ? 'var(--accent)' : 'var(--line)', onChange: () => this.setState({ delivery: d.id }) }));
+    const qvOpen = !!st.qv, bagOpen = st.bagOpen, ease = 'cubic-bezier(.32,.72,0,1)';
+    const trans = open => 'transform .38s ' + ease + (open ? ', visibility 0s linear 0s' : ', visibility 0s linear .38s');
+    const today = s.dow;
+    const hs = st.howStep, pinned = !!st.howPinned;
+    const ST_POS = [{ stTop: '10%', stBottom: 'auto', stLeft: '-36%', stRight: 'auto' }, { stTop: '40%', stBottom: 'auto', stLeft: 'auto', stRight: '-40%' }, { stTop: 'auto', stBottom: '14%', stLeft: '-38%', stRight: 'auto' }];
+    const howSteps = [
+      { n: '01', short: 'Elige', title: 'Elige prenda y talla', desc: 'Añádela a tu bolsa desde el móvil, a cualquier hora del día.', sticker: 'tu talla, apartada' },
+      { n: '02', short: 'Confirma', title: 'Confírmalo por WhatsApp', desc: 'Tu pedido nos llega ya escrito y te respondemos para confirmar que está disponible.', sticker: st.bag.length ? 'así nos llega tu pedido' : 'sin cuentas ni contraseñas' },
+      { n: '03', short: 'Recoge', title: 'Recógelo en la tienda', desc: withShipping ? 'Pásate por la Pl. de la Constitución, 4 y pruébatelo allí. O, si lo prefieres, te lo enviamos a casa.' : 'Pásate por la Pl. de la Constitución, 4 y pruébatelo allí antes de llevártelo.', sticker: '¡a probártelo!' }
+    ].map((d, i) => {
+      const on = i === hs, done = i < hs;
+      return Object.assign(d, ST_POS[i], {
+        current: on ? 'step' : 'false', hidden: !on, go: () => this.goHowStep(i),
+        numBg: on ? 'var(--accent)' : (done ? 'var(--ink)' : 'var(--paper)'), numFg: on || done ? '#fff' : 'var(--ink-soft)', numBorder: on ? 'var(--accent)' : (done ? 'var(--ink)' : 'var(--line)'),
+        titleColor: on ? 'var(--ink)' : 'var(--ink-soft)', rows: on ? '1fr' : '0fr', descOp: on ? 1 : 0,
+        tabBg: on ? 'var(--ink)' : 'var(--paper)', tabFg: on ? '#fff' : 'var(--ink-soft)', tabBorder: on ? 'var(--ink)' : 'var(--line)',
+        capOp: on ? 1 : 0, capTf: on ? 'translateY(0px)' : (done ? 'translateY(-10px)' : 'translateY(10px)'),
+        stOp: on ? 1 : 0, stTf: on ? 'rotate(-6deg) scale(1)' : 'rotate(-16deg) scale(.7)'
+      });
+    });
+    const scr = i => ({ z: i === hs ? 2 : 1, clip: i === hs ? 'inset(0% 0% 0% 0%)' : (i < hs ? 'inset(0% 0% 100% 0%)' : 'inset(100% 0% 0% 0%)'), inner: i === hs ? 'translateY(0%)' : (i < hs ? 'translateY(-14%)' : 'translateY(14%)') });
+    const src = st.bag.length ? st.bag.map(b => { const p = this.byId(b.id); return { name: p.name, size: b.size, qty: b.qty, price: p.price }; }) : [{ name: 'Blazer cruzado camel', size: 'M', qty: 1, price: 79.9 }];
+    const msgLines = src.slice(0, 2).map(l => '• ' + l.name + ' · talla ' + l.size + ' · x' + l.qty);
+    if (src.length > 2) msgLines.push('• y ' + (src.length - 2) + ' más');
+    const howMsg = 'Hola Victoria 👋 Quiero hacer este pedido desde la web:\n' + msgLines.join('\n') + '\nTotal: ' + this.eur(src.reduce((a, l) => a + l.qty * l.price, 0)) + '\n' + (st.delivery === 'envio' && withShipping ? '🛍️ Envío a domicilio' : '🛍️ Recoger en tienda');
+    const faqs = [
+      { q: '¿Tengo que crearme una cuenta?', a: 'No. Solo te pedimos tu nombre, y el teléfono si quieres, para preparar el pedido.' },
+      { q: '¿Puedo probármelo antes de llevármelo?', a: 'Claro. Lo recoges en la tienda y te lo pruebas allí con calma.' },
+      { q: '¿Me lo podéis enviar a casa?', a: withShipping ? 'Sí. Elige «Envío a domicilio» en tu bolsa y te confirmamos el coste por WhatsApp.' : 'De momento trabajamos con recogida en la tienda, en la Pl. de la Constitución, 4.' },
+      { q: '¿Y si dudo con la talla?', a: 'Pregúntanos desde la ficha de cada prenda con el botón de WhatsApp y te ayudamos a elegir.' }
+    ].map((f, i) => { const open = st.faqOpen === i; return Object.assign(f, { id: 'vv-faq-' + i, open, toggle: () => this.setState(x => ({ faqOpen: x.faqOpen === i ? -1 : i })), rows: open ? '1fr' : '0fr', rot: open ? 'rotate(45deg)' : 'rotate(0deg)', iconBg: open ? 'var(--ink)' : 'var(--paper)', iconFg: open ? '#fff' : 'var(--ink)' }); });
+    return {
+      howSteps, scr0: scr(0), scr1: scr(1), scr2: scr(2), howMsg, faqs,
+      howToday: 'Hoy · ' + this.fmt(this.HOURS[today][1]) + '–' + this.fmt(this.HOURS[today][2]),
+      howFillY: pinned ? 'scaleY(0)' : 'scaleY(' + (hs / 2) + ')', howFillX: pinned ? 'scaleX(0)' : 'scaleX(' + ((hs + 1) / 3) + ')',
+      howArchBg: ['color-mix(in oklch, var(--coral) 42%, var(--cream))', 'color-mix(in oklch, var(--gold) 34%, var(--cream))', 'color-mix(in oklch, var(--tomato) 24%, var(--cream))'][hs],
+      howCols: st.isMobile ? 'minmax(0, 1fr)' : 'minmax(0, 1fr) minmax(0, 1fr)', howGap: st.isMobile ? '16px' : 'clamp(32px, 5vw, 72px)',
+      howPhoneH: st.isMobile ? 'clamp(220px, calc(100svh - 450px), 520px)' : 'clamp(320px, calc(100svh - 160px), 620px)',
+      howPadB: st.isMobile ? '84px' : '40px', howStickers: !st.isMobile && st.wide,
+      rootRef: this.rootRef, closeRef: this.closeRef,
+      showDemo, withShipping, pickupOnly: !withShipping,
+      isMobile: st.isMobile, notMobile: !st.isMobile,
+      heroSrc: hero.src, heroPos: hero.pos, heroAlt: hero.alt,
+      isOpen: s.open, statusText: s.text,
+      hours: this.HOURS.map((h, i) => ({ d: h[0] + (i === today ? ' · hoy' : ''), h: this.fmt(h[1]) + '–' + this.fmt(h[2]), bg: i === today ? 'var(--cream-2)' : 'transparent', fw: i === today ? 700 : 500 })),
+      marquee: this.MARQUEE.concat(this.MARQUEE),
+      filters, items, looks,
+      go: this.go, openBag: this.openBag, closeAll: this.closeAll, addToBag: this.addToBag, onName: this.onName, onPhone: this.onPhone, confirm: this.confirm, finish: this.finish,
+      navTransform: st.navShown ? 'translateY(0)' : 'translateY(-110%)',
+      barTransform: st.navShown ? 'translateY(0)' : 'translateY(110%)',
+      footPad: st.isMobile ? 'calc(72px + env(safe-area-inset-bottom))' : '0px',
+      hasBag: count > 0, noBag: count === 0, bagCount: count, subtotalTxt: this.eur(this.total()),
+      bagLabel: count > 0 ? 'Abrir tu bolsa, ' + count + (count === 1 ? ' prenda' : ' prendas') : 'Abrir tu bolsa, vacía',
+      toastText: st.toast ? 'Añadido a tu bolsa' : '',
+      toastTransform: st.toast ? 'translate(-50%, 0)' : 'translate(-50%, 24px)', toastOpacity: st.toast ? 1 : 0, toastPE: st.toast ? 'auto' : 'none',
+      toastBottom: st.isMobile ? 'calc(84px + env(safe-area-inset-bottom))' : '28px',
+      backdropOpacity: qvOpen || bagOpen ? 1 : 0, backdropPE: qvOpen || bagOpen ? 'auto' : 'none',
+      sheetTransform: qvOpen ? 'translate(-50%, 0)' : 'translate(-50%, 104%)', qvVis: qvOpen ? 'visible' : 'hidden', sheetTrans: trans(qvOpen), qvHidden: !qvOpen,
+      qvName: q.name, qvPrice: this.eur(q.price), qvImg: q.img, qvPos: q.pos, qvZoom: q.zoom, qvAlt: q.alt, qvCat: this.CAT_NAME[q.cat], qvSizes, qvHint: st.qvHint,
+      qvWa: 'https://wa.me/' + this.WA + '?text=' + encodeURIComponent('Hola Victoria 😊 Me interesa «' + q.name + '»' + (st.qvSize ? ' en talla ' + st.qvSize : '') + '. ¿Lo tenéis disponible?'),
+      bagTransform: bagOpen ? 'translateX(0)' : 'translateX(104%)', bagVis: bagOpen ? 'visible' : 'hidden', bagTrans: trans(bagOpen), bagHidden: !bagOpen,
+      showEmpty: st.step === 'bag' && count === 0, showItems: st.step === 'bag' && count > 0, showOk: st.step === 'ok',
+      bagLines, deliveryOpts,
+      deliveryNote: delivery === 'envio' ? 'Te confirmamos el coste del envío por WhatsApp.' : 'Al confirmar se abre WhatsApp con tu pedido ya escrito.',
+      nameErr: st.nameErr, nameBorder: st.nameErr ? 'var(--accent)' : 'var(--line)',
+      orderNo: st.orderNo,
+      waGeneral: this.waGeneralHref(), waOrder: this.waOrderHref()
+    };
+  }
+}
+</script>
+</body>
+</html>

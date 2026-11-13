@@ -1,0 +1,41 @@
+/* ============================================================
+   TYPOGRAPHY — Mockups Web Restaurant Kit
+   Display = Bricolage Grotesque (tight, chunky, -.02em).
+   Body    = Hanken Grotesk (1.55 line-height, 18px base).
+   Script  = Caveat (handwritten taglines / photo captions).
+   ============================================================ */
+
+:root {
+  /* ---- Families ---- */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+  --font-script:  'Caveat', cursive;
+
+  /* ---- Weights ---- */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  500; /* @kind font */
+  --fw-semi:    600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+  --fw-black:   800; /* @kind font */
+
+  /* ---- Base body ---- */
+  --text-base:    18px;   /* @kind font */
+  --leading-body: 1.55;   /* @kind font */
+  --leading-tight: 1.02;  /* @kind font */
+  --tracking-display: -.02em; /* @kind font */
+
+  /* ---- Fluid display scale (clamp = mobile → desktop) ---- */
+  --fs-hero:    clamp(2.7rem, 6vw, 4.6rem);   /* @kind font */
+  --fs-hero-xl: clamp(3rem, 9vw, 6.6rem);     /* @kind font */
+  --fs-h2:      clamp(2.1rem, 5vw, 3.6rem);   /* @kind font */
+  --fs-h3:      clamp(1.4rem, 2.6vw, 1.7rem); /* @kind font */
+  --fs-lead:    clamp(1.05rem, 1.7vw, 1.18rem); /* @kind font */
+
+  /* ---- Eyebrow (uppercase kicker above headings) ---- */
+  --fs-eyebrow:       .82rem; /* @kind font */
+  --tracking-eyebrow: .18em;  /* @kind font */
+
+  /* ---- Misc tracking ---- */
+  --tracking-label:   .14em;  /* @kind font */
+  --tracking-wide:    .22em;  /* @kind font */
+}

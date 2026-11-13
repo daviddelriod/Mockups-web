@@ -1,0 +1,11 @@
+/* ============================================================
+   FONTS — Mockups Web Restaurant Kit
+   All three faces are Google Fonts, imported here so the whole
+   token closure ships them to consumers via styles.css.
+
+   - Bricolage Grotesque  → display / headings (warm, chunky grotesk)
+   - Hanken Grotesk       → body / UI text (clean, friendly)
+   - Caveat               → handwritten script accent (taglines, captions)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap');

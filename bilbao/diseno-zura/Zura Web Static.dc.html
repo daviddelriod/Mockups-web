@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/colors.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/typography.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/tokens/base.css">
+<link rel="stylesheet" href="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic&amp;family=Space+Mono:wght@400;700&amp;family=Vollkorn:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap">
+<script src="_ds/mockups-web-restaurant-kit-c65b55ce-d1d3-4c64-bd6f-bd866f46fae0/_ds_bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous"></script>
+<style>
+:root{--cream:#E9E5DB;--cream-2:#DDD8CB;--paper:#F4F1EA;--line:#C9C2B2;--ink:#1D1A16;--ink-soft:#4E483F;--ink-faint:#6A6257;--char:#191612;--char-2:#26211B;--char-deep:#100E0B;--tomato:#B4441A;--tomato-dk:#96360F;--gold:#D9A55B;--gold-dk:#9A6A24;--green:#4C6B36;--status-closed:#96360F;--font-display:'Faculty Glyphic',Georgia,serif;--font-body:'Vollkorn',Georgia,serif;--radius-pill:2px;--radius:4px;--radius-lg:4px;--radius-sm:2px}
+html{scroll-behavior:auto}
+:root{--z-grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+body{margin:0;background:#100E0B}
+a{color:inherit;text-decoration:none}
+a:hover{color:#96360F}
+@media (max-width:859px){[data-z-desk]{display:none !important}}
+@media (min-width:860px){[data-z-mob]{display:none !important}}
+[data-z-root]:not([data-lang="eu"]) [data-l="eu"],[data-z-root][data-lang="eu"] [data-l="es"]{display:none !important}
+</style>
+</helmet>
+
+<div data-z-root="1" data-lang="{{ lang }}" style="background:#E9E5DB;color:#1D1A16;font-family:'Vollkorn',Georgia,serif;font-size:18px;line-height:1.55;overflow-x:clip">
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.08;background-image:var(--z-grain);background-size:180px 180px"></div>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;color:#F1EDE4">
+  <div data-z="nav-bg" aria-hidden="true" style="position:absolute;inset:0;background:rgba(16,14,11,.84);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(241,237,228,.14);opacity:0;transition:opacity .35s ease-out"></div>
+  <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px max(clamp(20px,5vw,80px),calc((100% - 1140px) / 2))">
+    <a href="#top" aria-label="{{ A.home }}" style="display:flex;flex-direction:column;justify-content:center;min-height:44px;color:#F1EDE4" style-hover="color:#F1EDE4">
+      <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.34em;line-height:1;text-transform:uppercase">Ermualdeko</span>
+      <span style="font-family:'Faculty Glyphic',Georgia,serif;font-size:22px;letter-spacing:.3em;line-height:1.15">ZURA</span>
+    </a>
+    <nav data-z-desk="1" aria-label="{{ A.nav }}" style="display:flex;gap:34px;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.02rem;letter-spacing:.03em">
+      <a href="#sua" style="display:inline-flex;align-items:center;min-height:44px;color:#F1EDE4;transition:color .2s ease-out" style-hover="color:#E8794A"><span data-l="es">La brasa</span><span data-l="eu" lang="eu">Sua</span></a>
+      <a href="#karta" style="display:inline-flex;align-items:center;min-height:44px;color:#F1EDE4;transition:color .2s ease-out" style-hover="color:#E8794A"><span data-l="es">Carta</span><span data-l="eu" lang="eu">Karta</span></a>
+      <a href="#platerak" style="display:inline-flex;align-items:center;min-height:44px;color:#F1EDE4;transition:color .2s ease-out" style-hover="color:#E8794A"><span data-l="es">Platos</span><span data-l="eu" lang="eu">Platerak</span></a>
+      <a href="#etxea" style="display:inline-flex;align-items:center;min-height:44px;color:#F1EDE4;transition:color .2s ease-out" style-hover="color:#E8794A"><span data-l="es">La casa</span><span data-l="eu" lang="eu">Etxea</span></a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:clamp(8px,1.6vw,20px)">
+      <div role="group" aria-label="Idioma · Hizkuntza" style="display:flex;align-items:center">
+        <button type="button" lang="es" title="Castellano" aria-pressed="{{ isEs }}" onClick="{{ setEs }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:44px;padding:0 0 0 .14em;border:0;background:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;color:{{ esC }};text-decoration:{{ esD }};text-decoration-color:#E8794A;text-decoration-thickness:2px;text-underline-offset:6px;transition:color .2s ease-out" style-hover="color:#F1EDE4" style-focus="outline:2px solid #E8794A;outline-offset:-2px">ES</button>
+        <span aria-hidden="true" style="width:1px;height:14px;background:rgba(241,237,228,.35)"></span>
+        <button type="button" lang="eu" title="Euskara" aria-pressed="{{ isEu }}" onClick="{{ setEu }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:44px;padding:0 0 0 .14em;border:0;background:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;color:{{ euC }};text-decoration:{{ euD }};text-decoration-color:#E8794A;text-decoration-thickness:2px;text-underline-offset:6px;transition:color .2s ease-out" style-hover="color:#F1EDE4" style-focus="outline:2px solid #E8794A;outline-offset:-2px">EU</button>
+      </div>
+    <a data-z-desk="1" href="#reserva" style="display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;height:44px;padding:0 20px;border:1px solid #8F8677;border-radius:2px;background:rgba(16,14,11,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#EDE7DB;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.08rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer;transition:background-color .25s ease-out,border-color .25s ease-out,color .25s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:rgba(16,14,11,.62);border-color:#D2CABD;color:#FBF6EC" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:3px"><span data-l="es">Reservar</span><span data-l="eu" lang="eu">Erreserbatu</span></a>
+    <a data-z-mob="1" href="tel:+34688886518" style="display:inline-flex;align-items:center;min-height:44px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.08em;color:#F1EDE4" style-hover="color:#F1EDE4">688 88 65 18</a>
+    </div>
+  </div>
+</header>
+
+<div id="top" data-z="hero-wrap" data-screen-label="Hero" style="background:#100E0B">
+<sc-if value="{{ isHeroA }}" hint-placeholder-val="{{ true }}">
+  <section data-z="hero" style="position:sticky;top:0;height:min(100svh,1000px);overflow:hidden;background:#100E0B;color:#F1EDE4">
+    <div data-z="ha-media" style="position:absolute;left:0;top:0;width:clamp(100%,calc((100vw - 859px) * 999),142%);height:clamp(64%,calc((100vw - 859px) * 999),100%);transform-origin:49% 97%">
+      <img data-z="ha-img" src="assets/rotulo-tallado.jpg" alt="{{ A.rotuloArco }}" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <div data-z-mob="1" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(16,14,11,0.6) 0%,rgba(16,14,11,0.556) 3%,rgba(16,14,11,0.444) 6%,rgba(16,14,11,0.3) 9%,rgba(16,14,11,0.156) 12%,rgba(16,14,11,0.044) 15%,rgba(16,14,11,0) 18%,rgba(16,14,11,0) 34%,rgba(16,14,11,0.067) 38%,rgba(16,14,11,0.233) 42%,rgba(16,14,11,0.45) 46%,rgba(16,14,11,0.667) 50%,rgba(16,14,11,0.833) 54%,rgba(16,14,11,0.9) 58%,rgba(16,14,11,0.907) 59.5%,rgba(16,14,11,0.926) 61%,rgba(16,14,11,0.95) 62.5%,rgba(16,14,11,0.974) 64%,rgba(16,14,11,0.993) 65.5%,rgba(16,14,11,1) 67%)"></div>
+    <div data-z-desk="1" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,14,11,0.96) 0%,rgba(16,14,11,0.953) 5%,rgba(16,14,11,0.934) 10%,rgba(16,14,11,0.91) 15%,rgba(16,14,11,0.886) 20%,rgba(16,14,11,0.867) 25%,rgba(16,14,11,0.86) 30%,rgba(16,14,11,0.796) 37%,rgba(16,14,11,0.637) 44%,rgba(16,14,11,0.43) 51%,rgba(16,14,11,0.223) 58%,rgba(16,14,11,0.064) 65%,rgba(16,14,11,0) 72%),linear-gradient(rgba(16,14,11,0.55) 0%,rgba(16,14,11,0.509) 4%,rgba(16,14,11,0.407) 8%,rgba(16,14,11,0.275) 12%,rgba(16,14,11,0.143) 16%,rgba(16,14,11,0.041) 20%,rgba(16,14,11,0) 24%,rgba(16,14,11,0) 60%,rgba(16,14,11,0.074) 66.7%,rgba(16,14,11,0.259) 73.3%,rgba(16,14,11,0.5) 80%,rgba(16,14,11,0.741) 86.7%,rgba(16,14,11,0.926) 93.3%,rgba(16,14,11,1) 100%)"></div>
+    <div data-z="ha-dark" aria-hidden="true" style="position:absolute;inset:0;background:#100E0B;opacity:0"></div>
+    <div data-z="hero-text" style="position:absolute;left:max(clamp(20px,5vw,80px),calc((100% - 1140px) / 2));right:max(clamp(20px,5vw,80px),calc((100% - 1140px) / 2));bottom:clamp(26px,6vh,72px);max-width:clamp(min(500px,44vw),calc((859px - 100vw) * 999),500px)">
+      <div data-z-hf="1" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8794A;margin-bottom:12px">Laudio · Araba</div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><h1 data-z="hero-h1" style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.7rem);line-height:1.06;letter-spacing:0;margin:0;text-wrap:balance">Cocina de brasa en un caserío de piedra</h1></sc-if><sc-if value="{{ isEu }}" hint-placeholder-val="{{ false }}"><h1 lang="eu" data-z="hero-h1" style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.7rem);line-height:1.06;letter-spacing:0;margin:0;text-wrap:balance">Egur-suzko sukaldaritza harrizko baserrian</h1></sc-if>
+      <p data-z-hf="1" style="margin:14px 0 0;max-width:27em;font-size:clamp(1.02rem,1.4vw,1.16rem);line-height:1.5;color:#DAD3C6"><span data-l="es">Leña, brasa y cocina vasca en Santa María del Yermo. Abrimos de jueves a domingo.</span><span data-l="eu" lang="eu">Egurra, sua eta euskal sukaldaritza Ermualden. Ostegunetik igandera zabalik.</span></p>
+      <div data-z-hf="1" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 26px;margin-top:20px">
+        <a href="#reserva" style="display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;height:52px;padding:0 26px;border:1px solid #8F8677;border-radius:2px;background:rgba(16,14,11,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#EDE7DB;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.08rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer;transition:background-color .25s ease-out,border-color .25s ease-out,color .25s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:rgba(16,14,11,.62);border-color:#D2CABD;color:#FBF6EC" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:3px"><span data-l="es">Reservar mesa</span><span data-l="eu" lang="eu">Mahaia gorde</span></a>
+        <a href="#karta" style="display:inline-flex;align-items:center;min-height:52px;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.1rem;letter-spacing:.03em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;text-decoration-color:#E8794A;transition:color .2s ease-out,text-underline-offset .2s ease-out" style-hover="color:#E8794A;text-underline-offset:5px"><span data-l="es">Ver la carta</span><span data-l="eu" lang="eu">Karta ikusi</span></a>
+      </div>
+      <div data-z-hf="1" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:14px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;color:#CFC8BB">
+        <span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="color:#D9A55B;font-size:15px;letter-spacing:2px">★★★★★</span><span style="color:#F1EDE4;font-weight:700">4,8</span> · <span data-l="es">122 reseñas en Google</span><span data-l="eu" lang="eu">122 iritzi Google-n</span></span>
+      </div>
+    </div>
+    <div data-z="ha-veil" aria-hidden="true" style="position:absolute;inset:0;background:#100E0B;opacity:0;pointer-events:none"></div>
+  </section>
+</sc-if>
+<sc-if value="{{ isHeroB }}" hint-placeholder-val="{{ false }}">
+  <section data-z="hero" style="position:sticky;top:0;height:min(100svh,1000px);overflow:hidden;background:#100E0B;color:#F1EDE4">
+    <div data-z="hb-center" style="position:absolute;inset:0">
+      <div data-z="hb-center-in" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <video data-z="hero-video" poster="assets/fachada-logo.jpg" src="assets/zura-reel.mp4" preload="metadata" aria-label="{{ A.fachada }}" style="flex:none;width:max(100%,calc(min(100svh,1000px) * .5625));aspect-ratio:9/16;object-fit:cover"></video>
+      </div>
+    </div>
+    <div data-z="hb-l" style="position:absolute;left:0;top:0;bottom:0;width:clamp(36px,calc(34vw - 90px),420px);overflow:hidden;background:#26211B">
+      <img src="assets/rotulo-tallado.jpg" alt="{{ A.rotulo }}" style="width:100%;height:100%;object-fit:cover;object-position:49% 50%">
+    </div>
+    <div data-z="hb-r" style="position:absolute;right:0;top:0;bottom:0;width:clamp(36px,calc(34vw - 90px),420px);overflow:hidden;background:#26211B">
+      <img src="assets/carta-mesa.jpg" alt="{{ A.cartaMesa }}" style="width:100%;height:100%;object-fit:cover;object-position:40% 50%">
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(16,14,11,0.55) 0%,rgba(16,14,11,0.509) 3.7%,rgba(16,14,11,0.407) 7.3%,rgba(16,14,11,0.275) 11%,rgba(16,14,11,0.143) 14.7%,rgba(16,14,11,0.041) 18.3%,rgba(16,14,11,0) 22%,rgba(16,14,11,0) 42%,rgba(16,14,11,0.065) 48.3%,rgba(16,14,11,0.228) 54.7%,rgba(16,14,11,0.44) 61%,rgba(16,14,11,0.652) 67.3%,rgba(16,14,11,0.815) 73.7%,rgba(16,14,11,0.88) 80%,rgba(16,14,11,0.889) 83.3%,rgba(16,14,11,0.911) 86.7%,rgba(16,14,11,0.94) 90%,rgba(16,14,11,0.969) 93.3%,rgba(16,14,11,0.991) 96.7%,rgba(16,14,11,1) 100%);pointer-events:none"></div>
+    <div data-z="ha-dark" aria-hidden="true" style="position:absolute;inset:0;background:#100E0B;opacity:0;pointer-events:none"></div>
+    <div data-z="hero-text" style="position:absolute;left:0;right:0;bottom:clamp(26px,6vh,64px);padding:0 18px;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <div data-z-hf="1" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8794A;margin-bottom:12px">Laudio · Araba</div>
+      <sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><h1 data-z="hero-h1" style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.06;letter-spacing:0;margin:0;max-width:15em;text-wrap:balance">Cocina de brasa en un caserío de piedra</h1></sc-if><sc-if value="{{ isEu }}" hint-placeholder-val="{{ false }}"><h1 lang="eu" data-z="hero-h1" style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.06;letter-spacing:0;margin:0;max-width:15em;text-wrap:balance">Egur-suzko sukaldaritza harrizko baserrian</h1></sc-if>
+      <div data-z-hf="1" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 26px;margin-top:20px">
+        <a href="#reserva" style="display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;height:52px;padding:0 26px;border:1px solid #8F8677;border-radius:2px;background:rgba(16,14,11,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#EDE7DB;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.08rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer;transition:background-color .25s ease-out,border-color .25s ease-out,color .25s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:rgba(16,14,11,.62);border-color:#D2CABD;color:#FBF6EC" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:3px"><span data-l="es">Reservar mesa</span><span data-l="eu" lang="eu">Mahaia gorde</span></a>
+        <a href="#karta" style="display:inline-flex;align-items:center;min-height:52px;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.1rem;letter-spacing:.03em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;text-decoration-color:#E8794A;transition:color .2s ease-out,text-underline-offset .2s ease-out" style-hover="color:#E8794A;text-underline-offset:5px"><span data-l="es">Ver la carta</span><span data-l="eu" lang="eu">Karta ikusi</span></a>
+      </div>
+      <div data-z-hf="1" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 18px;margin-top:14px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;color:#CFC8BB">
+        <span style="display:inline-flex;align-items:center;gap:8px"><span aria-hidden="true" style="color:#D9A55B;font-size:15px;letter-spacing:2px">★★★★★</span><span style="color:#F1EDE4;font-weight:700">4,8</span> · <span data-l="es">122 reseñas en Google</span><span data-l="eu" lang="eu">122 iritzi Google-n</span></span>
+      </div>
+    </div>
+  </section>
+</sc-if>
+</div>
+<div aria-hidden="true" style="height:clamp(150px,22vw,330px);background:linear-gradient(#100e0b,#13100d 7.1%,#1a1612 14.3%,#26211b 21.4%,#352e26 28.6%,#483f35 35.7%,#5e5246 42.9%,#74685a 50%,#8a7e6f 57.1%,#a09485 64.3%,#b3a99b 71.4%,#c4bcae 78.6%,#d1cbbd 85.7%,#dad4c7 92.9%,#ddd8cb)"></div>
+
+<div data-z="conv-wrap" data-screen-label="Leña y piedra" style="background:#DDD8CB">
+  <section data-z="conv-stage" style="position:sticky;top:0;height:min(100svh,1000px);box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,3.5vh,38px);padding:64px 18px clamp(110px,17vh,170px);overflow:hidden">
+    <div data-z="conv-w1" aria-hidden="true" style="position:absolute;left:0;top:11%;white-space:nowrap;font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(5rem,24vw,19rem);line-height:.9;color:#CEC8B9">Egurra</div>
+    <div data-z="conv-w2" aria-hidden="true" style="position:absolute;right:0;bottom:7%;white-space:nowrap;font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(5rem,24vw,19rem);line-height:.9;color:#CEC8B9">Harria</div>
+    <div data-z="conv-head" style="position:relative;text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#96360F;margin-bottom:10px"><span data-l="es">Lo que somos</span><span data-l="eu" lang="eu">Gure oinarriak</span></div>
+      <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,5vw,3.6rem);line-height:1.05;letter-spacing:0;margin:0"><span data-l="es">Leña y piedra</span><span data-l="eu" lang="eu">Egurra eta harria</span></h2>
+    </div>
+    <div data-z="conv-grid" style="position:relative;display:grid;grid-template-columns:repeat(2,auto);gap:clamp(8px,1.4vw,18px)">
+      <figure data-z-ct="1" style="position:relative;margin:0;width:min(43vw,340px);height:clamp(120px,21svh,220px);overflow:hidden;border-radius:2px;background:#B9B2A2"><img src="assets/lena.jpg" alt="{{ A.lena }}" style="width:100%;height:100%;object-fit:cover;transform:scale(1.7);transform-origin:16% 28%"></figure>
+      <figure data-z-ct="1" style="position:relative;margin:0;width:min(43vw,340px);height:clamp(120px,21svh,220px);overflow:hidden;border-radius:2px;background:#B9B2A2"><img src="assets/plato-piedra.jpg" alt="{{ A.platoPiedra }}" style="width:100%;height:100%;object-fit:cover;transform:scale(1.25);transform-origin:48% 52%"></figure>
+      <figure data-z-ct="1" style="position:relative;margin:0;width:min(43vw,340px);height:clamp(120px,21svh,220px);overflow:hidden;border-radius:2px;background:#B9B2A2"><img src="assets/plato-piedra.jpg" alt="" style="width:100%;height:100%;object-fit:cover;transform:scale(2.2);transform-origin:70% 96%"></figure>
+      <figure data-z="conv-hero" style="position:relative;margin:0;width:min(43vw,340px);height:clamp(120px,21svh,220px);overflow:hidden;border-radius:2px;background:#B9B2A2;z-index:3"><img data-z="conv-hero-img" src="assets/lena.jpg" alt="" style="width:100%;height:100%;object-fit:cover;transform:scale(1.6);transform-origin:78% 66%"></figure>
+    </div>
+    <div data-z="conv-shade" aria-hidden="true" style="position:absolute;inset:0;z-index:4;opacity:0;pointer-events:none;background:linear-gradient(rgba(16,14,11,.55),rgba(16,14,11,.3) 34%,rgba(16,14,11,.6) 70%,#100E0B)"></div>
+    <p data-z="conv-cap" style="position:absolute;left:0;right:0;bottom:max(clamp(34px,9%,96px),clamp(0px,calc((860px - 100vw) * 999),calc(100px + env(safe-area-inset-bottom))));z-index:5;margin:0 auto;padding:0 18px;max-width:17em;text-align:center;font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(1.5rem,3.6vw,2.7rem);line-height:1.12;color:#F1EDE4;opacity:0;text-wrap:balance"><span data-l="es">Con madera se enciende la brasa. Para conseguir ese toque especial.</span><span data-l="eu" lang="eu">Egurrarekin pizten dugu sua. Hala lortzen da ukitu berezi hori.</span></p>
+  </section>
+</div>
+<div data-z="conv-band" aria-hidden="true" style="height:clamp(150px,22vw,330px);background:linear-gradient(#ddd8cb,#dad4c7 7.1%,#d1cbbd 14.3%,#c4bcae 21.4%,#b3a99b 28.6%,#a09485 35.7%,#8a7e6f 42.9%,#74685a 50%,#5e5246 57.1%,#483f35 64.3%,#352e26 71.4%,#26211b 78.6%,#1a1612 85.7%,#13100d 92.9%,#100e0b)"></div>
+
+<div id="sua" data-z="fire-wrap" data-screen-label="La brasa" style="background:#100E0B">
+  <section data-z="fire-stage" style="position:sticky;top:0;height:min(100svh,1000px);overflow:hidden;color:#F1EDE4;background:#100E0B">
+    <div data-z="fire-clip" style="position:absolute;inset:0;overflow:hidden">
+      <img data-z="fire-img" src="assets/fuego.jpg" alt="{{ A.fuego }}" style="position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;object-position:38% 50%">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(16,14,11,1) 0%,rgba(16,14,11,0.933) 6%,rgba(16,14,11,0.767) 12%,rgba(16,14,11,0.55) 18%,rgba(16,14,11,0.333) 24%,rgba(16,14,11,0.167) 30%,rgba(16,14,11,0.1) 36%,rgba(16,14,11,0.106) 39%,rgba(16,14,11,0.121) 42%,rgba(16,14,11,0.14) 45%,rgba(16,14,11,0.159) 48%,rgba(16,14,11,0.174) 51%,rgba(16,14,11,0.18) 54%,rgba(16,14,11,0.241) 61.7%,rgba(16,14,11,0.393) 69.3%,rgba(16,14,11,0.59) 77%,rgba(16,14,11,0.787) 84.7%,rgba(16,14,11,0.939) 92.3%,rgba(16,14,11,1) 100%)"></div>
+      <div data-z="fire-veil" aria-hidden="true" style="position:absolute;inset:0;background:#100E0B;opacity:0"></div>
+    </div>
+    <div data-z="fire-pre" style="position:absolute;left:0;right:0;top:clamp(84px,13%,140px);padding:0 18px;text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8794A;margin-bottom:10px"><span data-l="es">El fuego</span><span data-l="eu" lang="eu">Sua</span></div>
+      <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,5vw,3.6rem);line-height:1.05;letter-spacing:0;margin:0;text-wrap:balance"><span data-l="es">Todo empieza con unas buenas brasas</span><span data-l="eu" lang="eu">Dena txingar on batzuekin hasten da</span></h2>
+    </div>
+    <div data-z="fire-post" style="position:absolute;left:0;right:0;bottom:max(clamp(40px,9%,90px),clamp(0px,calc((860px - 100vw) * 999),calc(100px + env(safe-area-inset-bottom))));padding:0 clamp(20px,5vw,80px)">
+      <div style="max-width:1140px;margin:0 auto">
+        <div data-z="fire-title" style="font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(2.2rem,7vw,5.4rem);line-height:1.02;text-wrap:balance"><span data-l="es">Asado a las brasas</span><span data-l="eu" lang="eu">Txingarretan erreta</span></div>
+        <div data-z="fire-rule" aria-hidden="true" style="width:min(320px,60%);height:1px;margin-top:18px;background:rgba(241,237,228,.6);transform-origin:0 50%"></div>
+        <p data-z="fire-sub" style="margin:14px 0 0;max-width:28em;font-size:clamp(1.05rem,1.6vw,1.25rem);color:#EDE7DB"><span data-l="es">Son palabras que leerás más de una vez en nuestra carta.</span><span data-l="eu" lang="eu">Hitz hauek behin baino gehiagotan irakurriko dituzu gure kartan.</span></p>
+      </div>
+    </div>
+  </section>
+</div>
+<div aria-hidden="true" style="height:clamp(150px,22vw,330px);background:linear-gradient(#100e0b,#13100d 7.1%,#1b1713 14.3%,#28231d 21.4%,#39322b 28.6%,#4e453c 35.7%,#655b51 42.9%,#7e7368 50%,#978c80 57.1%,#afa59a 64.3%,#c5bdb2 71.4%,#d8d1c8 78.6%,#e7e2da 85.7%,#f1ede6 92.9%,#f4f1ea)"></div>
+
+<section id="karta" data-screen-label="Carta" style="background:#F4F1EA;padding:clamp(40px,6vw,80px) clamp(12px,5vw,80px) clamp(56px,8vw,100px);scroll-margin-top:60px">
+  <div data-z-rv="1" style="max-width:1080px;margin:0 auto;padding:clamp(40px,6vw,84px) clamp(18px,5vw,76px) clamp(34px,5vw,64px);border:1px solid #1D1A16;border-radius:2px;box-shadow:inset 0 0 0 6px #F4F1EA,inset 0 0 0 7px #C9C2B2">
+    <div style="max-width:34em;margin:0 auto;text-align:center">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#96360F;margin-bottom:14px"><span data-l="es">La carta</span><span data-l="eu" lang="eu">Karta</span></div>
+      <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:0;margin:0;text-wrap:balance"><span data-l="es">Ordenada como un árbol</span><span data-l="eu" lang="eu">Zuhaitz bat bezala antolatua</span></h2>
+      <p style="margin:18px auto 0;max-width:28em;color:#4E483F;text-wrap:pretty"><span data-l="es">Raíces, tronco, ramas y hojas: las cuatro partes del árbol son los cuatro capítulos de nuestra carta, como en sala.</span><span data-l="eu" lang="eu">Sustraiak, enborra, adarrak eta hostotza: zuhaitzaren lau zatiak dira gure kartako lau kapituluak, jangelakoan bezala.</span></p>
+    </div>
+    <sc-if value="{{ isTabs }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:clamp(34px,5vw,60px);display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4E483F"><span data-l="es">Elige un capítulo</span><span data-l="eu" lang="eu">Aukeratu kapitulu bat</span></div>
+        <div role="tablist" aria-label="{{ A.chapters }}" style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+            <button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:68px;padding:10px 8px;border:1px solid {{ t.bd }};border-radius:2px;background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;transition:background-color .25s ease-out,color .25s ease-out,border-color .25s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="border-color:#1D1A16" style-active="transform:scale(.97)" style-focus="outline:2px solid #B4441A;outline-offset:2px">
+              <span style="font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(1.1rem,2vw,1.35rem);line-height:1.1">{{ t.name }}</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase">{{ t.num }} · {{ t.short }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+    <sc-for list="{{ chapters }}" as="g" hint-placeholder-count="1">
+      <div data-z-ch="{{ g.idx }}" style="margin-top:clamp(30px,5vw,60px)">
+        <div style="display:flex;align-items:center;gap:clamp(12px,2vw,24px)">
+          <span aria-hidden="true" style="flex:1;height:1px;background:#1D1A16"></span>
+          <div style="text-align:center">
+            <sc-if value="{{ isFull }}" hint-placeholder-val="{{ false }}"><h3 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.1;letter-spacing:0;margin:0 0 4px">{{ g.name }}</h3></sc-if>
+            <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#4E483F">{{ g.num }} · {{ g.desc }}</div>
+          </div>
+          <span aria-hidden="true" style="flex:1;height:1px;background:#1D1A16"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));column-gap:clamp(36px,6vw,84px);margin-top:8px">
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+            <div data-z-row="1" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 20px;align-items:baseline;padding:18px 0;border-bottom:1px solid #C9C2B2">
+              <div style="min-width:0">
+                <div style="font-family:'Faculty Glyphic',Georgia,serif;font-size:1.14rem;line-height:1.3;color:#1D1A16;text-wrap:pretty">{{ it.name }}</div>
+                <sc-if value="{{ showGloss }}" hint-placeholder-val="{{ true }}"><div style="font-style:italic;font-size:16px;line-height:1.4;color:#4E483F;margin-top:3px;text-wrap:pretty">{{ it.gloss }}</div></sc-if>
+                <sc-if value="{{ it.flag }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;margin-top:8px;padding:2px 7px;border:1px solid #96360F;border-radius:2px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#96360F">Texto cortado en la foto · verificar</span></sc-if>
+              </div>
+              <div style="font-family:'Faculty Glyphic',Georgia,serif;font-size:1.14rem;color:#96360F;white-space:nowrap">{{ it.price }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+    <p style="margin:clamp(28px,4vw,44px) auto 0;max-width:36em;text-align:center;font-size:16px;color:#4E483F;text-wrap:pretty"><span data-l="es"><strong style="font-weight:600;color:#1D1A16">Alérgenos.</strong> En la carta de sala cada plato lleva sus iconos; aquí irán los mismos. Mientras tanto, pregunta a nuestro equipo.</span><span data-l="eu" lang="eu"><strong style="font-weight:600;color:#1D1A16">Alergenoak.</strong> Jangelako kartan plater bakoitzak bere ikonoak ditu; hemen ere berberak jarriko ditugu. Bitartean, galdetu gure taldeari.</span></p>
+  </div>
+</section>
+<div aria-hidden="true" style="height:clamp(150px,22vw,330px);background:linear-gradient(#f4f1ea,#f1ede6 7.1%,#e7e2da 14.3%,#d8d1c8 21.4%,#c5bdb2 28.6%,#afa59a 35.7%,#978c80 42.9%,#7e7368 50%,#655b51 57.1%,#4e453c 64.3%,#39322b 71.4%,#28231d 78.6%,#1b1713 85.7%,#13100d 92.9%,#100e0b)"></div>
+
+<div data-z="txu-wrap" data-screen-label="Txuleta" style="background:#100E0B">
+  <section data-z="txu" style="position:sticky;top:0;height:min(100svh,1000px);overflow:hidden;background:#100E0B;color:#F1EDE4">
+    <div data-z="txu-media" style="position:absolute;left:0;right:0;top:-5%;bottom:-5%">
+      <img src="assets/txuletas-crudas.jpg" alt="{{ A.txuletas }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(.72)">
+      <div data-z="txu-color" style="position:absolute;inset:0">
+        <img src="assets/txuletas-crudas.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(rgba(16,14,11,1) 0%,rgba(16,14,11,0.926) 4.7%,rgba(16,14,11,0.741) 9.3%,rgba(16,14,11,0.5) 14%,rgba(16,14,11,0.259) 18.7%,rgba(16,14,11,0.074) 23.3%,rgba(16,14,11,0) 28%,rgba(16,14,11,0.006) 31.7%,rgba(16,14,11,0.021) 35.3%,rgba(16,14,11,0.04) 39%,rgba(16,14,11,0.059) 42.7%,rgba(16,14,11,0.074) 46.3%,rgba(16,14,11,0.08) 50%,rgba(16,14,11,0.139) 56%,rgba(16,14,11,0.287) 62%,rgba(16,14,11,0.48) 68%,rgba(16,14,11,0.673) 74%,rgba(16,14,11,0.821) 80%,rgba(16,14,11,0.88) 86%,rgba(16,14,11,0.889) 88.3%,rgba(16,14,11,0.911) 90.7%,rgba(16,14,11,0.94) 93%,rgba(16,14,11,0.969) 95.3%,rgba(16,14,11,0.991) 97.7%,rgba(16,14,11,1) 100%)"></div>
+    <div data-z="txu-word" aria-hidden="true" style="position:absolute;left:0;top:50%;margin-top:-.62em;white-space:nowrap;font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(5rem,26vw,24rem);line-height:1;color:#F4F1EA;mix-blend-mode:overlay"><span data-l="es">Chuletón</span><span data-l="eu" lang="eu">Txuleta</span></div>
+    <div style="position:absolute;left:0;right:0;bottom:max(clamp(40px,9%,90px),clamp(0px,calc((860px - 100vw) * 999),calc(100px + env(safe-area-inset-bottom))));padding:0 clamp(20px,5vw,80px)">
+      <div data-z="txu-h" style="max-width:1140px;margin:0 auto">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#F1EDE4;margin-bottom:10px"><span data-l="es">Chuletón</span><span data-l="eu" lang="eu">Txuleta</span></div>
+        <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,5.4vw,4rem);line-height:1.05;letter-spacing:0;margin:0;max-width:13em;text-wrap:balance"><span data-l="es">Así llega, antes de pasar por la brasa</span><span data-l="eu" lang="eu">Horrela iristen da, sutan erre aurretik</span></h2>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div aria-hidden="true" style="height:clamp(150px,22vw,330px);background:linear-gradient(#100e0b,#13100d 7.1%,#1a1713 14.3%,#27221c 21.4%,#373029 28.6%,#4b4239 35.7%,#62574c 42.9%,#796d61 50%,#918578 57.1%,#a89d90 64.3%,#bdb3a7 71.4%,#cfc7bc 78.6%,#ddd7cc 85.7%,#e6e1d7 92.9%,#e9e5db)"></div>
+
+<div id="platerak" data-z="dish-wrap" data-screen-label="Platos" style="background:#E9E5DB">
+  <section data-z="dish-stage" style="position:sticky;top:0;height:min(100svh,1000px);box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,3vh,40px);padding:68px clamp(20px,5vw,80px) max(24px,clamp(0px,calc((860px - 100vw) * 999),calc(84px + env(safe-area-inset-bottom))))">
+    <div data-z-rv="1" style="width:100%;max-width:1140px;margin:0 auto">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#96360F;margin-bottom:10px"><span data-l="es">Los platos</span><span data-l="eu" lang="eu">Platerak</span></div>
+      <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:0;margin:0"><span data-l="es">De la brasa a la mesa</span><span data-l="eu" lang="eu">Sutik zuzenean mahaira</span></h2>
+    </div>
+    <div data-z-desk="1" style="width:100%;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(12px,4vw,72px);align-items:center">
+      <div style="display:flex;align-items:flex-end;gap:14px">
+        <div style="position:relative;flex:none;height:clamp(170px,calc(24svh + 12vw),420px);aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#B9B2A2;box-shadow:0 30px 60px -34px rgba(29,26,22,.7)">
+          <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="5">
+            <img src="{{ d.src }}" alt="{{ d.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ d.o }};transition:opacity .7s cubic-bezier(.4,0,.2,1)">
+          </sc-for>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;color:#4E483F;white-space:nowrap">{{ dishCount }}</div>
+      </div>
+      <div style="min-width:0;border-top:1px solid #1D1A16">
+        <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="5">
+          <button type="button" onMouseEnter="{{ d.pick }}" onFocus="{{ d.pick }}" onClick="{{ d.pick }}" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:0 clamp(10px,2vw,22px);width:100%;min-height:46px;padding:clamp(5px,1.2vh,14px) 0;border:0;border-bottom:1px solid #C9C2B2;background:none;text-align:left;cursor:pointer;color:{{ d.color }};transition:color .3s ease" style-focus="outline:none">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:{{ d.numColor }};transition:color .3s ease">{{ d.n }}</span>
+            <span style="display:flex;flex-wrap:wrap;align-items:baseline;gap:0 14px;min-width:0">
+              <span style="font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(1.3rem,3.2vw,2.5rem);line-height:1.12">{{ d.name }}</span>
+              <span style="font-family:'Vollkorn',Georgia,serif;font-style:italic;font-size:16px;line-height:1.3">{{ d.sub }}</span>
+            </span>
+            <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#96360F;white-space:nowrap">{{ d.price }}</span>
+          </button>
+        </sc-for>
+        <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><p style="margin:10px 0 0;font-family:'Space Mono',monospace;font-size:12px;line-height:1.5;color:#4E483F">[FOTOS: miniaturas de Google Maps. Sustituir por originales.]</p></sc-if>
+      </div>
+    </div>
+
+    <div data-z-mob="1" style="margin:0 calc(-1 * clamp(20px,5vw,80px));display:flex;flex-direction:column;gap:16px">
+      <div data-z="dm-view" onScroll="{{ onDishScroll }}" style="overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain">
+        <div data-z="dm-track" style="position:relative;display:flex;gap:14px;width:max-content;padding:4px calc((100vw - min(72vw,calc((100svh - 410px) * .8))) / 2)">
+          <sc-for list="{{ dishes }}" as="d" hint-placeholder-count="5">
+            <figure data-z-dc="1" style="flex:none;width:min(72vw,calc((100svh - 410px) * .8));margin:0;scroll-snap-align:center;transform-origin:50% 40%">
+              <div style="position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#B9B2A2;box-shadow:0 30px 50px -30px rgba(29,26,22,.7)">
+                <img data-z-di="1" src="{{ d.src }}" alt="{{ d.alt }}" style="display:block;width:112%;max-width:none;height:100%;margin-left:-6%;object-fit:cover">
+              </div>
+              <figcaption data-z-dcap="1" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:0 12px;padding-top:12px">
+                <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:#96360F">{{ d.n }}</span>
+                <span style="min-width:0">
+                  <span style="display:block;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.55rem;line-height:1.1;color:#1D1A16">{{ d.name }}</span>
+                  <span style="display:block;font-style:italic;font-size:16px;line-height:1.35;color:#4E483F">{{ d.sub }}</span>
+                </span>
+                <span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#96360F;white-space:nowrap">{{ d.price }}</span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:0 calc((100vw - min(72vw,calc((100svh - 410px) * .8))) / 2)">
+        <div style="position:relative;flex:1;height:1px;background:#C9C2B2"><div data-z="dm-prog" style="position:absolute;inset:0;background:#1D1A16;transform-origin:0 50%"></div></div>
+        <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;color:#4E483F">{{ dishCount }}</span>
+      </div>
+      <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><p style="margin:0;padding:0 calc((100vw - min(72vw,calc((100svh - 410px) * .8))) / 2);font-family:'Space Mono',monospace;font-size:12px;line-height:1.5;color:#4E483F">[FOTOS: miniaturas de Google Maps. Sustituir por originales.]</p></sc-if>
+    </div>
+  </section>
+</div>
+
+<section id="etxea" data-screen-label="La casa" style="background:#E9E5DB;padding:clamp(48px,7vw,110px) clamp(20px,5vw,80px) clamp(56px,8vw,110px);scroll-margin-top:60px">
+  <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,5vw,72px);align-items:stretch">
+    <div style="min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(30px,4vw,56px)">
+      <div data-z-rv="1">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#96360F;margin-bottom:14px"><span data-l="es">La casa</span><span data-l="eu" lang="eu">Etxea</span></div>
+        <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:0;margin:0;text-wrap:balance"><span data-l="es">Piedra por fuera, madera en la mesa</span><span data-l="eu" lang="eu">Kanpoan harria, mahaian zura</span></h2>
+        <p style="margin:18px 0 16px;max-width:26em;color:#4E483F;text-wrap:pretty"><span data-l="es">Terraza con mesas de madera, porche de piedra y un comedor con chimenea.</span><span data-l="eu" lang="eu">Zurezko mahaiak dituen terraza, harrizko ataria eta tximiniadun jangela.</span></p>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;font-size:16px;color:#4E483F">
+          <span data-l="es"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="4.8" score="4,8" count="122" color="#9A6A24" hint-size="250px,24px"></x-import></span><span data-l="eu" lang="eu" style="display:inline-flex;align-items:center;gap:10px"><x-import component-from-global-scope="MockupsWebRestaurantKit_c65b55.StarRating" value="4.8" score="4,8" color="#9A6A24" hint-size="150px,24px"></x-import><span style="font-size:.95rem;color:#4E483F">· 122 iritzi</span></span>
+          <span><span data-l="es">30–60 € por persona</span><span data-l="eu" lang="eu">30–60 € pertsonako</span></span>
+        </div>
+      </div>
+      <div data-z-desk="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.6vw,18px)">
+        <div style="min-width:0">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;color:#96360F">01</span>
+            <h3 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(1rem,2vw,1.45rem);line-height:1.1;letter-spacing:0;margin:0">Terraza</h3>
+          </div>
+          <figure data-z-pf="1" style="margin:0;position:relative;overflow:hidden;border-radius:2px;aspect-ratio:4/5;background:#B9B2A2">
+            <img src="assets/g-terraza-dia.jpg" alt="{{ A.terraza }}" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08)">
+            <img data-z-pc="1" src="assets/g-terraza-dia.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          </figure>
+        </div>
+        <div style="min-width:0">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;color:#96360F">02</span>
+            <h3 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(1rem,2vw,1.45rem);line-height:1.1;letter-spacing:0;margin:0"><span data-l="es">Porche</span><span data-l="eu" lang="eu">Ataria</span></h3>
+          </div>
+          <figure data-z-pf="1" style="margin:0;position:relative;overflow:hidden;border-radius:2px;aspect-ratio:4/5;background:#B9B2A2">
+            <img src="assets/g-terraza-noche.jpg" alt="{{ A.porche }}" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08)">
+            <img data-z-pc="1" src="assets/g-terraza-noche.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          </figure>
+        </div>
+        <div style="min-width:0">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px">
+            <span style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;color:#96360F">03</span>
+            <h3 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(1rem,2vw,1.45rem);line-height:1.1;letter-spacing:0;margin:0"><span data-l="es">Comedor</span><span data-l="eu" lang="eu">Jangela</span></h3>
+          </div>
+          <figure data-z-pf="1" style="margin:0;position:relative;overflow:hidden;border-radius:2px;aspect-ratio:4/5;background:#B9B2A2">
+            <img src="assets/g-comedor.jpg" alt="{{ A.comedor }}" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08)">
+            <img data-z-pc="1" src="assets/g-comedor.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          </figure>
+        </div>
+      </div>
+    </div>
+    <figure data-z-pf="1" data-z-desk="1" style="margin:0;position:relative;overflow:hidden;border-radius:2px;height:100%;min-height:clamp(400px,62vw,600px);background:#B9B2A2;box-shadow:0 40px 70px -40px rgba(29,26,22,.7)">
+      <div data-z="casa-par" style="position:absolute;left:0;right:0;top:-7%;bottom:-7%">
+        <img src="assets/fachada-logo.jpg" alt="{{ A.fachada }}" style="width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08)">
+        <img data-z-pc="1" src="assets/fachada-logo.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:26%;background:linear-gradient(rgba(16,14,11,0) 0%,rgba(16,14,11,0.055) 16.7%,rgba(16,14,11,0.192) 33.3%,rgba(16,14,11,0.37) 50%,rgba(16,14,11,0.548) 66.7%,rgba(16,14,11,0.685) 83.3%,rgba(16,14,11,0.74) 100%)"></div>
+      <figcaption style="position:absolute;left:16px;bottom:14px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#F1EDE4"><span data-l="es">La fachada</span><span data-l="eu" lang="eu">Fatxada</span></figcaption>
+    </figure>
+
+    <div data-z-mob="1" style="min-width:0;display:flex;flex-direction:column;gap:10px">
+      <figure data-z-mc="u" style="position:relative;margin:0;aspect-ratio:16/11;overflow:hidden;border-radius:2px;background:#B9B2A2">
+        <img data-z-mi="1" src="assets/fachada-logo.jpg" alt="{{ A.fachada }}" style="position:absolute;left:0;top:-8%;width:100%;height:116%;max-width:none;object-fit:cover">
+        <div aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(rgba(16,14,11,0),rgba(16,14,11,.65))"></div>
+        <figcaption style="position:absolute;left:14px;bottom:12px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#F1EDE4"><span data-l="es">La fachada</span><span data-l="eu" lang="eu">Fatxada</span></figcaption>
+      </figure>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+        <div style="min-width:0;display:flex;flex-direction:column;gap:8px">
+          <figure data-z-mc="u" data-z-d="0" style="position:relative;margin:0;aspect-ratio:3/4;overflow:hidden;border-radius:2px;background:#B9B2A2">
+            <img data-z-mi="1" src="assets/g-terraza-dia.jpg" alt="{{ A.terraza }}" style="position:absolute;left:0;top:-8%;width:100%;height:116%;max-width:none;object-fit:cover">
+          </figure>
+          <div data-z-mt="1"><span style="display:block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#4E483F">Terraza</span></div>
+        </div>
+        <div style="min-width:0;display:flex;flex-direction:column;gap:8px">
+          <figure data-z-mc="u" data-z-d="0.12" style="position:relative;margin:0;aspect-ratio:3/4;overflow:hidden;border-radius:2px;background:#B9B2A2">
+            <img data-z-mi="1" src="assets/g-terraza-noche.jpg" alt="{{ A.porche }}" style="position:absolute;left:0;top:-8%;width:100%;height:116%;max-width:none;object-fit:cover">
+          </figure>
+          <div data-z-mt="1"><span style="display:block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#4E483F"><span data-l="es">Porche</span><span data-l="eu" lang="eu">Ataria</span></span></div>
+        </div>
+        <div style="min-width:0;display:flex;flex-direction:column;gap:8px">
+          <figure data-z-mc="u" data-z-d="0.24" style="position:relative;margin:0;aspect-ratio:3/4;overflow:hidden;border-radius:2px;background:#B9B2A2">
+            <img data-z-mi="1" src="assets/g-comedor.jpg" alt="{{ A.comedor }}" style="position:absolute;left:0;top:-8%;width:100%;height:116%;max-width:none;object-fit:cover">
+          </figure>
+          <div data-z-mt="1"><span style="display:block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#4E483F"><span data-l="es">Comedor</span><span data-l="eu" lang="eu">Jangela</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div aria-hidden="true" style="height:clamp(150px,22vw,330px);background:linear-gradient(#e9e5db,#e6e1d7 7.1%,#ddd7cc 14.3%,#cfc7bc 21.4%,#bdb3a7 28.6%,#a89d90 35.7%,#918578 42.9%,#796d61 50%,#62574c 57.1%,#4b4239 64.3%,#373029 71.4%,#27221c 78.6%,#1a1713 85.7%,#13100d 92.9%,#100e0b)"></div>
+
+<section id="bisita" data-screen-label="Reservas y pie" style="position:relative;background:#100E0B;color:#F1EDE4;overflow:hidden;scroll-margin-top:60px">
+  <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:min(100%,980px)">
+    <img src="assets/lena.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(rgba(16,14,11,1) 0%,rgba(16,14,11,0.978) 4.3%,rgba(16,14,11,0.922) 8.7%,rgba(16,14,11,0.85) 13%,rgba(16,14,11,0.778) 17.3%,rgba(16,14,11,0.722) 21.7%,rgba(16,14,11,0.7) 26%,rgba(16,14,11,0.704) 31.3%,rgba(16,14,11,0.716) 36.7%,rgba(16,14,11,0.73) 42%,rgba(16,14,11,0.744) 47.3%,rgba(16,14,11,0.756) 52.7%,rgba(16,14,11,0.76) 58%,rgba(16,14,11,0.778) 65%,rgba(16,14,11,0.822) 72%,rgba(16,14,11,0.88) 79%,rgba(16,14,11,0.938) 86%,rgba(16,14,11,0.982) 93%,rgba(16,14,11,1) 100%)"></div>
+  </div>
+  <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(40px,7vw,96px) clamp(20px,5vw,80px) 0;box-sizing:content-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(40px,6vw,96px);align-items:stretch">
+    <div data-z-rv="1" style="display:flex;flex-direction:column">
+      <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8794A;margin-bottom:14px"><span data-l="es">Visítanos</span><span data-l="eu" lang="eu">Bisita gaitzazu</span></div>
+      <h2 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.04;letter-spacing:0;margin:0;text-wrap:balance"><span data-l="es">Hay mesa de jueves a domingo</span><span data-l="eu" lang="eu">Ostegunetik igandera, mahaia zain</span></h2>
+      <p style="margin:18px 0 0;display:flex;align-items:center;gap:10px;font-size:1.05rem;color:#F1EDE4">
+        <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:#9CC27A;flex:none"></span></sc-if>
+        <sc-if value="{{ isClosed }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:#E8794A;flex:none"></span></sc-if>
+        {{ statusText }}
+      </p>
+      <div style="margin-top:22px;border-top:1px solid rgba(241,237,228,.5)">
+        <sc-for list="{{ hours }}" as="d" hint-placeholder-count="7">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(241,237,228,.28);font-family:'Space Mono',monospace;font-size:14px">
+            <span style="display:inline-flex;align-items:center;gap:10px">{{ d.day }}<sc-if value="{{ d.today }}" hint-placeholder-val="{{ false }}"><span style="padding:1px 6px;background:#F1EDE4;color:#100E0B;font-size:11px;letter-spacing:.12em;border-radius:2px"><span data-l="es">HOY</span><span data-l="eu" lang="eu">GAUR</span></span></sc-if></span>
+            <span style="color:#DAD3C6">{{ d.h }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><p style="margin:12px 0 0;font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;color:#E8794A">[HORARIO: el de Google Maps. Verificar el horario de cocina.]</p></sc-if>
+      <div style="margin-top:auto;padding-top:28px">
+      <address style="margin-top:0;font-style:normal;font-size:clamp(1.1rem,1.8vw,1.3rem);line-height:1.45">Santa Maria del Yermo Kalea, 8<br>01400 Laudio / Llodio, Araba</address>
+      <div style="display:flex;flex-wrap:wrap;gap:0 30px;margin-top:10px">
+        <a href="tel:+34688886518" style="display:inline-flex;align-items:center;min-height:48px;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.1rem;letter-spacing:.03em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;text-decoration-color:#E8794A;transition:color .2s ease-out,text-underline-offset .2s ease-out" style-hover="color:#E8794A;text-underline-offset:5px">688 88 65 18</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Zura+Ermualdeko+Zura+Santa+Maria+del+Yermo+Kalea+8+Laudio" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.1rem;letter-spacing:.03em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;text-decoration-color:#E8794A;transition:color .2s ease-out,text-underline-offset .2s ease-out" style-hover="color:#E8794A;text-underline-offset:5px"><span data-l="es">Cómo llegar</span><span data-l="eu" lang="eu">Nola iritsi</span></a>
+        <a href="https://www.thefork.es/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.1rem;letter-spacing:.03em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px;text-decoration-color:#E8794A;transition:color .2s ease-out,text-underline-offset .2s ease-out" style-hover="color:#E8794A;text-underline-offset:5px"><span data-l="es">Reservar en TheFork</span><span data-l="eu" lang="eu">Erreserbatu TheFork bidez</span></a>
+      </div>
+      <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><p style="margin:8px 0 0;font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;color:#E8794A">[ENLACE: poner la ficha del local en TheFork.]</p></sc-if>
+      </div>
+    </div>
+
+    <form id="reserva" data-z="slip" onSubmit="{{ onReserve }}" style="scroll-margin-top:72px;position:relative;min-width:0;padding:clamp(24px,3.4vw,40px);background:rgba(16,14,11,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F1EDE4;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(241,237,228,.16),0 40px 70px -30px rgba(0,0,0,.85)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E8794A"><span data-l="es">Reserva</span><span data-l="eu" lang="eu">Erreserba</span></div>
+          <h3 style="font-family:'Faculty Glyphic',Georgia,serif;font-weight:400;font-size:clamp(1.7rem,3vw,2.2rem);line-height:1.08;letter-spacing:0;margin:6px 0 0"><span data-l="es">Pide tu mesa</span><span data-l="eu" lang="eu">Eskatu mahaia</span></h3>
+        </div>
+        <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><span style="margin-top:2px;padding:3px 9px;border:2px solid #E8794A;border-radius:2px;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.16em;color:#E8794A;transform:rotate(6deg)">DEMO</span></sc-if>
+      </div>
+      <div style="margin:14px 0 0">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-size:1rem;color:#F1EDE4">
+          <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:#9CC27A;flex:none"></span></sc-if>
+          <sc-if value="{{ isClosed }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:#E8794A;flex:none"></span></sc-if>
+          {{ statusShort }}
+        </p>
+      </div>
+
+      <div role="group" aria-labelledby="z-r-dia" style="margin-top:22px">
+        <div id="z-r-dia" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFC8BB"><span data-l="es">Día</span><span data-l="eu" lang="eu">Eguna</span></div>
+        <div style="display:flex;gap:8px;overflow-x:auto;margin:10px -4px 0;padding:2px 4px 10px;scrollbar-width:thin">
+          <sc-for list="{{ resDays }}" as="d" hint-placeholder-count="8">
+            <button type="button" aria-pressed="{{ d.on }}" onClick="{{ d.pick }}" style="flex:none;width:66px;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:8px 0 4px;border:1px solid {{ d.bd }};border-radius:2px;background:{{ d.bg }};color:{{ d.fg }};box-shadow:inset 0 4px 0 {{ d.top }};cursor:pointer;transition:background-color .18s ease-out,color .18s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:2px">
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;line-height:1;text-transform:uppercase">{{ d.wd }}</span>
+              <span style="font-family:'Faculty Glyphic',Georgia,serif;font-size:1.7rem;line-height:1.05">{{ d.num }}</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;line-height:1;text-transform:uppercase">{{ d.mon }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div role="group" aria-labelledby="z-r-hora" style="margin-top:14px">
+        <div id="z-r-hora" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFC8BB"><span data-l="es">Hora</span><span data-l="eu" lang="eu">Ordua</span></div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px">
+          <sc-for list="{{ resSlots }}" as="h" hint-placeholder-count="6">
+            <button type="button" aria-pressed="{{ h.on }}" disabled="{{ h.off }}" onClick="{{ h.pick }}" style="min-height:48px;padding:0;border:1px solid {{ h.bd }};border-radius:2px;background:{{ h.bg }};color:{{ h.fg }};font-family:'Faculty Glyphic',Georgia,serif;font-size:1.1rem;text-decoration:{{ h.deco }};cursor:{{ h.cur }};transition:background-color .18s ease-out,color .18s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:2px">{{ h.s }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><p style="margin:8px 0 0;font-family:'Space Mono',monospace;font-size:12px;line-height:1.5;color:#E8794A">[TURNOS: de ejemplo. Confirmar con el restaurante.]</p></sc-if>
+      </div>
+
+      <div role="group" aria-labelledby="z-r-pax" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-top:22px">
+        <div id="z-r-pax" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFC8BB"><span data-l="es">Personas</span><span data-l="eu" lang="eu">Pertsonak</span></div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button type="button" aria-label="{{ A.less }}" onClick="{{ paxLess }}" style="width:48px;height:48px;padding:0;border:1px solid #F1EDE4;border-radius:2px;background:transparent;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.6rem;line-height:1;cursor:pointer;transition:background-color .18s ease-out,color .18s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:#F1EDE4;color:#1D1A16" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:2px">−</button>
+          <div aria-live="polite" style="min-width:6.6em;text-align:center;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.3rem">{{ paxText }}</div>
+          <button type="button" aria-label="{{ A.more }}" onClick="{{ paxMore }}" style="width:48px;height:48px;padding:0;border:1px solid #F1EDE4;border-radius:2px;background:transparent;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.6rem;line-height:1;cursor:pointer;transition:background-color .18s ease-out,color .18s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:#F1EDE4;color:#1D1A16" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:2px">+</button>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:0 24px;margin-top:8px">
+        <label style="display:flex;flex-direction:column;gap:2px;padding-top:16px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFC8BB"><span data-l="es">Nombre</span><span data-l="eu" lang="eu">Izena</span>
+          <input type="text" name="nombre" autocomplete="name" required="" style="height:48px;padding:0 2px;border:0;border-bottom:1px solid rgba(241,237,228,.45);border-radius:0;background:transparent;font-family:'Vollkorn',Georgia,serif;font-size:18px;color:#F1EDE4;box-sizing:border-box;width:100%;min-width:0" style-focus="outline:none;border-bottom:2px solid #E8794A">
+        </label>
+        <label style="display:flex;flex-direction:column;gap:2px;padding-top:16px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFC8BB"><span data-l="es">Teléfono</span><span data-l="eu" lang="eu">Telefonoa</span>
+          <input type="tel" name="telefono" autocomplete="tel" inputmode="tel" required="" style="height:48px;padding:0 2px;border:0;border-bottom:1px solid rgba(241,237,228,.45);border-radius:0;background:transparent;font-family:'Vollkorn',Georgia,serif;font-size:18px;color:#F1EDE4;box-sizing:border-box;width:100%;min-width:0" style-focus="outline:none;border-bottom:2px solid #E8794A">
+        </label>
+      </div>
+
+      <div style="margin-top:26px;padding-top:16px;border-top:1.5px dashed rgba(241,237,228,.45)">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#CFC8BB"><span data-l="es">Tu petición</span><span data-l="eu" lang="eu">Zure eskaera</span></div>
+        <p aria-live="polite" style="margin:4px 0 0;font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(1.12rem,2.2vw,1.3rem);line-height:1.3;text-wrap:balance">{{ resSummary }}</p>
+        <sc-if value="{{ needTime }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:6px 0 0;font-size:16px;line-height:1.4;color:#E8794A"><span data-l="es">Elige una hora para pedir la mesa.</span><span data-l="eu" lang="eu">Aukeratu ordu bat mahaia eskatzeko.</span></p></sc-if>
+      </div>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:18px"><button type="submit" style="display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;height:54px;padding:0 24px;margin:0;border:1px solid #8F8677;border-radius:2px;background:rgba(16,14,11,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#EDE7DB;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.12rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer;transition:background-color .25s ease-out,border-color .25s ease-out,color .25s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:rgba(16,14,11,.62);border-color:#D2CABD;color:#FBF6EC" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:3px"><span data-l="es">Pedir mesa</span><span data-l="eu" lang="eu">Mahaia eskatu</span></button></div>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="margin-top:18px;padding:14px 16px;border:1px solid #9CC27A;border-radius:2px">
+          <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9CC27A"><span data-l="es">Petición anotada</span><span data-l="eu" lang="eu">Eskaera jasota</span></div>
+          <p style="margin:6px 0 0;font-size:16px;line-height:1.45;color:#F1EDE4"><span data-l="es">Esto es una demostración: no se ha enviado nada. Así llegaría la petición al restaurante.</span><span data-l="eu" lang="eu">Hau erakustaldi bat da: ez da ezer bidali. Horrela iritsiko litzaioke eskaera jatetxeari.</span></p>
+        </div>
+      </sc-if>
+      <p style="margin:14px 0 0;font-size:16px;line-height:1.5;color:#CFC8BB"><span data-l="es">¿Prefieres llamar?</span><span data-l="eu" lang="eu">Deitu nahiago duzu?</span> <a href="tel:+34688886518" style="color:#E8794A;text-decoration:underline;text-underline-offset:4px" style-hover="color:#F1EDE4">688 88 65 18</a></p>
+      <p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#CFC8BB"><span data-l="es">[Cláusula de privacidad de reservas]</span><span data-l="eu" lang="eu">[Erreserben pribatutasun-klausula]</span></p>
+    </form>
+  </div>
+
+  <footer style="position:relative;margin-top:clamp(48px,6vw,80px);padding:0 clamp(20px,5vw,80px) clamp(24px,calc((860px - 100vw) * 999),112px)">
+    <div style="max-width:1140px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:clamp(14px,3vw,34px)">
+        <span data-z="foot-l" aria-hidden="true" style="flex:1;height:1px;background:rgba(241,237,228,.3);transform-origin:100% 50%"></span>
+        <a data-z="foot-mark" href="#top" aria-label="{{ A.top }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#F1EDE4" style-hover="color:#F1EDE4">
+          <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.34em;line-height:1;text-transform:uppercase;padding-left:.34em">Ermualdeko</span>
+          <span style="font-family:'Faculty Glyphic',Georgia,serif;font-size:clamp(2.1rem,4.6vw,3.2rem);letter-spacing:.3em;line-height:1;padding-left:.3em">ZURA</span>
+        </a>
+        <span data-z="foot-r" aria-hidden="true" style="flex:1;height:1px;background:rgba(241,237,228,.3);transform-origin:0 50%"></span>
+      </div>
+      <p data-z="foot-line" style="margin:18px 0 0;text-align:center;font-style:italic;font-size:clamp(1.02rem,1.5vw,1.16rem);color:#DAD3C6"><span data-l="es">Cocina de brasa en un caserío de piedra</span><span data-l="eu" lang="eu">Egur-suzko sukaldaritza harrizko baserrian</span></p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 36px;margin-top:clamp(28px,4vw,48px);padding-top:10px;border-top:1px solid rgba(241,237,228,.16);color:#CFC8BB;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase">
+        <div style="display:inline-flex;align-items:center;min-height:44px">Laudio · Araba</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0 26px">
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#CFC8BB" style-hover="color:#E8794A"><span data-l="es">Aviso legal</span><span data-l="eu" lang="eu">Lege-oharra</span></a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#CFC8BB" style-hover="color:#E8794A"><span data-l="es">Privacidad</span><span data-l="eu" lang="eu">Pribatutasuna</span></a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#CFC8BB" style-hover="color:#E8794A"><span data-l="es">Cookies</span><span data-l="eu" lang="eu">Cookieak</span></a>
+        </div>
+      </div>
+      <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><p style="margin:6px 0 0;font-family:'Space Mono',monospace;font-size:12px;line-height:1.6;color:#CFC8BB">Propuesta de diseño, no es la web oficial. Fotos y vídeo del Instagram y de la ficha de Google Maps del local, usados solo para esta demostración. Traducciones de la carta orientativas.</p></sc-if>
+    </div>
+  </footer>
+</section>
+
+<div data-z="bar" data-z-mob="1" style="position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;gap:18px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#100E0B;border-top:1px solid rgba(241,237,228,.16);transition:transform .3s cubic-bezier(.2,.7,.2,1)">
+  <a href="#reserva" style="display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;width:58%;height:48px;padding:0 12px;border:1px solid #8F8677;border-radius:2px;background:rgba(16,14,11,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#EDE7DB;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.08rem;letter-spacing:.04em;line-height:1;white-space:nowrap;text-decoration:none;cursor:pointer;transition:background-color .25s ease-out,border-color .25s ease-out,color .25s ease-out,transform .16s cubic-bezier(.2,.7,.2,1)" style-hover="background:rgba(16,14,11,.62);border-color:#D2CABD;color:#FBF6EC" style-active="transform:scale(.97)" style-focus="outline:2px solid #E8794A;outline-offset:3px"><span data-l="es">Reservar mesa</span><span data-l="eu" lang="eu">Mahaia gorde</span></a>
+  <a href="tel:+34688886518" style="flex:1 1 0;display:inline-flex;align-items:center;justify-content:center;min-height:48px;color:#F1EDE4;font-family:'Faculty Glyphic',Georgia,serif;font-size:1.08rem;letter-spacing:.03em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:7px;text-decoration-color:#E8794A" style-hover="color:#F1EDE4"><span data-l="es">Llamar</span><span data-l="eu" lang="eu">Deitu</span></a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;hero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A · La puerta&quot;,&quot;B · Tríptico con vídeo&quot;],&quot;default&quot;:&quot;A · La puerta&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;carta&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Por capítulos&quot;,&quot;Completa&quot;],&quot;default&quot;:&quot;Por capítulos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Carta&quot;},&quot;traduccionCarta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Carta&quot;},&quot;mostrarEtiquetas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Presentación&quot;},&quot;animaciones&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false, now: Date.now(), tab: 0, dish: 0, resDay: 0, resTime: '', resPax: 2, needTime: false, lang: (() => { try { return localStorage.getItem('zura-lang') === 'eu' ? 'eu' : 'es'; } catch (e) { return 'es'; } })() };
+
+  componentDidMount() {
+    this._lang = this.state.lang;
+    document.documentElement.lang = this._lang;
+    this._tick = setInterval(() => this.setState({ now: Date.now() }), 60000);
+    this._wait(0);
+  }
+  componentDidUpdate(prev) {
+    if (this._lang !== this.state.lang) { this._lang = this.state.lang; document.documentElement.lang = this._lang; if (window.ScrollTrigger) setTimeout(() => window.ScrollTrigger.refresh(), 80); }
+    if (!this._booted) return;
+    if ((this._tab ?? 0) !== this.state.tab) {
+      this._tab = this.state.tab;
+      if (this._ctx && window.gsap && window.ScrollTrigger && String(this.props.carta ?? 'P').charAt(0) !== 'C') {
+        window.gsap.fromTo('[data-z-ch] > div:first-child', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .4, ease: 'power2.out', overwrite: true });
+        window.gsap.fromTo('[data-z-row]', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .45, stagger: .035, ease: 'power2.out', overwrite: true });
+        window.ScrollTrigger.refresh();
+      }
+    }
+    const k = (p) => [p.animaciones ?? true, p.hero ?? 'A', p.carta ?? 'P'].join('|');
+    if (k(prev) !== k(this.props)) { this._kill(); this._boot(); }
+  }
+  componentWillUnmount() { clearInterval(this._tick); clearTimeout(this._t); this._kill(); }
+
+  _wait(n) {
+    const ready = window.gsap && window.ScrollTrigger && document.readyState === 'complete';
+    if (ready || n > 60) { this._t = setTimeout(() => this._boot(), ready ? 250 : 0); return; }
+    this._t = setTimeout(() => this._wait(n + 1), 100);
+  }
+
+  _kill() {
+    if (this._mm) { this._mm.revert(); this._mm = null; }
+    if (this._ctx) { this._ctx.revert(); this._ctx = null; }
+    if (this._lenis) { window.gsap && window.gsap.ticker.remove(this._raf); this._lenis.destroy(); this._lenis = null; }
+    if (this._io) { this._io.disconnect(); this._io = null; }
+    if (this._onLoad) { window.removeEventListener('load', this._onLoad); this._onLoad = null; }
+  }
+
+  _boot() {
+    this._booted = true;
+    const root = document.querySelector('[data-z-root]');
+    if (!root) return;
+    const q = (s) => root.querySelector('[data-z="' + s + '"]');
+
+    const v = q('hero-video');
+    if (v) {
+      v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.setAttribute('muted', '');
+      const p = v.play(); if (p && p.catch) p.catch(() => {});
+    }
+
+    const heroWrap = q('hero-wrap'), navbg = q('nav-bg'), bar = q('bar');
+    if ('IntersectionObserver' in window && heroWrap) {
+      this._io = new IntersectionObserver((es) => {
+        const past = !es[0].isIntersecting;
+        if (navbg) navbg.style.opacity = past ? '1' : '0';
+        if (bar) bar.style.transform = past ? 'translateY(0)' : 'translateY(120%)';
+      }, { rootMargin: '-70px 0px 0px 0px' });
+      this._io.observe(heroWrap);
+    }
+
+    const gsap = window.gsap, ST = window.ScrollTrigger, Split = window.SplitText;
+    if (!gsap || !ST || !(this.props.animaciones ?? true)) return;
+    gsap.registerPlugin(ST);
+    if (Split) gsap.registerPlugin(Split);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scrollable = document.documentElement.scrollHeight > window.innerHeight * 1.25;
+    const H = (k) => 'calc(min(100svh, 1000px) * ' + k + ')';
+
+    this._ctx = gsap.context(() => {
+      const hf = root.querySelectorAll('[data-z-hf]'), h1 = q('hero-h1'), stage = q('hero');
+      const isA = !!q('ha-media');
+      if (reduce) { gsap.from([h1, ...hf], { opacity: 0, duration: .6, stagger: .06, ease: 'power1.out' }); return; }
+
+      // Entrada del hero
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      if (isA) {
+        intro.fromTo(q('ha-veil'), { opacity: 1 }, { opacity: 0, duration: 2.1, ease: 'power2.out' }, 0);
+          
+      } else {
+        intro.from([q('hb-l'), q('hb-r')], { yPercent: 100, duration: 1.3, ease: 'power4.out', stagger: .22 }, 0)
+          .fromTo(q('hb-center-in'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: 'power4.out', clearProps: 'clipPath' }, .1);
+      }
+      intro.from(hf, { opacity: 0, y: 16, duration: .8, stagger: .09 }, .6);
+      if (Split && h1) Split.create(h1, { type: 'lines', mask: 'lines', autoSplit: true, onSplit: (s) => gsap.from(s.lines, { yPercent: 110, duration: .95, stagger: .09, ease: 'power3.out', delay: .35 }) });
+
+      if (!scrollable) return;
+
+      // Hero al hacer scroll. A: se entra por la puerta. B: el vídeo se abre a pantalla completa.
+      gsap.set(heroWrap, { height: H(1.8) });
+      const htl = gsap.timeline({ scrollTrigger: { trigger: heroWrap, start: 'top top', end: 'bottom bottom', scrub: .4, invalidateOnRefresh: true } });
+      htl.to(q('hero-text'), { opacity: 0, y: -36, duration: .28, ease: 'power1.in' }, 0);
+      if (isA) {
+        htl.fromTo(q('ha-media'), { scale: 1 }, { scale: 3.6, ease: 'power2.in', duration: 1 }, 0)
+          .fromTo(q('ha-dark'), { opacity: 0 }, { opacity: 1, ease: 'none', duration: .5 }, .5);
+      } else {
+        const side = q('hb-l'), vid = q('hero-video');
+        const X = () => side.offsetWidth + 4;
+        const s0 = () => Math.min(1, Math.max((stage.offsetWidth - 2 * X()) / vid.offsetWidth, stage.offsetHeight / vid.offsetHeight));
+        htl.fromTo(q('hb-center'), { clipPath: () => 'inset(0px ' + X() + 'px 0px ' + X() + 'px)' }, { clipPath: 'inset(0px 0px 0px 0px)', ease: 'power2.inOut', duration: .72 }, 0)
+          .fromTo(vid, { scale: s0 }, { scale: 1, ease: 'power2.inOut', duration: .72 }, 0)
+          .to(q('hb-l'), { xPercent: -105, ease: 'power2.inOut', duration: .72 }, 0)
+          .to(q('hb-r'), { xPercent: 105, ease: 'power2.inOut', duration: .72 }, 0)
+          .fromTo(q('ha-dark'), { opacity: 0 }, { opacity: 1, ease: 'none', duration: .22 }, .78);
+      }
+
+      // Leña y piedra: cuatro recortes convergen en el centro y uno crece hasta llenar la pantalla
+      const cw = q('conv-wrap'), cs = q('conv-stage'), grid = q('conv-grid'), hero = q('conv-hero');
+      const tiles = Array.from(grid.querySelectorAll('[data-z-ct]'));
+      gsap.set(cw, { height: H(2.8) });
+      gsap.set(q('conv-band'), { display: 'none' });
+      gsap.set(tiles.map((t) => t.firstElementChild), { filter: 'grayscale(1) contrast(1.1)' });
+      const dx = (t) => grid.offsetWidth / 2 - (t.offsetLeft + t.offsetWidth / 2);
+      const dy = (t) => grid.offsetHeight / 2 - (t.offsetTop + t.offsetHeight / 2);
+      const off = () => cs.offsetHeight / 2 - (grid.offsetTop + grid.offsetHeight / 2);
+      const S = () => Math.max(cs.offsetWidth / hero.offsetWidth, cs.offsetHeight / hero.offsetHeight) * 1.03;
+      const ctl = gsap.timeline({ scrollTrigger: { trigger: cw, start: 'top top', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true } });
+      tiles.forEach((t, i) => ctl.fromTo(t, { x: 0, y: 0 }, { x: () => dx(t), y: () => dy(t), ease: 'power2.inOut', duration: .34 }, i * .03).set(t, { autoAlpha: 0 }, .46));
+      ctl.fromTo(hero, { x: 0, y: 0 }, { x: () => dx(hero), y: () => dy(hero), ease: 'power2.inOut', duration: .34 }, .06)
+        .fromTo(hero, { scale: 1 }, { scale: S, y: () => dy(hero) + off(), ease: 'power2.inOut', duration: .44, immediateRender: false }, .44)
+        .fromTo(q('conv-hero-img'), { scale: 1.6, filter: 'grayscale(1) contrast(1.1)' }, { scale: 1, filter: 'grayscale(0) contrast(1)', ease: 'power1.inOut', duration: .44 }, .44)
+        .to(q('conv-head'), { opacity: 0, y: -20, duration: .12, ease: 'power1.in' }, .3)
+        .fromTo(q('conv-w1'), { xPercent: -30 }, { xPercent: 12, ease: 'none', duration: .5 }, 0)
+        .fromTo(q('conv-w2'), { xPercent: 30 }, { xPercent: -12, ease: 'none', duration: .5 }, 0)
+        .fromTo(q('conv-shade'), { opacity: 0 }, { opacity: 1, ease: 'none', duration: .2 }, .68)
+        .fromTo(q('conv-cap'), { opacity: 0, y: 18 }, { opacity: 1, y: 0, ease: 'power2.out', duration: .08 }, .8)
+        .to(q('conv-cap'), { opacity: 0, y: -18, ease: 'power1.in', duration: .08 }, 1.0)
+        .to({}, { duration: .04 });
+
+      // La brasa: la ventana se abre, la brasa respira y el titular sube letra a letra
+      const fw = q('fire-wrap'), ft = q('fire-title');
+      gsap.set(fw, { height: H(2.4) });
+      const ftl = gsap.timeline({ scrollTrigger: { trigger: fw, start: 'top top', end: 'bottom bottom', scrub: .6 } })
+        .fromTo(q('fire-clip'), { clipPath: 'inset(42% 27% 18% 27% round 2px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'power2.inOut', duration: .55 }, 0)
+        .fromTo(q('fire-img'), { scale: 1.35, yPercent: -3 }, { scale: 1, yPercent: 3, ease: 'none', duration: 1 }, 0)
+        .fromTo(q('fire-veil'), { opacity: .5 }, { opacity: 0, ease: 'none', duration: .5 }, 0)
+        .to(q('fire-pre'), { opacity: 0, y: -24, duration: .12, ease: 'power1.in' }, .3)
+        .set(q('fire-post'), { opacity: 1 }, .58)
+        .fromTo(q('fire-rule'), { scaleX: 0 }, { scaleX: 1, ease: 'power2.out', duration: .18 }, .76)
+        .fromTo(q('fire-sub'), { opacity: 0, y: 14 }, { opacity: 1, y: 0, ease: 'power2.out', duration: .12 }, .8)
+        .to({}, { duration: .1 }, .9);
+      gsap.set(q('fire-post'), { opacity: 0 });
+      if (Split && ft) {
+        const sp = Split.create(ft, { type: 'words,chars', mask: 'words' });
+        ftl.fromTo(sp.chars, { yPercent: 115 }, { yPercent: 0, ease: 'power3.out', duration: .16, stagger: .008 }, .6);
+      } else ftl.fromTo(ft, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .16 }, .6);
+
+      // Carta: la línea de capítulos se dibuja
+      const trunk = q('trunk');
+      if (trunk) gsap.fromTo(trunk, { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'power2.out', scrollTrigger: { trigger: trunk, start: 'top 85%', once: true } });
+
+      // Txuleta: la palabra cruza hacia la derecha delante del color y sale antes de que la foto esté completa
+      const tw = q('txu-wrap'), ts = q('txu'), word = q('txu-word');
+      gsap.set(tw, { height: H(2.2) });
+      gsap.timeline({ scrollTrigger: { trigger: tw, start: 'top 75%', end: 'bottom bottom', scrub: .5, invalidateOnRefresh: true } })
+        .fromTo(q('txu-media'), { yPercent: 4 }, { yPercent: -4, ease: 'none', duration: 1 }, 0)
+        .fromTo(q('txu-color'), { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', duration: .46 }, .24)
+        .fromTo(word, { x: () => -word.offsetWidth * .6 }, { x: () => ts.offsetWidth + 24, ease: 'none', duration: .56 }, .12)
+        .fromTo(q('txu-h'), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: .14 }, .76)
+        .to({}, { duration: .1 });
+
+      // Platos: el scroll recorre la lista y la foto cambia con ella
+      const dw = q('dish-wrap');
+      this._mm = gsap.matchMedia();
+      this._mm.add('(min-width: 860px)', () => {
+        gsap.set(dw, { height: H(2.6) });
+        ST.create({ trigger: dw, start: 'top top', end: 'bottom bottom', onUpdate: (st) => { const i = Math.min(4, Math.floor(st.progress * 5)); if (i !== this.state.dish) this.setState({ dish: i }); } });
+      });
+      this._mm.add('(max-width: 859px)', () => {
+        // Platos en móvil: la tira de platos se desliza con el scroll y se detiene en cada uno
+        const view = q('dm-view'), track = q('dm-track'), prog = q('dm-prog');
+        const cards = Array.from(root.querySelectorAll('[data-z-dc]'));
+        gsap.set(dw, { height: H(3.4) });
+        view.style.overflowX = 'visible'; view.style.scrollSnapType = 'none';
+        const cx = (c) => view.offsetWidth / 2 - (c.offsetLeft + c.offsetWidth / 2);
+        const look = () => {
+          const tx = gsap.getProperty(track, 'x'), mid = view.offsetWidth / 2;
+          let best = 0, bd = 1e9;
+          cards.forEach((c, i) => {
+            const sd = (c.offsetLeft + c.offsetWidth / 2 + tx - mid) / (c.offsetWidth + 14);
+            const d = Math.min(1, Math.abs(sd));
+            if (Math.abs(sd) < bd) { bd = Math.abs(sd); best = i; }
+            c.style.transform = 'scale(' + (1 - d * .1) + ')';
+            c.style.opacity = String(1 - d * .4);
+            const cap = c.querySelector('[data-z-dcap]'); if (cap) { cap.style.opacity = String(1 - d * .9); cap.style.transform = 'translateY(' + (d * 12) + 'px)'; }
+            const im = c.querySelector('[data-z-di]'); if (im) im.style.transform = 'translateX(' + (Math.max(-1, Math.min(1, sd)) * -5) + '%)';
+          });
+          if (best !== this.state.dish) this.setState({ dish: best });
+        };
+        const tl = gsap.timeline({ scrollTrigger: { trigger: dw, start: 'top top', end: 'bottom bottom', scrub: .7, invalidateOnRefresh: true }, onUpdate: look });
+        tl.fromTo(track, { x: () => cx(cards[0]) }, { x: () => cx(cards[0]), duration: .3, ease: 'none' });
+        for (let i = 1; i < cards.length; i++) tl.to(track, { x: () => cx(cards[i]), duration: 1, ease: 'power2.inOut' }).to({}, { duration: .35 });
+        if (prog) tl.fromTo(prog, { scaleX: 1 / cards.length }, { scaleX: 1, ease: 'none', duration: tl.duration() }, 0);
+        look();
+
+        // La casa en móvil: cada foto se abre desde su lado, se acerca y pasa de gris a color
+        root.querySelectorAll('[data-z-mc]').forEach((f) => {
+          const side = f.getAttribute('data-z-mc'), im = f.querySelector('[data-z-mi]'), cap = f.nextElementSibling;
+          const txt = cap && cap.hasAttribute('data-z-mt') ? Array.from(cap.children) : [];
+          gsap.set(f, { clipPath: side === 'l' ? 'inset(0% 100% 0% 0%)' : side === 'r' ? 'inset(0% 0% 0% 100%)' : 'inset(100% 0% 0% 0%)' });
+          gsap.set(im, { scale: 1.3, filter: 'grayscale(1) contrast(1.08)' });
+          if (txt.length) gsap.set(txt, { opacity: 0, y: 14 });
+          ST.create({ trigger: f, start: 'top 86%', once: true, onEnter: () => gsap.delayedCall(parseFloat(f.getAttribute('data-z-d') || '0'), () => {
+            gsap.to(f, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.25, ease: 'power3.inOut' });
+            gsap.to(im, { scale: 1, duration: 1.7, ease: 'power3.out' });
+            gsap.to(im, { filter: 'grayscale(0) contrast(1)', duration: 1.4, delay: .6, ease: 'power1.out' });
+            if (txt.length) gsap.to(txt, { opacity: 1, y: 0, duration: .8, stagger: .09, delay: .5, ease: 'power3.out' });
+          }) });
+          gsap.fromTo(im, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: f, start: 'top bottom', end: 'bottom top', scrub: .6 } });
+        });
+        return () => {
+          view.style.overflowX = ''; view.style.scrollSnapType = '';
+          cards.forEach((c) => { c.style.transform = ''; c.style.opacity = ''; const cap = c.querySelector('[data-z-dcap]'); if (cap) { cap.style.opacity = ''; cap.style.transform = ''; } const im = c.querySelector('[data-z-di]'); if (im) im.style.transform = ''; });
+        };
+      });
+
+      // La casa: las fotos se descubren y pasan de gris a color; la fachada se desplaza dentro de su marco
+      gsap.fromTo(q('casa-par'), { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: q('casa-par').parentNode, start: 'top bottom', end: 'bottom top', scrub: .6 } });
+      root.querySelectorAll('[data-z-pf]').forEach((f) => {
+        const col = f.querySelector('[data-z-pc]');
+        gsap.set(f, { clipPath: 'inset(0% 0% 100% 0%)' });
+        gsap.set(col, { opacity: 0 });
+        ST.create({ trigger: f.parentNode, start: 'top 88%', once: true, onEnter: () => {
+          gsap.to(f, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.out' });
+          gsap.to(col, { opacity: 1, duration: 1.5, delay: .55, ease: 'power1.out' });
+        } });
+      });
+
+      // Reserva: la hoja cae sobre la leña; el cierre dibuja sus líneas
+      const slip = q('slip');
+      gsap.fromTo(slip, { y: 44, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: slip, start: 'top 85%', once: true } });
+      gsap.timeline({ scrollTrigger: { trigger: q('foot-mark'), start: 'top 96%', once: true } })
+        .fromTo([q('foot-l'), q('foot-r')], { scaleX: 0 }, { scaleX: 1, duration: 1.3, ease: 'power3.out' }, 0)
+        .fromTo([q('foot-mark'), q('foot-line')], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .9, stagger: .12, ease: 'power3.out' }, .15);
+
+      const rv = root.querySelectorAll('[data-z-rv]');
+      gsap.set(rv, { opacity: 0, y: 18 });
+      rv.forEach((el) => ST.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', overwrite: true }) }));
+    }, root);
+
+    if (!reduce && scrollable && window.Lenis) {
+      this._lenis = new window.Lenis({ anchors: { offset: -64 } });
+      this._lenis.on('scroll', ST.update);
+      this._raf = (t) => this._lenis && this._lenis.raf(t * 1000);
+      gsap.ticker.add(this._raf);
+      gsap.ticker.lagSmoothing(0);
+    }
+    this._onLoad = () => ST.refresh();
+    if (document.readyState === 'complete') setTimeout(this._onLoad, 500); else window.addEventListener('load', this._onLoad);
+  }
+
+  _setLang(l) {
+    if (l === this.state.lang) return;
+    try { localStorage.setItem('zura-lang', l); } catch (e) {}
+    this.setState({ lang: l });
+  }
+
+  _onDishScroll = (e) => {
+    const el = e.currentTarget, mid = el.scrollLeft + el.clientWidth / 2;
+    let best = 0, bd = 1e9;
+    el.querySelectorAll('[data-z-dc]').forEach((c, i) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+    if (best !== this.state.dish) this.setState({ dish: best });
+  };
+
+  _status(eu) {
+    const sched = { 4: [600, 1080], 5: [600, 1080], 6: [540, 1080], 0: [540, 1080] };
+    const names = eu ? ['Igandean', 'Astelehenean', 'Asteartean', 'Asteazkenean', 'Ostegunean', 'Ostiralean', 'Larunbatean'] : ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    let wd = 0, mins = 0;
+    try {
+      const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date(this.state.now));
+      const get = (t) => (parts.find((p) => p.type === t) || {}).value;
+      wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+      mins = (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10);
+    } catch (e) { const d = new Date(this.state.now); wd = d.getDay(); mins = d.getHours() * 60 + d.getMinutes(); }
+    const fmt = (m) => Math.floor(m / 60) + ':' + String(m % 60).padStart(2, '0');
+    const today = sched[wd];
+    if (today && mins >= today[0] && mins < today[1]) return { wd, open: true, short: eu ? 'Orain irekita' : 'Abierto ahora', text: eu ? 'Orain irekita, ' + fmt(today[1]) + 'ak arte' : 'Abierto ahora, hasta las ' + fmt(today[1]) };
+    if (today && mins < today[0]) return { wd, open: false, short: eu ? 'Orain itxita' : 'Cerrado ahora', text: eu ? 'Orain itxita. Gaur ' + fmt(today[0]) + 'etan irekiko dugu' : 'Cerrado ahora. Abrimos hoy a las ' + fmt(today[0]) };
+    for (let i = 1; i <= 7; i++) { const n = (wd + i) % 7; if (sched[n]) return { wd, open: false, short: eu ? 'Orain itxita' : 'Cerrado ahora', text: eu ? 'Orain itxita. ' + names[n] + ' ' + fmt(sched[n][0]) + 'etan irekiko dugu' : 'Cerrado ahora. Abrimos el ' + names[n] + ' a las ' + fmt(sched[n][0]) }; }
+    return { wd, open: false, short: eu ? 'Itxita' : 'Cerrado', text: eu ? 'Itxita' : 'Cerrado' };
+  }
+
+  renderVals() {
+    const showLabels = this.props.mostrarEtiquetas ?? true;
+    const eu = this.state.lang === 'eu';
+    const showGloss = this.props.traduccionCarta ?? false;
+    const isHeroB = String(this.props.hero ?? 'A').charAt(0) === 'B';
+    const st = this._status(eu);
+    const I = (e, s, price, img, verify) => ({ name: eu ? e : s, gloss: eu ? s : e, price, img: img || '', hasImg: !!img, flag: !!verify && showLabels });
+    const groups = [
+      { eu: 'Sustraiak', es: 'raíces · para empezar', items: [
+        I('Onddozko eta txuletazko kroketak', 'Croquetas de hongos y de txuleta', '11,50 €', 'assets/g-croquetas.jpg', true),
+        I('Patata frijituak, sobrasada krema eta arrautza frijituak', 'Patatas fritas, crema de sobrasada y huevos fritos', '7,50 €'),
+        I('Txurro gaziak, trufa eta carrillera', 'Churros salados con trufa y carrillera', '8 €', '', true),
+        I('Ahate gyozak', 'Gyozas de pato', '8,50 €'),
+        I('Entsaladilla', 'Ensaladilla', '8,50 €'),
+        I('Itsaso eta mendi kurruskaria', 'Crujiente de mar y montaña', '7,50 €'),
+        I('Zankarroi gratinatua', 'Zancarrón gratinado', '9,50 €'),
+      ] },
+      { eu: 'Enborra', es: 'tronco', items: [
+        I('Behi zahar hanburgesa, aza gorri txingarreztatua, Idiazabal krema eta hirugihar marmelada', 'Hamburguesa de vaca vieja, lombarda a la brasa, crema de Idiazabal y mermelada de panceta', '12,50 €', 'assets/g-hamburguesa.jpg'),
+        I('Txuletazko hanburgesa, tipula kurruskaria, brie gazta, trufa eta ke emultsioa eta porru txingartua', 'Hamburguesa de txuleta, cebolla crujiente, queso brie, emulsión de trufa y humo y puerro a la brasa', '14,50 €'),
+        I('Otarrainxka briochezko sandwicha, ostra-perretxiko txingarreztatua eta otarrainxka-aliolia', 'Sándwich de brioche de langostino, seta ostra a la brasa y alioli de langostino', '9 €'),
+      ] },
+      { eu: 'Adarrak', es: 'ramas', items: [
+        I('Txipiroiak tintan, baratxuri txingarreztatuaren emultsioarekin', 'Chipirones en su tinta con emulsión de ajo a la brasa', '20 €'),
+        I('Txerri masailak, txingarrean erretako batatarekin', 'Carrilleras de cerdo con boniato asado a la brasa', '19 €'),
+        I('Olagarroa txingarretan erreta, sobrasada krematsuarekin', 'Pulpo asado a la brasa con cremoso de sobrasada', '24 €', 'assets/g-pulpo.jpg'),
+      ] },
+      { eu: 'Hostotza', es: 'hojas · postres', items: [
+        I('Coulant hur-izozki eta txokolate zuriarekin', 'Coulant con helado de avellana y chocolate blanco', '7,50 €'),
+        I('Gazta-tarta basoko fruta-izozkiarekin', 'Tarta de queso con helado de frutos del bosque', '8 €'),
+        I('Torrija hur-izozkiarekin', 'Torrija con helado de avellana', '7,50 €', 'assets/g-torrija.jpg'),
+      ] },
+    ];
+    const DN = eu ? ['Astelehena', 'Asteartea', 'Asteazkena', 'Osteguna', 'Ostirala', 'Larunbata', 'Igandea'] : ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+    const cl = eu ? 'Itxita' : 'Cerrado';
+    const H = [[DN[0], cl, 1], [DN[1], cl, 2], [DN[2], cl, 3], [DN[3], '10:00 – 18:00', 4], [DN[4], '10:00 – 18:00', 5], [DN[5], '9:00 – 18:00', 6], [DN[6], '9:00 – 18:00', 0]];
+    const di = this.state.dish;
+    const dishes = [
+      ['g-pulpo', 'Olagarroa', 'Pulpo', 'A la brasa', 'Egur-sutan erreta', '24 €', 'Pulpo a la brasa sobre crema de sobrasada', 'Sutan erretako olagarroa, sobrasada-krema gainean'],
+      ['g-txuleta-1', 'Txuleta', 'Chuletón', 'Fileteado', 'Xerratan ebakia', '', 'Chuletón fileteado con sal gruesa', 'Txuleta xerratan, gatz larriarekin'],
+      ['g-croquetas', 'Kroketak', 'Croquetas', 'De hongos y chuletón', 'Onddoak eta txuleta', '11,50 €', 'Croquetas sobre tabla de madera', 'Kroketak zurezko ohol baten gainean'],
+      ['g-hamburguesa', 'Hanburgesa', 'Hamburguesa', 'A la brasa', 'Egur-sutan egina', '12,50 €', 'Hamburguesa a la brasa con crema de queso', 'Sutan egindako hanburgesa, gazta-kremarekin'],
+      ['g-torrija', 'Torrija', 'Torrija', 'Con helado', 'Izozkiarekin', '7,50 €', 'Torrija con helado', 'Torrija izozkiarekin'],
+    ].map(([f, eun, esn, esSub, euSub, price, alt, euAlt], i) => ({ src: 'assets/' + f + '.jpg', name: eu ? eun : esn, sub: eu ? euSub : esSub, price, alt: eu ? euAlt : alt, n: String(i + 1).padStart(2, '0'), o: i === di ? 1 : 0, color: i === di ? '#1D1A16' : '#6A6257', numColor: i === di ? '#96360F' : '#6A6257', pick: () => this.setState({ dish: i }) }));
+    const WD = eu ? ['ig', 'al', 'ar', 'az', 'og', 'or', 'lr'] : ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'], WDL = eu ? ['igandea', 'astelehena', 'asteartea', 'asteazkena', 'osteguna', 'ostirala', 'larunbata'] : ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const MO = eu ? ['urt', 'ots', 'mar', 'api', 'mai', 'eka', 'uzt', 'abu', 'ira', 'urr', 'aza', 'abe'] : ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'], MOL = eu ? ['urtarrila', 'otsaila', 'martxoa', 'apirila', 'maiatza', 'ekaina', 'uztaila', 'abuztua', 'iraila', 'urria', 'azaroa', 'abendua'] : ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const nowD = new Date(this.state.now), nowM = nowD.getHours() * 60 + nowD.getMinutes();
+    const toM = (t) => parseInt(t, 10) * 60 + parseInt(t.slice(3), 10);
+    const dates = [];
+    for (let i = 0; dates.length < 8 && i < 40; i++) {
+      const d = new Date(nowD.getFullYear(), nowD.getMonth(), nowD.getDate() + i, 12);
+      if (![4, 5, 6, 0].includes(d.getDay()) || (i === 0 && nowM > 900)) continue;
+      dates.push({ d, today: i === 0 });
+    }
+    const rd = Math.min(this.state.resDay, dates.length - 1), sel = dates[rd];
+    const slotOff = (t) => sel.today && toM(t) < nowM + 30;
+    const rt = this.state.resTime && !slotOff(this.state.resTime) ? this.state.resTime : '';
+    const pax = this.state.resPax;
+    const setRes = (o) => this.setState({ ...o, sent: false, needTime: false });
+    const resDays = dates.map((x, i) => { const on = i === rd; return { wd: x.today ? (eu ? 'gaur' : 'hoy') : WD[x.d.getDay()], num: x.d.getDate(), mon: MO[x.d.getMonth()], on, bg: on ? '#EDE7DB' : 'transparent', fg: on ? '#1D1A16' : '#F1EDE4', bd: on ? '#EDE7DB' : 'rgba(241,237,228,.28)', top: on ? '#B4441A' : 'rgba(241,237,228,.55)', pick: () => setRes({ resDay: i }) }; });
+    const resSlots = ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30'].map((t) => { const on = t === rt, off = slotOff(t); return { s: t, on, off, bg: on ? '#EDE7DB' : 'transparent', fg: on ? '#1D1A16' : off ? '#857E72' : '#F1EDE4', bd: on ? '#EDE7DB' : 'rgba(241,237,228,.28)', deco: off ? 'line-through' : 'none', cur: off ? 'default' : 'pointer', pick: () => setRes({ resTime: t }) }; });
+    const resSummary = eu ? pax + ' pertsonako mahaia · ' + MOL[sel.d.getMonth()] + 'ren ' + sel.d.getDate() + 'a, ' + WDL[sel.d.getDay()] + (rt ? ' · ' + rt : '') : 'Mesa para ' + pax + ' · ' + WDL[sel.d.getDay()] + ' ' + sel.d.getDate() + ' de ' + MOL[sel.d.getMonth()] + (rt ? ' · ' + rt : '');
+    const isFull = String(this.props.carta ?? 'P').charAt(0) === 'C';
+    const tab = this.state.tab;
+    const short = eu ? ['hasteko', 'ogi artean', 'nagusiak', 'postreak'] : ['entrantes', 'entre pan', 'principales', 'postres'], esNames = ['Raíces', 'Tronco', 'Ramas', 'Hojas'], num = ['I', 'II', 'III', 'IV'];
+    groups.forEach((g, i) => { g.num = num[i]; g.idx = i; g.name = eu ? g.eu : esNames[i]; g.desc = eu ? ['hasteko', 'ogi artean', 'plater nagusiak', 'postreak'][i] : ['para empezar', 'entre pan', 'principales', 'postres'][i]; });
+    const tabs = groups.map((g, i) => { const on = i === tab; return { name: g.name, short: short[i], num: num[i], on, bg: on ? '#1D1A16' : 'transparent', fg: on ? '#F4F1EA' : '#1D1A16', bd: on ? '#1D1A16' : '#B9B2A2', pick: () => this.setState({ tab: i }) }; });
+    const A = eu ? {
+      home: 'Ermualdeko Zura, hasiera', nav: 'Atalak', top: 'Ermualdeko Zura, gora itzuli', chapters: 'Kartako kapituluak', less: 'Pertsona bat gutxiago', more: 'Pertsona bat gehiago',
+      rotuloArco: 'Zura hitza duen zurezko errotulu zizelkatua, ateko harrizko arkuaren gainean', rotulo: 'Zura hitza duen zurezko errotulu zizelkatua', fachada: 'Baserriaren harrizko fatxada, Ermualdeko Zura logotipoarekin',
+      cartaMesa: 'Karta zurezko mahai baten gainean, kopa bat ondoan eta harrizko horma atzean', lena: 'Egur moztua eta pilatua', platoPiedra: 'Plater bat, likenak dituen harrizko horma baten gainean',
+      fuego: 'Enbor bat sutan, sugarren artean', txuletas: 'Txuleta gordinak erretilu batean, erre aurretik', terraza: 'Zurezko mahaiak terrazan, harrizko hormaren ondoan',
+      porche: 'Harrizko ataria argiztatuta, ilunabarrean', comedor: 'Harrizko hormak eta tximinia dituen jangela',
+    } : {
+      home: 'Ermualdeko Zura, inicio', nav: 'Secciones', top: 'Ermualdeko Zura, volver arriba', chapters: 'Capítulos de la carta', less: 'Una persona menos', more: 'Una persona más',
+      rotuloArco: 'Rótulo de madera tallada con la palabra Zura sobre el arco de piedra de la puerta', rotulo: 'Rótulo de madera tallada con la palabra Zura', fachada: 'Fachada de piedra del caserío con el logotipo Ermualdeko Zura',
+      cartaMesa: 'La carta sobre una mesa de madera, con una copa y el muro de piedra al fondo', lena: 'Leña cortada y apilada', platoPiedra: 'Un plato servido sobre un muro de piedra con líquenes',
+      fuego: 'Un tronco en brasa entre llamas', txuletas: 'Chuletones crudos en una bandeja, antes de asarse', terraza: 'Mesas de madera en la terraza, junto al muro de piedra',
+      porche: 'Porche de piedra iluminado al anochecer', comedor: 'Comedor con paredes de piedra y chimenea',
+    };
+    return {
+      lang: this.state.lang, isEs: !eu, isEu: eu, A,
+      esC: eu ? '#A8A091' : '#F1EDE4', euC: eu ? '#F1EDE4' : '#A8A091', esD: eu ? 'none' : 'underline', euD: eu ? 'underline' : 'none',
+      setEs: () => this._setLang('es'), setEu: () => this._setLang('eu'),
+      showLabels, showGloss, dishes, tabs, isFull, isTabs: !isFull, chapters: isFull ? groups : [groups[tab]], dishCount: String(di + 1).padStart(2, '0') + ' / 05',
+      isHeroA: !isHeroB, isHeroB, onDishScroll: this._onDishScroll,
+      sent: this.state.sent, notSent: !this.state.sent, needTime: this.state.needTime && !rt, resDays, resSlots, resSummary,
+      paxText: eu ? pax + ' pertsona' : (pax === 1 ? '1 persona' : pax + ' personas'), paxLess: () => setRes({ resPax: Math.max(1, pax - 1) }), paxMore: () => setRes({ resPax: Math.min(12, pax + 1) }),
+      onReserve: (e) => { e.preventDefault(); if (!rt) { this.setState({ needTime: true }); return; } this.setState({ sent: true, needTime: false }); },
+      isOpen: st.open, isClosed: !st.open, statusText: st.text, statusShort: st.short,
+      hours: H.map(([day, h, n]) => ({ day, h, today: n === st.wd })),
+    };
+  }
+}
+</script>
+</body>
+</html>
